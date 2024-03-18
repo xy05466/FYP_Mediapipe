@@ -479,6 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543386373}
   - component: {fileID: 543386374}
+  - component: {fileID: 543386375}
   m_Layer: 5
   m_Name: Face Annotable Layer
   m_TagString: Untagged
@@ -527,6 +528,20 @@ MonoBehaviour:
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
   _faceConnectionWidth: 1
   _irisCircleWidth: 1
+--- !u!114 &543386375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543386372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b70074974ff57540ae16716a3cbc6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mfla: {fileID: 543386374}
+  indexesToStore: 
 --- !u!1 &706141580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1056,7 @@ GameObject:
   - component: {fileID: 1482812854}
   - component: {fileID: 1482812853}
   - component: {fileID: 1482812855}
+  - component: {fileID: 1482812856}
   m_Layer: 0
   m_Name: Solution
   m_TagString: Untagged
@@ -1101,7 +1117,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482812850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87e89e3d7ca41d8529430dbee11cd4bb, type: 3}
   m_Name: 
@@ -1133,6 +1149,30 @@ MonoBehaviour:
   screen: {fileID: 807459374}
   runningMode: 0
   _handLandmarkerResultAnnotationController: {fileID: 1968537271}
+--- !u!114 &1482812856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482812850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8a3e89fdb617645a38de061c57fc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
+    type: 3}
+  screen: {fileID: 807459374}
+  graphRunner: {fileID: 1482812853}
+  textureFramePool: {fileID: 1482812852}
+  runningMode: 0
+  _faceDetectionsAnnotationController: {fileID: 1968537272}
+  _multiFaceLandmarksAnnotationController: {fileID: 1968537270}
+  _faceRectsFromLandmarksAnnotationController: {fileID: 781316170}
+  _faceRectsFromDetectionsAnnotationController: {fileID: 1968537273}
+  _faceLandmarkTranslator: {fileID: 0}
+  facepointManager: {fileID: 543386375}
 --- !u!1 &1751768237
 GameObject:
   m_ObjectHideFlags: 0
