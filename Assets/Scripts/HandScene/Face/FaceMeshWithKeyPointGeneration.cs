@@ -43,6 +43,7 @@ namespace Mediapipe.Unity.Sample.FaceMesh
             {
             graphRunner.OnFaceDetectionsOutput += OnFaceDetectionsOutput;
             graphRunner.OnMultiFaceLandmarksOutput += OnMultiFaceLandmarksOutput;
+            //graphRunner.OnMultiFaceLandmarksOutput += facepointManager.UpdateListData;
             graphRunner.OnFaceRectsFromLandmarksOutput += OnFaceRectsFromLandmarksOutput;
             graphRunner.OnFaceRectsFromDetectionsOutput += OnFaceRectsFromDetectionsOutput;
             }
@@ -68,7 +69,6 @@ namespace Mediapipe.Unity.Sample.FaceMesh
             var result = task.Result;
             //_faceDetectionsAnnotationController.DrawNow(result.faceDetections);
             _multiFaceLandmarksAnnotationController.DrawNow(result.multiFaceLandmarks);
-            facepointManager.UpdateListData();
             //_faceRectsFromLandmarksAnnotationController.DrawNow(result.faceRectsFromLandmarks);
             //_faceRectsFromDetectionsAnnotationController.DrawNow(result.faceRectsFromDetections);
             //_faceLandmarkTranslator.DrawNow(result.multiFaceLandmarks);
@@ -86,7 +86,7 @@ namespace Mediapipe.Unity.Sample.FaceMesh
             var packet = eventArgs.packet;
             var value = packet == null ? default : packet.Get(NormalizedLandmarkList.Parser);
             _multiFaceLandmarksAnnotationController.DrawLater(value);
-            facepointManager.UpdateListData();
+            //facepointManager.UpdateListData();
             //_faceLandmarkTranslator.DrawLater(value);
         }
 
