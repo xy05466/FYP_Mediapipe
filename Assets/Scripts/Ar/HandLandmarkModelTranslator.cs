@@ -88,8 +88,6 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
         {
           currGesturePercentage += 20 - Mathf.Abs((gesture.fingerDistances[i].y - tolerance - fingerDistances[i]) / fallOffByPercent);
         }
-
-
       }
       return currGesturePercentage;
     }
