@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5105739270100195704}
   - component: {fileID: 8922188266184449883}
   - component: {fileID: 1406140191622352143}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Hand Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPool: {fileID: 0}
+  collided: 0
 --- !u!54 &1406140191622352143
 Rigidbody:
   m_ObjectHideFlags: 0
