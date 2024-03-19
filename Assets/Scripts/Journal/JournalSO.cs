@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -8,37 +9,83 @@ using UnityEngine.UI;
 [CreateAssetMenu]
 public class JournalSO : ScriptableObject
 {
-  [field: SerializeField]
-  public Texture2D dayOnePic { get; set; }
+    [field: SerializeField]
+    public Texture2D dayOnePic { get; set; }
 
-  [field: SerializeField]
-  public Texture2D dayTenPic { get; set; }
+    [SerializeField]
+    private List<Texture2D> picsTaken {  get; set; }
 
-  [field: SerializeField]
-  public Texture2D dayFiftyPic { get; set; }
+    [SerializeField]
+    private List<Texture2D> dayPics { get; set; }
 
-  [field: SerializeField]
-  public Texture2D dayHundredPic { get; set; }
+    [SerializeField]
+    private List <string> dayTxts { get; set; }
 
-  [field: SerializeField]
-  public string dayOneTxt { get; set; }
+    [SerializeField]
+    private int picsCount { get; set; }
 
-  [field: SerializeField]
-  public string dayTenTxt { get; set; }
+    public void Initialize()
+    {
+        //dayPics = null;
+        //dayTxts = null;
+        //picsCount = 0;
 
-  [field: SerializeField]
-  public string dayFiftyTxt { get; set; }
+        //Debug.Log(dayPics.Count);
+        //Debug.Log(dayPics.Last());
+        //Debug.Log(dayTxts.Last());
+        if (dayTxts == null)
+        {
+            dayTxts = new List<string>();
+            Debug.Log("newlist");
+        }
+        //if (dayPics != null)
+        //    return;
+        dayPics = new List<Texture2D>();
+        picsTaken = new List<Texture2D>();
+        string fileLocation;
+        if (picsCount == 0)
+        {
+            return;
+        }
+        for (int i = 1; i < picsCount + 1; i++)
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                fileLocation = Application.persistentDataPath + "/Album/CameraScreenshot" + i + ".png";
+            }
+            else
+            {
+                fileLocation = Application.dataPath + "/Album/CameraScreenshot" + i + ".png";
+            }
+            FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
 
-  [field: SerializeField]
-  public string dayHundredTxt { get; set; }
+            byte[] imageData = new byte[fs.Length];
+            fs.Read(imageData, 0, (int)fs.Length);
+            Texture2D pic = new Texture2D(351, 211);
+            pic.LoadImage(imageData);
+            dayPics.Add(pic);
+        }
+        //Debug.Log(dayPics.Last());
+        //Debug.Log(dayTxts.Last());
+    }
 
-  public IEnumerator TakePic(Texture pic)
-  {
+    public IEnumerator TakePic(Texture pic)
+    {
     yield return new WaitForEndOfFrame();
 
-    if (!Directory.Exists(Application.persistentDataPath + "/Album"))
+    if (Application.platform == RuntimePlatform.Android)
     {
-      Directory.CreateDirectory(Application.persistentDataPath + "/Album");
+        if (!Directory.Exists(Application.persistentDataPath + "/Album"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Album");
+        }
+    }
+    else
+    {
+        if (!Directory.Exists(Application.dataPath + "/Album"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/Album");
+        }
     }
 
     int width = pic.width;
@@ -58,52 +105,93 @@ public class JournalSO : ScriptableObject
 
     RenderTexture.active = currentRT;
 
-    //Rect rect = new Rect(0,0,width,height);
-    //screenshotTexture.ReadPixels(rect, 0, 0);
-    //screenshotTexture.Apply();
+        picsTaken.Add(screenshotTexture);
+        //PlayerPrefs.SetInt("imageCount", imageCount++);
 
-    int imageCount = PlayerPrefs.GetInt("imagecount");
-
-    byte[] byteArray = screenshotTexture.EncodeToPNG();
-    System.IO.File.WriteAllBytes(Application.persistentDataPath + "/Album/CameraScreenshot" + imageCount + ".png", byteArray);
-    Debug.Log(Application.dataPath);
-
-   
-  }
-
-  public Texture GetPic(Texture pic, int n)
-  {
-    string fileLocation;
-    dayOnePic = new Texture2D(pic.height,pic.width);
-    int imageCount = PlayerPrefs.GetInt("imagecount");
-
-    //if (!Directory.Exists(Path.GetDirectoryName(Application.persistentDataPath)))
-    //{
-    //  Directory.CreateDirectory(Path.GetDirectoryName(Application.persistentDataPath));
-    //}
-
-    if (Application.platform == RuntimePlatform.Android)
-    {
-
-      fileLocation = Application.persistentDataPath + "/Album/CameraScreenshot" + n + ".png";
-    }
-    else
-    {
-      fileLocation = Application.dataPath + "/Album/CameraScreenshot" + n + ".png";
+    //byte[] byteArray = screenshotTexture.EncodeToPNG();
+    //    if (Application.platform == RuntimePlatform.Android)
+    //    {
+    //        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
+    //    }
+    //    else
+    //    {
+    //        System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
+    //    }
+    //    //Debug.Log(imageCount);
+    //    Texture2D picTaken= new Texture2D(pic.width, pic.height);
+    //    picTaken.LoadImage(byteArray);
+    //    dayPics.Add(picTaken);
+    //    picsCount = dayPics.Count;
+    //    Debug.Log(dayPics.Count);
+        //Debug.Log(dayPics.Last());
     }
 
-    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
+    public void ConfirmPic()
+    {
+        byte[] byteArray = picsTaken.Last().EncodeToPNG();
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
+        }
+        else
+        {
+            System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
+        }
+        //Debug.Log(imageCount);
+        Texture2D picTaken = new Texture2D(picsTaken.Last().width, picsTaken.Last().height);
+        picTaken.LoadImage(byteArray);
+        dayPics.Add(picTaken);
+        picsCount = dayPics.Count;
+        picsTaken = new List<Texture2D>();
+        Debug.Log(dayPics.Count);
+    }
 
-    byte[] imageData = new byte[fs.Length];
-    fs.Read(imageData, 0, (int)fs.Length);
-    dayOnePic.LoadImage(imageData);
-    return (dayOnePic as Texture);
+    public Texture GetPicCache()
+    {
+        return picsTaken.Last();
+    }
 
+    public Texture GetPicAlbum(int n)
+    {
+        //Debug.Log("getpic");
+        //string fileLocation;
+        //dayOnePic = new Texture2D(pic.height,pic.width);
+        //int imageCount = PlayerPrefs.GetInt("imageCount");
 
-    //byte[] byteArray = File.ReadAllBytes(Application.dataPath + "/CameraScreenshot.png");
-    //List<byte> byteList = new List<byte>(byteArray);
+        //if (Application.platform == RuntimePlatform.Android)
+        //{
 
+        //    fileLocation = Application.persistentDataPath + "/Album/CameraScreenshot" + n + ".png";
+        //}
+        //else
+        //{
+        //    fileLocation = Application.dataPath + "/Album/CameraScreenshot" + n + ".png";
+        //}
 
-    //return dayOnePic;
-  }
+        //FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
+
+        //byte[] imageData = new byte[fs.Length];
+        //fs.Read(imageData, 0, (int)fs.Length);
+        //dayOnePic.LoadImage(imageData);
+        //return (dayOnePic as Texture);
+
+        Debug.Log(dayPics.Count);
+        
+        return (dayPics[n]);
+    }
+
+    public void SetText(string txt, int n)
+    {
+        dayTxts.Add(txt);
+    }
+
+    public string GetText(int n)
+    {
+        return dayTxts[n];
+    }
+
+    public int GetPicsCount()
+    {
+        return picsCount;
+    }
 }

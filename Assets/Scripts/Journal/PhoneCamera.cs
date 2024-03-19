@@ -12,54 +12,57 @@ public class PhoneCamera : MonoBehaviour
   [SerializeField] private JournalSO journalSO;
   [SerializeField] private List<RawImage> pics;
 
-  private Texture2D picTaken;
-  private bool camAvailable;
-  private WebCamTexture backCam;
-  private WebCamTexture camera;
+    private Texture2D picTaken;
+    private bool camAvailable;
+    private WebCamTexture backCam;
+    private WebCamTexture camera;
 
-  private List<WebCamTexture> cameras;
-  private Texture defaultBackground;
-  private string msg;
-  private int imageCount = 0;
+    private List<WebCamTexture> cameras;
+    private Texture defaultBackground;
+    private string msg;
+    private int imageCount;
 
-  public TMP_Text text;
-  public RawImage background;
-  public AspectRatioFitter fit;
+    public TMP_Text text;
+    public RawImage background;
+    public RawImage picResult;
+    public AspectRatioFitter fit;
 
-  private void Start()
-  {
-    cameras = new List<WebCamTexture>();
-    defaultBackground = background.texture;
-    WebCamDevice[] devices = WebCamTexture.devices;
-    imageCount = PlayerPrefs.GetInt("imagecount");
-
-   
-
-    if (devices.Length < 1)
+    private void Start()
     {
-      Debug.LogError("No cameras available!");
-      camAvailable = false;
-      return;
+        cameras = new List<WebCamTexture>();
+        defaultBackground = background.texture;
+        WebCamDevice[] devices = WebCamTexture.devices;
+        //PlayerPrefs.SetInt("imageCount", 0);
+        imageCount = journalSO.GetPicsCount();
+
+        journalSO.Initialize();
+        
+
+        if (devices.Length < 1)
+        {
+            Debug.LogError("No cameras available!");
+            camAvailable = false;
+            return;
+        }
+
+        backCam = new WebCamTexture(devices[0].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
+        for (int i = 0; i < devices.Length; i++)
+        {
+            camera = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
+            cameras.Add(camera);
+            msg += cameras[i].name;
+            text.text = msg;
+
+            if (!devices[i].isFrontFacing)
+            {
+                backCam = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
+            }
+        }
+
+        backCam.Play();
+        background.texture = backCam;
+        camAvailable = true;
     }
-
-    backCam = new WebCamTexture(devices[0].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
-    for (int i = 0; i < devices.Length; i++)
-    {
-      camera = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
-      cameras.Add(camera);
-      msg += cameras[i].name;
-      text.text = msg;
-
-      if (!devices[i].isFrontFacing)
-      {
-        backCam = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
-      }
-    }
-
-    backCam.Play();
-    background.texture = backCam;
-    camAvailable = true;
-  }
   private void Update()
   {
     if (!camAvailable)
@@ -97,26 +100,26 @@ public class PhoneCamera : MonoBehaviour
   {
     //picTaken = (Texture2D)background.texture;
     StartCoroutine(journalSO.TakePic(background.texture));
-    imageCount++;
-    PlayerPrefs.SetInt("imageCount", imageCount);
   }
+
+
+    public void ConfirmPic()
+    {
+        journalSO.ConfirmPic();
+    }
+
 
   private void OnDestroy()
   {
     backCam.Stop();
   }
 
-  public void ShowDayOnePic()
+  public void ShowPic()
   {
-    //int imageCount = PlayerPrefs.GetInt("imagecount");
 
-    //for (int i = 0; i < imageCount; i++)
-    //{
+        imageCount = journalSO.GetPicsCount();
+        Debug.Log(imageCount);
+        picResult.texture = journalSO.GetPicCache();
 
-    //}
-
-    //picShow.texture = journalSO.GetPic(picShow.texture);
-    //picShow.transform.rotation = Quaternion.Euler(0, 0, -90);
-    //Debug.Log("show");
   }
 }

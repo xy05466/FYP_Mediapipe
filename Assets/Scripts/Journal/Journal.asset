@@ -20,3 +20,7 @@ MonoBehaviour:
   <dayTenTxt>k__BackingField: 
   <dayFiftyTxt>k__BackingField: 
   <dayHundredTxt>k__BackingField: 
+  <dayPics>k__BackingField:
+  - {fileID: 0}
+  - {fileID: 0}
+  <dayTxts>k__BackingField: []

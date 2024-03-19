@@ -8,10 +8,10 @@ public class InventorySO : ScriptableObject
 {
   [SerializeField]
   private ItemSO headItem;
-  private ItemSO tailItem;
-  private ItemSO bodyItem;
-
-  [field: SerializeField]
+    [SerializeField]
+    private ItemSO tailItem;
+    [SerializeField]
+    private ItemSO bodyItem;
 
   //public void Initialize()
   //{
