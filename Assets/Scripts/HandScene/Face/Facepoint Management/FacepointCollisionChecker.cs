@@ -22,7 +22,7 @@ public class FacepointCollisionChecker : MonoBehaviour
         {
             if (_facepointManager.GetFacePoint(landmark).GetComponent<FacePointGO>().collided)
             {
-                Debug.Log("Facepoint " + landmark + " is colliding!");
+                //Debug.Log("Facepoint " + landmark + " is colliding!");
             }
         }
     }

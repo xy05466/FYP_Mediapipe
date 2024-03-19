@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[CreateAssetMenu]
 public class AccupointSO : ScriptableObject
 {
-    private Vector4 pointTethering;
+    public Vector4 pointTethering;
 }

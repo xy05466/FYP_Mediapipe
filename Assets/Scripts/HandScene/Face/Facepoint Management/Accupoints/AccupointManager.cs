@@ -14,12 +14,16 @@ public class AccupointManager : MonoBehaviour
     }
     private void Update()
     {
-        // Every frame, check if accupoint is within the allowed xyz radius.
-        // If not, reposition.
     }
     void InitAccupoints()
     {
         // Create accupoints
+        for (int i = 0; i < accupointSOs.Count; ++i)
+        {
+            Debug.Log((int)accupointSOs[i].pointTethering.w);
+            Instantiate(accupointPrefab, _facepointManager.GetFacePoint((int)accupointSOs[i].pointTethering.w).GetComponent<Transform>().position, Quaternion.identity, gameObject.transform);
+        }
         // Place accupoints
+
     }
 }
