@@ -123,6 +123,72 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6425009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6425010}
+  - component: {fileID: 6425011}
+  m_Layer: 5
+  m_Name: Accupoint Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6425010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1968537269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6425011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd6bd91ba8775e44b0e70be126f099e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facepointManager: {fileID: 543386375}
+  accupointSOs:
+  - {fileID: 11400000, guid: 61faee679a7324a41ad37b2d38bbcf21, type: 2}
+  - {fileID: 11400000, guid: 1450ea7f9f6889e4ba8ab206c1bdd3f5, type: 2}
+  - {fileID: 11400000, guid: b79fb106e07a5ff4c8e8c27bd3a64e01, type: 2}
+  - {fileID: 11400000, guid: 606141c798ff267449e3b4cb21d08ca9, type: 2}
+  - {fileID: 11400000, guid: 40108f2d438ea184aa07e9b5146f1aea, type: 2}
+  - {fileID: 11400000, guid: c61574ff671eb3447b26a9a7d84143ba, type: 2}
+  - {fileID: 11400000, guid: 19cd897f9f400134ca394a59347a63f9, type: 2}
+  - {fileID: 11400000, guid: c96366c107b1f6846b752239c9758326, type: 2}
+  - {fileID: 11400000, guid: a4bac6a894911fb44be6ec63aed556ba, type: 2}
+  - {fileID: 11400000, guid: 855ff55251f715445944eb34f1a0ea0e, type: 2}
+  - {fileID: 11400000, guid: 3e81471fae7a7aa4784ef5bc01fd89df, type: 2}
+  - {fileID: 11400000, guid: d5c3b3c3b6e802343835bfdb37888167, type: 2}
+  - {fileID: 11400000, guid: c45f566df5ac18b4bb591eb28c1c0934, type: 2}
+  - {fileID: 11400000, guid: 88ae64d9610b16647b8a1a66e2bf410c, type: 2}
+  - {fileID: 11400000, guid: 319637b12c6e9b64c80c0c60ddea6a63, type: 2}
+  - {fileID: 11400000, guid: 1cb143c1c63c55443bcb7c714bfeae22, type: 2}
+  - {fileID: 11400000, guid: 0ed074312fb97d348b1bdf48073ea9cf, type: 2}
+  accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
+    type: 3}
+  parent: {fileID: 6425009}
 --- !u!1 &60567027
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +546,7 @@ GameObject:
   - component: {fileID: 543386373}
   - component: {fileID: 543386374}
   - component: {fileID: 543386375}
+  - component: {fileID: 543386376}
   m_Layer: 5
   m_Name: Face Annotable Layer
   m_TagString: Untagged
@@ -522,7 +589,7 @@ MonoBehaviour:
     type: 3}
   _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 1}
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
-  _faceLandmarkRadius: 25
+  _faceLandmarkRadius: 15
   _irisLandmarkRadius: 10
   _faceConnectionColor: {r: 1, g: 0, b: 0, a: 0}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
@@ -541,7 +608,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mfla: {fileID: 543386374}
-  indexesToStore: 
+  indexesToStore: af000000390000001f01000078000000240100004b01000066010000cf000000ab010000930000007201000008000000370000001d010000690000004e010000460000002c010000
+  threshold: 10
+--- !u!114 &543386376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543386372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82660d6678f8f944fbd1cf1c98bd329b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facepointManager: {fileID: 543386375}
 --- !u!1 &706141580
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +682,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1107,7 +1188,7 @@ MonoBehaviour:
   _cpuConfig: {fileID: 4900000, guid: 0f81c4dbaca4c99cba499692e0f9f2f4, type: 3}
   _gpuConfig: {fileID: 4900000, guid: 38589729c174899b882533cdf6177dfe, type: 3}
   _openGlEsConfig: {fileID: 4900000, guid: b84acd1bb05b70ac19d12ec8ba95ae8d, type: 3}
-  _timeoutMicrosec: 50000
+  _timeoutMicrosec: 10000
   maxNumFaces: 1
   refineLandmarks: 1
 --- !u!114 &1482812854
@@ -1117,7 +1198,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482812850}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87e89e3d7ca41d8529430dbee11cd4bb, type: 3}
   m_Name: 
@@ -1156,7 +1237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482812850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e8a3e89fdb617645a38de061c57fc32, type: 3}
   m_Name: 
@@ -1221,11 +1302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba3c50c2cb46dc9e916dd3a33c8a488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _annotationPrefab: {fileID: 4724242833946851653, guid: b420c3106bd9cc5b6871a7df5459dba0,
+  _annotationPrefab: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
     type: 3}
   _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 1}
   _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 1}
-  _landmarkRadius: 15
+  _landmarkRadius: 30
   _connectionColor: {r: 1, g: 1, b: 1, a: 0.15686275}
   _connectionWidth: 0.1
 --- !u!1 &1765801417
@@ -1481,6 +1562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6425010}
   - {fileID: 1751768238}
   - {fileID: 543386373}
   - {fileID: 136303665}
