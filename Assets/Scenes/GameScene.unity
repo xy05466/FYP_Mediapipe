@@ -682,7 +682,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1562,12 +1562,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6425010}
   - {fileID: 1751768238}
   - {fileID: 543386373}
   - {fileID: 136303665}
   - {fileID: 376266486}
   - {fileID: 1433835588}
-  - {fileID: 6425010}
   m_Father: {fileID: 807459373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1968537270
