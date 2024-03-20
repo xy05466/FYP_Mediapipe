@@ -7,39 +7,11 @@ using System.Linq;
 public class CSVReader : MonoBehaviour
 {
 
-    public TextAsset textAssetData;
-    public int numHeaders;
-    [System.Serializable]
-    public class Dialouge
-    {
-        public int id;
-        public string desc;
-        public string dialougeText;
-        
-    }
-    [System.Serializable]
-    public class DialougeList
-    {
-        public Dialouge[] dialouge;
-    }
+    public DialougeListSO dialougeListSO;
 
-    public DialougeList dialougeList = new DialougeList();
-
-    private void Awake()
+    public void ReadCSV()
     {
-        //GameObject[] objs = GameObject.FindGameObjectsWithTag("csvReader");
-
-        //if (objs.Length > 1)
-        //{
-        //    Destroy(this.gameObject);
-        //}
-
-        //DontDestroyOnLoad(this.gameObject);
-        ReadCSV();
-    }
-    void ReadCSV()
-    {
-        string[] data = textAssetData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        string[] data = dialougeListSO.textAssetData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         for(int i = 0; i < data.Length; i++)
         {
             if (data[i].EndsWith("|"))
@@ -58,15 +30,15 @@ public class CSVReader : MonoBehaviour
             data[i] = data[i].Replace("\"", "");
         }
 
-        int tableSize = data.Length / numHeaders - 1;
-        dialougeList.dialouge = new Dialouge[tableSize];
+        int tableSize = data.Length / dialougeListSO.numHeaders - 1;
+        dialougeListSO.dialougeList.dialouge = new DialougeListSO.Dialouge[tableSize];
     
         for(int i = 0; i < tableSize; i++)
         {
-            dialougeList.dialouge[i] = new Dialouge();
-            dialougeList.dialouge[i].id = int.Parse(data[numHeaders * (i + 1)]);
-            dialougeList.dialouge[i].desc = data[numHeaders * (i + 1) + 1];
-            dialougeList.dialouge[i].dialougeText = data[numHeaders * (i + 1) + 2];
+            dialougeListSO.dialougeList.dialouge[i] = new DialougeListSO.Dialouge();
+            dialougeListSO.dialougeList.dialouge[i].id = int.Parse(data[dialougeListSO.numHeaders * (i + 1)]);
+            dialougeListSO.dialougeList.dialouge[i].desc = data[dialougeListSO.numHeaders * (i + 1) + 1];
+            dialougeListSO.dialougeList.dialouge[i].dialougeText = data[dialougeListSO.numHeaders * (i + 1) + 2];
         }
     }
 }

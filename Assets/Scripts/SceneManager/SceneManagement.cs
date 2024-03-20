@@ -10,30 +10,35 @@ using UnityEngine.Rendering;
 public class SceneManagement : MonoBehaviour
 {
     private static SceneManagement instance = null;
-    public static SceneManagement Instance { get {
+    public static SceneManagement Instance
+    {
+        get
+        {
             if (instance == null)
             {
                 GameObject newGO = Instantiate(Resources.Load("Prefabs/SceneManager") as GameObject, null);
                 newGO.name = "SceneManager";
                 newGO.SetActive(true);
                 DontDestroyOnLoad(newGO);
+                //call event here to init 
             }
             return instance;
-        } }
-    [Header("Scene Data")]
-    public List<string> sceneNames;
+        }
+    }
 
     private AsyncOperation asyncHandler = null;
     private Coroutine loadCoroutine = null;
 
     [Header("Canvas")]
     public TMPro.TMP_Text loadingText;
-    
+
     public bool isLoading { get; private set; }
     public bool isLoadingEffect { get; private set; }
 
     private System.Action onSceneLoaded;
 
+    [Header("CSVReader")]
+    private CSVReader cSVReader;
     //public Volume dissolveVolume;
 
     public void OnSceneLoaded(System.Action onSceneLoad)
@@ -48,10 +53,12 @@ public class SceneManagement : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }   
+        }
         DontDestroyOnLoad(this);
         instance = this;
         loadingText.gameObject.SetActive(false);
+        cSVReader = GetComponent<CSVReader>();
+        cSVReader.ReadCSV();
     }
 
     public void LoadScene(string name)

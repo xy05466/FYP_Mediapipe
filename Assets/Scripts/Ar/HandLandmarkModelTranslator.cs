@@ -10,6 +10,7 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
   {
     public GestureText gestureText;
     public List<Gesture> gestures;
+    public HandGestureHandler handGestureHandler = null;
     [Range(0.0f, 100.0f)]
     [SerializeField] private float minimumTreshold = 50;
     [Range(0.0f, 0.1f)]
@@ -62,7 +63,8 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
 
       //This to to update the current gesture being detected
       gestureText.UpdateTextBox(CurrHighestName);
-
+       if(handGestureHandler != null)
+            handGestureHandler.currGesture = CurrHighestName;
 
       return CurrHighestName;
     }
