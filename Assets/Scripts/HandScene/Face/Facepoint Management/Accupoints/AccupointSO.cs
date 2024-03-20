@@ -4,5 +4,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AccupointSO : ScriptableObject
 {
-    public Vector4 pointTethering;
+    // TODO (Paul): change accupointSOs to use Int + Vec3
+    //public Vector4 pointTethering;
+    public int landmarkIndex;
+    public Vector3 tetheringTolerance;
 }

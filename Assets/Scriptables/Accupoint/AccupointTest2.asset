@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f43f5d25da03f45adfb390736e3de8, type: 3}
   m_Name: AccupointTest2
   m_EditorClassIdentifier: 
-  pointTethering: {x: 6, y: 0, z: 0, w: 0}
+  landmarkIndex: 57
+  tetheringTolerance: {x: 0, y: 0, z: 0}

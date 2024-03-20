@@ -18,12 +18,12 @@ public class FacepointCollisionChecker : MonoBehaviour
 
     private void Update()
     {
-        foreach (int landmark in landmarksToCheck)
-        {
-            if (_facepointManager.GetFacePoint(landmark).GetComponent<FacePointGO>().collided)
-            {
-                //Debug.Log("Facepoint " + landmark + " is colliding!");
-            }
-        }
+        //foreach (int landmark in landmarksToCheck)
+        //{
+            //if (_facepointManager.GetFacePoint(landmark).GetComponent<FacePointGO>().collided)
+            //{
+            //    //Debug.Log("Facepoint " + landmark + " is colliding!");
+            //}
+        //}
     }
 }

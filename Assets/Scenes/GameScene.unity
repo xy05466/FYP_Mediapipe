@@ -171,9 +171,12 @@ MonoBehaviour:
   accupointSOs:
   - {fileID: 11400000, guid: 61faee679a7324a41ad37b2d38bbcf21, type: 2}
   - {fileID: 11400000, guid: 1450ea7f9f6889e4ba8ab206c1bdd3f5, type: 2}
+  - {fileID: 11400000, guid: b79fb106e07a5ff4c8e8c27bd3a64e01, type: 2}
   - {fileID: 11400000, guid: 606141c798ff267449e3b4cb21d08ca9, type: 2}
+  - {fileID: 11400000, guid: 40108f2d438ea184aa07e9b5146f1aea, type: 2}
   accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
     type: 3}
+  parent: {fileID: 6425009}
 --- !u!1 &60567027
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mfla: {fileID: 543386374}
-  indexesToStore: 98000000c60100000a000000ea000000
+  indexesToStore: af000000390000001f01000078000000240100004b01000066010000
+  threshold: 10
 --- !u!114 &543386376
 MonoBehaviour:
   m_ObjectHideFlags: 0
