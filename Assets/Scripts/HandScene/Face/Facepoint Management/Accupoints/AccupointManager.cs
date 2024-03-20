@@ -7,13 +7,16 @@ public class AccupointManager : MonoBehaviour
     [SerializeField] List<AccupointSO> accupointSOs;
     [SerializeField] GameObject accupointPrefab;
     [SerializeField] GameObject parent;
+    List<float> accupointTimers;
     List<GameObject> accupoints;
     GameObject instance;
     private void Start()
     {
+        accupointTimers = new List<float>();
         accupoints = new List<GameObject>();
         for (int i = 0; i < accupointSOs.Count; ++i)
         {
+            accupointTimers.Add(3.0f);
             instance = Instantiate(accupointPrefab, parent.transform);
             instance.GetComponent<Accupoint>().SetData(accupointSOs[i]);
             accupoints.Add(instance);
@@ -59,14 +62,34 @@ public class AccupointManager : MonoBehaviour
         }
         else return Vector3.zero;
     }
+    private void Update()
+    {
+        for(int i = 0; i < accupoints.Count; ++i)
+        {
+            GameObject obj = accupoints[i];
+            bool isColliding = obj.GetComponent<FacePointGO>().collided;
+            if (isColliding)
+            {
+                accupointTimers[i] -= Time.deltaTime;
+                Debug.Log(accupointTimers[i].ToString());
+            }
+            if (accupointTimers[i] < 0)
+            {
+                GameObject gameObjToRemove = accupoints[i];
+                accupointTimers.RemoveAt(i);
+                accupoints.RemoveAt(i);
+                Destroy(gameObjToRemove);
+            }
+        }
+    }
     private void FixedUpdate()
     {
         foreach (GameObject obj in accupoints)
         {
             int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
-            Debug.Log(nextAccupoint);
+            //Debug.Log(nextAccupoint);
             positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/nextAccupoint);
-            Debug.Log(positions.Count);
+            //Debug.Log(positions.Count);
             obj.transform.position = Reposition(positions);
         }
     }
