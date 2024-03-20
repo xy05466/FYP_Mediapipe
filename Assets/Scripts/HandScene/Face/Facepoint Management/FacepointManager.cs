@@ -75,7 +75,7 @@ public class FacepointManager : MonoBehaviour
                     {
                         //Debug.Log(landmarkPositions[i].Count);
                         int currentInt = indexesToStore[i];
-                        if (Vector3.Distance(facePoints[currentInt].transform.position, CalculateAverage(i)) < threshold || landmarkPositions.Count < 10)
+                        if (Vector3.Distance(facePoints[currentInt].transform.position, CalculateAverage(i)) < threshold || landmarkPositions[i].Count < 10)
                         {
                             landmarkPositions[i].Add(facePoints[currentInt].transform);
                             if (landmarkPositions[i].Count > 10)

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 6425010}
   - component: {fileID: 6425011}
   m_Layer: 5
-  m_Name: Test
+  m_Name: Accupoint Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,6 +174,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b79fb106e07a5ff4c8e8c27bd3a64e01, type: 2}
   - {fileID: 11400000, guid: 606141c798ff267449e3b4cb21d08ca9, type: 2}
   - {fileID: 11400000, guid: 40108f2d438ea184aa07e9b5146f1aea, type: 2}
+  - {fileID: 11400000, guid: c61574ff671eb3447b26a9a7d84143ba, type: 2}
+  - {fileID: 11400000, guid: 19cd897f9f400134ca394a59347a63f9, type: 2}
+  - {fileID: 11400000, guid: c96366c107b1f6846b752239c9758326, type: 2}
+  - {fileID: 11400000, guid: a4bac6a894911fb44be6ec63aed556ba, type: 2}
+  - {fileID: 11400000, guid: 855ff55251f715445944eb34f1a0ea0e, type: 2}
+  - {fileID: 11400000, guid: 3e81471fae7a7aa4784ef5bc01fd89df, type: 2}
+  - {fileID: 11400000, guid: d5c3b3c3b6e802343835bfdb37888167, type: 2}
+  - {fileID: 11400000, guid: c45f566df5ac18b4bb591eb28c1c0934, type: 2}
+  - {fileID: 11400000, guid: 88ae64d9610b16647b8a1a66e2bf410c, type: 2}
+  - {fileID: 11400000, guid: 319637b12c6e9b64c80c0c60ddea6a63, type: 2}
+  - {fileID: 11400000, guid: 1cb143c1c63c55443bcb7c714bfeae22, type: 2}
+  - {fileID: 11400000, guid: 0ed074312fb97d348b1bdf48073ea9cf, type: 2}
   accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
     type: 3}
   parent: {fileID: 6425009}
@@ -596,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mfla: {fileID: 543386374}
-  indexesToStore: af000000390000001f01000078000000240100004b01000066010000
+  indexesToStore: af000000390000001f01000078000000240100004b01000066010000cf000000ab010000930000007201000008000000370000001d010000690000004e010000460000002c010000
   threshold: 10
 --- !u!114 &543386376
 MonoBehaviour:

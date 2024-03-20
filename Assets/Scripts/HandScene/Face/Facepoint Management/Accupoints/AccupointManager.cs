@@ -63,7 +63,10 @@ public class AccupointManager : MonoBehaviour
     {
         foreach (GameObject obj in accupoints)
         {
-            positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/obj.GetComponent<Accupoint>().GetData().landmarkIndex);
+            int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
+            Debug.Log(nextAccupoint);
+            positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/nextAccupoint);
+            Debug.Log(positions.Count);
             obj.transform.position = Reposition(positions);
         }
     }
