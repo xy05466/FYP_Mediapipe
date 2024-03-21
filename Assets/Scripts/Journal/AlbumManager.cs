@@ -10,6 +10,9 @@ public class AlbumManager : MonoBehaviour
     [SerializeField] private List<RawImage> pics;
 
     public TMP_Text journalDayTxt;
+    public TMP_Text journalEntryTxt;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +43,8 @@ public class AlbumManager : MonoBehaviour
 
     public void GetText(int n)
     {
-        journalDayTxt.text = journalSO.GetText(n);
+        journalEntryTxt.text = journalSO.GetText(n);
+        journalDayTxt.text = "Day " + journalSO.GetDayNum(n).ToString();
     }
 
 }

@@ -13,10 +13,13 @@ public class JournalSO : ScriptableObject
     public Texture2D dayOnePic { get; set; }
 
     [SerializeField]
-    private List<Texture2D> picsTaken {  get; set; }
+    private Texture2D picsTaken {  get; set; }
 
     [SerializeField]
     private List<Texture2D> dayPics { get; set; }
+
+    [SerializeField]
+    private List <int> dayNum { get; set; }
 
     [SerializeField]
     private List <string> dayTxts { get; set; }
@@ -28,6 +31,7 @@ public class JournalSO : ScriptableObject
     {
         //dayPics = null;
         //dayTxts = null;
+        //dayNum = null;
         //picsCount = 0;
 
         //Debug.Log(dayPics.Count);
@@ -41,7 +45,6 @@ public class JournalSO : ScriptableObject
         //if (dayPics != null)
         //    return;
         dayPics = new List<Texture2D>();
-        picsTaken = new List<Texture2D>();
         string fileLocation;
         if (picsCount == 0)
         {
@@ -51,11 +54,11 @@ public class JournalSO : ScriptableObject
         {
             if (Application.platform == RuntimePlatform.Android)
             {
-                fileLocation = Application.persistentDataPath + "/Album/CameraScreenshot" + i + ".png";
+                fileLocation = Application.persistentDataPath + "/EditedAlbum/CameraScreenshot" + i + ".png";
             }
             else
             {
-                fileLocation = Application.dataPath + "/Album/CameraScreenshot" + i + ".png";
+                fileLocation = Application.dataPath + "/EditedAlbum/CameraScreenshot" + i + ".png";
             }
             FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
 
@@ -65,6 +68,7 @@ public class JournalSO : ScriptableObject
             pic.LoadImage(imageData);
             dayPics.Add(pic);
         }
+
         //Debug.Log(dayPics.Last());
         //Debug.Log(dayTxts.Last());
     }
@@ -73,20 +77,6 @@ public class JournalSO : ScriptableObject
     {
     yield return new WaitForEndOfFrame();
 
-    if (Application.platform == RuntimePlatform.Android)
-    {
-        if (!Directory.Exists(Application.persistentDataPath + "/Album"))
-        {
-            Directory.CreateDirectory(Application.persistentDataPath + "/Album");
-        }
-    }
-    else
-    {
-        if (!Directory.Exists(Application.dataPath + "/Album"))
-        {
-            Directory.CreateDirectory(Application.dataPath + "/Album");
-        }
-    }
 
     int width = pic.width;
     int height = pic.height;
@@ -105,7 +95,8 @@ public class JournalSO : ScriptableObject
 
     RenderTexture.active = currentRT;
 
-        picsTaken.Add(screenshotTexture);
+        picsTaken = screenshotTexture;
+
         //PlayerPrefs.SetInt("imageCount", imageCount++);
 
     //byte[] byteArray = screenshotTexture.EncodeToPNG();
@@ -124,11 +115,27 @@ public class JournalSO : ScriptableObject
     //    picsCount = dayPics.Count;
     //    Debug.Log(dayPics.Count);
         //Debug.Log(dayPics.Last());
+
     }
 
     public void ConfirmPic()
     {
-        byte[] byteArray = picsTaken.Last().EncodeToPNG();
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (!Directory.Exists(Application.persistentDataPath + "/Album"))
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/Album");
+            }
+        }
+        else
+        {
+            if (!Directory.Exists(Application.dataPath + "/Album"))
+            {
+                Directory.CreateDirectory(Application.dataPath + "/Album");
+            }
+        }
+
+        byte[] byteArray = picsTaken.EncodeToPNG();
         if (Application.platform == RuntimePlatform.Android)
         {
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
@@ -138,17 +145,17 @@ public class JournalSO : ScriptableObject
             System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
         }
         //Debug.Log(imageCount);
-        Texture2D picTaken = new Texture2D(picsTaken.Last().width, picsTaken.Last().height);
+        Texture2D picTaken = new Texture2D(picsTaken.width, picsTaken.height);
         picTaken.LoadImage(byteArray);
         dayPics.Add(picTaken);
         picsCount = dayPics.Count;
-        picsTaken = new List<Texture2D>();
+        //picsTaken = null;
         Debug.Log(dayPics.Count);
     }
 
     public Texture GetPicCache()
     {
-        return picsTaken.Last();
+        return picsTaken;
     }
 
     public Texture GetPicAlbum(int n)
@@ -183,6 +190,16 @@ public class JournalSO : ScriptableObject
     public void SetText(string txt, int n)
     {
         dayTxts.Add(txt);
+    }
+
+    public void SetDayNum(int n)
+    {
+        dayNum.Add(n);
+    }
+
+    public int GetDayNum(int n)
+    {
+        return dayNum[n];
     }
 
     public string GetText(int n)
