@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     // Add your singleton references here
     public SceneManagement sceneManagement { get; private set; }
     public GetSceneManager getSceneManager { get; private set; }
-
+    static bool CanClick;
     private void Start()
     {
         sceneManagement = SceneManagement.Instance;
