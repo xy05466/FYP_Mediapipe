@@ -128,6 +128,14 @@ namespace Mediapipe.Unity
             }
 
             availableSources = WebCamTexture.devices;
+            if (availableSources != null && availableSources.Length > 0)
+            {
+                webCamDevice = availableSources[0];
+            }
+            else
+            {
+                Debug.LogError("THERE IS NO SOUCE");
+            }
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
       if (availableSources != null && availableSources.Length > 0)
       {
@@ -144,14 +152,7 @@ namespace Mediapipe.Unity
         Debug.LogError("THERE IS NO SOUCE");
       }
 #endif
-            if (availableSources != null && availableSources.Length > 0)
-            {
-                webCamDevice = availableSources[0];
-            }
-            else
-            {
-                Debug.LogError("THERE IS NO SOUCE");
-            }
+
         }
 
 

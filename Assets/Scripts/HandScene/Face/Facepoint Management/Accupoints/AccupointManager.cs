@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AccupointManager : MonoBehaviour
@@ -7,9 +8,10 @@ public class AccupointManager : MonoBehaviour
     [SerializeField] List<AccupointSO> accupointSOs;
     [SerializeField] GameObject accupointPrefab;
     [SerializeField] GameObject parent;
-    //List<float> accupointTimers;
     List<GameObject> accupoints;
     GameObject instance;
+    [SerializeField] private Vector3 offset = Vector3.zero;
+    [SerializeField] private bool isAveraged = true;
     private void Start()
     {
         //accupointTimers = new List<float>();
@@ -23,74 +25,45 @@ public class AccupointManager : MonoBehaviour
         }
     }
     List<Transform> positions;
-    //private void Update()
-    //{
-    //    // TODO (Paul): change accupointSOs to use Int + Vec3
-    //    positions = _facepointManager.GetLandmarkPositionsByIndex(/*(int)accupointSOs[0].pointTethering.w*/ 4);
-    //    Debug.Log(positions.Count);
-    //    if (positions != null)
-    //    {
-    //        float avgX = 0, avgY = 0, avgZ = 0;
-    //        foreach (Transform transform in positions)
-    //        {
-    //            avgX += transform.position.x;
-    //            avgY += transform.position.y;
-    //            avgZ += transform.position.z;
-    //        }
-    //        avgX /= positions.Count;
-    //        avgY /= positions.Count;
-    //        avgZ /= positions.Count;
-    //        instance.transform.position = new Vector3(avgX, avgY, avgZ);
-    //        //instance.transform.position = _facepointManager.CalculateAverage(positions);
-    //    }
-    //}
-    Vector3 Reposition(List<Transform> positions)
+    Vector3 Reposition(List<Transform> positions, bool isAveraged = true)
     {
         if (positions != null)
         {
-            float avgX = 0, avgY = 0, avgZ = 0;
-            foreach (Transform transform in positions)
+            if (isAveraged)
             {
-                avgX += transform.position.x;
-                avgY += transform.position.y;
-                avgZ += transform.position.z;
+                float avgX = 0, avgY = 0, avgZ = 0;
+                foreach (Transform transform in positions)
+                {
+                    avgX += transform.position.x;
+                    avgY += transform.position.y;
+                    avgZ += transform.position.z;
+                }
+                avgX /= positions.Count;
+                avgY /= positions.Count;
+                avgZ /= positions.Count;
+                avgX += offset.x;
+                avgY += offset.y;
+                avgZ += offset.z;
+                return new Vector3(avgX, avgY, avgZ);
             }
-            avgX /= positions.Count;
-            avgY /= positions.Count;
-            avgZ /= positions.Count;
-            return new Vector3(avgX, avgY, avgZ);
+            else
+            {
+                return positions.Last().position;
+            }
         }
         else return Vector3.zero;
     }
     private void Update()
     {
-        //for(int i = 0; i < accupoints.Count; ++i)
-        //{
-        //    GameObject obj = accupoints[i];
-        //    bool isColliding = obj.GetComponent<FacePointGO>().collided;
-        //    if (isColliding)
-        //    {
-        //        accupointTimers[i] -= Time.deltaTime;
-        //        Debug.Log(accupointTimers[i].ToString());
-        //    }
-        //    if (accupointTimers[i] < 0)
-        //    {
-        //        GameObject gameObjToRemove = accupoints[i];
-        //        accupointTimers.RemoveAt(i);
-        //        accupoints.RemoveAt(i);
-        //        Destroy(gameObjToRemove);
-        //    }
-        //}
-    }
-    private void FixedUpdate()
-    {
         foreach (GameObject obj in accupoints)
         {
             int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
-            //Debug.Log(nextAccupoint);
             positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/nextAccupoint);
-            //Debug.Log(positions.Count);
-            obj.transform.position = Reposition(positions);
+            obj.transform.position = Reposition(positions, isAveraged);
         }
+    }
+    private void FixedUpdate()
+    {
+       
     }
 }

@@ -10,7 +10,7 @@ public class Accupoint : MonoBehaviour
     Material mat;
     // Colors are in this order as we are going to be lerping from 1 (timer / maxTimer) to 0.
     // As such, we will be going from the last color in the array to the first. Hence, we put red at the back and green in front.
-    Color[] colors = { Color.red, Color.yellow, Color.green };
+    public Color[] colors = { Color.red, Color.yellow, Color.green };
 
     public void SetData(AccupointSO data)
     {
