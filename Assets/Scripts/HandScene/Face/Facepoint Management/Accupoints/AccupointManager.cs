@@ -12,6 +12,7 @@ public class AccupointManager : MonoBehaviour
     GameObject instance;
     [SerializeField] private Vector3 offset = Vector3.zero;
     [SerializeField] private bool isAveraged = true;
+    [SerializeField] private bool lockedToZero = false;
     private void Start()
     {
         //accupointTimers = new List<float>();
@@ -25,7 +26,7 @@ public class AccupointManager : MonoBehaviour
         }
     }
     List<Transform> positions;
-    Vector3 Reposition(List<Transform> positions, bool isAveraged = true)
+    Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
     {
         if (positions != null)
         {
@@ -44,12 +45,36 @@ public class AccupointManager : MonoBehaviour
                 avgX += offset.x;
                 avgY += offset.y;
                 avgZ += offset.z;
-                return new Vector3(avgX, avgY, avgZ);
+                if (!lockToZero)
+                    return new Vector3(avgX, avgY, avgZ);
+                else
+                    return new Vector3(avgX, avgY, 0);
             }
             else
             {
                 return positions.Last().position;
             }
+        }
+        else return Vector3.zero;
+    }
+    Vector3 Reposition(List<Transform> positions)
+    {
+        if (positions != null)
+        {
+            float avgX = 0, avgY = 0, avgZ = 0;
+            foreach (Transform transform in positions)
+            {
+                avgX += transform.position.x;
+                avgY += transform.position.y;
+                avgZ += transform.position.z;
+            }
+            avgX /= positions.Count;
+            avgY /= positions.Count;
+            avgZ /= positions.Count;
+            avgX += offset.x;
+            avgY += offset.y;
+            avgZ += offset.z;
+            return new Vector3(avgX, avgY, avgZ);
         }
         else return Vector3.zero;
     }
@@ -59,11 +84,7 @@ public class AccupointManager : MonoBehaviour
         {
             int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
             positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/nextAccupoint);
-            obj.transform.position = Reposition(positions, isAveraged);
+            obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
         }
-    }
-    private void FixedUpdate()
-    {
-       
     }
 }
