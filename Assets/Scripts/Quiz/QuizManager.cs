@@ -31,12 +31,14 @@ public class QuizManager : MonoBehaviour
     void Start()
     {
         quizCount = 0;
-        nextButton.interactable = false;
     }
 
     private void Update()
     {
-       
+       if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            nextButton.interactable = false;
+        }
     }
 
     private void ShowQuizResult()
@@ -142,22 +144,4 @@ public class QuizManager : MonoBehaviour
         selectedButton = EventSystem.current.currentSelectedGameObject;
         nextButton.interactable = true;
     }
-
-    //public void OnClickA1()
-    //{
-    //    quizSO.SetA1Score(1);
-    //}
-
-    //public void OnClickA2()
-    //{
-    //    quizSO.SetA2Score(1);
-    //}
-    //public void OnClickA3()
-    //{
-    //    quizSO.SetA3Score(1);
-    //}
-    //public void OnClickA4()
-    //{
-    //    quizSO.SetA4Score(1);
-    //}
 }
