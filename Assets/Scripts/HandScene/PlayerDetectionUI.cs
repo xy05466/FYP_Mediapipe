@@ -12,12 +12,22 @@ public class PlayerDetectionUI : MonoBehaviour
     {
         textbox.text = "No face detected!";
     }
+    string textBoxString;
     private void Update()
     {
         facePoints = facepointManager.GetFacePointTransforms();       
         float avgZ = 0;
         avgZ = (facePoints[4].transform.position.z - Camera.main.transform.position.z) - 90.0f;
-        textbox.text = "Face Distance: " + avgZ;
+        textBoxString = "Face Distance: " + avgZ;
         //Debug.Log(avgZ);
+        if (avgZ < 1.5f)
+        {
+            textBoxString += "\nPlease move further";
+        }
+        else if (avgZ > 2.5f)
+        {
+            textBoxString += "\nPlease move closer";
+        }
+        textbox.text = textBoxString;
     }
 }
