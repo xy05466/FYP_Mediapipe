@@ -190,7 +190,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43367eec39ae5c24992731a14ce8dcad, type: 2}
   - {fileID: 11400000, guid: acdeb0a67422ee64fa56ef4bb09cf718, type: 2}
   - {fileID: 11400000, guid: bd3dd760909f51c4dbee6a780527d2f9, type: 2}
-  accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
+  accupointPrefab: {fileID: 5105739270100195971, guid: 93462379d4c01f9449d0ceaf3d2b018b,
     type: 3}
   parent: {fileID: 6425009}
   offset: {x: 0, y: 0, z: 0}
@@ -2114,6 +2114,7 @@ MonoBehaviour:
   textbox: {fileID: 1756075015}
   facepointManager: {fileID: 543386375}
   accupointManager: {fileID: 6425011}
+  button: {fileID: 0}
   lowerBound: 1
   upperBound: 3
 --- !u!1 &1594682637
