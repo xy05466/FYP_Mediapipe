@@ -13,6 +13,7 @@ public class AccupointManager : MonoBehaviour
     [SerializeField] private Vector3 offset = Vector3.zero;
     [SerializeField] private bool isAveraged = true;
     [SerializeField] private bool lockedToZero = false;
+    public int numAccupointsLeft;
     private void Start()
     {
         //accupointTimers = new List<float>();
@@ -24,6 +25,7 @@ public class AccupointManager : MonoBehaviour
             instance.GetComponent<Accupoint>().SetData(accupointSOs[i]);
             accupoints.Add(instance);
         }
+        numAccupointsLeft = accupoints.Count;
     }
     List<Transform> positions;
     Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
@@ -91,14 +93,20 @@ public class AccupointManager : MonoBehaviour
     }
     private void Update()
     {
+        int counter = 0;
         foreach (GameObject obj in accupoints)
         {
-            Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
-            int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
-            positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
-            obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
-            if (lockedToZero)
-                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
+            if (obj.activeInHierarchy)
+            {
+                Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
+                int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
+                positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
+                obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
+                if (lockedToZero)
+                    obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
+                counter++;
+            }
         }
+        numAccupointsLeft = counter;
     }
 }
