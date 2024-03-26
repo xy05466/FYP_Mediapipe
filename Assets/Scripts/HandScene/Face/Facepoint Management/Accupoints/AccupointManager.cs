@@ -30,9 +30,9 @@ public class AccupointManager : MonoBehaviour
     {
         if (positions != null)
         {
+            float avgX = 0, avgY = 0, avgZ = 0;
             if (isAveraged)
             {
-                float avgX = 0, avgY = 0, avgZ = 0;
                 foreach (Transform transform in positions)
                 {
                     avgX += transform.position.x;
@@ -45,15 +45,18 @@ public class AccupointManager : MonoBehaviour
                 avgX += offset.x;
                 avgY += offset.y;
                 avgZ += offset.z;
-                if (!lockToZero)
-                    return new Vector3(avgX, avgY, avgZ);
-                else
-                    return new Vector3(avgX, avgY, 0);
+               
             }
             else
             {
-                return positions.Last().position;
+                avgX = positions.Last().position.x;
+                avgY = positions.Last().position.y;
+                avgZ = positions.Last().position.z;
             }
+            //if (!lockToZero)
+            return new Vector3(avgX, avgY, avgZ);
+            //else
+            //    return new Vector3(avgX, avgY, avgZ - avgZ);
         }
         else return Vector3.zero;
     }
@@ -78,13 +81,24 @@ public class AccupointManager : MonoBehaviour
         }
         else return Vector3.zero;
     }
+    public void Increase()
+    {
+        offset+= new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 1 * Time.deltaTime);
+    }
+    public void Decrease()
+    {
+        offset -= new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 1 * Time.deltaTime);
+    }
     private void Update()
     {
         foreach (GameObject obj in accupoints)
         {
+            Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
             int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
-            positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/nextAccupoint);
+            positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
             obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
+            if (lockedToZero)
+                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
         }
     }
 }

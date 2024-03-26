@@ -31,6 +31,7 @@ public class Accupoint : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z + " 2");
         if (timer < maxTimer)
         {
             // test implementation from https://gamedev.stackexchange.com/questions/98740/how-to-color-lerp-between-multiple-colors

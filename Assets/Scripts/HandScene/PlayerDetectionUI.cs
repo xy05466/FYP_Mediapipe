@@ -11,18 +11,13 @@ public class PlayerDetectionUI : MonoBehaviour
     private void Start()
     {
         textbox.text = "No face detected!";
-        
     }
     private void Update()
     {
         facePoints = facepointManager.GetFacePointTransforms();       
         float avgZ = 0;
-        foreach (GameObject point in facePoints)
-        {
-            avgZ += point.transform.position.z;
-        }
-        avgZ /= facePoints.Length;
+        avgZ = (facePoints[4].transform.position.z - Camera.main.transform.position.z) - 90.0f;
         textbox.text = "Face Distance: " + avgZ;
-        Debug.Log(avgZ);
+        //Debug.Log(avgZ);
     }
 }
