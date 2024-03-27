@@ -160,6 +160,7 @@ public class JournalSO : ScriptableObject
 
     public Texture GetPicAlbum(int n)
     {
+
         //Debug.Log("getpic");
         //string fileLocation;
         //dayOnePic = new Texture2D(pic.height,pic.width);

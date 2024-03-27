@@ -18,31 +18,47 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private GameObject quizEnd;
     [SerializeField] private GameObject quizQnA;
 
-    private int quizCount;
-
     public GameObject A1Button;
     public GameObject A2Button;
     public GameObject A3Button;
     public GameObject A4Button;
     public Button nextButton;
+
     private GameObject selectedButton;
+    private int quizCount;
+    private int a1Score;
+    private int a2Score;
+    private int a3Score;
+    private int a4Score;
 
     // Start is called before the first frame update
     void Start()
     {
         quizCount = 0;
+        a1Score = 0;
+        a2Score = 0;
+        a3Score = 0;
+        a4Score = 0;
     }
 
     private void Update()
     {
        if (EventSystem.current.currentSelectedGameObject == null)
-        {
+       {
             nextButton.interactable = false;
-        }
+       }
     }
 
     private void ShowQuizResult()
     {
+        quizSO.SetA1Score(a1Score);
+        quizSO.SetA2Score(a2Score);
+        quizSO.SetA3Score(a3Score);
+        quizSO.SetA4Score(a4Score);
+        quizSO.SetQuizDone(true);
+        quizQnA.SetActive(false);
+        quizEnd.SetActive(true);
+
         List<int> quizWeights = new List<int>();
         quizWeights.Add(quizSO.GetA1Score());
         quizWeights.Add(quizSO.GetA2Score());
@@ -73,22 +89,26 @@ public class QuizManager : MonoBehaviour
         if (selectedButton == A1Button)
         {
             Debug.Log(A1Button.name + " was selected");
-            quizSO.SetA1Score(1);
+            a1Score++;
+            //quizSO.SetA1Score(1);
         }
         if (selectedButton == A2Button)
         {
             Debug.Log(A2Button.name + " was selected");
-            quizSO.SetA2Score(1);
+            a2Score++;
+            //quizSO.SetA2Score(1);
         }
         if (selectedButton == A3Button)
         {
             Debug.Log(A3Button.name + " was selected");
-            quizSO.SetA3Score(1);
+            a3Score++;
+            //quizSO.SetA3Score(1);
         }
         if (selectedButton == A4Button)
         {
             Debug.Log(A4Button.name + " was selected");
-            quizSO.SetA4Score(1);
+            a4Score++;
+            //quizSO.SetA4Score(1);
         }
 
         switch (quizCount)
@@ -122,9 +142,6 @@ public class QuizManager : MonoBehaviour
                 quizA4.text = "Answer 4 - 5";
                 break;
             case 5:
-                quizSO.SetQuizDone(true);
-                quizQnA.SetActive(false);
-                quizEnd.SetActive(true);
                 ShowQuizResult();
                 quizResult.gameObject.SetActive(true);
                 Debug.Log("quizdone");
