@@ -58,7 +58,7 @@ public class FacepointManager : MonoBehaviour
     public void UpdateListData()
     {
         //Debug.Log(landmarkPositions.Count);
-        if (_mfla != null && _mfla.isActiveInHierarchy)
+        if (_mfla != null && _mfla.isActiveInHierarchy && _mfla.transform.childCount > 0)
         {
             checkObject = _mfla.transform.GetChild(0);
             // get all 468 face points

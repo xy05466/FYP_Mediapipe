@@ -9,10 +9,17 @@ public class FacepointCircle : MonoBehaviour
     [SerializeField] GameObject torus;
     private void Awake()
     {
-        
+        torus.transform.localPosition = new Vector3(0, 0, -3);  
     }
     private void Update()
     {
-        torus.transform.localScale = torus.transform.localScale - (new Vector3(shrinkSpeed, shrinkSpeed, shrinkSpeed) * Time.deltaTime);
+        if (torus.transform.localScale.z > -1)
+        {
+            torus.transform.localScale = torus.transform.localScale - (new Vector3(shrinkSpeed, shrinkSpeed, shrinkSpeed) * Time.deltaTime);
+        }
+        else
+        {
+            Destroy(torus);
+        }
     }
 }

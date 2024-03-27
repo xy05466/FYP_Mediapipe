@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AccupointManager : MonoBehaviour
@@ -7,9 +8,12 @@ public class AccupointManager : MonoBehaviour
     [SerializeField] List<AccupointSO> accupointSOs;
     [SerializeField] GameObject accupointPrefab;
     [SerializeField] GameObject parent;
-    //List<float> accupointTimers;
     List<GameObject> accupoints;
     GameObject instance;
+    [SerializeField] private Vector3 offset = Vector3.zero;
+    [SerializeField] private bool isAveraged = true;
+    [SerializeField] private bool lockedToZero = false;
+    public int numAccupointsLeft;
     private void Start()
     {
         //accupointTimers = new List<float>();
@@ -21,29 +25,43 @@ public class AccupointManager : MonoBehaviour
             instance.GetComponent<Accupoint>().SetData(accupointSOs[i]);
             accupoints.Add(instance);
         }
+        numAccupointsLeft = accupoints.Count;
     }
     List<Transform> positions;
-    //private void Update()
-    //{
-    //    // TODO (Paul): change accupointSOs to use Int + Vec3
-    //    positions = _facepointManager.GetLandmarkPositionsByIndex(/*(int)accupointSOs[0].pointTethering.w*/ 4);
-    //    Debug.Log(positions.Count);
-    //    if (positions != null)
-    //    {
-    //        float avgX = 0, avgY = 0, avgZ = 0;
-    //        foreach (Transform transform in positions)
-    //        {
-    //            avgX += transform.position.x;
-    //            avgY += transform.position.y;
-    //            avgZ += transform.position.z;
-    //        }
-    //        avgX /= positions.Count;
-    //        avgY /= positions.Count;
-    //        avgZ /= positions.Count;
-    //        instance.transform.position = new Vector3(avgX, avgY, avgZ);
-    //        //instance.transform.position = _facepointManager.CalculateAverage(positions);
-    //    }
-    //}
+    Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
+    {
+        if (positions != null)
+        {
+            float avgX = 0, avgY = 0, avgZ = 0;
+            if (isAveraged)
+            {
+                foreach (Transform transform in positions)
+                {
+                    avgX += transform.position.x;
+                    avgY += transform.position.y;
+                    avgZ += transform.position.z;
+                }
+                avgX /= positions.Count;
+                avgY /= positions.Count;
+                avgZ /= positions.Count;
+                avgX += offset.x;
+                avgY += offset.y;
+                avgZ += offset.z;
+               
+            }
+            else
+            {
+                avgX = positions.Last().position.x;
+                avgY = positions.Last().position.y;
+                avgZ = positions.Last().position.z;
+            }
+            //if (!lockToZero)
+            return new Vector3(avgX, avgY, avgZ);
+            //else
+            //    return new Vector3(avgX, avgY, avgZ - avgZ);
+        }
+        else return Vector3.zero;
+    }
     Vector3 Reposition(List<Transform> positions)
     {
         if (positions != null)
@@ -58,39 +76,37 @@ public class AccupointManager : MonoBehaviour
             avgX /= positions.Count;
             avgY /= positions.Count;
             avgZ /= positions.Count;
+            avgX += offset.x;
+            avgY += offset.y;
+            avgZ += offset.z;
             return new Vector3(avgX, avgY, avgZ);
         }
         else return Vector3.zero;
     }
+    public void Increase()
+    {
+        offset+= new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 1 * Time.deltaTime);
+    }
+    public void Decrease()
+    {
+        offset -= new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 1 * Time.deltaTime);
+    }
     private void Update()
     {
-        //for(int i = 0; i < accupoints.Count; ++i)
-        //{
-        //    GameObject obj = accupoints[i];
-        //    bool isColliding = obj.GetComponent<FacePointGO>().collided;
-        //    if (isColliding)
-        //    {
-        //        accupointTimers[i] -= Time.deltaTime;
-        //        Debug.Log(accupointTimers[i].ToString());
-        //    }
-        //    if (accupointTimers[i] < 0)
-        //    {
-        //        GameObject gameObjToRemove = accupoints[i];
-        //        accupointTimers.RemoveAt(i);
-        //        accupoints.RemoveAt(i);
-        //        Destroy(gameObjToRemove);
-        //    }
-        //}
-    }
-    private void FixedUpdate()
-    {
+        int counter = 0;
         foreach (GameObject obj in accupoints)
         {
-            int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
-            //Debug.Log(nextAccupoint);
-            positions = _facepointManager.GetLandmarkPositionsByDigit(/*(int)accupointSOs[0].pointTethering.w*/nextAccupoint);
-            //Debug.Log(positions.Count);
-            obj.transform.position = Reposition(positions);
+            if (obj.activeInHierarchy)
+            {
+                Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
+                int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
+                positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
+                obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
+                if (lockedToZero)
+                    obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
+                counter++;
+            }
         }
+        numAccupointsLeft = counter;
     }
 }
