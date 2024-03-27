@@ -15,7 +15,8 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private TMP_Text quizA3;
     [SerializeField] private TMP_Text quizA4;
     [SerializeField] private TMP_Text quizResult;
-    [SerializeField] private GameObject quizEnd;
+    [SerializeField] private GameObject quizGame;
+    [SerializeField] private GameObject quizPhoto;
     [SerializeField] private GameObject quizQnA;
 
     public GameObject A1Button;
@@ -57,7 +58,8 @@ public class QuizManager : MonoBehaviour
         quizSO.SetA4Score(a4Score);
         quizSO.SetQuizDone(true);
         quizQnA.SetActive(false);
-        quizEnd.SetActive(true);
+        quizGame.SetActive(true);
+        quizPhoto.SetActive(true);
 
         List<int> quizWeights = new List<int>();
         quizWeights.Add(quizSO.GetA1Score());
@@ -147,10 +149,10 @@ public class QuizManager : MonoBehaviour
                 Debug.Log("quizdone");
                 break;
         }
-        Debug.Log(quizSO.GetA1Score());
-        Debug.Log(quizSO.GetA2Score());
-        Debug.Log(quizSO.GetA3Score());
-        Debug.Log(quizSO.GetA4Score());
+        //Debug.Log(quizSO.GetA1Score());
+        //Debug.Log(quizSO.GetA2Score());
+        //Debug.Log(quizSO.GetA3Score());
+        //Debug.Log(quizSO.GetA4Score());
         nextButton.interactable = false;
         EventSystem.current.SetSelectedGameObject(null);
     }
