@@ -17,8 +17,9 @@ public class HandSceneScoreManager : MonoBehaviour
     bool canMoveToNextScene;
     private void Start()
     {
-        canMoveToNextScene = true;
+        canMoveToNextScene = false;
         textbox.text = "No face detected!";
+        button.SetActive(false);
     }
     string textBoxString;
     private void Update()
@@ -66,6 +67,8 @@ public class HandSceneScoreManager : MonoBehaviour
             textBoxString += "Congratulations! You've activated all accupoints!";
             canMoveToNextScene = true;
         }
+        if (button.activeInHierarchy != canMoveToNextScene)
+            button.SetActive(canMoveToNextScene);
         textbox.text = textBoxString;
     }
 }
