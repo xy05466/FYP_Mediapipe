@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: a97dc00c7820bb84897a5c85607ceadf
+  - enabled: 1
+    path: Assets/Scenes/ApplyCreamScene.unity
+    guid: a32dbc8f152e43a4eada16160cbb0ceb
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
