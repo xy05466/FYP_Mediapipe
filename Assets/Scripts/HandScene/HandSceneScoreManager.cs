@@ -24,14 +24,18 @@ public class HandSceneScoreManager : MonoBehaviour
     string textBoxString;
     private void Update()
     {
-        facePoints = facepointManager.GetFacePointTransforms();
-        Vector3 refPt = facePoints[4].transform.position;
+        Vector3 refPt;
         float avgX = 0;
         float avgY = 0;
         float avgZ = 0;
-        avgX = refPt.x - Camera.main.transform.position.x;
-        avgY = refPt.y - Camera.main.transform.position.y;
-        avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
+        facePoints = facepointManager.GetFacePointTransforms();
+        if (facePoints != null)
+        {
+            refPt = facePoints[4].transform.position;
+            avgX = refPt.x - Camera.main.transform.position.x;
+            avgY = refPt.y - Camera.main.transform.position.y;
+            avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
+        }
         textBoxString = "Face Distance: " + avgZ;
         //Debug.Log(avgZ);
         if (avgZ < lowerBoundZ)
