@@ -36,8 +36,9 @@ public class HandSceneScoreManager : MonoBehaviour
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
         }
-        textBoxString = "Face Distance: " + avgZ;
-        //Debug.Log(avgZ);
+        //textBoxString = "Face Distance: " + avgZ;
+        textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
+        Debug.Log(avgZ);
         if (avgZ < lowerBoundZ)
         {
             textBoxString += "\nPlease move further";
@@ -50,7 +51,7 @@ public class HandSceneScoreManager : MonoBehaviour
         {
             textBoxString += "\nPlease move left";
         }
-        else if (avgX < 0)
+        else if (avgX < -1 * maxDistX)
         {
             textBoxString += "\nPlease move right";
         }
@@ -58,7 +59,7 @@ public class HandSceneScoreManager : MonoBehaviour
         {
             textBoxString += "\nPlease move down";
         }
-        else if (avgY < 0)
+        else if (avgY < -1 * maxDistY)
         {
             textBoxString += "\nPlease move up";
         }
