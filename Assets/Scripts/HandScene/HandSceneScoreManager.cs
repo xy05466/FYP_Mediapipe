@@ -24,6 +24,7 @@ public class HandSceneScoreManager : MonoBehaviour
     string textBoxString;
     private void Update()
     {
+        textBoxString = "";
         Vector3 refPt;
         float avgX = 0;
         float avgY = 0;
