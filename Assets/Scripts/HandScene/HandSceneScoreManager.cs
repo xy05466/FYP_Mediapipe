@@ -37,7 +37,7 @@ public class HandSceneScoreManager : MonoBehaviour
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
         }
         //textBoxString = "Face Distance: " + avgZ;
-        textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
+        //textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
         Debug.Log(avgZ);
         if (avgZ < lowerBoundZ)
         {
