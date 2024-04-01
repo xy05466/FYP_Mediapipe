@@ -96,11 +96,14 @@ public class AccupointsMassageManager : MonoBehaviour
                 
                 //When set finished go next
                 if (obj.GetComponent<AccupointMassage>().GetOrder() == accupointsListLists.GetList(index).Count - 1)
+                {
+                    CheckCompleted();
                     if (obj.GetComponent<AccupointMassage>().GetActive())
                         if (index == accupointsListLists.CountOfLists() - 1)
                             Debug.Log("you are done yippee");
                         else
                             NextSet();
+                }
             }
         }
     }
@@ -133,10 +136,23 @@ public class AccupointsMassageManager : MonoBehaviour
     {
         lastActivated = justActivated;
         justActivated = order;
+        
+        
+        
         if (lastActivated == justActivated - 1)
             return;
         else
             ResetSet();
+    }
+    private void CheckCompleted()
+    {
+        foreach (GameObject item in accupointsListLists.GetList(index))
+        {
+            if (item.GetComponent<AccupointMassage>().GetActive())
+                return;
+
+            ResetSet();
+        }
     }
 }
 [System.Serializable]
