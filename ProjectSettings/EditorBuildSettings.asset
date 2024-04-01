@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ApplyCreamScene.unity
+    guid: a32dbc8f152e43a4eada16160cbb0ceb
+  - enabled: 1
+    path: Assets/Scenes/PaulAccupointsScene.unity
+    guid: a97dc00c7820bb84897a5c85607ceadf
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 4755b35b590504809a7525fd2109c2e2
@@ -29,12 +35,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LoadingDialogueFromXML 1.unity
     guid: 663a4aeb1d856f6468d8349c972fe0e4
-  - enabled: 1
-    path: Assets/Scenes/PaulAccupointsScene.unity
-    guid: a97dc00c7820bb84897a5c85607ceadf
-  - enabled: 1
-    path: Assets/Scenes/ApplyCreamScene.unity
-    guid: a32dbc8f152e43a4eada16160cbb0ceb
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
