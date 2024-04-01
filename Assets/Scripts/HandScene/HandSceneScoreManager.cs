@@ -24,6 +24,7 @@ public class HandSceneScoreManager : MonoBehaviour
     string textBoxString;
     private void Update()
     {
+        textBoxString = "";
         Vector3 refPt;
         float avgX = 0;
         float avgY = 0;
@@ -35,41 +36,46 @@ public class HandSceneScoreManager : MonoBehaviour
             avgX = refPt.x - Camera.main.transform.position.x;
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-        }
-        textBoxString = "Face Distance: " + avgZ;
-        //Debug.Log(avgZ);
-        if (avgZ < lowerBoundZ)
-        {
-            textBoxString += "\nPlease move further";
-        }
-        else if (avgZ > upperBoundZ)
-        {
-            textBoxString += "\nPlease move closer";
-        }
-        else if (avgX > maxDistX)
-        {
-            textBoxString += "\nPlease move left";
-        }
-        else if (avgX < 0)
-        {
-            textBoxString += "\nPlease move right";
-        }
-        else if (avgY > maxDistY)
-        {
-            textBoxString += "\nPlease move down";
-        }
-        else if (avgY < 0)
-        {
-            textBoxString += "\nPlease move up";
-        }
-        if (accupointManager.numAccupointsLeft > 0)
-        {
-            textBoxString += "\nNumber of accupoints left: " + accupointManager.numAccupointsLeft;
+            //textBoxString = "Face Distance: " + avgZ;
+            //textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
+            Debug.Log(avgZ);
+            if (avgZ < lowerBoundZ)
+            {
+                textBoxString += "\nPlease move further";
+            }
+            else if (avgZ > upperBoundZ)
+            {
+                textBoxString += "\nPlease move closer";
+            }
+            else if (avgX > maxDistX)
+            {
+                textBoxString += "\nPlease move left";
+            }
+            else if (avgX < -1 * maxDistX)
+            {
+                textBoxString += "\nPlease move right";
+            }
+            else if (avgY > maxDistY)
+            {
+                textBoxString += "\nPlease move down";
+            }
+            else if (avgY < -1 * maxDistY)
+            {
+                textBoxString += "\nPlease move up";
+            }
+            if (accupointManager.numAccupointsLeft > 0)
+            {
+                textBoxString += "\nNumber of accupoints left: " + accupointManager.numAccupointsLeft;
+            }
+            else
+            {
+                textBoxString += "Congratulations! You've activated all accupoints!";
+                canMoveToNextScene = true;
+            }
         }
         else
         {
-            textBoxString += "Congratulations! You've activated all accupoints!";
-            canMoveToNextScene = true;
+            textBoxString += "No face detected!";
         }
         if (button.activeInHierarchy != canMoveToNextScene)
             button.SetActive(canMoveToNextScene);

@@ -574,7 +574,7 @@ RectTransform:
   m_GameObject: {fileID: 188075484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.5, y: 18.5, z: 1}
+  m_LocalScale: {x: 18.5, y: 22, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 481434582}
@@ -2478,7 +2478,7 @@ MonoBehaviour:
   accupointManager: {fileID: 6425011}
   button: {fileID: 235681787}
   maxDistX: 5
-  maxDistY: 5
+  maxDistY: 8
   lowerBoundZ: 1
   upperBoundZ: 3
 --- !u!1 &1594682637
