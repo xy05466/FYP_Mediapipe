@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartMenu.unity
     guid: 1aa528a4484b3b142b4dc183070debc3
   - enabled: 1
@@ -17,19 +17,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 4755b35b590504809a7525fd2109c2e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PhotoScene.unity
     guid: 0a25eca3b1bde7e43b1429a3c9425090
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CustomisationScene.unity
     guid: 35c7d2e6bd674df45b31d65e05e64804
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ProductsScene.unity
     guid: 88aa09ac827502944b36079552648f69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JournalScene.unity
     guid: 39e1153c881b4cf4596de2ff00fbedc4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AlbumScene.unity
     guid: 7e53f1c60cfdb9a4fa47ccdc863e834b
   - enabled: 0
@@ -38,16 +38,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LoadingDialogueFromXML 1.unity
     guid: 663a4aeb1d856f6468d8349c972fe0e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/QuizScene.unity
     guid: cb2f9dfb786383d4793773ba0edeb64f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HubScene.unity
     guid: 175ee092cb027114ca93f10b7a670d39
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JadenMassaageScene.unity
     guid: 7008ffcfa6811bc43b91fec82712d932
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LiveWallpaperScene.unity
     guid: 37ef2449b284cde458e9f566f0a2eb4a
   m_configObjects:
