@@ -39,16 +39,21 @@ public class CreamSceneManager : MonoBehaviour
     {
         if (sceneState == SceneState.STATE_MEASURE)
         {
+            Debug.Log(1);
             if (hpm != null)
             {
+                Debug.Log(2);
                 GameObject[] temp = hpm.GetFacePointTransforms();
-                if (temp != null)
+                if (temp != null && temp.Length > 0)
+                {
                     palmBase = temp[4];
+                }
             }
             if (palmBase != null)
             {
                 palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z);
                 headerTextBox.text = palmDistance.ToString();
+                Debug.Log(4);
             }
         }
     }

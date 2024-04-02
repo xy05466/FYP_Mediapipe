@@ -877,6 +877,7 @@ GameObject:
   - component: {fileID: 238496526}
   - component: {fileID: 238496525}
   - component: {fileID: 238496524}
+  - component: {fileID: 238496527}
   m_Layer: 0
   m_Name: Solution
   m_TagString: Untagged
@@ -952,6 +953,23 @@ MonoBehaviour:
   _handRectsFromPalmDetectionsAnnotationController: {fileID: 1968874161}
   _handLandmarksAnnotationController: {fileID: 1968874158}
   _handRectsFromLandmarksAnnotationController: {fileID: 579188591}
+--- !u!114 &238496527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238496522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f2fd61d43b483ba93442eb6cfc37cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
+    type: 3}
+  screen: {fileID: 730962614}
+  runningMode: 0
+  _handLandmarkerResultAnnotationController: {fileID: 799787421}
 --- !u!1 &302429383
 GameObject:
   m_ObjectHideFlags: 0
