@@ -2181,6 +2181,8 @@ MonoBehaviour:
   nextSceneButton: {fileID: 302429383}
   headerTextBox: {fileID: 626487616}
   idealDistance: 2
+  minDistance: 90
+  maxDistance: 115
 --- !u!4 &850704532
 Transform:
   m_ObjectHideFlags: 0

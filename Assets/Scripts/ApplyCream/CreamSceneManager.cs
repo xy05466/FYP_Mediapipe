@@ -58,11 +58,11 @@ public class CreamSceneManager : MonoBehaviour
                 headerTextBox.text = palmDistance.ToString();
                 if (palmDistance > maxDistance)
                 {
-                    headerTextBox.text = "Please move your hand closer.";
+                    headerTextBox.text += "\nPlease move your hand closer.";
                 }
                 else if (palmDistance < minDistance)
                 {
-                    headerTextBox.text = "Please move your hand further.";
+                    headerTextBox.text += "\nPlease move your hand further.";
                 }
             }
         }
