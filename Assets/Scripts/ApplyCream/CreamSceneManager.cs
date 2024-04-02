@@ -16,6 +16,9 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] TMP_Text headerTextBox;
     [SerializeField] private float idealDistance = 2.0f;
 
+    [SerializeField] float minDistance = 115f;
+    [SerializeField] float maxDistance = 90f;
+
     GameObject palmBase;
     float palmDistance;
     enum SceneState
@@ -39,10 +42,10 @@ public class CreamSceneManager : MonoBehaviour
     {
         if (sceneState == SceneState.STATE_MEASURE)
         {
-            Debug.Log(1);
+            
             if (hpm != null)
             {
-                Debug.Log(2);
+                
                 GameObject[] temp = hpm.GetFacePointTransforms();
                 if (temp != null && temp.Length > 0)
                 {
@@ -53,7 +56,14 @@ public class CreamSceneManager : MonoBehaviour
             {
                 palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z);
                 headerTextBox.text = palmDistance.ToString();
-                Debug.Log(4);
+                if (palmDistance > maxDistance)
+                {
+                    headerTextBox.text = "Please move your hand closer.";
+                }
+                else if (palmDistance < minDistance)
+                {
+                    headerTextBox.text = "Please move your hand further.";
+                }
             }
         }
     }
