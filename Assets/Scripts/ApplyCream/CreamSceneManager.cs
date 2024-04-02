@@ -47,11 +47,7 @@ public class CreamSceneManager : MonoBehaviour
             }
             if (palmBase != null)
             {
-<<<<<<< Updated upstream
-                palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z) - 90;
-=======
                 palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z);
->>>>>>> Stashed changes
                 headerTextBox.text = palmDistance.ToString();
             }
         }
