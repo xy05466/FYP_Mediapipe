@@ -33,7 +33,7 @@ public class CreamSceneManager : MonoBehaviour
 
         creamApplicationDiagram.SetActive(false);
         nextSceneButton.SetActive(false);
-        headerTextBox.text = "Measure the right amount of cream using the guideline below.";
+        headerTextBox.text = "Measure the right amount of cream using the guideline below.\nKeep your palm open.";
     }
     private void Update()
     {
@@ -43,7 +43,7 @@ public class CreamSceneManager : MonoBehaviour
             {
                 GameObject[] temp = hpm.GetFacePointTransforms();
                 if (temp != null)
-                    palmBase = temp[0];
+                    palmBase = temp[4];
             }
             if (palmBase != null)
             {
