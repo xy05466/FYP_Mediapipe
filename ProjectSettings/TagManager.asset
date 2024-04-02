@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Global Resource
   - ColliderPoint
+  - Facepoint
+  - Handpoint
   layers:
   - Default
   - TransparentFX
