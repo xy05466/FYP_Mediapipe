@@ -40,16 +40,24 @@ public class JournalSO : ScriptableObject
         if (dayTxts == null)
         {
             dayTxts = new List<string>();
-            Debug.Log("newlist");
+        }
+        if (dayPics == null)
+        {
+            dayPics = new List<Texture2D>();
+        }
+        if (dayNum == null)
+        {
+            dayNum = new List<int>();
         }
         //if (dayPics != null)
         //    return;
-        dayPics = new List<Texture2D>();
-        string fileLocation;
+       
         if (picsCount == 0)
         {
             return;
         }
+
+        string fileLocation;
         for (int i = 1; i < picsCount + 1; i++)
         {
             if (Application.platform == RuntimePlatform.Android)
@@ -145,10 +153,7 @@ public class JournalSO : ScriptableObject
             System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
         }
         //Debug.Log(imageCount);
-        Texture2D picTaken = new Texture2D(picsTaken.width, picsTaken.height);
-        picTaken.LoadImage(byteArray);
-        dayPics.Add(picTaken);
-        picsCount = dayPics.Count;
+       
         //picsTaken = null;
         Debug.Log(dayPics.Count);
     }
@@ -196,6 +201,21 @@ public class JournalSO : ScriptableObject
     public void SetDayNum(int n)
     {
         dayNum.Add(n);
+    }
+
+    public int GetDayPicsCount()
+    {
+        return dayPics.Count;
+    }
+
+    public void SetDayPics(Texture2D picTaken)
+    {
+        dayPics.Add(picTaken);
+    }
+
+    public void SetPicsCount(int count)
+    {
+        picsCount = count;
     }
 
     public int GetDayNum(int n)

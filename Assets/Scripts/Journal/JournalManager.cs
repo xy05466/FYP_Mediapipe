@@ -14,13 +14,16 @@ public class JournalManager : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private Camera camera0;
     [SerializeField] private Camera camera1;
+    [SerializeField] private GameObject test;
 
     public RawImage picResult;
     public TMP_InputField journalEntry;
-    public TMP_Text journalDayTxt;
 
     private void Start()
     {
+        Vector3 newPos = new Vector3(canvas.transform.position.x, canvas.transform.position.y, canvas.transform.position.z ); 
+        test.gameObject.transform.position = newPos;
+
         //journalSO.Initialize();
         ShowPic();
     }
@@ -46,22 +49,34 @@ public class JournalManager : MonoBehaviour
     public IEnumerator ConfirmPic(Camera cam)
     {
         yield return new WaitForEndOfFrame();
-        //canvas.worldCamera = camera1;
-
+        canvas.worldCamera = camera1;
+        
         RenderTexture screenTexture = new RenderTexture(Screen.width, Screen.height, 32);
         cam.targetTexture = screenTexture;
         RenderTexture.active = screenTexture;
         cam.Render();
 
         Texture2D renderedTexture = new Texture2D(Screen.width, Screen.width);
-        renderedTexture.ReadPixels(new Rect(0,0, Screen.width, Screen.width), (int)picResult.rectTransform.rect.x, (int)picResult.rectTransform.rect.y);
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            renderedTexture.ReadPixels(new Rect(0, Screen.height - Screen.width, Screen.width, Screen.width), 0, 0);
+        }
+        else
+        {
+            renderedTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.width), 0, 0);
+        }
+
+        //renderedTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.width), 0, 0);
+
+
+
         RenderTexture.active = null;
 
         byte[] byteArray = renderedTexture.EncodeToPNG();
         string fileLocation;
         int i = journalSO.GetPicsCount();
-
-        journalSO.SetDayNum(i);
+        i++;
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -86,6 +101,13 @@ public class JournalManager : MonoBehaviour
         {
             System.IO.File.WriteAllBytes(Application.dataPath + "/EditedAlbum/CameraScreenshot" + i + ".png", byteArray);
         }
+
+        journalSO.SetDayNum(i);
+        journalSO.SetPicsCount(i);
+        Texture2D picTaken = new Texture2D((int)picResult.rectTransform.rect.x, (int)picResult.rectTransform.rect.y);
+        picTaken.LoadImage(byteArray);
+        journalSO.SetDayPics(picTaken);
+        
 
         canvas.worldCamera = camera0;
         //System.IO.File.WriteAllBytes(Application.dataPath + "/cameracapture.png", byteArray);

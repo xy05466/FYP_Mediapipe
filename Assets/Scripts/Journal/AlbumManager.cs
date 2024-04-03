@@ -12,8 +12,6 @@ public class AlbumManager : MonoBehaviour
     public TMP_Text journalDayTxt;
     public TMP_Text journalEntryTxt;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +25,7 @@ public class AlbumManager : MonoBehaviour
         int imageCount = journalSO.GetPicsCount();
         Debug.Log(imageCount);
 
-        for (int i = imageCount - 1; i >= 0; i--)
+        for (int i = imageCount ; i >= 0; i--)
         {
             Debug.Log(imageCount);
             Debug.Log(pics.Count);
@@ -35,8 +33,8 @@ public class AlbumManager : MonoBehaviour
             {
                 break;
             }
-            pics[i].texture = journalSO.GetPicAlbum(i);
 
+            pics[i].texture = journalSO.GetPicAlbum(i);
         }
 
     }
