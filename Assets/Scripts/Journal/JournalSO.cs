@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -58,7 +59,7 @@ public class JournalSO : ScriptableObject
         }
 
         string fileLocation;
-        for (int i = 1; i < picsCount + 1; i++)
+        for (int i = 1; i <= picsCount; i++)
         {
             if (Application.platform == RuntimePlatform.Android)
             {
@@ -74,7 +75,7 @@ public class JournalSO : ScriptableObject
             fs.Read(imageData, 0, (int)fs.Length);
             Texture2D pic = new Texture2D(351, 211);
             pic.LoadImage(imageData);
-            dayPics.Add(pic);
+            dayPics[picsCount - 1] = pic;
         }
 
         //Debug.Log(dayPics.Last());
@@ -210,7 +211,8 @@ public class JournalSO : ScriptableObject
 
     public void SetDayPics(Texture2D picTaken)
     {
-        dayPics.Add(picTaken);
+        dayPics.Add(picsTaken);
+        EditorUtility.SetDirty(this);
     }
 
     public void SetPicsCount(int count)
