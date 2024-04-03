@@ -57,6 +57,7 @@ public class QuizManager : MonoBehaviour
         quizSO.SetA4Score(a4Score);
         quizSO.SetQuizDone(true);
         quizQnA.SetActive(false);
+        quizResult.gameObject.SetActive(true);
         quizButtons.SetActive(true);
 
         List<int> quizWeights = new List<int>();
