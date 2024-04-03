@@ -13,14 +13,3 @@ MonoBehaviour:
   m_Name: Journal
   m_EditorClassIdentifier: 
   <dayOnePic>k__BackingField: {fileID: 0}
-  <dayTenPic>k__BackingField: {fileID: 0}
-  <dayFiftyPic>k__BackingField: {fileID: 0}
-  <dayHundredPic>k__BackingField: {fileID: 0}
-  <dayOneTxt>k__BackingField: 
-  <dayTenTxt>k__BackingField: 
-  <dayFiftyTxt>k__BackingField: 
-  <dayHundredTxt>k__BackingField: 
-  <dayPics>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
-  <dayTxts>k__BackingField: []

@@ -25,7 +25,7 @@ public class AlbumManager : MonoBehaviour
         int imageCount = journalSO.GetPicsCount();
         Debug.Log(imageCount);
 
-        for (int i = imageCount ; i >= 0; i--)
+        for (int i = imageCount - 1; i >= 0; i--)
         {
             Debug.Log(imageCount);
             Debug.Log(pics.Count);
