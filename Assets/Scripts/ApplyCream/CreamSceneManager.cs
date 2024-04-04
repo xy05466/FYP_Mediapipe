@@ -51,19 +51,31 @@ public class CreamSceneManager : MonoBehaviour
                 {
                     palmBase = temp[4];
                 }
+                if (palmBase != null)
+                {
+                    palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z);
+                    headerTextBox.text = palmDistance.ToString();
+                    if (palmDistance > maxDistance)
+                    {
+                        headerTextBox.text += "\nPlease move your hand closer.";
+                    }
+                    else if (palmDistance < minDistance)
+                    {
+                        headerTextBox.text += "\nPlease move your hand further.";
+                    }
+                    else
+                    {
+                        headerTextBox.text += "\nPlease ensure the entire guideline area is filled with cream before pressing next."
+                        if (!nextSceneButton.active)
+                        {
+                            nextSceneButton.SetActive(true);
+                        }
+                    }
+                }
             }
-            if (palmBase != null)
+            else
             {
-                palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z);
-                headerTextBox.text = palmDistance.ToString();
-                if (palmDistance > maxDistance)
-                {
-                    headerTextBox.text += "\nPlease move your hand closer.";
-                }
-                else if (palmDistance < minDistance)
-                {
-                    headerTextBox.text += "\nPlease move your hand further.";
-                }
+                headerTextBox.text = "No hand detected!";       
             }
         }
     }
