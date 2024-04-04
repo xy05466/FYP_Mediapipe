@@ -988,7 +988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &302429384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2682,7 +2682,7 @@ GameObject:
   - component: {fileID: 1732931942}
   - component: {fileID: 1732931941}
   m_Layer: 5
-  m_Name: Hub
+  m_Name: Massage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2703,9 +2703,9 @@ RectTransform:
   - {fileID: 1920904424}
   m_Father: {fileID: 934476855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2, y: -2378}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 1.2, y: -2328}
   m_SizeDelta: {x: 875, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732931941
@@ -2761,7 +2761,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: HubScene
+          m_StringArgument: JadenMassaageScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1732931942
@@ -3103,7 +3103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hub
+  m_text: Massage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
