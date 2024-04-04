@@ -212,6 +212,7 @@ public class JournalSO : ScriptableObject
     public void SetDayPics(Texture2D picTaken)
     {
         dayPics.Add(picsTaken);
+        EditorUtility.SetDirty(this);
     }
 
     public void SetPicsCount(int count)

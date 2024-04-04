@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10170fb4c90c70643a213f3898e7f157, type: 3}
+  m_Name: Scarf1
+  m_EditorClassIdentifier: 
+  <unlocked>k__BackingField: 0
+  <name>k__BackingField: Scarf1
+  <id>k__BackingField: 105
+  <sprite>k__BackingField: {fileID: 21300000, guid: 734500a6d94fb0e4d95e0e45164d5e75,
+    type: 3}
