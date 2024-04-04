@@ -65,7 +65,7 @@ public class CreamSceneManager : MonoBehaviour
                     }
                     else
                     {
-                        headerTextBox.text += "\nPlease ensure the entire guideline area is filled with cream before pressing next."
+                        headerTextBox.text += "\nPlease ensure the entire guideline area is filled with cream before pressing next.";
                         if (!nextSceneButton.active)
                         {
                             nextSceneButton.SetActive(true);
