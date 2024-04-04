@@ -211,7 +211,7 @@ public class JournalSO : ScriptableObject
 
     public void SetDayPics(Texture2D picTaken)
     {
-        dayPics.Add(picsTaken);
+        dayPics.Add(picTaken);
     }
 
     public void SetPicsCount(int count)
