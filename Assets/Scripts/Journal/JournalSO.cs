@@ -143,6 +143,7 @@ public class JournalSO : ScriptableObject
                 Directory.CreateDirectory(Application.dataPath + "/Album");
             }
         }
+        //picsTaken.
 
         byte[] byteArray = picsTaken.EncodeToPNG();
         if (Application.platform == RuntimePlatform.Android)
@@ -153,6 +154,7 @@ public class JournalSO : ScriptableObject
         {
             System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
         }
+        
         //Debug.Log(imageCount);
        
         //picsTaken = null;
