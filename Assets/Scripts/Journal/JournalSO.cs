@@ -63,11 +63,11 @@ public class JournalSO : ScriptableObject
         {
             if (Application.platform == RuntimePlatform.Android)
             {
-                fileLocation = Application.persistentDataPath + "/EditedAlbum/CameraScreenshot" + i + ".png";
+                fileLocation = Application.persistentDataPath + "/Album/CameraScreenshot" + i + ".png";
             }
             else
             {
-                fileLocation = Application.dataPath + "/EditedAlbum/CameraScreenshot" + i + ".png";
+                fileLocation = Application.dataPath + "/Album/CameraScreenshot" + i + ".png";
             }
             FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
 
@@ -156,7 +156,7 @@ public class JournalSO : ScriptableObject
         //Debug.Log(imageCount);
        
         //picsTaken = null;
-        Debug.Log(dayPics.Count);
+        Debug.Log(picsCount + 1);
     }
 
     public Texture GetPicCache()
