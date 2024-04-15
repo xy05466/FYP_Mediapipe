@@ -35,7 +35,7 @@ public class CreamSceneManager : MonoBehaviour
         creamApplicationGuideline.SetActive(true);
 
         creamApplicationDiagram.SetActive(false);
-        nextSceneButton.SetActive(false);
+        //nextSceneButton.SetActive(false);
         headerTextBox.text = "Measure the right amount of cream using the guideline below.\nKeep your palm open.";
     }
     private void Update()
