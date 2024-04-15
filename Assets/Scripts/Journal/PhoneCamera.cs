@@ -6,11 +6,12 @@ using Mediapipe;
 using Mediapipe.Unity;
 using TMPro;
 using UnityEngine.Rendering;
+using System.IO;
+using UnityEditor;
 
 public class PhoneCamera : MonoBehaviour
 {
     [SerializeField] private JournalSO journalSO;
-    [SerializeField] private List<RawImage> pics;
 
     private Texture2D picTaken;
     private bool camAvailable;
@@ -21,24 +22,30 @@ public class PhoneCamera : MonoBehaviour
     private Texture defaultBackground;
     private string msg;
     private int imageCount;
+    private Texture2D texture2D;
+    float h, s, v;
+    float avgH, avgS, avgV;
 
     public TMP_Text text;
     public RawImage background;
     public RawImage picResult;
     public AspectRatioFitter fit;
+    public TMP_Text brightnessTxt;
 
     private void Start()
     {
         journalSO.Initialize();
 
+
+        Debug.Log("DebugBefore" + journalSO.GetBeforeCount());
+        Debug.Log("DebugAfter" + journalSO.GetAfterCount());
+        Debug.Log("Debug" + journalSO.GetHasCaptured());
+
         cameras = new List<WebCamTexture>();
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
         //PlayerPrefs.SetInt("imageCount", 0);
-        imageCount = journalSO.GetPicsCount();
-
-        
-        
+        imageCount = journalSO.GetBeforeCount();
 
         if (devices.Length < 1)
         {
@@ -60,10 +67,12 @@ public class PhoneCamera : MonoBehaviour
                 backCam = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
             }
         }
-
+        
         backCam.Play();
         background.texture = backCam;
         camAvailable = true;
+
+        texture2D = new Texture2D(background.texture.width, background.texture.height);
     }
     private void Update()
     {
@@ -80,6 +89,36 @@ public class PhoneCamera : MonoBehaviour
 
         int orient = -backCam.videoRotationAngle;
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+
+        //InvokeRepeating("BrightnessCheck", 3f, 5f);
+    }
+
+    //private void StartBrightnessCheck()
+    //{
+    //    StartCoroutine(BrightnessCheck());
+    //}
+
+    private void BrightnessCheck()
+    {
+        Graphics.ConvertTexture(background.texture, texture2D);
+
+        for (int i = 0; i < texture2D.width; i++)
+        {
+            for (int j = 0; j < texture2D.height; j++)
+            {
+                UnityEngine.Color pixel = texture2D.GetPixel(i, j);
+                UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
+                avgH += h;
+                avgS += s;
+                avgV += v;
+            }
+        }
+
+        //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
+        //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
+        //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
+
+        brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
     }
 
     public void ChangeFrontCam()
@@ -113,21 +152,72 @@ public class PhoneCamera : MonoBehaviour
 
     public void ConfirmPic()
     {
-        journalSO.ConfirmPic();
+        if (!journalSO.GetHasCaptured())
+        {
+            journalSO.ConfirmBeforePic();
+            Debug.Log("DebugConfirmBeforePic");
+            Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
+            Debug.Log("Debug" + journalSO.GetHasCaptured());
+        }
+        else if (journalSO.GetHasCaptured())
+        {
+            journalSO.ConfirmAfterPic();
+            Debug.Log("DebugConfirmAfterPic");
+            Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
+            Debug.Log("Debug" + journalSO.GetHasCaptured());
+        }
+    }
+    public void ShowPic()
+    {
+
+        //imageCount = journalSO.GetBeforeCount();
+        //Debug.Log(imageCount);
+        picResult.texture = journalSO.GetPicCache();
+
     }
 
+    public void SetHasCaptured(bool b)
+    {
+        journalSO.SetHasCaptured(b);
+        Debug.Log("sethascaptured" + b.ToString());
+    }
 
     private void OnDestroy()
     {
         backCam.Stop();
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (File.Exists(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (journalSO.GetBeforeCount()) + ".png"))
+            {
+                journalSO.SetHasCaptured(true);
+                Debug.Log("DebugsethascapturedTRUE");
+                Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
+                Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
+                Debug.Log("Debug" + journalSO.GetHasCaptured());
+            }
+            else
+            {
+                journalSO.SetHasCaptured(false);
+                Debug.Log("DebugsethascapturedFALSE");
+                Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
+                Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
+                Debug.Log("Debug" + journalSO.GetHasCaptured());
+            }
+        }
+        else
+        {
+            if (File.Exists(Application.dataPath + "/BeforeAlbum/CameraScreenshot" + (journalSO.GetBeforeCount()) + ".png"))
+            {
+                journalSO.SetHasCaptured(true);
+            }
+            else
+            {
+                journalSO.SetHasCaptured(false);
+            }
+        }
+        
     }
 
-    public void ShowPic()
-    {
-
-        imageCount = journalSO.GetPicsCount();
-        Debug.Log(imageCount);
-        picResult.texture = journalSO.GetPicCache();
-
-    }
+    
 }
