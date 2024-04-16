@@ -8,10 +8,6 @@ public class AccupointEffectsController : MonoBehaviour
     [SerializeField] GameObject shrinkingSwirl;
     [SerializeField] GameObject growingSwirl;
     Accupoint accupoint;
-    IEnumerator Wait(float i)
-    {
-        yield return new WaitForSeconds(i);
-    }
     private void Awake()
     {
         accupoint = GetComponent<Accupoint>();
@@ -20,10 +16,9 @@ public class AccupointEffectsController : MonoBehaviour
     {
         if (accupoint.timer > accupoint.maxTimer)
         {
-            //growingSwirl.SetActive(true);
-            Instantiate(growingSwirl, gameObject.transform.position, Quaternion.identity);
-            Wait(1);
+            GameObject newEffect = Instantiate(growingSwirl, gameObject.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
             gameObject.SetActive(false);
+            Destroy(newEffect, 1);
         }
     }
 }

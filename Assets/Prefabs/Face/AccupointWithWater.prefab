@@ -206,4 +206,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkingSwirl: {fileID: 0}
-  growingSwirl: {fileID: 0}
+  growingSwirl: {fileID: 3306520170404866127, guid: 716a9bbf41b09fe45863b7503bc8ac88,
+    type: 3}
