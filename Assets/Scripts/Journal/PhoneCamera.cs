@@ -148,7 +148,7 @@ public class PhoneCamera : MonoBehaviour
 
         avgV /= checkPic.width * checkPic.height;
 
-        if (avgV > 0.4f)
+        if (avgV > 0.45f)
         {
             brightnessTxt.text = "just right " + avgV.ToString();
         }
@@ -158,6 +158,9 @@ public class PhoneCamera : MonoBehaviour
         }
 
         avgV = 0;
+
+        Destroy(screenshotTexture);
+        Destroy(renderTexture);
     }
 
     public void ChangeFrontCam()

@@ -61,6 +61,9 @@ public class LightChecker : MonoBehaviour
             avgV = 0;
 
             timer = timer - waitTime;
+
+            Destroy(screenshotTexture);
+            Destroy(renderTexture);
         }
     }
 }
