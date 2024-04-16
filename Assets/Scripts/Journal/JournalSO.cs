@@ -155,7 +155,6 @@ public class JournalSO : ScriptableObject
     {
     yield return new WaitForEndOfFrame();
 
-
     int width = pic.width;
     int height = pic.height;
 
@@ -175,25 +174,21 @@ public class JournalSO : ScriptableObject
 
         picsTaken = screenshotTexture;
 
-        //PlayerPrefs.SetInt("imageCount", imageCount++);
+        int sourceMipLevel = 0;
+        float avgV = 0;
+        Color32[] pixelArray = picsTaken.GetPixels32(sourceMipLevel);
 
-    //byte[] byteArray = screenshotTexture.EncodeToPNG();
-    //    if (Application.platform == RuntimePlatform.Android)
-    //    {
-    //        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
-    //    }
-    //    else
-    //    {
-    //        System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
-    //    }
-    //    //Debug.Log(imageCount);
-    //    Texture2D picTaken= new Texture2D(pic.width, pic.height);
-    //    picTaken.LoadImage(byteArray);
-    //    dayPics.Add(picTaken);
-    //    picsCount = dayPics.Count;
-    //    Debug.Log(dayPics.Count);
-        //Debug.Log(dayPics.Last());
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
+            avgV += v;
+        }
 
+        avgV /= picsTaken.width * picsTaken.height;
+
+        Debug.Log("Debug" + avgV.ToString());
+
+        avgV = 0;
     }
 
     public void ConfirmBeforePic()
