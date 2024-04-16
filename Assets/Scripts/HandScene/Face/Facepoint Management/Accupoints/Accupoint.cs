@@ -5,6 +5,7 @@ using UnityEngine;
 public class Accupoint : MonoBehaviour
 {
     public float maxTimer = 3.0f;
+    public bool popped;
     [SerializeField] AccupointSO accupointData;
     public float timer;
     Material mat;
@@ -28,6 +29,7 @@ public class Accupoint : MonoBehaviour
     {
         timer = 0;
         mat = GetComponent<Renderer>().material;
+        popped = false;
     }
     private void Update()
     {
@@ -54,6 +56,7 @@ public class Accupoint : MonoBehaviour
         }
         else
         {
+            popped = true;
             //gameObject.SetActive(false);
         }
     }

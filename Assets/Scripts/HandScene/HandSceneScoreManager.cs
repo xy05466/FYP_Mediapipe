@@ -65,7 +65,7 @@ public class HandSceneScoreManager : MonoBehaviour
             }
             if (accupointManager.numAccupointsLeft > 0)
             {
-                textBoxString += "\nNumber of accupoints left: " + accupointManager.numAccupointsLeft;
+                textBoxString += "\nCurrent step: " + accupointManager.numAccupointsLeft + "of 11";
             }
             else
             {

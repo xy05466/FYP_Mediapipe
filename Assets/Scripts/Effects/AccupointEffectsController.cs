@@ -18,7 +18,7 @@ public class AccupointEffectsController : MonoBehaviour
         {
             GameObject newEffect = Instantiate(growingSwirl, gameObject.transform.position + new Vector3(0, 0, -1), Quaternion.identity);
             //gameObject.SetActive(false);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             Destroy(newEffect, 1);
         }
     }

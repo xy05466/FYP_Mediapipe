@@ -190,6 +190,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43367eec39ae5c24992731a14ce8dcad, type: 2}
   - {fileID: 11400000, guid: acdeb0a67422ee64fa56ef4bb09cf718, type: 2}
   - {fileID: 11400000, guid: bd3dd760909f51c4dbee6a780527d2f9, type: 2}
+  steps:
+  - {x: 0, y: -1}
+  - {x: 1, y: 2}
+  - {x: 3, y: 4}
+  - {x: 5, y: 6}
+  - {x: 7, y: 8}
+  - {x: 9, y: -1}
+  - {x: 10, y: 11}
+  - {x: 12, y: 13}
+  - {x: 14, y: 15}
+  - {x: 16, y: 17}
+  - {x: 18, y: 19}
   accupointPrefab: {fileID: 5105739270100195971, guid: 7ab9d299ff84cf848a5829f68673f5c7,
     type: 3}
   parent: {fileID: 6425009}
@@ -212,6 +224,7 @@ MonoBehaviour:
   _facepointManager: {fileID: 543386375}
   accupointSOs:
   - {fileID: 11400000, guid: f0be8e759a1722a43b6c42742d4f82de, type: 2}
+  steps: []
   accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
     type: 3}
   parent: {fileID: 6425009}

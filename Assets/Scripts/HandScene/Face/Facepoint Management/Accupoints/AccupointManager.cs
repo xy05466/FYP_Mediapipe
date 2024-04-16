@@ -6,6 +6,7 @@ public class AccupointManager : MonoBehaviour
 {
     [SerializeField] FacepointManager _facepointManager;
     [SerializeField] List<AccupointSO> accupointSOs;
+    [SerializeField] List<Vector2> steps;
     [SerializeField] GameObject accupointPrefab;
     [SerializeField] GameObject parent;
     List<GameObject> accupoints;
@@ -14,6 +15,8 @@ public class AccupointManager : MonoBehaviour
     [SerializeField] private bool isAveraged = true;
     [SerializeField] private bool lockedToZero = false;
     public int numAccupointsLeft;
+    int currentStep;
+    bool nextX, nextY;
     private void Start()
     {
         //accupointTimers = new List<float>();
@@ -23,9 +26,13 @@ public class AccupointManager : MonoBehaviour
             //accupointTimers.Add(3.0f);
             instance = Instantiate(accupointPrefab, parent.transform);
             instance.GetComponent<Accupoint>().SetData(accupointSOs[i]);
+            instance.SetActive(false);
             accupoints.Add(instance);
         }
         numAccupointsLeft = accupoints.Count;
+        currentStep = 0;
+        nextX = false;
+        nextY = false;
     }
     List<Transform> positions;
     Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
@@ -83,9 +90,47 @@ public class AccupointManager : MonoBehaviour
         }
         else return Vector3.zero;
     }
+
     private void Update()
     {
-        int counter = 0;
+       
+        if (steps[currentStep].x != -1 && !nextX)
+        {
+            GameObject currentPoint = accupoints[(int)steps[currentStep].x];
+            if (!currentPoint.activeInHierarchy)
+            {
+                if (currentPoint.GetComponent<Accupoint>().timer < 3)
+                {
+                    Debug.Log("xtrue");
+                    currentPoint.SetActive(true);
+                }
+                else
+                    nextX = true;
+            }
+        }
+        else
+        {
+            nextX = true;
+        }
+        if (steps[currentStep].y != -1 && !nextY)
+        {
+            GameObject currentPoint = accupoints[(int)steps[currentStep].y];
+            if (!currentPoint.activeInHierarchy)
+            {
+                if (currentPoint.GetComponent<Accupoint>().timer < 3)
+                {
+                    Debug.Log("ytrue");
+                    currentPoint.SetActive(true);
+                }
+                else
+                    nextY = true;
+            }
+        }
+        else
+        {
+            nextY = true;
+        }
+        //int counter = 0;
         foreach (GameObject obj in accupoints)
         {
             if (obj.activeInHierarchy)
@@ -96,9 +141,15 @@ public class AccupointManager : MonoBehaviour
                 obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
                 if (lockedToZero)
                     obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
-                counter++;
+                //counter++;
             }
         }
-        numAccupointsLeft = counter;
+        if (nextX && nextY)
+        {
+            currentStep++;
+            nextX = false;
+            nextY = false;
+        }
+        numAccupointsLeft = currentStep;//counter;
     }
 }
