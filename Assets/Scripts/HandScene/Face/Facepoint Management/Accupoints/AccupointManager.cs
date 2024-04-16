@@ -83,14 +83,6 @@ public class AccupointManager : MonoBehaviour
         }
         else return Vector3.zero;
     }
-    public void Increase()
-    {
-        offset+= new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 1 * Time.deltaTime);
-    }
-    public void Decrease()
-    {
-        offset -= new Vector3(1 * Time.deltaTime, 1 * Time.deltaTime, 1 * Time.deltaTime);
-    }
     private void Update()
     {
         int counter = 0;
