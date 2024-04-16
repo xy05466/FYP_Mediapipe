@@ -98,7 +98,7 @@ public class AccupointManager : MonoBehaviour
         {
             if (obj.activeInHierarchy)
             {
-                Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
+                //Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
                 int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
                 positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
                 obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
