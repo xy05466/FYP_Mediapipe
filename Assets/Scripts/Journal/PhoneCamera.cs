@@ -88,8 +88,8 @@ public class PhoneCamera : MonoBehaviour
         {
             return;
         }
-        float ratio = (float)backCam.width * (1 / (float)backCam.height);
-        fit.aspectRatio = ratio;
+        //float ratio = (float)backCam.width * (1 / (float)backCam.height);
+        //fit.aspectRatio = ratio;
 
         float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
 
@@ -97,6 +97,8 @@ public class PhoneCamera : MonoBehaviour
 
         int orient = -backCam.videoRotationAngle;
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+
+        picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
 
         timer += Time.deltaTime;
 
@@ -110,11 +112,6 @@ public class PhoneCamera : MonoBehaviour
         }
     }
 
-    //private void StartBrightnessCheck()
-    //{
-    //    StartCoroutine(BrightnessCheck());
-    //}
-
     private void BrightnessCheck(Texture bg)
     {
         int width = bg.width;
@@ -123,7 +120,7 @@ public class PhoneCamera : MonoBehaviour
         Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
         RenderTexture currentRT = RenderTexture.active;
 
-        RenderTexture renderTexture = new RenderTexture(bg.width, bg.height, 32);
+        RenderTexture renderTexture = new RenderTexture(width, height, 32);
         Graphics.Blit(bg, renderTexture);
 
         RenderTexture.active = renderTexture;
@@ -186,8 +183,10 @@ public class PhoneCamera : MonoBehaviour
 
     IEnumerator SetPic()
     {
+
+
         //picTaken = (Texture2D)background.texture;
-        yield return StartCoroutine(journalSO.TakePic(background.texture));
+        yield return StartCoroutine(journalSO.TakePic(background));
         //BrightnessCheck(background.texture);
         ShowPic();
     }
