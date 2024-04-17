@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Accupoint : MonoBehaviour
 {
-    [SerializeField] float maxTimer = 3.0f;
+    public float maxTimer = 3.0f;
+    public bool popped;
     [SerializeField] AccupointSO accupointData;
-    float timer;
+    public float timer;
     Material mat;
     // Colors are in this order as we are going to be lerping from 1 (timer / maxTimer) to 0.
     // As such, we will be going from the last color in the array to the first. Hence, we put red at the back and green in front.
@@ -28,16 +29,17 @@ public class Accupoint : MonoBehaviour
     {
         timer = 0;
         mat = GetComponent<Renderer>().material;
+        popped = false;
     }
     private void Update()
     {
-        Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z + " 2");
+        //Debug.Log(transform.position.x + ", " + transform.position.y + ", " + transform.position.z + " 2");
         if (timer < maxTimer)
         {
             // test implementation from https://gamedev.stackexchange.com/questions/98740/how-to-color-lerp-between-multiple-colors
             float scaledTime = (timer / maxTimer)   * (colors.Length - 1);
-            if (scaledTime > 0)
-            Debug.Log(scaledTime);
+            //if (scaledTime > 0)
+            //Debug.Log(scaledTime);
             Color oldColor = colors[(int)scaledTime];
             Color newColor;
             if (timer >= maxTimer)
@@ -54,7 +56,8 @@ public class Accupoint : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            popped = true;
+            //gameObject.SetActive(false);
         }
     }
     private void OnCollisionStay(Collision collision)

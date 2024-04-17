@@ -38,7 +38,7 @@ public class HandSceneScoreManager : MonoBehaviour
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
             //textBoxString = "Face Distance: " + avgZ;
             //textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
-            Debug.Log(avgZ);
+            //Debug.Log(avgZ);
             if (avgZ < lowerBoundZ)
             {
                 textBoxString += "\nPlease move further";
@@ -65,7 +65,7 @@ public class HandSceneScoreManager : MonoBehaviour
             }
             if (accupointManager.numAccupointsLeft > 0)
             {
-                textBoxString += "\nNumber of accupoints left: " + accupointManager.numAccupointsLeft;
+                textBoxString += "\nCurrent step: " + accupointManager.numAccupointsLeft + "of 11";
             }
             else
             {
