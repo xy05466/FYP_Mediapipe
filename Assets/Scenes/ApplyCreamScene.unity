@@ -2518,8 +2518,12 @@ MonoBehaviour:
   minDistance: 85
   maxDistance: 95
   fpm: {fileID: 408683176}
-  petalFaceLandmarks: []
-  petals:
+  petalFaceLandmarks:
+  - 151
+  - 280
+  - 50
+  - 200
+  petalPrefabs:
   - {fileID: 819144451421113746, guid: 329a0610ab58d1d4792599fe7c14612c, type: 3}
   - {fileID: 6274931057648858018, guid: 433288f793e23904d9534d48b4772aa2, type: 3}
   - {fileID: 1534496458981943792, guid: 2ce08d306b93caa499eadee5b84ef86f, type: 3}
