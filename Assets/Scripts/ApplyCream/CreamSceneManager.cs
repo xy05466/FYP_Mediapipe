@@ -19,6 +19,9 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] float minDistance = 115f;
     [SerializeField] float maxDistance = 90f;
 
+    [SerializeField] List<float> petalFaceLandmarks;
+    [SerializeField] List<GameObject> petals;
+
     GameObject palmBase;
     float palmDistance;
     enum SceneState
