@@ -8,6 +8,9 @@ public class LightChecker : MonoBehaviour
 {
     public RawImage checkPic;
     public TMP_Text brightnessTxt;
+    public Image brightnessImage;
+    public Sprite rightImage;
+    public Sprite darkImage;
     private float waitTime = 2.0f;
     private float timer = 0.0f;
 
@@ -52,10 +55,13 @@ public class LightChecker : MonoBehaviour
             if (avgV > 0.4f)
             {
                 brightnessTxt.text = "just right " + avgV.ToString();
+                brightnessImage.sprite = rightImage;
+
             }
             else
             {
                 brightnessTxt.text = "too dark " + avgV.ToString();
+                brightnessImage.sprite = darkImage;
             }
 
             avgV = 0;

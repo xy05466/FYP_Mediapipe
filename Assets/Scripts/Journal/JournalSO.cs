@@ -141,8 +141,6 @@ public class JournalSO : ScriptableObject
 
         beforeCount = info.GetFiles("*.png").Length;
         Debug.Log(beforeCount);
-        //picsTaken = null;
-        //Debug.Log(picsCount + 1);
     }
 
     public void ConfirmAfterPic()
@@ -180,9 +178,6 @@ public class JournalSO : ScriptableObject
 
         afterCount = info.GetFiles("*.png").Length;
         Debug.Log(afterCount);
-
-        //picsTaken = null;
-        //Debug.Log(picsCount + 1);
     }
 
     Texture2D rotateTexture(Texture2D originalTexture, bool clockwise)

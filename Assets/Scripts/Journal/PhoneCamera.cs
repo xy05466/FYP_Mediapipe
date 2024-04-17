@@ -100,65 +100,65 @@ public class PhoneCamera : MonoBehaviour
 
         picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
 
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
 
-        // Check if we have reached beyond 2 seconds.
-        // Subtracting two is more accurate over time than resetting to zero.
-        if (timer > waitTime)
-        {
-            BrightnessCheck(background.texture);
-            // Remove the recorded 2 seconds.
-            timer = timer - waitTime;
-        }
+        //// Check if we have reached beyond 2 seconds.
+        //// Subtracting two is more accurate over time than resetting to zero.
+        //if (timer > waitTime)
+        //{
+        //    BrightnessCheck(background.texture);
+        //    // Remove the recorded 2 seconds.
+        //    timer = timer - waitTime;
+        //}
     }
 
-    private void BrightnessCheck(Texture bg)
-    {
-        int width = bg.width;
-        int height = bg.height;
+    //private void BrightnessCheck(Texture bg)
+    //{
+    //    int width = bg.width;
+    //    int height = bg.height;
 
-        Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-        RenderTexture currentRT = RenderTexture.active;
+    //    Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+    //    RenderTexture currentRT = RenderTexture.active;
 
-        RenderTexture renderTexture = new RenderTexture(width, height, 32);
-        Graphics.Blit(bg, renderTexture);
+    //    RenderTexture renderTexture = new RenderTexture(width, height, 32);
+    //    Graphics.Blit(bg, renderTexture);
 
-        RenderTexture.active = renderTexture;
-        screenshotTexture.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        screenshotTexture.Apply();
+    //    RenderTexture.active = renderTexture;
+    //    screenshotTexture.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+    //    screenshotTexture.Apply();
 
-        UnityEngine.Color[] pixels = screenshotTexture.GetPixels();
+    //    UnityEngine.Color[] pixels = screenshotTexture.GetPixels();
 
-        RenderTexture.active = currentRT;
+    //    RenderTexture.active = currentRT;
 
-        checkPic = screenshotTexture;
+    //    checkPic = screenshotTexture;
 
-        int sourceMipLevel = 0;
-        float avgV = 0;
-        Color32[] pixelArray = checkPic.GetPixels32(sourceMipLevel);
+    //    int sourceMipLevel = 0;
+    //    float avgV = 0;
+    //    Color32[] pixelArray = checkPic.GetPixels32(sourceMipLevel);
 
-        for (int i = 0; i < pixels.Length; i++)
-        {
-            UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
-            avgV += v;
-        }
+    //    for (int i = 0; i < pixels.Length; i++)
+    //    {
+    //        UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
+    //        avgV += v;
+    //    }
 
-        avgV /= checkPic.width * checkPic.height;
+    //    avgV /= checkPic.width * checkPic.height;
 
-        if (avgV > 0.45f)
-        {
-            brightnessTxt.text = "just right " + avgV.ToString();
-        }
-        else
-        {
-            brightnessTxt.text = "too dark " + avgV.ToString();
-        }
+    //    if (avgV > 0.45f)
+    //    {
+    //        brightnessTxt.text = "just right " + avgV.ToString();
+    //    }
+    //    else
+    //    {
+    //        brightnessTxt.text = "too dark " + avgV.ToString();
+    //    }
 
-        avgV = 0;
+    //    avgV = 0;
 
-        Destroy(screenshotTexture);
-        Destroy(renderTexture);
-    }
+    //    Destroy(screenshotTexture);
+    //    Destroy(renderTexture);
+    //}
 
     public void ChangeFrontCam()
     {
