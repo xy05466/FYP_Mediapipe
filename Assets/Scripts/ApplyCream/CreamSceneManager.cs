@@ -19,11 +19,13 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] float minDistance = 115f;
     [SerializeField] float maxDistance = 90f;
 
+    [SerializeField] FacepointManager fpm;
     [SerializeField] List<float> petalFaceLandmarks;
     [SerializeField] List<GameObject> petals;
 
     GameObject palmBase;
     float palmDistance;
+    bool faceDetected;
     enum SceneState
     {
         STATE_MEASURE,
@@ -40,6 +42,7 @@ public class CreamSceneManager : MonoBehaviour
         creamApplicationDiagram.SetActive(false);
         //nextSceneButton.SetActive(false);
         headerTextBox.text = "Measure the right amount of cream using the guideline below.\nKeep your palm open.";
+        faceDetected = false;
     }
     private void Update()
     {
