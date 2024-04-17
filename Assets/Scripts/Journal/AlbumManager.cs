@@ -16,16 +16,19 @@ public class AlbumManager : MonoBehaviour
     void Start()
     {
         journalSO.Initialize();
+        Debug.Log("AlbumBeforeDebug" + journalSO.GetBeforeCount().ToString());
+        Debug.Log("AlbumAfterDebug" + journalSO.GetAfterCount().ToString());
+        Debug.Log("AlbumDebug" + journalSO.GetHasCaptured());
         ShowPics();
     }
 
     public void ShowPics()
     {
 
-        int imageCount = journalSO.GetPicsCount();
+        int imageCount = journalSO.GetAfterCount();
         Debug.Log(imageCount);
 
-        for (int i = imageCount - 1; i >= 0; i--)
+        for (int i = imageCount; i > 0; i--)
         {
             Debug.Log(imageCount);
             Debug.Log(pics.Count);
@@ -34,7 +37,7 @@ public class AlbumManager : MonoBehaviour
                 break;
             }
 
-            pics[i].texture = journalSO.GetPicAlbum(i);
+            pics[i - 1].texture = journalSO.GetAfterAlbum(i);
         }
 
     }

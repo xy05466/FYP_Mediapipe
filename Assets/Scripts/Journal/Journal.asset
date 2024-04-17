@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f61a19c62940664d88a502b46eae813, type: 3}
   m_Name: Journal
   m_EditorClassIdentifier: 
-  <dayOnePic>k__BackingField: {fileID: 0}

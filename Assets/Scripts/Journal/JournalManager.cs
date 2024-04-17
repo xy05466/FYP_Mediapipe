@@ -31,13 +31,13 @@ public class JournalManager : MonoBehaviour
     public void ShowPic()
     {
         //PlayerPrefs.SetInt("imageCount",0);
-        int picNum = journalSO.GetPicsCount();
+        //int picNum = journalSO.GetPicsCount();
         picResult.texture = journalSO.GetPicCache();
     }
 
     public void SetText()
     {
-        int jNum = journalSO.GetPicsCount();
+        int jNum = journalSO.GetBeforeCount();
         journalSO.SetText(journalEntry.text, jNum);
     }
 
@@ -74,8 +74,7 @@ public class JournalManager : MonoBehaviour
         RenderTexture.active = null;
 
         byte[] byteArray = renderedTexture.EncodeToPNG();
-        string fileLocation;
-        int i = journalSO.GetPicsCount();
+        int i = journalSO.GetBeforeCount();
         i++;
 
         if (Application.platform == RuntimePlatform.Android)
@@ -103,10 +102,10 @@ public class JournalManager : MonoBehaviour
         }
 
         journalSO.SetDayNum(i);
-        journalSO.SetPicsCount(i);
+        journalSO.SetBeforeCount(i);
         Texture2D picTaken = new Texture2D((int)picResult.rectTransform.rect.x, (int)picResult.rectTransform.rect.y);
         picTaken.LoadImage(byteArray);
-        journalSO.SetDayPics(picTaken);
+        //journalSO.SetDayPics(picTaken);
         
 
         canvas.worldCamera = camera0;
