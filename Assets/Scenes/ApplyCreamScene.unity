@@ -2519,11 +2519,16 @@ MonoBehaviour:
   maxDistance: 95
   fpm: {fileID: 408683176}
   petalFaceLandmarks: 180100003200000097000000c8000000
-  petals:
-  - {fileID: 819144451421113746, guid: bad8aec0839ae524491611f6f3a5b394, type: 3}
-  - {fileID: 6274931057648858018, guid: 028fa72353fda6a49a3fe986792f5465, type: 3}
-  - {fileID: 1534496458981943792, guid: 101b5241c41873349b48f70851a144cf, type: 3}
-  - {fileID: 998037213573455401, guid: 43ce40f3da163be499518bec5e22a6cc, type: 3}
+  bigPetalPrefabs:
+  - {fileID: 819144451421113746, guid: 329a0610ab58d1d4792599fe7c14612c, type: 3}
+  - {fileID: 6274931057648858018, guid: 433288f793e23904d9534d48b4772aa2, type: 3}
+  - {fileID: 1534496458981943792, guid: 2ce08d306b93caa499eadee5b84ef86f, type: 3}
+  - {fileID: 998037213573455401, guid: 6565d5f157bff484aab537235019f42b, type: 3}
+  smallPetalPrefabs:
+  - {fileID: 1023923297914220738, guid: 5178313d18557ee41b30ef841e234522, type: 3}
+  - {fileID: 2461950742892515553, guid: 8dd5829702a9dfa46b052b1f8a712282, type: 3}
+  - {fileID: 4429689474124492639, guid: 59306c7037cae7549b1acf98d1fbfd9a, type: 3}
+  - {fileID: 5371680892076149343, guid: 12616713b7348604ea1708d6bf715ede, type: 3}
 --- !u!4 &850704532
 Transform:
   m_ObjectHideFlags: 0

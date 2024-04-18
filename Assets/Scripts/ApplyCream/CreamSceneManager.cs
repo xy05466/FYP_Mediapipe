@@ -21,7 +21,17 @@ public class CreamSceneManager : MonoBehaviour
 
     [SerializeField] FacepointManager fpm;
     [SerializeField] List<int> petalFaceLandmarks;
-    [SerializeField] List<GameObject> petals;
+    [SerializeField] List<GameObject> bigPetalPrefabs;
+    [SerializeField] List<GameObject> smallPetalPrefabs;
+
+    List<GameObject> bigPetals;
+    List<GameObject> smallPetals;
+     
+    // all points with small petal
+    List<int> foreheadPoints = new List<int>   {  63,  68,  34, 103, 104, 105,  67,  69,  66, 109, 108, 107,  10, 151,   9, 338, 337, 336, 297, 299, 296, 332, 333, 334, 284, 298, 293 };
+    List<int> rightCheekPoints = new List<int> { 111, 117, 118, 119, 120, 121,  47, 100, 101,  50, 123, 187, 205,  36, 142 };
+    List<int> leftCheekPoints = new List<int>  { 340, 346, 347, 348, 349, 350, 277, 329, 330, 280, 352, 411, 425, 266, 371 };
+    List<int> chinCheekPoints = new List<int>  { 212,  57, 202,  43, 204, 106, 194, 182, 201,  83,  18, 200, 313, 421, 406, 335, 424, 273, 422, 287, 432 };
 
     GameObject palmBase;
     float palmDistance;
@@ -38,13 +48,14 @@ public class CreamSceneManager : MonoBehaviour
         sceneState = SceneState.STATE_MEASURE;
         handDetectionSolution.SetActive(true);
         handDetectionScreen.SetActive(true);
-        creamApplicationGuideline.SetActive(true);
-
-        creamApplicationDiagram.SetActive(false);
+        //creamApplicationGuideline.SetActive(true);
+        //creamApplicationDiagram.SetActive(false);
         //nextSceneButton.SetActive(false);
         headerTextBox.text = "Measure the right amount of cream using the guideline below.\nKeep your palm open.";
         faceDetected = false;
         flowerSet = false;
+        bigPetals = new List<GameObject>();
+        smallPetals = new List<GameObject>();
     }
     private void Update()
     {
@@ -82,26 +93,40 @@ public class CreamSceneManager : MonoBehaviour
                     {
                         foreach (int j in petalFaceLandmarks)
                         {
-                            GameObject newPetal = Instantiate(petals[Random.Range(0, petals.Count)], temp[j].transform);
+                            GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], temp[j].transform);
                             newPetal.transform.localScale = new Vector3(10, 10, 10);
                             newPetal.transform.localPosition = new Vector3(0, 0, -10);
-                            petals.Add(newPetal);
+                            bigPetals.Add(newPetal);
+                        }
+                        foreach (int j in foreheadPoints)
+                        {
+                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], temp[j].transform);
+                            newPetal.transform.localScale = new Vector3(3, 3, 3);
+                            newPetal.transform.localPosition = new Vector3(0, 0, -10);
+                            smallPetals.Add(newPetal);
+                        }
+                        foreach (int j in leftCheekPoints)
+                        {
+                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], temp[j].transform);
+                            newPetal.transform.localScale = new Vector3(3, 3, 3);
+                            newPetal.transform.localPosition = new Vector3(0, 0, -10);
+                            smallPetals.Add(newPetal);
+                        }
+                        foreach (int j in rightCheekPoints)
+                        {
+                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], temp[j].transform);
+                            newPetal.transform.localScale = new Vector3(3, 3, 3);
+                            newPetal.transform.localPosition = new Vector3(0, 0, -10);
+                            smallPetals.Add(newPetal);
+                        }
+                        foreach (int j in chinCheekPoints)
+                        {
+                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], temp[j].transform);
+                            newPetal.transform.localScale = new Vector3(3, 3, 3);
+                            newPetal.transform.localPosition = new Vector3(0, 0, -10);
+                            smallPetals.Add(newPetal);
                         }
                         flowerSet = true;
-                    }
-                    else
-                    {
-                        foreach (GameObject petal in petals)
-                        {
-                            Accupoint collDect = petal.GetComponent<Accupoint>();
-                            if (collDect != null)
-                            {
-                                if (collDect.colliding)
-                                {
-
-                                }
-                            }
-                        }
                     }
                 }
             }
