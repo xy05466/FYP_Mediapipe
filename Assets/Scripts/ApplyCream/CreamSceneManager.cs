@@ -20,12 +20,13 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] float maxDistance = 90f;
 
     [SerializeField] FacepointManager fpm;
-    [SerializeField] List<float> petalFaceLandmarks;
+    [SerializeField] List<int> petalFaceLandmarks;
     [SerializeField] List<GameObject> petals;
 
     GameObject palmBase;
     float palmDistance;
     bool faceDetected;
+    bool flowerSet;
     enum SceneState
     {
         STATE_MEASURE,
@@ -43,6 +44,7 @@ public class CreamSceneManager : MonoBehaviour
         //nextSceneButton.SetActive(false);
         headerTextBox.text = "Measure the right amount of cream using the guideline below.\nKeep your palm open.";
         faceDetected = false;
+        flowerSet = false;
     }
     private void Update()
     {
@@ -69,6 +71,45 @@ public class CreamSceneManager : MonoBehaviour
                 else if (palmDistance < minDistance)
                 {
                     headerTextBox.text += "\nPlease move your hand further.";
+                }
+            }
+            if (fpm != null)
+            {
+                GameObject[] temp = fpm.GetFacePointTransforms();
+                if (temp != null && temp.Length > 0)
+                {
+                    if (!flowerSet)
+                    {
+                        foreach (int j in petalFaceLandmarks)
+                        {
+                            GameObject newPetal = Instantiate(petals[Random.Range(0, petals.Count)], temp[j].transform);
+                            newPetal.transform.localScale = new Vector3(10, 10, 10);
+                            newPetal.transform.localPosition = new Vector3(0, 0, -10);
+                            petals.Add(newPetal);
+                        }
+                        flowerSet = true;
+                    }
+                    else
+                    {
+
+                    }
+                    //if (!flowerSet)
+                    //{
+                    //    foreach (int j in petalFaceLandmarks)
+                    //    {
+                    //        GameObject newPetal = Instantiate(petals[Random.Range(0, petals.Count)], new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, 80), Quaternion.identity);
+                    //        newPetal.transform.localScale = new Vector3(10, 10, 10);
+                    //        petals.Add(newPetal);
+                    //    }
+                    //    flowerSet = true;
+                    //}
+                    //else
+                    //{
+                    //    for (int i = 0; i < petals.Count; ++i)
+                    //    {
+                    //        petals[i].transform.position = new Vector3(temp[petalFaceLandmarks[i]].transform.position.x, temp[petalFaceLandmarks[i]].transform.position.y, 80);
+                    //    }
+                    //}
                 }
             }
         }

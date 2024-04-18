@@ -2518,16 +2518,12 @@ MonoBehaviour:
   minDistance: 85
   maxDistance: 95
   fpm: {fileID: 408683176}
-  petalFaceLandmarks:
-  - 151
-  - 280
-  - 50
-  - 200
-  petalPrefabs:
-  - {fileID: 819144451421113746, guid: 329a0610ab58d1d4792599fe7c14612c, type: 3}
-  - {fileID: 6274931057648858018, guid: 433288f793e23904d9534d48b4772aa2, type: 3}
-  - {fileID: 1534496458981943792, guid: 2ce08d306b93caa499eadee5b84ef86f, type: 3}
-  - {fileID: 998037213573455401, guid: 6565d5f157bff484aab537235019f42b, type: 3}
+  petalFaceLandmarks: 180100003200000097000000c8000000
+  petals:
+  - {fileID: 819144451421113746, guid: bad8aec0839ae524491611f6f3a5b394, type: 3}
+  - {fileID: 6274931057648858018, guid: 028fa72353fda6a49a3fe986792f5465, type: 3}
+  - {fileID: 1534496458981943792, guid: 101b5241c41873349b48f70851a144cf, type: 3}
+  - {fileID: 998037213573455401, guid: 43ce40f3da163be499518bec5e22a6cc, type: 3}
 --- !u!4 &850704532
 Transform:
   m_ObjectHideFlags: 0
