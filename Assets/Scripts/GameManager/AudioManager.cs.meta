@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Music/CSVRhythmChartReader.cs.meta
+guid: 3524c875b3765c64380e8becc9b6aac6
+========
+guid: e24f90d9c008dcd4baa6e747cb64552c
+>>>>>>>> main:Assets/Scripts/GameManager/AudioManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
