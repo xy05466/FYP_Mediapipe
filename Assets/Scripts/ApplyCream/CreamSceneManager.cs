@@ -91,25 +91,18 @@ public class CreamSceneManager : MonoBehaviour
                     }
                     else
                     {
+                        foreach (GameObject petal in petals)
+                        {
+                            Accupoint collDect = petal.GetComponent<Accupoint>();
+                            if (collDect != null)
+                            {
+                                if (collDect.colliding)
+                                {
 
+                                }
+                            }
+                        }
                     }
-                    //if (!flowerSet)
-                    //{
-                    //    foreach (int j in petalFaceLandmarks)
-                    //    {
-                    //        GameObject newPetal = Instantiate(petals[Random.Range(0, petals.Count)], new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, 80), Quaternion.identity);
-                    //        newPetal.transform.localScale = new Vector3(10, 10, 10);
-                    //        petals.Add(newPetal);
-                    //    }
-                    //    flowerSet = true;
-                    //}
-                    //else
-                    //{
-                    //    for (int i = 0; i < petals.Count; ++i)
-                    //    {
-                    //        petals[i].transform.position = new Vector3(temp[petalFaceLandmarks[i]].transform.position.x, temp[petalFaceLandmarks[i]].transform.position.y, 80);
-                    //    }
-                    //}
                 }
             }
         }
