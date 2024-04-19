@@ -14,7 +14,7 @@ public class LightChecker : MonoBehaviour
     private float waitTime = 2.0f;
     private float timer = 0.0f;
 
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
     // Update is called once per frame
     void Update()
@@ -58,13 +58,19 @@ public class LightChecker : MonoBehaviour
             {
                 brightnessTxt.text = "just right " + avgV.ToString();
                 brightnessImage.sprite = rightImage;
-                gameManager.GetComponent<AudioManager>().Play("Sparkle");
+                if (!this.GetComponent<AudioManager>().IsPlaying("Sparkle"))
+                {
+                    this.GetComponent<AudioManager>().Play("Sparkle");
+                }
             }
             else
             {
                 brightnessTxt.text = "too dark " + avgV.ToString();
                 brightnessImage.sprite = darkImage;
-                gameManager.GetComponent<AudioManager>().Play("PlantsRustling");
+                if (!this.GetComponent<AudioManager>().IsPlaying("PlantsRustling"))
+                {
+                    this.GetComponent<AudioManager>().Play("PlantsRustling");
+                }
             }
 
             avgV = 0;

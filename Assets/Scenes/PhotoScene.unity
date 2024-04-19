@@ -2744,6 +2744,7 @@ MonoBehaviour:
   brightnessImage: {fileID: 855868878}
   rightImage: {fileID: 21300000, guid: e8db55f9ca5c0ab48820c610985b5315, type: 3}
   darkImage: {fileID: 21300000, guid: 14b735efd181b5d4b9128e6e9080f8a1, type: 3}
+  gameManager: {fileID: 0}
 --- !u!114 &1729446860
 MonoBehaviour:
   m_ObjectHideFlags: 0
