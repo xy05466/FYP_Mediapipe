@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6425010}
+  - component: {fileID: 6425011}
   - component: {fileID: 6425012}
   m_Layer: 5
   m_Name: Accupoint Manager
@@ -155,6 +156,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968537269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6425011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63524204847752646ad15235b6784df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facepointManager: {fileID: 543386375}
+  accupointSO: {fileID: 11400000, guid: 0dc33ece1f0269e4b93962dd04e8f71e, type: 2}
+  accupointPrefab: {fileID: 7960028793873015838, guid: f0d20707877c30345bf8d91199563c6e,
+    type: 3}
+  accupoint: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6425012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,26 +183,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6425009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6145abb20165941b5ae2a0dc9c0980, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f2fc765813288d4fb22329347d87b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _facepointManager: {fileID: 543386375}
-  accupointSOs:
-  - accupointSOList:
-    - {fileID: 11400000, guid: 0dc33ece1f0269e4b93962dd04e8f71e, type: 2}
-    - {fileID: 11400000, guid: d3d13f6df519d8546b76569d522a35f8, type: 2}
-    - {fileID: 11400000, guid: edd179f3975b8b44985bbc44a9f0857e, type: 2}
-    - {fileID: 11400000, guid: cbd883bf66ebba74abbdbb8c1e8315ab, type: 2}
-  - accupointSOList:
-    - {fileID: 11400000, guid: 1083c9bd45c4dc641aa46fc0a15b87b4, type: 2}
-    - {fileID: 11400000, guid: eab903a9052ed534caff8ced22d8b0bf, type: 2}
-    - {fileID: 11400000, guid: d5ef18449daa55e4a9df31fc5fed7e9d, type: 2}
-  accupointPrefab: {fileID: 5105739270100195971, guid: ca47afa2d74c13b41ae756acffc73596,
-    type: 3}
-  offset: {x: 0, y: 0, z: 0}
-  isAveraged: 1
-  lockedToZero: 1
-  numAccupointsLeft: 0
 --- !u!1 &17270002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1235,6 @@ GameObject:
   - component: {fileID: 543386373}
   - component: {fileID: 543386374}
   - component: {fileID: 543386375}
-  - component: {fileID: 543386376}
   m_Layer: 5
   m_Name: Face Annotable Layer
   m_TagString: Untagged
@@ -1291,25 +1292,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 543386372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b70074974ff57540ae16716a3cbc6a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1371552108e207842ac12003496b7c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mfla: {fileID: 543386374}
-  indexesToStore: ae010000ab01000018010000d2000000d50000007b00000004000000
+  indexesToStore:
+  - {fileID: 11400000, guid: 0dc33ece1f0269e4b93962dd04e8f71e, type: 2}
   threshold: 10
---- !u!114 &543386376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543386372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82660d6678f8f944fbd1cf1c98bd329b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _facepointManager: {fileID: 543386375}
 --- !u!1 &706141580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,7 +2679,7 @@ MonoBehaviour:
   _faceRectsFromLandmarksAnnotationController: {fileID: 781316170}
   _faceRectsFromDetectionsAnnotationController: {fileID: 1968537273}
   _faceLandmarkTranslator: {fileID: 0}
-  facepointManager: {fileID: 543386375}
+  facepointManager: {fileID: 0}
 --- !u!1 &1594682637
 GameObject:
   m_ObjectHideFlags: 0
