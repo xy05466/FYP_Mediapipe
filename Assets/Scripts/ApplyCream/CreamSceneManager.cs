@@ -29,7 +29,7 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] GameObject mainFlowerParent;
      
     // all points with small petal
-    List<int> foreheadPoints = new List<int>   {  63,  68,  34, 103, 104, 105,  67,  69,  66, 109, 108, 107,  10, 151,   9, 338, 337, 336, 297, 299, 296, 332, 333, 334, 284, 298, 293 };
+    List<int> foreheadPoints = new List<int>   { 0, 63,  68,  34, 103, 104, 105,  67,  69,  66, 109, 108, 107,  10, 151,   9, 338, 337, 336, 297, 299, 296, 332, 333, 334, 284, 298, 293 };
     List<int> rightCheekPoints = new List<int> { 111, 117, 118, 119, 120, 121,  47, 100, 101,  50, 123, 187, 205,  36, 142 };
     List<int> leftCheekPoints = new List<int>  { 340, 346, 347, 348, 349, 350, 277, 329, 330, 280, 352, 411, 425, 266, 371 };
     List<int> chinCheekPoints = new List<int>  { 212,  57, 202,  43, 204, 106, 194, 182, 201,  83,  18, 200, 313, 421, 406, 335, 424, 273, 422, 287, 432 };
@@ -71,8 +71,7 @@ public class CreamSceneManager : MonoBehaviour
             {
                 
                 GameObject[] temp = hpm.GetFacePointTransforms();
-                if (temp != null && temp.Length > 0)
-                {
+                if (temp != null && temp.Length > 0) { 
                     palmBase = temp[4];
                 }
             }
@@ -136,7 +135,7 @@ public class CreamSceneManager : MonoBehaviour
                     else
                     {
                         List<List<int>> tempIntList = new List<List<int>>() { foreheadPoints, leftCheekPoints, rightCheekPoints, chinCheekPoints };
-                        for (int i = 0; i < smallPetals.Count; ++i)
+                        for (int i = 0; i < tempIntList.Count; ++i)
                         {
                             for (int j = 0; j < smallPetals[i].Count; ++j)
                             {

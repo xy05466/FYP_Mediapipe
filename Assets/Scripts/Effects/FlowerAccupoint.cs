@@ -5,9 +5,15 @@ using UnityEngine;
 public class FlowerAccupoint : MonoBehaviour
 {
     [SerializeField] GameObject slicedPetal;
+    [SerializeField] GameObject pps;
     private void OnCollisionEnter(Collision collision)
     {
         slicedPetal.SetActive(true);
+        //if (pps != null)
+        //{
+        //    GameObject newGO = Instantiate(pps, transform);
+        //    newGO.transform.localPosition = gameObject.transform.localPosition;
+        //}
     }
     private void Update()
     {

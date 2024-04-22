@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slicedPetal: {fileID: 6930432226578576878}
+  pps: {fileID: 7126857054774847768, guid: bc02edff2cb206c4696287336a48574b, type: 3}
 --- !u!54 &482615134731545950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7923075201171467207
 PrefabInstance:
