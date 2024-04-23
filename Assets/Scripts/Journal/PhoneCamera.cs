@@ -192,8 +192,8 @@ public class PhoneCamera : MonoBehaviour
 
     public void StartSetPic()
     {
-        StartCoroutine(SetPic());
         gameManager.GetComponent<AudioManager>().Play("CamCapture");
+        StartCoroutine(SetPic());
     }
 
     IEnumerator SetPic()

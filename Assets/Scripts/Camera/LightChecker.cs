@@ -60,6 +60,7 @@ public class LightChecker : MonoBehaviour
                 brightnessImage.sprite = rightImage;
                 if (!this.GetComponent<AudioManager>().IsPlaying("Sparkle"))
                 {
+                    this.GetComponent<AudioManager>().Stop("PlantsRustling");
                     this.GetComponent<AudioManager>().Play("Sparkle");
                 }
             }
@@ -69,6 +70,7 @@ public class LightChecker : MonoBehaviour
                 brightnessImage.sprite = darkImage;
                 if (!this.GetComponent<AudioManager>().IsPlaying("PlantsRustling"))
                 {
+                    this.GetComponent<AudioManager>().Stop("Sparkle");
                     this.GetComponent<AudioManager>().Play("PlantsRustling");
                 }
             }

@@ -2744,7 +2744,6 @@ MonoBehaviour:
   brightnessImage: {fileID: 855868878}
   rightImage: {fileID: 21300000, guid: e8db55f9ca5c0ab48820c610985b5315, type: 3}
   darkImage: {fileID: 21300000, guid: 14b735efd181b5d4b9128e6e9080f8a1, type: 3}
-  gameManager: {fileID: 0}
 --- !u!114 &1729446860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2767,19 +2766,19 @@ MonoBehaviour:
   - name: Ding
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: 60d1d770e2d36604bbefa33d56884135, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     pitch: 1
   - name: PlantsRustling
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: ec7c15da9768ad74eb7ae9533af245f8, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     pitch: 1
   - name: Sparkle
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: 5ef7ac4c1cdb29b429afa35d326f617a, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     pitch: 1
 --- !u!114 &1729446861 stripped
