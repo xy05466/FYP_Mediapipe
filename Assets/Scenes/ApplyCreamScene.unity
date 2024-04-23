@@ -1585,7 +1585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &474860172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2542,8 +2542,6 @@ MonoBehaviour:
   hpm: {fileID: 850704533}
   handDetectionSolution: {fileID: 238496522}
   handDetectionScreen: {fileID: 730962611}
-  creamApplicationGuideline: {fileID: 474860171}
-  creamApplicationDiagram: {fileID: 1821541318}
   nextSceneButton: {fileID: 302429383}
   headerTextBox: {fileID: 626487616}
   idealDistance: 2

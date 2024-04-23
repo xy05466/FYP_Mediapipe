@@ -8,9 +8,9 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] HandPointManager hpm;
     [SerializeField] GameObject handDetectionSolution;
     [SerializeField] GameObject handDetectionScreen;
-    [SerializeField] GameObject creamApplicationGuideline;
+    //[SerializeField] GameObject creamApplicationGuideline;
 
-    [SerializeField] GameObject creamApplicationDiagram;
+    //[SerializeField] GameObject creamApplicationDiagram;
     [SerializeField] GameObject nextSceneButton;
 
     [SerializeField] TMP_Text headerTextBox;
@@ -52,7 +52,7 @@ public class CreamSceneManager : MonoBehaviour
         //creamApplicationGuideline.SetActive(true);
         //creamApplicationDiagram.SetActive(false);
         //nextSceneButton.SetActive(false);
-        headerTextBox.text = "Measure the right amount of cream using the guideline below.\nKeep your palm open.";
+        headerTextBox.text = "Let's apply our facial cream.\nApply the cream by putting it on your hands and spreading it from the petal.";
         faceDetected = false;
         flowerSet = false;
         bigPetals = new List<GameObject>();
@@ -66,28 +66,6 @@ public class CreamSceneManager : MonoBehaviour
     {
         if (sceneState == SceneState.STATE_MEASURE)
         {
-            
-            if (hpm != null)
-            {
-                
-                GameObject[] temp = hpm.GetFacePointTransforms();
-                if (temp != null && temp.Length > 0) { 
-                    palmBase = temp[4];
-                }
-            }
-            if (palmBase != null)
-            {
-                palmDistance = (palmBase.transform.position.z - Camera.main.transform.position.z);
-                headerTextBox.text = palmDistance.ToString();
-                if (palmDistance > maxDistance)
-                {
-                    headerTextBox.text += "\nPlease move your hand closer.";
-                }
-                else if (palmDistance < minDistance)
-                {
-                    headerTextBox.text += "\nPlease move your hand further.";
-                }
-            }
             if (fpm != null)
             {
                 GameObject[] temp = fpm.GetFacePointTransforms();
@@ -152,9 +130,9 @@ public class CreamSceneManager : MonoBehaviour
     {
         handDetectionSolution.SetActive(false);
         handDetectionScreen.SetActive(false);
-        creamApplicationGuideline.SetActive(false);
+        //creamApplicationGuideline.SetActive(false);
 
-        creamApplicationDiagram.SetActive(true);
+        //creamApplicationDiagram.SetActive(true);
         nextSceneButton.SetActive(true);
     }
 }
