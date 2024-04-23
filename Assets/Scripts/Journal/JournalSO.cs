@@ -66,18 +66,18 @@ public class JournalSO : ScriptableObject
         }
     }
 
-    public IEnumerator TakePic(Texture pic)
+    public IEnumerator TakePic(RawImage pic)
     {
     yield return new WaitForEndOfFrame();
 
-    int width = pic.width;
-    int height = pic.height;
+    float width = pic.rectTransform.rect.width;
+    float height = pic.rectTransform.rect.width;
 
-    Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+    Texture2D screenshotTexture = new Texture2D((int)width, (int)height, TextureFormat.ARGB32, false);
     RenderTexture currentRT = RenderTexture.active;
 
-    RenderTexture renderTexture = new RenderTexture(pic.width, pic.height, 32);
-    Graphics.Blit(pic, renderTexture);
+    RenderTexture renderTexture = new RenderTexture((int)width, (int)height, 32);
+    Graphics.Blit(pic.texture, renderTexture);
 
     RenderTexture.active = renderTexture;
     screenshotTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
@@ -89,24 +89,24 @@ public class JournalSO : ScriptableObject
 
         picsTaken = screenshotTexture;
 
-        int sourceMipLevel = 0;
-        float avgV = 0;
-        Color32[] pixelArray = picsTaken.GetPixels32(sourceMipLevel);
+        //int sourceMipLevel = 0;
+        //float avgV = 0;
+        //Color32[] pixelArray = picsTaken.GetPixels32(sourceMipLevel);
 
-        for (int i = 0; i < pixels.Length; i++)
-        {
-            UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
-            avgV += v;
-        }
+        //for (int i = 0; i < pixels.Length; i++)
+        //{
+        //    UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
+        //    avgV += v;
+        //}
 
-        avgV /= picsTaken.width * picsTaken.height;
+        //avgV /= picsTaken.width * picsTaken.height;
 
-        Debug.Log("Debug" + avgV.ToString());
+        //Debug.Log("Debug" + avgV.ToString());
 
-        avgV = 0;
+        //avgV = 0;
 
-        Destroy(screenshotTexture);
-        Destroy(renderTexture);
+        //Destroy(screenshotTexture);
+        //Destroy(renderTexture);
     }
 
     public void ConfirmBeforePic()
@@ -127,7 +127,7 @@ public class JournalSO : ScriptableObject
         }
 
         DirectoryInfo info;
-        byte[] byteArray = picsTaken.EncodeToPNG();
+        byte[] byteArray = rotateTexture(picsTaken,true).EncodeToPNG();
         if (Application.platform == RuntimePlatform.Android)
         {
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (beforeCount + 1) + ".png", byteArray);
@@ -141,8 +141,6 @@ public class JournalSO : ScriptableObject
 
         beforeCount = info.GetFiles("*.png").Length;
         Debug.Log(beforeCount);
-        //picsTaken = null;
-        //Debug.Log(picsCount + 1);
     }
 
     public void ConfirmAfterPic()
@@ -165,7 +163,7 @@ public class JournalSO : ScriptableObject
         }
 
         DirectoryInfo info;
-        byte[] byteArray = picsTaken.EncodeToPNG();
+        byte[] byteArray = rotateTexture(picsTaken,true).EncodeToPNG();
         if (Application.platform == RuntimePlatform.Android)
         {
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + (afterCount + 1) + ".png", byteArray);
@@ -180,10 +178,33 @@ public class JournalSO : ScriptableObject
 
         afterCount = info.GetFiles("*.png").Length;
         Debug.Log(afterCount);
-
-        //picsTaken = null;
-        //Debug.Log(picsCount + 1);
     }
+
+    Texture2D rotateTexture(Texture2D originalTexture, bool clockwise)
+    {
+        Color32[] original = originalTexture.GetPixels32();
+        Color32[] rotated = new Color32[original.Length];
+        int w = originalTexture.width;
+        int h = originalTexture.height;
+
+        int iRotated, iOriginal;
+
+        for (int j = 0; j < h; ++j)
+        {
+            for (int i = 0; i < w; ++i)
+            {
+                iRotated = (i + 1) * h - j - 1;
+                iOriginal = clockwise ? original.Length - 1 - (j * w + i) : j * w + i;
+                rotated[iRotated] = original[iOriginal];
+            }
+        }
+
+        Texture2D rotatedTexture = new Texture2D(h, w);
+        rotatedTexture.SetPixels32(rotated);
+        rotatedTexture.Apply();
+        return rotatedTexture;
+    }
+
 
     public Texture GetPicCache()
     {
