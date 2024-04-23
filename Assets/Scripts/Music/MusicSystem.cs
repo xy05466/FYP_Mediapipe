@@ -6,9 +6,10 @@ public class MusicSystem : MonoBehaviour
 {
 
     //sound controller
-    [SerializeField]
-    private AudioClip soundClip; // Drag your audio clip here in the Unity editor
-    private AudioSource audioSource;
+    [HideInInspector]
+    public AudioClip soundClip; // Drag your audio clip here in the Unity editor
+    [HideInInspector]
+    public AudioSource audioSource;
     //Time
     private float clipLength;
     [SerializeField]

@@ -6,24 +6,30 @@ using System.Linq;
 public class CSVRhythmChartReader : MonoBehaviour
 {
     public RhythmChartSO rhythmChartSO;
-    
+    //public RhythmChartSO rhythmChartSO;
+
+    public void Start()
+    {
+        ReadRhythmChart();
+    }
     public void ReadRhythmChart()
     {
-        string[] data = rhythmChartSO.textAssetData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        
-        for(int i = 0; i < data.Length; i++)
+        string[] lines = rhythmChartSO.textAssetData.text.Split(new string[] { "\n" }, StringSplitOptions.None);
+
+        int curr = 0;
+        rhythmChartSO.noteChart.notes = new RhythmChartSO.Note[lines.Length - 2];
+        for (int i = 1; i < lines.Length - 1; i++)
         {
-            int curr = 0;
-            if (data[i] == "next")
-            {
-                //go next 
-                curr++;
-                return;
-            }
-            rhythmChartSO.noteChart.noteList[curr] = new RhythmChartSO.Note();
-            rhythmChartSO.noteChart.noteList[curr].id = int.Parse(data[3 * (i + 1)]);
-            rhythmChartSO.noteChart.noteList[curr].desc = data[3 * (i + 1) + 1];
-            rhythmChartSO.noteChart.noteList[curr].dialougeText = data[3 * (i + 1) + 2];
+            string[] data = lines[i].Split(",");
+            var notes = rhythmChartSO.noteChart.notes;
+            notes[curr] = new RhythmChartSO.Note();
+            notes[curr].index = int.Parse(data[0]);
+            notes[curr].presstime = float.Parse(data[1]);
+            notes[curr].x = float.Parse(data[2]);
+            notes[curr].y = float.Parse(data[3]);
+            notes[curr].nextIndex = int.Parse(data[4]);
+            curr++;
         }
     }
+
 }

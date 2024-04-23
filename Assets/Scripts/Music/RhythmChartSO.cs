@@ -5,18 +5,21 @@ using UnityEngine;
 public class RhythmChartSO : ScriptableObject
 {
     public TextAsset textAssetData;
+    public AudioClip song;
     [System.Serializable]
     public class Note
     {
-        public int id;
-        public string desc;
-        public string dialougeText;
+        public int index;
+        public float presstime;
+        public float x;
+        public float y;
+        public int nextIndex;
 
     }
     [System.Serializable]
     public class NoteChart
     {
-        public Note[] noteList;
+        public Note[] notes;
     }
 
     public NoteChart noteChart = new NoteChart();
