@@ -33,6 +33,7 @@ public class CreamSceneManager : MonoBehaviour
     List<int> rightCheekPoints = new List<int> { 111, 117, 118, 119, 120, 121, 47, 100, 101, 50, 123, 187, 205, 36, 142 };
     List<int> leftCheekPoints = new List<int>  { 340, 346, 347, 348, 349, 350, 277, 329, 330, 280, 352, 411, 425, 266, 371 };
     List<int> chinCheekPoints = new List<int>  { 212, 57, 202, 43, 204, 106, 194, 182, 201, 83, 18, 200, 313, 421, 406, 335, 424, 273, 422, 287, 432 };
+    List<List<int>> tempIntList;
 
     GameObject palmBase;
     float palmDistance;
@@ -46,6 +47,7 @@ public class CreamSceneManager : MonoBehaviour
     SceneState sceneState;
     private void Awake()
     {
+        tempIntList = new List<List<int>>() { foreheadPoints, leftCheekPoints, rightCheekPoints, chinCheekPoints };
         sceneState = SceneState.STATE_MEASURE;
         handDetectionSolution.SetActive(true);
         handDetectionScreen.SetActive(true);
@@ -63,18 +65,18 @@ public class CreamSceneManager : MonoBehaviour
         }
         foreach (int j in petalFaceLandmarks)
         {
-            GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)]);
+            GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
             newPetal.transform.localScale = new Vector3(10, 10, 10);
             newPetal.transform.localPosition = new Vector3(0, 0, -10);
             bigPetals.Add(newPetal);
         }
         // small petal init
-        List<List<int>> tempIntList = new List<List<int>>() { foreheadPoints, leftCheekPoints, rightCheekPoints, chinCheekPoints };
+        
         for (int i = 0; i < tempIntList.Count; ++i)
         {
             for (int j = 0; j  < tempIntList[i].Count; j++)
             {
-                GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)]);
+                GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
                 newPetal.transform.localScale = new Vector3(5, 5, 5);
                 newPetal.transform.localPosition = new Vector3(0, 0, -10);
                 smallPetals[i].Add(newPetal);
@@ -156,8 +158,32 @@ public class CreamSceneManager : MonoBehaviour
         //}
 
         // 1. Get Face Points
-
-        // 2. Place flowers at correct position.
+        if (fpm == null) return;
+        if (fpm.isActiveAndEnabled)
+        {
+            GameObject[] facepoints = fpm.GetFacePointTransforms();
+            if (facepoints != null)
+            {
+                if (facepoints.Length > 0)
+                {
+                    // 2. Place flowers at correct position.
+                    for (int h = 0; h < bigPetals.Count; ++h)
+                    {
+                        bigPetals[h].transform.position = facepoints[h].transform.position;
+                    }
+                    for (int i = 0; i < smallPetals.Count; ++i)
+                    {
+                        for (int j = 0; j < smallPetals[i].Count; ++j)
+                        {
+                            Vector3 nextFlowerPosition = facepoints[tempIntList[i][j]].transform.position;
+                            smallPetals[i][j].transform.position = nextFlowerPosition;
+                            //smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -10);
+                            Debug.Log(nextFlowerPosition.ToString());
+                        }
+                    }
+                }
+            }
+        }
 
     }
     public void CreamApplied()
