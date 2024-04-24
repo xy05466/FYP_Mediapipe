@@ -76,7 +76,7 @@ public class CreamSceneManager : MonoBehaviour
         {
             for (int j = 0; j  < tempIntList[i].Count; j++)
             {
-                GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
+                GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
                 newPetal.transform.localScale = new Vector3(5, 5, 5);
                 newPetal.transform.localPosition = new Vector3(0, 0, -10);
                 smallPetals[i].Add(newPetal);
@@ -177,7 +177,8 @@ public class CreamSceneManager : MonoBehaviour
                         {
                             Vector3 nextFlowerPosition = facepoints[tempIntList[i][j]].transform.position;
                             smallPetals[i][j].transform.position = nextFlowerPosition;
-                            //smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -10);
+                            //smallPetals[i][j].GetComponent<Rigidbody>().MovePosition(nextFlowerPosition);
+                            smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -10);
                             Debug.Log(nextFlowerPosition.ToString());
                         }
                     }
