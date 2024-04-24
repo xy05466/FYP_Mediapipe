@@ -29,10 +29,10 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] GameObject mainFlowerParent;
      
     // all points with small petal
-    List<int> foreheadPoints = new List<int>   { 0, 63,  68,  34, 103, 104, 105,  67,  69,  66, 109, 108, 107,  10, 151,   9, 338, 337, 336, 297, 299, 296, 332, 333, 334, 284, 298, 293 };
-    List<int> rightCheekPoints = new List<int> { 111, 117, 118, 119, 120, 121,  47, 100, 101,  50, 123, 187, 205,  36, 142 };
+    List<int> foreheadPoints = new List<int>   { 63, 68, 34, 103, 104, 105, 67, 69, 66, 109, 108, 107, 10, 151, 9, 338, 337, 336, 297, 299, 296, 332, 333, 334, 284, 298, 293 };
+    List<int> rightCheekPoints = new List<int> { 111, 117, 118, 119, 120, 121, 47, 100, 101, 50, 123, 187, 205, 36, 142 };
     List<int> leftCheekPoints = new List<int>  { 340, 346, 347, 348, 349, 350, 277, 329, 330, 280, 352, 411, 425, 266, 371 };
-    List<int> chinCheekPoints = new List<int>  { 212,  57, 202,  43, 204, 106, 194, 182, 201,  83,  18, 200, 313, 421, 406, 335, 424, 273, 422, 287, 432 };
+    List<int> chinCheekPoints = new List<int>  { 212, 57, 202, 43, 204, 106, 194, 182, 201, 83, 18, 200, 313, 421, 406, 335, 424, 273, 422, 287, 432 };
 
     GameObject palmBase;
     float palmDistance;
@@ -60,71 +60,105 @@ public class CreamSceneManager : MonoBehaviour
         for (int i = 0; i < 4; ++i)
         {
             smallPetals.Add(new List<GameObject>());
-        } 
+        }
+        foreach (int j in petalFaceLandmarks)
+        {
+            GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)]);
+            newPetal.transform.localScale = new Vector3(10, 10, 10);
+            newPetal.transform.localPosition = new Vector3(0, 0, -10);
+            bigPetals.Add(newPetal);
+        }
+        // small petal init
+        List<List<int>> tempIntList = new List<List<int>>() { foreheadPoints, leftCheekPoints, rightCheekPoints, chinCheekPoints };
+        for (int i = 0; i < tempIntList.Count; ++i)
+        {
+            for (int j = 0; j  < tempIntList[i].Count; j++)
+            {
+                GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)]);
+                newPetal.transform.localScale = new Vector3(5, 5, 5);
+                newPetal.transform.localPosition = new Vector3(0, 0, -10);
+                smallPetals[i].Add(newPetal);
+            }
+        }
     }
     private void Update()
     {
-        if (sceneState == SceneState.STATE_MEASURE)
-        {
-            if (fpm != null)
-            {
-                GameObject[] temp = fpm.GetFacePointTransforms();
-                if (temp != null && temp.Length > 0)
-                {
-                    if (!flowerSet)
-                    {
-                        foreach (int j in petalFaceLandmarks)
-                        {
-                            GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], temp[j].transform);
-                            newPetal.transform.localScale = new Vector3(10, 10, 10);
-                            newPetal.transform.localPosition = new Vector3(0, 0, -10);
-                            bigPetals.Add(newPetal);
-                        }
-                        foreach (int j in foreheadPoints)
-                        {
-                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
-                            newPetal.transform.localScale = new Vector3(5, 5, 5);
-                            newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
-                            smallPetals[0].Add(newPetal);
-                        }
-                        foreach (int j in leftCheekPoints)
-                        {
-                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
-                            newPetal.transform.localScale = new Vector3(5, 5, 5);
-                            newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
-                            smallPetals[1].Add(newPetal);
-                        }
-                        foreach (int j in rightCheekPoints)
-                        {
-                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
-                            newPetal.transform.localScale = new Vector3(5, 5, 5);
-                            newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
-                            smallPetals[2].Add(newPetal);
-                        }
-                        foreach (int j in chinCheekPoints)
-                        {
-                            GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
-                            newPetal.transform.localScale = new Vector3(5, 5, 5);
-                            newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
-                            smallPetals[3].Add(newPetal);
-                        }
-                        flowerSet = true;
-                    }
-                    else
-                    {
-                        List<List<int>> tempIntList = new List<List<int>>() { foreheadPoints, leftCheekPoints, rightCheekPoints, chinCheekPoints };
-                        for (int i = 0; i < tempIntList.Count; ++i)
-                        {
-                            for (int j = 0; j < smallPetals[i].Count; ++j)
-                            {
-                                smallPetals[i][j].transform.position = new Vector3(temp[tempIntList[i][j]].transform.position.x, temp[tempIntList[i][j]].transform.position.y, 0);
-                                smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, 0);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //if (sceneState == SceneState.STATE_MEASURE)
+        //{
+        //    if (fpm != null && fpm.isActiveAndEnabled)
+        //    {
+        //        GameObject[] temp = fpm.GetFacePointTransforms();
+        //        if (temp != null && temp.Length > 0)
+        //        {
+        //            Debug.Log(temp[0].transform.position.ToString());
+        //            if (!flowerSet)
+        //            {
+        //                foreach (int j in petalFaceLandmarks)
+        //                {
+        //                    GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], temp[j].transform);
+        //                    newPetal.transform.localScale = new Vector3(10, 10, 10);
+        //                    newPetal.transform.localPosition = new Vector3(0, 0, -10);
+        //                    bigPetals.Add(newPetal);
+        //                }
+        //                foreach (int j in foreheadPoints)
+        //                {
+        //                    GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
+        //                    newPetal.transform.localScale = new Vector3(5, 5, 5);
+        //                    newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
+        //                    smallPetals[0].Add(newPetal);
+        //                }
+        //                foreach (int j in leftCheekPoints)
+        //                {
+        //                    GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
+        //                    newPetal.transform.localScale = new Vector3(5, 5, 5);
+        //                    newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
+        //                    smallPetals[1].Add(newPetal);
+        //                }
+        //                foreach (int j in rightCheekPoints)
+        //                {
+        //                    GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
+        //                    newPetal.transform.localScale = new Vector3(5, 5, 5);
+        //                    newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
+        //                    smallPetals[2].Add(newPetal);
+        //                }
+        //                foreach (int j in chinCheekPoints)
+        //                {
+        //                    GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, smallPetalPrefabs.Count)], mainFlowerParent.transform);
+        //                    newPetal.transform.localScale = new Vector3(5, 5, 5);
+        //                    newPetal.transform.position = new Vector3(temp[j].transform.position.x, temp[j].transform.position.y, temp[j].transform.position.z);
+        //                    smallPetals[3].Add(newPetal);
+        //                }
+        //                flowerSet = true;
+        //            }
+        //            else
+        //            {
+        //                List<GameObject> testTemp = new List<GameObject>() { temp[0], temp[1], temp[2], temp[3] };
+        //                List<List<int>> tempIntList = new List<List<int>>() { foreheadPoints, leftCheekPoints, rightCheekPoints, chinCheekPoints };
+        //                for (int i = 0; i < tempIntList.Count; ++i)
+        //                {
+        //                    Debug.Log("testTemp is at " + i + testTemp[i].transform.position.ToString());
+        //                    for (int j = 0; j < smallPetals[i].Count; ++j)
+        //                    {
+
+        //                        //Debug.Log("smallPetals" + i + " " + j + "is " + tempIntList[i][j] + " with position " + temp[tempIntList[i][j]].transform.position.ToString());
+        //                        //bug: positions do not update if FPM becomes null and becomes un null again.
+        //                        smallPetals[i][j].transform.position = new Vector3(temp[tempIntList[i][j]].transform.position.x, temp[tempIntList[i][j]].transform.position.y, 0);
+        //                        smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, 0);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("fpm null! || !active");
+        //    }
+        //}
+
+        // 1. Get Face Points
+
+        // 2. Place flowers at correct position.
+
     }
     public void CreamApplied()
     {

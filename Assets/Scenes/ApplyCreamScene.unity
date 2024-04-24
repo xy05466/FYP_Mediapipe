@@ -1411,8 +1411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mfla: {fileID: 408683177}
-  indexesToStore: af000000390000001f01000081000000ca0000004b01000066010000cf000000ab010000930000007801000008000000370000001d010000690000004e010000460000002c010000450000002b0100000a000000
-  threshold: 10
+  indexesToStore: 
+  threshold: 1000
 --- !u!114 &408683177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,14 +1427,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 7477175687846711451, guid: f6dd9c8a084775945acaface7808b1d2,
     type: 3}
-  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 1}
+  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 0}
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
   _faceLandmarkRadius: 15
   _irisLandmarkRadius: 10
   _faceConnectionColor: {r: 1, g: 0, b: 0, a: 0}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
-  _faceConnectionWidth: 1
-  _irisCircleWidth: 1
+  _faceConnectionWidth: 0
+  _irisCircleWidth: 0
 --- !u!1 &418385561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,9 +2458,9 @@ MonoBehaviour:
     type: 3}
   _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 1}
   _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 1}
-  _landmarkRadius: 30
-  _connectionColor: {r: 1, g: 1, b: 1, a: 0.15686275}
-  _connectionWidth: 0.1
+  _landmarkRadius: 15
+  _connectionColor: {r: 0, g: 0, b: 0, a: 0}
+  _connectionWidth: 0
 --- !u!1 &799787419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,8 +3096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 5404176935574894484, guid: 9e4308c3e97d26a388364cbe0ea8bfb4,
     type: 3}
-  _lineWidth: 1
-  _keypointRadius: 15
+  _lineWidth: 0
+  _keypointRadius: 0
 --- !u!1 &1421252763
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,7 +3108,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1421252764}
   - component: {fileID: 1421252766}
-  - component: {fileID: 1421252765}
   m_Layer: 5
   m_Name: Accupoint Manager
   m_TagString: Untagged
@@ -3131,29 +3130,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 22464353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1421252765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421252763}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd6bd91ba8775e44b0e70be126f099e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _facepointManager: {fileID: 408683176}
-  accupointSOs:
-  - {fileID: 11400000, guid: f0be8e759a1722a43b6c42742d4f82de, type: 2}
-  steps: []
-  accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
-    type: 3}
-  parent: {fileID: 1421252763}
-  offset: {x: 0, y: 0, z: 0}
-  isAveraged: 1
-  lockedToZero: 0
-  numAccupointsLeft: 0
 --- !u!114 &1421252766
 MonoBehaviour:
   m_ObjectHideFlags: 0

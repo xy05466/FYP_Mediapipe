@@ -84,6 +84,10 @@ public class FacepointManager : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                Debug.Log("CheckOBJ null");
+            }
         }
     }
     /// <summary>
