@@ -76,11 +76,20 @@ public class RhythmGameController : MonoBehaviour
             //presstime to spawn 
             //positino to spawn 
             //next index
-            GameObject gameObject = Instantiate(notePrefab, Vector3.zero, Quaternion.identity);
-            gameObject.transform.SetParent(parent.transform);
-            gameObject.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
+            /*GameObject gameObject = *///Instantiate(notePrefab, Vector3.zero, Quaternion.identity).transform.SetParent(parent.transform);
+            //gameObject.transform.SetParent(parent.transform);
+            //gameObject.transform.set
+            //gameObject.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
             //newObject.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
             //Instantiate(notePrefab, new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0), Quaternion.identity, parent.transform);
+            //(Instantiate(notePrefab, new Vector3(notes[nextIndex].x, notes[nextIndex].y,0), Quaternion.identity) as GameObject).transform.parent = parent.transform;
+            Vector3 parentPosition = parent.transform.position; // Get the parent's position
+            Vector3 spawnPosition = Vector3.zero; // Set the position relative to the parent
+
+            // Adjust the spawn position relative to the parent's position
+            spawnPosition += parentPosition;
+
+            Instantiate(notePrefab, spawnPosition, Quaternion.identity).transform.SetParent(parent.transform);
         }
         else
         {
