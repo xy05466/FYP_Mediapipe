@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238496522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a486eb3af7bca42f6bb2383c732639be, type: 3}
   m_Name: 
@@ -3721,9 +3721,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
     type: 3}
-  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
-  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
-  _landmarkRadius: 0
+  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 1}
+  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 1}
+  _landmarkRadius: 25
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.1
 --- !u!114 &1968874158
