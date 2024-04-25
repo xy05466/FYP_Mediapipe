@@ -22,12 +22,15 @@ public class CSVRhythmChartReader : MonoBehaviour
         {
             string[] data = lines[i].Split(",");
             var notes = rhythmChartSO.noteChart.notes;
+            //init
             notes[curr] = new RhythmChartSO.Note();
+            //set data
             notes[curr].index = int.Parse(data[0]);
             notes[curr].presstime = float.Parse(data[1]);
             notes[curr].x = float.Parse(data[2]);
             notes[curr].y = float.Parse(data[3]);
             notes[curr].nextIndex = int.Parse(data[4]);
+            //go to next note
             curr++;
         }
     }

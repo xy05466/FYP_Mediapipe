@@ -70,32 +70,41 @@ public class RhythmGameController : MonoBehaviour
     {
         var notes = rhythmChartSO.noteChart.notes;
         int localNextIndex = notes[nextIndex].nextIndex;
-        if(localNextIndex == -1)
+        if(localNextIndex == -1) 
         {
-            //run code for note
-            //presstime to spawn 
-            //positino to spawn 
-            //next index
-            /*GameObject gameObject = *///Instantiate(notePrefab, Vector3.zero, Quaternion.identity).transform.SetParent(parent.transform);
-            //gameObject.transform.SetParent(parent.transform);
-            //gameObject.transform.set
-            //gameObject.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
-            //newObject.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
-            //Instantiate(notePrefab, new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0), Quaternion.identity, parent.transform);
-            //(Instantiate(notePrefab, new Vector3(notes[nextIndex].x, notes[nextIndex].y,0), Quaternion.identity) as GameObject).transform.parent = parent.transform;
-            Vector3 parentPosition = parent.transform.position; // Get the parent's position
-            Vector3 spawnPosition = Vector3.zero; // Set the position relative to the parent
-
-            // Adjust the spawn position relative to the parent's position
-            spawnPosition += parentPosition;
-
-            Instantiate(notePrefab, spawnPosition, Quaternion.identity).transform.SetParent(parent.transform);
+            GameObject newNote = Instantiate(notePrefab, parent.transform);
+            newNote.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
+            AccupointNote accNote = newNote.GetComponent<AccupointNote>();
+            accNote.index = nextIndex;
         }
-        else
+        else//this means it is a slider 
         {
+            //make a list for the way points
+            RhythmChartSO.NoteChart points2Store =new RhythmChartSO.NoteChart();
+            points2Store.notes = new RhythmChartSO.Note[5];
+            addData2Store(points2Store, 0);
+            for(var i = 0;i < points2Store.notes.Length - 1; i++)
+                Debug.Log(points2Store.notes[i].index);
+            //data is now stored in this list and you can edit it
             
         }
     }   
+    private void addData2Store(RhythmChartSO.NoteChart points2Store, int currStore)
+    {
+        var notes = rhythmChartSO.noteChart.notes;
+        //init the points to store
+        points2Store.notes[currStore] = new RhythmChartSO.Note();
+        //set data
+        points2Store.notes[currStore] = notes[nextIndex];
+        if (points2Store.notes[currStore].nextIndex == -1)
+            return;
+        else
+        {
+            currStore++;
+            nextIndex++;
+            addData2Store(points2Store, currStore);
+        }
+    }
     public void OnNotePress()
     {
         var notes = rhythmChartSO.noteChart.notes;

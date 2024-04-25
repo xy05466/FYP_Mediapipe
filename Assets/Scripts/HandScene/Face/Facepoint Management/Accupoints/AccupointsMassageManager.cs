@@ -14,7 +14,7 @@ public class AccupointsMassageManager : MonoBehaviour
     GameObject instance;
     [SerializeField] private Vector3 offset = Vector3.zero;
     private bool isAveraged = true;
-    private bool lockedToZero = false;
+    private bool lockedToZero = true;
     private int index = 0;
 
     int lastActivated, justActivated;
@@ -135,9 +135,7 @@ public class AccupointsMassageManager : MonoBehaviour
     {
         lastActivated = justActivated;
         justActivated = order;
-        
-        
-        
+          
         if (lastActivated == justActivated - 1)
             return;
         else

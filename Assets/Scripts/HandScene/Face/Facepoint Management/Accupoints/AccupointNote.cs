@@ -6,7 +6,7 @@ public class AccupointNote : MonoBehaviour//this whole thing can ask from paul
 {
     //ring closing 
     //neeed to compare spawn time and ideal time
-    int index;
+    public int index;
     //time pressed
     public delegate void OnRhythmPress();
     // Declare a delegate variable

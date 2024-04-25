@@ -13,7 +13,7 @@ public class AccupointAnchorManager : MonoBehaviour
     [HideInInspector] public GameObject accupoint;
     [SerializeField] private Vector3 offset = Vector3.zero;
     private bool isAveraged = true;
-    private bool lockedToZero = false;
+    private bool lockedToZero = true;
 
     private void Start()
     {

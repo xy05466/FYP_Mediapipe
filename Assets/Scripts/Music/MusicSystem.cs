@@ -43,7 +43,7 @@ public class MusicSystem : MonoBehaviour
         }
         if (audioSource.isPlaying)
         {
-            Debug.Log(audioSource.time + " / " + clipLength);
+            //Debug.Log(audioSource.time + " / " + clipLength);
             if (!DebugMode)
                 return;
             text_Time.text = ConvertSecondsToMinutes((int)audioSource.time) + " / " + ConvertSecondsToMinutes((int)clipLength);
