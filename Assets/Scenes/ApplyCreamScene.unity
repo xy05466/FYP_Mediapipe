@@ -3723,7 +3723,7 @@ MonoBehaviour:
     type: 3}
   _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 1}
   _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 1}
-  _landmarkRadius: 25
+  _landmarkRadius: 50
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.1
 --- !u!114 &1968874158
