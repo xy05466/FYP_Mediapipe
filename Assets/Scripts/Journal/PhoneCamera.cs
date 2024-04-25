@@ -31,6 +31,9 @@ public class PhoneCamera : MonoBehaviour
     public RawImage picResult;
     public AspectRatioFitter fit;
     public TMP_Text brightnessTxt;
+    public UnityEngine.UI.Button albumButton;
+    public UnityEngine.UI.Button creamButton;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -67,7 +70,18 @@ public class PhoneCamera : MonoBehaviour
                 backCam = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
             }
         }
-        
+
+        if (journalSO.GetHasCaptured())
+        {
+            albumButton.enabled = true;
+            creamButton.enabled = false;
+        }
+        else
+        {
+            albumButton.enabled = false;
+            creamButton.enabled = true;
+        }
+
         backCam.Play();
         background.texture = backCam;
         camAvailable = true;
@@ -140,6 +154,7 @@ public class PhoneCamera : MonoBehaviour
     public void StartSetPic()
     {
         StartCoroutine(SetPic());
+        gameManager.GetComponent<AudioManager>().Play("CamCapture");
     }
 
     IEnumerator SetPic()
@@ -147,6 +162,7 @@ public class PhoneCamera : MonoBehaviour
         //picTaken = (Texture2D)background.texture;
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         ShowPic();
+        gameManager.GetComponent<AudioManager>().Play("Ding");
     }
 
 
