@@ -6,10 +6,14 @@ public class FlowerAccupoint : MonoBehaviour
 {
     [SerializeField] GameObject slicedPetal;
     [SerializeField] GameObject pps;
+    public bool collided = false;
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Handpoint"))
+        {
             slicedPetal.SetActive(true);
+            collided = true;
+        }
     }
     private void Update()
     {

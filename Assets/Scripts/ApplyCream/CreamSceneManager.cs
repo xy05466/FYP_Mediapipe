@@ -51,7 +51,6 @@ public class CreamSceneManager : MonoBehaviour
         sceneState = SceneState.STATE_MEASURE;
         handDetectionSolution.SetActive(true);
         handDetectionScreen.SetActive(true);
-        headerTextBox.text = "Let's apply our facial cream.\nApply the cream by putting it on your hands and spreading it from the petal.";
         faceDetected = false;
         flowerSet = false;
         bigPetals = new List<GameObject>();
@@ -63,7 +62,7 @@ public class CreamSceneManager : MonoBehaviour
         foreach (int j in petalFaceLandmarks)
         {
             GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
-            newPetal.transform.localScale = new Vector3(10, 10, 10);
+            newPetal.transform.localScale = new Vector3(25, 25, 25);
             newPetal.transform.localPosition = new Vector3(0, 0, -10);
             bigPetals.Add(newPetal);
         }
@@ -74,7 +73,7 @@ public class CreamSceneManager : MonoBehaviour
             for (int j = 0; j  < tempIntList[i].Count; j++)
             {
                 GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
-                newPetal.transform.localScale = new Vector3(5, 5, 5);
+                newPetal.transform.localScale = new Vector3(10, 10, 10);
                 newPetal.transform.localPosition = new Vector3(0, 0, -10);
                 smallPetals[i].Add(newPetal);
             }
@@ -82,6 +81,15 @@ public class CreamSceneManager : MonoBehaviour
     }
     private void Update()
     {
+        int counter = 0;
+        if (hpm == null)
+        {
+            headerTextBox.text = "Let's apply our facial cream.\nApply the cream by putting it on your hands and spreading it from the petal.\nNo hand detected!";
+        }
+        else
+        {
+            headerTextBox.text = "Let's apply our facial cream.\nApply the cream by putting it on your hands and spreading it from the petal.";
+        }
         // 1. Get Face Points
         if (fpm == null) return;
         if (fpm.isActiveAndEnabled)
@@ -104,10 +112,23 @@ public class CreamSceneManager : MonoBehaviour
                             Vector3 nextFlowerPosition = facepoints[tempIntList[i][j]].transform.position;
                             smallPetals[i][j].transform.position = nextFlowerPosition;
                             smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -1);
+                            FlowerAccupoint flowerAccupoint = smallPetals[i][j].GetComponentInChildren<FlowerAccupoint>();
+                            if (flowerAccupoint != null)
+                            {
+                                if (flowerAccupoint.collided)
+                                {
+                                    counter++;
+                                    Debug.Log(counter);
+                                }
+                            }
                         }
                     }
                 }
             }
+        }
+        if (Mathf.Abs(counter - (foreheadPoints.Count + rightCheekPoints.Count + leftCheekPoints.Count + chinCheekPoints.Count)) < 25)
+        {
+            nextSceneButton.SetActive(true);
         }
     }
     public void CreamApplied()
