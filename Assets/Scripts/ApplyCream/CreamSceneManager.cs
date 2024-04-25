@@ -94,7 +94,8 @@ public class CreamSceneManager : MonoBehaviour
                     // 2. Place flowers at correct position.
                     for (int h = 0; h < bigPetals.Count; ++h)
                     {
-                        bigPetals[h].transform.position = facepoints[h].transform.position;
+                        bigPetals[h].transform.position = facepoints[petalFaceLandmarks[h]].transform.position;
+                        bigPetals[h].transform.localPosition = new Vector3(bigPetals[h].transform.localPosition.x, bigPetals[h].transform.localPosition.y, -10);
                     }
                     for (int i = 0; i < smallPetals.Count; ++i)
                     {
