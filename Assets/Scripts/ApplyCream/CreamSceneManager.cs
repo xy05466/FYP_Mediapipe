@@ -177,9 +177,10 @@ public class CreamSceneManager : MonoBehaviour
                         {
                             Vector3 nextFlowerPosition = facepoints[tempIntList[i][j]].transform.position;
                             smallPetals[i][j].transform.position = nextFlowerPosition;
+                            smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -1);
                             //smallPetals[i][j].GetComponent<Rigidbody>().MovePosition(nextFlowerPosition);
-                            smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -10);
-                            Debug.Log(nextFlowerPosition.ToString());
+                            // smallPetals[i][j].transform.localPosition = new Vector3(smallPetals[i][j].transform.localPosition.x, smallPetals[i][j].transform.localPosition.y, -10);
+                            //Debug.Log(nextFlowerPosition.ToString());
                         }
                     }
                 }

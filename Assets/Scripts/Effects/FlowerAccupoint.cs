@@ -6,7 +6,7 @@ public class FlowerAccupoint : MonoBehaviour
 {
     [SerializeField] GameObject slicedPetal;
     [SerializeField] GameObject pps;
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggernter(Collision collision)
     {
         slicedPetal.SetActive(true);
     }
