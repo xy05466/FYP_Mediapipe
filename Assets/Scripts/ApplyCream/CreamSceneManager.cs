@@ -51,9 +51,6 @@ public class CreamSceneManager : MonoBehaviour
         sceneState = SceneState.STATE_MEASURE;
         handDetectionSolution.SetActive(true);
         handDetectionScreen.SetActive(true);
-        //creamApplicationGuideline.SetActive(true);
-        //creamApplicationDiagram.SetActive(false);
-        //nextSceneButton.SetActive(false);
         headerTextBox.text = "Let's apply our facial cream.\nApply the cream by putting it on your hands and spreading it from the petal.";
         faceDetected = false;
         flowerSet = false;
