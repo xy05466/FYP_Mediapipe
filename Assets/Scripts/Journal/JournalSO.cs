@@ -155,9 +155,6 @@ public class JournalSO : ScriptableObject
     {
     yield return new WaitForEndOfFrame();
 
-    float width = pic.rectTransform.rect.width;
-    float height = pic.rectTransform.rect.height;
-
     int width = pic.width;
     int height = pic.height;
 
@@ -236,7 +233,7 @@ public class JournalSO : ScriptableObject
             info = new DirectoryInfo(Application.dataPath + "/BeforeAlbum");
         }
 
-        beforeCount = info.GetFiles("*.png").Length;
+        beforeCount = beforeCount++;
         Debug.Log(beforeCount);
         //picsTaken = null;
         //Debug.Log(picsCount + 1);
@@ -275,7 +272,8 @@ public class JournalSO : ScriptableObject
             info = new DirectoryInfo(Application.dataPath + "/AfterAlbum");
         }
 
-        afterCount = info.GetFiles("*.png").Length;
+        //afterCount = info.GetFiles("*.png").Length;
+        afterCount = afterCount++;
         Debug.Log(afterCount);
 
         //picsTaken = null;

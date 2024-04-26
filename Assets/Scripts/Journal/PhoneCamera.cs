@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Mediapipe;
-using Mediapipe.Unity;
 using TMPro;
-using UnityEngine.Rendering;
 using System.IO;
-using UnityEditor;
-using static Unity.VisualScripting.Member;
-using UnityEngine.UIElements;
-using Mediapipe.Unity.Sample;
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -25,10 +18,6 @@ public class PhoneCamera : MonoBehaviour
     private List<WebCamTexture> cameras;
     private Texture defaultBackground;
     private string msg;
-    private int imageCount;
-    private Texture2D texture2D;
-    float h, s, v;
-    float avgH, avgS, avgV;
 
     public TMP_Text text;
     public RawImage background;
@@ -37,7 +26,7 @@ public class PhoneCamera : MonoBehaviour
     public TMP_Text brightnessTxt;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
-    public GameManager gameManager;
+    public GameObject audioManager;
 
     private void Start()
     {
@@ -50,7 +39,7 @@ public class PhoneCamera : MonoBehaviour
         cameras = new List<WebCamTexture>();
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
-        imageCount = journalSO.GetBeforeCount();
+        //imageCount = journalSO.GetBeforeCount();
 
         if (devices.Length < 1)
         {
@@ -75,13 +64,13 @@ public class PhoneCamera : MonoBehaviour
 
         if (journalSO.GetHasCaptured())
         {
-            albumButton.enabled = true;
-            creamButton.enabled = false;
+            albumButton.gameObject.SetActive(true);
+            creamButton.gameObject.SetActive(false);
         }
         else
         {
-            albumButton.enabled = false;
-            creamButton.enabled = true;
+            albumButton.gameObject.SetActive(false);
+            creamButton.gameObject.SetActive(true);
         }
 
         backCam.Play();
@@ -113,28 +102,28 @@ public class PhoneCamera : MonoBehaviour
     //    StartCoroutine(BrightnessCheck());
     //}
 
-    private void BrightnessCheck()
-    {
-        Graphics.ConvertTexture(background.texture, texture2D);
+    //private void BrightnessCheck()
+    //{
+    //    Graphics.ConvertTexture(background.texture, texture2D);
 
-        for (int i = 0; i < texture2D.width; i++)
-        {
-            for (int j = 0; j < texture2D.height; j++)
-            {
-                UnityEngine.Color pixel = texture2D.GetPixel(i, j);
-                UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
-                avgH += h;
-                avgS += s;
-                avgV += v;
-            }
-        }
+    //    for (int i = 0; i < texture2D.width; i++)
+    //    {
+    //        for (int j = 0; j < texture2D.height; j++)
+    //        {
+    //            UnityEngine.Color pixel = texture2D.GetPixel(i, j);
+    //            UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
+    //            avgH += h;
+    //            avgS += s;
+    //            avgV += v;
+    //        }
+    //    }
 
-        //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
-        //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
-        //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
+    //    //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
+    //    //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
+    //    //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
 
-        brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
-    }
+    //    brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
+    //}
 
     public void ChangeFrontCam()
     {
@@ -154,7 +143,7 @@ public class PhoneCamera : MonoBehaviour
 
     public void StartSetPic()
     {
-        gameManager.GetComponent<AudioManager>().Play("CamCapture");
+        audioManager.GetComponent<AudioManager>().Play("CamCapture");
         StartCoroutine(SetPic());
     }
 
@@ -163,7 +152,7 @@ public class PhoneCamera : MonoBehaviour
         //picTaken = (Texture2D)background.texture;
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         ShowPic();
-        gameManager.GetComponent<AudioManager>().Play("Ding");
+        audioManager.GetComponent<AudioManager>().Play("Ding");
     }
 
 

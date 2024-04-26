@@ -2227,8 +2227,6 @@ GameObject:
   - component: {fileID: 850704532}
   - component: {fileID: 850704531}
   - component: {fileID: 850704533}
-  - component: {fileID: 850704534}
-  - component: {fileID: 850704535}
   m_Layer: 0
   m_Name: CreamSceneManager
   m_TagString: Untagged
@@ -2251,13 +2249,16 @@ MonoBehaviour:
   hpm: {fileID: 850704533}
   handDetectionSolution: {fileID: 238496522}
   handDetectionScreen: {fileID: 730962611}
-  creamApplicationGuideline: {fileID: 474860171}
-  creamApplicationDiagram: {fileID: 1821541318}
   nextSceneButton: {fileID: 302429383}
   headerTextBox: {fileID: 626487616}
   idealDistance: 2
   minDistance: 85
   maxDistance: 95
+  fpm: {fileID: 0}
+  petalFaceLandmarks: 
+  bigPetalPrefabs: []
+  smallPetalPrefabs: []
+  mainFlowerParent: {fileID: 0}
 --- !u!4 &850704532
 Transform:
   m_ObjectHideFlags: 0
@@ -2288,58 +2289,6 @@ MonoBehaviour:
   _mhla: {fileID: 1968874157}
   indexesToStore: 
   threshold: 50
---- !u!114 &850704534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850704530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf299bb7f71e6334d9fe5652e27d8d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkPic: {fileID: 730962615}
-  brightnessTxt: {fileID: 1347934568}
-  brightnessSprite: {fileID: 1340811365}
---- !u!114 &850704535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850704530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24f90d9c008dcd4baa6e747cb64552c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: CamCapture
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: 3cba12d486a119c44afedb574e53cd7a, type: 3}
-    volume: 1
-    loop: 0
-    pitch: 1
-  - name: Ding
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: 60d1d770e2d36604bbefa33d56884135, type: 3}
-    volume: 0.8
-    loop: 0
-    pitch: 1
-  - name: PlantsRustling
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: ec7c15da9768ad74eb7ae9533af245f8, type: 3}
-    volume: 0.8
-    loop: 0
-    pitch: 1
-  - name: Sparkle
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: 5ef7ac4c1cdb29b429afa35d326f617a, type: 3}
-    volume: 0.8
-    loop: 0
-    pitch: 1
 --- !u!1 &852839576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,7 +2823,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2933,9 +2882,112 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675.4, y: 61.4}
+  m_AnchoredPosition: {x: -508.8, y: 61.4}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1417385058
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 284501310406540382, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: checkPic
+      value: 
+      objectReference: {fileID: 730962615}
+    - target: {fileID: 284501310406540382, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: brightnessTxt
+      value: 
+      objectReference: {fileID: 1347934568}
+    - target: {fileID: 284501310406540382, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: brightnessSprite
+      value: 
+      objectReference: {fileID: 1340811365}
+    - target: {fileID: 4974200730388891165, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974200730388891165, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: sounds.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974200730388891165, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974200730388891165, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072737801543307008, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_Name
+      value: LightChecker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.390001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 80.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251124708285213764, guid: bab31126f9ac3bf42904c255381ede90,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bab31126f9ac3bf42904c255381ede90, type: 3}
 --- !u!1 &1732931939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,3 +3850,4 @@ SceneRoots:
   - {fileID: 2051002409}
   - {fileID: 850704532}
   - {fileID: 170511370}
+  - {fileID: 1417385058}

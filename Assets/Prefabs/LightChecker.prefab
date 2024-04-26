@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8072737801543307008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8251124708285213764}
+  - component: {fileID: 284501310406540382}
+  - component: {fileID: 4974200730388891165}
+  m_Layer: 0
+  m_Name: LightChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8251124708285213764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072737801543307008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.390001, y: 39.32, z: 80.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284501310406540382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072737801543307008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf299bb7f71e6334d9fe5652e27d8d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPic: {fileID: 0}
+  brightnessTxt: {fileID: 0}
+  brightnessSprite: {fileID: 0}
+--- !u!114 &4974200730388891165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072737801543307008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57420ad84c270774f8527220c9e110a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Sparkle
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 5ef7ac4c1cdb29b429afa35d326f617a, type: 3}
+    volume: 1
+    loop: 0
+    pitch: 0
+  - name: PlantsRustling
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: ec7c15da9768ad74eb7ae9533af245f8, type: 3}
+    volume: 1
+    loop: 0
+    pitch: 0

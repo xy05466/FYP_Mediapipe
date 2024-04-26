@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
 
 public class LightChecker : MonoBehaviour
 {
@@ -14,7 +13,6 @@ public class LightChecker : MonoBehaviour
     public GameObject brightnessSprite;
     private float waitTime = 2.0f;
     private float timer = 0.0f;
-    private Animator animator;
 
     // Update is called once per frame
     void Update()
