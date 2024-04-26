@@ -67,6 +67,10 @@ public class JournalManager : MonoBehaviour
             renderedTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.width), 0, 0);
         }
 
+        //renderedTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.width), 0, 0);
+
+
+
         RenderTexture.active = null;
 
         byte[] byteArray = renderedTexture.EncodeToPNG();
@@ -102,13 +106,18 @@ public class JournalManager : MonoBehaviour
         Texture2D picTaken = new Texture2D((int)picResult.rectTransform.rect.x, (int)picResult.rectTransform.rect.y);
         picTaken.LoadImage(byteArray);
         //journalSO.SetDayPics(picTaken);
+        
 
         canvas.worldCamera = camera0;
-
-        Destroy(screenTexture);
-        Destroy(renderedTexture);
-        Destroy(picTaken);
-
         //System.IO.File.WriteAllBytes(Application.dataPath + "/cameracapture.png", byteArray);
     }
+  
+    //public void SetDayOnePic()
+    //{
+    //    //picTaken = (Texture2D)background.texture;
+    //    StartCoroutine(journalSO.TakePic(background.texture));
+    //    imageCount++;
+    //    PlayerPrefs.SetInt("imageCount", imageCount);
+    //}
+
 }

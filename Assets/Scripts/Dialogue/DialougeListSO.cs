@@ -5,7 +5,6 @@ using UnityEngine;
 public class DialougeListSO : ScriptableObject
 {
     public TextAsset textAssetData;
-    public int numHeaders;
     [System.Serializable]
     public class Dialouge
     {

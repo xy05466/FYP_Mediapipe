@@ -30,15 +30,15 @@ public class CSVReader : MonoBehaviour
             data[i] = data[i].Replace("\"", "");
         }
 
-        int tableSize = data.Length / dialougeListSO.numHeaders - 1;
+        int tableSize = data.Length / 3 - 1;
         dialougeListSO.dialougeList.dialouge = new DialougeListSO.Dialouge[tableSize];
     
         for(int i = 0; i < tableSize; i++)
         {
             dialougeListSO.dialougeList.dialouge[i] = new DialougeListSO.Dialouge();
-            dialougeListSO.dialougeList.dialouge[i].id = int.Parse(data[dialougeListSO.numHeaders * (i + 1)]);
-            dialougeListSO.dialougeList.dialouge[i].desc = data[dialougeListSO.numHeaders * (i + 1) + 1];
-            dialougeListSO.dialougeList.dialouge[i].dialougeText = data[dialougeListSO.numHeaders * (i + 1) + 2];
+            dialougeListSO.dialougeList.dialouge[i].id = int.Parse(data[3 * (i + 1)]);
+            dialougeListSO.dialougeList.dialouge[i].desc = data[3 * (i + 1) + 1];
+            dialougeListSO.dialougeList.dialouge[i].dialougeText = data[3 * (i + 1) + 2];
         }
     }
 }

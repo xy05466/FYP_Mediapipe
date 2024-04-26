@@ -93,63 +93,65 @@ public class AccupointManager : MonoBehaviour
 
     private void Update()
     {
-       
-        if (steps[currentStep].x != -1 && !nextX)
+        if (steps.Count > 0)
         {
-            GameObject currentPoint = accupoints[(int)steps[currentStep].x];
-            if (!currentPoint.activeInHierarchy)
+            if (steps[currentStep].x != -1 && !nextX)
             {
-                if (currentPoint.GetComponent<Accupoint>().timer < 3)
+                GameObject currentPoint = accupoints[(int)steps[currentStep].x];
+                if (!currentPoint.activeInHierarchy)
                 {
-                    Debug.Log("xtrue");
-                    currentPoint.SetActive(true);
+                    if (currentPoint.GetComponent<Accupoint>().timer < 3)
+                    {
+                        Debug.Log("xtrue");
+                        currentPoint.SetActive(true);
+                    }
+                    else
+                        nextX = true;
                 }
-                else
-                    nextX = true;
             }
-        }
-        else
-        {
-            nextX = true;
-        }
-        if (steps[currentStep].y != -1 && !nextY)
-        {
-            GameObject currentPoint = accupoints[(int)steps[currentStep].y];
-            if (!currentPoint.activeInHierarchy)
+            else
             {
-                if (currentPoint.GetComponent<Accupoint>().timer < 3)
+                nextX = true;
+            }
+            if (steps[currentStep].y != -1 && !nextY)
+            {
+                GameObject currentPoint = accupoints[(int)steps[currentStep].y];
+                if (!currentPoint.activeInHierarchy)
                 {
-                    Debug.Log("ytrue");
-                    currentPoint.SetActive(true);
+                    if (currentPoint.GetComponent<Accupoint>().timer < 3)
+                    {
+                        Debug.Log("ytrue");
+                        currentPoint.SetActive(true);
+                    }
+                    else
+                        nextY = true;
                 }
-                else
-                    nextY = true;
             }
-        }
-        else
-        {
-            nextY = true;
-        }
-        //int counter = 0;
-        foreach (GameObject obj in accupoints)
-        {
-            if (obj.activeInHierarchy)
+            else
             {
-                //Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
-                int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
-                positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
-                obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
-                if (lockedToZero)
-                    obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
-                //counter++;
+                nextY = true;
             }
+            //int counter = 0;
+            foreach (GameObject obj in accupoints)
+            {
+                if (obj.activeInHierarchy)
+                {
+                    //Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
+                    int nextAccupoint = obj.GetComponent<Accupoint>().GetData().landmarkIndex;
+                    positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
+                    obj.transform.position = Reposition(positions, lockedToZero, isAveraged);
+                    if (lockedToZero)
+                        obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
+                    //counter++;
+                }
+            }
+            if (nextX && nextY)
+            {
+                currentStep++;
+                nextX = false;
+                nextY = false;
+            }
+            numAccupointsLeft = currentStep;//counter;
         }
-        if (nextX && nextY)
-        {
-            currentStep++;
-            nextX = false;
-            nextY = false;
-        }
-        numAccupointsLeft = currentStep;//counter;
     }
 }

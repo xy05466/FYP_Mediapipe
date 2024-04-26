@@ -6,6 +6,7 @@ public class Accupoint : MonoBehaviour
 {
     public float maxTimer = 3.0f;
     public bool popped;
+    public bool colliding;
     [SerializeField] AccupointSO accupointData;
     public float timer;
     Material mat;
@@ -60,9 +61,16 @@ public class Accupoint : MonoBehaviour
             //gameObject.SetActive(false);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        colliding = true;
+    }
     private void OnCollisionStay(Collision collision)
     {
         timer += Time.deltaTime;
     }
-
+    private void OnCollisionExit(Collision collision)
+    {
+        colliding = false;
+    }
 }
