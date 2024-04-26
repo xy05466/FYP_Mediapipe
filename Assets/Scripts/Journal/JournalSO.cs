@@ -71,7 +71,7 @@ public class JournalSO : ScriptableObject
     yield return new WaitForEndOfFrame();
 
     float width = pic.rectTransform.rect.width;
-    float height = pic.rectTransform.rect.width;
+    float height = pic.rectTransform.rect.height;
 
     Texture2D screenshotTexture = new Texture2D((int)width, (int)height, TextureFormat.ARGB32, false);
     RenderTexture currentRT = RenderTexture.active;
@@ -83,7 +83,7 @@ public class JournalSO : ScriptableObject
     screenshotTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
     screenshotTexture.Apply();
 
-    Color[] pixels = screenshotTexture.GetPixels();
+    //Color[] pixels = screenshotTexture.GetPixels();
 
     RenderTexture.active = currentRT;
 
@@ -105,8 +105,8 @@ public class JournalSO : ScriptableObject
 
         //avgV = 0;
 
-        //Destroy(screenshotTexture);
-        //Destroy(renderTexture);
+       //Destroy(screenshotTexture);
+        Destroy(renderTexture);
     }
 
     public void ConfirmBeforePic()
@@ -213,12 +213,6 @@ public class JournalSO : ScriptableObject
 
     public Texture GetBeforeAlbum(int n)
     {
-
-        //Debug.Log("getpic");
-
-        //dayOnePic = new Texture2D(pic.height,pic.width);
-        //int imageCount = PlayerPrefs.GetInt("imageCount");
-
         string fileLocation;
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -257,8 +251,6 @@ public class JournalSO : ScriptableObject
         byte[] imageData = new byte[fs.Length];
         fs.Read(imageData, 0, (int)fs.Length);
         picToLoad.LoadImage(imageData);
-
-        
 
         return (picToLoad);
     }    

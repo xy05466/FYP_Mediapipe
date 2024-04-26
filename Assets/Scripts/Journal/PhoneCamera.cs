@@ -10,10 +10,12 @@ using System.IO;
 using UnityEditor;
 using static Unity.VisualScripting.Member;
 using UnityEngine.UIElements;
+using Mediapipe.Unity.Sample;
 
 public class PhoneCamera : MonoBehaviour
 {
     [SerializeField] private JournalSO journalSO;
+    [SerializeField] protected Mediapipe.Unity.Screen screen;
 
     private Texture2D picTaken;
     private bool camAvailable;
@@ -39,8 +41,8 @@ public class PhoneCamera : MonoBehaviour
 
     public TMP_Text text;
     public RawImage background;
+    public RawImage preview;
     public RawImage picResult;
-    public AspectRatioFitter fit;
     public TMP_Text brightnessTxt;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
@@ -49,7 +51,7 @@ public class PhoneCamera : MonoBehaviour
     private void Start()
     {
         journalSO.Initialize();
-
+        
         Debug.Log("DebugBefore" + journalSO.GetBeforeCount());
         Debug.Log("DebugAfter" + journalSO.GetAfterCount());
         Debug.Log("Debug" + journalSO.GetHasCaptured());
@@ -57,7 +59,6 @@ public class PhoneCamera : MonoBehaviour
         cameras = new List<WebCamTexture>();
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
-        //PlayerPrefs.SetInt("imageCount", 0);
         imageCount = journalSO.GetBeforeCount();
 
         if (devices.Length < 1)
@@ -94,7 +95,10 @@ public class PhoneCamera : MonoBehaviour
 
         backCam.Play();
         background.texture = backCam;
-        camAvailable = true;        
+        
+        background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
+        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
+        camAvailable = true;
     }
     private void Update()
     {
@@ -102,8 +106,6 @@ public class PhoneCamera : MonoBehaviour
         {
             return;
         }
-        //float ratio = (float)backCam.width * (1 / (float)backCam.height);
-        //fit.aspectRatio = ratio;
 
         float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
 
@@ -113,17 +115,6 @@ public class PhoneCamera : MonoBehaviour
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
 
         picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
-
-        //timer += Time.deltaTime;
-
-        //// Check if we have reached beyond 2 seconds.
-        //// Subtracting two is more accurate over time than resetting to zero.
-        //if (timer > waitTime)
-        //{
-        //    BrightnessCheck(background.texture);
-        //    // Remove the recorded 2 seconds.
-        //    timer = timer - waitTime;
-        //}
     }
 
     //private void BrightnessCheck(Texture bg)
