@@ -6,16 +6,15 @@ using System;
 
 public class AccupointsMassageManager : MonoBehaviour
 {
-    [SerializeField] FacepointManager _facepointManager;
+    [SerializeField] FacepointManager_Jaden _facepointManager;
     [SerializeField] List<AccSOListList>  accupointSOs;
     [SerializeField] GameObject accupointPrefab;
     GameObject parent;
     ListOfLists<GameObject> accupointsListLists;
     GameObject instance;
     [SerializeField] private Vector3 offset = Vector3.zero;
-    [SerializeField] private bool isAveraged = true;
-    [SerializeField] private bool lockedToZero = false;
-    public int numAccupointsLeft;
+    private bool isAveraged = true;
+    private bool lockedToZero = true;
     private int index = 0;
 
     int lastActivated, justActivated;
@@ -136,9 +135,7 @@ public class AccupointsMassageManager : MonoBehaviour
     {
         lastActivated = justActivated;
         justActivated = order;
-        
-        
-        
+          
         if (lastActivated == justActivated - 1)
             return;
         else

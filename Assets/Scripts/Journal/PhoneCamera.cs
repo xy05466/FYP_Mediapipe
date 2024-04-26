@@ -8,8 +8,6 @@ using TMPro;
 using UnityEngine.Rendering;
 using System.IO;
 using UnityEditor;
-using static Unity.VisualScripting.Member;
-using UnityEngine.UIElements;
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -25,16 +23,7 @@ public class PhoneCamera : MonoBehaviour
     private string msg;
     private int imageCount;
     private Texture2D texture2D;
-    private Texture2D checkPic;
-
-    private float waitTime = 2.0f;
-    private float timer = 0.0f;
-
-    private int width, height;
-
-    float r, g, b;
     float h, s, v;
-    float avgG, avgR, avgB;
     float avgH, avgS, avgV;
 
     public TMP_Text text;
@@ -49,6 +38,7 @@ public class PhoneCamera : MonoBehaviour
     private void Start()
     {
         journalSO.Initialize();
+
 
         Debug.Log("DebugBefore" + journalSO.GetBeforeCount());
         Debug.Log("DebugAfter" + journalSO.GetAfterCount());
@@ -94,7 +84,9 @@ public class PhoneCamera : MonoBehaviour
 
         backCam.Play();
         background.texture = backCam;
-        camAvailable = true;        
+        camAvailable = true;
+
+        texture2D = new Texture2D(background.texture.width, background.texture.height);
     }
     private void Update()
     {
@@ -102,8 +94,8 @@ public class PhoneCamera : MonoBehaviour
         {
             return;
         }
-        //float ratio = (float)backCam.width * (1 / (float)backCam.height);
-        //fit.aspectRatio = ratio;
+        float ratio = (float)backCam.width * (1 / (float)backCam.height);
+        fit.aspectRatio = ratio;
 
         float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
 
@@ -112,67 +104,36 @@ public class PhoneCamera : MonoBehaviour
         int orient = -backCam.videoRotationAngle;
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
 
-        picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
-
-        //timer += Time.deltaTime;
-
-        //// Check if we have reached beyond 2 seconds.
-        //// Subtracting two is more accurate over time than resetting to zero.
-        //if (timer > waitTime)
-        //{
-        //    BrightnessCheck(background.texture);
-        //    // Remove the recorded 2 seconds.
-        //    timer = timer - waitTime;
-        //}
+        //InvokeRepeating("BrightnessCheck", 3f, 5f);
     }
 
-    //private void BrightnessCheck(Texture bg)
+    //private void StartBrightnessCheck()
     //{
-    //    int width = bg.width;
-    //    int height = bg.height;
-
-    //    Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-    //    RenderTexture currentRT = RenderTexture.active;
-
-    //    RenderTexture renderTexture = new RenderTexture(width, height, 32);
-    //    Graphics.Blit(bg, renderTexture);
-
-    //    RenderTexture.active = renderTexture;
-    //    screenshotTexture.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-    //    screenshotTexture.Apply();
-
-    //    UnityEngine.Color[] pixels = screenshotTexture.GetPixels();
-
-    //    RenderTexture.active = currentRT;
-
-    //    checkPic = screenshotTexture;
-
-    //    int sourceMipLevel = 0;
-    //    float avgV = 0;
-    //    Color32[] pixelArray = checkPic.GetPixels32(sourceMipLevel);
-
-    //    for (int i = 0; i < pixels.Length; i++)
-    //    {
-    //        UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
-    //        avgV += v;
-    //    }
-
-    //    avgV /= checkPic.width * checkPic.height;
-
-    //    if (avgV > 0.45f)
-    //    {
-    //        brightnessTxt.text = "just right " + avgV.ToString();
-    //    }
-    //    else
-    //    {
-    //        brightnessTxt.text = "too dark " + avgV.ToString();
-    //    }
-
-    //    avgV = 0;
-
-    //    Destroy(screenshotTexture);
-    //    Destroy(renderTexture);
+    //    StartCoroutine(BrightnessCheck());
     //}
+
+    private void BrightnessCheck()
+    {
+        Graphics.ConvertTexture(background.texture, texture2D);
+
+        for (int i = 0; i < texture2D.width; i++)
+        {
+            for (int j = 0; j < texture2D.height; j++)
+            {
+                UnityEngine.Color pixel = texture2D.GetPixel(i, j);
+                UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
+                avgH += h;
+                avgS += s;
+                avgV += v;
+            }
+        }
+
+        //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
+        //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
+        //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
+
+        brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
+    }
 
     public void ChangeFrontCam()
     {
@@ -199,11 +160,11 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator SetPic()
     {
         //picTaken = (Texture2D)background.texture;
-        yield return StartCoroutine(journalSO.TakePic(background));
-        //BrightnessCheck(background.texture);
+        yield return StartCoroutine(journalSO.TakePic(background.texture));
         ShowPic();
         gameManager.GetComponent<AudioManager>().Play("Ding");
     }
+
 
     public void ConfirmPic()
     {
