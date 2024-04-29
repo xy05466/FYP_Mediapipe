@@ -11,20 +11,29 @@ public class AlbumManager : MonoBehaviour
 
     public TMP_Text journalDayTxt;
     public TMP_Text journalEntryTxt;
+    public Slider compareSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         journalSO.Initialize();
-        Debug.Log("AlbumBeforeDebug" + journalSO.GetBeforeCount().ToString());
-        Debug.Log("AlbumAfterDebug" + journalSO.GetAfterCount().ToString());
-        Debug.Log("AlbumDebug" + journalSO.GetHasCaptured());
+        //Debug.Log("AlbumBeforeDebug" + journalSO.GetBeforeCount().ToString());
+        //Debug.Log("AlbumAfterDebug" + journalSO.GetAfterCount().ToString());
+        //Debug.Log("AlbumDebug" + journalSO.GetHasCaptured());
         ShowPics();
+
+        Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
+
+        if (journalSO.GetAfterCount() > 0)
+        { 
+            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetAfterAlbum(1).width, journalSO.GetAfterAlbum(1).height * 2); 
+        }
+        
+        Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
     }
 
     public void ShowPics()
     {
-
         int imageCount = journalSO.GetAfterCount();
         Debug.Log(imageCount);
 

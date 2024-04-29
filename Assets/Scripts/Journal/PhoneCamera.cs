@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Mediapipe;
-using Mediapipe.Unity;
 using TMPro;
-using UnityEngine.Rendering;
 using System.IO;
-using UnityEditor;
 
 public class PhoneCamera : MonoBehaviour
 {
     [SerializeField] private JournalSO journalSO;
+    [SerializeField] protected Mediapipe.Unity.Screen screen;
 
     private Texture2D picTaken;
     private bool camAvailable;
@@ -21,25 +18,20 @@ public class PhoneCamera : MonoBehaviour
     private List<WebCamTexture> cameras;
     private Texture defaultBackground;
     private string msg;
-    private int imageCount;
-    private Texture2D texture2D;
-    float h, s, v;
-    float avgH, avgS, avgV;
 
     public TMP_Text text;
     public RawImage background;
+    public RawImage preview;
     public RawImage picResult;
-    public AspectRatioFitter fit;
     public TMP_Text brightnessTxt;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
-    public GameManager gameManager;
+    public GameObject audioManager;
 
     private void Start()
     {
         journalSO.Initialize();
-
-
+        
         Debug.Log("DebugBefore" + journalSO.GetBeforeCount());
         Debug.Log("DebugAfter" + journalSO.GetAfterCount());
         Debug.Log("Debug" + journalSO.GetHasCaptured());
@@ -47,8 +39,7 @@ public class PhoneCamera : MonoBehaviour
         cameras = new List<WebCamTexture>();
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
-        //PlayerPrefs.SetInt("imageCount", 0);
-        imageCount = journalSO.GetBeforeCount();
+        //imageCount = journalSO.GetBeforeCount();
 
         if (devices.Length < 1)
         {
@@ -73,20 +64,21 @@ public class PhoneCamera : MonoBehaviour
 
         if (journalSO.GetHasCaptured())
         {
-            albumButton.enabled = true;
-            creamButton.enabled = false;
+            albumButton.gameObject.SetActive(true);
+            creamButton.gameObject.SetActive(false);
         }
         else
         {
-            albumButton.enabled = false;
-            creamButton.enabled = true;
+            albumButton.gameObject.SetActive(false);
+            creamButton.gameObject.SetActive(true);
         }
 
         backCam.Play();
         background.texture = backCam;
+        
+        background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
+        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
         camAvailable = true;
-
-        texture2D = new Texture2D(background.texture.width, background.texture.height);
     }
     private void Update()
     {
@@ -94,8 +86,6 @@ public class PhoneCamera : MonoBehaviour
         {
             return;
         }
-        float ratio = (float)backCam.width * (1 / (float)backCam.height);
-        fit.aspectRatio = ratio;
 
         float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
 
@@ -104,7 +94,7 @@ public class PhoneCamera : MonoBehaviour
         int orient = -backCam.videoRotationAngle;
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
 
-        //InvokeRepeating("BrightnessCheck", 3f, 5f);
+        picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
     }
 
     //private void StartBrightnessCheck()
@@ -112,28 +102,28 @@ public class PhoneCamera : MonoBehaviour
     //    StartCoroutine(BrightnessCheck());
     //}
 
-    private void BrightnessCheck()
-    {
-        Graphics.ConvertTexture(background.texture, texture2D);
+    //private void BrightnessCheck()
+    //{
+    //    Graphics.ConvertTexture(background.texture, texture2D);
 
-        for (int i = 0; i < texture2D.width; i++)
-        {
-            for (int j = 0; j < texture2D.height; j++)
-            {
-                UnityEngine.Color pixel = texture2D.GetPixel(i, j);
-                UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
-                avgH += h;
-                avgS += s;
-                avgV += v;
-            }
-        }
+    //    for (int i = 0; i < texture2D.width; i++)
+    //    {
+    //        for (int j = 0; j < texture2D.height; j++)
+    //        {
+    //            UnityEngine.Color pixel = texture2D.GetPixel(i, j);
+    //            UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
+    //            avgH += h;
+    //            avgS += s;
+    //            avgV += v;
+    //        }
+    //    }
 
-        //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
-        //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
-        //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
+    //    //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
+    //    //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
+    //    //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
 
-        brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
-    }
+    //    brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
+    //}
 
     public void ChangeFrontCam()
     {
@@ -153,8 +143,8 @@ public class PhoneCamera : MonoBehaviour
 
     public void StartSetPic()
     {
+        audioManager.GetComponent<AudioManager>().Play("CamCapture");
         StartCoroutine(SetPic());
-        gameManager.GetComponent<AudioManager>().Play("CamCapture");
     }
 
     IEnumerator SetPic()
@@ -162,7 +152,7 @@ public class PhoneCamera : MonoBehaviour
         //picTaken = (Texture2D)background.texture;
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         ShowPic();
-        gameManager.GetComponent<AudioManager>().Play("Ding");
+        audioManager.GetComponent<AudioManager>().Play("Ding");
     }
 
 
