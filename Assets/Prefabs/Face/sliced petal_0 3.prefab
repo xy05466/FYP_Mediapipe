@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slicedPetal: {fileID: 5119072154225682187}
   pps: {fileID: 0}
+  collided: 0
 --- !u!54 &4189740462906516830
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,5 +265,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.385
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}

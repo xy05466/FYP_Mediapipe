@@ -125,11 +125,11 @@ public class CreamSceneManager : MonoBehaviour
                             FlowerAccupoint flowerAccupoint = smallPetals[i][j].GetComponentInChildren<FlowerAccupoint>();
                             if (noseDistance > minThreshold)
                             {
-                                smallPetals[i][j].transform.localScale = new Vector3(15, 15, 15);
+                                smallPetals[i][j].transform.localScale = new Vector3(10, 10, 10);
                             }
                             else
                             {
-                                smallPetals[i][j].transform.localScale = new Vector3(10, 10, 10);
+                                smallPetals[i][j].transform.localScale = new Vector3(12, 12, 12);
                             }
                             if (flowerAccupoint != null)
                             {
