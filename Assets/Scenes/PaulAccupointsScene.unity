@@ -1504,7 +1504,7 @@ GameObject:
   - component: {fileID: 589609674}
   - component: {fileID: 589609673}
   m_Layer: 0
-  m_Name: ApplyCream
+  m_Name: Massage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1583,7 +1583,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ApplyCreamScene
+          m_StringArgument: JadenMassaageScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &589609674
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ApplyCream
+  m_text: Massage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

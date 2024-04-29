@@ -4,8 +4,10 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+using Mediapipe.Unity.Experimental;
 using System.Collections;
 using UnityEngine;
+using UnityEngineInternal;
 
 namespace Mediapipe.Unity.Sample
 {
@@ -106,5 +108,9 @@ namespace Mediapipe.Unity.Sample
 
       return bootstrapObj.GetComponent<Bootstrap>();
     }
-  }
+        private void OnDestroy()
+        {
+            Stop();
+        }
+    }
 }

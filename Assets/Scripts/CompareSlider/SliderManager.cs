@@ -57,12 +57,9 @@ public class SliderManager : MonoBehaviour
 
         byte[] beforeImageData = new byte[beforeFs.Length];
         beforeFs.Read(beforeImageData, 0, (int)beforeFs.Length);
-        Texture2D beforePic = new Texture2D(1920, 1080, TextureFormat.RGBA32, false);
+        Texture2D beforePic = new Texture2D(1080, 1920, TextureFormat.RGBA32, false);
         beforePic.LoadImage(beforeImageData);
         Sprite beforeSprite = Sprite.Create(beforePic, new Rect(0, 0, beforePic.width, beforePic.height), new Vector2(0.5f, 0.0f), 100.0f);
-
-        sliderFill.GetComponent<Image>().sprite = beforeSprite;
-
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -76,11 +73,12 @@ public class SliderManager : MonoBehaviour
 
         byte[] afterImageData = new byte[afterFs.Length];
         afterFs.Read(afterImageData, 0, (int)afterFs.Length);
-        Texture2D afterPic = new Texture2D(1920, 1080, TextureFormat.RGBA32, false);
+        Texture2D afterPic = new Texture2D(1080, 1920, TextureFormat.RGBA32, false);
         afterPic.LoadImage(afterImageData);
         Sprite afterSprite = Sprite.Create(afterPic, new Rect(0, 0, afterPic.width, afterPic.height), new Vector2(0.5f, 0.0f), 100.0f);
-
-        sliderBG.GetComponent<Image>().sprite = afterSprite;
+        
+        sliderBG.GetComponent<Image>().sprite = beforeSprite;
+        sliderFill.GetComponent<Image>().sprite = afterSprite;
     }
 
 }
