@@ -11,8 +11,13 @@ public class FlowerAccupoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Handpoint"))
         {
-            slicedPetal.SetActive(true);
-            collided = true;
+            if (!collided)
+            {
+                slicedPetal.SetActive(true);
+                collided = true;
+                GameObject newParticleSystem = Instantiate(pps, transform);
+                Destroy(newParticleSystem, 3);
+            }
         }
     }
     private void Update()

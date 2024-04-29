@@ -29,6 +29,7 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
 
     protected override IEnumerator Run()
     {
+      config.NumHands = 2;
       Debug.Log($"Delegate = {config.Delegate}");
       Debug.Log($"Running Mode = {config.RunningMode}");
       Debug.Log($"NumHands = {config.NumHands}");

@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 339700711, guid: e57b6cd62400eba43b24c13790005c0e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -926219543, guid: 61d9a076db2e14249a68f76bfb5c3f5c, type: 3}
+  m_Color: {r: 1, g: 0.5529412, b: 0.72156864, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -159,8 +159,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 684910752, guid: e57b6cd62400eba43b24c13790005c0e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -926219543, guid: 61d9a076db2e14249a68f76bfb5c3f5c, type: 3}
+  m_Color: {r: 1, g: 0.5529412, b: 0.72156864, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slicedPetal: {fileID: 5119072154225682187}
-  pps: {fileID: 0}
+  pps: {fileID: 694825140520790300, guid: 16ffdabc1f5237b4f962d9de93ad96ec, type: 3}
   collided: 0
 --- !u!54 &4189740462906516830
 Rigidbody:
