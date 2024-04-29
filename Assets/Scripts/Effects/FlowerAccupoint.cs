@@ -18,7 +18,7 @@ public class FlowerAccupoint : MonoBehaviour
                 GameObject newParticleSystem = Instantiate(pps, transform);
                 Destroy(newParticleSystem, 3);
             }
-        }
+        } 
     }
     private void Update()
     {
