@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class LightChecker : MonoBehaviour
 {
     public RawImage checkPic;
     public TMP_Text brightnessTxt;
-    public GameObject brightnessSprite;
+    public Image brightnessImage;
+    public Sprite rightImage;
+    public Sprite darkImage;
     private float waitTime = 2.0f;
     private float timer = 0.0f;
+
+    public GameManager gameManager;
 
     // Update is called once per frame
     void Update()
@@ -55,32 +57,14 @@ public class LightChecker : MonoBehaviour
             if (avgV > 0.45f)
             {
                 brightnessTxt.text = "just right " + avgV.ToString();
-
-                if (!brightnessSprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("RoseBloom"))
-                {
-                    brightnessSprite.GetComponent<Animator>().Play("RoseBloom");
-                }
-                
-                
-                if (!this.GetComponent<AudioManager>().IsPlaying("Sparkle"))
-                {
-                    this.GetComponent<AudioManager>().Stop("PlantsRustling");
-                    this.GetComponent<AudioManager>().Play("Sparkle");
-                }
+                brightnessImage.sprite = rightImage;
+                gameManager.GetComponent<AudioManager>().Play("Sparkle");
             }
             else
             {
                 brightnessTxt.text = "too dark " + avgV.ToString();
-
-                if (!brightnessSprite.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("RoseClose"))
-                {
-                    brightnessSprite.GetComponent<Animator>().Play("RoseClose");
-                }
-                if (!this.GetComponent<AudioManager>().IsPlaying("PlantsRustling"))
-                {
-                    this.GetComponent<AudioManager>().Stop("Sparkle");
-                    this.GetComponent<AudioManager>().Play("PlantsRustling");
-                }
+                brightnessImage.sprite = darkImage;
+                gameManager.GetComponent<AudioManager>().Play("PlantsRustling");
             }
 
             avgV = 0;

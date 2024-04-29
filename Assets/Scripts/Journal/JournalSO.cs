@@ -155,6 +155,7 @@ public class JournalSO : ScriptableObject
     {
     yield return new WaitForEndOfFrame();
 
+
     int width = pic.width;
     int height = pic.height;
 
@@ -168,7 +169,7 @@ public class JournalSO : ScriptableObject
     screenshotTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
     screenshotTexture.Apply();
 
-    //Color[] pixels = screenshotTexture.GetPixels();
+    Color[] pixels = screenshotTexture.GetPixels();
 
     RenderTexture.active = currentRT;
 
@@ -193,14 +194,6 @@ public class JournalSO : ScriptableObject
     //    Debug.Log(dayPics.Count);
         //Debug.Log(dayPics.Last());
 
-        //avgV /= picsTaken.width * picsTaken.height;
-
-        //Debug.Log("Debug" + avgV.ToString());
-
-        //avgV = 0;
-
-       //Destroy(screenshotTexture);
-        Destroy(renderTexture);
     }
 
     public void ConfirmBeforePic()
@@ -233,7 +226,7 @@ public class JournalSO : ScriptableObject
             info = new DirectoryInfo(Application.dataPath + "/BeforeAlbum");
         }
 
-        beforeCount = beforeCount++;
+        beforeCount = info.GetFiles("*.png").Length;
         Debug.Log(beforeCount);
         //picsTaken = null;
         //Debug.Log(picsCount + 1);
@@ -272,8 +265,7 @@ public class JournalSO : ScriptableObject
             info = new DirectoryInfo(Application.dataPath + "/AfterAlbum");
         }
 
-        //afterCount = info.GetFiles("*.png").Length;
-        afterCount = afterCount++;
+        afterCount = info.GetFiles("*.png").Length;
         Debug.Log(afterCount);
 
         //picsTaken = null;
@@ -287,6 +279,12 @@ public class JournalSO : ScriptableObject
 
     public Texture GetBeforeAlbum(int n)
     {
+
+        //Debug.Log("getpic");
+
+        //dayOnePic = new Texture2D(pic.height,pic.width);
+        //int imageCount = PlayerPrefs.GetInt("imageCount");
+
         string fileLocation;
         if (Application.platform == RuntimePlatform.Android)
         {
