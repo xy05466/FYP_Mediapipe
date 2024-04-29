@@ -22,31 +22,33 @@ public class AlbumManager : MonoBehaviour
         //Debug.Log("AlbumDebug" + journalSO.GetHasCaptured());
         ShowPics();
 
-        Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
+        //Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
 
         if (journalSO.GetAfterCount() > 0)
         { 
-            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetAfterAlbum(1).width, journalSO.GetAfterAlbum(1).height * 2); 
+            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetBeforeAlbum(1).width, journalSO.GetBeforeAlbum(1).height * 2); 
         }
         
-        Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
+        //Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
     }
 
     public void ShowPics()
     {
         int imageCount = journalSO.GetAfterCount();
-        Debug.Log(imageCount);
+        //Debug.Log(imageCount);
 
         for (int i = imageCount; i > 0; i--)
         {
-            Debug.Log(imageCount);
-            Debug.Log(pics.Count);
-            if (i >= pics.Count)
+            //Debug.Log(imageCount);
+            //Debug.Log(pics.Count);
+            if (imageCount >= 8 && i == 2)
             {
                 break;
             }
 
             pics[i - 1].texture = journalSO.GetAfterAlbum(i);
+            
+            //Debug.Log(i);
         }
 
     }
@@ -57,4 +59,8 @@ public class AlbumManager : MonoBehaviour
         journalDayTxt.text = "Day " + journalSO.GetDayNum(n).ToString();
     }
 
+    public void ResetCapture()
+    {
+        journalSO.SetHasCaptured(false);
+    }
 }

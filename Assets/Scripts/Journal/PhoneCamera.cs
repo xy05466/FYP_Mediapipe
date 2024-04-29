@@ -73,11 +73,18 @@ public class PhoneCamera : MonoBehaviour
             creamButton.gameObject.SetActive(true);
         }
 
+        if (cameras.Count > 1) 
+        { 
+            backCam = cameras[1]; 
+        }
+       
+
         backCam.Play();
         background.texture = backCam;
         
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
         preview.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
+        //Debug.Log("Debug" + backCam.width + backCam.height);
         camAvailable = true;
     }
     private void Update()
@@ -95,6 +102,15 @@ public class PhoneCamera : MonoBehaviour
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
 
         picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
+
+        if (cameras.Count > 1)
+        {
+            if (backCam == cameras[1])
+            {
+                background.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
+                picResult.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
+            }
+        }
     }
 
     //private void StartBrightnessCheck()
@@ -150,9 +166,13 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator SetPic()
     {
         //picTaken = (Texture2D)background.texture;
+        background.rectTransform.localEulerAngles = new Vector3(0, 0, -90);
+        Debug.Log("Debug" + background.rectTransform.localEulerAngles.z);
         yield return StartCoroutine(journalSO.TakePic(background.texture));
+        //Debug.Log("Debug" + background.rectTransform.rotation);
         ShowPic();
         audioManager.GetComponent<AudioManager>().Play("Ding");
+        
     }
 
 
@@ -172,6 +192,7 @@ public class PhoneCamera : MonoBehaviour
             Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
             Debug.Log("Debug" + journalSO.GetHasCaptured());
         }
+        
     }
     public void ShowPic()
     {
