@@ -253,6 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTimer: 3
+  popped: 0
+  colliding: 0
   accupointData: {fileID: 0}
   timer: 0
   colors:
@@ -272,6 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTimer: 3
+  popped: 0
+  colliding: 0
   accupointData: {fileID: 0}
   timer: 0
   colors:
@@ -293,3 +297,4 @@ MonoBehaviour:
   shrinkingSwirl: {fileID: 3019160371880976835}
   growingSwirl: {fileID: 3306520170404866127, guid: 716a9bbf41b09fe45863b7503bc8ac88,
     type: 3}
+  closingSpeedMult: 1
