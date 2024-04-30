@@ -67,12 +67,20 @@ public class LightChecker : MonoBehaviour
             if (avgV > 0.475f && !audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
             {
                 brightnessTxt.text = "just right " + avgV.ToString();
-                audio.GetComponent<AudioManager>().Play("Sparkle");
+
+                if (!audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
+                {
+                    audio.GetComponent<AudioManager>().Play("Sparkle");
+                }
             }
             else if (avgV <= 0.475f && !audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
             {
                 brightnessTxt.text = "too dark " + avgV.ToString();
-                audio.GetComponent<AudioManager>().Play("PlantsRustling");
+                
+                if (!audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
+                {
+                    audio.GetComponent<AudioManager>().Play("PlantsRustling");
+                }
             }
 
             avgV = 0;
