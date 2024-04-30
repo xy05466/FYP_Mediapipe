@@ -7,10 +7,15 @@ public class AccupointEffectsController : MonoBehaviour
 {
     [SerializeField] GameObject shrinkingSwirl;
     [SerializeField] GameObject growingSwirl;
+    [SerializeField] float closingSpeedMult;
     Accupoint accupoint;
     private void Awake()
     {
         accupoint = GetComponent<Accupoint>();
+    }
+    public void SetClosingSpeed(float newSpeed)
+    {
+        closingSpeedMult = newSpeed;
     }
     private void Update()
     {
@@ -24,7 +29,9 @@ public class AccupointEffectsController : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (accupoint.timer < accupoint.maxTimer)
-            shrinkingSwirl.transform.localScale += new Vector3(-Time.deltaTime, -Time.deltaTime, -Time.deltaTime);
+        if (accupoint.timer < accupoint.maxTimer && Mathf.Abs(gameObject.transform.localScale.z - 0) > float.Epsilon)
+        {
+            shrinkingSwirl.transform.localScale += new Vector3(-Time.deltaTime * closingSpeedMult, -Time.deltaTime * closingSpeedMult, -Time.deltaTime * closingSpeedMult);
+        }
     }
 }
