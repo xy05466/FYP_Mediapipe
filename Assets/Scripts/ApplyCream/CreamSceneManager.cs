@@ -27,7 +27,6 @@ public class CreamSceneManager : MonoBehaviour
     List<GameObject> bigPetals;
     List<List<GameObject>> smallPetals;
     [SerializeField] GameObject mainFlowerParent;
-    [SerializeField] float minThreshold = 88.3f;
      
     // all points with small petal
     List<int> foreheadPoints = new List<int>   { 63, 68, 34, 103, 104, 105, 67, 69, 66, 109, 108, 107, 10, 151, 9, 338, 337, 336, 297, 299, 296, 332, 333, 334, 284, 298, 293 };
@@ -36,9 +35,10 @@ public class CreamSceneManager : MonoBehaviour
     List<int> chinCheekPoints = new List<int>  { 212, 57, 202, 43, 204, 106, 194, 182, 201, 83, 18, 200, 313, 421, 406, 335, 424, 273, 422, 287, 432 };
     List<List<int>> tempIntList;
 
-    GameObject nosePointRef;
-    bool noseSet;
-    float noseDistance;
+    GameObject palmBase;
+    float palmDistance;
+    bool faceDetected;
+    bool flowerSet;
     enum SceneState
     {
         STATE_MEASURE,
@@ -51,7 +51,8 @@ public class CreamSceneManager : MonoBehaviour
         sceneState = SceneState.STATE_MEASURE;
         handDetectionSolution.SetActive(true);
         handDetectionScreen.SetActive(true);
-        noseSet = false;
+        faceDetected = false;
+        flowerSet = false;
         bigPetals = new List<GameObject>();
         smallPetals = new List<List<GameObject>>();
         for (int i = 0; i < 4; ++i)
@@ -94,21 +95,10 @@ public class CreamSceneManager : MonoBehaviour
         if (fpm.isActiveAndEnabled)
         {
             GameObject[] facepoints = fpm.GetFacePointTransforms();
-           
             if (facepoints != null)
             {
                 if (facepoints.Length > 0)
                 {
-                    if (!noseSet)
-                    {
-                        nosePointRef = facepoints[4];
-                        noseSet = true;
-                    }
-                    else
-                    {
-                        noseDistance = nosePointRef.transform.position.z;
-                        headerTextBox.text = "Face distance: " + noseDistance;
-                    }
                     // 2. Place flowers at correct position.
                     for (int h = 0; h < bigPetals.Count; ++h)
                     {
@@ -136,7 +126,7 @@ public class CreamSceneManager : MonoBehaviour
                                 if (flowerAccupoint.collided)
                                 {
                                     counter++;
-                                    //Debug.Log(counter);
+                                    Debug.Log(counter);
                                 }
                             }
                         }
