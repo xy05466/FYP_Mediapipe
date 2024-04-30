@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7494012009318271017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6129734475068485740}
+  - component: {fileID: 3000863870270999767}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6129734475068485740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494012009318271017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.596691, y: -47.202744, z: 227.9701}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3000863870270999767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494012009318271017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57420ad84c270774f8527220c9e110a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Sparkle
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 5ef7ac4c1cdb29b429afa35d326f617a, type: 3}
+    volume: 0.8
+    loop: 0
+    pitch: 1
+  - name: PlantsRustling
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: ec7c15da9768ad74eb7ae9533af245f8, type: 3}
+    volume: 0.8
+    loop: 0
+    pitch: 1
+  - name: CamCapture
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3cba12d486a119c44afedb574e53cd7a, type: 3}
+    volume: 1
+    loop: 0
+    pitch: 1
+  - name: Ding
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 60d1d770e2d36604bbefa33d56884135, type: 3}
+    volume: 0.8
+    loop: 0
+    pitch: 1

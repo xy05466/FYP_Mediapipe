@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8251124708285213764}
   - component: {fileID: 284501310406540382}
-  - component: {fileID: 4974200730388891165}
   m_Layer: 0
   m_Name: LightChecker
   m_TagString: Untagged
@@ -48,28 +47,4 @@ MonoBehaviour:
   checkPic: {fileID: 0}
   brightnessTxt: {fileID: 0}
   brightnessSprite: {fileID: 0}
---- !u!114 &4974200730388891165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8072737801543307008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57420ad84c270774f8527220c9e110a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Sparkle
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: 5ef7ac4c1cdb29b429afa35d326f617a, type: 3}
-    volume: 1
-    loop: 0
-    pitch: 0
-  - name: PlantsRustling
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: ec7c15da9768ad74eb7ae9533af245f8, type: 3}
-    volume: 1
-    loop: 0
-    pitch: 0
+  gameManager: {fileID: 0}

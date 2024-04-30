@@ -8,13 +8,19 @@ public class LightChecker : MonoBehaviour
 {
     public RawImage checkPic;
     public TMP_Text brightnessTxt;
-    public Image brightnessImage;
-    public Sprite rightImage;
-    public Sprite darkImage;
-    private float waitTime = 2.0f;
+    public GameObject brightnessSprite;
+    private float waitTime = 3.0f;
     private float timer = 0.0f;
 
-    public GameManager gameManager;
+    public GameObject audio;
+    private AnimatorStateInfo animState;
+    private Animator anim;
+    //private Animation anim;
+
+    private void Start()
+    {
+        anim = brightnessSprite.GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,17 +60,19 @@ public class LightChecker : MonoBehaviour
 
             avgV /= tex.width * tex.height;
 
-            if (avgV > 0.475f)
+
+            anim.Play("rosebloom", 0 , avgV * 1.25f);
+
+
+            if (avgV > 0.475f && !audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
             {
                 brightnessTxt.text = "just right " + avgV.ToString();
-                brightnessImage.sprite = rightImage;
-                gameManager.GetComponent<AudioManager>().Play("Sparkle");
+                audio.GetComponent<AudioManager>().Play("Sparkle");
             }
-            else
+            else if (avgV <= 0.475f && !audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
             {
                 brightnessTxt.text = "too dark " + avgV.ToString();
-                brightnessImage.sprite = darkImage;
-                gameManager.GetComponent<AudioManager>().Play("PlantsRustling");
+                audio.GetComponent<AudioManager>().Play("PlantsRustling");
             }
 
             avgV = 0;

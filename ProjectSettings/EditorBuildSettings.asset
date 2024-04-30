@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 1aa528a4484b3b142b4dc183070debc3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/QuizScene.unity
     guid: cb2f9dfb786383d4793773ba0edeb64f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CustomisationScene.unity
     guid: 35c7d2e6bd674df45b31d65e05e64804
   - enabled: 1
@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProductsScene.unity
     guid: 88aa09ac827502944b36079552648f69
+  - enabled: 1
+    path: Assets/Scenes/JadenLocalPosScene.unity
+    guid: 61ff340e09cad374ba19f9585d2413b8
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
