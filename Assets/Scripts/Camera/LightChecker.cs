@@ -54,7 +54,7 @@ public class LightChecker : MonoBehaviour
 
             avgV /= tex.width * tex.height;
 
-            if (avgV > 0.45f)
+            if (avgV > 0.475f)
             {
                 brightnessTxt.text = "just right " + avgV.ToString();
                 brightnessImage.sprite = rightImage;
