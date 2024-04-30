@@ -18,6 +18,8 @@ public class RhythmGameController : MonoBehaviour
     //prefabs
     [SerializeField]
     private GameObject notePrefab;
+    [SerializeField]
+    private GameObject sliderPrefab;
     //allowance (min value will be 
     [Header("Good Bad Fail")]
     [SerializeField]
@@ -27,8 +29,12 @@ public class RhythmGameController : MonoBehaviour
     private float spawnOffset = 0.3f;
 
     List<float> spawnTimeList;
-    
-
+    List<float> SlidersToSpawn;
+    int SpawnNextIndex = 0;
+    bool SlidersInQueue = false;
+    //Event for OnExitSlider
+    public delegate void OnStartMoveSlider();
+    public static event OnStartMoveSlider onStartMoveSlider;
     public GameObject parent
     {
         get
@@ -41,9 +47,12 @@ public class RhythmGameController : MonoBehaviour
     private void Start()
     {
         spawnTimeList = new List<float>();
+        SlidersToSpawn = new List<float>();
         musicSystem.soundClip = rhythmChartSO.song;
         AccupointNote.onRhythmPress += OnNotePress;
-        for(var i = 0; i < rhythmChartSO.noteChart.notes.Length; i++)
+        AccupointSlider.onRhythmSliderEnter += OnSliderEnter;
+        AccupointSlider.onRhythmSliderExit += OnSliderExit;
+        for (var i = 0; i < rhythmChartSO.noteChart.notes.Length; i++)
         {
 
             float spawnTime = rhythmChartSO.noteChart.notes[i].presstime - spawnOffset;
@@ -63,6 +72,21 @@ public class RhythmGameController : MonoBehaviour
             processNotes();
             nextIndex++;
         }
+        if (SlidersInQueue)
+        {
+            if (SpawnNextIndex >= SlidersToSpawn.Count)
+            {
+                SlidersInQueue = false;
+                return;
+            }
+            //if(SpawnNextIndex > SlidersToSpawn.Count)
+            if (musicSystem.audioSource.time > SlidersToSpawn[SpawnNextIndex])
+            {
+                onStartMoveSlider?.Invoke();
+                SpawnNextIndex++;
+                
+            }
+        }
     }
     //when to spawn 
     //how to read the data
@@ -70,25 +94,37 @@ public class RhythmGameController : MonoBehaviour
     {
         var notes = rhythmChartSO.noteChart.notes;
         int localNextIndex = notes[nextIndex].nextIndex;
-        if(localNextIndex == -1) 
+        if (localNextIndex == -1)
         {
             GameObject newNote = Instantiate(notePrefab, parent.transform);
             newNote.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
             AccupointNote accNote = newNote.GetComponent<AccupointNote>();
             accNote.index = nextIndex;
+
         }
         else//this means it is a slider 
         {
+            GameObject newRhythmSlider = Instantiate(sliderPrefab, parent.transform);
+            RhythmSlider rhythmSlider = newRhythmSlider.GetComponent<RhythmSlider>();
             //make a list for the way points
-            RhythmChartSO.NoteChart points2Store =new RhythmChartSO.NoteChart();
-            points2Store.notes = new RhythmChartSO.Note[5];
+            RhythmChartSO.NoteChart points2Store = new RhythmChartSO.NoteChart();
+            points2Store.notes = new RhythmChartSO.Note[4];
             addData2Store(points2Store, 0);
-            for(var i = 0;i < points2Store.notes.Length - 1; i++)
-                Debug.Log(points2Store.notes[i].index);
-            //data is now stored in this list and you can edit it
-            
+            for (var i = 0; i < 4; i++)
+            {
+                rhythmSlider.P[i].localPosition = new Vector3(points2Store.notes[i].x, points2Store.notes[i].y, 0);
+            }
+            //init speed here
+            //calculate the start and end point of the slider and calculate the speed
+            rhythmSlider.Init();
+            float travelTime = points2Store.notes[3].presstime - (points2Store.notes[0].presstime - spawnOffset);
+
+            rhythmSlider.speed = rhythmSlider.LUT[rhythmSlider.LUT.Length - 1] / travelTime;
+            //add some timer here to make it so it can move 
+            SlidersToSpawn.Add(points2Store.notes[0].presstime);
+            SlidersInQueue = true;
         }
-    }   
+    }
     private void addData2Store(RhythmChartSO.NoteChart points2Store, int currStore)
     {
         var notes = rhythmChartSO.noteChart.notes;
@@ -117,7 +153,7 @@ public class RhythmGameController : MonoBehaviour
         {
             //this is perfect
             Debug.Log("Good");
-        }            
+        }
         else if (difference < allowance.y)
         {
             //this is bad
@@ -131,5 +167,13 @@ public class RhythmGameController : MonoBehaviour
 
         }
     }
+    //for point scoring 
+    public void OnSliderEnter()
+    {
 
+    }
+    public void OnSliderExit()
+    {
+
+    }
 }
