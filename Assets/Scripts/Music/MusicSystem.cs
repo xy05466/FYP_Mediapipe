@@ -36,10 +36,7 @@ public class MusicSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!audioSource.isPlaying) // Check if the audio is not already playing
-            {
-                audioSource.Play(); // Play the audio clip
-            }
+            StartGame();
         }
         if (audioSource.isPlaying)
         {
@@ -69,5 +66,12 @@ public class MusicSystem : MonoBehaviour
     {
         //intended time vs curr time
         //time in accupoint            
+    }
+    public void StartGame()
+    {
+        if (!audioSource.isPlaying) // Check if the audio is not already playing
+        {
+            audioSource.Play(); // Play the audio clip
+        }
     }
 }

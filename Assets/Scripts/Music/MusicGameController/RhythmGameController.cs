@@ -100,6 +100,7 @@ public class RhythmGameController : MonoBehaviour
             newNote.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
             AccupointNote accNote = newNote.GetComponent<AccupointNote>();
             accNote.index = nextIndex;
+           
 
         }
         else//this means it is a slider 
