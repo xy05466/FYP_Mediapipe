@@ -29,12 +29,14 @@ public class RhythmGameController : MonoBehaviour
     private float spawnOffset = 0.3f;
 
     List<float> spawnTimeList;
-    List<float> SlidersToSpawn;
-    int SpawnNextIndex = 0;
-    bool SlidersInQueue = false;
+    //List<float> SlidersToSpawn;
+    //int SpawnNextIndex = 0;
+    //bool SlidersInQueue = false;
+
     //Event for OnExitSlider
-    public delegate void OnStartMoveSlider();
-    public static event OnStartMoveSlider onStartMoveSlider;
+    //public delegate void OnStartMoveSlider();
+    //public static event OnStartMoveSlider onStartMoveSlider;
+
     public GameObject parent
     {
         get
@@ -47,11 +49,11 @@ public class RhythmGameController : MonoBehaviour
     private void Start()
     {
         spawnTimeList = new List<float>();
-        SlidersToSpawn = new List<float>();
+        //SlidersToSpawn = new List<float>();
         musicSystem.soundClip = rhythmChartSO.song;
         AccupointNote.onRhythmPress += OnNotePress;
-        AccupointSlider.onRhythmSliderEnter += OnSliderEnter;
-        AccupointSlider.onRhythmSliderExit += OnSliderExit;
+        //AccupointSlider.onRhythmSliderEnter += OnSliderEnter;
+        //AccupointSlider.onRhythmSliderExit += OnSliderExit;
         for (var i = 0; i < rhythmChartSO.noteChart.notes.Length; i++)
         {
 
@@ -72,21 +74,21 @@ public class RhythmGameController : MonoBehaviour
             processNotes();
             nextIndex++;
         }
-        if (SlidersInQueue)
-        {
-            if (SpawnNextIndex >= SlidersToSpawn.Count)
-            {
-                SlidersInQueue = false;
-                return;
-            }
-            //if(SpawnNextIndex > SlidersToSpawn.Count)
-            if (musicSystem.audioSource.time > SlidersToSpawn[SpawnNextIndex])
-            {
-                onStartMoveSlider?.Invoke();
-                SpawnNextIndex++;
+        //if (SlidersInQueue)
+        //{
+        //    if (SpawnNextIndex > SlidersToSpawn.Count - 1)
+        //    {
+        //        SlidersInQueue = false;
+        //        return;
+        //    }
+        //    //if(SpawnNextIndex > SlidersToSpawn.Count)
+        //    if (musicSystem.audioSource.time > SlidersToSpawn[SpawnNextIndex])
+        //    {
+        //        onStartMoveSlider?.Invoke();
+        //        SpawnNextIndex++;
                 
-            }
-        }
+        //    }
+        //}
     }
     //when to spawn 
     //how to read the data
@@ -121,9 +123,10 @@ public class RhythmGameController : MonoBehaviour
             float travelTime = points2Store.notes[3].presstime - (points2Store.notes[0].presstime - spawnOffset);
 
             rhythmSlider.speed = rhythmSlider.LUT[rhythmSlider.LUT.Length - 1] / travelTime;
+            rhythmSlider.audioSource = musicSystem.audioSource;
             //add some timer here to make it so it can move 
-            SlidersToSpawn.Add(points2Store.notes[0].presstime);
-            SlidersInQueue = true;
+            rhythmSlider.presstime = points2Store.notes[0].presstime;
+            //SlidersInQueue = true;
         }
     }
     private void addData2Store(RhythmChartSO.NoteChart points2Store, int currStore)
