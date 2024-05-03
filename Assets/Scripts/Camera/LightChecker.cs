@@ -61,12 +61,12 @@ public class LightChecker : MonoBehaviour
             avgV /= tex.width * tex.height;
 
 
-            anim.Play("rosebloom", 0 , avgV * 1.25f);
+            anim.Play("tulipbloom", 0 , avgV * 1.25f);
 
 
-            if (avgV > 0.475f && !audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
+            if (avgV > 0.45f && !audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
             {
-                brightnessTxt.text = "just right " + avgV.ToString();
+                brightnessTxt.text = "Perfect lighting! Take your 'before' picture. \n" + avgV.ToString();
 
                 if (!audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
                 {
@@ -75,7 +75,7 @@ public class LightChecker : MonoBehaviour
             }
             else if (avgV <= 0.475f && !audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
             {
-                brightnessTxt.text = "too dark " + avgV.ToString();
+                brightnessTxt.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
                 
                 if (!audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
                 {
