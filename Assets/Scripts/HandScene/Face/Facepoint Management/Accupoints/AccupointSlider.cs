@@ -18,7 +18,7 @@ public class AccupointSlider : MonoBehaviour
     public float MaxDistance;
     public float speed = 0.0f;
 
-    
+    bool CollisionDetected;
     public bool destroyObject = true;
     // Start is called before the first frame update
     void Start()
@@ -51,15 +51,23 @@ public class AccupointSlider : MonoBehaviour
 
         distanceTraveled += distanceToMove;
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    onRhythmSliderEnter?.Invoke();
-    //}
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    onRhythmSliderExit?.Invoke();
+    private void OnCollisionEnter(Collision collision)
+    {
+        //onRhythmSliderEnter?.Invoke();
+        if(speed != 0)
+        {
+            CollisionDetected = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        //onRhythmSliderExit?.Invoke();
+        if (speed != 0)
+        {
+            CollisionDetected = false;
 
-    //}
+        }
+    }
     public void StartMove()
     {
         speed = rhythmSlider.speed;
