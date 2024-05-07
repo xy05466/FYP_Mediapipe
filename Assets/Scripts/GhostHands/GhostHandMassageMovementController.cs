@@ -4,31 +4,43 @@ using UnityEngine;
 
 public class GhostHandMassageMovementController : MonoBehaviour
 {
-    public List<Vector3> path;
+    public List<GameObject> path;
     public float maxTimer;
     float maxSegmentTimer;
     float segmentTimer;
     int nextIndex;
-    void SetMassagePath(List<Vector3> newPath)
+    public bool isDone;
+    public void SetMassagePath(List<GameObject> newPath)
     {
         path = newPath;
         maxSegmentTimer = maxTimer / newPath.Count;
         segmentTimer = 0;
         nextIndex = 0;
     }
-    void MoveAlongPath(float deltaTime)
+    IEnumerator MoveAlongPath()
     {
-        Vector3.Lerp(transform.position, path[nextIndex], segmentTimer / maxSegmentTimer);
-        segmentTimer += deltaTime;
+        for (int i = 0; i < path.Count; ++i) {
+            Vector3 newPos = Vector3.Lerp(transform.position, path[nextIndex].transform.position, segmentTimer / maxSegmentTimer);
+            transform.position = newPos;
+            segmentTimer += Time.deltaTime;
 
-        if (segmentTimer > maxSegmentTimer && (nextIndex < path.Count -1))
-        {
-            nextIndex++;
-            segmentTimer = 0;
+            if (segmentTimer > maxSegmentTimer)
+            {
+                if (nextIndex < path.Count - 1)
+                {
+                    nextIndex++;
+                    segmentTimer = 0;
+                }
+                else
+                {
+                    isDone = true;
+                }
+            }
+            yield return null;
         }
     }
-    private void Update()
+    public void StartMoving()
     {
-        MoveAlongPath(Time.deltaTime);
+        StartCoroutine(MoveAlongPath());
     }
 }
