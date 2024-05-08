@@ -26,6 +26,7 @@ public class PhoneCamera : MonoBehaviour
     public RawImage picResult;
     public TMP_Text brightnessTxt;
     public TMP_Text date;
+    public TMP_Text splashTxt;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
     public GameObject audioManager;
@@ -68,11 +69,13 @@ public class PhoneCamera : MonoBehaviour
         {
             albumButton.gameObject.SetActive(true);
             creamButton.gameObject.SetActive(false);
+            splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
         }
         else
         {
             albumButton.gameObject.SetActive(false);
             creamButton.gameObject.SetActive(true);
+            splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
         }
 
         if (cameras.Count > 1) 
