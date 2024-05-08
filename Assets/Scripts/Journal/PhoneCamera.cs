@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using System;
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PhoneCamera : MonoBehaviour
     public RawImage preview;
     public RawImage picResult;
     public TMP_Text brightnessTxt;
+    public TMP_Text date;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
     public GameObject audioManager;
@@ -79,38 +81,41 @@ public class PhoneCamera : MonoBehaviour
         }
        
 
-        backCam.Play();
+
+
+        //backCam.Play();
         background.texture = backCam;
         
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
-        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
+       
+        date.text = DateTime.Today.ToString("dd MMMM yyyy");
         //Debug.Log("Debug" + backCam.width + backCam.height);
         camAvailable = true;
     }
     private void Update()
     {
-        if (!camAvailable)
-        {
-            return;
-        }
+        //if (!camAvailable)
+        //{
+        //    return;
+        //}
 
-        float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
+        //float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
 
-        background.transform.localPosition = new Vector3(1f, scaleY, 1f);
+        //background.transform.localPosition = new Vector3(1f, scaleY, 1f);
 
-        int orient = -backCam.videoRotationAngle;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+        //int orient = -backCam.videoRotationAngle;
+        //background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
 
-        picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
+        //picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
 
-        if (cameras.Count > 1)
-        {
-            if (backCam == cameras[1])
-            {
-                background.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
-                picResult.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
-            }
-        }
+        //if (cameras.Count > 1)
+        //{
+        //    if (backCam == cameras[1])
+        //    {
+        //        background.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
+        //        picResult.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
+        //    }
+        //}
     }
 
     //private void StartBrightnessCheck()
@@ -166,8 +171,9 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator SetPic()
     {
         //picTaken = (Texture2D)background.texture;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, -90);
         Debug.Log("Debug" + background.rectTransform.localEulerAngles.z);
+        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
+        preview.rectTransform.localEulerAngles = new Vector3(0, 180, 90);
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         //Debug.Log("Debug" + background.rectTransform.rotation);
         ShowPic();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,10 @@ public class JournalSO : ScriptableObject
 
     [SerializeField]
     public bool hasCaptured {  get; set; }
+    [SerializeField]
+    public List<string> date;
+    [SerializeField]
+    public List<string> day;
 
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 
@@ -45,10 +50,12 @@ public class JournalSO : ScriptableObject
         //afterList = null;
         //dayTxts = null;
         //dayNum = null;
+
         //beforeCount = 0;
         //afterCount = 0;
-
         //hasCaptured = false;
+        //date.Clear();
+        //day.Clear();
 
         //Debug.Log(dayPics.Count);
         //Debug.Log(dayPics.Last());
@@ -294,6 +301,8 @@ public class JournalSO : ScriptableObject
 
         beforeCount = info.GetFiles("*.png").Length;
         beforeCount = beforeCount++;
+
+      
         //Debug.Log("Debug" + beforeCount);
         //picsTaken = null;
         //Debug.Log(picsCount + 1);
@@ -331,6 +340,9 @@ public class JournalSO : ScriptableObject
             System.IO.File.WriteAllBytes(Application.dataPath + "/AfterAlbum/CameraScreenshot" + (afterCount + 1) + ".png", byteArray);
             info = new DirectoryInfo(Application.dataPath + "/AfterAlbum");
         }
+
+        date.Add(DateTime.Today.ToString("dd MMMM yyyy"));
+        day.Add(DateTime.Now.DayOfWeek.ToString());
 
         afterCount = info.GetFiles("*.png").Length;
         afterCount = afterCount++;
