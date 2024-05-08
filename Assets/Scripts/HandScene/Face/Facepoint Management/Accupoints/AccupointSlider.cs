@@ -8,19 +8,22 @@ public class AccupointSlider : MonoBehaviour
     public RhythmSlider rhythmSlider;
 
     //Event for OnEnterSlider
-    public delegate void OnRhythmSliderEnter();
-    public static event OnRhythmSliderEnter onRhythmSliderEnter;
-    //Event for OnExitSlider
-    public delegate void OnRhythmSliderExit();
-    public static event OnRhythmSliderExit onRhythmSliderExit;
+    //public delegate void OnRhythmSliderEnter();
+    //public static event OnRhythmSliderEnter onRhythmSliderEnter;
+    ////Event for OnExitSlider
+    //public delegate void OnRhythmSliderExit();
+    //public static event OnRhythmSliderExit onRhythmSliderExit;
 
     public float distanceTraveled = 0.0f;
     public float MaxDistance;
     public float speed = 0.0f;
+
+    
+    public bool destroyObject = true;
     // Start is called before the first frame update
     void Start()
     {
-        RhythmGameController.onStartMoveSlider += StartMove;
+        //RhythmGameController.onStartMoveSlider += StartMove;
         //find max distance here
         MaxDistance = rhythmSlider.LUT[rhythmSlider.LUT.Length - 1];
         
@@ -29,7 +32,7 @@ public class AccupointSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (distanceTraveled >= MaxDistance)
+        if (distanceTraveled >= MaxDistance && destroyObject)
         {
             Destroy(transform.parent.gameObject);
         }
@@ -48,15 +51,15 @@ public class AccupointSlider : MonoBehaviour
 
         distanceTraveled += distanceToMove;
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        onRhythmSliderEnter?.Invoke();
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        onRhythmSliderExit?.Invoke();
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    onRhythmSliderEnter?.Invoke();
+    //}
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    onRhythmSliderExit?.Invoke();
 
-    }
+    //}
     public void StartMove()
     {
         speed = rhythmSlider.speed;

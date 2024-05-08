@@ -12,7 +12,10 @@ public class RhythmSlider : MonoBehaviour
     public float[] LUT; // Declare the LUT array
     public float speed = 1.0f;
     private bool init = false;
-    
+    public AudioSource audioSource;
+    public float presstime;
+    [SerializeField]
+    private AccupointSlider accupointSlider;
     private void Start()
     {
          LineRenderer = GetComponent<LineRenderer>();   
@@ -27,6 +30,11 @@ public class RhythmSlider : MonoBehaviour
     {
         if (!init)
             return;
+
+        if(audioSource.time > presstime)
+        {
+            accupointSlider.speed = speed;
+        }
 
         var pointList = new List<Vector3>();
 
