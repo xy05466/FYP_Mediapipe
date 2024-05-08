@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36b3c4a0f1c92545af01a71e90d62b0, type: 3}
   m_Name: LeftUp
   m_EditorClassIdentifier: 
-  pathObject: {fileID: 0}
-  pathWaypoints: []
+  pathObject: {fileID: 3816619169849343423, guid: b4719a9bb91338d40a7c9b7daddb1e72,
+    type: 3}
+  pathWaypoints: 9800000074010000900100007a0100007b0100006d0100008d01000020010000

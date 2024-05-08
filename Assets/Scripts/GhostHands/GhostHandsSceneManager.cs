@@ -50,13 +50,14 @@ public class GhostHandsSceneManager : MonoBehaviour
                         rightHand = Instantiate(rightHandPaths[0].pathObject);
                         SetPath(leftHandPaths[0], leftHand);
                         SetPath(rightHandPaths[0], rightHand);
+                        leftHand.GetComponent<GhostHandMassageMovementController>().StartMoving();
                         break;
                     case SceneState.STATE_INIT:
-                        Destroy(leftHand);
-                        Destroy(rightHand);
-                        currentPathIndex++;
-                        leftHand = Instantiate(leftHandPaths[currentPathIndex].pathObject);
-                        rightHand = Instantiate(rightHandPaths[currentPathIndex].pathObject);
+                        //Destroy(leftHand);
+                        //Destroy(rightHand);
+                        //currentPathIndex++;
+                        //leftHand = Instantiate(leftHandPaths[currentPathIndex].pathObject);
+                        //rightHand = Instantiate(rightHandPaths[currentPathIndex].pathObject);
                         break;
                     case SceneState.STATE_PLAYPATHS:
 
