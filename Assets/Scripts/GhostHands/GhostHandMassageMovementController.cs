@@ -34,6 +34,7 @@ public class GhostHandMassageMovementController : MonoBehaviour
                 Debug.Log("1");
                 float t = timeElapsed / maxSegmentTimer;
                 transform.position = Vector3.Lerp(startPos, nextPoint, t);
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
