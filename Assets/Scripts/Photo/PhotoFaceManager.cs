@@ -2,29 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class PhotoFaceManager : MonoBehaviour
 {
     [SerializeField] TMP_Text textbox;
     [SerializeField] FacepointManager facepointManager;
-    //[SerializeField] AccupointManager accupointManager;
-    //[SerializeField] GameObject button;
     [SerializeField] float maxDistX = 3.0f;
     [SerializeField] float maxDistY= 3.0f;
     [SerializeField] float lowerBoundZ = 1.0f;
     [SerializeField] float upperBoundZ = 3.0f;
     GameObject[] facePoints;
-    bool canMoveToNextScene;
+
+    public RawImage checkPic;
+    public GameObject brightnessSprite;
+    private float waitTime = 3.0f;
+    private float timer = 0.0f;
+
+    public GameObject audio;
+    private Animator anim;
+
+    private bool faceAligned;
+
     private void Start()
     {
-        canMoveToNextScene = false;
+        faceAligned = false;
         textbox.text = "No face detected!";
-        //button.SetActive(false);
+        anim = brightnessSprite.GetComponent<Animator>();
     }
-    string textBoxString;
+
     private void Update()
     {
-        textBoxString = "";
         Vector3 refPt;
         float avgX = 0;
         float avgY = 0;
@@ -36,49 +45,113 @@ public class PhotoFaceManager : MonoBehaviour
             avgX = refPt.x - Camera.main.transform.position.x;
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-            //textBoxString = "Face Distance: " + avgZ;
-            //textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
-            //Debug.Log(avgZ);
             if (avgZ < lowerBoundZ)
             {
-                textBoxString += "\nPlease move further";
+                textbox.text = "Please move further";
+                faceAligned = false;
             }
             else if (avgZ > upperBoundZ)
             {
-                textBoxString += "\nPlease move closer";
+                textbox.text = "Please move closer";
+                faceAligned = false;
             }
             else if (avgX > maxDistX)
             {
-                textBoxString += "\nPlease move left";
+                textbox.text = "Please move left";
+                faceAligned = false;
             }
             else if (avgX < -1 * maxDistX)
             {
-                textBoxString += "\nPlease move right";
+                textbox.text = "Please move right";
+                faceAligned = false;
             }
             else if (avgY > maxDistY)
             {
-                textBoxString += "\nPlease move down";
+                textbox.text = "Please move down";
+                faceAligned = false;
             }
             else if (avgY < -1 * maxDistY)
             {
-                textBoxString += "\nPlease move up";
+                textbox.text = "Please move up";
+                faceAligned = false;
             }
-            //if (accupointManager.numAccupointsLeft > 0)
-            //{
-            //    textBoxString += "\nCurrent step: " + accupointManager.numAccupointsLeft + "of 11";
-            //}
-            //else
-            //{
-            //    textBoxString += "Congratulations! You've activated all accupoints!";
-            //    canMoveToNextScene = true;
-            //}
+            else
+            {
+                faceAligned = true;
+            }
         }
         else
         {
-            textBoxString += "No face detected!";
+            textbox.text = "No face detected!";
+            faceAligned = false;
         }
-        //if (button.activeInHierarchy != canMoveToNextScene)
-        //    button.SetActive(canMoveToNextScene);
-        textbox.text = textBoxString;
+
+        if (faceAligned)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > waitTime)
+            {
+                Debug.Log("DebugLightChecking");
+                Texture tex = checkPic.texture;
+
+                int width = tex.width;
+                int height = tex.height;
+
+                Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+                RenderTexture currentRT = RenderTexture.active;
+
+                RenderTexture renderTexture = new RenderTexture(tex.width, tex.height, 32);
+                Graphics.Blit(tex, renderTexture);
+
+                RenderTexture.active = renderTexture;
+                screenshotTexture.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+                screenshotTexture.Apply();
+
+                UnityEngine.Color[] pixels = screenshotTexture.GetPixels();
+
+                RenderTexture.active = currentRT;
+
+                int sourceMipLevel = 0;
+                float avgV = 0;
+                Color32[] pixelArray = screenshotTexture.GetPixels32(sourceMipLevel);
+
+                for (int i = 0; i < pixels.Length; i++)
+                {
+                    UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
+                    avgV += v;
+                }
+
+                avgV /= tex.width * tex.height;
+
+                anim.Play("tulipbloom", 0, avgV * 1.25f);
+
+                if (avgV > 0.45f)
+                {
+                    textbox.text = "Perfect lighting! Take your 'before' picture. \n" + avgV.ToString();
+                    Debug.Log("DebugPerfect");
+                    if (!audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
+                    {
+                        audio.GetComponent<AudioManager>().Play("Sparkle");
+                    }
+                }
+                else if (avgV <= 0.45f)
+                {
+                    textbox.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
+                    Debug.Log("DebugDark");
+                    if (!audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
+                    {
+                        audio.GetComponent<AudioManager>().Play("PlantsRustling");
+                    }
+                }
+
+                avgV = 0;
+
+                timer = timer - waitTime;
+
+                Destroy(screenshotTexture);
+                Destroy(renderTexture);
+            }
+        }
     }
 }

@@ -15,11 +15,16 @@ public class LightChecker : MonoBehaviour
     public GameObject audio;
     private AnimatorStateInfo animState;
     private Animator anim;
+
+    Texture2D screenshotTexture;
+    RenderTexture renderTexture;
     //private Animation anim;
 
     private void Start()
     {
         anim = brightnessSprite.GetComponent<Animator>();
+        screenshotTexture = new Texture2D(checkPic.texture.width, checkPic.texture.height, TextureFormat.ARGB32, false);
+        renderTexture = new RenderTexture(checkPic.texture.width, checkPic.texture.height, 32);
     }
 
     // Update is called once per frame
@@ -34,10 +39,10 @@ public class LightChecker : MonoBehaviour
             int width = tex.width;
             int height = tex.height;
 
-            Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+            //Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
             RenderTexture currentRT = RenderTexture.active;
 
-            RenderTexture renderTexture = new RenderTexture(tex.width, tex.height, 32);
+            //RenderTexture renderTexture = new RenderTexture(tex.width, tex.height, 32);
             Graphics.Blit(tex, renderTexture);
 
             RenderTexture.active = renderTexture;

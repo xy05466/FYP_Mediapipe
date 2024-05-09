@@ -90,7 +90,7 @@ public class PhoneCamera : MonoBehaviour
         background.texture = backCam;
         
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
-       
+
         date.text = DateTime.Today.ToString("dd MMMM yyyy");
         //Debug.Log("Debug" + backCam.width + backCam.height);
         camAvailable = true;
@@ -174,11 +174,11 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator SetPic()
     {
         //picTaken = (Texture2D)background.texture;
-        Debug.Log("Debug" + background.rectTransform.localEulerAngles.z);
+        
         preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
         preview.rectTransform.localEulerAngles = new Vector3(0, 180, 90);
         yield return StartCoroutine(journalSO.TakePic(background.texture));
-        //Debug.Log("Debug" + background.rectTransform.rotation);
+        Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
         ShowPic();
         audioManager.GetComponent<AudioManager>().Play("Ding");
         
