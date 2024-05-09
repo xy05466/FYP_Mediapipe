@@ -2865,10 +2865,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
     type: 3}
-  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0.43137255}
-  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0.43137255}
-  _landmarkRadius: 25
-  _connectionColor: {r: 1, g: 1, b: 1, a: 0.43137255}
+  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
+  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
+  _landmarkRadius: 30
+  _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.01
 --- !u!1 &799787419
 GameObject:
@@ -4702,8 +4702,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
     type: 3}
-  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0.24705882}
-  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0.24705882}
+  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
+  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
   _landmarkRadius: 50
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.1

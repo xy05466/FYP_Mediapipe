@@ -8,6 +8,7 @@ public class AccupointEffectsController : MonoBehaviour
     [SerializeField] GameObject shrinkingSwirl;
     [SerializeField] GameObject growingSwirl;
     [SerializeField] float closingSpeedMult;
+    
     Accupoint accupoint;
     private void Awake()
     {
