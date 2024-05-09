@@ -8,6 +8,7 @@ public class GhostHandsSceneManager : MonoBehaviour
     [SerializeField] HandPointManager hpm;
     [SerializeField] List<GhostHandPathSO> leftHandPaths;
     [SerializeField] List<GhostHandPathSO> rightHandPaths;
+    [SerializeField] GameObject handParent;
 
     GameObject leftHand;
     GameObject rightHand;
@@ -51,6 +52,8 @@ public class GhostHandsSceneManager : MonoBehaviour
                         SetPath(leftHandPaths[0], leftHand);
                         SetPath(rightHandPaths[0], rightHand);
                         leftHand.GetComponent<GhostHandMassageMovementController>().StartMoving();
+                        rightHand.GetComponent<GhostHandMassageMovementController>().StartMoving();
+                        sceneState = SceneState.STATE_INIT;
                         break;
                     case SceneState.STATE_INIT:
                         //Destroy(leftHand);
@@ -73,6 +76,6 @@ public class GhostHandsSceneManager : MonoBehaviour
         {
             newPath.Add(facepoints[i]);
         }
-        ghostHand.GetComponent<GhostHandMassageMovementController>().SetMassagePath(newPath);
+        ghostHand.GetComponent<GhostHandMassageMovementController>().SetMassagePath(newPath, 5);
     }
 }

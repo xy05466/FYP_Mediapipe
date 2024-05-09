@@ -560,6 +560,37 @@ MonoBehaviour:
     type: 3}
   _lineWidth: 1
   _keypointRadius: 15
+--- !u!1 &157243945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157243946}
+  m_Layer: 5
+  m_Name: Hands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &157243946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157243945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1968537269}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188075484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,7 +1716,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 100000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -2774,11 +2805,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpm: {fileID: 543386375}
-  hpm: {fileID: 0}
+  hpm: {fileID: 1751768240}
   leftHandPaths:
   - {fileID: 11400000, guid: 6e01bf6f19748544ea6ec06ff18eb046, type: 2}
   rightHandPaths:
   - {fileID: 11400000, guid: 3a7d96148f07192499ee3eabc106cf5e, type: 2}
+  handParent: {fileID: 157243945}
 --- !u!1 &1594682637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3517,6 +3549,7 @@ Transform:
   - {fileID: 136303665}
   - {fileID: 376266486}
   - {fileID: 1433835588}
+  - {fileID: 157243946}
   m_Father: {fileID: 807459373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1968537270

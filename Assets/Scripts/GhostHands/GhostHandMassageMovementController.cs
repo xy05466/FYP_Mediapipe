@@ -12,9 +12,10 @@ public class GhostHandMassageMovementController : MonoBehaviour
     public bool isDone;
     public void SetMassagePath(List<GameObject> newPath, float newMaxTimer = 0)
     {
-        newMaxTimer = maxTimer;
+        maxTimer = newMaxTimer;
         path = newPath;
         maxSegmentTimer = maxTimer / newPath.Count;
+        Debug.Log(maxSegmentTimer);
         segmentTimer = 0;
         nextIndex = 0;
         transform.position = newPath[0].transform.position;
@@ -22,16 +23,26 @@ public class GhostHandMassageMovementController : MonoBehaviour
     IEnumerator MoveAlongPath()
     {
         float timeElapsed = 0f;
-        Vector3 startPos = transform.position;
-        while (segmentTimer < maxSegmentTimer)
+        Debug.Log("Moving!");
+        Debug.Log(maxSegmentTimer);
+        for (int i = 0; i < path.Count; ++i)
         {
-            float t = timeElapsed / maxSegmentTimer;
-            transform.position = Vector3.Lerp(startPos, path[nextIndex].transform.position, t);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            Vector3 startPos = transform.position;
+            Vector3 nextPoint = path[i].transform.position;//new Vector3(path[i].transform.position.x, path[i].transform.position.y, 0);
+            while (timeElapsed < maxSegmentTimer)
+            {
+                Debug.Log("1");
+                float t = timeElapsed / maxSegmentTimer;
+                transform.position = Vector3.Lerp(startPos, nextPoint, t);
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+            Debug.Log("2");
+            // Ensure final position is precisely the end point
+            transform.position = path[i].transform.position;
+            timeElapsed = 0;
         }
-        // Ensure final position is precisely the end point
-        transform.position = path[nextIndex].transform.position;
+        
     }
     public void StartMoving()
     {
