@@ -61,8 +61,14 @@ public class AccupointAnchorManager : MonoBehaviour
         {
             positions = _facepointManager.GetLandmarkPositionsByDigit(accupointSO.landmarkIndex);
             accupoint.transform.position = Reposition(positions, lockedToZero, isAveraged);
+            //put offest here
+#if !UNITY_EDITOR
+            accupoint.transform.rotation = Quaternion.Euler(0, 0, 0);
+#endif
             if (lockedToZero)
                 accupoint.transform.localPosition = new Vector3(accupoint.transform.localPosition.x, accupoint.transform.localPosition.y, 0);
+            
+            
         }
     }
 
