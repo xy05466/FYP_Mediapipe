@@ -2808,8 +2808,10 @@ MonoBehaviour:
   hpm: {fileID: 1751768240}
   leftHandPaths:
   - {fileID: 11400000, guid: 6e01bf6f19748544ea6ec06ff18eb046, type: 2}
+  - {fileID: 11400000, guid: dcf2085d61cb3374ab5d9e64bed53654, type: 2}
   rightHandPaths:
   - {fileID: 11400000, guid: 3a7d96148f07192499ee3eabc106cf5e, type: 2}
+  - {fileID: 11400000, guid: 271925f0fe2bf8646bb6532f491fa9a0, type: 2}
   handParent: {fileID: 157243945}
 --- !u!1 &1594682637
 GameObject:

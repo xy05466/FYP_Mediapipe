@@ -15,35 +15,34 @@ public class GhostHandMassageMovementController : MonoBehaviour
         maxTimer = newMaxTimer;
         path = newPath;
         maxSegmentTimer = maxTimer / newPath.Count;
-        Debug.Log(maxSegmentTimer);
+        //Debug.Log(maxSegmentTimer);
         segmentTimer = 0;
-        nextIndex = 0;
         transform.position = newPath[0].transform.position;
     }
     IEnumerator MoveAlongPath()
     {
         float timeElapsed = 0f;
-        Debug.Log("Moving!");
-        Debug.Log(maxSegmentTimer);
+        //Debug.Log("Moving!");
+        //Debug.Log(maxSegmentTimer);
         for (int i = 0; i < path.Count; ++i)
         {
             Vector3 startPos = transform.position;
             Vector3 nextPoint = path[i].transform.position;//new Vector3(path[i].transform.position.x, path[i].transform.position.y, 0);
             while (timeElapsed < maxSegmentTimer)
             {
-                Debug.Log("1");
+                //Debug.Log("1");
                 float t = timeElapsed / maxSegmentTimer;
                 transform.position = Vector3.Lerp(startPos, nextPoint, t);
                 transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
-            Debug.Log("2");
+            //Debug.Log("2");
             // Ensure final position is precisely the end point
             transform.position = path[i].transform.position;
             timeElapsed = 0;
         }
-        
+        GhostHandsSceneManager.FinishedPathEvent?.Invoke();
     }
     public void StartMoving()
     {
