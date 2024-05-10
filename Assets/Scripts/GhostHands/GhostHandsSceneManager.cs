@@ -57,6 +57,10 @@ public class GhostHandsSceneManager : MonoBehaviour
                         sceneState = SceneState.STATE_NEXT;
                         break;
                     case SceneState.STATE_NEXT:
+                        if (leftPath != null)
+                            SetUIPath(leftHandPaths[currentLeftPathIndex], leftPath);
+                        if (rightPath != null)
+                            SetUIPath(rightHandPaths[currentRightPathIndex], rightPath);
                         break;
                     case SceneState.STATE_DONE:
                         Destroy(leftHand);
@@ -110,8 +114,9 @@ public class GhostHandsSceneManager : MonoBehaviour
         List<Vector3> newPath = new List<Vector3>();
         foreach (int i in handPathSO.pathWaypoints)
         {
-            newPath.Add(facepoints[i].transform.position);
+            newPath.Add(new Vector3(facepoints[i].transform.position.x, facepoints[i].transform.position.y, 0));
         }
+        uiPath.GetComponent<LineRenderer>().positionCount = newPath.Count;
         uiPath.GetComponent<LineRenderer>().SetPositions(newPath.ToArray());
     }
     void StartGenerateGhostHands()
@@ -135,14 +140,16 @@ public class GhostHandsSceneManager : MonoBehaviour
     }
     void GenerateLeftUIPaths(int index)
     {
-        leftPath = Instantiate(leftUIPaths[index].pathObject);
+        leftPath = Instantiate(leftUIPaths[index].pathObject, new Vector3(0, 0, 10f), Quaternion.identity);
+        leftPath.transform.SetParent(handParent.transform);
         SetUIPath(leftHandPaths[index], leftPath);
         leftPath.GetComponent<LineRenderer>().alignment = LineAlignment.View;
     }
     void GenerateRightUIPaths(int index)
     {
-        rightPath = Instantiate(rightUIPaths[index].pathObject);
-        SetUIPath(rightHandPaths[index], leftPath);
+        rightPath = Instantiate(rightUIPaths[index].pathObject, new Vector3(0, 0, 10f), Quaternion.identity);
+        rightPath.transform.SetParent(handParent.transform);
+        SetUIPath(rightHandPaths[index], rightPath);
         rightPath.GetComponent<LineRenderer>().alignment = LineAlignment.View;
     }
 }
