@@ -11,7 +11,7 @@ public class Path {
     bool isClosed;
     [SerializeField, HideInInspector]
     bool autoSetControlPoints;
-
+    public List<Vector2> anchorPoints;
     public Path(Vector2 centre)
     {
         points = new List<Vector2>
@@ -300,4 +300,9 @@ public class Path {
         return (i + points.Count) % points.Count;
     }
 
+    public void SetAnchorPointPosition(int anchorIndex, float x, float y)
+    {
+        int pointToChange = anchorIndex * 3;
+        points[pointToChange] = new Vector2(x, y);
+    }
 }

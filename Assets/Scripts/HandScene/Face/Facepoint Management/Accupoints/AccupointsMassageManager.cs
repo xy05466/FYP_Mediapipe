@@ -152,13 +152,5 @@ public class AccupointsMassageManager : MonoBehaviour
         }
     }
 }
-[System.Serializable]
-public class AccSOListList
-{
-    public List<AccupointSO> accupointSOList;
-    public AccSOListList()
-    {
-        accupointSOList = new List<AccupointSO>();
-    }
-}
+
 

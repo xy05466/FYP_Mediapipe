@@ -71,4 +71,23 @@ public class ListOfLists<T>
             throw new IndexOutOfRangeException("List index out of range");
         }
     }
+    public void SetItemInList(int listIndex, int itemIndex, T item)
+    {
+        if (listIndex >= 0 && listIndex < listOfLists.Count)
+        {
+            List<T> list = listOfLists[listIndex];
+            if (itemIndex >= 0 && itemIndex < list.Count)
+            {
+                list[itemIndex] = item;
+            }
+            else
+            {
+                throw new IndexOutOfRangeException("Item index out of range");
+            }
+        }
+        else
+        {
+            throw new IndexOutOfRangeException("List index out of range");
+        }
+    }
 }
