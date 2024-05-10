@@ -9,12 +9,17 @@ public class GhostHandsSceneManager : MonoBehaviour
     [SerializeField] HandPointManager hpm;
     [SerializeField] List<GhostHandPathSO> leftHandPaths;
     [SerializeField] List<GhostHandPathSO> rightHandPaths;
+    [SerializeField] List<GhostHandPathSO> leftUIPaths;
+    [SerializeField] List<GhostHandPathSO> rightUIPaths;
+
     [SerializeField] GameObject handParent;
 
     public static UnityEvent FinishedPathEvent;
 
     GameObject leftHand;
     GameObject rightHand;
+    GameObject leftPath;
+    GameObject rightPath;
 
     GameObject[] handpoints;
     GameObject[] facepoints;
@@ -43,7 +48,7 @@ public class GhostHandsSceneManager : MonoBehaviour
         facepoints = fpm.GetFacePointTransforms();
         if (facepoints != null)
         {
-            if (facepoints.Length > 1) 
+            if (facepoints.Length > 1)
             {
                 switch (sceneState)
                 {
@@ -56,24 +61,34 @@ public class GhostHandsSceneManager : MonoBehaviour
                     case SceneState.STATE_DONE:
                         Destroy(leftHand);
                         Destroy(rightHand);
+                        Destroy(leftPath);
+                        Destroy(rightPath);
                         if (currentLeftPathIndex < leftHandPaths.Count - 1)
                         {
                             currentLeftPathIndex++;
                             Debug.Log(currentLeftPathIndex + " L");
-                            GenerateLeftGhostHands(currentRightPathIndex);
+                            GenerateLeftGhostHands(currentLeftPathIndex);
+                            if (currentLeftPathIndex < leftUIPaths.Count - 1)
+                            {
+                                GenerateLeftUIPaths(currentLeftPathIndex);
+                            }
                             sceneState = SceneState.STATE_NEXT;
+                            
                         }
                         if (currentRightPathIndex < rightHandPaths.Count - 1)
                         {
                             currentRightPathIndex++;
                             Debug.Log(currentLeftPathIndex + " R");
                             GenerateRightGhostHands(currentRightPathIndex);
+                            if (currentRightPathIndex < rightHandPaths.Count - 1)
+                            {
+                                GenerateRightUIPaths(currentRightPathIndex);
+                            }
                             sceneState = SceneState.STATE_NEXT;
                         }
-                        
                         break;
                 }
-            } 
+            }
         }
     }
     void OnPathTraversed()
@@ -90,10 +105,21 @@ public class GhostHandsSceneManager : MonoBehaviour
         }
         ghostHand.GetComponent<GhostHandMassageMovementController>().SetMassagePath(newPath, handPathSO.maxPathTime);
     }
+    void SetUIPath(GhostHandPathSO handPathSO, GameObject uiPath)
+    {
+        List<Vector3> newPath = new List<Vector3>();
+        foreach (int i in handPathSO.pathWaypoints)
+        {
+            newPath.Add(facepoints[i].transform.position);
+        }
+        uiPath.GetComponent<LineRenderer>().SetPositions(newPath.ToArray());
+    }
     void StartGenerateGhostHands()
     {
         GenerateLeftGhostHands(0);
         GenerateRightGhostHands(0);
+        GenerateLeftUIPaths(0);
+        GenerateRightUIPaths(0);
     }
     void GenerateLeftGhostHands(int index)
     {
@@ -106,6 +132,18 @@ public class GhostHandsSceneManager : MonoBehaviour
         rightHand = Instantiate(rightHandPaths[index].pathObject);
         SetPath(rightHandPaths[index], rightHand);
         rightHand.GetComponent<GhostHandMassageMovementController>().StartMoving();
+    }
+    void GenerateLeftUIPaths(int index)
+    {
+        leftPath = Instantiate(leftUIPaths[index].pathObject);
+        SetUIPath(leftHandPaths[index], leftPath);
+        leftPath.GetComponent<LineRenderer>().alignment = LineAlignment.View;
+    }
+    void GenerateRightUIPaths(int index)
+    {
+        rightPath = Instantiate(rightUIPaths[index].pathObject);
+        SetUIPath(rightHandPaths[index], leftPath);
+        rightPath.GetComponent<LineRenderer>().alignment = LineAlignment.View;
     }
 }
 

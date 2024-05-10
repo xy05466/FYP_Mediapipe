@@ -2812,6 +2812,10 @@ MonoBehaviour:
   rightHandPaths:
   - {fileID: 11400000, guid: 3a7d96148f07192499ee3eabc106cf5e, type: 2}
   - {fileID: 11400000, guid: 271925f0fe2bf8646bb6532f491fa9a0, type: 2}
+  leftUIPaths:
+  - {fileID: 11400000, guid: 9e3876a169fb75540a90686b20efaaf9, type: 2}
+  rightUIPaths:
+  - {fileID: 11400000, guid: 637d9fd0f6bbd0e4aac2b95f19ba9e7f, type: 2}
   handParent: {fileID: 157243945}
 --- !u!1 &1594682637
 GameObject:
