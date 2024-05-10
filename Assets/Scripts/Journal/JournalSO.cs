@@ -181,6 +181,7 @@ public class JournalSO : ScriptableObject
     RenderTexture.active = currentRT;
 
         picsTaken = screenshotTexture;
+        FlipTextureVertically(picsTaken);
         //Debug.Log("Debug" +screenshotTexture.width + screenshotTexture.height);
         //Debug.Log("Debug" + picsTaken.width + picsTaken.height);
 
@@ -238,32 +239,25 @@ public class JournalSO : ScriptableObject
         return rotatedTexture;
     }
 
-    Texture2D FlipTexture(Texture2D original, bool upSideDown = true)
+    public static void FlipTextureVertically(Texture2D original)
     {
+        var originalPixels = original.GetPixels();
 
-        Texture2D flipped = new Texture2D(original.width, original.height);
+        var newPixels = new Color[originalPixels.Length];
 
-        int xN = original.width;
-        int yN = original.height;
+        var width = original.width;
+        var rows = original.height;
 
-
-        for (int i = 0; i < xN; i++)
+        for (var x = 0; x < width; x++)
         {
-            for (int j = 0; j < yN; j++)
+            for (var y = 0; y < rows; y++)
             {
-                if (upSideDown)
-                {
-                    flipped.SetPixel(j, xN - i - 1, original.GetPixel(j, i));
-                }
-                else
-                {
-                    flipped.SetPixel(xN - i - 1, j, original.GetPixel(i, j));
-                }
+                newPixels[x + y * width] = originalPixels[x + (rows - y - 1) * width];
             }
         }
-        flipped.Apply();
 
-        return flipped;
+        original.SetPixels(newPixels);
+        original.Apply();
     }
 
     public void ConfirmBeforePic()

@@ -80,7 +80,9 @@ public class SliderManager : MonoBehaviour
         afterPic.LoadImage(afterImageData);
         Sprite afterSprite = Sprite.Create(afterPic, new Rect(0, 0, afterPic.width, afterPic.height), new Vector2(0.5f, 0.0f), 100.0f);
         
+        
         sliderFill.GetComponent<Image>().sprite = beforeSprite;
+
         sliderBG.GetComponent<Image>().sprite = afterSprite;
 
         dateText.text = journalSO.date[i - 1];

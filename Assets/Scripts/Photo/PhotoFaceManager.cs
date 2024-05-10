@@ -4,11 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using Google.Protobuf.WellKnownTypes;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class PhotoFaceManager : MonoBehaviour
 {
     [SerializeField] TMP_Text textbox;
     [SerializeField] FacepointManager facepointManager;
+    [SerializeField] Button capture;
     [SerializeField] float maxDistX = 3.0f;
     [SerializeField] float maxDistY= 3.0f;
     [SerializeField] float lowerBoundZ = 1.0f;
@@ -17,12 +21,14 @@ public class PhotoFaceManager : MonoBehaviour
 
     public RawImage checkPic;
     public GameObject brightnessSprite;
+
     private float waitTime = 3.0f;
     private float timer = 0.0f;
 
     public GameObject audio;
     private Animator anim;
 
+    float avgV = 0;
     private bool faceAligned;
 
     private void Start()
@@ -92,6 +98,11 @@ public class PhotoFaceManager : MonoBehaviour
 
             if (timer > waitTime)
             {
+                if (!brightnessSprite.GetComponent<Animator>().enabled)
+                {
+                    brightnessSprite.GetComponent<Animator>().enabled = true;
+                }
+
                 Debug.Log("DebugLightChecking");
                 Texture tex = checkPic.texture;
 
@@ -113,7 +124,7 @@ public class PhotoFaceManager : MonoBehaviour
                 RenderTexture.active = currentRT;
 
                 int sourceMipLevel = 0;
-                float avgV = 0;
+                //float avgV = 0;
                 Color32[] pixelArray = screenshotTexture.GetPixels32(sourceMipLevel);
 
                 for (int i = 0; i < pixels.Length; i++)
@@ -124,11 +135,13 @@ public class PhotoFaceManager : MonoBehaviour
 
                 avgV /= tex.width * tex.height;
 
-                anim.Play("tulipbloom", 0, avgV * 1.25f);
+                //anim.Play("tulipbloom", 0, avgV * 1.25f);
 
                 if (avgV > 0.45f)
                 {
+                    anim.Play("tulipbloom");
                     textbox.text = "Perfect lighting! Take your 'before' picture. \n" + avgV.ToString();
+                    capture.interactable = true;
                     Debug.Log("DebugPerfect");
                     if (!audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
                     {
@@ -137,6 +150,7 @@ public class PhotoFaceManager : MonoBehaviour
                 }
                 else if (avgV <= 0.45f)
                 {
+                    anim.Play("tulipclose");
                     textbox.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
                     Debug.Log("DebugDark");
                     if (!audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
@@ -152,6 +166,11 @@ public class PhotoFaceManager : MonoBehaviour
                 Destroy(screenshotTexture);
                 Destroy(renderTexture);
             }
+            
+        }
+        else
+        {
+            capture.interactable = false;
         }
     }
 }

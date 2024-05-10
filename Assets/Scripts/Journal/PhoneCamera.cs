@@ -22,11 +22,12 @@ public class PhoneCamera : MonoBehaviour
 
     public TMP_Text text;
     public RawImage background;
+    //public GameObject screenLayer;
     public RawImage preview;
-    public RawImage picResult;
     public TMP_Text brightnessTxt;
     public TMP_Text date;
     public TMP_Text splashTxt;
+    public TMP_Text photoTxt;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
     public GameObject audioManager;
@@ -70,12 +71,14 @@ public class PhoneCamera : MonoBehaviour
             albumButton.gameObject.SetActive(true);
             creamButton.gameObject.SetActive(false);
             splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
+            photoTxt.text = "After Photo";
         }
         else
         {
             albumButton.gameObject.SetActive(false);
             creamButton.gameObject.SetActive(true);
             splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
+            photoTxt.text = "Before Photo";
         }
 
         if (cameras.Count > 1) 
@@ -92,6 +95,8 @@ public class PhoneCamera : MonoBehaviour
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
 
         date.text = DateTime.Today.ToString("dd MMMM yyyy");
+
+        //screenLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
         //Debug.Log("Debug" + backCam.width + backCam.height);
         camAvailable = true;
     }
@@ -176,7 +181,7 @@ public class PhoneCamera : MonoBehaviour
         //picTaken = (Texture2D)background.texture;
         
         preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
-        preview.rectTransform.localEulerAngles = new Vector3(0, 180, 90);
+        preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
         ShowPic();
@@ -208,7 +213,7 @@ public class PhoneCamera : MonoBehaviour
 
         //imageCount = journalSO.GetBeforeCount();
         //Debug.Log(imageCount);
-        picResult.texture = journalSO.GetPicCache();
+        preview.texture = journalSO.GetPicCache();
 
     }
 
