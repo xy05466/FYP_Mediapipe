@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartMenu.unity
     guid: 1aa528a4484b3b142b4dc183070debc3
   - enabled: 1
@@ -17,19 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuizScene.unity
     guid: cb2f9dfb786383d4793773ba0edeb64f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CustomisationScene.unity
     guid: 35c7d2e6bd674df45b31d65e05e64804
   - enabled: 1
     path: Assets/Scenes/PaulAccupointsScene.unity
     guid: a97dc00c7820bb84897a5c85607ceadf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JadenMassaageScene.unity
     guid: 7008ffcfa6811bc43b91fec82712d932
   - enabled: 1
@@ -38,15 +38,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JournalScene.unity
     guid: 39e1153c881b4cf4596de2ff00fbedc4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LiveWallpaperScene.unity
     guid: 37ef2449b284cde458e9f566f0a2eb4a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ProductsScene.unity
     guid: 88aa09ac827502944b36079552648f69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JadenLocalPosScene.unity
     guid: 61ff340e09cad374ba19f9585d2413b8
+  - enabled: 1
+    path: Assets/Scenes/GhostHandsScene.unity
+    guid: f82f8ef90c779b942b2f104f919bfbe3
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
