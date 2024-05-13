@@ -333,8 +333,77 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1001 &2073414432
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0051863487
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949258411537479819, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617630220382320068, guid: 671344478b30e344285cf9d0436a1490,
+        type: 3}
+      propertyPath: m_Name
+      value: CubicThing
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 671344478b30e344285cf9d0436a1490, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 950677250}
+  - {fileID: 2073414432}
