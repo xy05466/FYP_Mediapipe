@@ -43,7 +43,6 @@ public class PhoneCamera : MonoBehaviour
         cameras = new List<WebCamTexture>();
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
-        //imageCount = journalSO.GetBeforeCount();
 
         if (devices.Length < 1)
         {
@@ -86,18 +85,12 @@ public class PhoneCamera : MonoBehaviour
             backCam = cameras[1]; 
         }
        
-
-
-
-        //backCam.Play();
         background.texture = backCam;
         
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
 
         date.text = DateTime.Today.ToString("dd MMMM yyyy");
 
-        //screenLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
-        //Debug.Log("Debug" + backCam.width + backCam.height);
         camAvailable = true;
     }
     private void Update()
@@ -210,9 +203,6 @@ public class PhoneCamera : MonoBehaviour
     }
     public void ShowPic()
     {
-
-        //imageCount = journalSO.GetBeforeCount();
-        //Debug.Log(imageCount);
         preview.texture = journalSO.GetPicCache();
 
     }
