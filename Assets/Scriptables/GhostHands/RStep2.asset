@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d36b3c4a0f1c92545af01a71e90d62b0, type: 3}
-  m_Name: RightUp
+  m_Name: RStep2
   m_EditorClassIdentifier: 
   maxPathTime: 3
   pathObject: {fileID: 3816619169849343423, guid: 37906efeaf082cf47940a463930132e2,
     type: 3}
-  pathWaypoints: d0010000c3010000c00100000901000085010000
+  pathWaypoints: 9800000079010000900100007a0100007b0100006d0100008d01000020010000b30100006901000043010000

@@ -139,7 +139,7 @@ public class GhostHandsSceneManager : MonoBehaviour
         {
             newPath.Add(facepoints[i]);
         }
-        ghostHand.GetComponent<GhostHandMassageMovementController>().SetMassagePath(newPath, handPathSO.maxPathTime);
+        ghostHand?.GetComponent<GhostHandMassageMovementController>()?.SetMassagePath(newPath, handPathSO.maxPathTime);
     }
     void SetUIPath(GhostHandPathSO handPathSO, GameObject uiPath)
     {
