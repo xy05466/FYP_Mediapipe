@@ -14,6 +14,10 @@ public class GhostHandsSceneManager : MonoBehaviour
 
     [SerializeField] GameObject handParent;
 
+    [SerializeField] GameObject startButton;
+    [SerializeField] GameObject nextButton;
+
+
     public static UnityEvent FinishedPathEvent;
 
     GameObject leftHand;
@@ -26,9 +30,13 @@ public class GhostHandsSceneManager : MonoBehaviour
 
     int currentLeftPathIndex;
     int currentRightPathIndex;
+
+    bool canSpawnHands;
     enum SceneState
     {
+        STATE_SPLASH,
         STATE_START,
+        STATE_WAIT,
         STATE_NEXT,
         STATE_DONE,
     }
@@ -41,6 +49,8 @@ public class GhostHandsSceneManager : MonoBehaviour
         FinishedPathEvent.AddListener(OnPathTraversed);
         currentLeftPathIndex = 0;
         currentRightPathIndex = 0;
+        startButton.SetActive(false);
+        nextButton.SetActive(false);
     }
     void Update()
     {
@@ -53,8 +63,10 @@ public class GhostHandsSceneManager : MonoBehaviour
                 switch (sceneState)
                 {
                     case SceneState.STATE_START:
-                        StartGenerateGhostHands();
-                        sceneState = SceneState.STATE_NEXT;
+                        startButton.SetActive(true);
+                        nextButton.SetActive(false);
+                        break;
+                    case SceneState.STATE_WAIT:
                         break;
                     case SceneState.STATE_NEXT:
                         if (leftPath != null)
@@ -63,37 +75,57 @@ public class GhostHandsSceneManager : MonoBehaviour
                             SetUIPath(rightHandPaths[currentRightPathIndex], rightPath);
                         break;
                     case SceneState.STATE_DONE:
-                        Destroy(leftHand);
-                        Destroy(rightHand);
-                        Destroy(leftPath);
-                        Destroy(rightPath);
-                        if (currentLeftPathIndex < leftHandPaths.Count - 1)
-                        {
-                            currentLeftPathIndex++;
-                            Debug.Log(currentLeftPathIndex + " L");
-                            GenerateLeftGhostHands(currentLeftPathIndex);
-                            if (currentLeftPathIndex < leftUIPaths.Count - 1)
-                            {
-                                GenerateLeftUIPaths(currentLeftPathIndex);
-                            }
-                            sceneState = SceneState.STATE_NEXT;
-                            
-                        }
-                        if (currentRightPathIndex < rightHandPaths.Count - 1)
-                        {
-                            currentRightPathIndex++;
-                            Debug.Log(currentLeftPathIndex + " R");
-                            GenerateRightGhostHands(currentRightPathIndex);
-                            if (currentRightPathIndex < rightHandPaths.Count - 1)
-                            {
-                                GenerateRightUIPaths(currentRightPathIndex);
-                            }
-                            sceneState = SceneState.STATE_NEXT;
-                        }
+                        nextButton.SetActive(true);
+                        startButton.SetActive(false);
+                        if (leftHand != null)
+                            Destroy(leftHand);
+                        if (rightHand != null)
+                            Destroy(rightHand);
+                        if (leftPath != null)
+                            Destroy(leftPath);
+                        if (rightPath != null)
+                            Destroy(rightPath);
                         break;
                 }
             }
         }
+    }
+    public void LeaveSplash()
+    {
+        sceneState = SceneState.STATE_START;
+    }
+    public void StartGeneratePath()
+    {
+        StartGenerateGhostHands();
+        sceneState = SceneState.STATE_NEXT;
+    }
+    public void StartNextPath()
+    {
+        
+        if (currentLeftPathIndex < leftHandPaths.Count - 1)
+        {
+            currentLeftPathIndex++;
+            Debug.Log(currentLeftPathIndex + " L");
+            GenerateLeftGhostHands(currentLeftPathIndex);
+            if (currentLeftPathIndex < leftUIPaths.Count - 1)
+            {
+                GenerateLeftUIPaths(currentLeftPathIndex);
+            }
+            sceneState = SceneState.STATE_NEXT;
+
+        }
+        if (currentRightPathIndex < rightHandPaths.Count - 1)
+        {
+            currentRightPathIndex++;
+            Debug.Log(currentLeftPathIndex + " R");
+            GenerateRightGhostHands(currentRightPathIndex);
+            if (currentRightPathIndex < rightHandPaths.Count - 1)
+            {
+                GenerateRightUIPaths(currentRightPathIndex);
+            }
+            sceneState = SceneState.STATE_NEXT;
+        }
+        
     }
     void OnPathTraversed()
     {
