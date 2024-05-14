@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,12 +33,12 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if (dayColor == Color.white || dayColor == Color.green) 
             {
-                obj.GetComponentInChildren<Text>().text = (dayNum + 1).ToString();
+                obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
             }
 
             else 
             {
-                obj.GetComponentInChildren<Text>().text = "";    
+                obj.GetComponentInChildren<TMP_Text>().text = "";    
 
             }
         }
@@ -48,12 +49,9 @@ public class Calendar : MonoBehaviour
 
     public Transform[] weeks;
 
-    public Text MonthAndYear;
+    public TMP_Text MonthAndYear;
 
     public DateTime currDate = DateTime.Now;
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +87,28 @@ public class Calendar : MonoBehaviour
                 }
             }
         }
+
+        else
+        {
+            for (int i = 0; i < 42; i++)
+            {
+                if (i < startDay || i - startDay >= endDay)
+                {
+                    days[i].UpdateColor(Color.grey);
+                }
+                else
+                {
+                    days[i].UpdateColor(Color.white);
+                }
+
+                days[i].UpdateDay(i - startDay);
+            }
+        }
+
+        if (DateTime.Now.Year == year && DateTime.Now.Month == month)
+        {
+            days[(DateTime.Now.Day - 1) + startDay].UpdateColor(Color.green);
+        }
     }
 
     int GetMonthStartDay(int year, int month)
@@ -102,9 +122,16 @@ public class Calendar : MonoBehaviour
         return DateTime.DaysInMonth(year, month);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SwitchMonth(int direction)
     {
-        
+        if (direction < 0)
+        {
+            currDate = currDate.AddMonths(-1);
+        }
+        else 
+        {
+            currDate = currDate.AddMonths(1);
+        }
+        UpdateCalendar(currDate.Year, currDate.Month);
     }
 }
