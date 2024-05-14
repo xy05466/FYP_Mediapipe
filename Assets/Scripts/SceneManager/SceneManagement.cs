@@ -35,6 +35,9 @@ public class SceneManagement : MonoBehaviour
     public bool isLoading { get; private set; }
     public bool isLoadingEffect { get; private set; }
 
+    public Animator transition;
+    public float transitionTime = 1f;
+
     private System.Action onSceneLoaded;
 
     [Header("CSVReader")]
@@ -74,6 +77,8 @@ public class SceneManagement : MonoBehaviour
         Time.timeScale = 0;
         //Doing Scene Transitions
 
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
         asyncHandler = SceneManager.LoadSceneAsync(sceneName);
         loadingText.text = "Loading... 0%";
         loadingText.gameObject.SetActive(true);
@@ -82,18 +87,21 @@ public class SceneManagement : MonoBehaviour
             yield break;
 
         //When the async progress is not done
-        while (!asyncHandler.isDone)
-        {
-            Debug.Log(string.Format("Load Scene {0}  Progress: {1:P2}", sceneName, asyncHandler.progress));
-            loadingText.text = string.Format("Loading... {0:P2}", asyncHandler.progress);
-            yield return null;
-        }
+        //while (!asyncHandler.isDone)
+        //{
+        //    //transition.Play("petalleave");
+        //    Debug.Log(string.Format("Load Scene {0}  Progress: {1:P2}", sceneName, asyncHandler.progress));
+        //    loadingText.text = string.Format("Loading... {0:P2}", asyncHandler.progress);
+        //    yield return null;
+        //}
+        //transition.Play("petalenter");
         asyncHandler = null;
         onSceneLoaded?.Invoke();
         onSceneLoaded = null;
         loadingText.gameObject.SetActive(false);
         isLoading = false;
         loadCoroutine = null;
+        
 
         //Default set game time scale to 1 when a new scene is loaded
         Time.timeScale = 1;
