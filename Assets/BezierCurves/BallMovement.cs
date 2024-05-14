@@ -4,47 +4,50 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    public PathCreator pathCreator;
-    public Path path;
-    public float speed = 5f;
+    public JadenCurveManager path;
+
     public bool isColliding;
-    private Vector2[] points;
+    private Vector3[] points;
     private int currentIndex = 0;
 
-    void Start()
-    {
-        path = pathCreator.GetComponent<PathCreator>().path;
-        points = path.CalculateEvenlySpacedPoints(0.1f); // Adjust spacing as needed
-    }
-
+    float elapsed = 0f;
+    public float duration = 0.5f;
     void Update()
     {
-        if (currentIndex < points.Length)
+        points = path.CalculateEvenlySpacedPoints(0.1f);
+        if (!isColliding)
+            return;
+        //else if(points == null)
+        elapsed += Time.deltaTime;
+        if (currentIndex < points.Length - 1 )
         {
             // Move the ball towards the current point
-            transform.position = Vector2.MoveTowards(transform.position, points[currentIndex], speed * Time.deltaTime);
-
-            // Check if the ball has reached the current point
-            if (Vector2.Distance(transform.position, points[currentIndex]) < 0.01f)
+            transform.position = Vector3.Lerp(points[currentIndex], points[currentIndex + 1], elapsed / duration);
+            //move on to next point
+            if (elapsed >= duration)
             {
-                currentIndex++; // Move to the next point
+                currentIndex++;
+                elapsed = 0;
             }
         }
+        //transform.localPosition.WithZ(0f);
+        Vector3 currentLocalPosition;
+        currentLocalPosition = transform.localPosition;
+        transform.localPosition = currentLocalPosition.WithZ(0f);
+    }
+    //handle collision
+    private void OnTriggerStay(Collider other)
+    {
+        isColliding = true;
+    }
+    //private void Trigger(Collision collision)
+    //{
+    //    isColliding = true;
+    //}
+    private void OnTriggerExit(Collider other)
+    {
+        isColliding = false;
+
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("YourCollisionTag"))
-    //    {
-    //        isColliding = true; // Set collision flag to true when collision occurs
-    //    }
-    //}
-
-    //void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("YourCollisionTag"))
-    //    {
-    //        isColliding = false; // Set collision flag to false when collision ends
-    //    }
-    //}
 }

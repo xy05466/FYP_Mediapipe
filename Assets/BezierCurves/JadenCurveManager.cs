@@ -268,8 +268,18 @@ public class JadenCurveManager : MonoBehaviour
             if (controlIndex >= 0 && controlIndex < points.Count || isClosed)
             {
                 Vector2 newPosV2 = anchorPos + dir * neighbourDistances[i] * .5f;
-                Vector3 newPos = new Vector3(newPosV2.x, newPosV2.y, 0);
-                points[LoopIndex(controlIndex)].transform.position = newPos;
+                //Vector3 newPos = new Vector3(newPosV2.x, newPosV2.y, 0);
+                //points[LoopIndex(controlIndex)].transform.position = newPosV2;
+                //Vector3 currentLocalPosition;
+                //currentLocalPosition = newPos;
+                //points[LoopIndex(controlIndex)].transform.localPosition = currentLocalPosition.WithZ(0f);
+
+                //Vector2 newPosV2 = anchorPos + dir * neighbourDistances[i] * .5f;
+                Vector3 currentLocalPosition;
+                points[LoopIndex(controlIndex)].transform.position = newPosV2;
+                currentLocalPosition = points[LoopIndex(controlIndex)].transform.localPosition;
+                points[LoopIndex(controlIndex)].transform.localPosition = currentLocalPosition.WithZ(0f);
+
             }
         }
     }

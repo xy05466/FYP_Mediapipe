@@ -23,6 +23,7 @@ public class ListOfLists<T>
         if (listIndex >= 0 && listIndex < listOfLists.Count)
         {
             listOfLists[listIndex].Add(item);
+            Debug.Log("item added : " + GetItemInList(listIndex, listOfLists[listIndex].Count - 1));
         }
         else
         {
@@ -34,6 +35,7 @@ public class ListOfLists<T>
         List<T> list = listOfLists[listIndex];
         if (listIndex >= 0 && listIndex < listOfLists.Count)
         {
+            Debug.Log("item Got : " + list[itemIndex]);
             return list[itemIndex];
         }
         else

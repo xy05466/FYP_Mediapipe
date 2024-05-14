@@ -18,8 +18,6 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private int index = 0;
 
     int lastActivated, justActivated;
-
-
     //list
     //how many sets in list
     //how to check if all sets are completed
@@ -33,21 +31,23 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         parent = this.gameObject;
         silderSetsList = new List<GameObject>();
         //init all the sets
-        //currently for 1 set
         //init points in slider
-        silderSetsList = new List<GameObject>();
         GameObject gameObject = Instantiate(silderPrefab, parent.transform);
         gameObject.SetActive(true);
         silderSetsList.Add(gameObject);
         SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        //for (int i = 0; i < accupointSOs.Count; i++)
-        //{
-        //    //currSilderSet.anchorPostions.AddList(new List<Vector2>());
-        //    for(int j = 0; j < accupointSOs[i].accupointSOList.Count;j++)
-        //    {
-        //        currSilderSet.anchorPostions.AddItemToList(i, Vector2.zero);
-        //    }
-        //}
+        currSilderSet.Init();
+
+
+
+        for (int i = 0; i < accupointSOs.Count; i++)
+        {
+            Debug.Log("currSilderSet.anchorPostions" + i);
+
+            currSilderSet.AddList(i);
+
+
+        }
 
     }
     List<Transform> positions;
@@ -86,41 +86,20 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private void Update()
     {
 
-        //foreach (GameObject obj in silderSetsList.GetList(index))
-        //{
-
-        //    if (obj.activeInHierarchy)
-        //    {
-        //        //Debug.Log(obj.transform.position.x + ", " + obj.transform.position.y + ", " + obj.transform.position.z + " 1");
-        //        int nextAccupoint = obj.GetComponent<AccupointMassage>().GetData().landmarkIndex;
-        //        positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
-
-        //        if (lockedToZero)
-        //            obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
-        //        silderSetsList.GetItemInList(index, 1);
-
-
-        //        //put code to move on to next set here
-        //    }
-        //}
-        //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        //for (int i = 0; i < accupointSOs.Count; i++)
-        //{
-        //    currSilderSet.anchorPostions.AddItemToList
-        //}
         SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        
+
         for (int i = 0; i < accupointSOs.Count; i++)
         {
-            currSilderSet.anchorPostions.AddList(new List<Vector2>());
             for (int j = 0; j < accupointSOs[i].accupointSOList.Count; j++)
             {
                 int nextAccupoint = accupointSOs[i].accupointSOList[j].landmarkIndex;
                 positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
                 Vector3 position = Reposition(positions, lockedToZero, isAveraged);
-                currSilderSet.anchorPostions.SetItemInList(i, j, new Vector2(position.x, position.y));
+                position = new Vector3(position.x, position.y, 0);
+                currSilderSet.anchorPostions.SetItemInList(i, j, position);
             }
         }
+        //increase index when a set is done 
     }
 
 }
