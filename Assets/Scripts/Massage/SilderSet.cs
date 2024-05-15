@@ -10,6 +10,7 @@ public class SilderSet : MonoBehaviour
     [SerializeField] GameObject prefab;
     public bool completed = false;
     int setsCompleted = 0;
+    bool lockPositions = false;
     private void Start()
     {
 
@@ -37,6 +38,13 @@ public class SilderSet : MonoBehaviour
     //spawn all points in 
     private void Update()
     {
+
+        if (lockPositions)
+            return;
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            lockPositions = true;
+        }
         Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
         //update all the individual points
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)

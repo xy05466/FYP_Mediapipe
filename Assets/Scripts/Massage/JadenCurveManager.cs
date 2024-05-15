@@ -138,7 +138,10 @@ public class JadenCurveManager : MonoBehaviour
     {
         return new Vector3[] { points[i * 3].transform.position, points[i * 3 + 1].transform.position, points[i * 3 + 2].transform.position, points[LoopIndex(i * 3 + 3)].transform.position };
     }
-
+    public Vector2[] GetPointsInSegmentV2(int i)
+    {
+        return new Vector2[] { points[i * 3].transform.position, points[i * 3 + 1].transform.position, points[i * 3 + 2].transform.position, points[LoopIndex(i * 3 + 3)].transform.position };
+    }
     public void MovePoint(int i, Vector3 pos)
     {
         Vector3 deltaMove = pos - points[i].transform.position;
@@ -181,36 +184,35 @@ public class JadenCurveManager : MonoBehaviour
             }
         }
     }
-    public Vector3[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
+    public Vector2[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     {
-        List<Vector3> evenlySpacedPoints = new List<Vector3>();
+        List<Vector2> evenlySpacedPoints = new List<Vector2>();
         evenlySpacedPoints.Add(points[0].transform.position);
-        Vector3 previousPoint = points[0].transform.position;
+        Vector2 previousPoint = points[0].transform.position;
         float dstSinceLastEvenPoint = 0;
 
         for (int segmentIndex = 0; segmentIndex < NumSegments; segmentIndex++)
         {
-            Vector3[] p = GetPointsInSegment(segmentIndex);
-            float controlNetLength = Vector3.Distance(p[0], p[1]) + Vector3.Distance(p[1], p[2]) + Vector3.Distance(p[2], p[3]);
-            float estimatedCurveLength = Vector3.Distance(p[0], p[3]) + controlNetLength / 2f;
+            Vector2[] p = GetPointsInSegmentV2(segmentIndex);
+            float controlNetLength = Vector2.Distance(p[0], p[1]) + Vector3.Distance(p[1], p[2]) + Vector2.Distance(p[2], p[3]);
+            float estimatedCurveLength = Vector2.Distance(p[0], p[3]) + controlNetLength / 2f;
             int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
             float t = 0;
             while (t <= 1)
             {
                 t += 1f / divisions;
-                Vector3 pointOnCurve = Bezier.EvaluateCubic(p[0], p[1], p[2], p[3], t);
+                Vector2 pointOnCurve = Bezier.EvaluateCubic(p[0], p[1], p[2], p[3], t);
                 dstSinceLastEvenPoint += Vector3.Distance(previousPoint, pointOnCurve);
 
                 while (dstSinceLastEvenPoint >= spacing)
                 {
                     float overshootDst = dstSinceLastEvenPoint - spacing;
-                    Vector3 newEvenlySpacedPoint = pointOnCurve + (previousPoint - pointOnCurve).normalized * overshootDst;
+                    Vector2 newEvenlySpacedPoint = pointOnCurve + (previousPoint - pointOnCurve).normalized * overshootDst;
                     evenlySpacedPoints.Add(newEvenlySpacedPoint);
                     dstSinceLastEvenPoint = overshootDst;
                     previousPoint = newEvenlySpacedPoint;
                 }
 
-                previousPoint = pointOnCurve;
             }
         }
 

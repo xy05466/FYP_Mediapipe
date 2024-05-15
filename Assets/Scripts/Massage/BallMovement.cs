@@ -7,7 +7,7 @@ public class BallMovement : MonoBehaviour
     public JadenCurveManager path;
 
     public bool isColliding;
-    private Vector3[] points;
+    private Vector2[] points;
     private int currentIndex = 0;
 
     float elapsed = 0f;
@@ -15,6 +15,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         points = path.CalculateEvenlySpacedPoints(0.1f);
+        //for(var pointsInCount = 0; points.Length < pointsInCount )
         if (!isColliding)
             return;
         //else if(points == null)
@@ -40,10 +41,7 @@ public class BallMovement : MonoBehaviour
     {
         isColliding = true;
     }
-    //private void Trigger(Collision collision)
-    //{
-    //    isColliding = true;
-    //}
+
     private void OnTriggerExit(Collider other)
     {
         isColliding = false;
