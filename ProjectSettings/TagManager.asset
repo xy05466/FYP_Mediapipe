@@ -8,6 +8,7 @@ TagManager:
   - ColliderPoint
   - Facepoint
   - Handpoint
+  - Date
   layers:
   - Default
   - TransparentFX
