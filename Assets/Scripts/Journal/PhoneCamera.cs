@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using System;
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -21,9 +22,12 @@ public class PhoneCamera : MonoBehaviour
 
     public TMP_Text text;
     public RawImage background;
+    //public GameObject screenLayer;
     public RawImage preview;
-    public RawImage picResult;
     public TMP_Text brightnessTxt;
+    public TMP_Text date;
+    public TMP_Text splashTxt;
+    public TMP_Text photoTxt;
     public UnityEngine.UI.Button albumButton;
     public UnityEngine.UI.Button creamButton;
     public GameObject audioManager;
@@ -39,7 +43,6 @@ public class PhoneCamera : MonoBehaviour
         cameras = new List<WebCamTexture>();
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
-        //imageCount = journalSO.GetBeforeCount();
 
         if (devices.Length < 1)
         {
@@ -66,11 +69,15 @@ public class PhoneCamera : MonoBehaviour
         {
             albumButton.gameObject.SetActive(true);
             creamButton.gameObject.SetActive(false);
+            splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
+            photoTxt.text = "After Photo";
         }
         else
         {
             albumButton.gameObject.SetActive(false);
             creamButton.gameObject.SetActive(true);
+            splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
+            photoTxt.text = "Before Photo";
         }
 
         if (cameras.Count > 1) 
@@ -78,39 +85,38 @@ public class PhoneCamera : MonoBehaviour
             backCam = cameras[1]; 
         }
        
-
-        backCam.Play();
         background.texture = backCam;
         
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
-        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
-        //Debug.Log("Debug" + backCam.width + backCam.height);
+
+        date.text = DateTime.Today.ToString("dd MMMM yyyy");
+
         camAvailable = true;
     }
     private void Update()
     {
-        if (!camAvailable)
-        {
-            return;
-        }
+        //if (!camAvailable)
+        //{
+        //    return;
+        //}
 
-        float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
+        //float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
 
-        background.transform.localPosition = new Vector3(1f, scaleY, 1f);
+        //background.transform.localPosition = new Vector3(1f, scaleY, 1f);
 
-        int orient = -backCam.videoRotationAngle;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+        //int orient = -backCam.videoRotationAngle;
+        //background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
 
-        picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
+        //picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
 
-        if (cameras.Count > 1)
-        {
-            if (backCam == cameras[1])
-            {
-                background.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
-                picResult.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
-            }
-        }
+        //if (cameras.Count > 1)
+        //{
+        //    if (backCam == cameras[1])
+        //    {
+        //        background.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
+        //        picResult.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
+        //    }
+        //}
     }
 
     //private void StartBrightnessCheck()
@@ -166,10 +172,11 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator SetPic()
     {
         //picTaken = (Texture2D)background.texture;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, -90);
-        Debug.Log("Debug" + background.rectTransform.localEulerAngles.z);
+        
+        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
+        preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
         yield return StartCoroutine(journalSO.TakePic(background.texture));
-        //Debug.Log("Debug" + background.rectTransform.rotation);
+        Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
         ShowPic();
         audioManager.GetComponent<AudioManager>().Play("Ding");
         
@@ -196,10 +203,7 @@ public class PhoneCamera : MonoBehaviour
     }
     public void ShowPic()
     {
-
-        //imageCount = journalSO.GetBeforeCount();
-        //Debug.Log(imageCount);
-        picResult.texture = journalSO.GetPicCache();
+        preview.texture = journalSO.GetPicCache();
 
     }
 

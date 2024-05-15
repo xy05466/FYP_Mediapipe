@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SliderManager : MonoBehaviour
 {
     public GameObject sliderBG;
     public GameObject sliderFill;
+    public TMP_Text dateText;
+    public TMP_Text dayText;
 
     [SerializeField] private JournalSO journalSO;
 
@@ -77,8 +80,13 @@ public class SliderManager : MonoBehaviour
         afterPic.LoadImage(afterImageData);
         Sprite afterSprite = Sprite.Create(afterPic, new Rect(0, 0, afterPic.width, afterPic.height), new Vector2(0.5f, 0.0f), 100.0f);
         
-        sliderBG.GetComponent<Image>().sprite = beforeSprite;
-        sliderFill.GetComponent<Image>().sprite = afterSprite;
+        
+        sliderFill.GetComponent<Image>().sprite = beforeSprite;
+
+        sliderBG.GetComponent<Image>().sprite = afterSprite;
+
+        dateText.text = journalSO.date[i - 1];
+        dayText.text = journalSO.day[i - 1];
     }
 
 }
