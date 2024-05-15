@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8507712595129829883}
   - component: {fileID: 6338813107322096619}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StepsName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 6975576570642286862}
   - component: {fileID: 6955828135836791330}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 8973384792169208975}
   - component: {fileID: 3259411429281263928}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Arrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 1544911121430132562}
   - component: {fileID: 4706976330850860064}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StepsNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 567751533641771256}
   - component: {fileID: 3135472887274923682}
   m_Layer: 5
-  m_Name: Image
+  m_Name: NaviButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 6260494108191824532}
   - component: {fileID: 4121531154419188707}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 7167741116950258000}
   - component: {fileID: 3139849983517409710}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 8263697569857190502}
   - component: {fileID: 7295130771882652316}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
