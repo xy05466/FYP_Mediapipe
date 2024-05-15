@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 152848522517629891}
   - component: {fileID: 3990806698193232267}
   m_Layer: 0
-  m_Name: CubicThing
+  m_Name: SilderFinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
