@@ -9,5 +9,8 @@ public static class ExtensionMethods
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
-
+    public static Vector3 WithZ(this Vector3 vector, float z)
+    {
+        return new Vector3(vector.x, vector.y, z);
+    }
 }

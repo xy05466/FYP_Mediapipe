@@ -74,21 +74,7 @@ public class RhythmGameController : MonoBehaviour
             processNotes();
             nextIndex++;
         }
-        //if (SlidersInQueue)
-        //{
-        //    if (SpawnNextIndex > SlidersToSpawn.Count - 1)
-        //    {
-        //        SlidersInQueue = false;
-        //        return;
-        //    }
-        //    //if(SpawnNextIndex > SlidersToSpawn.Count)
-        //    if (musicSystem.audioSource.time > SlidersToSpawn[SpawnNextIndex])
-        //    {
-        //        onStartMoveSlider?.Invoke();
-        //        SpawnNextIndex++;
-                
-        //    }
-        //}
+
     }
     //when to spawn 
     //how to read the data
@@ -102,7 +88,9 @@ public class RhythmGameController : MonoBehaviour
             newNote.transform.localPosition = new Vector3(notes[nextIndex].x, notes[nextIndex].y, 0);
             AccupointNote accNote = newNote.GetComponent<AccupointNote>();
             accNote.index = nextIndex;
-           
+            accNote.presstime = notes[nextIndex].presstime;
+            accNote.audioSource = musicSystem.audioSource;
+
 
         }
         else//this means it is a slider 
