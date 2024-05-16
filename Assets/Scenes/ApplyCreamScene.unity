@@ -5223,7 +5223,7 @@ GameObject:
   - component: {fileID: 2051002407}
   - component: {fileID: 2051002406}
   m_Layer: 5
-  m_Name: HandCanvas
+  m_Name: MediaPipe Hand and Face Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
