@@ -1517,9 +1517,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2040775633}
-        m_TargetAssemblyTypeName: GetSceneManager, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 270456508}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadNextLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3510,6 +3510,8 @@ MonoBehaviour:
     type: 3}
   _color: {r: 0, g: 1, b: 0, a: 0}
   _radius: 15
+  _altAnnotationPrefab: {fileID: 0}
+  debugMode: 0
 --- !u!1 &934476854
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,7 +3831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1218140555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5208,18 +5210,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3588233d538f7dd4abf8bd2e2f13dfd0, type: 3}
---- !u!114 &2040775633 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6227506123225214397, guid: 3588233d538f7dd4abf8bd2e2f13dfd0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2040775632}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2006afa0fd6df1499fd3ed4b9fce2d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2051002405
 GameObject:
   m_ObjectHideFlags: 0
