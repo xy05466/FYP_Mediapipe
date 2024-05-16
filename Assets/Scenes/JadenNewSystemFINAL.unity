@@ -172,7 +172,7 @@ MonoBehaviour:
   - accupointSOList:
     - {fileID: 11400000, guid: d3d13f6df519d8546b76569d522a35f8, type: 2}
     - {fileID: 11400000, guid: edd179f3975b8b44985bbc44a9f0857e, type: 2}
-    - {fileID: 11400000, guid: cbd883bf66ebba74abbdbb8c1e8315ab, type: 2}
+    - {fileID: 11400000, guid: 5be9a043d2b834f42a21d405f3a138af, type: 2}
   - accupointSOList:
     - {fileID: 11400000, guid: 1083c9bd45c4dc641aa46fc0a15b87b4, type: 2}
     - {fileID: 11400000, guid: eab903a9052ed534caff8ced22d8b0bf, type: 2}
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5ef18449daa55e4a9df31fc5fed7e9d, type: 2}
   - {fileID: 11400000, guid: d3d13f6df519d8546b76569d522a35f8, type: 2}
   - {fileID: 11400000, guid: edd179f3975b8b44985bbc44a9f0857e, type: 2}
-  - {fileID: 11400000, guid: cbd883bf66ebba74abbdbb8c1e8315ab, type: 2}
+  - {fileID: 11400000, guid: 5be9a043d2b834f42a21d405f3a138af, type: 2}
   - {fileID: 11400000, guid: 0dc33ece1f0269e4b93962dd04e8f71e, type: 2}
   threshold: 10
 --- !u!1 &706141580

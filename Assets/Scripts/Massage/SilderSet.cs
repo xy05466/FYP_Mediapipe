@@ -9,8 +9,15 @@ public class SilderSet : MonoBehaviour
     List<JadenCurveManager> path;
     [SerializeField] GameObject prefab;
     public bool completed = false;
+    public int numOfSetsToComplete = 3;
+    int numOfSets = 0;
     int setsCompleted = 0;
-    bool lockPositions = false;
+    public bool lockPositions = false;
+    //time pressed
+    public delegate void ResetBallPos();
+    // Declare a delegate variable
+    public static event ResetBallPos resetBallPos;
+
     private void Start()
     {
 
@@ -30,8 +37,12 @@ public class SilderSet : MonoBehaviour
             path[i].points[3].transform.position = new(anchorPostions.GetItemInList(i, 1).x, anchorPostions.GetItemInList(i, 1).y, 0);
             path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
         }
+        //set num of sets and 
+        numOfSets = anchorPostions.CountOfLists();
         //get reference to paths
         //then set anchors to 
+        //init event
+        BallMovement.onComplete += setCompleted;
     }
     //hold points 
     //update points
@@ -64,6 +75,8 @@ public class SilderSet : MonoBehaviour
             path[i].points[6].transform.localPosition = currentLocalPosition.WithZ(0f);
 
         }
+        //check if sets have been completed enough times
+        CheckCompleted();
     }
     public void Init()
     {
@@ -72,10 +85,25 @@ public class SilderSet : MonoBehaviour
     public void AddList(int i)
     {
         anchorPostions.AddList(new List<Vector3>());
-        Debug.Log("Count of list : " + anchorPostions.CountOfLists());
         anchorPostions.AddItemToList(i, Vector3.zero);
         anchorPostions.AddItemToList(i, Vector3.zero);
         anchorPostions.AddItemToList(i, Vector3.zero);
+    }
+    public void setCompleted()
+    {
+        setsCompleted++;
+        if (setsCompleted == anchorPostions.CountOfLists())
+        {
+            if(numOfSets == numOfSetsToComplete)
+            {
+                //move on to next exercise here
+                completed = true;
+            }
+            else {
+                numOfSets++;
+                resetSet();
+            }
+        }
     }
     public void CheckCompleted()
     {
@@ -83,5 +111,9 @@ public class SilderSet : MonoBehaviour
         {
             completed = true;
         }
+    }
+    public void resetSet()
+    {
+        resetBallPos?.Invoke();
     }
 }

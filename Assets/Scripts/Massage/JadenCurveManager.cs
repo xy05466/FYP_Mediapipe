@@ -15,10 +15,7 @@ public class JadenCurveManager : MonoBehaviour
     public LineRenderer LineRenderer;
     public float vertexCount = 12;
 
-    private void Start()
-    {
 
-    }
     private void Update()
     {
         var pointList = new List<Vector3>();
@@ -184,25 +181,60 @@ public class JadenCurveManager : MonoBehaviour
             }
         }
     }
+    //public Vector2[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
+    //{
+    //    List<Vector2> evenlySpacedPoints = new List<Vector2>();
+    //    evenlySpacedPoints.Add(points[0].transform.position);
+    //    Vector2 previousPoint = points[0].transform.position;
+    //    float dstSinceLastEvenPoint = 0;
+
+    //    for (int segmentIndex = 0; segmentIndex < NumSegments; segmentIndex++)
+    //    {
+    //        Vector2[] p = GetPointsInSegmentV2(segmentIndex);
+    //        float controlNetLength = Vector2.Distance(p[0], p[1]) + Vector2.Distance(p[1], p[2]) + Vector2.Distance(p[2], p[3]);
+    //        float estimatedCurveLength = Vector2.Distance(p[0], p[3]) + controlNetLength / 2f;
+    //        int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
+    //        float t = 0;
+    //        while (t <= 1)
+    //        {
+    //            t += 1f / divisions;
+    //            Vector2 pointOnCurve = Bezier.EvaluateCubic(p[0], p[1], p[2], p[3], t);
+    //            dstSinceLastEvenPoint += Vector2.Distance(previousPoint, pointOnCurve);
+
+    //            while (dstSinceLastEvenPoint >= spacing)
+    //            {
+    //                float overshootDst = dstSinceLastEvenPoint - spacing;
+    //                Vector2 newEvenlySpacedPoint = pointOnCurve + (previousPoint - pointOnCurve).normalized * overshootDst;
+    //                evenlySpacedPoints.Add(newEvenlySpacedPoint);
+    //                dstSinceLastEvenPoint = overshootDst;
+    //                previousPoint = newEvenlySpacedPoint;
+    //            }
+
+    //        }
+    //    }
+
+    //    return evenlySpacedPoints.ToArray();
+    //}
+    //fixed code
     public Vector2[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     {
         List<Vector2> evenlySpacedPoints = new List<Vector2>();
-        evenlySpacedPoints.Add(points[0].transform.position);
         Vector2 previousPoint = points[0].transform.position;
+        evenlySpacedPoints.Add(previousPoint);
         float dstSinceLastEvenPoint = 0;
 
         for (int segmentIndex = 0; segmentIndex < NumSegments; segmentIndex++)
         {
             Vector2[] p = GetPointsInSegmentV2(segmentIndex);
-            float controlNetLength = Vector2.Distance(p[0], p[1]) + Vector3.Distance(p[1], p[2]) + Vector2.Distance(p[2], p[3]);
+            float controlNetLength = Vector2.Distance(p[0], p[1]) + Vector2.Distance(p[1], p[2]) + Vector2.Distance(p[2], p[3]);
             float estimatedCurveLength = Vector2.Distance(p[0], p[3]) + controlNetLength / 2f;
             int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
-            float t = 0;
-            while (t <= 1)
+
+            for (int i = 1; i <= divisions; i++)
             {
-                t += 1f / divisions;
+                float t = i / (float)divisions;
                 Vector2 pointOnCurve = Bezier.EvaluateCubic(p[0], p[1], p[2], p[3], t);
-                dstSinceLastEvenPoint += Vector3.Distance(previousPoint, pointOnCurve);
+                dstSinceLastEvenPoint += Vector2.Distance(previousPoint, pointOnCurve);
 
                 while (dstSinceLastEvenPoint >= spacing)
                 {
@@ -212,14 +244,12 @@ public class JadenCurveManager : MonoBehaviour
                     dstSinceLastEvenPoint = overshootDst;
                     previousPoint = newEvenlySpacedPoint;
                 }
-
+                previousPoint = pointOnCurve;
             }
         }
 
         return evenlySpacedPoints.ToArray();
     }
-
-
     void AutoSetAllAffectedControlPoints(int updatedAnchorIndex)
     {
         for (int i = updatedAnchorIndex - 3; i <= updatedAnchorIndex + 3; i += 3)
