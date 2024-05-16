@@ -3389,6 +3389,7 @@ GameObject:
   - component: {fileID: 1968537270}
   - component: {fileID: 1968537273}
   - component: {fileID: 1968537272}
+  - component: {fileID: 1968537274}
   m_Layer: 5
   m_Name: Annotable Layers
   m_TagString: Untagged
@@ -3472,6 +3473,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotation: {fileID: 376266485}
+--- !u!114 &1968537274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968537268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0b8ceeff564b24f902427d954df970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facepointManager: {fileID: 543386377}
+  rGameObject: {fileID: 6425009}
+  MaxPos: {x: 1, y: 1, z: 1}
+  MinPos: {x: -1, y: -1, z: -1}
+  textBoxString: {fileID: 1756075015}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

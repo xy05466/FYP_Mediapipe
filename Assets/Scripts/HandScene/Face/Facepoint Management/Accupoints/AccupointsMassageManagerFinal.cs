@@ -17,7 +17,6 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private bool lockedToZero = true;
     private int index = 0;
 
-    int lastActivated, justActivated;
     //list
     //how many sets in list
     //how to check if all sets are completed
@@ -26,8 +25,6 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private void Start()
     {
         index = 0;
-        lastActivated = 0;
-        justActivated = 0;
         parent = this.gameObject;
         silderSetsList = new List<GameObject>();
         //init all the sets
