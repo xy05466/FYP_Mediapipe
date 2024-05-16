@@ -455,4 +455,9 @@ public class JournalSO : ScriptableObject
     {
         return hasCaptured;
     }
+
+    public string GetDate(int i)
+    {
+        return date[i];
+    }
 }

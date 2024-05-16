@@ -12,6 +12,7 @@ public class AlbumManager : MonoBehaviour
     public TMP_Text journalDayTxt;
     public TMP_Text journalEntryTxt;
     public Slider compareSlider;
+    public Calendar calendar;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,26 @@ public class AlbumManager : MonoBehaviour
             //Debug.Log(i);
         }
 
+    }
+
+    public void GetDayPics(int n)
+    {
+        int imageCount = journalSO.GetAfterCount();
+        //Debug.Log(imageCount);
+
+        for (int i = imageCount; i > 0; i--)
+        {
+            //Debug.Log(imageCount);
+            //Debug.Log(pics.Count);
+            if (imageCount >= 8 && i == 2)
+            {
+                break;
+            }
+
+            journalSO.GetDate(i);
+
+            //Debug.Log(i);
+        }
     }
 
     public void GetText(int n)
