@@ -125,10 +125,6 @@ public class PhotoFaceManager : MonoBehaviour
 
                 RenderTexture.active = currentRT;
 
-                int sourceMipLevel = 0;
-
-                Color32[] pixelArray = screenshotTexture.GetPixels32(sourceMipLevel);
-
                 for (int i = 0; i < pixels.Length; i++)
                 {
                     UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
