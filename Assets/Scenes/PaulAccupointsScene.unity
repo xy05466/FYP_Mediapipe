@@ -2907,7 +2907,7 @@ MonoBehaviour:
   textbox: {fileID: 1756075015}
   facepointManager: {fileID: 543386375}
   accupointManager: {fileID: 6425011}
-  button: {fileID: 0}
+  button: {fileID: 589609671}
   maxDistX: 5
   maxDistY: 8
   lowerBoundZ: 1
