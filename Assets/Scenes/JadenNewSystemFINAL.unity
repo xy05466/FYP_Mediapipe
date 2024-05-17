@@ -234,6 +234,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1594682638}
     m_Modifications:
+    - target: {fileID: 2210191951712292552, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259411429281263928, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c6c92502adb44de4ebdd64738d7f3a99,
+        type: 3}
     - target: {fileID: 4032617666655225393, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -334,10 +345,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4121531154419188707, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_text
+      value: Both Sides x8
+      objectReference: {fileID: 0}
     - target: {fileID: 4604612110428497926, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
         type: 3}
       propertyPath: m_Name
       value: StepsGuide
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338813107322096619, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_text
+      value: Front Face Glide
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783342488397167734, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -425
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1192,7 +1218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &379195623
 MonoBehaviour:
   m_ObjectHideFlags: 0
