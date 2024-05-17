@@ -69,8 +69,15 @@ public class BallMovement : MonoBehaviour
     }
     public void reset()
     {
-        reachEnd = true;
+        isColliding = false;
+        reachEnd = false;
         currentIndex = 0;
         transform.localPosition = Vector3.zero;
     }
+//now need to handle spawning of flowers
+//get points when face is in scene
+//based on points generated spawn the flowers accordingly
+//making the animation sprite
+//then how are you going to get the flowers to spawn in the correct position 
+//and when to spawn the flowers
 }
