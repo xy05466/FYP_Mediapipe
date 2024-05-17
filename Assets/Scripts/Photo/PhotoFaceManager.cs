@@ -137,7 +137,7 @@ public class PhotoFaceManager : MonoBehaviour
 
                 avgV /= tex.width * tex.height;
 
-                if (avgV > 0.45f)
+                if (avgV > 0.35f)
                 {
                     anim.Play("tulipbloom");
                     if (journalSO.GetHasCaptured())
@@ -155,7 +155,7 @@ public class PhotoFaceManager : MonoBehaviour
                         audio.GetComponent<AudioManager>().Play("Sparkle");
                     }
                 }
-                else if (avgV <= 0.45f)
+                else if (avgV <= 0.35f)
                 {
                     anim.Play("tulipclose");
                     textbox.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();

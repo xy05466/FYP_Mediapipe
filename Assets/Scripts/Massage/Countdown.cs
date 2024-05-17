@@ -8,7 +8,7 @@ public class Countdown : MonoBehaviour
 {
     public GameObject flowerImage;
     public Animator transition;
-    public MusicSystem musicSystem;
+    public PlayerLookawayScript musicSystem;
 
     public float countdownTime = 1f;
     public void StartDisableCountdown()
@@ -22,6 +22,6 @@ public class Countdown : MonoBehaviour
         yield return new WaitForSeconds(countdownTime);
         
         flowerImage.SetActive(false);
-        musicSystem.StartGame();
+        musicSystem.gameStart = true;
     }
 }

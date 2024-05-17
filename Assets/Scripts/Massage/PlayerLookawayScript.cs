@@ -15,9 +15,12 @@ public class PlayerLookawayScript : MonoBehaviour
     Vector3 MinPos = Vector3.zero;
     //text
     public TMP_Text textBoxString;
+    public bool gameStart = false;
     // Update is called once per frame
     void Update()
     {
+        if (!gameStart)
+            return;
         if (!FaceCheck())
             rGameObject.SetActive(false);
         else if (!rGameObject.activeInHierarchy)

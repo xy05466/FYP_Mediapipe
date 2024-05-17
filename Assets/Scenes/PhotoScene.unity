@@ -5682,8 +5682,8 @@ MonoBehaviour:
   textbox: {fileID: 509464527}
   facepointManager: {fileID: 25833965}
   capture: {fileID: 1623021701}
-  maxDistX: 5
-  maxDistY: 8
+  maxDistX: 6
+  maxDistY: 9
   lowerBoundZ: 1
   upperBoundZ: 3
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
