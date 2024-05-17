@@ -9,7 +9,24 @@ public class SceneLoader : MonoBehaviour
     public Image image;
     public Animator transition;
 
+    public float raycastTime = 2.5f;
     public float transitionTime = 1f;
+
+    private void Start()
+    {
+        StartCoroutine(SetRaycastTarget());
+    }
+
+    public void StartSetRaycastTarget()
+    {
+        StartCoroutine(SetRaycastTarget());
+    }
+
+    IEnumerator SetRaycastTarget()
+    {
+        yield return new WaitForSeconds(raycastTime);
+        image.raycastTarget = false;
+    }
 
     public void LoadNextLevel(string sceneName)
     {
