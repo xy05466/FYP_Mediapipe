@@ -876,6 +876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543386373}
   - component: {fileID: 543386374}
+  - component: {fileID: 543386375}
   m_Layer: 5
   m_Name: Face Annotable Layer
   m_TagString: Untagged
@@ -924,6 +925,21 @@ MonoBehaviour:
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 1}
   _faceConnectionWidth: 0.1
   _irisCircleWidth: 0
+--- !u!114 &543386375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543386372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b70074974ff57540ae16716a3cbc6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mfla: {fileID: 0}
+  indexesToStore: 
+  threshold: 50
 --- !u!1 &706141580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751768238}
   - component: {fileID: 1751768239}
+  - component: {fileID: 1751768240}
   m_Layer: 5
   m_Name: Hand Annotable Layer
   m_TagString: Untagged
@@ -2411,6 +2428,21 @@ MonoBehaviour:
   _landmarkRadius: 30
   _connectionColor: {r: 1, g: 1, b: 1, a: 1}
   _connectionWidth: 0.1
+--- !u!114 &1751768240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751768237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414639fdea77f7e4c9d4c13fb14a48c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mhla: {fileID: 0}
+  indexesToStore: 
+  threshold: 50
 --- !u!1 &1756075013
 GameObject:
   m_ObjectHideFlags: 0
