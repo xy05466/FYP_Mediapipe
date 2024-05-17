@@ -18,12 +18,12 @@ public class PlayerLookawayScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!balls())
+        if (!FaceCheck())
             rGameObject.SetActive(false);
         else if (!rGameObject.activeInHierarchy)
             rGameObject.SetActive(true);
     }
-    public bool balls()
+    public bool FaceCheck()
     {
         GameObject[] facePoints = _facepointManager.GetFacePointTransforms();
         if (facePoints != null)
