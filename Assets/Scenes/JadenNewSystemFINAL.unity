@@ -3487,8 +3487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _facepointManager: {fileID: 543386377}
   rGameObject: {fileID: 6425009}
-  MaxPos: {x: 1, y: 1, z: 1}
-  MinPos: {x: -1, y: -1, z: -1}
+  MaxPos: {x: 10, y: 10, z: 10}
+  MinPos: {x: -10, y: -10, z: -10}
   textBoxString: {fileID: 1756075015}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
