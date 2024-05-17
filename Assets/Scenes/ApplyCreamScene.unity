@@ -3510,8 +3510,6 @@ MonoBehaviour:
     type: 3}
   _color: {r: 0, g: 1, b: 0, a: 0}
   _radius: 15
-  _altAnnotationPrefab: {fileID: 0}
-  debugMode: 0
 --- !u!1 &934476854
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,7 +3829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1218140555
 RectTransform:
   m_ObjectHideFlags: 0

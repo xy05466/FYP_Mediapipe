@@ -5867,6 +5867,7 @@ MonoBehaviour:
   maxDistY: 8
   lowerBoundZ: 1
   upperBoundZ: 3
+  journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
   checkPic: {fileID: 1567861481}
   brightnessSprite: {fileID: 173944898}
   audio: {fileID: 458238645}
