@@ -6806,7 +6806,7 @@ GameObject:
   - component: {fileID: 520966748}
   - component: {fileID: 520966747}
   m_Layer: 5
-  m_Name: DetailedView
+  m_Name: DetailedViewTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8367,6 +8367,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1152267001}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &642607246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9875,6 +9887,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1687868229}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1152267001}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20390,7 +20414,7 @@ GameObject:
   - component: {fileID: 1345617417}
   - component: {fileID: 1345617416}
   m_Layer: 5
-  m_Name: Forehead
+  m_Name: ForeheadBttn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20527,7 +20551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60062675fe481b6428650a92a6a3c965, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53f5d1a7b4df12847b670184995fc3a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24818,7 +24842,7 @@ GameObject:
   - component: {fileID: 1687868232}
   - component: {fileID: 1687868231}
   m_Layer: 5
-  m_Name: Comparison Slider
+  m_Name: Comparison Slider Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
