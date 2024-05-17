@@ -25,6 +25,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         points = path.CalculateEvenlySpacedPoints(0.3f);
+        flowersToSpawn();
         //for(var pointsInCount = 0; points.Length < pointsInCount )
         if (!isColliding)
             return;
@@ -74,6 +75,26 @@ public class BallMovement : MonoBehaviour
         currentIndex = 0;
         transform.localPosition = Vector3.zero;
     }
+    //handle how many flowers to spawn
+    public void flowersToSpawn()
+    {
+        int numOfPoints = points.Length;
+        Debug.Log(numOfPoints);
+        //if greater tahn 65 points, spawn 3 points instead
+        if(numOfPoints > 65)
+        {
+            //spawn 3 points
+
+        }
+        else
+        {
+            //spawn 2 points
+
+        }
+    }
+    
+
+    
 //now need to handle spawning of flowers
 //get points when face is in scene
 //based on points generated spawn the flowers accordingly
