@@ -93,59 +93,6 @@ public class PhoneCamera : MonoBehaviour
 
         camAvailable = true;
     }
-    private void Update()
-    {
-        //if (!camAvailable)
-        //{
-        //    return;
-        //}
-
-        //float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
-
-        //background.transform.localPosition = new Vector3(1f, scaleY, 1f);
-
-        //int orient = -backCam.videoRotationAngle;
-        //background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
-
-        //picResult.rectTransform.localEulerAngles = new Vector3(0,0, orient);
-
-        //if (cameras.Count > 1)
-        //{
-        //    if (backCam == cameras[1])
-        //    {
-        //        background.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
-        //        picResult.rectTransform.localEulerAngles = new Vector3(0, 180, orient);
-        //    }
-        //}
-    }
-
-    //private void StartBrightnessCheck()
-    //{
-    //    StartCoroutine(BrightnessCheck());
-    //}
-
-    //private void BrightnessCheck()
-    //{
-    //    Graphics.ConvertTexture(background.texture, texture2D);
-
-    //    for (int i = 0; i < texture2D.width; i++)
-    //    {
-    //        for (int j = 0; j < texture2D.height; j++)
-    //        {
-    //            UnityEngine.Color pixel = texture2D.GetPixel(i, j);
-    //            UnityEngine.Color.RGBToHSV(pixel, out h, out s, out v);
-    //            avgH += h;
-    //            avgS += s;
-    //            avgV += v;
-    //        }
-    //    }
-
-    //    //avgH *= (texture2D.width / 100) + (texture2D.height / 100);
-    //    //avgS *= (texture2D.width / 100) + (texture2D.height / 100);
-    //    //avgV *= (texture2D.width / 100) + (texture2D.height / 100);
-
-    //    brightnessTxt.text = avgH + ", " + avgS + ", " + avgV;
-    //}
 
     public void ChangeFrontCam()
     {
@@ -171,15 +118,19 @@ public class PhoneCamera : MonoBehaviour
 
     IEnumerator SetPic()
     {
-        //picTaken = (Texture2D)background.texture;
-        
         preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
-        preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 180);
+        }
+        else
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        }
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
         ShowPic();
         audioManager.GetComponent<AudioManager>().Play("Ding");
-        
     }
 
 
@@ -217,23 +168,23 @@ public class PhoneCamera : MonoBehaviour
     {
         backCam.Stop();
 
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (File.Exists(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (journalSO.GetBeforeCount()) + ".png"))
             {
                 journalSO.SetHasCaptured(true);
-                Debug.Log("DebugsethascapturedTRUE");
-                Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
-                Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
-                Debug.Log("Debug" + journalSO.GetHasCaptured());
+                //Debug.Log("DebugsethascapturedTRUE");
+                //Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
+                //Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
+                //Debug.Log("Debug" + journalSO.GetHasCaptured());
             }
             else
             {
                 journalSO.SetHasCaptured(false);
-                Debug.Log("DebugsethascapturedFALSE");
-                Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
-                Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
-                Debug.Log("Debug" + journalSO.GetHasCaptured());
+                //Debug.Log("DebugsethascapturedFALSE");
+                //Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
+                //Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
+                //Debug.Log("Debug" + journalSO.GetHasCaptured());
             }
         }
         else
@@ -247,7 +198,7 @@ public class PhoneCamera : MonoBehaviour
                 journalSO.SetHasCaptured(false);
             }
         }
-        
+
     }
 
     

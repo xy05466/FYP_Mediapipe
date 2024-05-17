@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,10 @@ public class FadeSplashScreen : MonoBehaviour
 
     private void Start()
     {
-        images= GetComponentsInChildren<Image>();
-        texts = GetComponentsInChildren<TMP_Text>();
+
+            images = GetComponentsInChildren<Image>();
+            texts = GetComponentsInChildren<TMP_Text>();
+        
     }
 
     public void StartFadeOut()
@@ -26,31 +29,33 @@ public class FadeSplashScreen : MonoBehaviour
     {
         float counter = 0;
         //Get current color
-        Color spriteColor = this.GetComponent<RawImage>().material.color;
+        Color spriteColor = this.GetComponent<RawImage>().color;
 
         while (counter < duration)
         {
             counter += Time.deltaTime;
             //Fade from 1 to 0
             float alpha = Mathf.Lerp(1, 0, counter / duration);
-            Debug.Log(alpha);
 
             //Change alpha only
             this.GetComponent<RawImage>().color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, alpha);
-            foreach (Image image in images)
+            if (images != null && texts != null)
             {
-                newColor = image.color;
-                newColor.a = alpha;
-                image.color = newColor;
+                foreach (Image image in images)
+                {
+                    newColor = image.color;
+                    newColor.a = alpha;
+                    image.color = newColor;
+                }
+                foreach (TMP_Text texts in texts)
+                {
+                    newColor = texts.color;
+                    newColor.a = alpha;
+                    texts.color = newColor;
+                }
             }
-            foreach (TMP_Text texts in texts)
-            {
-                newColor = texts.color;
-                newColor.a = alpha;
-                texts.color = newColor;
-            }
-            //Wait for a frame
-            yield return null;
+                //Wait for a frame
+                yield return null;
         }
         this.gameObject.SetActive(false);
     }

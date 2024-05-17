@@ -48,7 +48,7 @@ public class SliderManager : MonoBehaviour
     public void LoadSliderImages(int i)
     {
         string fileLocation;
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + i + ".png";
         }
@@ -64,7 +64,7 @@ public class SliderManager : MonoBehaviour
         beforePic.LoadImage(beforeImageData);
         Sprite beforeSprite = Sprite.Create(beforePic, new Rect(0, 0, beforePic.width, beforePic.height), new Vector2(0.5f, 0.0f), 100.0f);
 
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + i + ".png";
         }

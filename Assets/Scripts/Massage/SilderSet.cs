@@ -56,7 +56,7 @@ public class SilderSet : MonoBehaviour
         {
             lockPositions = true;
         }
-        Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
+        //Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
         //update all the individual points
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {

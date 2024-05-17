@@ -262,7 +262,7 @@ public class JournalSO : ScriptableObject
 
     public void ConfirmBeforePic()
     {
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (!Directory.Exists(Application.persistentDataPath + "/BeforeAlbum"))
             {
@@ -278,11 +278,18 @@ public class JournalSO : ScriptableObject
         }
 
         DirectoryInfo info;
-        
-        byte[] byteArray = rotateTexture(picsTaken, false).EncodeToPNG();
+        byte[] byteArray;
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            byteArray = rotateTexture(picsTaken, true).EncodeToPNG();
+        }
+        else
+        {
+            byteArray = rotateTexture(picsTaken, false).EncodeToPNG();
+        }
         //Debug.Log("Debug" + picsTaken.width + picsTaken.height);
         
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (beforeCount + 1) + ".png", byteArray);
             info = new DirectoryInfo(Application.persistentDataPath + "/BeforeAlbum");
@@ -305,7 +312,7 @@ public class JournalSO : ScriptableObject
     public void ConfirmAfterPic()
     {
         Debug.Log("confirmafterpic");
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (!Directory.Exists(Application.persistentDataPath + "/AfterAlbum"))
             {
@@ -322,8 +329,17 @@ public class JournalSO : ScriptableObject
         }
 
         DirectoryInfo info;
-        byte[] byteArray = rotateTexture(picsTaken,false).EncodeToPNG();
-        if (Application.platform == RuntimePlatform.Android)
+        byte[] byteArray;
+
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            byteArray = rotateTexture(picsTaken, true).EncodeToPNG();
+        }
+        else
+        {
+            byteArray = rotateTexture(picsTaken, false).EncodeToPNG();
+        }
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             System.IO.File.WriteAllBytes(Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + (afterCount + 1) + ".png", byteArray);
             info = new DirectoryInfo(Application.persistentDataPath + "/AfterAlbum");
@@ -354,7 +370,7 @@ public class JournalSO : ScriptableObject
     public Texture GetBeforeAlbum(int n)
     {
         string fileLocation;
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
 
             fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + n + ".png";
@@ -378,7 +394,7 @@ public class JournalSO : ScriptableObject
     public Texture GetAfterAlbum(int n)
     {
         string fileLocation;
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
 
             fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + n + ".png";
