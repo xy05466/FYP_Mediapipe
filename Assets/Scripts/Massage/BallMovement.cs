@@ -25,7 +25,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         points = path.CalculateEvenlySpacedPoints(0.3f);
-        flowersToSpawn();
+        //flowersToSpawn();
         //for(var pointsInCount = 0; points.Length < pointsInCount )
         if (!isColliding)
             return;
@@ -79,7 +79,7 @@ public class BallMovement : MonoBehaviour
     public void flowersToSpawn()
     {
         int numOfPoints = points.Length;
-        Debug.Log(numOfPoints);
+        //Debug.Log(numOfPoints);
         //if greater tahn 65 points, spawn 3 points instead
         if(numOfPoints > 65)
         {
