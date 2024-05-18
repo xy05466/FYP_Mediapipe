@@ -17,6 +17,8 @@ public class BallMovement : MonoBehaviour
     // Declare a delegate variable
     public static event OnComplete onComplete;
     public bool reachEnd;
+    public GameObject flowerPrefab;
+    List<FlowerSpawn> flowerSpawnIndex;
     private void Start()
     {
         //points = path.CalculateEvenlySpacedPoints(0.3f);
@@ -25,7 +27,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         points = path.CalculateEvenlySpacedPoints(0.3f);
-        //flowersToSpawn();
+        flowersToSpawn();
         //for(var pointsInCount = 0; points.Length < pointsInCount )
         if (!isColliding)
             return;
@@ -50,6 +52,23 @@ public class BallMovement : MonoBehaviour
         {
             reachEnd = true;
             onComplete?.Invoke();
+        }
+        for (int numFlower2Spawn = 0; numFlower2Spawn < flowerSpawnIndex.Count; numFlower2Spawn++)
+        {
+            //accoutn for if flower posindex is greater tahn currentindex
+            //this is due to the player being able to move back and forth
+            //this will prevent out of range errors
+            if (flowerSpawnIndex[numFlower2Spawn].posIndex > currentIndex)
+                return;
+            if(currentIndex == flowerSpawnIndex[numFlower2Spawn].posIndex)
+            {
+                if (flowerSpawnIndex[numFlower2Spawn].spawned)
+                    return;
+                //spawn flower
+                GameObject newFlower = Instantiate(flowerPrefab);
+                newFlower.transform.position = points[currentIndex];
+                newFlower.transform.localPosition = newFlower.transform.localPosition.WithZ(0f);
+            }
         }
         //transform.localPosition.WithZ(0f);
         Vector3 currentLocalPosition;
@@ -76,6 +95,7 @@ public class BallMovement : MonoBehaviour
         transform.localPosition = Vector3.zero;
     }
     //handle how many flowers to spawn
+    //only call this code once
     public void flowersToSpawn()
     {
         int numOfPoints = points.Length;
@@ -84,21 +104,38 @@ public class BallMovement : MonoBehaviour
         if(numOfPoints > 65)
         {
             //spawn 3 points
-
+            FlowerUpdate(3, numOfPoints);
         }
         else
         {
             //spawn 2 points
+            FlowerUpdate(2, numOfPoints);
 
         }
     }
-    
+    public void FlowerUpdate(int numOfFlowers, int numOfPoints)
+    {
+        int positionOfPoints = numOfPoints / numOfFlowers + 1;
+        for (var index = 0; index < numOfFlowers; index++)
+        {
+            if (flowerSpawnIndex[index].spawned)
+                return;
+            if (!flowerSpawnIndex[index].init)
+            {
+                FlowerSpawn flowerSpawn = new FlowerSpawn();
+                flowerSpawnIndex.Add(flowerSpawn);
+                flowerSpawnIndex[index].init = true;
+            }
+            //spawnpoints will be position of points * index
+            flowerSpawnIndex[index].posIndex = positionOfPoints * index + 1;
 
-    
-//now need to handle spawning of flowers
-//get points when face is in scene
-//based on points generated spawn the flowers accordingly
-//making the animation sprite
-//then how are you going to get the flowers to spawn in the correct position 
-//and when to spawn the flowers
+
+        }
+    }
+}
+public class FlowerSpawn
+{
+    public bool init = false;
+    public bool spawned = false;
+    public int posIndex;
 }
