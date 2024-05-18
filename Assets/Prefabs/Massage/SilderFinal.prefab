@@ -332,6 +332,9 @@ MonoBehaviour:
   isColliding: 0
   duration: 0.1
   reachEnd: 0
+  flowerPrefab: {fileID: 7740241051002473296, guid: fed4471d031b1b64c8cef08e44f1d664,
+    type: 3}
+  flowerParent: {fileID: 6274417153718467410}
 --- !u!1 &4916178437910802876
 GameObject:
   m_ObjectHideFlags: 0
