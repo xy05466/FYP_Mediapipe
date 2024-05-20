@@ -36,64 +36,64 @@ public class PhotoFaceManager : MonoBehaviour
 
     private void Start()
     {
-        faceAligned = true;
+        faceAligned = false;
         textbox.text = "No face detected!";
         anim = brightnessSprite.GetComponent<Animator>();
     }
 
     private void Update()
     {
-        //Vector3 refPt;
-        //float avgX = 0;
-        //float avgY = 0;
-        //float avgZ = 0;
-        //facePoints = facepointManager.GetFacePointTransforms();
-        //if (facePoints != null)
-        //{
-        //    refPt = facePoints[4].transform.position;
-        //    avgX = refPt.x - Camera.main.transform.position.x;
-        //    avgY = refPt.y - Camera.main.transform.position.y;
-        //    avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-        //    if (avgZ < lowerBoundZ)
-        //    {
-        //        textbox.text = "Please move further";
-        //        faceAligned = false;
-        //    }
-        //    else if (avgZ > upperBoundZ)
-        //    {
-        //        textbox.text = "Please move closer";
-        //        faceAligned = false;
-        //    }
-        //    else if (avgX > maxDistX)
-        //    {
-        //        textbox.text = "Please move left";
-        //        faceAligned = false;
-        //    }
-        //    else if (avgX < -1 * maxDistX)
-        //    {
-        //        textbox.text = "Please move right";
-        //        faceAligned = false;
-        //    }
-        //    else if (avgY > maxDistY)
-        //    {
-        //        textbox.text = "Please move down";
-        //        faceAligned = false;
-        //    }
-        //    else if (avgY < -1 * maxDistY)
-        //    {
-        //        textbox.text = "Please move up";
-        //        faceAligned = false;
-        //    }
-        //    else
-        //    {
-        //        faceAligned = true;
-        //    }
-        //}
-        //else
-        //{
-        //    textbox.text = "No face detected!";
-        //    faceAligned = false;
-        //}
+        Vector3 refPt;
+        float avgX = 0;
+        float avgY = 0;
+        float avgZ = 0;
+        facePoints = facepointManager.GetFacePointTransforms();
+        if (facePoints != null)
+        {
+            refPt = facePoints[4].transform.position;
+            avgX = refPt.x - Camera.main.transform.position.x;
+            avgY = refPt.y - Camera.main.transform.position.y;
+            avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
+            if (avgZ < lowerBoundZ)
+            {
+                textbox.text = "Please move further";
+                faceAligned = false;
+            }
+            else if (avgZ > upperBoundZ)
+            {
+                textbox.text = "Please move closer";
+                faceAligned = false;
+            }
+            else if (avgX > maxDistX)
+            {
+                textbox.text = "Please move left";
+                faceAligned = false;
+            }
+            else if (avgX < -1 * maxDistX)
+            {
+                textbox.text = "Please move right";
+                faceAligned = false;
+            }
+            else if (avgY > maxDistY)
+            {
+                textbox.text = "Please move down";
+                faceAligned = false;
+            }
+            else if (avgY < -1 * maxDistY)
+            {
+                textbox.text = "Please move up";
+                faceAligned = false;
+            }
+            else
+            {
+                faceAligned = true;
+            }
+        }
+        else
+        {
+            textbox.text = "No face detected!";
+            faceAligned = false;
+        }
 
         if (faceAligned)
         {
