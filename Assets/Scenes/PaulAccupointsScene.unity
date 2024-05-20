@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6425010}
   - component: {fileID: 6425011}
-  - component: {fileID: 6425012}
   m_Layer: 5
   m_Name: Accupoint Manager
   m_TagString: Untagged
@@ -188,7 +187,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1cb143c1c63c55443bcb7c714bfeae22, type: 2}
   - {fileID: 11400000, guid: 0ed074312fb97d348b1bdf48073ea9cf, type: 2}
   - {fileID: 11400000, guid: 43367eec39ae5c24992731a14ce8dcad, type: 2}
-  - {fileID: 11400000, guid: acdeb0a67422ee64fa56ef4bb09cf718, type: 2}
   - {fileID: 11400000, guid: bd3dd760909f51c4dbee6a780527d2f9, type: 2}
   steps:
   - {x: 0, y: -1}
@@ -201,36 +199,13 @@ MonoBehaviour:
   - {x: 12, y: 13}
   - {x: 14, y: 15}
   - {x: 16, y: 17}
-  - {x: 18, y: 19}
+  - {x: 18, y: -1}
   accupointPrefab: {fileID: 5105739270100195971, guid: 7ab9d299ff84cf848a5829f68673f5c7,
     type: 3}
   parent: {fileID: 6425009}
   offset: {x: 0, y: 0, z: 0}
   isAveraged: 1
   lockedToZero: 1
-  numAccupointsLeft: 0
---- !u!114 &6425012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425009}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd6bd91ba8775e44b0e70be126f099e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _facepointManager: {fileID: 543386375}
-  accupointSOs:
-  - {fileID: 11400000, guid: f0be8e759a1722a43b6c42742d4f82de, type: 2}
-  steps: []
-  accupointPrefab: {fileID: 5105739270100195971, guid: 89d8acff8264e6d43a29f6219050138f,
-    type: 3}
-  parent: {fileID: 6425009}
-  offset: {x: 0, y: 0, z: 0}
-  isAveraged: 1
-  lockedToZero: 0
   numAccupointsLeft: 0
 --- !u!1 &17270002
 GameObject:
@@ -1689,8 +1664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mfla: {fileID: 543386374}
-  indexesToStore: af000000390000001f01000081000000ca0000004b01000066010000cf000000ab010000930000007801000008000000370000001d010000690000004e010000460000002c010000450000002b0100000a000000
-  threshold: 10
+  indexesToStore: af000000390000001f01000081000000ca0000004b010000a9010000cd0000007b0000006001000008000000370000001d010000690000004e0100002c010000460000002b010000450000000a000000
+  threshold: 11
 --- !u!114 &543386376
 MonoBehaviour:
   m_ObjectHideFlags: 0
