@@ -500,7 +500,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173944898}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a66343de674addf4dab8d29766e2e5a6, type: 2}
   m_CullingMode: 0
@@ -554,7 +554,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3cecc875d88c83345a379f18fd9a3573, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 439359dc849b772448d54d745f863b2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -574,7 +574,7 @@ RectTransform:
   m_GameObject: {fileID: 173944898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1643.5878}
-  m_LocalScale: {x: 143.99998, y: 184, z: 1}
+  m_LocalScale: {x: 154, y: 194, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 749365858}
@@ -4465,7 +4465,7 @@ GameObject:
   - component: {fileID: 1596460448}
   - component: {fileID: 1596460450}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: SplashImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
