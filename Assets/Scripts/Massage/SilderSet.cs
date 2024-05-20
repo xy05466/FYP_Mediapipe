@@ -42,7 +42,7 @@ public class SilderSet : MonoBehaviour
             path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
         }
         //set num of sets and 
-        numOfSets = anchorPostions.CountOfLists();
+        numOfSets = 0;
         //get reference to paths
         //then set anchors to 
         //init event
@@ -113,6 +113,7 @@ public class SilderSet : MonoBehaviour
             {
                 Debug.Log("One set completed");
                 numOfSets++;
+                Debug.Log(numOfSets + " set completed");
                 resetSet();
             }
         }
@@ -128,7 +129,7 @@ public class SilderSet : MonoBehaviour
     {
         resetBallPos?.Invoke();
         setsCompleted = 0;
-        numOfSets = 0;
+        //numOfSets = 0;
         onSetCompleted?.Invoke();
     }
 }
