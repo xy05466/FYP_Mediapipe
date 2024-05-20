@@ -141,11 +141,11 @@ public class PhotoFaceManager : MonoBehaviour
 
                     if (journalSO.GetHasCaptured())
                     {
-                        textbox.text = "Perfect lighting! Take your 'after' picture. \n" + avgV.ToString();
+                        textbox.text = "Perfect lighting! Take your 'after' picture. \n";
                     }
                     else
                     {
-                        textbox.text = "Perfect lighting! Take your 'before' picture. \n" + avgV.ToString();
+                        textbox.text = "Perfect lighting! Take your 'before' picture. \n";
                     }
                     capture.interactable = true;
                     Debug.Log("DebugPerfect");
@@ -158,11 +158,6 @@ public class PhotoFaceManager : MonoBehaviour
                 {
                     anim.SetBool("isBlooming", false);
                     anim.SetBool("isClosing", true);
-
-                    //if (anim.GetCurrentAnimatorStateInfo(0).IsName("flowersclosed") && !(anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
-                    //{
-                    //    anim.Play("flowersclosing");
-                    //}
 
                     textbox.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
                     Debug.Log("DebugDark");
