@@ -170,13 +170,21 @@ MonoBehaviour:
   _facepointManager: {fileID: 543386377}
   accupointSOs:
   - accupointSOList:
-    - {fileID: 11400000, guid: d3d13f6df519d8546b76569d522a35f8, type: 2}
-    - {fileID: 11400000, guid: edd179f3975b8b44985bbc44a9f0857e, type: 2}
-    - {fileID: 11400000, guid: 5be9a043d2b834f42a21d405f3a138af, type: 2}
+    - {fileID: 11400000, guid: 3fec74284df74d947bb41313914a1fdf, type: 2}
+    - {fileID: 11400000, guid: 71cedef1b463aca44a39418f72316cf7, type: 2}
+    - {fileID: 11400000, guid: f0996fb17439d0548a44f010eb60a176, type: 2}
   - accupointSOList:
-    - {fileID: 11400000, guid: 1083c9bd45c4dc641aa46fc0a15b87b4, type: 2}
-    - {fileID: 11400000, guid: eab903a9052ed534caff8ced22d8b0bf, type: 2}
-    - {fileID: 11400000, guid: d5ef18449daa55e4a9df31fc5fed7e9d, type: 2}
+    - {fileID: 11400000, guid: 1bcf8026084e16b499fd517a0ce6e7d2, type: 2}
+    - {fileID: 11400000, guid: a52a68184f08c1d47b507c544373bc6c, type: 2}
+    - {fileID: 11400000, guid: 9af4ca351ba091541a018c3e4463b226, type: 2}
+  - accupointSOList:
+    - {fileID: 11400000, guid: cb53d2ed6b58fe143808781a208144f9, type: 2}
+    - {fileID: 11400000, guid: 2e173981d50f4454cbf14e66648624a5, type: 2}
+    - {fileID: 11400000, guid: 75a320e35a2f74141a1a9bacaeff030f, type: 2}
+  - accupointSOList:
+    - {fileID: 11400000, guid: 41fa1ceabcaf88849bbd9d5e090a5c2b, type: 2}
+    - {fileID: 11400000, guid: b982bbf804c596a4f889da249ff30089, type: 2}
+    - {fileID: 11400000, guid: c011aa099065f6d428a31aab423d1749, type: 2}
   silderPrefab: {fileID: 5341572982038645389, guid: 7675c915e745d2344ba7f5288d52815c,
     type: 3}
   offset: {x: 0, y: 0, z: 0}
@@ -226,6 +234,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1594682638}
     m_Modifications:
+    - target: {fileID: 2210191951712292552, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259411429281263928, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c6c92502adb44de4ebdd64738d7f3a99,
+        type: 3}
     - target: {fileID: 4032617666655225393, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -326,10 +345,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4121531154419188707, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_text
+      value: Both Sides x8
+      objectReference: {fileID: 0}
     - target: {fileID: 4604612110428497926, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
         type: 3}
       propertyPath: m_Name
       value: StepsGuide
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338813107322096619, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_text
+      value: Front Face Glide
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783342488397167734, guid: 5624f60d247f7a94ab0b05ec2fc84ea7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -425
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -911,7 +945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.001953125, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &330942867
@@ -1631,13 +1665,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexesToStore:
-  - {fileID: 11400000, guid: 1083c9bd45c4dc641aa46fc0a15b87b4, type: 2}
-  - {fileID: 11400000, guid: eab903a9052ed534caff8ced22d8b0bf, type: 2}
-  - {fileID: 11400000, guid: d5ef18449daa55e4a9df31fc5fed7e9d, type: 2}
-  - {fileID: 11400000, guid: d3d13f6df519d8546b76569d522a35f8, type: 2}
-  - {fileID: 11400000, guid: edd179f3975b8b44985bbc44a9f0857e, type: 2}
-  - {fileID: 11400000, guid: 5be9a043d2b834f42a21d405f3a138af, type: 2}
   - {fileID: 11400000, guid: 0dc33ece1f0269e4b93962dd04e8f71e, type: 2}
+  - {fileID: 11400000, guid: 3fec74284df74d947bb41313914a1fdf, type: 2}
+  - {fileID: 11400000, guid: 71cedef1b463aca44a39418f72316cf7, type: 2}
+  - {fileID: 11400000, guid: f0996fb17439d0548a44f010eb60a176, type: 2}
+  - {fileID: 11400000, guid: 1bcf8026084e16b499fd517a0ce6e7d2, type: 2}
+  - {fileID: 11400000, guid: a52a68184f08c1d47b507c544373bc6c, type: 2}
+  - {fileID: 11400000, guid: 9af4ca351ba091541a018c3e4463b226, type: 2}
+  - {fileID: 11400000, guid: cb53d2ed6b58fe143808781a208144f9, type: 2}
+  - {fileID: 11400000, guid: 2e173981d50f4454cbf14e66648624a5, type: 2}
+  - {fileID: 11400000, guid: 75a320e35a2f74141a1a9bacaeff030f, type: 2}
+  - {fileID: 11400000, guid: 41fa1ceabcaf88849bbd9d5e090a5c2b, type: 2}
+  - {fileID: 11400000, guid: b982bbf804c596a4f889da249ff30089, type: 2}
+  - {fileID: 11400000, guid: c011aa099065f6d428a31aab423d1749, type: 2}
   threshold: 10
 --- !u!1 &706141580
 GameObject:
@@ -3444,6 +3484,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1360908302020829814, guid: 3588233d538f7dd4abf8bd2e2f13dfd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5261938870998639376, guid: 3588233d538f7dd4abf8bd2e2f13dfd0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3528,6 +3573,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714851962886261455, guid: 2c3e17a671dc98c42979033669db960c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4772039966512696196, guid: 2c3e17a671dc98c42979033669db960c,
         type: 3}

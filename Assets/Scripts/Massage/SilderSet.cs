@@ -17,6 +17,10 @@ public class SilderSet : MonoBehaviour
     public delegate void ResetBallPos();
     // Declare a delegate variable
     public static event ResetBallPos resetBallPos;
+    //time pressed
+    public delegate void OnSetCompleted();
+    // Declare a delegate variable
+    public static event OnSetCompleted onSetCompleted;
 
     private void Start()
     {
@@ -43,6 +47,10 @@ public class SilderSet : MonoBehaviour
         //then set anchors to 
         //init event
         BallMovement.onComplete += SetCompleted;
+    }
+    private void OnDestroy()
+    {
+        BallMovement.onComplete -= SetCompleted;
     }
     //hold points 
     //update points
@@ -120,5 +128,7 @@ public class SilderSet : MonoBehaviour
     {
         resetBallPos?.Invoke();
         setsCompleted = 0;
+        numOfSets = 0;
+        onSetCompleted?.Invoke();
     }
 }
