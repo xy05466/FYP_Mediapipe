@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using TMPro;
+
 public class AccupointsMassageManagerFinal : MonoBehaviour
 {
 
