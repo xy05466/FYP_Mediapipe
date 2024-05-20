@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: PNG-FYP5
+  productName: PNG-FYP4
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}
@@ -161,7 +161,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.PNGFYP5
+    Android: com.DefaultCompany.PNGFYP4
+    iPhone: com.DefaultCompany.PNG-FYP4
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -505,7 +506,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
+  cameraUsageDescription: App requires camera permissions
   locationUsageDescription: 
   microphoneUsageDescription: 
   bluetoothUsageDescription: 

@@ -17,6 +17,10 @@ public class SilderSet : MonoBehaviour
     public delegate void ResetBallPos();
     // Declare a delegate variable
     public static event ResetBallPos resetBallPos;
+    //time pressed
+    public delegate void OnSetCompleted();
+    // Declare a delegate variable
+    public static event OnSetCompleted onSetCompleted;
 
     private void Start()
     {
@@ -42,7 +46,11 @@ public class SilderSet : MonoBehaviour
         //get reference to paths
         //then set anchors to 
         //init event
-        BallMovement.onComplete += setCompleted;
+        BallMovement.onComplete += SetCompleted;
+    }
+    private void OnDestroy()
+    {
+        BallMovement.onComplete -= SetCompleted;
     }
     //hold points 
     //update points
@@ -56,7 +64,7 @@ public class SilderSet : MonoBehaviour
         {
             lockPositions = true;
         }
-        Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
+        //Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
         //update all the individual points
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {
@@ -89,17 +97,21 @@ public class SilderSet : MonoBehaviour
         anchorPostions.AddItemToList(i, Vector3.zero);
         anchorPostions.AddItemToList(i, Vector3.zero);
     }
-    public void setCompleted()
+    private void SetCompleted()
     {
         setsCompleted++;
+        Debug.Log("Sets completed: " + setsCompleted);
         if (setsCompleted == anchorPostions.CountOfLists())
         {
-            if(numOfSets == numOfSetsToComplete)
+            if (numOfSets == numOfSetsToComplete)
             {
-                //move on to next exercise here
                 completed = true;
+                Debug.Log("All sets completed");
+                // Move on to next exercise here
             }
-            else {
+            else
+            {
+                Debug.Log("One set completed");
                 numOfSets++;
                 resetSet();
             }
@@ -115,5 +127,8 @@ public class SilderSet : MonoBehaviour
     public void resetSet()
     {
         resetBallPos?.Invoke();
+        setsCompleted = 0;
+        numOfSets = 0;
+        onSetCompleted?.Invoke();
     }
 }

@@ -123,7 +123,7 @@ public class Calendar : MonoBehaviour
     public void LoadSliderImages()
     {
         string fileLocation;
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + picIndex + ".png";
         }
@@ -139,7 +139,7 @@ public class Calendar : MonoBehaviour
         beforePic.LoadImage(beforeImageData);
         Sprite beforeSprite = Sprite.Create(beforePic, new Rect(0, 0, beforePic.width, beforePic.height), new Vector2(0.5f, 0.0f), 100.0f);
 
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" +picIndex + ".png";
         }
