@@ -128,21 +128,21 @@ public class BallMovement : MonoBehaviour
         int numOfPoints = points.Length;
         //Debug.Log(numOfPoints);
         //if greater tahn 65 points, spawn 3 points instead
-        if (numOfPoints > 65)
-        {
-            if (!flowersInit)
-                InitFlowers(3);
-            //spawn 3 points
-            FlowerUpdate(3, numOfPoints);
-        }
-        else
-        {
+        //if (numOfPoints > 65)
+        //{
+        //    if (!flowersInit)
+        //        InitFlowers(3);
+        //    //spawn 3 points
+        //    FlowerUpdate(3, numOfPoints);
+        //}
+        //else
+        //{
             if (!flowersInit)
                 InitFlowers(2);
             //spawn 2 points
             FlowerUpdate(2, numOfPoints);
 
-        }
+        //}
     }
     public void InitFlowers(int numOfFlowers)
     {
