@@ -3375,7 +3375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerImage: {fileID: 500691885}
   transition: {fileID: 500691887}
-  musicSystem: {fileID: 2001443885}
+  musicSystem: {fileID: 0}
   countdownTime: 6.5
 --- !u!1 &1590218591
 GameObject:
