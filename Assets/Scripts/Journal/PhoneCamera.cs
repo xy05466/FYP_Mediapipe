@@ -92,6 +92,15 @@ public class PhoneCamera : MonoBehaviour
         date.text = DateTime.Today.ToString("dd MMMM yyyy");
 
         camAvailable = true;
+
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
+        }
+        else
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        }
     }
 
     public void ChangeFrontCam()
@@ -119,14 +128,7 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator SetPic()
     {
         preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 180);
-        }
-        else
-        {
-            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
-        }
+       
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
         ShowPic();

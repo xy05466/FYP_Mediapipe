@@ -7,6 +7,7 @@ using TMPro;
 
 public class SliderManager : MonoBehaviour
 {
+    public Slider slider;
     public GameObject sliderBG;
     public GameObject sliderFill;
     public TMP_Text dateText;
@@ -14,36 +15,14 @@ public class SliderManager : MonoBehaviour
 
     [SerializeField] private JournalSO journalSO;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    int imageCount = journalSO.GetBeforeCount();
-
-    //    string fileLocation;
-    //    if (Application.platform == RuntimePlatform.Android)
-    //    {
-    //        fileLocation = Application.persistentDataPath + "/Album/CameraScreenshot" + 1 + ".png";
-    //    }
-    //    else
-    //    {
-    //        fileLocation = Application.dataPath + "/Album/CameraScreenshot" + 1 + ".png";
-    //    }
-    //    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-    //    byte[] imageData = new byte[fs.Length];
-    //    fs.Read(imageData, 0, (int)fs.Length);
-    //    Texture2D pic = new Texture2D(1920, 1080, TextureFormat.RGBA32, false);
-    //    pic.LoadImage(imageData);
-    //    Sprite sprite = Sprite.Create(pic, new Rect(0, 0, pic.width, pic.height), new Vector2(0.5f, 0.0f), 100.0f);
-
-    //    sliderBG.GetComponent<Image>().sprite = sprite;
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+    //Start is called before the first frame update
+    void Start()
+    {
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            slider.GetComponent<RectTransform>().localScale = new Vector3(0.85f,0.85f,0.9f);
+        }
+    }
 
     public void LoadSliderImages(int i)
     {

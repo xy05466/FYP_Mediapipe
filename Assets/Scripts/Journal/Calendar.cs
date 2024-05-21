@@ -99,6 +99,11 @@ public class Calendar : MonoBehaviour
         {
             compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetBeforeAlbum(1).width, journalSO.GetBeforeAlbum(1).height * 2);
         }
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            beforeImage.GetComponent<RectTransform>().localScale = new Vector3(0.55f, 0.5f, 1f);
+            afterImage.GetComponent<RectTransform>().localScale = new Vector3(0.55f, 0.5f, 1f);
+        }
     }
 
     public void GetDayPics()

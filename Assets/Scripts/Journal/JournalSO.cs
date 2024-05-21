@@ -281,7 +281,9 @@ public class JournalSO : ScriptableObject
         byte[] byteArray;
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
+            FlipTextureVertically(picsTaken);
             byteArray = rotateTexture(picsTaken, true).EncodeToPNG();
+
         }
         else
         {
@@ -333,6 +335,7 @@ public class JournalSO : ScriptableObject
 
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
+            FlipTextureVertically(picsTaken);
             byteArray = rotateTexture(picsTaken, true).EncodeToPNG();
         }
         else
