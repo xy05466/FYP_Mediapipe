@@ -69,27 +69,27 @@ public class AccupointManager : MonoBehaviour
         }
         else return Vector3.zero;
     }
-    Vector3 Reposition(List<Transform> positions)
-    {
-        if (positions != null)
-        {
-            float avgX = 0, avgY = 0, avgZ = 0;
-            foreach (Transform transform in positions)
-            {
-                avgX += transform.position.x;
-                avgY += transform.position.y;
-                avgZ += transform.position.z;
-            }
-            avgX /= positions.Count;
-            avgY /= positions.Count;
-            avgZ /= positions.Count;
-            avgX += offset.x;
-            avgY += offset.y;
-            avgZ += offset.z;
-            return new Vector3(avgX, avgY, avgZ);
-        }
-        else return Vector3.zero;
-    }
+    //Vector3 Reposition(List<Transform> positions)
+    //{
+    //    if (positions != null)
+    //    {
+    //        float avgX = 0, avgY = 0, avgZ = 0;
+    //        foreach (Transform transform in positions)
+    //        {
+    //            avgX += transform.position.x;
+    //            avgY += transform.position.y;
+    //            avgZ += transform.position.z;
+    //        }
+    //        avgX /= positions.Count;
+    //        avgY /= positions.Count;
+    //        avgZ /= positions.Count;
+    //        avgX += offset.x;
+    //        avgY += offset.y;
+    //        avgZ += offset.z;
+    //        return new Vector3(avgX, avgY, avgZ);
+    //    }
+    //    else return Vector3.zero;
+    //}
 
     private void Update()
     {
@@ -151,7 +151,7 @@ public class AccupointManager : MonoBehaviour
                 nextX = false;
                 nextY = false;
             }
-            numAccupointsLeft = currentStep;//counter;
+            numAccupointsLeft = currentStep; //counter;
         }
     }
 }

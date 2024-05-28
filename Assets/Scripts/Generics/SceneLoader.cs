@@ -8,6 +8,7 @@ public class SceneLoader : MonoBehaviour
 {
     public Image image;
     public Animator transition;
+    public UISpriteAnimation sceneAnimation;
 
     public float raycastTime = 2.5f;
     public float transitionTime = 1f;
@@ -36,7 +37,10 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadLevel(string sceneName)
     {
         image.raycastTarget = true;
-        transition.SetTrigger("Start");
+        if (transition)
+            transition.SetTrigger("Start");
+        if(sceneAnimation)
+            sceneAnimation.PlayUIAnim(!sceneAnimation.m_reverse);
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
