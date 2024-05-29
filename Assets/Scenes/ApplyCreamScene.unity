@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 22464356}
   - component: {fileID: 22464355}
   - component: {fileID: 22464354}
+  - component: {fileID: 22464358}
   m_Layer: 5
   m_Name: Annotable Layers
   m_TagString: Untagged
@@ -265,13 +266,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22464352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b085c374a6772aba491e20d7d9d980db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   annotation: {fileID: 769450809}
   _visualizeZ: 0
+--- !u!114 &22464358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22464352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f533a3b3fececba86462b46ff711ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  annotation: {fileID: 769450809}
+  _visualizeZ: 1
 --- !u!1 &91764606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,7 +1902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 7477175687846711451, guid: f6dd9c8a084775945acaface7808b1d2,
     type: 3}
-  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 0}
+  _faceLandmarkColor: {r: 1, g: 0, b: 0, a: 0}
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
   _faceLandmarkRadius: 15
   _irisLandmarkRadius: 10
@@ -3055,7 +3070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &769450808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3087,10 +3102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba3c50c2cb46dc9e916dd3a33c8a488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _annotationPrefab: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
+  _annotationPrefab: {fileID: 4724242833946851653, guid: b420c3106bd9cc5b6871a7df5459dba0,
     type: 3}
-  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
-  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
+  _leftLandmarkColor: {r: 1, g: 1, b: 1, a: 0}
+  _rightLandmarkColor: {r: 1, g: 0.49411765, b: 0, a: 0}
   _landmarkRadius: 30
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.01
@@ -5006,7 +5021,7 @@ MonoBehaviour:
     type: 3}
   _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
   _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
-  _landmarkRadius: 50
+  _landmarkRadius: 0
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.1
 --- !u!114 &1968874158

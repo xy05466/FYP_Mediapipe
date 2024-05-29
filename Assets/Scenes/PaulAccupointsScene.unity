@@ -3381,9 +3381,9 @@ MonoBehaviour:
     type: 3}
   _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
   _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
-  _landmarkRadius: 30
+  _landmarkRadius: 0
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
-  _connectionWidth: 0.1
+  _connectionWidth: 0.01
 --- !u!1 &1756075013
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4220,7 @@ GameObject:
   - component: {fileID: 1968537270}
   - component: {fileID: 1968537273}
   - component: {fileID: 1968537272}
+  - component: {fileID: 1968537274}
   m_Layer: 5
   m_Name: Annotable Layers
   m_TagString: Untagged
@@ -4303,6 +4304,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotation: {fileID: 376266485}
+--- !u!114 &1968537274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968537268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f533a3b3fececba86462b46ff711ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  annotation: {fileID: 1751768239}
+  _visualizeZ: 1
 --- !u!1 &1972688198
 GameObject:
   m_ObjectHideFlags: 0
