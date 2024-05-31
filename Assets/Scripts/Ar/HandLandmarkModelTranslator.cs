@@ -3,9 +3,9 @@ using UnityEngine;
 
 //using System.Diagnostics;
 using Mediapipe.Tasks.Vision.HandLandmarker;
+using Mediapipe.Tasks.Components.Containers;
 
-namespace Mediapipe.Unity.Sample.HandLandmarkDetection
-{
+//namespace Mediapipe.Unity.Sample.HandLandmarkDetection
   public class HandLandmarkModelTranslator : MonoBehaviour
   {
     public GestureText gestureText;
@@ -18,7 +18,7 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
     [Range(0.0f, 0.6f)]
     [SerializeField] private float rangeFallOff = 0.0f;
 
-    private float CheckDistance(Tasks.Components.Containers.Landmark a, Tasks.Components.Containers.Landmark b)
+    private float CheckDistance(Landmark a, Landmark b)
     {
       float distX, distY, distZ;
       distX = a.x - b.x;
@@ -95,4 +95,3 @@ namespace Mediapipe.Unity.Sample.HandLandmarkDetection
     }
 
   }
-}
