@@ -28,20 +28,25 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(raycastTime);
         image.raycastTarget = false;
     }
-
+    string sceneName;
     public void LoadNextLevel(string sceneName)
     {
-        StartCoroutine(LoadLevel(sceneName));
+        this.sceneName = sceneName;
+        sceneAnimation.OnAnimationFinished += TransitionEnded;
     }
-
-    IEnumerator LoadLevel(string sceneName)
+    public void TransitionEnded()
     {
-        image.raycastTarget = true;
-        if (transition)
-            transition.SetTrigger("Start");
-        if(sceneAnimation)
-            sceneAnimation.PlayUIAnim(!sceneAnimation.m_reverse);
-        yield return new WaitForSeconds(transitionTime);
+        sceneAnimation.OnAnimationFinished -= TransitionEnded;
         SceneManager.LoadScene(sceneName);
     }
+    //IEnumerator LoadLevel(string sceneName)
+    //{
+    //    image.raycastTarget = true;
+    //    if (transition)
+    //        transition.SetTrigger("Start");
+    //    if(sceneAnimation)
+    //        sceneAnimation.PlayUIAnim(!sceneAnimation.m_reverse);
+    //    yield return new WaitForSeconds(transitionTime);
+    //    SceneManager.LoadScene(sceneName);
+    //}
 }

@@ -19,6 +19,8 @@ public class UISpriteAnimation : MonoBehaviour
     Coroutine m_CorotineAnim;
     bool IsDone;
 
+    public Action OnAnimationFinished;
+
     private void Start()
     {
         if (playAwake)
@@ -41,7 +43,7 @@ public class UISpriteAnimation : MonoBehaviour
 
         m_Image.sprite = m_SpriteArray[m_IndexSprite];
 
-        StartCoroutine(PlayAnimUI());
+        m_CorotineAnim = StartCoroutine(IePlayAnimUI());
     }
     public void PlayUIAnim(bool reverse)
     {
@@ -52,14 +54,16 @@ public class UISpriteAnimation : MonoBehaviour
     public void StopUIAnim()
     {
         IsDone = true;
-        StopCoroutine(PlayAnimUI());
+        StopCoroutine(m_CorotineAnim);
+        OnAnimationFinished?.Invoke();
+        m_CorotineAnim = null;
     }
-    IEnumerator PlayAnimUI()
+    IEnumerator IePlayAnimUI()
     {
         yield return new WaitForSeconds(m_Speed);
         if(!m_reverse)
         {
-            if (m_IndexSprite >= m_SpriteArray.Length)
+            if (m_IndexSprite >= m_SpriteArray.Length-1)
             {
                 //m_IndexSprite = 0;
                 StopUIAnim();
@@ -83,10 +87,11 @@ public class UISpriteAnimation : MonoBehaviour
         {
             m_IndexSprite -= 1;
         }
+
         if (!IsDone)
             m_Image.sprite = m_SpriteArray[m_IndexSprite];
 
         if (IsDone == false)
-            m_CorotineAnim = StartCoroutine(PlayAnimUI());
+            m_CorotineAnim = StartCoroutine(IePlayAnimUI());
     }
 }
