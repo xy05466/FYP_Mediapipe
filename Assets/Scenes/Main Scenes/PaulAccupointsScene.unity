@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 338795710}
   - component: {fileID: 338795709}
   m_Layer: 5
-  m_Name: UICanvas
+  m_Name: SplashCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2303,19 +2303,19 @@ GameObject:
   m_Component:
   - component: {fileID: 976106871}
   - component: {fileID: 976106870}
-  - component: {fileID: 976106869}
   - component: {fileID: 976106868}
-  - component: {fileID: 976106867}
-  - component: {fileID: 976106866}
   - component: {fileID: 976106873}
   - component: {fileID: 976106872}
+  - component: {fileID: 976106867}
+  - component: {fileID: 976106866}
+  - component: {fileID: 976106869}
   m_Layer: 0
   m_Name: HandGesture solution
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &976106866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2354,7 +2354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976106865}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a290cf50cf62629439100541f48de601, type: 3}
   m_Name: 
@@ -3427,7 +3427,7 @@ PrefabInstance:
     - target: {fileID: 1360908302020829814, guid: 3588233d538f7dd4abf8bd2e2f13dfd0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5261938870998639376, guid: 3588233d538f7dd4abf8bd2e2f13dfd0,
         type: 3}
@@ -3628,7 +3628,12 @@ PrefabInstance:
     - target: {fileID: 4683294700620473709, guid: 8b89425f859b431478dfdd4a5284202e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325552936014353541, guid: 8b89425f859b431478dfdd4a5284202e,
+        type: 3}
+      propertyPath: m_Name
+      value: CrossfadeCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8799264196107312777, guid: 8b89425f859b431478dfdd4a5284202e,
         type: 3}
@@ -3674,7 +3679,7 @@ PrefabInstance:
     - target: {fileID: 4714851962886261455, guid: 2c3e17a671dc98c42979033669db960c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4772039966512696196, guid: 2c3e17a671dc98c42979033669db960c,
         type: 3}
@@ -4050,7 +4055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1772159509
 Transform:
   m_ObjectHideFlags: 0
@@ -4715,7 +4720,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968537268}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b085c374a6772aba491e20d7d9d980db, type: 3}
   m_Name: 
@@ -5347,7 +5352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2122901296
 Transform:
   m_ObjectHideFlags: 0

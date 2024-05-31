@@ -1,5 +1,7 @@
 /// Adopted from homuler's Mediapipe for Unity Plugin's HandTrackingSolution.cs file.
 /// Modifications made by Paul Baquiran / JustACoderWanderingAround on github / Admin num 220150Y
+/// Refactored by Raqib
+
 // Copyright (c) 2023 homuler
 // Use of this source code is governed by an MIT-style
 // license that can be found in the LICENSE file or at
