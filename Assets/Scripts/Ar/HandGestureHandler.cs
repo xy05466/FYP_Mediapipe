@@ -17,6 +17,9 @@ public class HandGestureHandler : MonoBehaviour
             case "Pakyu":
                 Debug.Log("Choice 2 selected.");
                 break;
+            case "Next":
+                Debug.Log("Choice 3 selected.");
+                break;
             default:
                 Debug.Log("Invalid choice.");
                 break;
