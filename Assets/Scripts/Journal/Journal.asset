@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f61a19c62940664d88a502b46eae813, type: 3}
   m_Name: Journal
   m_EditorClassIdentifier: 
+  picToLoad: {fileID: 0}
+  beforeCount: 0
+  afterCount: 0
+  hasCaptured: 0
+  date: []
+  day: []

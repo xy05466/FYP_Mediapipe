@@ -29,11 +29,11 @@ public class SliderManager : MonoBehaviour
         string fileLocation;
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + i + ".png";
+            fileLocation = Application.persistentDataPath + "/AlbumPhoto/" + "Before" + "/" + i + ".png";
         }
         else
         {
-            fileLocation = Application.dataPath + "/BeforeAlbum/CameraScreenshot" + i + ".png";
+            fileLocation = Application.dataPath + "/AlbumPhoto/" + "Before" + "/" + i + ".png";
         }
         FileStream beforeFs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
 
@@ -45,11 +45,12 @@ public class SliderManager : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + i + ".png";
+            fileLocation = Application.persistentDataPath + "/AlbumPhoto/" + "After" + "/" + i + ".png";
         }
         else
         {
-            fileLocation = Application.dataPath + "/AfterAlbum/CameraScreenshot" + i + ".png";
+            fileLocation = Application.dataPath + "/AlbumPhoto/" + "After" + "/" + i + ".png";
+
         }
         FileStream afterFs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
 

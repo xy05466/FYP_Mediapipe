@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
@@ -16,87 +14,88 @@ public class Calendar : MonoBehaviour
     public Color colorDay = Color.black;
     public Color colorBackgroundDay = Color.white;
     public Color colorBackgroundCurrentDay = Color.yellow;
+    //public Color colorSelected = Color.green;
 
     [Header("Buttons")]
     public Button bu_next;
     public Button bu_prev;
+    public Button bu_seeComparison;
+    [SerializeField] private JournalSO journalSO;
 
-    void InitializeButtons()
-    {
-        bu_next.onClick.AddListener(() => { SwitchMonth(1); });
-        bu_prev.onClick.AddListener(() => { SwitchMonth(-1); });
-    }
+ 
 
-    public class Day
-    {
-        public int dayNum;
-        public Color dayColor;
-        public GameObject obj;
+    //public class Day
+    //{
+    //    public int dayNum;
+    //    public Color dayColor;
+    //    public GameObject obj;
         
-        Color availableColor = new Color(0.3647059f, 0.2313726f, 0.04705883f, 1.0f);
-        Color unavailableColor = new Color(0.6509804f, 0.5568628f, 0.454902f, 1.0f);
+    //    Color availableColor = new Color(0.3647059f, 0.2313726f, 0.04705883f, 1.0f);
+    //    Color unavailableColor = new Color(0.6509804f, 0.5568628f, 0.454902f, 1.0f);
 
-        public Day(int dayNum, Color dayColor, GameObject obj)
-        {
-            this.dayNum = dayNum;
-            this.dayColor = dayColor;
-            this.obj = obj;
-            UpdateColor(dayColor);
-            UpdateDay(dayNum);
-        }
+    //    public Day(int dayNum, Color dayColor, GameObject obj)
+    //    {
+    //        this.dayNum = dayNum;
+    //        this.dayColor = dayColor;
+    //        this.obj = obj;
+    //        UpdateColor(dayColor);
+    //        UpdateDay(dayNum);
+    //    }
 
-        public void UpdateColor(Color newColor)
-        {
-            obj.GetComponentInChildren<TMP_Text>().color = newColor;
-            dayColor = newColor;
-        }
+    //    public void UpdateColor(Color newColor)
+    //    {
+    //        obj.GetComponentInChildren<TMP_Text>().color = newColor;
+    //        dayColor = newColor;
+    //    }
 
-        public void UpdateButtonColor(Color newColor)
-        {
-            obj.GetComponent<Image>().color = newColor;
-            dayColor = newColor;
-        }
+    //    public void UpdateButtonColor(Color newColor)
+    //    {
+    //        obj.GetComponent<Image>().color = newColor;
+    //        dayColor = newColor;
+    //    }
 
-        public void UpdateDay(int newDayNum)
-        {
-            this.dayNum = newDayNum;
-            if (dayColor == availableColor || dayColor == Color.green) 
-            {
-                obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
-                //obj.GetComponentInChildren<TMP_Text>().color = availableColor;
-            }
+    //    public void UpdateDay(int newDayNum)
+    //    {
+    //        this.dayNum = newDayNum;
+    //        if (dayColor == availableColor || dayColor == Color.green) 
+    //        {
+    //            obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
+    //            //obj.GetComponentInChildren<TMP_Text>().color = availableColor;
+    //        }
 
-            else 
-            {
-                obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
-                obj.GetComponentInChildren<UnityEngine.UI.Button>().interactable = false;
-                //obj.GetComponentInChildren<TMP_Text>().color = unavailableColor;
-            }
-        }
-    }
+    //        else 
+    //        {
+    //            obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
+    //            obj.GetComponentInChildren<UnityEngine.UI.Button>().interactable = false;
+    //            //obj.GetComponentInChildren<TMP_Text>().color = unavailableColor;
+    //        }
+    //    }
+    //}
 
-    private List<Day> days = new List<Day>();
+    //private List<Day> days = new List<Day>();
 
-    private int picIndex;
+    //private int picIndex;
 
-    private GameObject datePressed;
+    //private GameObject datePressed;
 
-    public Transform[] weeks;
+    public CalendarWeek[] weeks;
 
     public TMP_Text MonthAndYear;
 
     public DateTime currDate = DateTime.Now;
     public DateTime selectedDate = DateTime.Now;
 
-    [SerializeField] private JournalSO journalSO;
     [SerializeField] private List<RawImage> pics;
 
+    [Header("Text Infos (NOT USED)")]
     public TMP_Text journalDayTxt;
     public TMP_Text journalEntryTxt;
-    public UnityEngine.UI.Slider compareSlider;
+    [Header("Comparision Images")]
+    public Texture textureInitial;
     public RawImage beforeImage;
     public RawImage afterImage;
-
+    [Header("Comparision Sliders")]
+    public UnityEngine.UI.Slider compareSlider;
     public GameObject sliderBG;
     public GameObject sliderFill;
     public TMP_Text dateText;
@@ -105,25 +104,33 @@ public class Calendar : MonoBehaviour
     Color availableColor = new Color(0.3647059f, 0.2313726f, 0.04705883f, 1.0f);
     Color unavailableColor = new Color(0.6509804f, 0.5568628f, 0.454902f, 1.0f);
 
+    void InitializeButtons()
+    {
+        bu_next.onClick.AddListener(() => { SwitchMonth(1); });
+        bu_prev.onClick.AddListener(() => { SwitchMonth(-1); });
+        bu_seeComparison.onClick.AddListener(LoadSliderImages);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        InitializeButtons();
+        journalSO.Initialize();
+
         CalendarWeek[] weeks = GetComponentsInChildren<CalendarWeek>();
         foreach (CalendarWeek week in weeks) {
             week.Initialize(colorDay, colorBackgroundDay, colorBackgroundCurrentDay);
             calendarWeeks.Add(week);
             week.Subscribe(OnDayPressed);
         }
+        // update calendar
         UpdateCalendar(DateTime.Now);
+        OnDayPressed(DateTime.Today.Day.ToString());
 
-        InitializeButtons();
-
-        journalSO.Initialize();
-
+        // resizing slider based on photo
         if (journalSO.GetAfterCount() > 0)
-        {
-            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetBeforeAlbum(1).width, journalSO.GetBeforeAlbum(1).height * 2);
-        }
+            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).width, journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
             beforeImage.GetComponent<RectTransform>().localScale = new Vector3(0.55f, 0.5f, 1f);
@@ -131,55 +138,15 @@ public class Calendar : MonoBehaviour
         }
     }
 
-    public void GetDayPics()
-    {
-
-    }
-
     public void LoadSliderImages()
     {
-        string fileLocation;
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + picIndex + ".png";
-        }
-        else
-        {
-            fileLocation = Application.dataPath + "/BeforeAlbum/CameraScreenshot" + picIndex + ".png";
-        }
-        FileStream beforeFs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-        byte[] beforeImageData = new byte[beforeFs.Length];
-        beforeFs.Read(beforeImageData, 0, (int)beforeFs.Length);
-        Texture2D beforePic = new Texture2D(1080, 1920, TextureFormat.RGBA32, false);
-        beforePic.LoadImage(beforeImageData);
-        Sprite beforeSprite = Sprite.Create(beforePic, new Rect(0, 0, beforePic.width, beforePic.height), new Vector2(0.5f, 0.0f), 100.0f);
-
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" +picIndex + ".png";
-        }
-        else
-        {
-            fileLocation = Application.dataPath + "/AfterAlbum/CameraScreenshot" + picIndex + ".png";
-        }
-        FileStream afterFs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-        byte[] afterImageData = new byte[afterFs.Length];
-        afterFs.Read(afterImageData, 0, (int)afterFs.Length);
-        Texture2D afterPic = new Texture2D(1080, 1920, TextureFormat.RGBA32, false);
-        afterPic.LoadImage(afterImageData);
-        Sprite afterSprite = Sprite.Create(afterPic, new Rect(0, 0, afterPic.width, afterPic.height), new Vector2(0.5f, 0.0f), 100.0f);
-
-
-        sliderFill.GetComponent<Image>().sprite = beforeSprite;
-
-        sliderBG.GetComponent<Image>().sprite = afterSprite;
-
-        dateText.text = journalSO.date[picIndex - 1];
-        dayText.text = journalSO.day[picIndex - 1];
+        sliderFill.GetComponent<Image>().sprite = Sprite.Create((Texture2D)beforeImage.texture, new Rect(0, 0, afterImage.texture.width, afterImage.texture.height), new Vector2(0.5f, 0.0f), 100.0f);
+        sliderBG.GetComponent<Image>().sprite = Sprite.Create((Texture2D)afterImage.texture, new Rect(0, 0, afterImage.texture.width, afterImage.texture.height), new Vector2(0.5f, 0.0f), 100.0f);
+        dateText.text = string.Format("{0} {1} {2}",selectedDate.Day, selectedDate.ToString("MMMM"), selectedDate.Year);
+        dayText.text = string.Format("{0} {1}", selectedDate.Day, selectedDate.ToString("MMMM"));
     }
 
+    // Not used
     public void GetText(int n)
     {
         journalEntryTxt.text = journalSO.GetText(n);
@@ -190,7 +157,6 @@ public class Calendar : MonoBehaviour
     {
         journalSO.SetHasCaptured(false);
     }
-
    
 
     //void setPrevNextDates(int startDay, int endDay , int prevDates, int nextDates, int year, int month)
@@ -262,6 +228,7 @@ public class Calendar : MonoBehaviour
     }
 
 
+    // Update calendar
     private void UpdateCalendar(DateTime startDate)
     {
         MonthAndYear.text = startDate.ToString("MMMM") + " " + startDate.Year.ToString();
@@ -278,15 +245,18 @@ public class Calendar : MonoBehaviour
                 week.SetDays(i, DateI.Day);
                 week.HighlightDay(i, false);
 
+                // check if year and mont hsame
                 if (DateI.Year == selectedDate.Year && DateI.Month == selectedDate.Month)
                 {
                     week.EnableDay(i,true);
+  
                 }
                 else
                 {
                     week.EnableDay(i, false);
                 }
 
+                // highlight day if it is current date
                 if (DateI.Year == currDate.Year && DateI.Month == currDate.Month && DateI.Day == currDate.Day)
                     week.HighlightDay(i, true);
 
@@ -298,23 +268,29 @@ public class Calendar : MonoBehaviour
         // get end of the week
     }
 
+    // when day is pressed, text returns the day text
     void OnDayPressed(string text)
     {
-        Debug.Log(text);
-
-
         String temp = new DateTime(selectedDate.Year, selectedDate.Month, int.Parse(text)).ToString("dd MMMM yyyy");
-        Debug.Log(temp);
-        int imageCount = journalSO.GetAfterCount();
+        int day = int.Parse(text);
+        Debug.Log(day);
+        selectedDate = new DateTime(selectedDate.Year,selectedDate.Month,day);
+        //int imageCount = journalSO.GetAfterCount();
+        beforeImage.texture = journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, selectedDate);
+        if (beforeImage.texture == null)
+            beforeImage.texture = textureInitial;
 
-        for (int i = imageCount; i > 0; i--)
-        {
-            if (journalSO.GetDate(i - 1) == temp)
-            {
-                beforeImage.texture = journalSO.GetBeforeAlbum(i);
-                afterImage.texture = journalSO.GetAfterAlbum(i);
-                picIndex = i;
-            }
-        }
+        afterImage.texture = journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.AFTER, selectedDate);
+        if (afterImage.texture == null)
+            afterImage.texture = textureInitial;
+        //for (int i = imageCount; i > 0; i--)
+        //{
+        //    Debug.Log(journalSO.GetDate(i - 1) + " " + temp);
+        //    if (journalSO.GetDate(i - 1) == temp)
+        //    {
+
+        //        picIndex = i;
+        //    }
+        //}
     }
 }
