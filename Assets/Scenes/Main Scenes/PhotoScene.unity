@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 1721680807}
   - component: {fileID: 1721680806}
   m_Layer: 5
-  m_Name: ApplyCream
+  m_Name: AccupointsSceneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4943,7 +4943,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ApplyCreamScene
+          m_StringArgument: PaulAccupointsScene
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1721680807
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 1869496343}
   - component: {fileID: 1869496342}
   m_Layer: 5
-  m_Name: Album
+  m_Name: AlbumButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
