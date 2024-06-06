@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -30,7 +31,7 @@ public class AlbumManager : MonoBehaviour
 
         if (journalSO.GetAfterCount() > 0)
         { 
-            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetBeforeAlbum(1).width, journalSO.GetBeforeAlbum(1).height * 2); 
+            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE,DateTime.Today).width, journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).height * 2); 
         }
         
         //Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
@@ -50,7 +51,7 @@ public class AlbumManager : MonoBehaviour
                 break;
             }
 
-            pics[i - 1].texture = journalSO.GetAfterAlbum(i);
+            pics[i - 1].texture = journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.AFTER, DateTime.Today);
             
             //Debug.Log(i);
         }

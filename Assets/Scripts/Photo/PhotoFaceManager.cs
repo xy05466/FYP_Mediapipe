@@ -9,6 +9,9 @@ using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using System.Security.Cryptography.X509Certificates;
 
+/// <summary>
+/// For photo taking
+/// </summary>
 public class PhotoFaceManager : MonoBehaviour
 {
     [SerializeField] TMP_Text textbox;

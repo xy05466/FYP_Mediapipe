@@ -53,12 +53,16 @@ public class CalendarWeek : MonoBehaviour
 
     }
 
-    internal void HighlightDay(int index,bool enable )
+    internal void HighlightDay(int index,bool enable)
     {
         if(enable)
             butonDays[index].GetComponent<Image>().color = colorBgHighlightDay;
         else
             butonDays[index].GetComponent<Image>().color = colorBgDay;
+    }
+    internal void HighlightDayCustom(int index, Color customColor)
+    {
+        butonDays[index].GetComponent<Image>().color = customColor;
     }
 
     void OnPressed(string text)
