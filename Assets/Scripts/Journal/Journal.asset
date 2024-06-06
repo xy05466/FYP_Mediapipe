@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f61a19c62940664d88a502b46eae813, type: 3}
   m_Name: Journal
   m_EditorClassIdentifier: 
-  picToLoad: {fileID: 0}
-  beforeCount: 0
+  beforeCount: 1
   afterCount: 0
-  hasCaptured: 0
+  hasCaptured: 1
   date: []
   day: []
