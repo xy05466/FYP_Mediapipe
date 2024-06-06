@@ -49,11 +49,10 @@ namespace Mediapipe.Unity.Sample
 
     public override void Stop()
     {
-        base.Stop();
-        if(_coroutine != null )
-            StopCoroutine(_coroutine);
-        ImageSourceProvider.ImageSource.Stop();
-        graphRunner.Stop();
+      base.Stop();
+      StopCoroutine(_coroutine);
+      ImageSourceProvider.ImageSource.Stop();
+      graphRunner.Stop();
     }
 
     private IEnumerator Run()
