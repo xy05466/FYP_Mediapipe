@@ -203,9 +203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 7477175687846711451, guid: f6dd9c8a084775945acaface7808b1d2,
     type: 3}
-  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 0}
+  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 1}
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
-  _faceLandmarkRadius: 0
+  _faceLandmarkRadius: 15
   _irisLandmarkRadius: 10
   _faceConnectionColor: {r: 1, g: 0, b: 0, a: 0}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}

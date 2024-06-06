@@ -34,6 +34,8 @@ public class SceneLoader : MonoBehaviour
         if (sceneAnimation)
             sceneAnimation.PlayUIAnim(!sceneAnimation.m_reverse);
         this.sceneName = sceneName;
+        if (sceneAnimation)
+            sceneAnimation.PlayUIAnim(!sceneAnimation.m_reverse);
 
         sceneAnimation.OnAnimationFinished += TransitionEnded;
     }
