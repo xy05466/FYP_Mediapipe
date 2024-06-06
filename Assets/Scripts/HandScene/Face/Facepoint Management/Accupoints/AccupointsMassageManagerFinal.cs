@@ -10,10 +10,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
 
     [SerializeField] FacepointManager_Jaden _facepointManager;
     [SerializeField] List<AccSOListList> accupointSOs;
-    [SerializeField] GameObject silderPrefab;
-    GameObject parent;
     //when init silder set 
-    List<GameObject> silderSetsList;
+    [SerializeField] List<SilderSet> silderSetsList = new List<SilderSet>();
     [SerializeField] private Vector3 offset = Vector3.zero;
     private bool isAveraged = true;
     private bool lockedToZero = true;
@@ -27,26 +25,27 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private void Start()
     {
         index = 0;
-        parent = this.gameObject;
-        silderSetsList = new List<GameObject>();
         //init all the sets
         //init points in slider
-        GameObject gameObject = Instantiate(silderPrefab, parent.transform);
-        gameObject.SetActive(true);
-        silderSetsList.Add(gameObject);
-        SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        currSilderSet.Init();
-
-
-
-        for (int i = 0; i < accupointSOs.Count; i++)
+        //GameObject gameObject = Instantiate(silderPrefab, parent.transform);
+        //gameObject.SetActive(true);
+        //silderSetsList.Add(gameObject);
+        //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
+        //currSilderSet.Init();
+        foreach (var item in silderSetsList)
         {
-            Debug.Log("currSilderSet.anchorPostions" + i);
+            item.Init();
 
-            currSilderSet.AddList(i);
+            for (int i = 0; i < accupointSOs.Count; i++)
+            {
+                Debug.Log("currSilderSet.anchorPostions" + i);
 
-
+                item.AddList(i);
+            }
         }
+
+
+        
 
     }
     List<Transform> positions;
@@ -84,8 +83,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
 
     private void Update()
     {
-
-        SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
+        if(index >= silderSetsList.Count) return;
+        SilderSet currSilderSet = silderSetsList[index];
 
         for (int i = 0; i < accupointSOs.Count; i++)
         {

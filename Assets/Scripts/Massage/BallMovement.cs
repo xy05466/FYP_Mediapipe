@@ -6,6 +6,11 @@ public class BallMovement : MonoBehaviour
 {
     public JadenCurveManager path;
 
+    public Color colorDefault = Color.white;
+    public Color colorProgressing = Color.yellow;
+    public Color colorCompleted = Color.green;
+
+
     public bool isColliding;
     private Vector2[] points;
     private int currentIndex = 0;
@@ -21,15 +26,17 @@ public class BallMovement : MonoBehaviour
     public GameObject flowerParent;
     List<FlowerSpawn> flowerSpawnIndex;
     bool flowersInit = false;
+    MeshRenderer mr;
     private void Start()
     {
         //points = path.CalculateEvenlySpacedPoints(0.3f);
-        SilderSet.resetBallPos += reset;
+        SilderSet.resetBallPos += ResetBall;
         flowerSpawnIndex = new List<FlowerSpawn>();
+        mr = GetComponent<MeshRenderer>();
     }
     private void OnDestroy()
     {
-        SilderSet.resetBallPos -= reset;
+        SilderSet.resetBallPos -= ResetBall;
     }
     void Update()
     {
@@ -95,13 +102,21 @@ public class BallMovement : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         isColliding = true;
+        if (reachEnd)
+            mr.material.color = colorCompleted;
+        else
+            mr.material.color = colorProgressing;
     }
 
     private void OnTriggerExit(Collider other)
     {
         isColliding = false;
+        if (reachEnd)
+            mr.material.color = colorCompleted;
+        else
+            mr.material.color = colorDefault;
     }
-    public void reset()
+    public void ResetBall()
     {
         isColliding = false;
         reachEnd = false;

@@ -7,12 +7,15 @@ using Mediapipe;
 
 public class FacepointManager_Jaden : MonoBehaviour
 {
-    MultiFaceLandmarkListAnnotation _mfla;
-    GameObject[] facePoints;
-    public List<AccupointSO> indexesToStore;
-    private List<List<Transform>> landmarkPositions;
+    MultiFaceLandmarkListAnnotation _mfla; //reference multi face landmark to access the face points
+    GameObject[] facePoints; // store all facepoints
+    public List<AccupointSO> indexesToStore; 
+    public List<List<Transform>> landmarkPositions;
     [SerializeField] int threshold = 50;
     UnityEvent updateEvent;
+
+
+
     //Vector3 lastAverage;
     private void Awake()
     {
@@ -57,6 +60,7 @@ public class FacepointManager_Jaden : MonoBehaviour
     Transform checkObject;
     public void UpdateListData()
     {
+        Debug.Log(landmarkPositions);
         //Debug.Log(landmarkPositions.Count);
         if (_mfla != null && _mfla.isActiveInHierarchy && _mfla.transform.childCount > 0)
         {
@@ -71,6 +75,7 @@ public class FacepointManager_Jaden : MonoBehaviour
                 //eg: landmarkPositions[i] = facePoints[n] where i is the index of the number n in indexes to store
                 if (facePoints != null && facePoints.Length > 0)
                 {
+                    // loop through all AccupointSOs
                     for (int i = 0; i < indexesToStore.Count; ++i)
                     {
                         //Debug.Log(landmarkPositions[i].Count);
@@ -107,13 +112,14 @@ public class FacepointManager_Jaden : MonoBehaviour
     /// <returns></returns>
     public List<Transform> GetLandmarkPositionsByDigit(int digit)
     {
+        // since there are only 468 points on the face
         if (digit > 468)
             return null;
-        for (int counter = 0; counter < indexesToStore.Count; counter++)
+        for (int i = 0; i < indexesToStore.Count; i++)
         {
-            if (digit == indexesToStore[counter].landmarkIndex)
+            if (digit == indexesToStore[i].landmarkIndex)
             {
-                return landmarkPositions[counter];
+                return landmarkPositions[i];
             }
         }
         return null;

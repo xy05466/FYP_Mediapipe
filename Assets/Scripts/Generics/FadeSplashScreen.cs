@@ -14,10 +14,8 @@ public class FadeSplashScreen : MonoBehaviour
 
     private void Start()
     {
-
-            images = GetComponentsInChildren<Image>();
-            texts = GetComponentsInChildren<TMP_Text>();
-        
+        images = GetComponentsInChildren<Image>();
+        texts = GetComponentsInChildren<TMP_Text>();
     }
 
     public void StartFadeOut()

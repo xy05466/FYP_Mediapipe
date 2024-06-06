@@ -15,6 +15,9 @@ public class SilderSet : MonoBehaviour
     public bool lockPositions = false;
     //time pressed
     public delegate void ResetBallPos();
+
+
+    // EVENTS
     // Declare a delegate variable
     public static event ResetBallPos resetBallPos;
     //time pressed
@@ -29,10 +32,10 @@ public class SilderSet : MonoBehaviour
     {
 
         path = new List<JadenCurveManager>();
-
         //init set prefabs (always spawn with 3)
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {
+
             GameObject newSet = Instantiate(prefab, this.gameObject.transform);
             gameObject.SetActive(true);
 
@@ -44,6 +47,7 @@ public class SilderSet : MonoBehaviour
             path[i].points[3].transform.position = new(anchorPostions.GetItemInList(i, 1).x, anchorPostions.GetItemInList(i, 1).y, 0);
             path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
         }
+
         //set num of sets and 
         numOfSets = 0;
         //get reference to paths
@@ -101,6 +105,7 @@ public class SilderSet : MonoBehaviour
         anchorPostions.AddItemToList(i, Vector3.zero);
         anchorPostions.AddItemToList(i, Vector3.zero);
         anchorPostions.AddItemToList(i, Vector3.zero);
+        Debug.Log(anchorPostions.CountOfLists());
     }
     private void SetCompleted()
     {
