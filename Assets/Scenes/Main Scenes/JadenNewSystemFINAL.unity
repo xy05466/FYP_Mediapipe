@@ -171,8 +171,13 @@ MonoBehaviour:
   _facepointManager: {fileID: 543386377}
   listSteps:
   - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
-  - {fileID: 11400000, guid: 3c2907efa2140e04482a7aa85a19a7a4, type: 2}
-  - {fileID: 11400000, guid: 3c2907efa2140e04482a7aa85a19a7a4, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
+  - {fileID: 11400000, guid: 30e47e7ac1c1c19449e36d56b80d6774, type: 2}
   sliderSet: {fileID: 822366238}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &17270002
@@ -1965,6 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1371552108e207842ac12003496b7c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mfla: {fileID: 0}
   indexesToStore:
   - {fileID: 11400000, guid: 0dc33ece1f0269e4b93962dd04e8f71e, type: 2}
   - {fileID: 11400000, guid: 3fec74284df74d947bb41313914a1fdf, type: 2}
@@ -1979,6 +1985,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 41fa1ceabcaf88849bbd9d5e090a5c2b, type: 2}
   - {fileID: 11400000, guid: b982bbf804c596a4f889da249ff30089, type: 2}
   - {fileID: 11400000, guid: c011aa099065f6d428a31aab423d1749, type: 2}
+  - {fileID: 11400000, guid: c610a91b815bf404ba1ab61e8ab94731, type: 2}
+  - {fileID: 11400000, guid: 03a3602e39cb3f74d8b955e64e354225, type: 2}
+  - {fileID: 11400000, guid: e4f412cc9b510f844a8f78c8545975d2, type: 2}
   threshold: 10
 --- !u!1 &582585318
 GameObject:
