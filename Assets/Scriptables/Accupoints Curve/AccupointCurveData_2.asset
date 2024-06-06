@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accupointSOs:
   - accupointSOList:
-    - {fileID: 11400000, guid: 3fec74284df74d947bb41313914a1fdf, type: 2}
-    - {fileID: 11400000, guid: 71cedef1b463aca44a39418f72316cf7, type: 2}
-    - {fileID: 11400000, guid: f0996fb17439d0548a44f010eb60a176, type: 2}
+    - {fileID: 11400000, guid: 320b13d6afb492741a8afaf6a004e9be, type: 2}
+    - {fileID: 11400000, guid: 75a320e35a2f74141a1a9bacaeff030f, type: 2}
+    - {fileID: 11400000, guid: 2e173981d50f4454cbf14e66648624a5, type: 2}
   - accupointSOList:
     - {fileID: 11400000, guid: 1bcf8026084e16b499fd517a0ce6e7d2, type: 2}
     - {fileID: 11400000, guid: a52a68184f08c1d47b507c544373bc6c, type: 2}

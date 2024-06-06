@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89abfcf8d798ab4bba45de2b9205db1, type: 3}
+  m_Name: LeftNose
+  m_EditorClassIdentifier: 
+  accupointSOs:
+  - accupointSOList:
+    - {fileID: 11400000, guid: 7c095dbf2a31b4b479f425894bc26dc7, type: 2}
+    - {fileID: 11400000, guid: 61694ac95f518ed4bbe02f963f60d5cf, type: 2}
+    - {fileID: 11400000, guid: 8b95bae168d58b048a6b36be74ad28e7, type: 2}

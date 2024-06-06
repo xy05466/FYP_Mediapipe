@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89abfcf8d798ab4bba45de2b9205db1, type: 3}
+  m_Name: LeftMiddlecurve
+  m_EditorClassIdentifier: 
+  accupointSOs:
+  - accupointSOList:
+    - {fileID: 11400000, guid: b68a19c643bc18e40bc021460a5bc5a8, type: 2}
+    - {fileID: 11400000, guid: 92d588dc2cbfe0543aa772fbfcd65919, type: 2}
+    - {fileID: 11400000, guid: 97b64ffc4889b664d86b9ae6a58a182f, type: 2}
