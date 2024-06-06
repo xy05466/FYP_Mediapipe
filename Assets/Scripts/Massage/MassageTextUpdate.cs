@@ -11,11 +11,11 @@ public class MassageTextUpdate : MonoBehaviour
     private void Start()
     {
         tMP_Text = GetComponent<TMP_Text>();
-        SilderSet.onUpdateMassageUI += UpdateText;
+        AccupointsMassageManagerFinal.onUpdateMassageUI += UpdateText;
     }
     private void OnDestroy()
     {
-        SilderSet.onUpdateMassageUI -= UpdateText;
+        AccupointsMassageManagerFinal.onUpdateMassageUI -= UpdateText;
 
     }
     public void UpdateText(string value)

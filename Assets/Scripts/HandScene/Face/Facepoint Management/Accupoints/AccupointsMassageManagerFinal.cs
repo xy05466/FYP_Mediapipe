@@ -21,6 +21,11 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private bool lockedToZero = true;
     private int index = 0;
 
+    //time pressed
+    public delegate void UpdateMassageUI(string value);
+    // Declare a delegate variable
+    public static event UpdateMassageUI onUpdateMassageUI;
+
     //list
     //how many sets in list
     //how to check if all sets are completed
@@ -39,6 +44,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
         sliderSet.Init();
 
+        onUpdateMassageUI((listSteps.Count - index).ToString());
 
         SetUpPoints();
         sliderSet.OnComplete += SetDone;
@@ -50,6 +56,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         sliderSet.ClearSet();
         SetUpPoints();
         Debug.Log("done");
+        onUpdateMassageUI((listSteps.Count - index).ToString());
     }
     void SetUpPoints()
     {

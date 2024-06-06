@@ -22,10 +22,7 @@ public class SilderSet : MonoBehaviour
     public delegate void OnSetCompleted();
     // Declare a delegate variable
     public static event OnSetCompleted onSetCompleted;
-    //time pressed
-    public delegate void UpdateMassageUI(string value);
-    // Declare a delegate variable
-    public static event UpdateMassageUI onUpdateMassageUI;
+
 
     public Action OnComplete;
     private void Start()
@@ -36,7 +33,6 @@ public class SilderSet : MonoBehaviour
         //then set anchors to
         //init event
         BallMovement.onComplete += SetCompleted;
-        onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
     }
     bool setUp = false;
     public void SetUpPath()
@@ -123,7 +119,7 @@ public class SilderSet : MonoBehaviour
                 Debug.Log("One set completed");
                 //numOfSets++;
                 Debug.Log(numOfSets + " set completed");
-                onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
+                //onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
                 resetSet();
                 OnComplete?.Invoke();
             }
