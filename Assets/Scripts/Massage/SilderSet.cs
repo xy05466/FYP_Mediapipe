@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,8 @@ public class SilderSet : MonoBehaviour
 {
     //all anchorpoints and positions sotred here
     public ListOfLists<Vector3> anchorPostions;
-    List<JadenCurveManager> path;
-    [SerializeField] GameObject prefab;
+    public List<JadenCurveManager> path = new List<JadenCurveManager>();
+    [SerializeField] JadenCurveManager prefabJadenCurveManager;
     public bool completed = false;
     public int numOfSetsToComplete = 3;
     int numOfSets = 0;
@@ -25,33 +26,36 @@ public class SilderSet : MonoBehaviour
     public delegate void UpdateMassageUI(string value);
     // Declare a delegate variable
     public static event UpdateMassageUI onUpdateMassageUI;
+
+    public Action OnComplete;
     private void Start()
     {
-
-        path = new List<JadenCurveManager>();
-
+        //set num of sets and
+        numOfSets = 0;
+        //get reference to paths
+        //then set anchors to
+        //init event
+        BallMovement.onComplete += SetCompleted;
+        onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
+    }
+    bool setUp = false;
+    public void SetUpPath()
+    {
+        setUp = true;
         //init set prefabs (always spawn with 3)
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {
-            GameObject newSet = Instantiate(prefab, this.gameObject.transform);
+            JadenCurveManager newSet = Instantiate(prefabJadenCurveManager, this.gameObject.transform);
             gameObject.SetActive(true);
 
             //path[i].Add(newSet.GetComponent<JadenCurveManager>());
-            path.Add(newSet.GetComponent<JadenCurveManager>());
+            path.Add(newSet);
             //set anchorPoints
 
             path[i].points[0].transform.position = new(anchorPostions.GetItemInList(i, 0).x, anchorPostions.GetItemInList(i, 0).y, 0);
             path[i].points[3].transform.position = new(anchorPostions.GetItemInList(i, 1).x, anchorPostions.GetItemInList(i, 1).y, 0);
             path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
         }
-        //set num of sets and 
-        numOfSets = 0;
-        //get reference to paths
-        //then set anchors to 
-        //init event
-        BallMovement.onComplete += SetCompleted;
-        onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
-
     }
     private void OnDestroy()
     {
@@ -62,7 +66,7 @@ public class SilderSet : MonoBehaviour
     //spawn all points in 
     private void Update()
     {
-
+        if (!setUp) return;
         if (lockPositions)
             return;
         if(Input.GetKeyDown(KeyCode.K))
@@ -105,7 +109,7 @@ public class SilderSet : MonoBehaviour
     private void SetCompleted()
     {
         setsCompleted++;
-        Debug.Log("Sets completed: " + setsCompleted);
+        //Debug.Log("Sets completed: " + setsCompleted);
         if (setsCompleted == anchorPostions.CountOfLists())
         {
             if (numOfSets == numOfSetsToComplete)
@@ -120,7 +124,8 @@ public class SilderSet : MonoBehaviour
                 numOfSets++;
                 Debug.Log(numOfSets + " set completed");
                 onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
-                resetSet();
+                //resetSet();
+                OnComplete?.Invoke();
             }
         }
     }
@@ -135,8 +140,19 @@ public class SilderSet : MonoBehaviour
     {
         resetBallPos?.Invoke();
         setsCompleted = 0;
-        //numOfSets = 0;
+        numOfSets = 0;
         onSetCompleted?.Invoke();
+    }
+
+    public void ClearSet()
+    {
+        anchorPostions = new ListOfLists<Vector3>();
+        for (int i = 0; i < path.Count; i++)
+        {
+            Destroy(path[i].gameObject);
+        }
+        path.Clear();
+        setUp = false;
     }
     
 }

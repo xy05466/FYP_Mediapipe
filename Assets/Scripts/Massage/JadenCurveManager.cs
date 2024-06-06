@@ -6,7 +6,7 @@ using UnityEngine;
 public class JadenCurveManager : MonoBehaviour
 {
     [SerializeField]
-    public List<GameObject> points;
+    public List<GameObject> points; // hardcoded points
     [SerializeField]
     bool isClosed;
     [SerializeField]

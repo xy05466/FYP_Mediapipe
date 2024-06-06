@@ -4,12 +4,14 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class AccupointsMassageManagerFinal : MonoBehaviour
 {
 
     [SerializeField] FacepointManager_Jaden _facepointManager;
-    [SerializeField] List<AccSOListList> accupointSOs;
+    //[SerializeField] List<AccSOListList> accupointSOs;
+    [SerializeField] List<AccupointCurveData> listSteps = new List<AccupointCurveData>();
     GameObject parent;
     //when init silder set 
     //public List<SilderSet> silderSetsList = new List<SliderSet>();
@@ -38,18 +40,26 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         sliderSet.Init();
 
 
-
-        for (int i = 0; i < accupointSOs.Count; i++)
-        {
-            Debug.Log("currSilderSet.anchorPostions" + i);
-
-            sliderSet.AddList(i);
-
-
-        }
-
+        SetUpPoints();
+        sliderSet.OnComplete += SetDone;
     }
     List<Transform> positions;
+    void SetDone()
+    {
+        index++;
+        sliderSet.ClearSet();
+        SetUpPoints();
+        Debug.Log("done");
+    }
+    void SetUpPoints()
+    {
+        for (int i = 0; i < listSteps[index].accupointSOs.Count; i++)
+        {
+            Debug.Log("currSilderSet.anchorPostions" + i);
+            sliderSet.AddList(i);
+        }
+        sliderSet.SetUpPath();
+    }
     Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
     {
         if (positions != null)
@@ -85,20 +95,20 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private void Update()
     {
 
-        SilderSet currSilderSet = sliderSet;
-
-        for (int i = 0; i < accupointSOs.Count; i++)
+        List<AccSOListList> steps = listSteps[index].accupointSOs;
+        for (int i = 0; i < steps.Count; i++)
         {
-            for (int j = 0; j < accupointSOs[i].accupointSOList.Count; j++)
+            for (int j = 0; j < steps[i].accupointSOList.Count; j++)
             {
-                int nextAccupoint = accupointSOs[i].accupointSOList[j].landmarkIndex;
+                int nextAccupoint = steps[i].accupointSOList[j].landmarkIndex;
                 positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
                 Vector3 position = Reposition(positions, lockedToZero, isAveraged);
                 position = new Vector3(position.x, position.y, 0);
-                currSilderSet.anchorPostions.SetItemInList(i, j, position);
+                sliderSet.anchorPostions.SetItemInList(i, j, position);
             }
         }
         //increase index when a set is done 
+
     }
 
 }

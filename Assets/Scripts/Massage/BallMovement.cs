@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
     public JadenCurveManager path;
+
+    public Color colorDefault = Color.white;
+    public Color colorProgressing = Color.yellow;
+    public Color colorComplete = Color.green;
 
     public bool isColliding;
     private Vector2[] points;
@@ -21,8 +26,10 @@ public class BallMovement : MonoBehaviour
     public GameObject flowerParent;
     List<FlowerSpawn> flowerSpawnIndex;
     bool flowersInit = false;
+    MeshRenderer mr;
     private void Start()
     {
+        mr = GetComponent<MeshRenderer>();  
         //points = path.CalculateEvenlySpacedPoints(0.3f);
         SilderSet.resetBallPos += reset;
         flowerSpawnIndex = new List<FlowerSpawn>();
@@ -95,11 +102,19 @@ public class BallMovement : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         isColliding = true;
+        if (reachEnd)
+            mr.material.color = colorComplete;
+        else
+            mr.material.color = colorProgressing;
     }
 
     private void OnTriggerExit(Collider other)
     {
         isColliding = false;
+        if (reachEnd)
+            mr.material.color = colorComplete;
+        else
+            mr.material.color = colorDefault;
     }
     public void reset()
     {
