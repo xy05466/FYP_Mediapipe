@@ -10,10 +10,10 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
 
     [SerializeField] FacepointManager_Jaden _facepointManager;
     [SerializeField] List<AccSOListList> accupointSOs;
-    [SerializeField] GameObject silderPrefab;
     GameObject parent;
     //when init silder set 
-    List<GameObject> silderSetsList;
+    //public List<SilderSet> silderSetsList = new List<SliderSet>();
+    public SilderSet sliderSet;
     [SerializeField] private Vector3 offset = Vector3.zero;
     private bool isAveraged = true;
     private bool lockedToZero = true;
@@ -28,14 +28,14 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     {
         index = 0;
         parent = this.gameObject;
-        silderSetsList = new List<GameObject>();
+        //silderSetsList = new List<GameObject>();
         //init all the sets
         //init points in slider
-        GameObject gameObject = Instantiate(silderPrefab, parent.transform);
-        gameObject.SetActive(true);
-        silderSetsList.Add(gameObject);
-        SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        currSilderSet.Init();
+        //GameObject gameObject = Instantiate(silderPrefab, parent.transform);
+        //gameObject.SetActive(true);
+        //silderSetsList.Add(gameObject);
+        //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
+        sliderSet.Init();
 
 
 
@@ -43,7 +43,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         {
             Debug.Log("currSilderSet.anchorPostions" + i);
 
-            currSilderSet.AddList(i);
+            sliderSet.AddList(i);
 
 
         }
@@ -85,7 +85,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private void Update()
     {
 
-        SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
+        SilderSet currSilderSet = sliderSet;
 
         for (int i = 0; i < accupointSOs.Count; i++)
         {
