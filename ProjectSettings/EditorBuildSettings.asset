@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scenes/AlbumScene.unity
     guid: 7e53f1c60cfdb9a4fa47ccdc863e834b
   - enabled: 1
+    path: Assets/Scenes/Main Scenes/EssenceDosage.unity
+    guid: ee400f899ec81b741bba65c6b1cabf5a
+  - enabled: 1
     path: Assets/Scenes/Main Scenes/PhotoScene.unity
     guid: 0a25eca3b1bde7e43b1429a3c9425090
   - enabled: 1
@@ -29,9 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
-  - enabled: 1
-    path: Assets/Scenes/Main Scenes/JadenMassaageScene.unity
-    guid: 7008ffcfa6811bc43b91fec82712d932
   - enabled: 1
     path: Assets/Scenes/HubScene.unity
     guid: 175ee092cb027114ca93f10b7a670d39
