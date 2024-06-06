@@ -170,16 +170,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _facepointManager: {fileID: 543386377}
   listSteps:
-  - {fileID: 11400000, guid: b4876ab0a0ef9074199dccbb48c79894, type: 2}
   - {fileID: 11400000, guid: 7f519865e042be54791c258d6b45b2e5, type: 2}
-  - {fileID: 11400000, guid: c7dc5f8cbb53ce646a324fe007f14cc9, type: 2}
   - {fileID: 11400000, guid: 146b99c1fd7edb140884e7b84076a1c4, type: 2}
-  - {fileID: 11400000, guid: d2b8d24d28dc6904ba3f4e92252410e1, type: 2}
-  - {fileID: 11400000, guid: 555c4bf5a0eff6a4e90905c108e6fdd0, type: 2}
   - {fileID: 11400000, guid: 19f87e03f47000b40b55d22a55b2aaa0, type: 2}
   - {fileID: 11400000, guid: b89ed8fc1d29c89498dc164abfb79d03, type: 2}
-  - {fileID: 11400000, guid: 695a707c91abacb4bbc2a39fbafe95db, type: 2}
-  - {fileID: 11400000, guid: 125d583c59631f243b27863ee908b4d8, type: 2}
   - {fileID: 11400000, guid: d98323dad8966a1498e5ceeda0a46e2c, type: 2}
   - {fileID: 11400000, guid: 5a3c8be429eb3d7439fea999ce797091, type: 2}
   sliderSet: {fileID: 822366238}
@@ -1159,7 +1153,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PhotoScene
+          m_StringArgument: PaulAccupointsScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &235681789
@@ -1974,6 +1968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1371552108e207842ac12003496b7c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mfla: {fileID: 0}
   indexesToStore:
   - {fileID: 11400000, guid: 9e2fdeeb86686ed4a83acacacc463ffe, type: 2}
   - {fileID: 11400000, guid: f9a0d37edbdbed645b559b3d028ae407, type: 2}
@@ -2277,6 +2272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SliderSet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885510157700122708, guid: 7675c915e745d2344ba7f5288d52815c,
+        type: 3}
+      propertyPath: numOfSetsToComplete
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5885510157700122708, guid: 7675c915e745d2344ba7f5288d52815c,
         type: 3}
@@ -4536,6 +4536,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 379195627}
     m_Modifications:
+    - target: {fileID: 1822135812651215308, guid: 816f88a36ed996c4381c4c8fe475bd64,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36c37f2d2684f344ba5e6e12f4d28917,
+        type: 3}
     - target: {fileID: 2365173472465382586, guid: 816f88a36ed996c4381c4c8fe475bd64,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4648,6 +4654,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3463991949475095808, guid: 816f88a36ed996c4381c4c8fe475bd64,
         type: 3}
+      propertyPath: m_text
+      value: 'Next, let''s apply essence!
+
+
+        Follow the guide to know the
+        correct way to apply your essence.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463991949475095808, guid: 816f88a36ed996c4381c4c8fe475bd64,
+        type: 3}
+      propertyPath: m_margin.w
+      value: -684.1456
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463991949475095808, guid: 816f88a36ed996c4381c4c8fe475bd64,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -202.99152
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463991949475095808, guid: 816f88a36ed996c4381c4c8fe475bd64,
+        type: 3}
       propertyPath: m_fontColor.b
       value: 0.04705883
       objectReference: {fileID: 0}
@@ -4734,7 +4759,7 @@ PrefabInstance:
     - target: {fileID: 6826326136854205293, guid: 816f88a36ed996c4381c4c8fe475bd64,
         type: 3}
       propertyPath: m_Name
-      value: FaceMassage
+      value: Essence
       objectReference: {fileID: 0}
     - target: {fileID: 7413653363187948149, guid: 816f88a36ed996c4381c4c8fe475bd64,
         type: 3}
@@ -4755,6 +4780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278991709
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540431995129358385, guid: 816f88a36ed996c4381c4c8fe475bd64,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5044,6 +5074,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292402116417089742, guid: 8b89425f859b431478dfdd4a5284202e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292402116417089742, guid: 8b89425f859b431478dfdd4a5284202e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.499756
       objectReference: {fileID: 0}
     - target: {fileID: 4683294700620473709, guid: 8b89425f859b431478dfdd4a5284202e,
         type: 3}
