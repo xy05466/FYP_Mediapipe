@@ -4,16 +4,18 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class AccupointsMassageManagerFinal : MonoBehaviour
 {
 
     [SerializeField] FacepointManager_Jaden _facepointManager;
-    [SerializeField] List<AccSOListList> accupointSOs;
-    [SerializeField] GameObject silderPrefab;
+    //[SerializeField] List<AccSOListList> accupointSOs;
+    [SerializeField] List<AccupointCurveData> listSteps = new List<AccupointCurveData>();
     GameObject parent;
     //when init silder set 
-    List<GameObject> silderSetsList;
+    //public List<SilderSet> silderSetsList = new List<SliderSet>();
+    public SilderSet sliderSet;
     [SerializeField] private Vector3 offset = Vector3.zero;
     private bool isAveraged = true;
     private bool lockedToZero = true;
@@ -28,28 +30,36 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     {
         index = 0;
         parent = this.gameObject;
-        silderSetsList = new List<GameObject>();
+        //silderSetsList = new List<GameObject>();
         //init all the sets
         //init points in slider
-        GameObject gameObject = Instantiate(silderPrefab, parent.transform);
-        gameObject.SetActive(true);
-        silderSetsList.Add(gameObject);
-        SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        currSilderSet.Init();
+        //GameObject gameObject = Instantiate(silderPrefab, parent.transform);
+        //gameObject.SetActive(true);
+        //silderSetsList.Add(gameObject);
+        //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
+        sliderSet.Init();
 
 
-
-        for (int i = 0; i < accupointSOs.Count; i++)
-        {
-            Debug.Log("currSilderSet.anchorPostions" + i);
-
-            currSilderSet.AddList(i);
-
-
-        }
-
+        SetUpPoints();
+        sliderSet.OnComplete += SetDone;
     }
     List<Transform> positions;
+    void SetDone()
+    {
+        index++;
+        sliderSet.ClearSet();
+        SetUpPoints();
+        Debug.Log("done");
+    }
+    void SetUpPoints()
+    {
+        for (int i = 0; i < listSteps[index].accupointSOs.Count; i++)
+        {
+            Debug.Log("currSilderSet.anchorPostions" + i);
+            sliderSet.AddList(i);
+        }
+        sliderSet.SetUpPath();
+    }
     Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
     {
         if (positions != null)
@@ -85,20 +95,20 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private void Update()
     {
 
-        SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-
-        for (int i = 0; i < accupointSOs.Count; i++)
+        List<AccSOListList> steps = listSteps[index].accupointSOs;
+        for (int i = 0; i < steps.Count; i++)
         {
-            for (int j = 0; j < accupointSOs[i].accupointSOList.Count; j++)
+            for (int j = 0; j < steps[i].accupointSOList.Count; j++)
             {
-                int nextAccupoint = accupointSOs[i].accupointSOList[j].landmarkIndex;
+                int nextAccupoint = steps[i].accupointSOList[j].landmarkIndex;
                 positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
                 Vector3 position = Reposition(positions, lockedToZero, isAveraged);
                 position = new Vector3(position.x, position.y, 0);
-                currSilderSet.anchorPostions.SetItemInList(i, j, position);
+                sliderSet.anchorPostions.SetItemInList(i, j, position);
             }
         }
         //increase index when a set is done 
+
     }
 
 }

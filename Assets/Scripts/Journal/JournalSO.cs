@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,8 +12,8 @@ using UnityEngine.UI;
 [CreateAssetMenu]
 public class JournalSO : ScriptableObject
 {
-    [SerializeField]
-    public Texture2D picToLoad { get; set; }
+    //[SerializeField]
+    //public Texture2D picToLoad;
 
     [SerializeField]
     public Texture2D picsTaken {  get; set; }
@@ -30,13 +31,13 @@ public class JournalSO : ScriptableObject
     public List <string> dayTxts { get; set; }
 
     [SerializeField]
-    public int beforeCount { get; set; }
+    public int beforeCount;
 
     [SerializeField]
-    public int afterCount { get; set; }
+    public int afterCount;
 
     [SerializeField]
-    public bool hasCaptured {  get; set; }
+    public bool hasCaptured;
     [SerializeField]
     public List<string> date;
     [SerializeField]
@@ -78,7 +79,7 @@ public class JournalSO : ScriptableObject
         {
             dayNum = new List<int>();
         }
-        picToLoad = new Texture2D(2, 2);
+        //picToLoad = new Texture2D(2, 2);
 
         //if (Application.platform == RuntimePlatform.Android)
         //{
@@ -259,21 +260,39 @@ public class JournalSO : ScriptableObject
         original.SetPixels(newPixels);
         original.Apply();
     }
-
-    public void ConfirmBeforePic()
+    void CreateBaseDirectory()
     {
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            if (!Directory.Exists(Application.persistentDataPath + "/BeforeAlbum"))
+            if (!Directory.Exists(Application.persistentDataPath + "/AlbumPhoto"))
             {
-                Directory.CreateDirectory(Application.persistentDataPath + "/BeforeAlbum");
+                Directory.CreateDirectory(Application.persistentDataPath + "/AlbumPhoto");
             }
         }
         else
         {
-            if (!Directory.Exists(Application.dataPath + "/BeforeAlbum"))
+            if (!Directory.Exists(Application.dataPath + "/AlbumPhoto"))
             {
-                Directory.CreateDirectory(Application.dataPath + "/BeforeAlbum");
+                Directory.CreateDirectory(Application.dataPath + "/AlbumPhoto");
+            }
+        }
+    }
+    public void ConfirmBeforePic(DateTime dateTime)
+    {
+        string dateTimeString = dateTime.ToString("dd_MM_yyyy");
+        CreateBaseDirectory();
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            if (!Directory.Exists(Application.persistentDataPath + "/AlbumPhoto/Before"))
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/AlbumPhoto/Before");
+            }
+        }
+        else
+        {
+            if (!Directory.Exists(Application.dataPath + "/AlbumPhoto/Before"))
+            {
+                Directory.CreateDirectory(Application.dataPath + "/AlbumPhoto/Before");
             }
         }
 
@@ -293,13 +312,14 @@ public class JournalSO : ScriptableObject
         
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (beforeCount + 1) + ".png", byteArray);
-            info = new DirectoryInfo(Application.persistentDataPath + "/BeforeAlbum");
+            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png", byteArray);
+
+            info = new DirectoryInfo(Application.persistentDataPath + "/AlbumPhoto/Before/");
         }
         else
         {
-            System.IO.File.WriteAllBytes(Application.dataPath + "/BeforeAlbum/CameraScreenshot" + (beforeCount + 1) + ".png", byteArray);
-            info = new DirectoryInfo(Application.dataPath + "/BeforeAlbum");
+            System.IO.File.WriteAllBytes(Application.dataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png", byteArray);
+            info = new DirectoryInfo(Application.dataPath + "/AlbumPhoto/Before/");
         }
 
         beforeCount = info.GetFiles("*.png").Length;
@@ -310,23 +330,26 @@ public class JournalSO : ScriptableObject
         //picsTaken = null;
         //Debug.Log(picsCount + 1);
     }
-
-    public void ConfirmAfterPic()
+    
+    public void ConfirmAfterPic(DateTime dateTime)
     {
+        string dateTimeString = dateTime.ToString("dd_MM_yyyy");
+
+        CreateBaseDirectory();
+
         Debug.Log("confirmafterpic");
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            if (!Directory.Exists(Application.persistentDataPath + "/AfterAlbum"))
+            if (!Directory.Exists(Application.persistentDataPath + "/AlbumPhoto/After"))
             {
-                Directory.CreateDirectory(Application.persistentDataPath + "/AfterAlbum");
-                Debug.Log("afterdirectorycreated");
+                Directory.CreateDirectory(Application.persistentDataPath + "/AlbumPhoto/After");
             }
         }
         else
         {
-            if (!Directory.Exists(Application.dataPath + "/AfterAlbum"))
+            if (!Directory.Exists(Application.dataPath + "/AlbumPhoto/After"))
             {
-                Directory.CreateDirectory(Application.dataPath + "AfterAlbum");
+                Directory.CreateDirectory(Application.dataPath + "/AlbumPhoto/After");
             }
         }
 
@@ -342,16 +365,17 @@ public class JournalSO : ScriptableObject
         {
             byteArray = rotateTexture(picsTaken, false).EncodeToPNG();
         }
+
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + (afterCount + 1) + ".png", byteArray);
-            info = new DirectoryInfo(Application.persistentDataPath + "/AfterAlbum");
-            Debug.Log("afterfilesaved");
+            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/AlbumPhoto/After/" + dateTimeString + ".png", byteArray);
+
+            info = new DirectoryInfo(Application.persistentDataPath + "/AlbumPhoto/After/");
         }
         else
         {
-            System.IO.File.WriteAllBytes(Application.dataPath + "/AfterAlbum/CameraScreenshot" + (afterCount + 1) + ".png", byteArray);
-            info = new DirectoryInfo(Application.dataPath + "/AfterAlbum");
+            System.IO.File.WriteAllBytes(Application.dataPath + "/AlbumPhoto/After/" + dateTimeString + ".png", byteArray);
+            info = new DirectoryInfo(Application.dataPath + "/AlbumPhoto/After/");
         }
 
         date.Add(DateTime.Today.ToString("dd MMMM yyyy"));
@@ -369,56 +393,147 @@ public class JournalSO : ScriptableObject
     {
         return picsTaken;
     }
+    //public Texture GetPhotoAlbum(AlbumPhotoType albumPhotoType, DateTime date)
+    //{
 
-    public Texture GetBeforeAlbum(int n)
+    //    string albumType = "";
+    //    switch (albumPhotoType)
+    //    {
+    //        case AlbumPhotoType.BEFORE:
+    //            albumType = "before";
+    //            break;
+    //        case AlbumPhotoType.AFTER:
+    //            albumType = "after";
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //    string fileLocation;
+    //    Debug.Log(date.Date.ToString());
+    //    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+    //    {
+
+    //        fileLocation = Application.persistentDataPath + "/AlbumPhoto/" + albumType + "/" + date.Date.ToString() + ".png";
+    //    }
+    //    else
+    //    {
+    //        fileLocation = Application.dataPath + "/AlbumPhoto/" + albumType + "/" + date.Date.ToString() + ".png";
+    //    }
+
+    //    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
+
+    //    byte[] imageData = new byte[fs.Length];
+    //    fs.Read(imageData, 0, (int)fs.Length);
+    //    picToLoad.LoadImage(imageData);
+
+
+    //    return (picToLoad);
+    //}
+    public enum AlbumPhotoType
     {
-        string fileLocation;
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-
-            fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + n + ".png";
-        }
-        else
-        {
-            fileLocation = Application.dataPath + "/BeforeAlbum/CameraScreenshot" + n + ".png";
-        }
-
-        FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-        byte[] imageData = new byte[fs.Length];
-        fs.Read(imageData, 0, (int)fs.Length);
-        picToLoad.LoadImage(imageData);
-
-        
-        
-        return (picToLoad);
+        BEFORE,
+        AFTER
     }
-
-    public Texture GetAfterAlbum(int n)
+    public Texture GetPhotoAlbum(AlbumPhotoType albumPhotoType, DateTime dateTime)
     {
+        string dateTimeString = dateTime.ToString("dd_MM_yyyy");
+        string albumType = "";
+
+        switch (albumPhotoType)
+        {
+            case AlbumPhotoType.BEFORE:
+                albumType = "Before";
+                break;
+            case AlbumPhotoType.AFTER:
+                albumType = "After";
+                break;
+            default:
+                break;
+        }
+
+
+        string path = "/AlbumPhoto/" + albumType.ToString() + "/" + dateTimeString + ".png";
         string fileLocation;
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-
-            fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + n + ".png";
+            fileLocation = Application.persistentDataPath + path;
         }
         else
         {
-            fileLocation = Application.dataPath + "/AfterAlbum/CameraScreenshot" + n + ".png";
+            fileLocation = Application.dataPath + path;
+        }
+        Debug.Log(dateTimeString);
+        Debug.Log(albumType.ToString());
+        Debug.Log(path);
+
+        FileStream fs;
+
+        try
+        {
+            fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
+
+        }
+        catch (Exception)
+        {
+
+            return (null);
         }
 
-        FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-        picToLoad = new Texture2D(2,2);
 
         byte[] imageData = new byte[fs.Length];
         fs.Read(imageData, 0, (int)fs.Length);
-        picToLoad.LoadImage(imageData);
+        Texture2D texture = new Texture2D(2,2);
+        texture.LoadImage(imageData);
+        return (texture);
+    }
+    //public Texture GetBeforeAlbum(int n)
+    //{
+    //    string fileLocation;
+    //    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+    //    {
 
-        Debug.Log(n);
+    //        fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + n + ".png";
+    //    }
+    //    else
+    //    {
+    //        fileLocation = Application.dataPath + "/BeforeAlbum/CameraScreenshot" + n + ".png";
+    //    }
 
-        return (picToLoad);
-    }    
+    //    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
+
+    //    byte[] imageData = new byte[fs.Length];
+    //    fs.Read(imageData, 0, (int)fs.Length);
+    //    picToLoad.LoadImage(imageData);
+
+        
+        
+    //    return (picToLoad);
+    //}
+
+    //public Texture GetAfterAlbum(int n)
+    //{
+    //    string fileLocation;
+    //    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+    //    {
+
+    //        fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + n + ".png";
+    //    }
+    //    else
+    //    {
+    //        fileLocation = Application.dataPath + "/AfterAlbum/CameraScreenshot" + n + ".png";
+    //    }
+
+    //    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
+
+    //    picToLoad = new Texture2D(2,2);
+
+    //    byte[] imageData = new byte[fs.Length];
+    //    fs.Read(imageData, 0, (int)fs.Length);
+    //    picToLoad.LoadImage(imageData);
+
+
+    //    return (picToLoad);
+    //}    
 
     public void SetText(string txt, int n)
     {

@@ -14,16 +14,16 @@ public class PhoneCamera : MonoBehaviour
     private Texture2D picTaken;
     private bool camAvailable;
     private WebCamTexture backCam;
-    private WebCamTexture camera;
+    private WebCamTexture frontCam;
 
     private List<WebCamTexture> cameras;
     private Texture defaultBackground;
     private string msg;
 
-    public TMP_Text text;
-    public RawImage background;
+    public TMP_Text text; // camera text
+    public RawImage background; // background
     //public GameObject screenLayer;
-    public RawImage preview;
+    public RawImage preview; 
     public TMP_Text brightnessTxt;
     public TMP_Text date;
     public TMP_Text splashTxt;
@@ -41,8 +41,12 @@ public class PhoneCamera : MonoBehaviour
         Debug.Log("Debug" + journalSO.GetHasCaptured());
 
         cameras = new List<WebCamTexture>();
+        Debug.Log("cameras Count" + cameras.Count);
+
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
+        Debug.Log("devices Count" + devices.Length);
+
 
         if (devices.Length < 1)
         {
@@ -54,8 +58,8 @@ public class PhoneCamera : MonoBehaviour
         backCam = new WebCamTexture(devices[0].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
         for (int i = 0; i < devices.Length; i++)
         {
-            camera = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
-            cameras.Add(camera);
+            frontCam = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
+            cameras.Add(frontCam);
             msg += cameras[i].name;
             text.text = msg;
 
@@ -65,12 +69,14 @@ public class PhoneCamera : MonoBehaviour
             }
         }
 
+        // check if has captured // idk why use scriptable object
         if (journalSO.GetHasCaptured())
         {
             albumButton.gameObject.SetActive(true);
             creamButton.gameObject.SetActive(false);
             splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
             photoTxt.text = "After Photo";
+            Debug.Log("Album");
         }
         else
         {
@@ -78,13 +84,15 @@ public class PhoneCamera : MonoBehaviour
             creamButton.gameObject.SetActive(true);
             splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
             photoTxt.text = "Before Photo";
+            Debug.Log("Cream");
         }
 
         if (cameras.Count > 1) 
         { 
             backCam = cameras[1]; 
         }
-       
+        Debug.Log("back cam " + backCam);
+
         background.texture = backCam;
         
         background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
@@ -140,14 +148,14 @@ public class PhoneCamera : MonoBehaviour
     {
         if (!journalSO.GetHasCaptured())
         {
-            journalSO.ConfirmBeforePic();
+            journalSO.ConfirmBeforePic(DateTime.Now);
             Debug.Log("DebugConfirmBeforePic");
             Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
             Debug.Log("Debug" + journalSO.GetHasCaptured());
         }
         else if (journalSO.GetHasCaptured())
         {
-            journalSO.ConfirmAfterPic();
+            journalSO.ConfirmAfterPic(DateTime.Now);
             Debug.Log("DebugConfirmAfterPic");
             Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
             Debug.Log("Debug" + journalSO.GetHasCaptured());
@@ -168,12 +176,14 @@ public class PhoneCamera : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(backCam)
         backCam.Stop();
-
+        string dateTimeString = DateTime.Now.ToString("dd_MM_yyyy");
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            if (File.Exists(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (journalSO.GetBeforeCount()) + ".png"))
+            if (File.Exists(Application.persistentDataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png"))
             {
+
                 journalSO.SetHasCaptured(true);
                 //Debug.Log("DebugsethascapturedTRUE");
                 //Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
@@ -191,7 +201,7 @@ public class PhoneCamera : MonoBehaviour
         }
         else
         {
-            if (File.Exists(Application.dataPath + "/BeforeAlbum/CameraScreenshot" + (journalSO.GetBeforeCount()) + ".png"))
+            if (File.Exists(Application.dataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png"))
             {
                 journalSO.SetHasCaptured(true);
             }

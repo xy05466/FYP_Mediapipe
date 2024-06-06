@@ -203,9 +203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 7477175687846711451, guid: f6dd9c8a084775945acaface7808b1d2,
     type: 3}
-  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 1}
+  _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 0}
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
-  _faceLandmarkRadius: 15
+  _faceLandmarkRadius: 0
   _irisLandmarkRadius: 10
   _faceConnectionColor: {r: 1, g: 0, b: 0, a: 0}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 1721680807}
   - component: {fileID: 1721680806}
   m_Layer: 5
-  m_Name: ApplyCream
+  m_Name: AccupointsSceneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4943,7 +4943,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ApplyCreamScene
+          m_StringArgument: PaulAccupointsScene
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1721680807
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 1869496343}
   - component: {fileID: 1869496342}
   m_Layer: 5
-  m_Name: Album
+  m_Name: AlbumButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

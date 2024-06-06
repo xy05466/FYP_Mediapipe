@@ -667,19 +667,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 24282584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &24282584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,19 +788,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 27388679}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &27388679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,8 +1621,6 @@ RectTransform:
   - {fileID: 1687868230}
   - {fileID: 520966749}
   - {fileID: 428722783}
-  - {fileID: 559396747}
-  - {fileID: 333794889}
   - {fileID: 1453080914}
   - {fileID: 649430851}
   - {fileID: 642607244}
@@ -2310,19 +2284,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 134133206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &134133206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4171,14 +4133,14 @@ RectTransform:
   m_GameObject: {fileID: 333794888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.84999996, y: 0.84999996, z: 1}
+  m_LocalScale: {x: 0.70833325, y: 0.70833325, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 82616280}
+  m_Father: {fileID: 1693502387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: 700}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 84.99987, y: 500.00003}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333794890
@@ -4507,19 +4469,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 364081758}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &364081758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5321,19 +5271,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 416640554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &416640554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6881,6 +6819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 521627118}
+  - component: {fileID: 521627119}
   m_Layer: 5
   m_Name: CalendarWeek (2)
   m_TagString: Untagged
@@ -6914,6 +6853,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -210}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &521627119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521627117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697abe00280be0f4c805f29e8bddbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butonDays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBgDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBgHighlightDay: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &548176244
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,19 +7104,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550240220}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &550240220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7220,14 +7170,14 @@ RectTransform:
   m_GameObject: {fileID: 559396746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.84999996, y: 0.84999996, z: 1}
+  m_LocalScale: {x: 0.70833325, y: 0.70833325, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 82616280}
+  m_Father: {fileID: 1736083329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 348.4, y: 700}
+  m_AnchoredPosition: {x: 290.3333, y: 500.00003}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &559396748
@@ -8110,6 +8060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 631562950}
+  - component: {fileID: 631562951}
   m_Layer: 5
   m_Name: CalendarWeek (3)
   m_TagString: Untagged
@@ -8143,6 +8094,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -310}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &631562951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631562949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697abe00280be0f4c805f29e8bddbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butonDays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBgDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBgHighlightDay: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &642607243
 GameObject:
   m_ObjectHideFlags: 0
@@ -9496,19 +9470,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 711335784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &711335784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9629,19 +9591,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 711723765}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &711723765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11039,19 +10989,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 796141877}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &796141877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11783,19 +11721,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 829069598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &829069598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11940,6 +11866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832535579}
+  - component: {fileID: 832535580}
   m_Layer: 5
   m_Name: CalendarWeek (1)
   m_TagString: Untagged
@@ -11973,6 +11900,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -110}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &832535580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832535578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697abe00280be0f4c805f29e8bddbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butonDays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBgDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBgHighlightDay: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &834506180
 GameObject:
   m_ObjectHideFlags: 0
@@ -12336,19 +12286,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 850821282}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &850821282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12954,19 +12892,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 893027446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &893027446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13429,19 +13355,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 935009760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &935009760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14673,19 +14587,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 990674389}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &990674389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15970,19 +15872,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1061674813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1061674813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16175,19 +16065,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1065099322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1065099322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16514,19 +16392,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1093439423}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1093439423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16878,19 +16744,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1108709201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1108709201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17144,19 +16998,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1141605030}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1141605030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17427,19 +17269,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1148279728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1148279728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18038,19 +17868,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1190626823}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1190626823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19382,19 +19200,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1305447206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1305447206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21195,19 +21001,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1386167197}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1386167197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21474,19 +21268,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1399671178}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1399671178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22165,6 +21947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451335068}
+  - component: {fileID: 1451335069}
   m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
@@ -22192,6 +21975,20 @@ RectTransform:
   m_AnchoredPosition: {x: -4.999878, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1451335069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451335067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1451921257
 GameObject:
   m_ObjectHideFlags: 0
@@ -23032,19 +22829,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1481515310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1481515310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25083,6 +24868,7 @@ GameObject:
   - component: {fileID: 1693502387}
   - component: {fileID: 1693502389}
   - component: {fileID: 1693502388}
+  - component: {fileID: 1693502390}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -25101,7 +24887,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 333794889}
   m_Father: {fileID: 1451335068}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -25147,6 +24934,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693502386}
   m_CullTransparentMesh: 1
+--- !u!114 &1693502390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693502386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1700634272
 GameObject:
   m_ObjectHideFlags: 0
@@ -25229,19 +25030,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1700634275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1700634275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25443,7 +25232,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 559396747}
   m_Father: {fileID: 1152267000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
@@ -25707,6 +25497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1742439306}
+  - component: {fileID: 1742439307}
   m_Layer: 5
   m_Name: CalendarWeek
   m_TagString: Untagged
@@ -25740,6 +25531,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1742439307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742439305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697abe00280be0f4c805f29e8bddbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butonDays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBgDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBgHighlightDay: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1749728431
 GameObject:
   m_ObjectHideFlags: 0
@@ -26546,6 +26360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1806514684}
+  - component: {fileID: 1806514685}
   m_Layer: 5
   m_Name: CalendarWeek (4)
   m_TagString: Untagged
@@ -26579,6 +26394,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -410}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1806514685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806514683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697abe00280be0f4c805f29e8bddbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butonDays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBgDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBgHighlightDay: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1807381991
 GameObject:
   m_ObjectHideFlags: 0
@@ -27688,19 +27526,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1852037872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1852037872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28477,21 +28303,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cfd259e74f038479ca36e4a88862bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weeks:
-  - {fileID: 1742439306}
-  - {fileID: 832535579}
-  - {fileID: 521627118}
-  - {fileID: 631562950}
-  - {fileID: 1806514684}
-  - {fileID: 1901710075}
-  MonthAndYear: {fileID: 828977278}
+  calendarWeeks: []
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBackgroundDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBackgroundCurrentDay: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  bu_next: {fileID: 732684594}
+  bu_prev: {fileID: 84792616}
+  bu_seeComparison: {fileID: 678853687}
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
+  weeks: []
+  MonthAndYear: {fileID: 828977278}
   pics: []
   journalDayTxt: {fileID: 1451921259}
   journalEntryTxt: {fileID: 604773071}
-  compareSlider: {fileID: 1152267001}
+  textureInitial: {fileID: 2800000, guid: 4d849eb10036bcf4f9347085d64c7508, type: 3}
   beforeImage: {fileID: 271369104}
   afterImage: {fileID: 80555214}
+  compareSlider: {fileID: 1152267001}
   sliderBG: {fileID: 1736083328}
   sliderFill: {fileID: 1693502386}
   dateText: {fileID: 604863307}
@@ -28578,19 +28406,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877211087}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1877211087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28844,6 +28660,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1901710075}
+  - component: {fileID: 1901710076}
   m_Layer: 5
   m_Name: CalendarWeek (5)
   m_TagString: Untagged
@@ -28877,6 +28694,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -510}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1901710076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901710074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697abe00280be0f4c805f29e8bddbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butonDays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colorDay: {r: 0, g: 0, b: 0, a: 1}
+  colorBgDay: {r: 1, g: 1, b: 1, a: 1}
+  colorBgHighlightDay: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1904309957
 GameObject:
   m_ObjectHideFlags: 0
@@ -29228,19 +29068,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1937387341}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1937387341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31088,19 +30916,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2107785570}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1873251944}
-        m_TargetAssemblyTypeName: Calendar, Assembly-CSharp
-        m_MethodName: GetDayPics
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2107785570
 MonoBehaviour:
   m_ObjectHideFlags: 0
