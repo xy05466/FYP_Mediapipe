@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/JadenMassaageScene.unity
     guid: 7008ffcfa6811bc43b91fec82712d932
   - enabled: 1
@@ -65,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scenes/JadenNewSystemFINAL.unity
     guid: 0bae2a819a6066940b154de7206236e1
+  - enabled: 1
+    path: Assets/Scenes/Main Scenes/EssenceDosage.unity
+    guid: ee400f899ec81b741bba65c6b1cabf5a
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
