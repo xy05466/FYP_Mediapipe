@@ -121,10 +121,10 @@ public class SilderSet : MonoBehaviour
             else
             {
                 Debug.Log("One set completed");
-                numOfSets++;
+                //numOfSets++;
                 Debug.Log(numOfSets + " set completed");
                 onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
-                //resetSet();
+                resetSet();
                 OnComplete?.Invoke();
             }
         }

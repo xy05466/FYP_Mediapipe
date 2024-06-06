@@ -7,10 +7,10 @@ using Mediapipe;
 
 public class FacepointManager_Jaden : MonoBehaviour
 {
-    MultiFaceLandmarkListAnnotation _mfla;
+    [SerializeField] MultiFaceLandmarkListAnnotation _mfla;
     GameObject[] facePoints;
     public List<AccupointSO> indexesToStore;
-    private List<List<Transform>> landmarkPositions;
+    [SerializeField]  private List<List<Transform>> landmarkPositions;
     [SerializeField] int threshold = 50;
     UnityEvent updateEvent;
     //Vector3 lastAverage;
