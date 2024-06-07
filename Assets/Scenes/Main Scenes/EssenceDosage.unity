@@ -170,10 +170,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _facepointManager: {fileID: 543386377}
   listSteps:
+  - {fileID: 11400000, guid: b4876ab0a0ef9074199dccbb48c79894, type: 2}
+  - {fileID: 11400000, guid: c7dc5f8cbb53ce646a324fe007f14cc9, type: 2}
   - {fileID: 11400000, guid: 7f519865e042be54791c258d6b45b2e5, type: 2}
   - {fileID: 11400000, guid: 146b99c1fd7edb140884e7b84076a1c4, type: 2}
+  - {fileID: 11400000, guid: d2b8d24d28dc6904ba3f4e92252410e1, type: 2}
+  - {fileID: 11400000, guid: 555c4bf5a0eff6a4e90905c108e6fdd0, type: 2}
   - {fileID: 11400000, guid: 19f87e03f47000b40b55d22a55b2aaa0, type: 2}
   - {fileID: 11400000, guid: b89ed8fc1d29c89498dc164abfb79d03, type: 2}
+  - {fileID: 11400000, guid: 695a707c91abacb4bbc2a39fbafe95db, type: 2}
+  - {fileID: 11400000, guid: 125d583c59631f243b27863ee908b4d8, type: 2}
   - {fileID: 11400000, guid: d98323dad8966a1498e5ceeda0a46e2c, type: 2}
   - {fileID: 11400000, guid: 5a3c8be429eb3d7439fea999ce797091, type: 2}
   sliderSet: {fileID: 822366238}
@@ -2295,7 +2301,7 @@ PrefabInstance:
     - target: {fileID: 5885510157700122708, guid: 7675c915e745d2344ba7f5288d52815c,
         type: 3}
       propertyPath: numOfSetsToComplete
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5885510157700122708, guid: 7675c915e745d2344ba7f5288d52815c,
         type: 3}
@@ -5198,7 +5204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotation: {fileID: 543386374}
-  _visualizeZ: 1
+  _visualizeZ: 0
 --- !u!114 &1968537271
 MonoBehaviour:
   m_ObjectHideFlags: 0

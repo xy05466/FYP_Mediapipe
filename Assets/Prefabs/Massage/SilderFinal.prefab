@@ -329,6 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 152848522517629891}
+  colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  colorProgressing: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  colorComplete: {r: 0, g: 1, b: 0, a: 1}
   isColliding: 0
   duration: 0.1
   reachEnd: 0
