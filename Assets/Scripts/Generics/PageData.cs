@@ -6,18 +6,20 @@ using UnityEngine;
 public class PageData : ScriptableObject
 {
     // splash image
-    public Sprite img_splashIcon;
+    public Sprite spr_splashIcon;
     // title
     public string title;
     [TextArea]
-    public string description;
+    public string splashDescription;
 
     // annotation to enable
+    public bool enableFaceTracking;
+    public bool enableHandTracking;
 }
 
-public enum AnnotationType
-{
-    FACE_RECOGNITION,
-    HAND_RECOGNITION,
-    HAND_GESTURE,
-}
+//public enum AnnotationType
+//{
+//    FACE_RECOGNITION,
+//    HAND_RECOGNITION,
+//    HAND_GESTURE,
+//}
