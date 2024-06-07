@@ -8,7 +8,7 @@ public class SilderSet : MonoBehaviour
     //all anchorpoints and positions sotred here
     public ListOfLists<Vector3> anchorPostions;
     public List<JadenCurveManager> path = new List<JadenCurveManager>();
-    [SerializeField] JadenCurveManager prefabJadenCurveManager;
+    public JadenCurveManager prefabJadenCurveManager;
     public bool completed = false;
     public int numOfSetsToComplete = 3;
     int numOfSets = 0;
@@ -34,7 +34,7 @@ public class SilderSet : MonoBehaviour
         //init event
         BallMovement.onComplete += SetCompleted;
     }
-    bool setUp = false;
+    public bool setUp = false;
     public void SetUpPath()
     {
         setUp = true;
