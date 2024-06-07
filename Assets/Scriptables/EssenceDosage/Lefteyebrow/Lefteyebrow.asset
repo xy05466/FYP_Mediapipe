@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f43f5d25da03f45adfb390736e3de8, type: 3}
   m_Name: Lefteyebrow
   m_EditorClassIdentifier: 
-  landmarkIndex: 386
+  landmarkIndex: 337
   tetheringTolerance: {x: 0, y: 0, z: 0}
