@@ -150,5 +150,4 @@ public class SilderSet : MonoBehaviour
         path.Clear();
         setUp = false;
     }
-    
 }

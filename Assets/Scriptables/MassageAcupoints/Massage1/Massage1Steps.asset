@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89abfcf8d798ab4bba45de2b9205db1, type: 3}
+  m_Name: Massage1Steps
+  m_EditorClassIdentifier: 
+  accupointSOs:
+  - accupointSOList:
+    - {fileID: 11400000, guid: d0507df957d489d468b91a1b7eccbf56, type: 2}
+    - {fileID: 11400000, guid: 95e28cf7c7abeb540a63fc24e225a084, type: 2}
+    - {fileID: 11400000, guid: 0b5e409fb9c69d8409fcea54ef0798bf, type: 2}
+  - accupointSOList:
+    - {fileID: 11400000, guid: 5beb2f9ec33a6cb4fb56ed0353e9e482, type: 2}
+    - {fileID: 11400000, guid: a685998fb70ff674b9475a4bb05a8236, type: 2}
+    - {fileID: 11400000, guid: 445df2913b1d63e40a3c6bd633a0125e, type: 2}
+  - accupointSOList:
+    - {fileID: 11400000, guid: 2cf004d09b6194248b5bf69aeac82979, type: 2}
+    - {fileID: 11400000, guid: e7de7a2dd8dc40347934793f6f99283e, type: 2}
+    - {fileID: 11400000, guid: ff1dba5975c8ad441b6555b93c59e262, type: 2}
+  - accupointSOList:
+    - {fileID: 11400000, guid: ebf57de1d2e6533418949a93ffe95f6b, type: 2}
+    - {fileID: 11400000, guid: 5535173612672f448a88fe4f14441ea3, type: 2}
+    - {fileID: 11400000, guid: fba8d23d60c49a94c96bb7ae34a5c3f5, type: 2}
