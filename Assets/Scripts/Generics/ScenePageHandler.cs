@@ -16,6 +16,7 @@ public class ScenePageHandler : MonoBehaviour
     //public GameObject splashArt;
     //public Button bu_closeSplashArt;
     [Header("Splash Page")]
+    public Transform splashTransform;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
@@ -30,11 +31,13 @@ public class ScenePageHandler : MonoBehaviour
 
     private void Start()
     {
-        img_splashIcon.sprite = pageData[currentPaageIndex].spr_splashIcon;
-        tmp_description.text = pageData[currentPaageIndex].splashDescription;
+        PageData currentPage = pageData[currentPaageIndex];
+        img_splashIcon.sprite = currentPage.spr_splashIcon;
+        tmp_description.text = currentPage.splashDescription;
 
         //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
-        annotationFace.gameObject.SetActive(pageData[currentPaageIndex].enableFaceTracking);
-        annotationFace.gameObject.SetActive(pageData[currentPaageIndex].enableHandTracking);
+        annotationFace.gameObject.SetActive(currentPage.enableFaceTracking);
+        annotationHand.gameObject.SetActive(currentPage.enableHandTracking);
+        splashTransform.gameObject.SetActive(currentPage.enableSplashPage);
     }
 }

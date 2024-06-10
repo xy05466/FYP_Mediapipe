@@ -2966,6 +2966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData:
   - {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
+  splashTransform: {fileID: 0}
   img_splashIcon: {fileID: 1754169359}
   tmp_description: {fileID: 1993657379}
   bu_prevPage: {fileID: 0}
