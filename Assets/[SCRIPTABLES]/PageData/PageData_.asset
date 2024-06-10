@@ -19,3 +19,4 @@ MonoBehaviour:
     to activate your acupoints."
   enableFaceTracking: 1
   enableHandTracking: 1
+  pageLogic: {fileID: 11400000, guid: 7aba3ef39c5d6714a87abff8ac746b51, type: 2}

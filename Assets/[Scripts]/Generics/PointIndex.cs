@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PointIndex : MonoBehaviour
 {
+    private int pointIndex = -1;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pointIndex = transform.GetSiblingIndex();
     }
-
-    // Update is called once per frame
-    void Update()
+    public int GetIndex()
     {
-        
+        return pointIndex;
     }
+ 
 }

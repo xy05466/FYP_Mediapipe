@@ -21,6 +21,9 @@ public class PageData : ScriptableObject
     // annotation to enable
     public bool enableFaceTracking;
     public bool enableHandTracking;
+
+    //[Header("Trackings")]
+    //public PageLogic pageLogic;
 }
 
 //public enum AnnotationType
