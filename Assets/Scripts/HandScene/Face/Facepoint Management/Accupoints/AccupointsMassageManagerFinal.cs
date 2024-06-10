@@ -20,7 +20,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private bool isAveraged = true;
     private bool lockedToZero = true;
     private int index = 0;
-
+    [SerializeField] private GameObject InstructionName;
+    private StepName InstructionNamestring;
     //time pressed
     public delegate void UpdateMassageUI(string value);
     // Declare a delegate variable
@@ -33,6 +34,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     //new class
     private void Start()
     {
+        InstructionNamestring = InstructionName.GetComponent<StepName>();
+
         index = 0;
         parent = this.gameObject;
         //silderSetsList = new List<GameObject>();
@@ -57,6 +60,12 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         SetUpPoints();
         Debug.Log("done");
         onUpdateMassageUI((listSteps.Count - index).ToString());
+        if (listSteps.Count - index <= listSteps.Count / 2)
+        {
+            InstructionNamestring.stepNameString = "Right Jaw Glide";
+        }
+        else return;
+
     }
     void SetUpPoints()
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SilderSet : MonoBehaviour
@@ -22,6 +23,7 @@ public class SilderSet : MonoBehaviour
     public delegate void OnSetCompleted();
     // Declare a delegate variable
     public static event OnSetCompleted onSetCompleted;
+
 
 
     public Action OnComplete;
@@ -117,7 +119,7 @@ public class SilderSet : MonoBehaviour
             else
             {
                 Debug.Log("One set completed");
-                //numOfSets++;
+                numOfSets++;
                 Debug.Log(numOfSets + " set completed");
                 //onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
                 resetSet();

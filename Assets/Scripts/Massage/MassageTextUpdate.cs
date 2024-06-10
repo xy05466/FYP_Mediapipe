@@ -8,6 +8,7 @@ public class MassageTextUpdate : MonoBehaviour
     TMP_Text tMP_Text;
     [SerializeField]
     string text;
+
     private void Start()
     {
         tMP_Text = GetComponent<TMP_Text>();
@@ -21,5 +22,5 @@ public class MassageTextUpdate : MonoBehaviour
     public void UpdateText(string value)
     {
         tMP_Text.text = text + value;
-    }    
+    }
 }
