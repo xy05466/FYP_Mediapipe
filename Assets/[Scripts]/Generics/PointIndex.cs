@@ -14,5 +14,8 @@ public class PointIndex : MonoBehaviour
     {
         return pointIndex;
     }
- 
+    public void InitIndex()
+    {
+        pointIndex = transform.GetSiblingIndex();
+    }
 }

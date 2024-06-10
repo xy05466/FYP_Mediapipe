@@ -10,10 +10,11 @@ public class FacepointManager : MonoBehaviour
     [SerializeField] MultiFaceLandmarkListAnnotation _mfla;
     GameObject[] facePoints;
     public List<int> indexesToStore;
-    private List<List<Transform>> landmarkPositions;
+    public List<List<Transform>> landmarkPositions;
     private List<GameObject> faceCircles;
     [SerializeField] int threshold = 50;
     UnityEvent updateEvent;
+    Transform checkObject;
     //Vector3 lastAverage;
     private void Awake()
     {
@@ -40,21 +41,20 @@ public class FacepointManager : MonoBehaviour
         avgZ /= landmarkPositions.Count;
         return new Vector3(avgX, avgY, avgZ);
     }
-    public Vector3 CalculateAverage(List<Transform> transforms)
-    {
-        float avgX = 0, avgY = 0, avgZ = 0;
-        foreach (Transform transform in transforms)
-        {
-            avgX += transform.position.x;
-            avgY += transform.position.y;
-            avgZ += transform.position.z;
-        }
-        avgX /= landmarkPositions.Count;
-        avgY /= landmarkPositions.Count;
-        avgZ /= landmarkPositions.Count;
-        return new Vector3(avgX, avgY, avgZ);
-    }
-    Transform checkObject;
+    //public Vector3 CalculateAverage(List<Transform> transforms)
+    //{
+    //    float avgX = 0, avgY = 0, avgZ = 0;
+    //    foreach (Transform transform in transforms)
+    //    {
+    //        avgX += transform.position.x;
+    //        avgY += transform.position.y;
+    //        avgZ += transform.position.z;
+    //    }
+    //    avgX /= landmarkPositions.Count;
+    //    avgY /= landmarkPositions.Count;
+    //    avgZ /= landmarkPositions.Count;
+    //    return new Vector3(avgX, avgY, avgZ);
+    //}
     public void UpdateListData()
     {
         //Debug.Log(landmarkPositions.Count);
@@ -122,15 +122,15 @@ public class FacepointManager : MonoBehaviour
         }
         return null;
     }
-    /// <summary>
-    /// Returns the list of transforms for landmark where n = 
-    /// </summary>
-    /// <param name="digit"></param>
-    /// <returns></returns>=''
-    public List<Transform> GetLandmarkPositionsByIndex(int digit)
-    {
-        return landmarkPositions[digit];
-    }
+    ///// <summary>
+    ///// Returns the list of transforms for landmark where n = 
+    ///// </summary>
+    ///// <param name="digit"></param>
+    ///// <returns></returns>=''
+    //public List<Transform> GetLandmarkPositionsByIndex(int digit)
+    //{
+    //    return landmarkPositions[digit];
+    //}
     
     public GameObject[] GetFacePointTransforms()
     {

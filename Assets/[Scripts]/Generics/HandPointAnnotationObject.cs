@@ -9,8 +9,16 @@ public class HandPointAnnotationObject : MonoBehaviour
     public string tagCollider = "Facepoint";
     public Color colorColliding = Color.green;
     public Color colorDefault = Color.white;
-    public System.Action<int,GameObject> OnColliding;
-
+    public System.Action<int,int> OnCollidingFacePoint; // hand point collide with face point
+    PointIndex pointIndex;
+    private void Awake()
+    {
+        pointIndex = GetComponent<PointIndex>();
+    }
+    private void Start()
+    {
+        pointIndex.InitIndex();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(tagCollider))
@@ -24,9 +32,9 @@ public class HandPointAnnotationObject : MonoBehaviour
         if (other.gameObject.CompareTag(tagCollider))
         {
             PointAnnotation annotation = other.gameObject.GetComponent<PointAnnotation>();
-            PointIndex pointIndex = other.gameObject.GetComponent<PointIndex>();
+            PointIndex otherPointIndex = other.gameObject.GetComponent<PointIndex>();
             annotation.SetColor(colorColliding);
-            OnColliding?.Invoke(pointIndex.GetIndex(),other.gameObject);
+            OnCollidingFacePoint?.Invoke(pointIndex.GetIndex(),otherPointIndex.GetIndex());
         }
     }
     private void OnTriggerExit(Collider other)

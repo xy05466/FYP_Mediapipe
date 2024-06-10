@@ -10,6 +10,7 @@ public abstract class PageLogic : MonoBehaviour
     public abstract bool IsPageDone();
     public abstract void EndPage();
     public abstract void ResetPage();
+    public abstract void OnHandPointCollideFacePoint(int handPoint, int facePoint);
 
 
 }

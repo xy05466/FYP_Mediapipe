@@ -17,6 +17,8 @@ public class AccupointManager : MonoBehaviour
     public int numAccupointsLeft;
     int currentStep;
     bool nextX, nextY;
+    List<Transform> positions;
+
     private void Start()
     {
         //accupointTimers = new List<float>();
@@ -34,7 +36,6 @@ public class AccupointManager : MonoBehaviour
         nextX = false;
         nextY = false;
     }
-    List<Transform> positions;
     Vector3 Reposition(List<Transform> positions, bool lockToZero, bool isAveraged = true)
     {
         if (positions != null)

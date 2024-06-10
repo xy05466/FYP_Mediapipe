@@ -28,4 +28,9 @@ public class PageLogic_Essence : PageLogic
     {
         Debug.Log("Reset page");
     }
+
+    public override void OnHandPointCollideFacePoint(int handPoint, int facePoint)
+    {
+        throw new System.NotImplementedException();
+    }
 }

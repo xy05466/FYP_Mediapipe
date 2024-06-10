@@ -2,6 +2,7 @@ using Mediapipe.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,10 +33,10 @@ public class ScenePageHandler : MonoBehaviour
     public GameObject annotationFace;
     public GameObject annotationHand;
     [Header("Annotation List of Points")]
-    public LandmarkListAnnotation_Extension annotationList_FacePoints;
-    public LandmarkListAnnotation_Extension annotationList_HandPoints;
+    public LandmarkList<GameObject> annotationList_FacePoints;
+    public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     List<GameObject> facePoints = new List<GameObject>();
-    List<GameObject> handPoints = new List<GameObject>();
+    List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
 
     PageData currentPage;
     PageLogic currentPageLogic;
@@ -49,9 +50,17 @@ public class ScenePageHandler : MonoBehaviour
     {
         this.facePoints = facePoints;
     }
-    public void HandFacePoints(List<GameObject> handPoints)
+    public void HandFacePoints(List<HandPointAnnotationObject> handPoints)
     {
         this.handPoints = handPoints;
+        foreach (var item in handPoints)
+        {
+            item.OnCollidingFacePoint += OnHandPointCollide;
+        }
+    }
+    public void OnHandPointCollide(int handPointIndex, int facePointIndex)
+    {
+        Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {
@@ -70,7 +79,9 @@ public class ScenePageHandler : MonoBehaviour
 
     private void Update()
     {
-        if(currentPageLogic != null)
+        annotationList_FacePoints.Update();
+        annotationList_HandPoints.Update();
+        if (currentPageLogic != null)
         {
             currentPageLogic.RunLogic();
 

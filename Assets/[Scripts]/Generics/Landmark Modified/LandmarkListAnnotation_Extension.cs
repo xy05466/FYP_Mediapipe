@@ -1,14 +1,12 @@
-using Mediapipe.Unity;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandmarkListAnnotation_Extension : MonoBehaviour
+public class LandmarkListAnnotation_Extension<T> : MonoBehaviour
 { 
-    private List<GameObject> facepoints = new List<GameObject>();
+    private List<T> facepoints = new List<T>();
     private bool synced = false;
     private bool search = false;
-    public System.Action<List<GameObject>> OnHandpointsSpawned;
+    public System.Action<List<T>> OnHandpointsSpawned;
 
     private void Update()
     {
@@ -18,7 +16,7 @@ public class LandmarkListAnnotation_Extension : MonoBehaviour
             {
                 if (item.gameObject.CompareTag(tag))
                 {
-                    facepoints.Add(item.gameObject);
+                    facepoints.Add(item.gameObject.GetComponent<T>());
                     if (!search)
                         search = true;
                 }
