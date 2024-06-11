@@ -22,6 +22,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private int index = 0;
     [SerializeField] private GameObject InstructionName;
     private StepName InstructionNamestring;
+    [SerializeField] private GameObject rightArrow;
+    [SerializeField] private GameObject leftArrow;
     //time pressed
     public delegate void UpdateMassageUI(string value);
     // Declare a delegate variable
@@ -46,9 +48,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         //silderSetsList.Add(gameObject);
         //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
         sliderSet.Init();
-
-        onUpdateMassageUI((listSteps.Count - index).ToString());
-
+        onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
         SetUpPoints();
         sliderSet.OnComplete += SetDone;
     }
@@ -63,6 +63,9 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         if (listSteps.Count - index <= listSteps.Count / 2)
         {
             InstructionNamestring.stepNameString = "Right Jaw Glide";
+            rightArrow.SetActive(true);
+            leftArrow.SetActive(false);
+            onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
         }
         else return;
 
