@@ -48,6 +48,18 @@ public class ScenePageHandler : MonoBehaviour
 
         annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
         annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
+
+        for (int i = 0; i < pageLogics.Count; i++)
+        {
+            PageLogic_Extension pageLogic_Extension = pageLogics[i] as PageLogic_Extension;
+            if(pageLogic_Extension!= null)
+            {
+                annotationList_FacePoints.OnParentActive += pageLogic_Extension.OnFaceAnnotationActive;
+                annotationList_HandPoints.OnParentActive += pageLogic_Extension.OnFaceAnnotationActive;
+
+            }
+        }
+
         StartPage();
     }
 

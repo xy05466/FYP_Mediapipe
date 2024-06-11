@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Page Logics/Page Logic Accupoints",fileName ="PageLogic_Accupoints")]
-public class PageLogic_Accupoints : PageLogic
+public class PageLogic_Accupoints : PageLogic_Extension
 {
     public AccupointManager accupointManager;
     public AccupointNew accupoint;
@@ -29,8 +29,9 @@ public class PageLogic_Accupoints : PageLogic
         for (int i = 0; i < maxPoints; i++)
         {
             AccupointNew acc = Instantiate(accupoint, transform);
-            acc.gameObject.SetActive(false);
             acc.Subscribe(FinishAccupoint);
+            acc.gameObject.SetActive(false);
+            acc.gameObject.transform.position =  new Vector3(10000,0,10000);
             list_accupoints.Add(acc);
         }
         //accupointManager.StartComponent();
@@ -76,7 +77,6 @@ public class PageLogic_Accupoints : PageLogic
             // returns the point index
             int step_index = GetCurrentStep().indexes[i].GetLandmarkIndex();
             list_accupoints[i].AccupointReset();
-            list_accupoints[i].gameObject.SetActive(true);
             list_accupoints[i].Initialize();
             list_accupoints[i].SetID(step_index);
         }
@@ -120,6 +120,17 @@ public class PageLogic_Accupoints : PageLogic
     {
         return list_facepoints[currentStep];
     }
+
+    public override void OnFaceAnnotationActive(bool active)
+    {
+        for (int i = 0; i < GetCurrentStep().indexes.Count; i++)
+            list_accupoints[i].gameObject.SetActive(active);
+    }
+
+    public override void OnHandAnnotationActive(bool active)
+    {
+    }
+
     [System.Serializable]
     public class AccupointStep
     {

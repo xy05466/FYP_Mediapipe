@@ -11,19 +11,18 @@ public class LandmarkList<T>
     protected bool synced = false;
     protected bool search = false;
     public System.Action<List<T>> OnPointsSpawned;
-    public Action OnParentActive;
-    public Action OnParentInactive;
+    public Action<bool> OnParentActive;
     bool parentActive;
-    void ParentAction()
+    protected void ParentAction()
     {
         if(parent.gameObject.activeInHierarchy && !parentActive) {
             parentActive = true;
-            OnParentActive?.Invoke();
+            OnParentActive?.Invoke(true);
         }
         else if (!parent.gameObject.activeInHierarchy && parentActive)
         {
             parentActive = false;
-            OnParentInactive?.Invoke();
+            OnParentActive?.Invoke(false);
         }
 
 
@@ -57,6 +56,7 @@ public class LandmarkListGO : LandmarkList<GameObject>
 {
     public override void Update()
     {
+        ParentAction();
         if (!synced)
         {
             foreach (var item in parent.GetComponentsInChildren<Transform>())
