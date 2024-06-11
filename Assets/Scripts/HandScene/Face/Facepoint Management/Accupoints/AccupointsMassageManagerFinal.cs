@@ -36,7 +36,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     //new class
     private void Start()
     {
-        InstructionNamestring = InstructionName.GetComponent<StepName>();
+        if(InstructionName != null)
+            InstructionNamestring = InstructionName.GetComponent<StepName>();
 
         index = 0;
         parent = this.gameObject;
@@ -59,13 +60,16 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         sliderSet.ClearSet();
         SetUpPoints();
         Debug.Log("done");
-        onUpdateMassageUI((listSteps.Count - index).ToString());
-        if (listSteps.Count - index <= listSteps.Count / 2)
+        onUpdateMassageUI((sliderSet.numOfSetsToComplete - index).ToString());
+        if (sliderSet.numOfSetsToComplete - index <= 0)
         {
-            InstructionNamestring.stepNameString = "Right Jaw Glide";
-            rightArrow.SetActive(true);
-            leftArrow.SetActive(false);
-            onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
+            if (rightArrow != null && leftArrow != null)
+            {
+                InstructionNamestring.stepNameString = "Right Jaw Glide";
+                rightArrow.SetActive(true);
+                leftArrow.SetActive(false);
+                onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
+            }
         }
         else return;
 
@@ -127,7 +131,6 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
             }
         }
         //increase index when a set is done 
-
     }
 
 }
