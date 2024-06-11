@@ -41,20 +41,7 @@ public class FacepointManager : MonoBehaviour
         avgZ /= landmarkPositions.Count;
         return new Vector3(avgX, avgY, avgZ);
     }
-    //public Vector3 CalculateAverage(List<Transform> transforms)
-    //{
-    //    float avgX = 0, avgY = 0, avgZ = 0;
-    //    foreach (Transform transform in transforms)
-    //    {
-    //        avgX += transform.position.x;
-    //        avgY += transform.position.y;
-    //        avgZ += transform.position.z;
-    //    }
-    //    avgX /= landmarkPositions.Count;
-    //    avgY /= landmarkPositions.Count;
-    //    avgZ /= landmarkPositions.Count;
-    //    return new Vector3(avgX, avgY, avgZ);
-    //}
+
     public void UpdateListData()
     {
         //Debug.Log(landmarkPositions.Count);
@@ -136,8 +123,8 @@ public class FacepointManager : MonoBehaviour
     {
         return facePoints;
     }
-    private void Update()
-    {
-        UpdateListData();
-    }
+    //private void Update()
+    //{
+    //    UpdateListData();
+    //}
 }

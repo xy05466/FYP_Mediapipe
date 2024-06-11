@@ -3944,7 +3944,7 @@ GameObject:
   - component: {fileID: 885432720}
   - component: {fileID: 885432721}
   m_Layer: 0
-  m_Name: PageLogic_Essence
+  m_Name: PageLogic_Accupoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3962,7 +3962,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1270488716}
   m_Father: {fileID: 135324052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &885432721
@@ -3977,6 +3978,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d0a2f35f83fa74f9d1d3d587096a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadedHandponts: 0
+  loadedFacepoints: 0
+  accupoint: {fileID: 2757362586351624599, guid: 833e0e884e36341448afa22cec5526f1,
+    type: 3}
+  list_accupoints: []
+  accupointManager: {fileID: 1270488715}
+  list_facepoints:
+  - indexes: af000000b40000000a000000
 --- !u!1 &898821405
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,6 +5073,94 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1738046322}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1208903161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208903163}
+  - component: {fileID: 1208903162}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1208903162
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208903161}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 60261499, guid: d25a32cf031cd4e44a3a1b7db9ec0eb2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 14.972189, y: 27.750002}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!224 &1208903163
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208903161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11670.159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -13984.362, y: 5129.1367}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1239072711
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,7 +5348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1270488715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,7 +5394,7 @@ MonoBehaviour:
   - {x: 14, y: 15}
   - {x: 16, y: 17}
   - {x: 18, y: -1}
-  accupointPrefab: {fileID: 5105739270100195971, guid: 7ab9d299ff84cf848a5829f68673f5c7,
+  accupointPrefab: {fileID: 2515691136008667968, guid: 7ab9d299ff84cf848a5829f68673f5c7,
     type: 3}
   parent: {fileID: 1270488714}
   offset: {x: 0, y: 0, z: 0}
@@ -5317,7 +5414,7 @@ Transform:
   m_LocalScale: {x: 0.029329998, y: 0.029329998, z: 0.026659999}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 885432720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1270488717
 MonoBehaviour:
@@ -10767,4 +10864,4 @@ SceneRoots:
   - {fileID: 2084953219}
   - {fileID: 321238846}
   - {fileID: 135324052}
-  - {fileID: 1270488716}
+  - {fileID: 1208903163}

@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 public class ListOfLists<T>
 {
-    private List<List<T>> listOfLists;
+    [SerializeField] private List<List<T>> listOfLists;
 
     //init
     public ListOfLists()

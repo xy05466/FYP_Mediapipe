@@ -33,34 +33,45 @@ public class ScenePageHandler : MonoBehaviour
     public GameObject annotationFace;
     public GameObject annotationHand;
     [Header("Annotation List of Points")]
-    public LandmarkList<GameObject> annotationList_FacePoints;
+    public LandmarkListGO annotationList_FacePoints;
     public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     List<GameObject> facePoints = new List<GameObject>();
     List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
 
     PageData currentPage;
     PageLogic currentPageLogic;
+
     private void Start()
     {
-        annotationList_FacePoints.OnHandpointsSpawned += StoreFacePoints;
-        annotationList_HandPoints.OnHandpointsSpawned += HandFacePoints;
+        annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
+        annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
         StartPage();
     }
     public void StoreFacePoints(List<GameObject> facePoints)
     {
         this.facePoints = facePoints;
+        foreach (var pageL in pageLogics)
+            pageL.loadedFacepoints = true;
+
     }
-    public void HandFacePoints(List<HandPointAnnotationObject> handPoints)
+    bool handPointsStored = false;
+    public void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
     {
         this.handPoints = handPoints;
         foreach (var item in handPoints)
-        {
             item.OnCollidingFacePoint += OnHandPointCollide;
+        handPointsStored = true;
+
+        if (!currentPageLogic.loadedHandponts)
+        {
+            foreach (var item in handPoints)
+                item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+            currentPageLogic.loadedHandponts = true;
         }
     }
-    public void OnHandPointCollide(int handPointIndex, int facePointIndex)
+    public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        Debug.Log(handPointIndex + " face: " + facePointIndex);
+        //Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {
@@ -75,6 +86,12 @@ public class ScenePageHandler : MonoBehaviour
         splashTransform.gameObject.SetActive(currentPage.enableSplashPage);
 
         currentPageLogic.StartPage();
+        if (handPointsStored && !currentPageLogic.loadedHandponts)
+        {
+            foreach (var item in handPoints)
+                item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+            currentPageLogic.loadedHandponts = true;
+        }
     }
 
     private void Update()
@@ -83,7 +100,7 @@ public class ScenePageHandler : MonoBehaviour
         annotationList_HandPoints.Update();
         if (currentPageLogic != null)
         {
-            currentPageLogic.RunLogic();
+            currentPageLogic.RunLogic(handPoints, facePoints);
 
             if (currentPageLogic.IsPageDone())
             {
@@ -99,5 +116,7 @@ public class ScenePageHandler : MonoBehaviour
         {
             StartPage();
         }
+     
+      
     }
 }
