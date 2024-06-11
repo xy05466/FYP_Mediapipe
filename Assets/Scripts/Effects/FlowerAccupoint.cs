@@ -6,19 +6,34 @@ public class FlowerAccupoint : MonoBehaviour
 {
     [SerializeField] GameObject slicedPetal;
     [SerializeField] GameObject pps;
+    private SpriteRenderer sr;
     public bool collided = false;
+    float time;
+    float alpha;
+    private void Start()
+    {
+        sr = slicedPetal.GetComponent<SpriteRenderer>();
+        slicedPetal.SetActive(true);
+        GameObject newParticleSystem = Instantiate(pps, transform);
+        Destroy(newParticleSystem);
+    }
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Handpoint"))
         {
             if (!collided)
             {
-                slicedPetal.SetActive(true);
                 collided = true;
-                GameObject newParticleSystem = Instantiate(pps, transform);
-                Destroy(newParticleSystem, 3);
+                sr.color = new Color(0.0f, 0.0f, 0.0f, alpha);
+                alpha -= Time.deltaTime * 2;
+                if (collided && alpha <= 0.0f)
+                {
+                    Debug.Log("one done");
+                    collided = false;
+                    Destroy(collision.gameObject);
+                }
             }
-        } 
+        }
     }
     private void Update()
     {
