@@ -20,6 +20,7 @@ public class ScenePageHandler : MonoBehaviour
     //public GameObject splashArt;
     //public Button bu_closeSplashArt;
     [Header("Splash Page")]
+    public UISpriteAnimation sceneAnimation;
     public Transform splashTransform;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
@@ -43,10 +44,20 @@ public class ScenePageHandler : MonoBehaviour
 
     private void Start()
     {
+        bu_nextPage.onClick.AddListener(PreNextPage);
+
         annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
         annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
         StartPage();
     }
+
+    void PreNextPage()
+    {
+        sceneAnimation.PlayUIAnim(false);
+        // go to next page after scene animation
+        sceneAnimation.OnAnimationFinished += NextPage;
+    }
+
     public void StoreFacePoints(List<GameObject> facePoints)
     {
         this.facePoints = facePoints;
@@ -75,6 +86,7 @@ public class ScenePageHandler : MonoBehaviour
     }
     void StartPage()
     {
+        sceneAnimation.PlayUIAnim();
         currentPage = pageDatas[currentPageIndex];
         currentPageLogic = pageLogics[currentPageIndex];
         img_splashIcon.sprite = currentPage.spr_splashIcon;
@@ -110,6 +122,7 @@ public class ScenePageHandler : MonoBehaviour
     }
     void NextPage()
     {
+        sceneAnimation.OnAnimationFinished = null;
         currentPageLogic.EndPage();
         currentPageIndex++;
         if(currentPageIndex < pageDatas.Count - 1)

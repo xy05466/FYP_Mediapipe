@@ -10,7 +10,7 @@ public class AccupointNew : MonoBehaviour
     public float currentTime = 0;
     bool isEnd = false;
     int accId = -1;
-    bool colliding = false;
+    public Action<AccupointNew> OnFinished;
  
     public void Initialize(float timer = 3)
     {
@@ -34,30 +34,36 @@ public class AccupointNew : MonoBehaviour
     {
         return timer - currentTime;
     }
-    private void Update()
+  
+    public void Colliding()
     {
         if (isEnd) return;
-        if (!colliding) return;
         currentTime += Time.deltaTime;
         spriteChild.transform.localScale = new Vector3(GetCalculatedScale(), GetCalculatedScale(), GetCalculatedScale());
 
         if (currentTime >= timer)
+        {
             isEnd = true;
-    }
-    public void Colliding()
-    {
-        colliding = true;
-        Debug.Log("colliding");
- 
+            OnFinished?.Invoke(this);
+        }
+
     }
     public void AccupointReset()
     {
         currentTime = 0;
         isEnd = false;
     }
-
-    public void StopColliding()
+    public void Subscribe(Action<AccupointNew> action)
     {
-        colliding = false;
+        OnFinished += action;
+    }
+    public void Unsubscribe(Action<AccupointNew> action)
+    {
+        OnFinished -= action;
+    }
+
+    internal void ClearEvents()
+    {
+        OnFinished = null;
     }
 }

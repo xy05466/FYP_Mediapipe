@@ -8,4 +8,9 @@ public class AccupointSO : ScriptableObject
     //public Vector4 pointTethering;
     public int landmarkIndex;
     public Vector3 tetheringTolerance;
+
+    public int GetLandmarkIndex()
+    {
+        return landmarkIndex;
+    }
 }
