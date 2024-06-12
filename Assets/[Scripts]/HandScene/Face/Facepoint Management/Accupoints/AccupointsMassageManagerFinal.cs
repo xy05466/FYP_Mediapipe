@@ -20,7 +20,10 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     private bool isAveraged = true;
     private bool lockedToZero = true;
     private int index = 0;
-
+    [SerializeField] private GameObject InstructionName;
+    private StepName InstructionNamestring;
+    [SerializeField] private GameObject rightArrow;
+    [SerializeField] private GameObject leftArrow;
     //time pressed
     public delegate void UpdateMassageUI(string value);
     // Declare a delegate variable
@@ -33,6 +36,9 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     //new class
     private void Start()
     {
+        if(InstructionName != null)
+            InstructionNamestring = InstructionName.GetComponent<StepName>();
+
         index = 0;
         parent = this.gameObject;
         //silderSetsList = new List<GameObject>();
@@ -43,9 +49,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         //silderSetsList.Add(gameObject);
         //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
         sliderSet.Init();
-
-        onUpdateMassageUI((listSteps.Count - index).ToString());
-
+        onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
         SetUpPoints();
         sliderSet.OnComplete += SetDone;
     }
@@ -56,7 +60,19 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         sliderSet.ClearSet();
         SetUpPoints();
         Debug.Log("done");
-        onUpdateMassageUI((listSteps.Count - index).ToString());
+        onUpdateMassageUI((sliderSet.numOfSetsToComplete - index).ToString());
+        if (sliderSet.numOfSetsToComplete - index <= 0)
+        {
+            if (rightArrow != null && leftArrow != null)
+            {
+                InstructionNamestring.stepNameString = "Right Jaw Glide";
+                rightArrow.SetActive(true);
+                leftArrow.SetActive(false);
+                onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
+            }
+        }
+        else return;
+
     }
     void SetUpPoints()
     {
@@ -115,7 +131,6 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
             }
         }
         //increase index when a set is done 
-
     }
 
 }

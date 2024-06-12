@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23f43f5d25da03f45adfb390736e3de8, type: 3}
-  m_Name: LeftNose 2
+  m_Name: LeftCircle
   m_EditorClassIdentifier: 
-  landmarkIndex: 438
+  landmarkIndex: 253
   tetheringTolerance: {x: 0, y: 0, z: 0}

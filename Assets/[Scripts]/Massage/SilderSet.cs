@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SilderSet : MonoBehaviour
@@ -8,7 +9,7 @@ public class SilderSet : MonoBehaviour
     //all anchorpoints and positions sotred here
     public ListOfLists<Vector3> anchorPostions;
     public List<JadenCurveManager> path = new List<JadenCurveManager>();
-    [SerializeField] JadenCurveManager prefabJadenCurveManager;
+    public JadenCurveManager prefabJadenCurveManager;
     public bool completed = false;
     public int numOfSetsToComplete = 3;
     int numOfSets = 0;
@@ -24,6 +25,7 @@ public class SilderSet : MonoBehaviour
     public static event OnSetCompleted onSetCompleted;
 
 
+
     public Action OnComplete;
     private void Start()
     {
@@ -34,7 +36,7 @@ public class SilderSet : MonoBehaviour
         //init event
         BallMovement.onComplete += SetCompleted;
     }
-    bool setUp = false;
+    public bool setUp = false;
     public void SetUpPath()
     {
         setUp = true;
@@ -117,7 +119,7 @@ public class SilderSet : MonoBehaviour
             else
             {
                 Debug.Log("One set completed");
-                //numOfSets++;
+                numOfSets++;
                 Debug.Log(numOfSets + " set completed");
                 //onUpdateMassageUI((numOfSetsToComplete - numOfSets).ToString());
                 resetSet();
@@ -150,5 +152,4 @@ public class SilderSet : MonoBehaviour
         path.Clear();
         setUp = false;
     }
-    
 }
