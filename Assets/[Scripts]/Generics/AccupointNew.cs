@@ -62,8 +62,8 @@ public class AccupointNew : MonoBehaviour
         OnFinished -= action;
     }
 
-    internal void ClearEvents()
-    {
-        OnFinished = null;
-    }
+    //internal void ClearEvents()
+    //{
+    //    OnFinished = null;
+    //}
 }

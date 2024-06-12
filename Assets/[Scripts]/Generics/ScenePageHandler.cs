@@ -10,17 +10,17 @@ using UnityEngine.UI;
 // Basically all the common things in a scene
 public class ScenePageHandler : MonoBehaviour
 {
-    //public List<string> sceneToLoad;
-    public List<PageData> pageDatas;
     // temp list
     public List<PageLogic> pageLogics;
+    private PageLogic currentPageLogic;
     int currentPageIndex = 0;
 
     //[Header("Splash")]
     //public GameObject splashArt;
     //public Button bu_closeSplashArt;
     [Header("Splash Page")]
-    public UISpriteAnimation sceneAnimation;
+    public UISpriteAnimation sceneAnimationStart;
+    public UISpriteAnimation sceneAnimationEnd;
     public Transform splashTransform;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
@@ -39,12 +39,13 @@ public class ScenePageHandler : MonoBehaviour
     List<GameObject> facePoints = new List<GameObject>();
     List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
 
-    PageData currentPage;
-    PageLogic currentPageLogic;
 
+    bool handPointsStored = false;
     private void Start()
     {
-        bu_nextPage.onClick.AddListener(PreNextPage);
+        bu_nextPage.onClick.AddListener(() => { PreNextPage(); });
+        // go to next page after scene animation
+        sceneAnimationEnd.OnAnimationFinished += NextPage;
 
         annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
         annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
@@ -55,41 +56,59 @@ public class ScenePageHandler : MonoBehaviour
             if(pageLogic_Extension!= null)
             {
                 annotationList_FacePoints.OnParentActive += pageLogic_Extension.OnFaceAnnotationActive;
-                annotationList_HandPoints.OnParentActive += pageLogic_Extension.OnFaceAnnotationActive;
-
+                annotationList_HandPoints.OnParentActive += pageLogic_Extension.OnHandAnnotationActive;
             }
         }
 
+
+        for (int i = 0; i < pageLogics.Count; i++)
+            pageLogics[i].gameObject.SetActive(false);
+
+
         StartPage();
     }
-
-    void PreNextPage()
+    private void Update()
     {
-        sceneAnimation.PlayUIAnim(false);
-        // go to next page after scene animation
-        sceneAnimation.OnAnimationFinished += NextPage;
+        if (!sceneAnimationEnd.IsDone()) return;
+        // find annotation points
+        annotationList_FacePoints.Update();
+        annotationList_HandPoints.Update();
+
+        if (currentPageLogic != null)
+        {
+            // run curring page logic
+            if (currentPageLogic.CompareState(PageLogic.PageState.START))
+                currentPageLogic.RunLogic(handPoints, facePoints);
+
+            if (currentPageLogic.IsPageDone())
+            {
+                sceneAnimationEnd.PlayUIAnim();
+                //NextPage();
+            }
+        }
     }
+ 
 
     public void StoreFacePoints(List<GameObject> facePoints)
     {
         this.facePoints = facePoints;
         foreach (var pageL in pageLogics)
-            pageL.loadedFacepoints = true;
+            pageL.LoadFacePoints(true);
 
     }
-    bool handPointsStored = false;
     public void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
     {
         this.handPoints = handPoints;
         foreach (var item in handPoints)
             item.OnCollidingFacePoint += OnHandPointCollide;
+
         handPointsStored = true;
 
-        if (!currentPageLogic.loadedHandponts)
+        if (!currentPageLogic.HandpointsLoaded)
         {
             foreach (var item in handPoints)
                 item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-            currentPageLogic.loadedHandponts = true;
+            currentPageLogic.LoadHandPoints(true);
         }
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
@@ -98,50 +117,47 @@ public class ScenePageHandler : MonoBehaviour
     }
     void StartPage()
     {
-        sceneAnimation.PlayUIAnim();
-        currentPage = pageDatas[currentPageIndex];
+        sceneAnimationStart.PlayUIAnim();
         currentPageLogic = pageLogics[currentPageIndex];
-        img_splashIcon.sprite = currentPage.spr_splashIcon;
-        tmp_description.text = currentPage.splashDescription;
+        currentPageLogic.gameObject.SetActive(true);
 
-        //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
-        annotationFace.gameObject.SetActive(currentPage.enableFaceTracking);
-        annotationHand.gameObject.SetActive(currentPage.enableHandTracking);
-        splashTransform.gameObject.SetActive(currentPage.enableSplashPage);
+        if(currentPageLogic.pageData != null)
+        {
+            img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
+            tmp_description.text = currentPageLogic.pageData.splashDescription;
+
+            //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
+            annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+            annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+            splashTransform.gameObject.SetActive(currentPageLogic.pageData.enableSplashPage);
+        }
+
 
         currentPageLogic.StartPage();
-        if (handPointsStored && !currentPageLogic.loadedHandponts)
+        currentPageLogic.ChangeState(PageLogic.PageState.START);
+
+        if (handPointsStored && !currentPageLogic.HandpointsLoaded)
         {
             foreach (var item in handPoints)
                 item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-            currentPageLogic.loadedHandponts = true;
+            currentPageLogic.LoadHandPoints(true);
         }
     }
-
-    private void Update()
+    void PreNextPage()
     {
-        annotationList_FacePoints.Update();
-        annotationList_HandPoints.Update();
-        if (currentPageLogic != null)
-        {
-            currentPageLogic.RunLogic(handPoints, facePoints);
+        if (currentPageIndex < pageLogics.Count-1)
+            sceneAnimationEnd.PlayUIAnim();
 
-            if (currentPageLogic.IsPageDone())
-            {
-                NextPage();
-            }
-        }
     }
     void NextPage()
     {
-        sceneAnimation.OnAnimationFinished = null;
+
         currentPageLogic.EndPage();
-        currentPageIndex++;
-        if(currentPageIndex < pageDatas.Count - 1)
-        {
-            StartPage();
-        }
-     
-      
+        currentPageLogic.gameObject.SetActive(false);
+        currentPageIndex++; // increase page index
+        sceneAnimationStart.OnAnimationFinished = null;
+        currentPageLogic.ChangeState(PageLogic.PageState.ENDED);
+        StartPage();
     }
 }
+
