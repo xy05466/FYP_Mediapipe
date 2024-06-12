@@ -184,6 +184,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a3c8be429eb3d7439fea999ce797091, type: 2}
   sliderSet: {fileID: 822366238}
   offset: {x: 0, y: 0, z: 0}
+  InstructionName: {fileID: 0}
+  rightArrow: {fileID: 0}
+  leftArrow: {fileID: 0}
 --- !u!1 &17270002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,7 +3776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 54.960876}
+  m_AnchoredPosition: {x: 0, y: 54.961}
   m_SizeDelta: {x: 4950, y: 1624.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437593381

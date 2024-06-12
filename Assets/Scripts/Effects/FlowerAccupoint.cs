@@ -1,38 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlowerAccupoint : MonoBehaviour
 {
     [SerializeField] GameObject slicedPetal;
     [SerializeField] GameObject pps;
-    private SpriteRenderer sr;
+    private SpriteRenderer petalSR;
     public bool collided = false;
-    float time;
-    float alpha;
+    private float alpha;
     private void Start()
     {
-        sr = slicedPetal.GetComponent<SpriteRenderer>();
+        petalSR = slicedPetal.GetComponentInChildren<SpriteRenderer>();
         slicedPetal.SetActive(true);
         GameObject newParticleSystem = Instantiate(pps, transform);
         Destroy(newParticleSystem);
+        alpha = petalSR.color.a;
     }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Handpoint"))
         {
-            if (!collided)
+            collided = true;
+            if (collided)
             {
-                collided = true;
-                sr.color = new Color(0.0f, 0.0f, 0.0f, alpha);
-                alpha -= Time.deltaTime * 2;
-                if (collided && alpha <= 0.0f)
-                {
-                    Debug.Log("one done");
-                    collided = false;
-                    Destroy(collision.gameObject);
-                }
+                alpha -= Time.deltaTime * 20.0f;
+                //Debug.Log(petalSR);
+                petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
+                //StartCoroutine(FadeOut());
             }
+        }
+        else
+        {
+            collided = false;
         }
     }
     private void Update()

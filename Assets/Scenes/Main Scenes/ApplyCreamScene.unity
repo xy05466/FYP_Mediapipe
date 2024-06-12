@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotation: {fileID: 408683177}
-  _visualizeZ: 1
+  _visualizeZ: 0
 --- !u!114 &22464357
 MonoBehaviour:
   m_ObjectHideFlags: 0
