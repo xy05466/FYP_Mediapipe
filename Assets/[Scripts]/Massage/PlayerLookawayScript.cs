@@ -41,36 +41,42 @@ public class PlayerLookawayScript : MonoBehaviour
             
             if (avgZ < MinPos.z)
             {
-                textBoxString.text = "Please move further";
+                if(textBoxString)
+                    textBoxString.text = "Please move further";
                 return false;
             }
             else if (avgZ > MaxPos.z)
             {
-                textBoxString.text = "Please move closer";
+                if (textBoxString)
+                    textBoxString.text = "Please move closer";
                 return false;
 
             }
             else if (avgX < MinPos.x)
             {
-                textBoxString.text = "Please move right";
+                if (textBoxString)
+                    textBoxString.text = "Please move right";
                 return false;
 
             }
             else if (avgX > MaxPos.x)
             {
-                textBoxString.text = "Please move left";
+                if (textBoxString)
+                    textBoxString.text = "Please move left";
                 return false;
 
             }
             else if (avgY < MinPos.y)
             {
-                textBoxString.text = "Please move up";
+                if (textBoxString)
+                    textBoxString.text = "Please move up";
                 return false;
 
             }
             else if (avgY > MaxPos.y)
             {
-                textBoxString.text = "\nPlease move down";
+                if (textBoxString)
+                    textBoxString.text = "\nPlease move down";
                 return false;
 
             }
@@ -78,7 +84,8 @@ public class PlayerLookawayScript : MonoBehaviour
         }
         else
         {
-            textBoxString.text = "No face detected!";
+            if (textBoxString)
+                textBoxString.text = "No face detected!";
             return false;
 
         }

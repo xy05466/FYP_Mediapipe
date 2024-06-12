@@ -121,16 +121,13 @@ public class ScenePageHandler : MonoBehaviour
         currentPageLogic = pageLogics[currentPageIndex];
         currentPageLogic.gameObject.SetActive(true);
 
-        if(currentPageLogic.pageData != null)
-        {
-            img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
-            tmp_description.text = currentPageLogic.pageData.splashDescription;
+        img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
+        tmp_description.text = currentPageLogic.pageData.splashDescription;
 
-            //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
-            annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-            annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-            splashTransform.gameObject.SetActive(currentPageLogic.pageData.enableSplashPage);
-        }
+        //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
+        annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        splashTransform.gameObject.SetActive(currentPageLogic.pageData.enableSplashPage);
 
 
         currentPageLogic.StartPage();

@@ -184,6 +184,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a3c8be429eb3d7439fea999ce797091, type: 2}
   sliderSet: {fileID: 822366238}
   offset: {x: 0, y: 0, z: 0}
+  InstructionName: {fileID: 0}
+  rightArrow: {fileID: 0}
+  leftArrow: {fileID: 0}
 --- !u!1 &17270002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,7 +3991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1540241608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5118,7 +5121,7 @@ PrefabInstance:
     - target: {fileID: 4683294700620473709, guid: 8b89425f859b431478dfdd4a5284202e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799264196107312777, guid: 8b89425f859b431478dfdd4a5284202e,
         type: 3}
