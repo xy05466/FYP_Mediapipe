@@ -34,7 +34,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     //how to check if all sets are completed
     //spawning sets
     //new class
-    private void Start()
+    public void StartFunc()
     {
         if(InstructionName != null)
             InstructionNamestring = InstructionName.GetComponent<StepName>();
@@ -49,7 +49,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         //silderSetsList.Add(gameObject);
         //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
         sliderSet.Init();
-        onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
+
+        //onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
         SetUpPoints();
         sliderSet.OnComplete += SetDone;
     }
@@ -115,7 +116,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         else return Vector3.zero;
     }
 
-    private void Update()
+    public void UpdateScene()
     {
 
         List<AccSOListList> steps = listSteps[index].accupointSOs;

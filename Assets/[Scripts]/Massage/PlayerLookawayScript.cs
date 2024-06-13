@@ -8,7 +8,7 @@ public class PlayerLookawayScript : MonoBehaviour
     //handle when player look away from the script
     //r stands for referenced
     [SerializeField]
-    private GameObject rGameObject;
+    private AccupointsMassageManagerFinal rGameObject;
     [SerializeField]
     Vector3 MaxPos = Vector3.zero;
     [SerializeField]
@@ -16,15 +16,31 @@ public class PlayerLookawayScript : MonoBehaviour
     //text
     public TMP_Text textBoxString;
     public bool gameStart = false;
+    private void Start()
+    {
+
+        rGameObject.StartFunc();
+
+
+    }
     // Update is called once per frame
     void Update()
     {
         if (!gameStart)
             return;
         if (!FaceCheck())
-            rGameObject.SetActive(false);
-        else if (!rGameObject.activeInHierarchy)
-            rGameObject.SetActive(true);
+        {
+            rGameObject.gameObject.SetActive(false);
+            Debug.Log("not active");
+        }
+        else if (!rGameObject.gameObject.activeInHierarchy)
+        {
+            Debug.Log("active");
+            rGameObject.gameObject.SetActive(true);
+        }
+        if(rGameObject.gameObject.activeInHierarchy)
+            rGameObject.UpdateScene();
+
     }
     public bool FaceCheck()
     {
