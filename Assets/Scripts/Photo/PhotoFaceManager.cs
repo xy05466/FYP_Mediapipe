@@ -51,13 +51,16 @@ public class PhotoFaceManager : MonoBehaviour
         float avgX = 0;
         float avgY = 0;
         float avgZ = 0;
-        facePoints = facepointManager.GetFacePointTransforms();
         if (facePoints != null)
         {
+
             refPt = facePoints[4].transform.position;
             avgX = refPt.x - Camera.main.transform.position.x;
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
+            Debug.Log("average x - "+ avgX + " "+ maxDistX);
+            Debug.Log("average y - "+ avgY + " "+ maxDistY);
+            Debug.Log("average z - "+avgZ + " "+ lowerBoundZ);
             if (avgZ < lowerBoundZ)
             {
                 textbox.text = "Please move further";
@@ -97,6 +100,7 @@ public class PhotoFaceManager : MonoBehaviour
         {
             textbox.text = "No face detected!!!!";
             faceAligned = false;
+            facePoints = facepointManager.GetFacePointTransforms();
         }
 
         if (faceAligned)
