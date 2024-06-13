@@ -54,13 +54,22 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         sliderSet.OnComplete += SetDone;
     }
     List<Transform> positions;
+    bool done = false;
+    public bool IsDone()
+    {
+        return done;
+    }
     void SetDone()
     {
         index++;
         sliderSet.ClearSet();
+        if (index >= listSteps.Count)
+        {
+            done = true;
+            return;
+        }
         SetUpPoints();
-        Debug.Log("done");
-        onUpdateMassageUI((sliderSet.numOfSetsToComplete - index).ToString());
+        //onUpdateMassageUI((sliderSet.numOfSetsToComplete - index).ToString());
         if (sliderSet.numOfSetsToComplete - index <= 0)
         {
             if (rightArrow != null && leftArrow != null)
@@ -68,7 +77,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
                 InstructionNamestring.stepNameString = "Right Jaw Glide";
                 rightArrow.SetActive(true);
                 leftArrow.SetActive(false);
-                onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
+                //onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
             }
         }
         else return;
@@ -117,7 +126,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
 
     private void Update()
     {
-
+        if (done) return;
         List<AccSOListList> steps = listSteps[index].accupointSOs;
         for (int i = 0; i < steps.Count; i++)
         {

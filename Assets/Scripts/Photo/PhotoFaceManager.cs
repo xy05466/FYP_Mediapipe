@@ -41,6 +41,7 @@ public class PhotoFaceManager : MonoBehaviour
     {
         faceAligned = false;
         textbox.text = "No face detected!";
+        if(brightnessSprite)
         anim = brightnessSprite.GetComponent<Animator>();
     }
 
@@ -94,7 +95,7 @@ public class PhotoFaceManager : MonoBehaviour
         }
         else
         {
-            textbox.text = "No face detected!";
+            textbox.text = "No face detected!!!!";
             faceAligned = false;
         }
 
@@ -104,7 +105,8 @@ public class PhotoFaceManager : MonoBehaviour
 
             if (timer > waitTime)
             {
-                if (!brightnessSprite.GetComponent<Animator>().enabled)
+                
+                if (anim && !brightnessSprite.GetComponent<Animator>().enabled)
                 {
                     brightnessSprite.GetComponent<Animator>().enabled = true;
                 }
@@ -139,8 +141,12 @@ public class PhotoFaceManager : MonoBehaviour
 
                 if (avgV > 0.35f)
                 {
-                    anim.SetBool("isBlooming", true);
-                    anim.SetBool("isClosing", false);
+                    if (anim)
+                    {
+                        anim.SetBool("isBlooming", true);
+                        anim.SetBool("isClosing", false);
+                    }
+                  
 
                     if (journalSO.GetHasCaptured())
                     {
@@ -159,8 +165,12 @@ public class PhotoFaceManager : MonoBehaviour
                 }
                 else if (avgV <= 0.35f)
                 {
-                    anim.SetBool("isBlooming", false);
-                    anim.SetBool("isClosing", true);
+                    if (anim)
+                    {
+                        anim.SetBool("isBlooming", false);
+                        anim.SetBool("isClosing", true);
+                    }
+              
 
                     textbox.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
                     Debug.Log("DebugDark");
