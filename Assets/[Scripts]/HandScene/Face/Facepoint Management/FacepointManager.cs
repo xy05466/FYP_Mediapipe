@@ -123,8 +123,8 @@ public class FacepointManager : MonoBehaviour
     {
         return facePoints;
     }
-    //private void Update()
-    //{
-    //    UpdateListData();
-    //}
+    private void Update()
+    {
+        UpdateListData();
+    }
 }

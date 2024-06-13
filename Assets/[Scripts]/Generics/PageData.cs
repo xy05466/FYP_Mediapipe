@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(menuName ="Page SO", fileName ="Page_")]
+[CreateAssetMenu(menuName ="Page SO", fileName ="PageData_")]
 public class PageData : ScriptableObject
 {
     [Header("Splash Data")]
