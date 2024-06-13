@@ -2355,12 +2355,12 @@ Transform:
   m_GameObject: {fileID: 381157005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.000015259831, z: 0}
-  m_LocalScale: {x: 1.2688556, y: 1.2688556, z: 1.2688556}
+  m_LocalPosition: {x: 0, y: 1, z: 90}
+  m_LocalScale: {x: 0.06763, y: 0.06763, z: 0.06763}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 222176235}
-  m_Father: {fileID: 8453587735548014802}
+  m_Father: {fileID: 518752967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &381157008
 MonoBehaviour:
@@ -3126,6 +3126,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 518752967}
+  - component: {fileID: 518752968}
+  - component: {fileID: 518752969}
   m_Layer: 0
   m_Name: PageLogic_Essence
   m_TagString: Untagged
@@ -3145,9 +3147,43 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 381157007}
   m_Father: {fileID: 135324052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &518752968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518752966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505f3d0e78b725d4f8eca1f70d2b0c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
+  facepointManager_Jaden: {fileID: 559884442}
+  accupointsMassageManagerFinal: {fileID: 381157008}
+--- !u!114 &518752969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518752966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0b8ceeff564b24f902427d954df970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facepointManager: {fileID: 559884442}
+  rGameObject: {fileID: 381157008}
+  MaxPos: {x: 10, y: 10, z: 10}
+  MinPos: {x: -10, y: -10, z: -10}
+  textBoxString: {fileID: 0}
+  gameStart: 1
 --- !u!1 &526911602
 GameObject:
   m_ObjectHideFlags: 0
@@ -11984,7 +12020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8453587735548014802}
   - component: {fileID: 8453587735548014803}
-  - component: {fileID: 8453587735548014804}
   m_Layer: 5
   m_Name: Annotable Layer Face Result
   m_TagString: Untagged
@@ -12035,7 +12070,6 @@ Transform:
   m_LocalScale: {x: 0.99993175, y: 0.99993175, z: 0.99993175}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 381157007}
   - {fileID: 559884440}
   m_Father: {fileID: 1936696887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12053,24 +12087,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   annotation: {fileID: 559884441}
   _visualizeZ: 0
---- !u!114 &8453587735548014804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7882455178255034673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0b8ceeff564b24f902427d954df970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _facepointManager: {fileID: 559884442}
-  rGameObject: {fileID: 381157008}
-  MaxPos: {x: 10, y: 10, z: 10}
-  MinPos: {x: -10, y: -10, z: -10}
-  textBoxString: {fileID: 0}
-  gameStart: 1
 --- !u!222 &8507712596977055787
 CanvasRenderer:
   m_ObjectHideFlags: 0

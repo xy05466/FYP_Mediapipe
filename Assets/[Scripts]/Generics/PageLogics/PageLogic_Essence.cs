@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PageLogic_Essence : PageLogic_Extension
 {
+    public FacepointManager_Jaden facepointManager_Jaden;
+    public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
     public override void StartPage()
     {
     }
@@ -20,7 +22,7 @@ public class PageLogic_Essence : PageLogic_Extension
 
     public override bool IsPageDone()
     {
-        return false;
+        return accupointsMassageManagerFinal.IsDone();
     }
 
     public override void OnFaceAnnotationActive(bool active)
