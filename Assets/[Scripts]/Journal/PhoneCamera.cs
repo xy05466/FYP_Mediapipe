@@ -83,8 +83,8 @@ public class PhoneCamera : MonoBehaviour
         {
             albumButton.gameObject.SetActive(false);
             creamButton.gameObject.SetActive(true);
-            if(splashTxt)
-                splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
+            if (splashTxt)
+                splashTxt.text = "Let’s take a ‘Before’ photo! This is to track your progress and see improvements over time using the app";
             photoTxt.text = "Before Photo";
             Debug.Log("Cream");
         }

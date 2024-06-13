@@ -11,13 +11,16 @@ public class FadeSplashScreen : MonoBehaviour
     Color newColor;
     Image[] images;
     TMP_Text[] texts;
+    [SerializeField] private List<GameObject> mainSceneUI;
 
     private void Start()
     {
-
-            images = GetComponentsInChildren<Image>();
-            texts = GetComponentsInChildren<TMP_Text>();
-        
+        images = GetComponentsInChildren<Image>();
+        texts = GetComponentsInChildren<TMP_Text>();
+        for (int i = 0; i < mainSceneUI.Count; i++)
+        {
+            mainSceneUI[i].SetActive(false);
+        }
     }
 
     public void StartFadeOut()
@@ -52,6 +55,10 @@ public class FadeSplashScreen : MonoBehaviour
                     newColor = texts.color;
                     newColor.a = alpha;
                     texts.color = newColor;
+                }
+                for (int i = 0;i < mainSceneUI.Count; i++)
+                {
+                    mainSceneUI[i].SetActive(true);
                 }
             }
                 //Wait for a frame
