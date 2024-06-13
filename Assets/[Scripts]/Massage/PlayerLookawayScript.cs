@@ -54,7 +54,8 @@ public class PlayerLookawayScript : MonoBehaviour
             //textBoxString = "Face Distance: " + avgZ;
             //textBoxString = "Face location: " + avgX + "\n" + avgY + "\n" + avgZ;
             //Debug.Log(avgZ);
-            
+
+         
             if (avgZ < MinPos.z)
             {
                 if(textBoxString)
@@ -68,7 +69,7 @@ public class PlayerLookawayScript : MonoBehaviour
                 return false;
 
             }
-            else if (avgX < MinPos.x)
+            if (avgX < MinPos.x)
             {
                 if (textBoxString)
                     textBoxString.text = "Please move right";
@@ -82,7 +83,7 @@ public class PlayerLookawayScript : MonoBehaviour
                 return false;
 
             }
-            else if (avgY < MinPos.y)
+            if (avgY < MinPos.y)
             {
                 if (textBoxString)
                     textBoxString.text = "Please move up";
