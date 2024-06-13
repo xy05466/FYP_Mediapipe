@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PageLogic_PhotoCapture : PageLogic_Extension
 {
+    public Button bu_done;
+    bool done = false;
     public override void StartPage()
     {
+        bu_done.onClick.AddListener(()=> { done = true; });
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
@@ -14,11 +18,12 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 
     public override void EndPage()
     {
+        bu_done.onClick.RemoveAllListeners();
     }
 
     public override bool IsPageDone()
     {
-        return false;
+        return done;
     }
 
     public override void OnFaceAnnotationActive(bool active)

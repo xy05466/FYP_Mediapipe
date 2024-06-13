@@ -21,6 +21,7 @@ public class ScenePageHandler : MonoBehaviour
     [Header("Splash Page")]
     public UISpriteAnimation sceneAnimationStart;
     public UISpriteAnimation sceneAnimationEnd;
+    public Transform headertransform;
     public Transform splashTransform;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
@@ -128,6 +129,7 @@ public class ScenePageHandler : MonoBehaviour
         annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
         annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
         splashTransform.gameObject.SetActive(currentPageLogic.pageData.enableSplashPage);
+        headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
 
 
         currentPageLogic.StartPage();
