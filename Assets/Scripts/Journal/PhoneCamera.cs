@@ -43,7 +43,7 @@ public class PhoneCamera : MonoBehaviour
         cameras = new List<WebCamTexture>();
         Debug.Log("cameras Count" + cameras.Count);
 
-        //defaultBackground = background.texture;
+        defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
         Debug.Log("devices Count" + devices.Length);
 
@@ -74,8 +74,7 @@ public class PhoneCamera : MonoBehaviour
         {
             albumButton.gameObject.SetActive(true);
             creamButton.gameObject.SetActive(false);
-            if (splashTxt)
-                splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
+            splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
             photoTxt.text = "After Photo";
             Debug.Log("Album");
         }
@@ -83,8 +82,7 @@ public class PhoneCamera : MonoBehaviour
         {
             albumButton.gameObject.SetActive(false);
             creamButton.gameObject.SetActive(true);
-            if(splashTxt)
-                splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
+            splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
             photoTxt.text = "Before Photo";
             Debug.Log("Cream");
         }
@@ -95,29 +93,29 @@ public class PhoneCamera : MonoBehaviour
         }
         Debug.Log("back cam " + backCam);
 
-        //background.texture = backCam;
+        background.texture = backCam;
         
-        //background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
+        background.GetComponent<RectTransform>().sizeDelta = new Vector2(backCam.width, backCam.height);
 
         date.text = DateTime.Today.ToString("dd MMMM yyyy");
 
         camAvailable = true;
 
-        //if (Application.platform == RuntimePlatform.IPhonePlayer)
-        //{
-        //    preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
-        //}
-        //else
-        //{
-        //    preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
-        //}
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
+        }
+        else
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        }
     }
 
     public void ChangeFrontCam()
     {
         text.text = cameras[1].name;
         backCam = cameras[1];
-        //background.texture = backCam;
+        background.texture = backCam;
         backCam.Play();
     }
 
@@ -125,7 +123,7 @@ public class PhoneCamera : MonoBehaviour
     {
         text.text = cameras[0].name;
         backCam = cameras[0];
-        //background.texture = backCam;
+        background.texture = backCam;
         backCam.Play();
     }
 
