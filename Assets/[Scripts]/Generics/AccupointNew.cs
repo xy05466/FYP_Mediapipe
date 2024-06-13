@@ -6,6 +6,7 @@ using UnityEngine;
 public class AccupointNew : MonoBehaviour
 {
     public GameObject spriteChild;
+    public SliderSprite sliderSprite;
     public float timer = 3;
     public float currentTime = 0;
     bool isEnd = false;
@@ -44,8 +45,16 @@ public class AccupointNew : MonoBehaviour
         if (currentTime >= timer)
         {
             isEnd = true;
+            if (sliderSprite)
+                sliderSprite.ResetSlider();
             OnFinished?.Invoke(this);
         }
+        else
+        {
+            if(sliderSprite)
+                sliderSprite.Fill(currentTime / timer);
+        }
+
 
     }
     public void AccupointReset()

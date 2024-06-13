@@ -2430,7 +2430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22.5, y: -22.499268}
+  m_AnchoredPosition: {x: 22.5, y: -22.499512}
   m_SizeDelta: {x: 45.000008, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &321238845
@@ -2494,6 +2494,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
+      propertyPath: _irisCircleColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
+        type: 3}
       propertyPath: _faceLandmarkRadius
       value: 10
       objectReference: {fileID: 0}
@@ -2509,6 +2514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
+      propertyPath: _faceLandmarkColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
+        type: 3}
       propertyPath: _faceLandmarkColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -2520,6 +2530,16 @@ PrefabInstance:
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
       propertyPath: _faceLandmarkColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
+        type: 3}
+      propertyPath: _irisLandmarkColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
+        type: 3}
+      propertyPath: _faceConnectionColor.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5403310940259726732, guid: 2e1291ddc10af56d4be1551cc630d40b,
@@ -2760,7 +2780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22.5, y: -22.499268}
+  m_AnchoredPosition: {x: 22.5, y: -22.499512}
   m_SizeDelta: {x: 45.000008, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364995828
@@ -7792,10 +7812,10 @@ MonoBehaviour:
   textbox: {fileID: 388894010}
   facepointManager: {fileID: 559884443}
   capture: {fileID: 222556734}
-  maxDistX: 6
-  maxDistY: 9
-  lowerBoundZ: 0.5
-  upperBoundZ: 3
+  maxDistX: 10
+  maxDistY: 10
+  lowerBoundZ: 10
+  upperBoundZ: 20
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
   checkPic: {fileID: 1936696889}
   brightnessSprite: {fileID: 0}
@@ -12568,7 +12588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1945387823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13448,6 +13468,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
         type: 3}
+    - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
+        type: 3}
+      propertyPath: _connectionColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
+        type: 3}
+      propertyPath: _leftLandmarkColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
+        type: 3}
+      propertyPath: _rightLandmarkColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7434967355688441420, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
       propertyPath: m_Name
