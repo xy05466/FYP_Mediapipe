@@ -6089,6 +6089,30 @@ PrefabInstance:
       propertyPath: handDetectionSolution
       value: 
       objectReference: {fileID: 238496522}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: bigPetalPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 819144451421113746, guid: 140e3da83c67abc4c86078cc3a835811,
+        type: 3}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: bigPetalPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 819144451421113746, guid: a12a0b4ad3e978f41bfffba13e6e0944,
+        type: 3}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: bigPetalPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 819144451421113746, guid: 44cb1313ba139a74c8e3cb6f3b500b72,
+        type: 3}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: bigPetalPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 819144451421113746, guid: 63d8b34691497544d8217316a80fa1b0,
+        type: 3}
     - target: {fileID: 4325746460590818140, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
       propertyPath: m_LocalPosition.x

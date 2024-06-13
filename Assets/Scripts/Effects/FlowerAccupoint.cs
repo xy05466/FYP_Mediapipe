@@ -17,25 +17,23 @@ public class FlowerAccupoint : MonoBehaviour
         slicedPetal.SetActive(true);
         GameObject newParticleSystem = Instantiate(pps, transform);
         Destroy(newParticleSystem);
-        alpha = petalSR.color.a;
+        alpha = this.petalSR.color.a;
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Handpoint"))
         {
-            collided = true;
-            if (collided)
-            {
-                alpha -= Time.deltaTime * 20.0f;
-                //Debug.Log(petalSR);
-                petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
-                //StartCoroutine(FadeOut());
-            }
+            collided = true; 
         }
-        else
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Handpoint"))
         {
-            collided = false;
+            alpha -= Time.deltaTime * 11.0f;
+            petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
         }
     }
     private void Update()
