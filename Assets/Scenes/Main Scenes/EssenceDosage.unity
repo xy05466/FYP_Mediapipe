@@ -5262,7 +5262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _facepointManager: {fileID: 543386377}
-  rGameObject: {fileID: 6425009}
+  rGameObject: {fileID: 6425013}
   MaxPos: {x: 10, y: 10, z: 10}
   MinPos: {x: -10, y: -10, z: -10}
   textBoxString: {fileID: 1756075015}
