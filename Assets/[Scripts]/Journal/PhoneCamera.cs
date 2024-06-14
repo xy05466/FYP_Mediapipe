@@ -104,14 +104,14 @@ public class PhoneCamera : MonoBehaviour
 
         camAvailable = true;
 
-        //if (Application.platform == RuntimePlatform.IPhonePlayer)
-        //{
-        //    preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
-        //}
-        //else
-        //{
-        //    preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
-        //}
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
+        }
+        else
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        }
     }
 
     public void ChangeFrontCam()

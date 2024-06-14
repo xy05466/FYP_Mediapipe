@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PageLogic_PhotoCapture : PageLogic_Extension
 {
     public Button bu_done;
+    public GameObject photoOverlay;
     bool done = false;
     public override void StartPage()
     {
@@ -19,6 +20,8 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     public override void EndPage()
     {
         bu_done.onClick.RemoveAllListeners();
+        photoOverlay.gameObject.SetActive(false);
+        done = false;
     }
 
     public override bool IsPageDone()
@@ -40,7 +43,6 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 
     public override void ResetPage()
     {
-        throw new System.NotImplementedException();
     }
 
    
