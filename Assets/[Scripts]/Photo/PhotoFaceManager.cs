@@ -58,9 +58,6 @@ public class PhotoFaceManager : MonoBehaviour
             avgX = refPt.x - Camera.main.transform.position.x;
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-            Debug.Log("average x - "+ avgX + " "+ maxDistX);
-            Debug.Log("average y - "+ avgY + " "+ maxDistY);
-            Debug.Log("average z - "+avgZ + " "+ lowerBoundZ);
             if (avgZ < lowerBoundZ)
             {
                 textbox.text = "Please move further";
