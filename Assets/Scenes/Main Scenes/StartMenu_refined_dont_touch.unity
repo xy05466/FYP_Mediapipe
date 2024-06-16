@@ -3907,19 +3907,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180827308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 809752828}
-        m_TargetAssemblyTypeName: FadeSplashScreen, Assembly-CSharp
-        m_MethodName: StartFadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &180827308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13336,7 +13324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505f3d0e78b725d4f8eca1f70d2b0c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
+  pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   facepointManager_Jaden: {fileID: 559884442}
   accupointsMassageManagerFinal: {fileID: 381157008}
@@ -15854,10 +15842,10 @@ MonoBehaviour:
   - {fileID: 885432721}
   - {fileID: 878462219}
   - {fileID: 1010666741}
+  splashScreen: {fileID: 0}
   sceneAnimationStart: {fileID: 364995828}
   sceneAnimationEnd: {fileID: 294804856}
   headertransform: {fileID: 657642085}
-  splashTransform: {fileID: 1945387826}
   img_splashIcon: {fileID: 446956362}
   tmp_description: {fileID: 829981048}
   bu_prevPage: {fileID: 0}
@@ -20920,7 +20908,6 @@ GameObject:
   - component: {fileID: 809752827}
   - component: {fileID: 809752830}
   - component: {fileID: 809752829}
-  - component: {fileID: 809752828}
   m_Layer: 5
   m_Name: SplashImage
   m_TagString: Untagged
@@ -20950,19 +20937,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2475, y: 5500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &809752828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809752826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6faf0780d8a8d5444804dea763f8e003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.75
 --- !u!114 &809752829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22027,7 +22001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878462218
 Transform:
   m_ObjectHideFlags: 0
@@ -42584,13 +42558,15 @@ GameObject:
   - component: {fileID: 1945387825}
   - component: {fileID: 1945387824}
   - component: {fileID: 1945387823}
+  - component: {fileID: 1945387828}
+  - component: {fileID: 1945387827}
   m_Layer: 5
   m_Name: SplashCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1945387823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42674,6 +42650,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1945387827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945387822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6faf0780d8a8d5444804dea763f8e003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bu_close: {fileID: 180827307}
+  duration: 0.75
+  canvasGroup: {fileID: 1945387828}
+--- !u!225 &1945387828
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945387822}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1946772281
 GameObject:
   m_ObjectHideFlags: 0

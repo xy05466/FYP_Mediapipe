@@ -19,10 +19,10 @@ public class ScenePageHandler : MonoBehaviour
     //public GameObject splashArt;
     //public Button bu_closeSplashArt;
     [Header("Splash Page")]
+    public SplashScreen splashScreen;
     public UISpriteAnimation sceneAnimationStart;
     public UISpriteAnimation sceneAnimationEnd;
     public Transform headertransform;
-    public Transform splashTransform;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
@@ -128,7 +128,8 @@ public class ScenePageHandler : MonoBehaviour
         //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
         annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
         annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-        splashTransform.gameObject.SetActive(currentPageLogic.pageData.enableSplashPage);
+        if (currentPageLogic.pageData.enableSplashPage)
+            splashScreen.ShowSplash();
         headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
 
 
