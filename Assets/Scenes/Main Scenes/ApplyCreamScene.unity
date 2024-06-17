@@ -1124,6 +1124,7 @@ GameObject:
   - component: {fileID: 214106869}
   - component: {fileID: 214106868}
   - component: {fileID: 214106870}
+  - component: {fileID: 214106871}
   m_Layer: 5
   m_Name: SplashImage
   m_TagString: Untagged
@@ -1200,7 +1201,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6faf0780d8a8d5444804dea763f8e003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bu_close: {fileID: 1250414426}
   duration: 0.75
+  canvasGroup: {fileID: 214106871}
+--- !u!225 &214106871
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214106866}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &238496522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5477,9 +5492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _annotationPrefab: {fileID: 4724242833946851653, guid: 623f89129e30d914482e7e9e948fbb4b,
     type: 3}
-  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 0}
-  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 0}
-  _landmarkRadius: 0
+  _leftLandmarkColor: {r: 0, g: 1, b: 0.9457495, a: 1}
+  _rightLandmarkColor: {r: 1, g: 0.49574798, b: 0, a: 1}
+  _landmarkRadius: 100
   _connectionColor: {r: 1, g: 1, b: 1, a: 0}
   _connectionWidth: 0.1
 --- !u!114 &1968874158
@@ -6076,6 +6091,11 @@ PrefabInstance:
       objectReference: {fileID: 408683176}
     - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
       propertyPath: headerTextBox
       value: 
       objectReference: {fileID: 626487616}
@@ -6178,6 +6198,11 @@ PrefabInstance:
       propertyPath: _mhla
       value: 
       objectReference: {fileID: 1968874157}
+    - target: {fileID: 5856521357417694194, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8127057839037440668, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
       propertyPath: m_Name
@@ -6186,7 +6211,7 @@ PrefabInstance:
     - target: {fileID: 8127057839037440668, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
