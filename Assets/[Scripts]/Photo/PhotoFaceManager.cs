@@ -32,7 +32,7 @@ public class PhotoFaceManager : MonoBehaviour
     private float timer = 0.0f;
 
     public GameObject audio;
-    private Animator anim;
+    public Animator anim;
 
     float avgV = 0;
     private bool faceAligned;
@@ -41,8 +41,8 @@ public class PhotoFaceManager : MonoBehaviour
     {
         faceAligned = false;
         textbox.text = "No face detected!";
-        if(brightnessSprite)
-        anim = brightnessSprite.GetComponent<Animator>();
+        //if(!brightnessSprite)
+        //anim = brightnessSprite.GetComponent<Animator>();
     }
 
     private void Update()
@@ -107,9 +107,10 @@ public class PhotoFaceManager : MonoBehaviour
             if (timer > waitTime)
             {
                 
-                if (anim && !brightnessSprite.GetComponent<Animator>().enabled)
+                if (anim /*&& !brightnessSprite.GetComponent<Animator>().enabled*/)
                 {
-                    brightnessSprite.GetComponent<Animator>().enabled = true;
+                    //brightnessSprite.GetComponent<Animator>().enabled = true;
+                    anim.enabled = true;
                 }
 
                 Debug.Log("DebugLightChecking");

@@ -24,8 +24,9 @@ public class CreamSceneManager : MonoBehaviour
     [SerializeField] List<GameObject> bigPetalPrefabs;
     [SerializeField] List<GameObject> smallPetalPrefabs;
 
-    List<GameObject> bigPetals;
-    List<List<GameObject>> smallPetals;
+    List<FlowerAccupoint> bigPetals = new List<FlowerAccupoint>();
+    public List<FlowerAccupoint> allPetals = new List<FlowerAccupoint>();
+    List<List<FlowerAccupoint>> smallPetals = new List<List<FlowerAccupoint>>();
     [SerializeField] GameObject mainFlowerParent;
      
     // all points with small petal
@@ -53,29 +54,30 @@ public class CreamSceneManager : MonoBehaviour
         //handDetectionScreen.SetActive(true);
         faceDetected = false;
         flowerSet = false;
-        bigPetals = new List<GameObject>();
-        smallPetals = new List<List<GameObject>>();
         for (int i = 0; i < 4; ++i)
         {
-            smallPetals.Add(new List<GameObject>());
+            smallPetals.Add(new List<FlowerAccupoint>());
         }
         foreach (int j in petalFaceLandmarks)
         {
-            GameObject newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
+            FlowerAccupoint newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform).GetComponent<FlowerAccupoint>();
+            newPetal.pointId = j;
             newPetal.transform.localScale = new Vector3(25, 25, 25);
             newPetal.transform.localPosition = new Vector3(0, 0, -10);
             bigPetals.Add(newPetal);
+            allPetals.Add(newPetal);
         }
         // small petal init
-        
         for (int i = 0; i < tempIntList.Count; ++i)
         {
             for (int j = 0; j  < tempIntList[i].Count; j++)
             {
-                GameObject newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform);
+                FlowerAccupoint newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform).GetComponent<FlowerAccupoint>();
+                newPetal.pointId = tempIntList[i][j];
                 newPetal.transform.localScale = new Vector3(10, 10, 10);
                 newPetal.transform.localPosition = new Vector3(0, 0, -10);
                 smallPetals[i].Add(newPetal);
+                allPetals.Add(newPetal);
             }
         }
     }
@@ -120,7 +122,7 @@ public class CreamSceneManager : MonoBehaviour
                                 if (flowerAccupoint.collided)
                                 {
                                     counter++;
-                                    Debug.Log(counter);
+                                    //Debug.Log(counter);
                                 }
                             }
                         }

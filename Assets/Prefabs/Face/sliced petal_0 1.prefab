@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4296172080812985513}
   - component: {fileID: 2924897875443123971}
+  - component: {fileID: 1124406591871416692}
   m_Layer: 0
   m_Name: sliced petal_0 1
   m_TagString: Untagged
@@ -86,6 +87,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1124406591871416692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819144451421113746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b3d64e40698aa4082cea59b8ac06d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedPetal: {fileID: 5119072154225682187}
+  pps: {fileID: 694825140520790300, guid: 16ffdabc1f5237b4f962d9de93ad96ec, type: 3}
+  collided: 0
+  pointId: 0
 --- !u!1 &5119072154225682187
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +196,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 160274971571702174}
-  - component: {fileID: 1614859193164332529}
   - component: {fileID: 4189740462906516830}
   - component: {fileID: 6658359215410929389}
   m_Layer: 0
@@ -204,21 +220,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4296172080812985513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1614859193164332529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5839726527050236515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b3d64e40698aa4082cea59b8ac06d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slicedPetal: {fileID: 5119072154225682187}
-  pps: {fileID: 694825140520790300, guid: 16ffdabc1f5237b4f962d9de93ad96ec, type: 3}
-  collided: 0
 --- !u!54 &4189740462906516830
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PageLogic_Cream : PageLogic_Extension
 {
-
+    public CreamSceneManager creamManager;
     public override void StartPage()
     {
     }
@@ -36,6 +36,11 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
+        foreach (var petal in creamManager.allPetals)
+        {
+            if (petal.pointId == facePointIndex)
+                petal.Fill();
+        }
     }
 
    
