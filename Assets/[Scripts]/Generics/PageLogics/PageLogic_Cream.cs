@@ -39,7 +39,9 @@ public class PageLogic_Cream : PageLogic_Extension
         foreach (var petal in creamManager.allPetals)
         {
             if (petal.pointId == facePointIndex)
+            {
                 petal.Fill();
+            }
         }
     }
 
