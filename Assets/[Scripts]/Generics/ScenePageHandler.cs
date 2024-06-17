@@ -1,4 +1,5 @@
 using Mediapipe.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,7 +27,9 @@ public class ScenePageHandler : MonoBehaviour
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
-
+    [Header("Splash Page")]
+    public TMP_Text tmp_header_face;
+    public TMP_Text tmp_header_hand;
     [Header("Pages")]
     public Button bu_prevPage;
     public Button bu_nextPage;
@@ -50,7 +53,8 @@ public class ScenePageHandler : MonoBehaviour
 
         annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
         annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
-
+        annotationList_FacePoints.OnParentActive += OnFaceSpotted;
+        annotationList_HandPoints.OnParentActive += OnHandSpotted;
         for (int i = 0; i < pageLogics.Count; i++)
         {
             PageLogic_Extension pageLogic_Extension = pageLogics[i] as PageLogic_Extension;
@@ -68,6 +72,23 @@ public class ScenePageHandler : MonoBehaviour
 
         StartPage();
     }
+
+    private void OnFaceSpotted(bool active)
+    {
+        if (active)
+            tmp_header_face.text = "";
+        else
+            tmp_header_face.text = "No face spotted";
+    }
+
+    private void OnHandSpotted(bool active)
+    {
+        if (active)
+            tmp_header_hand.text = "";
+        else
+            tmp_header_hand.text = "No hands spotted";
+    }
+
     private void Update()
     {
         if (!sceneAnimationEnd.IsDone()) return;
@@ -125,11 +146,17 @@ public class ScenePageHandler : MonoBehaviour
         img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
         tmp_description.text = currentPageLogic.pageData.splashDescription;
 
-        //bu_closeSplashArt.onClick.AddListener(() => { splashArt.SetActive(false); });
+        // enable face / hand traking
         annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
         annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        // enable header text
+        tmp_header_face.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        tmp_header_hand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();
+        else
+            splashScreen.gameObject.SetActive(false);
         headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
 
 

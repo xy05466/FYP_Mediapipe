@@ -22,7 +22,8 @@ public class PageLogic_Essence : PageLogic_Extension
 
     public override bool IsPageDone()
     {
-        return accupointsMassageManagerFinal.IsDone();
+        //return accupointsMassageManagerFinal.IsDone();
+        return false;
     }
 
     public override void OnFaceAnnotationActive(bool active)
