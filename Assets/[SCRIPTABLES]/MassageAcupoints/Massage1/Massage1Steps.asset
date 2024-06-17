@@ -15,11 +15,11 @@ MonoBehaviour:
   accupointSOs:
   - accupointSOList:
     - {fileID: 11400000, guid: d0507df957d489d468b91a1b7eccbf56, type: 2}
-    - {fileID: 11400000, guid: 95e28cf7c7abeb540a63fc24e225a084, type: 2}
-    - {fileID: 11400000, guid: 0b5e409fb9c69d8409fcea54ef0798bf, type: 2}
+    - {fileID: 11400000, guid: be122199fb5f3954d9d81e7c259d29c3, type: 2}
+    - {fileID: 11400000, guid: eaafdd9c8980f94499ce900e5d3f675d, type: 2}
   - accupointSOList:
-    - {fileID: 11400000, guid: 5beb2f9ec33a6cb4fb56ed0353e9e482, type: 2}
-    - {fileID: 11400000, guid: a685998fb70ff674b9475a4bb05a8236, type: 2}
+    - {fileID: 11400000, guid: e12c63557c229c2428258c6bd1380097, type: 2}
+    - {fileID: 11400000, guid: d8b1ff957e6660c49a03387460325e00, type: 2}
     - {fileID: 11400000, guid: 445df2913b1d63e40a3c6bd633a0125e, type: 2}
   - accupointSOList:
     - {fileID: 11400000, guid: 2cf004d09b6194248b5bf69aeac82979, type: 2}

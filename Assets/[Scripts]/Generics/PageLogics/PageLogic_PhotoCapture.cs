@@ -7,10 +7,12 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 {
     public Button bu_done;
     public GameObject photoOverlay;
+    public PhoneCamera phoneCamera;
     bool done = false;
     public override void StartPage()
     {
         bu_done.onClick.AddListener(()=> { done = true; });
+        phoneCamera.StartPhoto();
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {

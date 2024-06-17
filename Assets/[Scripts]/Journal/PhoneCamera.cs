@@ -33,7 +33,7 @@ public class PhoneCamera : MonoBehaviour
     //public UnityEngine.UI.Button creamButton;
     public GameObject audioManager;
 
-    private void Start()
+    public void StartPhoto()
     {
         journalSO.Initialize();
         
