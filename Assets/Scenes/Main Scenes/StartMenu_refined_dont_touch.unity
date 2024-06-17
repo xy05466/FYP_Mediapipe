@@ -16334,11 +16334,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 786372592}
   - {fileID: 959629942}
   - {fileID: 878462219}
   - {fileID: 518752968}
   - {fileID: 885432721}
+  - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 1010666741}
   splashScreen: {fileID: 1945387827}
