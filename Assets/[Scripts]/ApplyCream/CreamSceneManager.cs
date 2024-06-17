@@ -11,7 +11,7 @@ public class CreamSceneManager : MonoBehaviour
     //[SerializeField] GameObject creamApplicationGuideline;
 
     //[SerializeField] GameObject creamApplicationDiagram;
-    [SerializeField] GameObject nextSceneButton;
+    //[SerializeField] GameObject nextSceneButton;
 
     [SerializeField] TMP_Text headerTextBox;
     [SerializeField] private float idealDistance = 2.0f;
@@ -130,7 +130,7 @@ public class CreamSceneManager : MonoBehaviour
         }
         if (Mathf.Abs(counter - (foreheadPoints.Count + rightCheekPoints.Count + leftCheekPoints.Count + chinCheekPoints.Count)) < 25)
         {
-            nextSceneButton.SetActive(true);
+            //nextSceneButton.SetActive(true);
         }
     }
     public void CreamApplied()
@@ -140,6 +140,6 @@ public class CreamSceneManager : MonoBehaviour
         //creamApplicationGuideline.SetActive(false);
 
         //creamApplicationDiagram.SetActive(true);
-        nextSceneButton.SetActive(true);
+        //nextSceneButton.SetActive(true);
     }
 }
