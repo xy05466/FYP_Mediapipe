@@ -43,7 +43,6 @@ public class FlowerAccupoint : MonoBehaviour
         alpha -= Time.deltaTime * fadeSpeed;
         alpha = Mathf.Clamp(alpha,0,1);
         petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
-        Debug.Log(alpha);
     }
     private void Update()
     {
