@@ -15,7 +15,11 @@ MonoBehaviour:
   enableHeader: 1
   enableSplashPage: 1
   spr_splashIcon: {fileID: 21300000, guid: 3204365ab8678184e93d120e081bec47, type: 3}
-  title: Cream
-  splashDescription: Cream
+  title: Apply Cream
+  splashDescription: 'Next. Let''s apply your cream.
+
+
+    Follow the guide to know
+    your cream properly'
   enableFaceTracking: 1
   enableHandTracking: 1
