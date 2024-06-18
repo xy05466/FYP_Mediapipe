@@ -8,10 +8,13 @@ public class PageLogic_Essence : PageLogic_Extension
     public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
     public override void StartPage()
     {
+        accupointsMassageManagerFinal?.StartFunc();
     }
  
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
+        if(accupointsMassageManagerFinal.gameObject.activeInHierarchy)
+            accupointsMassageManagerFinal.UpdateScene();
     }
     public override void EndPage()
     {
@@ -28,6 +31,7 @@ public class PageLogic_Essence : PageLogic_Extension
 
     public override void OnFaceAnnotationActive(bool active)
     {
+        accupointsMassageManagerFinal.gameObject.SetActive(active);
     }
 
     public override void OnHandAnnotationActive(bool active)
