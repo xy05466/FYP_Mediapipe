@@ -48,7 +48,6 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
         //gameObject.SetActive(true);
         //silderSetsList.Add(gameObject);
         //SilderSet currSilderSet = silderSetsList[index].GetComponent<SilderSet>();
-        sliderSet.Init();
 
         //onUpdateMassageUI((sliderSet.numOfSetsToComplete).ToString());
         SetUpPoints();
@@ -127,6 +126,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
 
     public void UpdateScene()
     {
+
+        // this is to set the positions of the points
         if (done) return;
         List<AccSOListList> steps = listSteps[index].accupointSOs;
         for (int i = 0; i < steps.Count; i++)
@@ -134,7 +135,8 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
             for (int j = 0; j < steps[i].accupointSOList.Count; j++)
             {
                 int nextAccupoint = steps[i].accupointSOList[j].landmarkIndex;
-                positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint);
+                positions = _facepointManager.GetLandmarkPositionsByDigit(nextAccupoint); // getting list of possible, problem with this, it is limited
+
                 Vector3 position = Reposition(positions, lockedToZero, isAveraged);
                 position = new Vector3(position.x, position.y, 0);
                 sliderSet.anchorPostions.SetItemInList(i, j, position);

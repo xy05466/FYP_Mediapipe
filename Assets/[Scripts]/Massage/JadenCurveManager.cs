@@ -21,7 +21,6 @@ public class JadenCurveManager : MonoBehaviour
         var pointList = new List<Vector3>();
 
 
-
         //pointList.Add(RenderingOfGraph(ratio));
         for (int i = 0; i < NumSegments; i++)
         {
