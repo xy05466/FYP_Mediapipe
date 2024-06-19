@@ -19,7 +19,7 @@ public class PlayerLookawayScript : MonoBehaviour
     private void Start()
     {
 
-        rGameObject.StartFunc();
+        rGameObject?.StartFunc();
 
 
     }
