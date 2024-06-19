@@ -57,6 +57,17 @@ public class SilderSet : MonoBehaviour
         //update all the individual points
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {
+            //int pTotal = anchorPostions.CountOfLists();
+            //int max = path[i].points.Count;
+            //int pDivide = max / 3;
+            //for (int j = 0; j < pTotal; j++)
+            //{
+            //    //int cal = max - (pDivide * j);
+            //    int cal = max - (2 * (pTotal-j));
+            //    path[i].points[cal].transform.position = anchorPostions.GetItemInList(i, j);
+
+            //}
+
             path[i].points[0].transform.position = anchorPostions.GetItemInList(i, 0);
             path[i].points[3].transform.position = anchorPostions.GetItemInList(i, 1);
             path[i].points[6].transform.position = anchorPostions.GetItemInList(i, 2);
@@ -94,12 +105,13 @@ public class SilderSet : MonoBehaviour
             path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
         }
     }
-    public void AddList(int i)
+    public void AddList(int i, int count)
     {
         anchorPostions.AddList(new List<Vector3>());
-        anchorPostions.AddItemToList(i, Vector3.zero);
-        anchorPostions.AddItemToList(i, Vector3.zero);
-        anchorPostions.AddItemToList(i, Vector3.zero);
+        for (int j = 0; j < count; j++)
+        {
+            anchorPostions.AddItemToList(i, Vector3.zero);
+        }
     }
     private void SetCompleted()
     {

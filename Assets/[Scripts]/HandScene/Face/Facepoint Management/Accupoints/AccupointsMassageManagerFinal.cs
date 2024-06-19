@@ -87,8 +87,9 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
     {
         for (int i = 0; i < listSteps[index].accupointSOs.Count; i++)
         {
+            
             Debug.Log("currSilderSet.anchorPostions" + i);
-            sliderSet.AddList(i);
+            sliderSet.AddList(i, listSteps[index].accupointSOs[i].accupointSOList.Count);
         }
         sliderSet.SetUpPath();
     }
