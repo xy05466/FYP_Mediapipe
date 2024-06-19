@@ -164,48 +164,48 @@ public class JadenCurveManager : MonoBehaviour
     {
         return new Vector2[] { points[i * 3].transform.position, points[i * 3 + 1].transform.position, points[i * 3 + 2].transform.position, points[LoopIndex(i * 3 + 3)].transform.position };
     }
-    public void MovePoint(int i, Vector3 pos)
-    {
-        Vector3 deltaMove = pos - points[i].transform.position;
+    //public void MovePoint(int i, Vector3 pos)
+    //{
+    //    Vector3 deltaMove = pos - points[i].transform.position;
 
-        if (i % 3 == 0 || !autoSetControlPoints)
-        {
-            points[i].transform.position = pos;
+    //    if (i % 3 == 0 || !autoSetControlPoints)
+    //    {
+    //        points[i].transform.position = pos;
 
-            if (autoSetControlPoints)
-            {
-                AutoSetAllAffectedControlPoints(i);
-            }
-            else
-            {
+    //        if (autoSetControlPoints)
+    //        {
+    //            AutoSetAllAffectedControlPoints(i);
+    //        }
+    //        else
+    //        {
 
-                if (i % 3 == 0)
-                {
-                    if (i + 1 < points.Count || isClosed)
-                    {
-                        points[LoopIndex(i + 1)].transform.position += deltaMove;
-                    }
-                    if (i - 1 >= 0 || isClosed)
-                    {
-                        points[LoopIndex(i - 1)].transform.position += deltaMove;
-                    }
-                }
-                else
-                {
-                    bool nextPointIsAnchor = (i + 1) % 3 == 0;
-                    int correspondingControlIndex = (nextPointIsAnchor) ? i + 2 : i - 2;
-                    int anchorIndex = (nextPointIsAnchor) ? i + 1 : i - 1;
+    //            if (i % 3 == 0)
+    //            {
+    //                if (i + 1 < points.Count || isClosed)
+    //                {
+    //                    points[LoopIndex(i + 1)].transform.position += deltaMove;
+    //                }
+    //                if (i - 1 >= 0 || isClosed)
+    //                {
+    //                    points[LoopIndex(i - 1)].transform.position += deltaMove;
+    //                }
+    //            }
+    //            else
+    //            {
+    //                bool nextPointIsAnchor = (i + 1) % 3 == 0;
+    //                int correspondingControlIndex = (nextPointIsAnchor) ? i + 2 : i - 2;
+    //                int anchorIndex = (nextPointIsAnchor) ? i + 1 : i - 1;
 
-                    if (correspondingControlIndex >= 0 && correspondingControlIndex < points.Count || isClosed)
-                    {
-                        float dst = (points[LoopIndex(anchorIndex)].transform.position - points[LoopIndex(correspondingControlIndex)].transform.position).magnitude;
-                        Vector3 dir = (points[LoopIndex(anchorIndex)].transform.position - pos).normalized;
-                        points[LoopIndex(correspondingControlIndex)].transform.position = points[LoopIndex(anchorIndex)].transform.position + dir * dst;
-                    }
-                }
-            }
-        }
-    }
+    //                if (correspondingControlIndex >= 0 && correspondingControlIndex < points.Count || isClosed)
+    //                {
+    //                    float dst = (points[LoopIndex(anchorIndex)].transform.position - points[LoopIndex(correspondingControlIndex)].transform.position).magnitude;
+    //                    Vector3 dir = (points[LoopIndex(anchorIndex)].transform.position - pos).normalized;
+    //                    points[LoopIndex(correspondingControlIndex)].transform.position = points[LoopIndex(anchorIndex)].transform.position + dir * dst;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
     //public Vector2[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     //{
     //    List<Vector2> evenlySpacedPoints = new List<Vector2>();
