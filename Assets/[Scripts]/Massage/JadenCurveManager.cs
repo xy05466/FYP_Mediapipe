@@ -15,6 +15,7 @@ public class JadenCurveManager : MonoBehaviour
     public LineRenderer LineRenderer;
     public float vertexCount = 12;
 
+
     private void Update()
     {
         var pointList = new List<Vector3>();
@@ -26,9 +27,8 @@ public class JadenCurveManager : MonoBehaviour
             for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
             {
                 Vector3[] points = GetPointsInSegment(i);
-                
-                pointList.Add(ComputeBezierPoint(points.ToList(), ratio));
-                //pointList.Add(RenderingOfGraph(points[0], points[1], points[2], points[3], ratio));
+
+                pointList.Add(RenderingOfGraph(points[0], points[1], points[2], points[3], ratio));
             }
         }
         LineRenderer.positionCount = pointList.Count;
@@ -60,39 +60,13 @@ public class JadenCurveManager : MonoBehaviour
 
     public Vector3 RenderingOfGraph(Vector3 P0, Vector3 P1, Vector3 P2, Vector3 P3, float localTValue)
     {
-        //List<Vector3> tempp = new List<Vector3>();
-        //List<Vector3> tempNew = new List<Vector3>();
-        //tempp.Add(P0);
-        //tempp.Add(P1);
-        //tempp.Add(P2);
-        //tempp.Add(P3);
-        //for (int i = 0; i < tempp.Count-1; i++)
-        //{
-        //    tempNew.Add(Vector3.Lerp(tempp[i], tempp[i-1], localTValue));
-        //}
         var A = Vector3.Lerp(P0, P1, localTValue); // middlepoint of P0 and P1
         var B = Vector3.Lerp(P1, P2, localTValue); // middle point of P1 and P2
         var C = Vector3.Lerp(P2, P3, localTValue); // middle point of P2 and P3
-
         var D = Vector3.Lerp(A, B, localTValue); // middle of A and B
         var E = Vector3.Lerp(B, C, localTValue); //middle of B and C
         var P = Vector3.Lerp(D, E, localTValue); // middle of D and E 
         return P;
-    }
-    public static Vector3 ComputeBezierPoint(List<Vector3> controlPoints, float t)
-    {
-        if (controlPoints.Count == 1)
-        {
-            return controlPoints[0];
-        }
-
-        List<Vector3> newControlPoints = new List<Vector3>();
-        for (int i = 0; i < controlPoints.Count - 1; i++)
-        {
-            newControlPoints.Add(Vector3.Lerp(controlPoints[i], controlPoints[i + 1], t));
-        }
-
-        return ComputeBezierPoint(newControlPoints, t);
     }
     public int NumPoints
     {
@@ -109,53 +83,53 @@ public class JadenCurveManager : MonoBehaviour
             return points.Count / 3;
         }
     }
-    //public void AddSegment(GameObject anchorPos)
-    //{
-    //    points.Add(returnNewPoint(points[points.Count - 1].transform.position * 2 - points[points.Count - 2].transform.position));
-    //    points.Add(returnNewPoint((points[points.Count - 1].transform.position + anchorPos.transform.position) * .5f));
-    //    points.Add(anchorPos);
+    public void AddSegment(GameObject anchorPos)
+    {
+        points.Add(returnNewPoint(points[points.Count - 1].transform.position * 2 - points[points.Count - 2].transform.position));
+        points.Add(returnNewPoint((points[points.Count - 1].transform.position + anchorPos.transform.position) * .5f));
+        points.Add(anchorPos);
 
-    //    if (autoSetControlPoints)
-    //    {
-    //        AutoSetAllAffectedControlPoints(points.Count - 1);
-    //    }
-    //}
+        if (autoSetControlPoints)
+        {
+            AutoSetAllAffectedControlPoints(points.Count - 1);
+        }
+    }
 
-    //public void SplitSegment(GameObject anchorPos, int segmentIndex)
-    //{
-    //    points.InsertRange(segmentIndex * 3 + 2, new GameObject[] { returnNewPoint(Vector2.zero), anchorPos, returnNewPoint(Vector2.zero) });
-    //    if (autoSetControlPoints)
-    //    {
-    //        AutoSetAllAffectedControlPoints(segmentIndex * 3 + 3);
-    //    }
-    //    else
-    //    {
-    //        AutoSetAnchorControlPoints(segmentIndex * 3 + 3);
-    //    }
-    //}
+    public void SplitSegment(GameObject anchorPos, int segmentIndex)
+    {
+        points.InsertRange(segmentIndex * 3 + 2, new GameObject[] { returnNewPoint(Vector2.zero), anchorPos, returnNewPoint(Vector2.zero) });
+        if (autoSetControlPoints)
+        {
+            AutoSetAllAffectedControlPoints(segmentIndex * 3 + 3);
+        }
+        else
+        {
+            AutoSetAnchorControlPoints(segmentIndex * 3 + 3);
+        }
+    }
 
-    //public void DeleteSegment(int anchorIndex)
-    //{
-    //    if (NumSegments > 2 || !isClosed && NumSegments > 1)
-    //    {
-    //        if (anchorIndex == 0)
-    //        {
-    //            if (isClosed)
-    //            {
-    //                points[points.Count - 1] = points[2];
-    //            }
-    //            points.RemoveRange(0, 3);
-    //        }
-    //        else if (anchorIndex == points.Count - 1 && !isClosed)
-    //        {
-    //            points.RemoveRange(anchorIndex - 2, 3);
-    //        }
-    //        else
-    //        {
-    //            points.RemoveRange(anchorIndex - 1, 3);
-    //        }
-    //    }
-    //}
+    public void DeleteSegment(int anchorIndex)
+    {
+        if (NumSegments > 2 || !isClosed && NumSegments > 1)
+        {
+            if (anchorIndex == 0)
+            {
+                if (isClosed)
+                {
+                    points[points.Count - 1] = points[2];
+                }
+                points.RemoveRange(0, 3);
+            }
+            else if (anchorIndex == points.Count - 1 && !isClosed)
+            {
+                points.RemoveRange(anchorIndex - 2, 3);
+            }
+            else
+            {
+                points.RemoveRange(anchorIndex - 1, 3);
+            }
+        }
+    }
     public Vector3[] GetPointsInSegment(int i)
     {
         return new Vector3[] { points[i * 3].transform.position, points[i * 3 + 1].transform.position, points[i * 3 + 2].transform.position, points[LoopIndex(i * 3 + 3)].transform.position };
@@ -360,24 +334,24 @@ public class JadenCurveManager : MonoBehaviour
         newpoint.transform.position = position;
         return newpoint;
     }
-    //private void OnDrawGizmos()
-    //{
-    //    //draw points from point P0 to P1 and P2 to P3
-    //    //Gizmos.color = Color.yellow;
-    //    //Gizmos.DrawLine(P0.transform.position, P1.transform.position);
-    //    //Gizmos.DrawLine(P2.transform.position, P3.transform.position);
-    //    //balls
-    //    for (int i = 0; i < NumSegments; i++)
-    //    {
-    //        Vector3[] points = GetPointsInSegment(i);
+    private void OnDrawGizmos()
+    {
+        //draw points from point P0 to P1 and P2 to P3
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawLine(P0.transform.position, P1.transform.position);
+        //Gizmos.DrawLine(P2.transform.position, P3.transform.position);
+        //balls
+        for (int i = 0; i < NumSegments; i++)
+        {
+            Vector3[] points = GetPointsInSegment(i);
 
-    //        Gizmos.color = Color.black;
-    //        Gizmos.DrawLine(points[1], points[0]);
-    //        Gizmos.DrawLine(points[2], points[3]);
+            Gizmos.color = Color.black;
+            Gizmos.DrawLine(points[1], points[0]);
+            Gizmos.DrawLine(points[2], points[3]);
 
 
-    //    }
-    //}
+        }
+    }
 
 }
 
