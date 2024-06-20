@@ -7,8 +7,13 @@ public class PageLogic_Essence : PageLogic_Extension
 {
     public FacepointManager_Jaden facepointManager_Jaden;
     public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
-    [Header("TESTING point")]
+
+
+
     public List<int> points = new List<int>();
+    private int currentIndex = 0;
+
+    [Header("TESTING point")]
     public LineRenderer lr;
     public LineRenderer lr2;
     public Texture testSprite;
@@ -32,29 +37,38 @@ public class PageLogic_Essence : PageLogic_Extension
         //if (accupointsMassageManagerFinal.gameObject.activeInHierarchy)
         //    accupointsMassageManagerFinal.UpdateScene();
         lr.positionCount = points.Count;
-        lr2.positionCount = positionCount;
+        lr2.positionCount = currentIndex;
         for (int i = 0; i < points.Count; i++)
         {
             int p = points[i];
             lr.SetPosition(i, facepointsObj[p].transform.position);
         }
-        //for (int i = 0;i < positionCount; i++)
-        //{
-        //    //if(i == positionCount - 1)
-        //    //{
-        //    //    lerpPos = Vector3.MoveTowards(lerpPos,lr.GetPosition(i),Time.deltaTime);
-        //    //    //lerp current pos to next
-        //    //    lr2.SetPosition(i, lerpPos);
-        //    //}
-        //    //else
-        //    //{
-        //    //    lr2.SetPosition(i, lr.GetPosition(i));
-        //    //}
-        //    lr2.SetPosition(i, lr.GetPosition(i));
+        for (int i = 0; i < currentIndex; i++)
+        {
+            //if(i == positionCount - 1)
+            //{
+            //    lerpPos = Vector3.MoveTowards(lerpPos,lr.GetPosition(i),Time.deltaTime);
+            //    //lerp current pos to next
+            //    lr2.SetPosition(i, lerpPos);
+            //}
+            //else
+            //{
+            //    lr2.SetPosition(i, lr.GetPosition(i));
+            //}
+            lr2.SetPosition(i, lr.GetPosition(i));
 
-        //}
+        }
 
     }
+    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
+    {
+        if(currentIndex >=points.Count) return;
+        if (points[currentIndex] == facePointIndex)
+        {
+            currentIndex++;
+        }
+    }
+
     public override void EndPage()
     {
     }
@@ -77,9 +91,6 @@ public class PageLogic_Essence : PageLogic_Extension
     {
     }
 
-    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
-    {
-    }
 
     public void Fill()
     {
