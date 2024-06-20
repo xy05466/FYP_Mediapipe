@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &11793242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,12 +510,12 @@ GameObject:
   - component: {fileID: 22794516}
   - component: {fileID: 22794517}
   m_Layer: 0
-  m_Name: HandSolution
+  m_Name: HandSolution Task
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &22794516
 Transform:
   m_ObjectHideFlags: 0
@@ -8784,7 +8784,7 @@ PrefabInstance:
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
       propertyPath: _irisLandmarkRadius
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
@@ -10394,7 +10394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &381157007
 Transform:
   m_ObjectHideFlags: 0
@@ -13826,7 +13826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &518752967
 Transform:
   m_ObjectHideFlags: 0
@@ -16519,13 +16519,13 @@ MonoBehaviour:
   tmp_header_hand: {fileID: 93142500}
   bu_prevPage: {fileID: 0}
   bu_nextPage: {fileID: 361220157}
-  annotationFace: {fileID: 7882455178255034673}
-  annotationHand: {fileID: 1298655828}
+  annotationFace: {fileID: 1565306377}
+  annotationHand: {fileID: 8798066377398269793}
   annotationList_FacePoints:
-    parent: {fileID: 559884440}
+    parent: {fileID: 1248879219}
     tag: Facepoint
   annotationList_HandPoints:
-    parent: {fileID: 2003249034}
+    parent: {fileID: 1188537692}
     tag: Handpoint
 --- !u!4 &621763104
 Transform:
@@ -30619,12 +30619,12 @@ GameObject:
   - component: {fileID: 1245813991}
   - component: {fileID: 1245813992}
   m_Layer: 0
-  m_Name: FaceSolution
+  m_Name: FaceSolution Task
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1245813991
 Transform:
   m_ObjectHideFlags: 0
@@ -31260,7 +31260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1298655829
 Transform:
   m_ObjectHideFlags: 0
@@ -33913,7 +33913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1392297657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37627,7 +37627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1565306378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46505,17 +46505,17 @@ PrefabInstance:
     - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
       propertyPath: _connectionColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
       propertyPath: _leftLandmarkColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
       propertyPath: _rightLandmarkColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434967355688441420, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
@@ -51228,7 +51228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8263697570629602230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51343,7 +51343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9014705504526425647
 RectTransform:
   m_ObjectHideFlags: 0

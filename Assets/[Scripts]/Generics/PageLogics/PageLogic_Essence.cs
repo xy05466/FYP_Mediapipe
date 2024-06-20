@@ -19,6 +19,7 @@ public class PageLogic_Essence : PageLogic_Extension
     public override void StartPage()
     {
         //accupointsMassageManagerFinal?.StartFunc();
+
         bu_fill.onClick.AddListener(Fill);
         //lr.materials[0].SetTexture("_MainTex", testSprite);
         lr.positionCount = points.Count;
@@ -27,30 +28,31 @@ public class PageLogic_Essence : PageLogic_Extension
 
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
-        if (facepointsObj == null  || facepointsObj.Count <=0) return;
-        //if(accupointsMassageManagerFinal.gameObject.activeInHierarchy)
+        if (facepointsObj == null || facepointsObj.Count <= 0) return;
+        //if (accupointsMassageManagerFinal.gameObject.activeInHierarchy)
         //    accupointsMassageManagerFinal.UpdateScene();
-
-        for(int i = 0; i < points.Count; i++)
+        lr.positionCount = points.Count;
+        lr2.positionCount = positionCount;
+        for (int i = 0; i < points.Count; i++)
         {
             int p = points[i];
             lr.SetPosition(i, facepointsObj[p].transform.position);
         }
-        for (int i = 0;i < positionCount; i++)
-        {
-            //if(i == positionCount - 1)
-            //{
-            //    lerpPos = Vector3.MoveTowards(lerpPos,lr.GetPosition(i),Time.deltaTime);
-            //    //lerp current pos to next
-            //    lr2.SetPosition(i, lerpPos);
-            //}
-            //else
-            //{
-            //    lr2.SetPosition(i, lr.GetPosition(i));
-            //}
-            lr2.SetPosition(i, lr.GetPosition(i));
+        //for (int i = 0;i < positionCount; i++)
+        //{
+        //    //if(i == positionCount - 1)
+        //    //{
+        //    //    lerpPos = Vector3.MoveTowards(lerpPos,lr.GetPosition(i),Time.deltaTime);
+        //    //    //lerp current pos to next
+        //    //    lr2.SetPosition(i, lerpPos);
+        //    //}
+        //    //else
+        //    //{
+        //    //    lr2.SetPosition(i, lr.GetPosition(i));
+        //    //}
+        //    lr2.SetPosition(i, lr.GetPosition(i));
 
-        }
+        //}
 
     }
     public override void EndPage()
