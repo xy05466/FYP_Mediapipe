@@ -8,6 +8,7 @@ using UnityEditor;
 [CreateAssetMenu(menuName ="Page SO", fileName ="PageData_")]
 public class PageData : ScriptableObject
 {
+    public bool enableHeader= true;
     [Header("Splash Data")]
     public bool enableSplashPage = true;
     // splash image
