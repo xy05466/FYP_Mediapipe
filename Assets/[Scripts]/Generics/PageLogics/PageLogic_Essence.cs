@@ -231,3 +231,8 @@ public class PageLogic_Essence : PageLogic_Extension
     }
 
 }
+
+public class SliderStep
+{
+
+}
