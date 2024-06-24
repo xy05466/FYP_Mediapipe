@@ -15,26 +15,19 @@ public class PageLogic_Essence : PageLogic_Extension
 
     [Header("TESTING point")]
     public LineRenderer lr;
-    public LineRenderer lr2;
-    public Texture testSprite;
-    public int positionCount =1; // should start at 1
-    public Button bu_fill;
-    Vector3 lerpPos = Vector3.zero;
+    public LineRenderer lr2; // fill line
     public float sliderfloat = 0.5f;
     //lr.GetPosition(i-1) / 
+
+    public float colliderWidth = 0.1f;
     public override void StartPage()
     {
         //accupointsMassageManagerFinal?.StartFunc();
 
-        bu_fill.onClick.AddListener(Fill);
         //lr.materials[0].SetTexture("_MainTex", testSprite);
         lr.positionCount = points.Count;
-        lr2.positionCount = positionCount;
+        lr2.positionCount = currentIndex+1;
 
-        if (lineRenderer == null)
-        {
-            lineRenderer = GetComponent<LineRenderer>();
-        }
         UpdateColliders();
     }
 
@@ -53,9 +46,9 @@ public class PageLogic_Essence : PageLogic_Extension
         if(currentIndex < lr.positionCount)
         ballMassageObject.transform.position = lr.GetPosition(currentIndex);
         // set collider position
-        for (int i = 0; i < lineRenderer.positionCount - 1; i++)
+        for (int i = 0; i < lr.positionCount - 1; i++)
         {
-            PositionColliderBetweenPoints(i,lineRenderer.GetPosition(i), lineRenderer.GetPosition(i + 1));
+            PositionColliderBetweenPoints(i, lr.GetPosition(i), lr.GetPosition(i + 1));
         }
 
         //if(currentIndex > 2)
@@ -156,23 +149,6 @@ public class PageLogic_Essence : PageLogic_Extension
     }
 
 
-    public void Fill()
-    {
-        positionCount++;
-        Debug.Log(positionCount);
-        if (positionCount > points.Count)
-        {
-            positionCount = points.Count;
-        }
-        lr2.positionCount = positionCount;
-        lr2.SetPosition(positionCount - 1,lr2.GetPosition(positionCount-2));
-        lerpPos = lr2.GetPosition(positionCount - 2);
-    }
-
-    public LineRenderer lineRenderer;
-    public float colliderWidth = 0.1f;
-
-
     public void UpdateColliders()
     {
         // Remove old colliders
@@ -182,9 +158,9 @@ public class PageLogic_Essence : PageLogic_Extension
         }
 
         // Create new colliders
-        for (int i = 0; i < lineRenderer.positionCount - 1; i++)
+        for (int i = 0; i < lr.positionCount - 1; i++)
         {
-            CreateColliderBetweenPoints(i,lineRenderer.GetPosition(i), lineRenderer.GetPosition(i + 1));
+            CreateColliderBetweenPoints(i, lr.GetPosition(i), lr.GetPosition(i + 1));
         }
     }
     List<BoxCollider> colliders = new List<BoxCollider>();
