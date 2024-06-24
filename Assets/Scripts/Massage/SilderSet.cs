@@ -7,7 +7,7 @@ using UnityEngine;
 public class SilderSet : MonoBehaviour
 {
     //all anchorpoints and positions sotred here
-    public ListOfLists<Vector3> anchorPostions;
+    public ListOfLists<Vector3> anchorPostions = new ListOfLists<Vector3>();
     public List<JadenCurveManager> path = new List<JadenCurveManager>();
     public JadenCurveManager prefabJadenCurveManager;
     public bool completed = false;
@@ -24,6 +24,7 @@ public class SilderSet : MonoBehaviour
     // Declare a delegate variable
     public static event OnSetCompleted onSetCompleted;
 
+    public bool setUp = false;
 
 
     public Action OnComplete;
@@ -35,25 +36,6 @@ public class SilderSet : MonoBehaviour
         //then set anchors to
         //init event
         BallMovement.onComplete += SetCompleted;
-    }
-    public bool setUp = false;
-    public void SetUpPath()
-    {
-        setUp = true;
-        //init set prefabs (always spawn with 3)
-        for (var i = 0; i < anchorPostions.CountOfLists(); i++)
-        {
-            JadenCurveManager newSet = Instantiate(prefabJadenCurveManager, this.gameObject.transform);
-            gameObject.SetActive(true);
-
-            //path[i].Add(newSet.GetComponent<JadenCurveManager>());
-            path.Add(newSet);
-            //set anchorPoints
-
-            path[i].points[0].transform.position = new(anchorPostions.GetItemInList(i, 0).x, anchorPostions.GetItemInList(i, 0).y, 0);
-            path[i].points[3].transform.position = new(anchorPostions.GetItemInList(i, 1).x, anchorPostions.GetItemInList(i, 1).y, 0);
-            path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
-        }
     }
     private void OnDestroy()
     {
@@ -72,9 +54,13 @@ public class SilderSet : MonoBehaviour
             lockPositions = true;
         }
         //Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
-        //update all the individual points
+        //update all the individual points // this is limited to only 3 points
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {
+            int pointCount = path[i].points.Count;
+            int landmarkPoints = anchorPostions.GetList(i).Count;
+            Debug.Log("points: "+pointCount);
+            Debug.Log(i+": landmarkPoints: " + landmarkPoints);
             path[i].points[0].transform.position = anchorPostions.GetItemInList(i, 0);
             path[i].points[3].transform.position = anchorPostions.GetItemInList(i, 1);
             path[i].points[6].transform.position = anchorPostions.GetItemInList(i, 2);
@@ -93,9 +79,24 @@ public class SilderSet : MonoBehaviour
         //check if sets have been completed enough times
         CheckCompleted();
     }
-    public void Init()
+    
+    public void SetUpPath()
     {
-        anchorPostions = new ListOfLists<Vector3>();
+        setUp = true;
+        //init set prefabs (always spawn with 3)
+        for (var i = 0; i < anchorPostions.CountOfLists(); i++)
+        {
+            JadenCurveManager newSet = Instantiate(prefabJadenCurveManager, this.gameObject.transform);
+            gameObject.SetActive(true);
+
+            //path[i].Add(newSet.GetComponent<JadenCurveManager>());
+            path.Add(newSet);
+            //set anchorPoints
+
+            path[i].points[0].transform.position = new(anchorPostions.GetItemInList(i, 0).x, anchorPostions.GetItemInList(i, 0).y, 0);
+            path[i].points[3].transform.position = new(anchorPostions.GetItemInList(i, 1).x, anchorPostions.GetItemInList(i, 1).y, 0);
+            path[i].points[6].transform.position = new(anchorPostions.GetItemInList(i, 2).x, anchorPostions.GetItemInList(i, 2).y, 0);
+        }
     }
     public void AddList(int i)
     {

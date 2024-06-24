@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6425010
 Transform:
   m_ObjectHideFlags: 0
@@ -1528,7 +1528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &379195623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,7 +1925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6faf0780d8a8d5444804dea763f8e003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bu_close: {fileID: 0}
   duration: 3.2
+  canvasGroup: {fileID: 0}
 --- !u!114 &489483071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2047,7 +2049,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543386372}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82660d6678f8f944fbd1cf1c98bd329b, type: 3}
   m_Name: 
@@ -2068,10 +2070,6 @@ MonoBehaviour:
   _mfla: {fileID: 0}
   indexesToStore:
   - {fileID: 11400000, guid: d0507df957d489d468b91a1b7eccbf56, type: 2}
-  - {fileID: 11400000, guid: 95e28cf7c7abeb540a63fc24e225a084, type: 2}
-  - {fileID: 11400000, guid: 0b5e409fb9c69d8409fcea54ef0798bf, type: 2}
-  - {fileID: 11400000, guid: 5beb2f9ec33a6cb4fb56ed0353e9e482, type: 2}
-  - {fileID: 11400000, guid: a685998fb70ff674b9475a4bb05a8236, type: 2}
   - {fileID: 11400000, guid: 445df2913b1d63e40a3c6bd633a0125e, type: 2}
   - {fileID: 11400000, guid: 2cf004d09b6194248b5bf69aeac82979, type: 2}
   - {fileID: 11400000, guid: e7de7a2dd8dc40347934793f6f99283e, type: 2}
@@ -3725,7 +3723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 54.961}
+  m_AnchoredPosition: {x: 0, y: 54.96106}
   m_SizeDelta: {x: 4950, y: 1624.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437593381
@@ -5257,7 +5255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _facepointManager: {fileID: 543386377}
-  rGameObject: {fileID: 6425009}
+  rGameObject: {fileID: 6425013}
   MaxPos: {x: 10, y: 10, z: 10}
   MinPos: {x: -10, y: -10, z: -10}
   textBoxString: {fileID: 1756075015}
