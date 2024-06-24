@@ -4470,7 +4470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1596460447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4540,9 +4540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6faf0780d8a8d5444804dea763f8e003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bu_close: {fileID: 0}
   duration: 0.75
-  canvasGroup: {fileID: 0}
 --- !u!1 &1623021699
 GameObject:
   m_ObjectHideFlags: 0
@@ -5105,13 +5103,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
   screen: {fileID: 1567861485}
+  text: {fileID: 371579811}
   background: {fileID: 1567861481}
   preview: {fileID: 2112883171}
   brightnessTxt: {fileID: 1407966381}
-  text: {fileID: 371579811}
   date: {fileID: 2035401108}
   splashTxt: {fileID: 220155026}
   photoTxt: {fileID: 458947991}
+  albumButton: {fileID: 1869496342}
+  creamButton: {fileID: 1721680806}
   audioManager: {fileID: 458238645}
 --- !u!114 &1747062407
 MonoBehaviour:

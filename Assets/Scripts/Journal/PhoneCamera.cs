@@ -10,7 +10,7 @@ public class PhoneCamera : MonoBehaviour
 {
     [SerializeField] private JournalSO journalSO;
     [SerializeField] protected Mediapipe.Unity.Screen screen;
-    [Space]
+
     private Texture2D picTaken;
     private bool camAvailable;
     private WebCamTexture backCam;
@@ -20,20 +20,19 @@ public class PhoneCamera : MonoBehaviour
     private Texture defaultBackground;
     private string msg;
 
+    public TMP_Text text; // camera text
     public RawImage background; // background
     //public GameObject screenLayer;
     public RawImage preview; 
-    [Header("UI")]
     public TMP_Text brightnessTxt;
-    public TMP_Text text; // camera text
     public TMP_Text date;
     public TMP_Text splashTxt;
     public TMP_Text photoTxt;
-    //public UnityEngine.UI.Button albumButton;
-    //public UnityEngine.UI.Button creamButton;
+    public UnityEngine.UI.Button albumButton;
+    public UnityEngine.UI.Button creamButton;
     public GameObject audioManager;
 
-    public void StartPhoto()
+    private void Start()
     {
         journalSO.Initialize();
         
@@ -73,8 +72,8 @@ public class PhoneCamera : MonoBehaviour
         // check if has captured // idk why use scriptable object
         if (journalSO.GetHasCaptured())
         {
-            //albumButton.gameObject.SetActive(true);
-            //creamButton.gameObject.SetActive(false);
+            albumButton.gameObject.SetActive(true);
+            creamButton.gameObject.SetActive(false);
             if (splashTxt)
                 splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
             photoTxt.text = "After Photo";
@@ -82,8 +81,8 @@ public class PhoneCamera : MonoBehaviour
         }
         else
         {
-            //albumButton.gameObject.SetActive(false);
-            //creamButton.gameObject.SetActive(true);
+            albumButton.gameObject.SetActive(false);
+            creamButton.gameObject.SetActive(true);
             if(splashTxt)
                 splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
             photoTxt.text = "Before Photo";
@@ -104,14 +103,14 @@ public class PhoneCamera : MonoBehaviour
 
         camAvailable = true;
 
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
-        }
-        else
-        {
-            preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
-        }
+        //if (Application.platform == RuntimePlatform.IPhonePlayer)
+        //{
+        //    preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
+        //}
+        //else
+        //{
+        //    preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        //}
     }
 
     public void ChangeFrontCam()

@@ -20,15 +20,16 @@ public class JadenCurveManager : MonoBehaviour
     {
         var pointList = new List<Vector3>();
 
+
+
         //pointList.Add(RenderingOfGraph(ratio));
         for (int i = 0; i < NumSegments; i++)
         {
-            Debug.Log("Segments " + i);
             for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
             {
                 Vector3[] points = GetPointsInSegment(i);
 
-                pointList.Add(ComputeBezierPoint(points.ToList(), ratio));
+                pointList.Add(RenderingOfGraph(points[0], points[1], points[2], points[3], ratio));
             }
         }
         LineRenderer.positionCount = pointList.Count;
@@ -58,30 +59,15 @@ public class JadenCurveManager : MonoBehaviour
         //}
     }
 
-    //public Vector3 RenderingOfGraph(Vector3 P0, Vector3 P1, Vector3 P2, Vector3 P3, float localTValue)
-    //{
-    //    var A = Vector3.Lerp(P0, P1, localTValue); // middlepoint of P0 and P1
-    //    var B = Vector3.Lerp(P1, P2, localTValue); // middle point of P1 and P2
-    //    var C = Vector3.Lerp(P2, P3, localTValue); // middle point of P2 and P3
-    //    var D = Vector3.Lerp(A, B, localTValue); // middle of A and B
-    //    var E = Vector3.Lerp(B, C, localTValue); //middle of B and C
-    //    var P = Vector3.Lerp(D, E, localTValue); // middle of D and E 
-    //    return P;
-    //}
-    public static Vector3 ComputeBezierPoint(List<Vector3> controlPoints, float t)
+    public Vector3 RenderingOfGraph(Vector3 P0, Vector3 P1, Vector3 P2, Vector3 P3, float localTValue)
     {
-        if (controlPoints.Count == 1)
-        {
-            return controlPoints[0];
-        }
-
-        List<Vector3> newControlPoints = new List<Vector3>();
-        for (int i = 0; i < controlPoints.Count - 1; i++)
-        {
-            newControlPoints.Add(Vector3.Lerp(controlPoints[i], controlPoints[i + 1], t));
-        }
-
-        return ComputeBezierPoint(newControlPoints, t);
+        var A = Vector3.Lerp(P0, P1, localTValue); // middlepoint of P0 and P1
+        var B = Vector3.Lerp(P1, P2, localTValue); // middle point of P1 and P2
+        var C = Vector3.Lerp(P2, P3, localTValue); // middle point of P2 and P3
+        var D = Vector3.Lerp(A, B, localTValue); // middle of A and B
+        var E = Vector3.Lerp(B, C, localTValue); //middle of B and C
+        var P = Vector3.Lerp(D, E, localTValue); // middle of D and E 
+        return P;
     }
     public int NumPoints
     {
@@ -145,82 +131,56 @@ public class JadenCurveManager : MonoBehaviour
             }
         }
     }
-    //public Vector3[] GetPointsInSegment(int i)
-    //{
-    //    return new Vector3[] { points[i * 3].transform.position, 
-    //        points[i * 3 + 1].transform.position,
-    //        points[i * 3 + 2].transform.position, 
-    //        points[LoopIndex(i * 3 + 3)].transform.position };
-    //}
+    public Vector3[] GetPointsInSegment(int i)
+    {
+        return new Vector3[] { points[i * 3].transform.position, points[i * 3 + 1].transform.position, points[i * 3 + 2].transform.position, points[LoopIndex(i * 3 + 3)].transform.position };
+    }
     public Vector2[] GetPointsInSegmentV2(int i)
     {
-        return new Vector2[] { points[i * 3].transform.position,
-            points[i * 3 + 1].transform.position, 
-            points[i * 3 + 2].transform.position, 
-            points[LoopIndex(i * 3 + 3)].transform.position };
+        return new Vector2[] { points[i * 3].transform.position, points[i * 3 + 1].transform.position, points[i * 3 + 2].transform.position, points[LoopIndex(i * 3 + 3)].transform.position };
     }
-
-    public Vector3[] GetPointsInSegment(int segmentIndex, int pointsPerSegment = 4)
+    public void MovePoint(int i, Vector3 pos)
     {
-        // Create an array to hold the points for the segment
-        Vector3[] segmentPoints = new Vector3[pointsPerSegment];
+        Vector3 deltaMove = pos - points[i].transform.position;
 
-        // Fill the array with the positions of the points in the segment
-        for (int j = 0; j < pointsPerSegment; j++)
+        if (i % 3 == 0 || !autoSetControlPoints)
         {
-            int pointIndex = LoopIndex(segmentIndex * (pointsPerSegment - 1) + j);
-            segmentPoints[j] = points[pointIndex].transform.position;
+            points[i].transform.position = pos;
+
+            if (autoSetControlPoints)
+            {
+                AutoSetAllAffectedControlPoints(i);
+            }
+            else
+            {
+
+                if (i % 3 == 0)
+                {
+                    if (i + 1 < points.Count || isClosed)
+                    {
+                        points[LoopIndex(i + 1)].transform.position += deltaMove;
+                    }
+                    if (i - 1 >= 0 || isClosed)
+                    {
+                        points[LoopIndex(i - 1)].transform.position += deltaMove;
+                    }
+                }
+                else
+                {
+                    bool nextPointIsAnchor = (i + 1) % 3 == 0;
+                    int correspondingControlIndex = (nextPointIsAnchor) ? i + 2 : i - 2;
+                    int anchorIndex = (nextPointIsAnchor) ? i + 1 : i - 1;
+
+                    if (correspondingControlIndex >= 0 && correspondingControlIndex < points.Count || isClosed)
+                    {
+                        float dst = (points[LoopIndex(anchorIndex)].transform.position - points[LoopIndex(correspondingControlIndex)].transform.position).magnitude;
+                        Vector3 dir = (points[LoopIndex(anchorIndex)].transform.position - pos).normalized;
+                        points[LoopIndex(correspondingControlIndex)].transform.position = points[LoopIndex(anchorIndex)].transform.position + dir * dst;
+                    }
+                }
+            }
         }
-
-        return segmentPoints;
     }
-
-    int LoopIndex(int i)
-    {
-        return (i + points.Count) % points.Count;
-    }
-    //public void MovePoint(int i, Vector3 pos)
-    //{
-    //    Vector3 deltaMove = pos - points[i].transform.position;
-
-    //    if (i % 3 == 0 || !autoSetControlPoints)
-    //    {
-    //        points[i].transform.position = pos;
-
-    //        if (autoSetControlPoints)
-    //        {
-    //            AutoSetAllAffectedControlPoints(i);
-    //        }
-    //        else
-    //        {
-
-    //            if (i % 3 == 0)
-    //            {
-    //                if (i + 1 < points.Count || isClosed)
-    //                {
-    //                    points[LoopIndex(i + 1)].transform.position += deltaMove;
-    //                }
-    //                if (i - 1 >= 0 || isClosed)
-    //                {
-    //                    points[LoopIndex(i - 1)].transform.position += deltaMove;
-    //                }
-    //            }
-    //            else
-    //            {
-    //                bool nextPointIsAnchor = (i + 1) % 3 == 0;
-    //                int correspondingControlIndex = (nextPointIsAnchor) ? i + 2 : i - 2;
-    //                int anchorIndex = (nextPointIsAnchor) ? i + 1 : i - 1;
-
-    //                if (correspondingControlIndex >= 0 && correspondingControlIndex < points.Count || isClosed)
-    //                {
-    //                    float dst = (points[LoopIndex(anchorIndex)].transform.position - points[LoopIndex(correspondingControlIndex)].transform.position).magnitude;
-    //                    Vector3 dir = (points[LoopIndex(anchorIndex)].transform.position - pos).normalized;
-    //                    points[LoopIndex(correspondingControlIndex)].transform.position = points[LoopIndex(anchorIndex)].transform.position + dir * dst;
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
     //public Vector2[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     //{
     //    List<Vector2> evenlySpacedPoints = new List<Vector2>();
@@ -365,7 +325,10 @@ public class JadenCurveManager : MonoBehaviour
         }
     }
 
- 
+    int LoopIndex(int i)
+    {
+        return (i + points.Count) % points.Count;
+    }
     private GameObject returnNewPoint(Vector3 position)
     {
         GameObject newpoint = Instantiate(pointPrefab);
