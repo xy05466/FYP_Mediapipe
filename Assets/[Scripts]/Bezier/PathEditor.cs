@@ -68,22 +68,31 @@ public class PathEditor : Editor
             Vector2[] points = path.GetPointsInSegments(i);
             Handles.color = Color.black;
             //lines going from control points to their respective anchor points
-            Handles.DrawLine(points[1], points[0]);
+            Handles.DrawLine(points[0], points[1]);
+            //Handles.DrawLine(points[1], points[2]);
             Handles.DrawLine(points[2], points[3]);
-            //i have no idea how to explain this so youtube 2D curve editor at about 12:25 Episode 2
-            Handles.DrawBezier(points[0], points[3], points[1], points[2], Color.green, null, 2);
+            //first 2 points is start and end of curve the last 2 points is to handle the curve(but not needed)
+            Handles.DrawBezier(points[1], points[3], points[0], points[2], Color.green, null, 2);
         }
 
-        Handles.color = Color.red;
+        Handles.color = Color.clear;
+        GameObject[] facepointsArray = GameObject.FindGameObjectsWithTag("landmarks");
+        List<GameObject> facepoints = new List<GameObject>(facepointsArray);
+
         for (int i = 0; i < path.NumPoints; i++)
         {
-            //returns a vector3 for the new position of the handles if they have been moved
-            Vector2 newPos = Handles.FreeMoveHandle(path[i], Quaternion.identity, .1f, Vector2.zero, Handles.CylinderHandleCap);
-            //checking if the position has changed
-            if (path[i] != newPos)
+            Vector2 newPoint = new Vector2(facepoints[i].transform.position.x, facepoints[i].transform.position.y);
+            path.points[i] = newPoint;
+
+            // Returns a vector3 for the new position of the handles if they have been moved
+            Vector2 newPosHandle = Handles.FreeMoveHandle(path[i], Quaternion.identity, .1f, Vector2.zero, Handles.CylinderHandleCap);
+
+            // Checking if the position has changed
+            if (path[i] != newPosHandle)
             {
                 Undo.RecordObject(creator, "Move Point");
-                path.MovePoint(i, newPos);
+                path.MovePoint(i, newPosHandle);
+                facepoints[i].transform.position = new Vector3(newPosHandle.x, newPosHandle.y, facepoints[i].transform.position.z);
             }
         }
     }

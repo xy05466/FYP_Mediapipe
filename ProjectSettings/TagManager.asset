@@ -9,6 +9,7 @@ TagManager:
   - Facepoint
   - Handpoint
   - Date
+  - landmarks
   layers:
   - Default
   - TransparentFX

@@ -7,8 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class Path
 {
-    [SerializeField, HideInInspector]
-    List<Vector2> points;
+    [HideInInspector]
+    public List<Vector2> points;
     [SerializeField, HideInInspector]
     bool isClosed;
     [SerializeField, HideInInspector]
@@ -16,13 +16,20 @@ public class Path
     //constructor
     public Path(Vector2 centre)
     {
+        Vector2 point1 = centre + Vector2.left;
+        Vector2 point2 = centre + Vector2.right;
+        Vector2 segmentVector = point2 - point1;
+
+        Vector2 extraPoint1 = point1 + segmentVector / 3;
+        Vector2 extraPoint2 = point1 + 2 * segmentVector / 3;
+
         //generating of the curve
         points = new List<Vector2>
         {
-            centre + Vector2.left,
-            centre + (Vector2.left + Vector2.up)*.5f,
-            centre + (Vector2.right+ Vector2.down)*.5f,
-            centre + Vector2.right
+            point1,
+            extraPoint1,
+            extraPoint2,
+            point2
         };
     }
 
@@ -93,7 +100,7 @@ public class Path
     //2nd segment is the 3 points made in the addsegment method and the last point of the 1st segment
     public Vector2[] GetPointsInSegments(int i)
     {
-        return new Vector2[] { points[i * 3], points[i * 3 + 1], points[i * 3 + 2], points[LoopIndex(i * 3 + 3)] };
+        return new Vector2[] { points[i * 3], points[i * 3 + 1], points[i * 3 + 2], points[i * 3 + 3] };
     }
     //setting the position of a point
     public void MovePoint(int i, Vector2 pos)
