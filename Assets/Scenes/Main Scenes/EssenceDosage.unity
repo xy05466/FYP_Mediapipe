@@ -1856,9 +1856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6faf0780d8a8d5444804dea763f8e003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bu_close: {fileID: 0}
   duration: 3.2
-  canvasGroup: {fileID: 0}
 --- !u!114 &489483071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3778,7 +3776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 54.96106}
+  m_AnchoredPosition: {x: 0, y: 54.961}
   m_SizeDelta: {x: 4950, y: 1624.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437593381
@@ -5264,7 +5262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _facepointManager: {fileID: 543386377}
-  rGameObject: {fileID: 6425013}
+  rGameObject: {fileID: 6425009}
   MaxPos: {x: 10, y: 10, z: 10}
   MinPos: {x: -10, y: -10, z: -10}
   textBoxString: {fileID: 1756075015}
