@@ -5,23 +5,37 @@ using UnityEngine;
 
 public class LineCollisionResponse : MonoBehaviour
 {
-    public Action<GameObject,GameObject> OnCollide;
-
-    internal void Subscribe(Action<GameObject, GameObject> collideWithLine)
+    public Action<int,GameObject, Collider> OnColliding;
+    private int pointID = -1;
+    private string ignoreName = "";
+    public void SetIgnoreName(string ignoreName)
     {
-        OnCollide += collideWithLine;
+        this.ignoreName = ignoreName;
     }
-    internal void UnSubscribe(Action<GameObject, GameObject> collideWithLine)
+    public void SetId(int id)
     {
-        OnCollide -= collideWithLine;
+        pointID = id;
+    }
+    public int GetId() { return pointID; }
+
+    internal void Subscribe(Action<int,GameObject, Collider> collideWithLine)
+    {
+        OnColliding += collideWithLine;
+    }
+    internal void UnSubscribe(Action<int,GameObject, Collider> collideWithLine)
+    {
+        OnColliding -= collideWithLine;
     }
     internal void UnSubscribeAll()
     {
-        OnCollide = null;
+        OnColliding = null;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        OnCollide?.Invoke(gameObject,other.gameObject);
+        if(other.name != ignoreName)
+        {
+            OnColliding?.Invoke(pointID, gameObject, other);
+        }
     }
 }

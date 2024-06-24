@@ -28,7 +28,10 @@ public abstract class PageLogic : MonoBehaviour
     public abstract void EndPage();
     public abstract void ResetPage();
     public abstract void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject);
-
+    protected bool CollideWithFacePoint(int pointIndex, int pointIndexCompare)
+    {
+        return (pointIndex == pointIndexCompare);
+    }
     public void ChangeState(PageState pageState)
     {
         this.pageState = pageState;

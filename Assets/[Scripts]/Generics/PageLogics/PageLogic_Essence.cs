@@ -20,7 +20,7 @@ public class PageLogic_Essence : PageLogic_Extension
     public int positionCount =1; // should start at 1
     public Button bu_fill;
     Vector3 lerpPos = Vector3.zero;
-
+    public float sliderfloat = 0.5f;
     //lr.GetPosition(i-1) / 
     public override void StartPage()
     {
@@ -44,7 +44,7 @@ public class PageLogic_Essence : PageLogic_Extension
         //if (accupointsMassageManagerFinal.gameObject.activeInHierarchy)
         //    accupointsMassageManagerFinal.UpdateScene();
         lr.positionCount = points.Count;
-        lr2.positionCount = currentIndex;
+        lr2.positionCount = currentIndex + 2;
         for (int i = 0; i < points.Count; i++)
         {
             int p = points[i];
@@ -58,23 +58,81 @@ public class PageLogic_Essence : PageLogic_Extension
             PositionColliderBetweenPoints(i,lineRenderer.GetPosition(i), lineRenderer.GetPosition(i + 1));
         }
 
+        //if(currentIndex > 2)
+        //{
+        //    Vector3 startPosition = lr.GetPosition(0);
+        //    Vector3 endPosition = lr.GetPosition(1);
 
-        // fill line renderer
-        for (int i = 0; i < currentIndex; i++)
+        //    // direction of vector from end to start
+        //    Vector3 direction = endPosition - startPosition;
+
+        //    // Calculate percentage of vector
+        //    Vector3 percentagePosition = startPosition + direction * sliderfloat;
+        //    // Set positions in lr2
+        //    lr2.SetPosition(0, startPosition);
+        //    lr2.SetPosition(1, percentagePosition);
+        //}
+
+        //fill line renderer
+        for (int i = 0; i < lr2.positionCount; i++)
         {
-            lr2.SetPosition(i, lr.GetPosition(i));
+            if(i== lr2.positionCount - 1)
+            {
+                Vector3 startPosition = lr.GetPosition(i-1);
+                Vector3 endPosition = lr.GetPosition(i);
+
+                // direction of vector from end to start
+                Vector3 direction = endPosition - startPosition;
+
+                // Calculate percentage of vector
+                Vector3 percentagePosition = startPosition + direction * sliderfloat;
+                // Set positions in lr2
+                lr2.SetPosition(i, percentagePosition);
+            }
+            else
+            {
+                lr2.SetPosition(i, lr.GetPosition(i));
+            }
+
         }
 
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
         if(currentIndex >=points.Count) return;
-        if (points[currentIndex] == facePointIndex)
+        //if (points[currentIndex] == facePointIndex)
+        //{
+        //    currentIndex++;
+        //    sliderfloat = 0;
+        //}
+        //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
+        //{
+        //    sliderfloat += Time.deltaTime;
+        //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+        //}
+        
+        // if collide with current facepoint
+        if (CollideWithFacePoint(points[currentIndex],facePointIndex))
         {
-            currentIndex++;
+            //FillCurrentPoint();
         }
     }
+    void FillCurrentPoint(float fill)
+    {
+        if (currentIndex >=points.Count) return;
 
+        // to do:  Utilize fill variable
+
+        sliderfloat += Time.deltaTime;
+        sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+        if (sliderfloat >= 1)
+            NextPoint();
+    }
+    void NextPoint()
+    {
+        sliderfloat = 0;
+        currentIndex++;
+    }
     public override void EndPage()
     {
     }
@@ -126,15 +184,17 @@ public class PageLogic_Essence : PageLogic_Extension
         // Create new colliders
         for (int i = 0; i < lineRenderer.positionCount - 1; i++)
         {
-            CreateColliderBetweenPoints(lineRenderer.GetPosition(i), lineRenderer.GetPosition(i + 1));
+            CreateColliderBetweenPoints(i,lineRenderer.GetPosition(i), lineRenderer.GetPosition(i + 1));
         }
     }
     List<BoxCollider> colliders = new List<BoxCollider>();
-    private void CreateColliderBetweenPoints(Vector3 start, Vector3 end)
+    private void CreateColliderBetweenPoints(int id,Vector3 start, Vector3 end)
     {
         GameObject colliderObject = new GameObject("LineSegmentCollider");
         colliderObject.transform.parent = this.transform;
         LineCollisionResponse lcr = colliderObject.AddComponent<LineCollisionResponse>();
+        lcr.SetId(id);
+        lcr.SetIgnoreName("LineSegmentCollider");
         lcr.Subscribe(CollideWithLine);
 
         BoxCollider boxCollider = colliderObject.AddComponent<BoxCollider>();
@@ -167,9 +227,31 @@ public class PageLogic_Essence : PageLogic_Extension
         // Scale the collider to match the line segment
         boxCollider.size = new Vector3(colliderWidth, colliderWidth, direction.magnitude);
     }
-    void CollideWithLine(GameObject goObject, GameObject other)
+    void CollideWithLine(int id, GameObject goObject, Collider other)
     {
+        if (currentIndex >= points.Count) return;
+        if (other.gameObject.tag == "Handpoint" && id == currentIndex)
+        {
+            Vector3 startPoint = lr.GetPosition(currentIndex);
+            Vector3 endpoint = lr.GetPosition(currentIndex + 1);
+            // check 
+            Debug.Log("startPoint "+ startPoint);
+            Debug.Log("Closest point :" +other.ClosestPoint(goObject.transform.position));
+            Debug.Log("lr current point :" +lr2.GetPosition(lr2.positionCount-1));
+            Debug.Log("endpoint " + endpoint);
 
+            // Calculate the total distance
+            float totalDistance = Vector3.Distance(startPoint, lr2.GetPosition(lr2.positionCount - 1));
+
+            // Calculate the distance from start to the check position
+            float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
+
+            Debug.Log("totalDistance " + totalDistance);
+            Debug.Log("checkDistance " + checkDistance);
+
+            if(checkDistance > totalDistance)
+                FillCurrentPoint(1);
+        }
     }
 
 }
