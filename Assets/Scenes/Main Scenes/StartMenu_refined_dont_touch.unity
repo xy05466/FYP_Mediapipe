@@ -5441,6 +5441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lr_outline: {fileID: 1209979374}
   lr_filled: {fileID: 297845291}
+  points: 
+  colliders: []
   colliderWidth: 0.1
 --- !u!1 &209231602
 GameObject:
@@ -10955,7 +10957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &381157007
 Transform:
   m_ObjectHideFlags: 0
