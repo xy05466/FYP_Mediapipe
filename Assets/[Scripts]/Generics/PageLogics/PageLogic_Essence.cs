@@ -15,6 +15,7 @@ public class PageLogic_Essence : PageLogic_Extension
     [Header("TESTING point")]
     public List<SliderStep> list_steps = new List<SliderStep>();
     private int currentStepIndex = 0;
+    private int slidersDoneCount = 0;
     //lr.GetPosition(i-1) / 
     public override void StartPage()
     {
@@ -155,6 +156,15 @@ public class PageLogic_Essence : PageLogic_Extension
     void OnSliderEnded()
     {
         Debug.Log("slider ended");
+        slidersDoneCount++;
+        if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
+        {
+            NextStep();
+        }
+    }
+    void NextStep()
+    {
+        currentStepIndex++;
     }
 }
 
