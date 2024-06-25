@@ -10,105 +10,79 @@ public class PageLogic_Essence : PageLogic_Extension
     public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
 
-    public List<int> points = new List<int>();
-    private int currentIndex = 0;
-    public MassageSliderObject massageSliderObject;
+    public MassageSliderObject massageSliderObjectPrefeb;
+    public List<MassageSliderObject> massageSliderObjects;
     [Header("TESTING point")]
-
-    public float sliderfloat = 0.5f;
+    public List<SliderStep> list_steps = new List<SliderStep>();
+    private int currentStepIndex = 0;
     //lr.GetPosition(i-1) / 
 
-    public float colliderWidth = 0.1f;
     public override void StartPage()
     {
         //accupointsMassageManagerFinal?.StartFunc();
 
         //lr.materials[0].SetTexture("_MainTex", testSprite);
-        massageSliderObject.lr_outline.positionCount = points.Count;
-        massageSliderObject.lr_filled.positionCount = currentIndex+1;
-        massageSliderObject.Subscribe(CollideWithLine);
-        massageSliderObject.UpdateColliders();
-    }
 
+        int maxSpawn = 0;
+        int tempcCount = 0;
+        // find max number of slider needs to spawn
+        foreach (var step in list_steps) {
+            foreach (var item in step.massageSliders)
+            {
+                tempcCount++;
+            }
+            if (tempcCount > maxSpawn) { 
+                maxSpawn = tempcCount; 
+            }
+            tempcCount = 0;
+        }
+
+        for (int i = 0; i < maxSpawn; i++)
+        {
+            MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb,transform);
+            mso.transform.localPosition = Vector3.zero;
+            massageSliderObjects.Add(mso);
+        }
+        // Init all slider
+        foreach (var massageSlider in massageSliderObjects)
+        {
+            massageSlider.Init();
+            massageSlider.Subscribe(CollideWithLine);
+        }
+    }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
         if (facepointsObj == null || facepointsObj.Count <= 0) return;
         //if (accupointsMassageManagerFinal.gameObject.activeInHierarchy)
         //    accupointsMassageManagerFinal.UpdateScene();
-        massageSliderObject.lr_outline.positionCount = points.Count;
-        massageSliderObject.lr_filled.positionCount = currentIndex + 2;
-
-        for (int i = 0; i < points.Count; i++)
-        {
-            int p = points[i];
-            massageSliderObject.lr_outline.SetPosition(i, facepointsObj[p].transform.position);
-        }
-        if(currentIndex < massageSliderObject.lr_outline.positionCount)
-        // set collider position
-        for (int i = 0; i < massageSliderObject.lr_outline.positionCount - 1; i++)
-        {
-            massageSliderObject.PositionColliderBetweenPoints(i, massageSliderObject.lr_outline.GetPosition(i), massageSliderObject.lr_outline.GetPosition(i + 1));
-        }
-
-        //fill line renderer
-        for (int i = 0; i < massageSliderObject.lr_filled.positionCount; i++)
-        {
-            if(i== massageSliderObject.lr_filled.positionCount - 1)
-            {
-                Vector3 startPosition = massageSliderObject.lr_outline.GetPosition(i-1);
-                Vector3 endPosition = massageSliderObject.lr_outline.GetPosition(i);
-
-                // direction of vector from end to start
-                Vector3 direction = endPosition - startPosition;
-
-                // Calculate percentage of vector
-                Vector3 percentagePosition = startPosition + direction * sliderfloat;
-                // Set positions in lr2
-                massageSliderObject.lr_filled.SetPosition(i, percentagePosition);
-            }
-            else
-            {
-                massageSliderObject.lr_filled.SetPosition(i, massageSliderObject.lr_outline.GetPosition(i));
-            }
-        }
+        foreach (var massageSlider in massageSliderObjects)
+            massageSlider.UpdateSlider(facepointsObj);
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        if(currentIndex >=points.Count) return;
-        //if (points[currentIndex] == facePointIndex)
-        //{
-        //    currentIndex++;
-        //    sliderfloat = 0;
-        //}
-        //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
-        //{
-        //    sliderfloat += Time.deltaTime;
-        //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
-        //}
-        
-        // if collide with current facepoint
-        if (CollideWithFacePoint(points[currentIndex],facePointIndex))
+        foreach (var massageSliderObject in massageSliderObjects)
         {
-            //FillCurrentPoint();
+            if(massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+            //if (points[currentIndex] == facePointIndex)
+            //{
+            //    currentIndex++;
+            //    sliderfloat = 0;
+            //}
+            //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
+            //{
+            //    sliderfloat += Time.deltaTime;
+            //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+            //}
+        
+            // if collide with current facepoint
+            if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
+            {
+                //FillCurrentPoint();
+            }
         }
     }
-    void FillCurrentPoint(float speed = 1)
-    {
-        if (currentIndex >=points.Count) return;
 
-        // to do:  Utilize fill variable
-
-        sliderfloat += Time.deltaTime * speed;
-        sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
-        //sliderfloat = fill;
-        if (sliderfloat >= 1)
-            NextPoint();
-    }
-    void NextPoint()
-    {
-        sliderfloat = 0;
-        currentIndex++;
-    }
+ 
     public override void EndPage()
     {
     }
@@ -131,18 +105,13 @@ public class PageLogic_Essence : PageLogic_Extension
     {
     }
 
-    void CollideWithLine(int id, GameObject goObject, Collider other)
+    void CollideWithLine(MassageSliderObject massageSliderObject,int id, GameObject goObject, Collider other)
     {
-        if (currentIndex >= points.Count) return;
-        if (other.gameObject.tag == "Handpoint" && id == currentIndex)
+        if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+        if (other.gameObject.tag == "Handpoint" && id == massageSliderObject.GetCurrentIndex())
         {
-            Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(currentIndex);
-            Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(currentIndex + 1);
-            //// check 
-            //Debug.Log("startPoint "+ startPoint);
-            //Debug.Log("Closest point :" +other.ClosestPoint(goObject.transform.position));
-            //Debug.Log("lr current point :" + massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount-1));
-            //Debug.Log("endpoint " + endpoint);
+            Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
+            Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
 
             // Calculate the total distance
             float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
@@ -157,7 +126,7 @@ public class PageLogic_Essence : PageLogic_Extension
             Debug.Log("checkDistance " + checkDistance);
             Debug.Log("checkDistance2 " + totalDistance2);
             if (checkDistance > totalDistance)
-                FillCurrentPoint(1/ totalDistance2);
+                massageSliderObject.FillCurrentPoint(1/ totalDistance2);
         }
     }
 
@@ -165,6 +134,11 @@ public class PageLogic_Essence : PageLogic_Extension
 
 [Serializable]
 public class SliderStep
+{
+    public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
+}
+[Serializable]
+public class MassageSliderPoints
 {
     public List<int> points = new List<int>();
 }

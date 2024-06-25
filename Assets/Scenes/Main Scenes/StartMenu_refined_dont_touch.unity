@@ -5441,7 +5441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lr_outline: {fileID: 1209979374}
   lr_filled: {fileID: 297845291}
-  points: 
+  points: 790100008d01000069010000
   colliders: []
   colliderWidth: 0.1
 --- !u!1 &209231602
@@ -6997,10 +6997,9 @@ MonoBehaviour:
   leaveEmpty: ==============
   facepointManager_Jaden: {fileID: 0}
   accupointsMassageManagerFinal: {fileID: 643711888}
-  points: 
-  massageSliderObject: {fileID: 0}
-  sliderfloat: 0.5
-  colliderWidth: 0.1
+  massageSliderObjectPrefeb: {fileID: 0}
+  massageSliderObjects: []
+  list_steps: []
 --- !u!1 &248550292
 GameObject:
   m_ObjectHideFlags: 0
@@ -14425,10 +14424,14 @@ MonoBehaviour:
   leaveEmpty: ==============
   facepointManager_Jaden: {fileID: 559884442}
   accupointsMassageManagerFinal: {fileID: 381157008}
-  points: 790100008d01000069010000
-  massageSliderObject: {fileID: 205556544}
-  sliderfloat: 0
-  colliderWidth: 0.1
+  massageSliderObjectPrefeb: {fileID: 205556544}
+  massageSliderObjects: []
+  list_steps:
+  - massageSliders:
+    - points: 2c010000c80000002e010000
+    - points: 2c010000c80000002e010000
+  - massageSliders:
+    - points: 2c010000c80000002e010000
 --- !u!114 &518752969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15736,10 +15739,9 @@ MonoBehaviour:
   leaveEmpty: ==============
   facepointManager_Jaden: {fileID: 559884442}
   accupointsMassageManagerFinal: {fileID: 358856185}
-  points: 67000000430000006d0000000a00000052010000290100004c010000
-  massageSliderObject: {fileID: 0}
-  sliderfloat: 0
-  colliderWidth: 0.1
+  massageSliderObjectPrefeb: {fileID: 0}
+  massageSliderObjects: []
+  list_steps: []
 --- !u!4 &559884440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5403310940259726732, guid: 2e1291ddc10af56d4be1551cc630d40b,
