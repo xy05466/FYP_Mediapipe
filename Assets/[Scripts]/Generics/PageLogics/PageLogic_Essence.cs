@@ -37,6 +37,7 @@ public class PageLogic_Essence : PageLogic_Extension
         //    accupointsMassageManagerFinal.UpdateScene();
         massageSliderObject.lr_outline.positionCount = points.Count;
         massageSliderObject.lr_filled.positionCount = currentIndex + 2;
+
         for (int i = 0; i < points.Count; i++)
         {
             int p = points[i];
@@ -69,9 +70,7 @@ public class PageLogic_Essence : PageLogic_Extension
             {
                 massageSliderObject.lr_filled.SetPosition(i, massageSliderObject.lr_outline.GetPosition(i));
             }
-
         }
-
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
@@ -93,14 +92,15 @@ public class PageLogic_Essence : PageLogic_Extension
             //FillCurrentPoint();
         }
     }
-    void FillCurrentPoint(float fill)
+    void FillCurrentPoint(float speed = 1)
     {
         if (currentIndex >=points.Count) return;
 
         // to do:  Utilize fill variable
 
-        sliderfloat += Time.deltaTime;
+        sliderfloat += Time.deltaTime * speed;
         sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+        //sliderfloat = fill;
         if (sliderfloat >= 1)
             NextPoint();
     }
@@ -138,11 +138,11 @@ public class PageLogic_Essence : PageLogic_Extension
         {
             Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(currentIndex);
             Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(currentIndex + 1);
-            // check 
-            Debug.Log("startPoint "+ startPoint);
-            Debug.Log("Closest point :" +other.ClosestPoint(goObject.transform.position));
-            Debug.Log("lr current point :" + massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount-1));
-            Debug.Log("endpoint " + endpoint);
+            //// check 
+            //Debug.Log("startPoint "+ startPoint);
+            //Debug.Log("Closest point :" +other.ClosestPoint(goObject.transform.position));
+            //Debug.Log("lr current point :" + massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount-1));
+            //Debug.Log("endpoint " + endpoint);
 
             // Calculate the total distance
             float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
@@ -150,11 +150,14 @@ public class PageLogic_Essence : PageLogic_Extension
             // Calculate the distance from start to the check position
             float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
 
+
+            float totalDistance2 = Vector3.Distance(startPoint, endpoint);
+
             Debug.Log("totalDistance " + totalDistance);
             Debug.Log("checkDistance " + checkDistance);
-
-            if(checkDistance > totalDistance)
-                FillCurrentPoint(1);
+            Debug.Log("checkDistance2 " + totalDistance2);
+            if (checkDistance > totalDistance)
+                FillCurrentPoint(1/ totalDistance2);
         }
     }
 
