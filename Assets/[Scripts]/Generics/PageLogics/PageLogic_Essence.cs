@@ -49,6 +49,7 @@ public class PageLogic_Essence : PageLogic_Extension
             massageSlider.Init();
             massageSlider.Subscribe(CollideWithLine);
         }
+        StartStep();
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
@@ -81,30 +82,24 @@ public class PageLogic_Essence : PageLogic_Extension
             }
         }
     }
-
- 
     public override void EndPage()
     {
     }
     public override void ResetPage()
     {
     }
-
     public override bool IsPageDone()
     {
         //return accupointsMassageManagerFinal.IsDone();
         return false;
     }
-
     public override void OnFaceAnnotationActive(bool active)
     {
         //accupointsMassageManagerFinal.gameObject.SetActive(active);
     }
-
     public override void OnHandAnnotationActive(bool active)
     {
     }
-
     void CollideWithLine(MassageSliderObject massageSliderObject,int id, GameObject goObject, Collider other)
     {
         if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
@@ -129,7 +124,24 @@ public class PageLogic_Essence : PageLogic_Extension
                 massageSliderObject.FillCurrentPoint(1/ totalDistance2);
         }
     }
+    void StartStep()
+    {
+        int currentSlider = 0;
 
+        // loop through each slider data base on current step
+        foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
+        {
+            // set up the points on slider 
+            for (int i = 0; i < massageSliderData.points.Count; i++)
+            {
+                int point = massageSliderData.points[i];
+                massageSliderObjects[currentSlider].AddPoint(point);
+
+            }
+            currentSlider++;
+        }
+
+    }
 }
 
 [Serializable]

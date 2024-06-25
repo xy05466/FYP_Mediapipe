@@ -20,6 +20,7 @@ public class MassageSliderObject : MonoBehaviour
        lr_outline.positionCount = points.Count;
        lr_filled.positionCount = currentIndex + 2;
         UpdateColliders();
+        ClearPoints();
     }
     public void UpdateSlider(List<GameObject> gameObjects)
     {
@@ -141,12 +142,22 @@ public class MassageSliderObject : MonoBehaviour
     }
     void NextPoint()
     {
+        if (lr_filled.positionCount >= lr_outline.positionCount) return;
+
         sliderfloat = 0;
         currentIndex++;
     }
     public void Subscribe(Action<MassageSliderObject,int, GameObject, Collider> action)
     {
         OnColliding += action;
+    }
+    public void AddPoint(int faceLandmark)
+    {
+        points.Add(faceLandmark);
+    }
+    public void ClearPoints()
+    {
+        points = new List<int>();
     }
 
 }

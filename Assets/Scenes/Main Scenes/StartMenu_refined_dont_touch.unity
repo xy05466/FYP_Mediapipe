@@ -14428,8 +14428,8 @@ MonoBehaviour:
   massageSliderObjects: []
   list_steps:
   - massageSliders:
-    - points: 2c010000c80000002e010000
-    - points: 2c010000c80000002e010000
+    - points: 790100008d01000069010000
+    - points: 510100004d0100002a010000
   - massageSliders:
     - points: 2c010000c80000002e010000
 --- !u!114 &518752969
