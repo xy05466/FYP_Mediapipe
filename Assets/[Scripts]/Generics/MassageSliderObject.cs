@@ -14,13 +14,17 @@ public class MassageSliderObject : MonoBehaviour
     public float colliderWidth = 0.1f;
     public Action<MassageSliderObject,int, GameObject,Collider> OnColliding;
     private float sliderfloat = 0f;
+    bool end = false;
+
+    public Action OnEnded;
+    public Action<int> OnNextPoint;
 
     public void Init()
     {
        lr_outline.positionCount = points.Count;
        lr_filled.positionCount = currentIndex + 2;
         UpdateColliders();
-        ClearPoints();
+        ResetSlider();
     }
     public void UpdateSlider(List<GameObject> gameObjects)
     {
@@ -140,24 +144,45 @@ public class MassageSliderObject : MonoBehaviour
         if (sliderfloat >= 1)
             NextPoint();
     }
+    // Go to next point
     void NextPoint()
     {
-        if (lr_filled.positionCount >= lr_outline.positionCount) return;
+        if (end) return;
+        if (lr_filled.positionCount >= lr_outline.positionCount)
+        {
+            OnEnded?.Invoke();
+            end = true;
+            return;
+        }
 
         sliderfloat = 0;
         currentIndex++;
+        OnNextPoint?.Invoke(currentIndex);
     }
-    public void Subscribe(Action<MassageSliderObject,int, GameObject, Collider> action)
-    {
-        OnColliding += action;
-    }
+
     public void AddPoint(int faceLandmark)
     {
         points.Add(faceLandmark);
     }
-    public void ClearPoints()
+    // Reset slider such as points
+    public void ResetSlider()
     {
         points = new List<int>();
+        end = false;
+    }
+
+    // EVENTS
+    public void SubscribeEvent_Colliding(Action<MassageSliderObject, int, GameObject, Collider> action)
+    {
+        OnColliding += action;
+    }
+    public void SubscribeEvent_NextPoint(Action<int> action)
+    {
+        OnNextPoint += action;
+    }
+    public void SubscribeEvent_Ended(Action action)
+    {
+        OnEnded += action;
     }
 
 }
