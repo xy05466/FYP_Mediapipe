@@ -5404,7 +5404,7 @@ GameObject:
   - component: {fileID: 205556543}
   - component: {fileID: 205556544}
   m_Layer: 0
-  m_Name: MassageSliderObject
+  m_Name: MassageSliderObjectPrefeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6995,7 +6995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  massageSliderObjects: []
+  massageSliderObjectPrefeb: {fileID: 0}
   list_steps: []
 --- !u!1 &248550292
 GameObject:
@@ -14419,7 +14419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  massageSliderObjects: []
+  massageSliderObjectPrefeb: {fileID: 205556544}
   list_steps:
   - massageSliders:
     - points: 790100008d01000069010000
@@ -15731,7 +15731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  massageSliderObjects: []
+  massageSliderObjectPrefeb: {fileID: 0}
   list_steps: []
 --- !u!4 &559884440 stripped
 Transform:

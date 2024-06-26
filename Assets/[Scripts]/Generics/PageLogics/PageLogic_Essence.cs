@@ -10,8 +10,8 @@ public class PageLogic_Essence : PageLogic_Extension
     //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
 
-    private MassageSliderObject massageSliderObjectPrefeb;
-    public List<MassageSliderObject> massageSliderObjects;
+    public MassageSliderObject massageSliderObjectPrefeb;
+    private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
     [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
     private int currentStepIndex = 0;
