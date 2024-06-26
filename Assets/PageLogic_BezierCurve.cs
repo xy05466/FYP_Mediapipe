@@ -19,6 +19,8 @@ public class PageLogic_BezierCurve : PageLogic_Extension
     LineRenderer lineRenderer;
     Pathcreator creator;
     Path path;
+    [Range(.05f, 1.5f)]
+    public float spacing = 1.0f;
 
     public override void EndPage()
     {
@@ -51,7 +53,7 @@ public class PageLogic_BezierCurve : PageLogic_Extension
     {
         if (facepointsObj == null || facepointsObj.Count <= 0) return;
 
-        lineRenderer.positionCount = path.NumPoints;
+        Vector2[] spacePoints = path.CalculateEvenlySpacedPoints(spacing);
 
         for (int i = 0; i < path.NumPoints; i++)
         {
@@ -68,13 +70,16 @@ public class PageLogic_BezierCurve : PageLogic_Extension
                     {
                         var handle = Instantiate(newHandles, path.points[i], Quaternion.identity);
                         spawnedHandles[i] = handle;
-
-                        lineRenderer.SetPosition(i, path.points[i]);
                     }
                     // Ensure the handle follows the face points
                     spawnedHandles[i].transform.position = facepointsObj[p].transform.position;
                 }
             }
+        }
+        lineRenderer.positionCount = spacePoints.Length;
+        for (int i = 0; i < spacePoints.Length; i++)
+        {
+            lineRenderer.SetPosition(i, path.points[i]);
         }
 
         // Record changes for undo functionality
