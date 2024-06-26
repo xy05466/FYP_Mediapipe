@@ -11,7 +11,7 @@ public class AccupointsMassageManagerFinal : MonoBehaviour
 
     [SerializeField] FacepointManager_Jaden _facepointManager;
     //[SerializeField] List<AccSOListList> accupointSOs;
-    [SerializeField] List<AccupointCurveData> listSteps = new List<AccupointCurveData>();
+    /*[SerializeField]*/ public List<AccupointCurveData> listSteps = new List<AccupointCurveData>();
     GameObject parent;
     //when init silder set 
     //public List<SilderSet> silderSetsList = new List<SliderSet>();
