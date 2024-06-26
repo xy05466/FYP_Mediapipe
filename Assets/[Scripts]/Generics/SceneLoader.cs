@@ -27,6 +27,9 @@ public class SceneLoader : MonoBehaviour
         if (handGestureHandler != null)
         {
             handGestureHandler.OnHandGestureDetected += DetectGesture;
+        } else
+        {
+            Debug.Log("HandGestureHandler is missing!");
         }
     }
 

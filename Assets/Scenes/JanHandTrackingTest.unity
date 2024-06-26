@@ -342,7 +342,7 @@ MonoBehaviour:
   gestureTime: 1.5
   sceneLoader: {fileID: 178046434}
   nextScene: 
-  isDetected: 1
+  isDetected: 0
 --- !u!114 &275874973
 MonoBehaviour:
   m_ObjectHideFlags: 0
