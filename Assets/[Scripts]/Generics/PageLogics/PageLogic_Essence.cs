@@ -12,6 +12,9 @@ public class PageLogic_Essence : PageLogic_Extension
 
     public MassageSliderObject massageSliderObjectPrefeb;
     private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
+    [Header("settings")]
+    public bool enableAllHandPointCollision = true;
+    public List<FaceHandPoint.HANDPOINT> list_handpoints_interact = new List<FaceHandPoint.HANDPOINT>();
     [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
     private int currentStepIndex = 0;
@@ -76,11 +79,11 @@ public class PageLogic_Essence : PageLogic_Extension
             //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
             //}
         
-            // if collide with current facepoint
-            if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
-            {
-                //FillCurrentPoint();
-            }
+            //// if collide with current facepoint
+            //if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
+            //{
+            //    //FillCurrentPoint();
+            //}
         }
     }
     public override void EndPage()
@@ -132,11 +135,26 @@ public class PageLogic_Essence : PageLogic_Extension
     }
 
     // On colliding with massage slider
-    void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int id, GameObject goObject, Collider other)
+    void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int sliderId, GameObject goObject, Collider other)
     {
         if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
-        if (other.gameObject.tag == "Handpoint" && id == massageSliderObject.GetCurrentIndex())
+        if (other.gameObject.tag == "Handpoint" && sliderId == massageSliderObject.GetCurrentIndex())
         {
+            if (!enableAllHandPointCollision)
+            {
+                bool proceed = false;
+                foreach (var item in list_handpoints_interact)
+                {
+                    if(other.gameObject.transform.GetSiblingIndex() == (int)item)
+                    {
+                        proceed = true;
+                        break;
+                    }
+                }
+
+                if(!proceed) { return; }
+            }
+
             Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
             Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
 
