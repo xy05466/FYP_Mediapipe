@@ -28,6 +28,7 @@ public class MassageSliderObject : MonoBehaviour
     }
     public void UpdateSlider(List<GameObject> gameObjects)
     {
+        if (!gameObject.activeInHierarchy) return;
         lr_outline.positionCount = points.Count;
         lr_filled.positionCount = currentIndex + 2;
 
@@ -169,6 +170,8 @@ public class MassageSliderObject : MonoBehaviour
     {
         points = new List<int>();
         end = false;
+        sliderfloat = 0f;
+        currentIndex = 0;
     }
 
     // EVENTS

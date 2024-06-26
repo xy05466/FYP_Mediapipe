@@ -6995,9 +6995,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  facepointManager_Jaden: {fileID: 0}
-  accupointsMassageManagerFinal: {fileID: 643711888}
-  massageSliderObjectPrefeb: {fileID: 0}
   massageSliderObjects: []
   list_steps: []
 --- !u!1 &248550292
@@ -8676,7 +8673,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -14422,9 +14419,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  facepointManager_Jaden: {fileID: 559884442}
-  accupointsMassageManagerFinal: {fileID: 381157008}
-  massageSliderObjectPrefeb: {fileID: 205556544}
   massageSliderObjects: []
   list_steps:
   - massageSliders:
@@ -15737,9 +15731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  facepointManager_Jaden: {fileID: 559884442}
-  accupointsMassageManagerFinal: {fileID: 358856185}
-  massageSliderObjectPrefeb: {fileID: 0}
   massageSliderObjects: []
   list_steps: []
 --- !u!4 &559884440 stripped

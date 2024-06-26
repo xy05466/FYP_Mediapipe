@@ -6,23 +6,20 @@ using UnityEngine.UI;
 
 public class PageLogic_Essence : PageLogic_Extension
 {
-    public FacepointManager_Jaden facepointManager_Jaden;
-    public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
+    //public FacepointManager_Jaden facepointManager_Jaden;
+    //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
 
-    public MassageSliderObject massageSliderObjectPrefeb;
+    private MassageSliderObject massageSliderObjectPrefeb;
     public List<MassageSliderObject> massageSliderObjects;
-    [Header("TESTING point")]
+    [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
     private int currentStepIndex = 0;
     private int slidersDoneCount = 0;
+    bool massageEnd = false;
     //lr.GetPosition(i-1) / 
     public override void StartPage()
     {
-        //accupointsMassageManagerFinal?.StartFunc();
-
-        //lr.materials[0].SetTexture("_MainTex", testSprite);
-
         int maxSpawn = 0;
         int tempcCount = 0;
         // find max number of slider needs to spawn
@@ -37,12 +34,14 @@ public class PageLogic_Essence : PageLogic_Extension
             tempcCount = 0;
         }
 
+        // Instantiate massage slider base on most slider in steps
         for (int i = 0; i < maxSpawn; i++)
         {
             MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb,transform);
             mso.transform.localPosition = Vector3.zero;
             massageSliderObjects.Add(mso);
         }
+
         // Init all slider
         foreach (var massageSlider in massageSliderObjects)
         {
@@ -52,13 +51,12 @@ public class PageLogic_Essence : PageLogic_Extension
             massageSlider.SubscribeEvent_NextPoint(OnSliderNextPoint);
             massageSlider.SubscribeEvent_Ended(OnSliderEnded);
         }
-        StartStep();
+        SetMassageSliders();
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
         if (facepointsObj == null || facepointsObj.Count <= 0) return;
-        //if (accupointsMassageManagerFinal.gameObject.activeInHierarchy)
-        //    accupointsMassageManagerFinal.UpdateScene();
+        // Update all  massage sliders
         foreach (var massageSlider in massageSliderObjects)
             massageSlider.UpdateSlider(facepointsObj);
     }
@@ -87,6 +85,7 @@ public class PageLogic_Essence : PageLogic_Extension
     }
     public override void EndPage()
     {
+        massageEnd = false;
     }
     public override void ResetPage()
     {
@@ -103,9 +102,12 @@ public class PageLogic_Essence : PageLogic_Extension
     public override void OnHandAnnotationActive(bool active)
     {
     }
-    void StartStep()
+    void SetMassageSliders()
     {
         int currentSlider = 0;
+        // disable all slider
+        for (int i = 0; i < massageSliderObjects.Count; i++)
+            massageSliderObjects[i].gameObject.SetActive(false);
 
         // loop through each slider data base on current step
         foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
@@ -114,6 +116,7 @@ public class PageLogic_Essence : PageLogic_Extension
             for (int i = 0; i < massageSliderData.points.Count; i++)
             {
                 int point = massageSliderData.points[i];
+                massageSliderObjects[currentSlider].gameObject.SetActive(true);
                 massageSliderObjects[currentSlider].AddPoint(point);
 
             }
@@ -127,6 +130,8 @@ public class PageLogic_Essence : PageLogic_Extension
     {
         return list_steps[currentStepIndex].massageSliders.Count;
     }
+
+    // On colliding with massage slider
     void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int id, GameObject goObject, Collider other)
     {
         if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
@@ -149,6 +154,8 @@ public class PageLogic_Essence : PageLogic_Extension
         }
     }
 
+    // on first collider with next point in the slider,
+    // the points are usually the face landmarks
     void OnSliderNextPoint(int point)
     {
         Debug.Log("slider next :" + point);
@@ -157,14 +164,33 @@ public class PageLogic_Essence : PageLogic_Extension
     {
         Debug.Log("slider ended");
         slidersDoneCount++;
+        // check if all current slider has completed , done
         if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
         {
             NextStep();
         }
     }
+    // go to next step 
     void NextStep()
     {
+        if (currentStepIndex >= list_steps.Count - 1)
+        {
+
+            End();
+            return;
+        };
+
         currentStepIndex++;
+        // Init all slider
+        foreach (var massageSlider in massageSliderObjects)
+        {
+            massageSlider.Init();
+        }
+        SetMassageSliders();
+    }
+    public void End()
+    {
+        massageEnd = true;
     }
 }
 
