@@ -6996,6 +6996,8 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   massageSliderObjectPrefeb: {fileID: 0}
+  enableAllHandPointCollision: 1
+  list_handpoints_interact: 
   list_steps: []
 --- !u!1 &248550292
 GameObject:
@@ -14420,6 +14422,8 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   massageSliderObjectPrefeb: {fileID: 205556544}
+  enableAllHandPointCollision: 0
+  list_handpoints_interact: 08000000
   list_steps:
   - massageSliders:
     - points: 790100008d01000069010000
@@ -15732,6 +15736,8 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   massageSliderObjectPrefeb: {fileID: 0}
+  enableAllHandPointCollision: 1
+  list_handpoints_interact: 
   list_steps: []
 --- !u!4 &559884440 stripped
 Transform:
