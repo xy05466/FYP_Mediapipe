@@ -27,9 +27,9 @@ public class ScenePageHandler : MonoBehaviour
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
-    [Header("Splash Page")]
-    public TMP_Text tmp_header_face;
-    public TMP_Text tmp_header_hand;
+    [Header("Detection Icon")]
+    public Image img_face;
+    public Image img_hand;
     [Header("Pages")]
     public Button bu_prevPage;
     public Button bu_nextPage;
@@ -75,18 +75,12 @@ public class ScenePageHandler : MonoBehaviour
 
     private void OnFaceSpotted(bool active)
     {
-        if (active)
-            tmp_header_face.text = "";
-        else
-            tmp_header_face.text = "No face spotted";
+            img_face.gameObject.SetActive(active);
     }
 
     private void OnHandSpotted(bool active)
     {
-        if (active)
-            tmp_header_hand.text = "";
-        else
-            tmp_header_hand.text = "No hands spotted";
+        img_hand.gameObject.SetActive(active);
     }
 
     private void Update()
@@ -150,8 +144,8 @@ public class ScenePageHandler : MonoBehaviour
         annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
         annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
         // enable header text
-        tmp_header_face.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-        tmp_header_hand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
 
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();

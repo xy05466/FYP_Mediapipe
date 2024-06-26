@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,229 +6,202 @@ using UnityEngine.UI;
 
 public class PageLogic_Essence : PageLogic_Extension
 {
-    public FacepointManager_Jaden facepointManager_Jaden;
-    public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
+    //public FacepointManager_Jaden facepointManager_Jaden;
+    //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
-    public BallMassageObject ballMassageObject;
 
-    public List<int> points = new List<int>();
-    private int currentIndex = 0;
-
-    [Header("TESTING point")]
-    public LineRenderer lr;
-    public LineRenderer lr2; // fill line
-    public float sliderfloat = 0.5f;
+    public MassageSliderObject massageSliderObjectPrefeb;
+    private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
+    [Header("Steps")]
+    public List<SliderStep> list_steps = new List<SliderStep>();
+    private int currentStepIndex = 0;
+    private int slidersDoneCount = 0;
+    bool massageEnd = false;
     //lr.GetPosition(i-1) / 
-
-    public float colliderWidth = 0.1f;
     public override void StartPage()
     {
-        //accupointsMassageManagerFinal?.StartFunc();
+        int maxSpawn = 0;
+        int tempcCount = 0;
+        // find max number of slider needs to spawn
+        foreach (var step in list_steps) {
+            foreach (var item in step.massageSliders)
+            {
+                tempcCount++;
+            }
+            if (tempcCount > maxSpawn) { 
+                maxSpawn = tempcCount; 
+            }
+            tempcCount = 0;
+        }
 
-        //lr.materials[0].SetTexture("_MainTex", testSprite);
-        lr.positionCount = points.Count;
-        lr2.positionCount = currentIndex+1;
+        // Instantiate massage slider base on most slider in steps
+        for (int i = 0; i < maxSpawn; i++)
+        {
+            MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb,transform);
+            mso.transform.localPosition = Vector3.zero;
+            massageSliderObjects.Add(mso);
+        }
 
-        UpdateColliders();
+        // Init all slider
+        foreach (var massageSlider in massageSliderObjects)
+        {
+            massageSlider.Init();
+            // subscribe all slider events
+            massageSlider.SubscribeEvent_Colliding(OnCollidingWithSlider);
+            massageSlider.SubscribeEvent_NextPoint(OnSliderNextPoint);
+            massageSlider.SubscribeEvent_Ended(OnSliderEnded);
+        }
+        SetMassageSliders();
     }
-
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
         if (facepointsObj == null || facepointsObj.Count <= 0) return;
-        //if (accupointsMassageManagerFinal.gameObject.activeInHierarchy)
-        //    accupointsMassageManagerFinal.UpdateScene();
-        lr.positionCount = points.Count;
-        lr2.positionCount = currentIndex + 2;
-        for (int i = 0; i < points.Count; i++)
-        {
-            int p = points[i];
-            lr.SetPosition(i, facepointsObj[p].transform.position);
-        }
-        if(currentIndex < lr.positionCount)
-        ballMassageObject.transform.position = lr.GetPosition(currentIndex);
-        // set collider position
-        for (int i = 0; i < lr.positionCount - 1; i++)
-        {
-            PositionColliderBetweenPoints(i, lr.GetPosition(i), lr.GetPosition(i + 1));
-        }
-
-        //if(currentIndex > 2)
-        //{
-        //    Vector3 startPosition = lr.GetPosition(0);
-        //    Vector3 endPosition = lr.GetPosition(1);
-
-        //    // direction of vector from end to start
-        //    Vector3 direction = endPosition - startPosition;
-
-        //    // Calculate percentage of vector
-        //    Vector3 percentagePosition = startPosition + direction * sliderfloat;
-        //    // Set positions in lr2
-        //    lr2.SetPosition(0, startPosition);
-        //    lr2.SetPosition(1, percentagePosition);
-        //}
-
-        //fill line renderer
-        for (int i = 0; i < lr2.positionCount; i++)
-        {
-            if(i== lr2.positionCount - 1)
-            {
-                Vector3 startPosition = lr.GetPosition(i-1);
-                Vector3 endPosition = lr.GetPosition(i);
-
-                // direction of vector from end to start
-                Vector3 direction = endPosition - startPosition;
-
-                // Calculate percentage of vector
-                Vector3 percentagePosition = startPosition + direction * sliderfloat;
-                // Set positions in lr2
-                lr2.SetPosition(i, percentagePosition);
-            }
-            else
-            {
-                lr2.SetPosition(i, lr.GetPosition(i));
-            }
-
-        }
-
+        // Update all  massage sliders
+        foreach (var massageSlider in massageSliderObjects)
+            massageSlider.UpdateSlider(facepointsObj);
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        if(currentIndex >=points.Count) return;
-        //if (points[currentIndex] == facePointIndex)
-        //{
-        //    currentIndex++;
-        //    sliderfloat = 0;
-        //}
-        //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
-        //{
-        //    sliderfloat += Time.deltaTime;
-        //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
-        //}
-        
-        // if collide with current facepoint
-        if (CollideWithFacePoint(points[currentIndex],facePointIndex))
+        foreach (var massageSliderObject in massageSliderObjects)
         {
-            //FillCurrentPoint();
+            if(massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+            //if (points[currentIndex] == facePointIndex)
+            //{
+            //    currentIndex++;
+            //    sliderfloat = 0;
+            //}
+            //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
+            //{
+            //    sliderfloat += Time.deltaTime;
+            //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+            //}
+        
+            // if collide with current facepoint
+            if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
+            {
+                //FillCurrentPoint();
+            }
         }
-    }
-    void FillCurrentPoint(float fill)
-    {
-        if (currentIndex >=points.Count) return;
-
-        // to do:  Utilize fill variable
-
-        sliderfloat += Time.deltaTime;
-        sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
-        if (sliderfloat >= 1)
-            NextPoint();
-    }
-    void NextPoint()
-    {
-        sliderfloat = 0;
-        currentIndex++;
     }
     public override void EndPage()
     {
+        massageEnd = false;
     }
     public override void ResetPage()
     {
     }
-
     public override bool IsPageDone()
     {
         //return accupointsMassageManagerFinal.IsDone();
         return false;
     }
-
     public override void OnFaceAnnotationActive(bool active)
     {
         //accupointsMassageManagerFinal.gameObject.SetActive(active);
     }
-
     public override void OnHandAnnotationActive(bool active)
     {
     }
-
-
-    public void UpdateColliders()
+    void SetMassageSliders()
     {
-        // Remove old colliders
-        foreach (var collider in GetComponents<BoxCollider>())
+        int currentSlider = 0;
+        // disable all slider
+        for (int i = 0; i < massageSliderObjects.Count; i++)
+            massageSliderObjects[i].gameObject.SetActive(false);
+
+        // loop through each slider data base on current step
+        foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
         {
-            Destroy(collider);
+            // set up the points on slider 
+            for (int i = 0; i < massageSliderData.points.Count; i++)
+            {
+                int point = massageSliderData.points[i];
+                massageSliderObjects[currentSlider].gameObject.SetActive(true);
+                massageSliderObjects[currentSlider].AddPoint(point);
+
+            }
+            currentSlider++;
         }
 
-        // Create new colliders
-        for (int i = 0; i < lr.positionCount - 1; i++)
+    }
+
+    // Get the total sliders available based on current step
+    int GetCurrentTotalSliders()
+    {
+        return list_steps[currentStepIndex].massageSliders.Count;
+    }
+
+    // On colliding with massage slider
+    void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int id, GameObject goObject, Collider other)
+    {
+        if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+        if (other.gameObject.tag == "Handpoint" && id == massageSliderObject.GetCurrentIndex())
         {
-            CreateColliderBetweenPoints(i, lr.GetPosition(i), lr.GetPosition(i + 1));
-        }
-    }
-    List<BoxCollider> colliders = new List<BoxCollider>();
-    private void CreateColliderBetweenPoints(int id,Vector3 start, Vector3 end)
-    {
-        GameObject colliderObject = new GameObject("LineSegmentCollider");
-        colliderObject.transform.parent = this.transform;
-        LineCollisionResponse lcr = colliderObject.AddComponent<LineCollisionResponse>();
-        lcr.SetId(id);
-        lcr.SetIgnoreName("LineSegmentCollider");
-        lcr.Subscribe(CollideWithLine);
-
-        BoxCollider boxCollider = colliderObject.AddComponent<BoxCollider>();
-        colliders.Add(boxCollider);
-        boxCollider.isTrigger = true;
-
-        // Position the collider
-        Vector3 middlePoint = (start + end) / 2;
-        boxCollider.transform.position = middlePoint;
-
-        // Rotate the collider to align with the line segment
-        Vector3 direction = end - start;
-        boxCollider.transform.rotation = Quaternion.LookRotation(direction);
-
-        // Scale the collider to match the line segment
-        boxCollider.size = new Vector3(colliderWidth, colliderWidth, direction.magnitude);
-    }
-    private void PositionColliderBetweenPoints(int index,Vector3 start, Vector3 end)
-    {
-        BoxCollider boxCollider = colliders[index];
-
-        // Position the collider
-        Vector3 middlePoint = (start + end) / 2;
-        boxCollider.transform.position = middlePoint;
-
-        // Rotate the collider to align with the line segment
-        Vector3 direction = end - start;
-        boxCollider.transform.rotation = Quaternion.LookRotation(direction);
-
-        // Scale the collider to match the line segment
-        boxCollider.size = new Vector3(colliderWidth, colliderWidth, direction.magnitude);
-    }
-    void CollideWithLine(int id, GameObject goObject, Collider other)
-    {
-        if (currentIndex >= points.Count) return;
-        if (other.gameObject.tag == "Handpoint" && id == currentIndex)
-        {
-            Vector3 startPoint = lr.GetPosition(currentIndex);
-            Vector3 endpoint = lr.GetPosition(currentIndex + 1);
-            // check 
-            Debug.Log("startPoint "+ startPoint);
-            Debug.Log("Closest point :" +other.ClosestPoint(goObject.transform.position));
-            Debug.Log("lr current point :" +lr2.GetPosition(lr2.positionCount-1));
-            Debug.Log("endpoint " + endpoint);
+            Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
+            Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
 
             // Calculate the total distance
-            float totalDistance = Vector3.Distance(startPoint, lr2.GetPosition(lr2.positionCount - 1));
+            float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
 
             // Calculate the distance from start to the check position
             float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
 
-            Debug.Log("totalDistance " + totalDistance);
-            Debug.Log("checkDistance " + checkDistance);
 
-            if(checkDistance > totalDistance)
-                FillCurrentPoint(1);
+            float totalDistance2 = Vector3.Distance(startPoint, endpoint);
+
+            if (checkDistance > totalDistance)
+                massageSliderObject.FillCurrentPoint(1 / totalDistance2);
         }
     }
 
+    // on first collider with next point in the slider,
+    // the points are usually the face landmarks
+    void OnSliderNextPoint(int point)
+    {
+        Debug.Log("slider next :" + point);
+    }
+    void OnSliderEnded()
+    {
+        Debug.Log("slider ended");
+        slidersDoneCount++;
+        // check if all current slider has completed , done
+        if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
+        {
+            NextStep();
+        }
+    }
+    // go to next step 
+    void NextStep()
+    {
+        if (currentStepIndex >= list_steps.Count - 1)
+        {
+
+            End();
+            return;
+        };
+
+        currentStepIndex++;
+        // Init all slider
+        foreach (var massageSlider in massageSliderObjects)
+        {
+            massageSlider.Init();
+        }
+        SetMassageSliders();
+    }
+    public void End()
+    {
+        massageEnd = true;
+    }
 }
+
+[Serializable]
+public class SliderStep
+{
+    public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
+}
+[Serializable]
+public class MassageSliderPoints
+{
+    public List<int> points = new List<int>();
+}
+
