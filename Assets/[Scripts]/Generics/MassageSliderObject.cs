@@ -145,6 +145,11 @@ public class MassageSliderObject : MonoBehaviour
         if (sliderfloat >= 1)
             NextPoint();
     }
+    public float GetPercentageSegmantFilled()
+    {
+        return sliderfloat;
+    }
+
     // Go to next point
     void NextPoint()
     {

@@ -133,42 +133,47 @@ public class PageLogic_Essence : PageLogic_Extension
     {
         return list_steps[currentStepIndex].massageSliders.Count;
     }
-
+   
     // On colliding with massage slider
     void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int sliderId, GameObject goObject, Collider other)
     {
         if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
-        if (other.gameObject.tag == "Handpoint" && sliderId == massageSliderObject.GetCurrentIndex())
+
+        if (other.gameObject.tag == "Handpoint")
         {
-            if (!enableAllHandPointCollision)
+            if(sliderId == massageSliderObject.GetCurrentIndex() || 
+                sliderId == massageSliderObject.GetCurrentIndex()+1 && massageSliderObject.GetPercentageSegmantFilled() >= 0.8f)
             {
-                bool proceed = false;
-                foreach (var item in list_handpoints_interact)
+                if (!enableAllHandPointCollision)
                 {
-                    if(other.gameObject.transform.GetSiblingIndex() == (int)item)
+                    bool proceed = false;
+                    foreach (var item in list_handpoints_interact)
                     {
-                        proceed = true;
-                        break;
+                        if (other.gameObject.transform.GetSiblingIndex() == (int)item)
+                        {
+                            proceed = true;
+                            break;
+                        }
                     }
+
+                    if (!proceed) { return; }
                 }
 
-                if(!proceed) { return; }
+                Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
+                Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
+
+                // Calculate the total distance
+                float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
+
+                // Calculate the distance from start to the check position
+                float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
+
+
+                float totalDistance2 = Vector3.Distance(startPoint, endpoint);
+
+                if (checkDistance > totalDistance)
+                    massageSliderObject.FillCurrentPoint(1 / totalDistance2);
             }
-
-            Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
-            Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
-
-            // Calculate the total distance
-            float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
-
-            // Calculate the distance from start to the check position
-            float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
-
-
-            float totalDistance2 = Vector3.Distance(startPoint, endpoint);
-
-            if (checkDistance > totalDistance)
-                massageSliderObject.FillCurrentPoint(1 / totalDistance2);
         }
     }
 
