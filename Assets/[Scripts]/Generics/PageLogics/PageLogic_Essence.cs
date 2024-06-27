@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class PageLogic_Essence : PageLogic_Extension
 {
@@ -11,6 +12,9 @@ public class PageLogic_Essence : PageLogic_Extension
 
 
     public MassageSliderObject massageSliderObjectPrefeb;
+    public int landmark1;
+    public int landmark2;
+    public MassageSliderObjectV2 massageSliderObjectPrefeb2;
     private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
     [Header("settings")]
     public bool enableAllHandPointCollision = true;
@@ -23,45 +27,60 @@ public class PageLogic_Essence : PageLogic_Extension
     //lr.GetPosition(i-1) / 
     public override void StartPage()
     {
-        int maxSpawn = 0;
-        int tempcCount = 0;
-        // find max number of slider needs to spawn
-        foreach (var step in list_steps) {
-            foreach (var item in step.massageSliders)
-            {
-                tempcCount++;
-            }
-            if (tempcCount > maxSpawn) { 
-                maxSpawn = tempcCount; 
-            }
-            tempcCount = 0;
-        }
+        //int maxSpawn = 0;
+        //int tempcCount = 0;
+        //// find max number of slider needs to spawn
+        //foreach (var step in list_steps) {
+        //    foreach (var item in step.massageSliders)
+        //    {
+        //        tempcCount++;
+        //    }
+        //    if (tempcCount > maxSpawn) { 
+        //        maxSpawn = tempcCount; 
+        //    }
+        //    tempcCount = 0;
+        //}
 
-        // Instantiate massage slider base on most slider in steps
-        for (int i = 0; i < maxSpawn; i++)
-        {
-            MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb,transform);
-            mso.transform.localPosition = Vector3.zero;
-            massageSliderObjects.Add(mso);
-        }
+        //// Instantiate massage slider base on most slider in steps
+        //for (int i = 0; i < maxSpawn; i++)
+        //{
+        //    MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb,transform);
+        //    mso.transform.localPosition = Vector3.zero;
+        //    massageSliderObjects.Add(mso);
+        //}
 
-        // Init all slider
-        foreach (var massageSlider in massageSliderObjects)
-        {
-            massageSlider.Init();
-            // subscribe all slider events
-            massageSlider.SubscribeEvent_Colliding(OnCollidingWithSlider);
-            massageSlider.SubscribeEvent_NextPoint(OnSliderNextPoint);
-            massageSlider.SubscribeEvent_Ended(OnSliderEnded);
-        }
-        SetMassageSliders();
+        //// Init all slider
+        //foreach (var massageSlider in massageSliderObjects)
+        //{
+        //    massageSlider.Init();
+        //    // subscribe all slider events
+        //    massageSlider.SubscribeEvent_Colliding(OnCollidingWithSlider);
+        //    massageSlider.SubscribeEvent_NextPoint(OnSliderNextPoint);
+        //    massageSlider.SubscribeEvent_Ended(OnSliderEnded);
+        //}
+        //SetMassageSliders();
+
+        massageSliderObjectPrefeb2.SetUp(landmark1, landmark2);
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
-        if (facepointsObj == null || facepointsObj.Count <= 0) return;
-        // Update all  massage sliders
-        foreach (var massageSlider in massageSliderObjects)
-            massageSlider.UpdateSlider(facepointsObj);
+        if (facepointsObj == null || facepointsObj.Count <= 0 ) return;
+
+
+        if(handpointsObj != null && handpointsObj.Count > 0)
+        {
+            foreach (var item in list_handpoints_interact)
+            {
+                int handItem = (int)item;
+                massageSliderObjectPrefeb2.UpdateSlider(handpointsObj[handItem].gameObject, 0.2f);
+            }
+        }
+        massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
+
+        //// Update all  massage sliders
+        //foreach (var massageSlider in massageSliderObjects)
+        //    massageSlider.UpdateSlider(facepointsObj);
+
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {

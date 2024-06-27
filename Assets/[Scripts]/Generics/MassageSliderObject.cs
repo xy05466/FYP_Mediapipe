@@ -7,7 +7,6 @@ public class MassageSliderObject : MonoBehaviour
     public LineRenderer lr_outline;
     public LineRenderer lr_filled;
     public List<int> points = new List<int>();
-    private float sliderValue = 0f;
     private int currentIndex = 0;
 
     public List<BoxCollider> colliders = new List<BoxCollider>();
