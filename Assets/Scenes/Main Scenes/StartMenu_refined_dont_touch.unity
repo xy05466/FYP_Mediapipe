@@ -11348,7 +11348,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 101
+  m_SortingOrder: 1001
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -11426,11 +11426,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  points: 1d010000500100005101000029010000
+  points: 09000000970000005201000029010000
   newHandles: {fileID: 7907345662840862319, guid: c5f38b4286610c54cb999001c00c1d84,
     type: 3}
   lineRenderer: {fileID: 388790450}
   spacing: 1
+  resolution: 1
 --- !u!114 &388790452
 MonoBehaviour:
   m_ObjectHideFlags: 0

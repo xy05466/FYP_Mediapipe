@@ -21,6 +21,8 @@ public class Path
         Vector2 extraPoint1 = point1 + segmentVector / 3;
         Vector2 extraPoint2 = point1 + 2 * segmentVector / 3;
 
+        Vector2 extrapoint3 = Vector2.Lerp(point1, point2, 0.75f);
+
         //generating of the curve
         points = new List<Vector2>
         {

@@ -1,3 +1,4 @@
+using Mediapipe.Unity.Sample;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Notifications.iOS;
@@ -20,7 +21,9 @@ public class PageLogic_BezierCurve : PageLogic_Extension
     Pathcreator creator;
     Path path;
     [Range(.05f, 1.5f)]
-    public float spacing = 1.0f;
+    public float spacing = .1f;
+    public float resolution = 1f;
+    Vector2[] spacedPoints;
 
     public override void EndPage()
     {
@@ -53,7 +56,7 @@ public class PageLogic_BezierCurve : PageLogic_Extension
     {
         if (facepointsObj == null || facepointsObj.Count <= 0) return;
 
-        Vector2[] spacePoints = path.CalculateEvenlySpacedPoints(spacing);
+        //spacedPoints = path.CalculateEvenlySpacedPoints(spacing);
 
         for (int i = 0; i < path.NumPoints; i++)
         {
@@ -76,13 +79,14 @@ public class PageLogic_BezierCurve : PageLogic_Extension
                 }
             }
         }
-        lineRenderer.positionCount = spacePoints.Length;
-        for (int i = 0; i < spacePoints.Length; i++)
-        {
-            lineRenderer.SetPosition(i, path.points[i]);
-        }
 
-        // Record changes for undo functionality
+        //lineRenderer.positionCount = spacedPoints.Length;
+        //for (int i = 0; i < spacedPoints.Length; i++)
+        //{
+        //    lineRenderer.SetPosition(i, path.points[i]);
+        //    Debug.Log(lineRenderer.GetPosition(i));
+        //}
+
         Undo.RecordObject(creator, "Move Point");
         for (int i = 0; i < path.NumPoints; i++)
         {

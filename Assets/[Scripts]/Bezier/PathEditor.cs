@@ -1,11 +1,8 @@
 //using System.Collections;
 //using System.Collections.Generic;
 //using UnityEngine;
-//#if UNITY_EDITOR
 //using UnityEditor;
-//#endif
 //using Unity.VisualScripting;
-//#if UNITY_EDITOR
 //[CustomEditor(typeof(Pathcreator))]
 //public class PathEditor : Editor
 //{
@@ -107,4 +104,3 @@
 //        path = creator.path;
 //    }
 //}
-//#endif
