@@ -16,4 +16,5 @@ MonoBehaviour:
   - accupointSOList:
     - {fileID: 11400000, guid: 8251f6ef8b077d141a107ef5c4b9412c, type: 2}
     - {fileID: 11400000, guid: 2054ba752dd433640880bb9f0ab97d4e, type: 2}
+    - {fileID: 11400000, guid: 7398e9e0bd1e4ce488c268b11728d6f8, type: 2}
     - {fileID: 11400000, guid: 4ddb11df72a191f4ba3f1aa847239fca, type: 2}

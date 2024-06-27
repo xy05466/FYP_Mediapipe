@@ -54,13 +54,9 @@ public class SilderSet : MonoBehaviour
             lockPositions = true;
         }
         //Debug.Log("anchorPostion : " + " " + path[0].points[0].transform.position);
-        //update all the individual points // this is limited to only 3 points
+        //update all the individual points
         for (var i = 0; i < anchorPostions.CountOfLists(); i++)
         {
-            int pointCount = path[i].points.Count;
-            int landmarkPoints = anchorPostions.GetList(i).Count;
-            Debug.Log("points: "+pointCount);
-            Debug.Log(i+": landmarkPoints: " + landmarkPoints);
             path[i].points[0].transform.position = anchorPostions.GetItemInList(i, 0);
             path[i].points[3].transform.position = anchorPostions.GetItemInList(i, 1);
             path[i].points[6].transform.position = anchorPostions.GetItemInList(i, 2);
