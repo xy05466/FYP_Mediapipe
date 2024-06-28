@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 285208225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 10.09, z: 0.07541838}
+  m_LocalPosition: {x: -1.39, y: 10.74, z: 0.07541838}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -424,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 663535901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.91, y: 8.7, z: 0.07541838}
+  m_LocalPosition: {x: 1.01, y: 9.82, z: 0.07541838}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -509,7 +509,7 @@ Transform:
   m_GameObject: {fileID: 1367337303}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.17, y: 11.14, z: 0.07541838}
+  m_LocalPosition: {x: -3.67, y: 9.99, z: 0.07541838}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -643,6 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841749465}
   - component: {fileID: 1841749464}
+  - component: {fileID: 1841749466}
   m_Layer: 0
   m_Name: 0
   m_TagString: landmarks
@@ -712,12 +713,47 @@ Transform:
   m_GameObject: {fileID: 1841749463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.67, y: 7.52, z: 0.07541838}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: -4.67, y: 7.33, z: 0.07541838}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1841749466
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841749463}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.02
 --- !u!1 &2114093412
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +765,7 @@ GameObject:
   - component: {fileID: 2114093414}
   - component: {fileID: 2114093413}
   - component: {fileID: 2114093415}
+  - component: {fileID: 2114093416}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -743,7 +780,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114093412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4031fe51a6bc3ea4ba3488d1c13cbe8f, type: 3}
   m_Name: 
@@ -773,7 +810,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114093412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -869,6 +906,34 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &2114093416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114093412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a5163c6978c7344bda23574b9650c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path:
+    points:
+    - {x: -0.668119, y: 8.411156}
+    - {x: -0.55831796, y: 9.828851}
+    - {x: 1.4392924, y: 9.680747}
+    - {x: 1.5497744, y: 8.368818}
+    isClosed: 0
+    autoSetControlPoints: 0
+  anchorCol: {r: 1, g: 0, b: 0, a: 1}
+  controlCol: {r: 1, g: 1, b: 1, a: 1}
+  segmentCol: {r: 0, g: 1, b: 0, a: 1}
+  selectedSegmentCol: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  anchorDiameter: 0.1
+  controlDiameter: 0.075
+  displayControlPoints: 1
+  MovingBall: {fileID: 1841749463}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -878,5 +943,5 @@ SceneRoots:
   - {fileID: 2114093414}
   - {fileID: 1841749465}
   - {fileID: 663535903}
-  - {fileID: 285208227}
   - {fileID: 1367337305}
+  - {fileID: 285208227}

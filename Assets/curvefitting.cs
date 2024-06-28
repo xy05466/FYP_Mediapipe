@@ -7,6 +7,7 @@ public class CurveFitting : MonoBehaviour
     public string dataPointTag = "DataPoint"; // Tag used to find data point GameObjects
     public LineRenderer lineRenderer; // Reference to the LineRenderer component
     List<UnityEngine.Vector3> dataPoints;
+    float[] coefficients;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class CurveFitting : MonoBehaviour
         dataPoints = GetDataPointsFromGameObjects(dataPointTag);
 
         // Fit a third-degree polynomial to the data points
-        float[] coefficients = FitPolynomial(dataPoints, 2);
+        coefficients = FitPolynomial(dataPoints, 2);
 
         // Plot the fitted polynomial curve using the LineRenderer
         PlotFittedCurve(coefficients);

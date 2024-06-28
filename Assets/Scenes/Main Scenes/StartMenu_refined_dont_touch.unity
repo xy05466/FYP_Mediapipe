@@ -11353,6 +11353,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -11446,9 +11447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path:
     points:
-    - {x: -1, y: 0}
-    - {x: -0.3333333, y: 0}
-    - {x: 0.33333337, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0.6666667, y: 0}
+    - {x: 0.8333334, y: 0}
     - {x: 1, y: 0}
     isClosed: 0
     autoSetControlPoints: 0
@@ -17439,7 +17440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 388790451}
+  - {fileID: 0}
   - {fileID: 518752968}
   - {fileID: 959629942}
   - {fileID: 878462219}

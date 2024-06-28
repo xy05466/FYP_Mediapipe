@@ -54,47 +54,51 @@ public class PageLogic_BezierCurve : PageLogic_Extension
 
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
-        if (facepointsObj == null || facepointsObj.Count <= 0) return;
+        if (facepointsObj == null || facepointsObj.Count <= 0)
+        {
+            return;
+        }
 
-        //spacedPoints = path.CalculateEvenlySpacedPoints(spacing);
+        Vector2[] spacedPoints = path.CalculateEvenlySpacedPoints(spacing);
 
+        // Update path points based on face points
         for (int i = 0; i < path.NumPoints; i++)
         {
-            int p = points[i];
-            if (i < points.Count && points[i] < facepointsObj.Count)
+            if (i < facepointsObj.Count)
             {
-                if (facepointsObj[p] != null)
-                {
-                    // Update the position of the path points to match the face points
-                    path.points[i] = facepointsObj[p].transform.position;
+                GameObject facePoint = facepointsObj[i];
 
-                    // Check if we need to instantiate a new handle
-                    if (!spawnedHandles.ContainsKey(i))
+                if (facePoint != null)
+                {
+                    path.points[i] = facePoint.transform.position;
+
+                    // Instantiate new handle if it doesn't exist
+                    if (i >= spawnedHandles.Count || spawnedHandles[i] == null)
                     {
-                        var handle = Instantiate(newHandles, path.points[i], Quaternion.identity);
-                        spawnedHandles[i] = handle;
+                        GameObject handle = Instantiate(newHandles, path.points[i], Quaternion.identity);
+                        spawnedHandles.Add(i, handle);
                     }
-                    // Ensure the handle follows the face points
-                    spawnedHandles[i].transform.position = facepointsObj[p].transform.position;
+                    // Update handle position
+                    spawnedHandles[i].transform.position = path.points[i];
                 }
             }
         }
 
-        //lineRenderer.positionCount = spacedPoints.Length;
-        //for (int i = 0; i < spacedPoints.Length; i++)
-        //{
-        //    lineRenderer.SetPosition(i, path.points[i]);
-        //    Debug.Log(lineRenderer.GetPosition(i));
-        //}
+        // Update line renderer with new spaced points
+        lineRenderer.positionCount = spacedPoints.Length;
+        for (int i = 0; i < spacedPoints.Length; i++)
+        {
+            lineRenderer.SetPosition(i, spacedPoints[i]);
+        }
 
+        // Record changes for undo purposes
         Undo.RecordObject(creator, "Move Point");
         for (int i = 0; i < path.NumPoints; i++)
         {
-            int p = points[i];
-            if (facepointsObj[p] != null)
+            if (i < facepointsObj.Count && facepointsObj[i] != null)
             {
-                path.MovePoint(i, facepointsObj[p].transform.position);
-                path.points[i] = facepointsObj[p].transform.position;
+                path.MovePoint(i, facepointsObj[i].transform.position);
+                path.points[i] = facepointsObj[i].transform.position;
             }
         }
     }

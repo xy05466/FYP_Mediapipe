@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -16,12 +17,9 @@ public class Path
     {
         Vector2 point1 = centre + Vector2.left;
         Vector2 point2 = centre + Vector2.right;
-        Vector2 segmentVector = point2 - point1;
 
-        Vector2 extraPoint1 = point1 + segmentVector / 3;
-        Vector2 extraPoint2 = point1 + 2 * segmentVector / 3;
-
-        Vector2 extrapoint3 = Vector2.Lerp(point1, point2, 0.75f);
+        Vector2 extraPoint1 = centre;
+        Vector2 extraPoint2 = centre;
 
         //generating of the curve
         points = new List<Vector2>
