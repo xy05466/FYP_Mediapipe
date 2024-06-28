@@ -67,7 +67,17 @@ public class PageLogic_Essence : PageLogic_Extension
         if (facepointsObj == null || facepointsObj.Count <= 0 ) return;
 
 
-        if(handpointsObj != null && handpointsObj.Count > 0)
+     
+        //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
+        for (int i = 0; i < list_steps[currentStepIndex].massageSliders[0].points.Count; i++)
+        {
+            var id = list_steps[currentStepIndex].massageSliders[0].points[i];
+
+            massageSliderObjectPrefeb2.SetPointPosition(i, facepointsObj[id].transform.position);
+
+        }
+
+        if (handpointsObj != null && handpointsObj.Count > 0)
         {
             foreach (var item in list_handpoints_interact)
             {
@@ -75,8 +85,6 @@ public class PageLogic_Essence : PageLogic_Extension
                 massageSliderObjectPrefeb2.UpdateSlider(handpointsObj[handItem].gameObject, 0.2f);
             }
         }
-        massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
-
         //// Update all  massage sliders
         //foreach (var massageSlider in massageSliderObjects)
         //    massageSlider.UpdateSlider(facepointsObj);

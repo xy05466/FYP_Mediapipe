@@ -17,6 +17,7 @@ public class Pathcreator : MonoBehaviour
     public float controlDiameter = .075f;
     public bool displayControlPoints = true;
 
+    public List<Vector2> points = new List<Vector2>();
     private List<Vector2> curvePoints = new List<Vector2>();
     float duration = 8.0f;
     float t = 0.0f;
@@ -28,6 +29,8 @@ public class Pathcreator : MonoBehaviour
     public void CreatePath()
     {
         path = new Path(transform.position);
+
+    
     }
 
     void Reset()
@@ -37,7 +40,7 @@ public class Pathcreator : MonoBehaviour
 
     private void Start()
     {
-        foreach (var point in path.points)
+        foreach (var point in points)
         {
             curvePoints.Add(point);
         }
@@ -46,6 +49,9 @@ public class Pathcreator : MonoBehaviour
 
     private void Update()
     {
+        for (int i = 0; i < points.Count; i++)
+            path.SetPointPosition(i, points[i]);
+
         if (Input.GetKey(KeyCode.Space)) 
         {
             if (t < 1.0f)
@@ -57,7 +63,7 @@ public class Pathcreator : MonoBehaviour
         }   
     }
 
-    Vector2 CalculateBezierPoint(float t, List<Vector2> points)
+    public Vector2 CalculateBezierPoint(float t, List<Vector2> points)
     {
         Vector2 p0 = points[0];
         Vector2 p1 = points[1];

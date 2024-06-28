@@ -176,7 +176,10 @@ public class Path
             }
         }
     }
-
+    public void SetPointPosition(int index, Vector2 position)
+    {
+        points[index] = position;
+    }
     public Vector2[] CalculateEvenlySpacedPoints(float spacing, float resolution = 1)
     {
         List<Vector2> evenlySpacedPoints = new List<Vector2>();
