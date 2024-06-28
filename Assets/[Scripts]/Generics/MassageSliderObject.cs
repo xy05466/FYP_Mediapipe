@@ -7,7 +7,6 @@ public class MassageSliderObject : MonoBehaviour
     public LineRenderer lr_outline;
     public LineRenderer lr_filled;
     public List<int> points = new List<int>();
-    private float sliderValue = 0f;
     private int currentIndex = 0;
 
     public List<BoxCollider> colliders = new List<BoxCollider>();
@@ -145,6 +144,11 @@ public class MassageSliderObject : MonoBehaviour
         if (sliderfloat >= 1)
             NextPoint();
     }
+    public float GetPercentageSegmantFilled()
+    {
+        return sliderfloat;
+    }
+
     // Go to next point
     void NextPoint()
     {

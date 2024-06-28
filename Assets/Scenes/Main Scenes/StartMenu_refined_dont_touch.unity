@@ -5404,6 +5404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 205556543}
   - component: {fileID: 205556544}
+  - component: {fileID: 205556545}
   m_Layer: 0
   m_Name: MassageSliderObjectPrefeb
   m_TagString: Untagged
@@ -5445,6 +5446,22 @@ MonoBehaviour:
   points: 790100008d01000069010000
   colliders: []
   colliderWidth: 0.1
+--- !u!114 &205556545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205556542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093bacd04f237ce408d376ec43e470fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lr_outline: {fileID: 1209979374}
+  lr_filled: {fileID: 297845291}
+  startLandmark: 0
+  endLandmark: 0
 --- !u!1 &209231602
 GameObject:
   m_ObjectHideFlags: 0
@@ -6997,6 +7014,9 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   massageSliderObjectPrefeb: {fileID: 0}
+  landmark1: 0
+  landmark2: 0
+  massageSliderObjectPrefeb2: {fileID: 0}
   enableAllHandPointCollision: 1
   list_handpoints_interact: 
   list_steps: []
@@ -8630,6 +8650,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 101
   m_Positions:
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
@@ -11348,10 +11369,9 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1001
+  m_SortingOrder: 101
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
@@ -11427,12 +11447,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  points: 09000000970000005201000029010000
+  points: 1d010000500100005101000029010000
   newHandles: {fileID: 7907345662840862319, guid: c5f38b4286610c54cb999001c00c1d84,
     type: 3}
   lineRenderer: {fileID: 388790450}
   spacing: 1
-  resolution: 1
 --- !u!114 &388790452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11447,9 +11466,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path:
     points:
-    - {x: 1, y: 0}
-    - {x: 0.6666667, y: 0}
-    - {x: 0.8333334, y: 0}
+    - {x: -1, y: 0}
+    - {x: -0.3333333, y: 0}
+    - {x: 0.33333337, y: 0}
     - {x: 1, y: 0}
     isClosed: 0
     autoSetControlPoints: 0
@@ -14610,6 +14629,9 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   massageSliderObjectPrefeb: {fileID: 205556544}
+  landmark1: 377
+  landmark2: 361
+  massageSliderObjectPrefeb2: {fileID: 205556545}
   enableAllHandPointCollision: 0
   list_handpoints_interact: 08000000
   list_steps:
@@ -15924,6 +15946,9 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
   massageSliderObjectPrefeb: {fileID: 0}
+  landmark1: 0
+  landmark2: 0
+  massageSliderObjectPrefeb2: {fileID: 0}
   enableAllHandPointCollision: 1
   list_handpoints_interact: 
   list_steps: []
@@ -17440,8 +17465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 0}
   - {fileID: 518752968}
+  - {fileID: 388790451}
   - {fileID: 959629942}
   - {fileID: 878462219}
   - {fileID: 885432721}
@@ -27634,6 +27659,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd576fe2db61fda48af15adae03fd55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  journalSO: {fileID: 0}
+  screen: {fileID: 0}
+  background: {fileID: 0}
+  preview: {fileID: 0}
+  brightnessTxt: {fileID: 0}
+  text: {fileID: 0}
+  date: {fileID: 0}
+  splashTxt: {fileID: 0}
+  photoTxt: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!4 &1036480180
 Transform:
   m_ObjectHideFlags: 0
@@ -30917,7 +30952,6 @@ LineRenderer:
   m_Positions:
   - {x: -2.68, y: 8.12, z: -0.0051863487}
   - {x: -3, y: 4.1463985, z: -0.0045425566}
-  - {x: -7.79, y: 3.57, z: -0.003925778}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
