@@ -11,7 +11,7 @@ public class HandLandmarkModelTranslator : MonoBehaviour
     public GestureText gestureText;
     public CoordText coordText;
     public PercentageText percentageText;
-    public List<Gesture> gestures;
+    public List<GestureSO> gestures;
     public HandGestureHandler handGestureHandler = null;
     [Range(0.0f, 100.0f)]
     [SerializeField] private float minimumTreshold = 50;
@@ -68,11 +68,11 @@ public class HandLandmarkModelTranslator : MonoBehaviour
         //This to to update the current gesture being detected
         gestureText.UpdateTextBox(CurrHighestName);
         if (handGestureHandler != null)
-            handGestureHandler.currGesture = CurrHighestName;
+            handGestureHandler.SetCurrentGesture(CurrHighestName);
 
         return CurrHighestName;
     }
-    private float CheckGesturePercentage(Gesture gesture, List<float> fingerDistances)
+    private float CheckGesturePercentage(GestureSO gesture, List<float> fingerDistances)
     {
         float currGesturePercentage = 0;
         float fallOffByPercent = rangeFallOff / 20;

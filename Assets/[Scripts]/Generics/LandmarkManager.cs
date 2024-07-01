@@ -7,12 +7,15 @@ public class LandmarkManager : MonoBehaviour
 {
     public LandmarkListGO annotationList_FacePoints;
     public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
-
+    private bool isHandLoadedAndActive = false;
+    public bool IsHandLoadedAndActive => isHandLoadedAndActive;
+    private bool isFaceloadedAndActive = false;
+    public bool IsFaceloadedAndActive => isFaceloadedAndActive;
 
     private void Start()
     {
-        annotationList_FacePoints.SubscribePointsSpawn(StoreFacePoints);
-        annotationList_HandPoints.SubscribePointsSpawn(StoreHandPoints);
+        annotationList_FacePoints.SubscribePointsSpawn(FacePointsDetected);
+        annotationList_HandPoints.SubscribePointsSpawn(HandPointsDetected);
     }
 
     private void Update()
@@ -21,15 +24,18 @@ public class LandmarkManager : MonoBehaviour
         annotationList_HandPoints.Update();
     }
     // Store all points
-    public void StoreFacePoints(List<GameObject> facePoints)
+    private void FacePointsDetected(List<GameObject> facePoints)
     {
         //this.facePoints = facePoints;
         //foreach (var pageL in pageLogics)
         //    pageL.LoadFacePoints(true);
+        isFaceloadedAndActive = true;
 
     }
-    public void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
+    private void HandPointsDetected(List<HandPointAnnotationObject> handPoints)
     {
+        isHandLoadedAndActive = true;
+
         //this.handPoints = handPoints;
         //foreach (var item in handPoints)
         //    item.OnCollidingFacePoint += OnHandPointCollide;
@@ -58,4 +64,6 @@ public class LandmarkManager : MonoBehaviour
         annotationList_FacePoints.SubscribeParentActive(facepointsActive);
         annotationList_HandPoints.SubscribeParentActive(handpointsActive);
     }
+
+    // Check loaded and active
 }

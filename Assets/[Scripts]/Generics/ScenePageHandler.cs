@@ -15,6 +15,10 @@ public class ScenePageHandler : MonoBehaviour
     public List<PageLogic> pageLogics;
     private PageLogic currentPageLogic;
     int currentPageIndex = 0;
+    [Header("Managers")]
+    public LandmarkManager landmarkManager;
+    public HandGestureManager handGestureManager;
+
 
     //[Header("Splash")]
     //public GameObject splashArt;
@@ -31,14 +35,18 @@ public class ScenePageHandler : MonoBehaviour
     public Image img_face;
     public Image img_hand;
     [Header("Pages")]
+    private bool gestureNavigationDetected = false;
     public Button bu_prevPage;
     public Button bu_nextPage;
+    public GestureSO gestureNavigation;
+    public Image img_nextPageFilled;
+    public float nextPageTime = 3f;
+    private float nextPageTimeElapsed;
 
     [Header("Annotation screens")]
     public GameObject annotationFace;
     public GameObject annotationHand;
-    [Header("Annotation List of Points")]
-    public LandmarkManager landmarkManager;
+    //[Header("Annotation List of Points")]
     //public LandmarkListGO annotationList_FacePoints;
     //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     //List<GameObject> facePoints = new List<GameObject>();
@@ -52,8 +60,7 @@ public class ScenePageHandler : MonoBehaviour
         // go to next page after scene animation
         sceneAnimationEnd.OnAnimationFinished += NextPage;
 
-        //annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
-        //annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
+
         landmarkManager.SubscribePointsActive(OnFaceSpotted, OnHandSpotted);
         for (int i = 0; i < pageLogics.Count; i++)
         {
@@ -64,7 +71,12 @@ public class ScenePageHandler : MonoBehaviour
             }
         }
 
+        // subscribe gesture events
+        handGestureManager.SubscribeFirstDetected(OnGestureFirstDetected);
+        handGestureManager.SubscribeDetecting(OnGestureDetecting);
 
+
+        // Disable all pages
         for (int i = 0; i < pageLogics.Count; i++)
             pageLogics[i].gameObject.SetActive(false);
 
@@ -99,6 +111,25 @@ public class ScenePageHandler : MonoBehaviour
                 //NextPage();
             }
         }
+
+        // If gesture navigation detected
+        if (gestureNavigationDetected)
+        {
+            nextPageTimeElapsed += Time.deltaTime;
+            nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
+
+            img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
+            if (nextPageTimeElapsed >= nextPageTime)
+            {
+                Debug.Log("next page");
+                //nextPageTimeElapsed = 0f;
+            }
+        }
+        else if (nextPageTimeElapsed > 0)
+        {
+            nextPageTimeElapsed = 0f;
+        }
+
     }
  
 
@@ -176,6 +207,32 @@ public class ScenePageHandler : MonoBehaviour
         sceneAnimationStart.OnAnimationFinished = null;
         currentPageLogic.ChangeState(PageLogic.PageState.ENDED);
         StartPage();
+    }
+
+    // GESTURES
+    void OnGestureFirstDetected(string gesture)
+    {
+        if (handGestureManager.IsGestureDetected()) return;
+
+        Debug.Log("New gesture detected");
+            if (gestureNavigation.gestureName == gesture)
+                gestureNavigationDetected = true;
+            else
+            gestureNavigationDetected = false;
+
+    }
+    void OnGestureDetecting(string gesture)
+    {
+        if (!handGestureManager.IsGestureDetected()) return;
+            Debug.Log("gesture detected " + gesture);
+            if (gestureNavigation.gestureName == gesture)
+            {
+                gestureNavigationDetected = true;
+            }
+            else
+            {
+                gestureNavigationDetected = false;
+            }
     }
 }
 
