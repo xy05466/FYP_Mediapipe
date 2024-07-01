@@ -4,7 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MassageSliderObjectV2 : MonoBehaviour
 {
-    public GameObject testGO;
+    [Header("Interacting object")]
+    public GameObject targetObject;
+    private SpriteRenderer rendererObject;
+    public Color color_default = Color.white;
+    public Color color_interacting = Color.green;
+    public Color color_done = Color.gray;
+    //public Sprite spr_default;
+    //public Sprite spr_interacting;
+    //public Sprite spr_done;
+
     public LineRenderer lr_outline;
     public LineRenderer lr_filled;
     private int fillCount = 0;
@@ -24,6 +33,12 @@ public class MassageSliderObjectV2 : MonoBehaviour
     bool end = false;
     bool move = false;
     public Action<MassageSliderObjectV2> OnEnded;
+
+    private void Awake()
+    {
+        rendererObject = targetObject.GetComponent<SpriteRenderer>();
+    }
+
     // Set up start end points
     public void SetUp(int start, int end)
     {
@@ -56,11 +71,12 @@ public class MassageSliderObjectV2 : MonoBehaviour
 
 
         Vector3 valuePosition = GetValuePosition();
-        testGO.gameObject.transform.position = valuePosition;
+        targetObject.gameObject.transform.position = valuePosition;
 
+        // interacting
         if (Vector2.Distance(compareObject.transform.position, valuePosition) <= distance)
         {
-
+            
             sliderValue += Time.deltaTime * 0.2f;
             sliderValue = Mathf.Clamp(sliderValue, 0f, 1f);
 
@@ -76,8 +92,14 @@ public class MassageSliderObjectV2 : MonoBehaviour
             {
                 end = true;
                 Debug.Log("ending");
+                rendererObject.color = color_done;
                 OnEnded?.Invoke(this);
             }
+            rendererObject.color = color_interacting;
+        }
+        else
+        {
+            rendererObject.color = color_default;
         }
 
 
@@ -138,6 +160,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
         sliderValue = 0f;
         end = false;
         lr_filled.positionCount = 0;
+        rendererObject.color = color_default;
     }
 
     // Calculated bezier path, done by Bryant Toh
