@@ -116,22 +116,23 @@ public class ScenePageHandler : MonoBehaviour
         if (gestureNavigationDetected)
         {
             nextPageTimeElapsed += Time.deltaTime;
-            nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
 
-            img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
             if (nextPageTimeElapsed >= nextPageTime)
             {
                 Debug.Log("next page");
-                //nextPageTimeElapsed = 0f;
+                nextPageTimeElapsed = 0f;
+                PreNextPage();
             }
         }
         else if (nextPageTimeElapsed > 0)
         {
-            nextPageTimeElapsed = 0f;
+            nextPageTimeElapsed -= Time.deltaTime;
         }
+        nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
+        img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
 
     }
- 
+
 
     public void StoreFacePoints(List<GameObject> facePoints)
     {

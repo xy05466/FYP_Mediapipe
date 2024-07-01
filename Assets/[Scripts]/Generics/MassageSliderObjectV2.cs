@@ -40,10 +40,10 @@ public class MassageSliderObjectV2 : MonoBehaviour
     }
 
     // Set up start end points
-    public void SetUp(int start, int end)
+    public void SetUp()
     {
-        startLandmark = start;
-        endLandmark = end;
+        //startLandmark = start;
+        //endLandmark = end;
         lr_outline.positionCount = segmentCount;
         lr_filled.positionCount = 0;
 
