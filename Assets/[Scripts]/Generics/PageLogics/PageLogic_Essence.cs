@@ -11,11 +11,12 @@ public class PageLogic_Essence : PageLogic_Extension
     //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
 
-    public MassageSliderObject massageSliderObjectPrefeb;
+    //public MassageSliderObject massageSliderObjectPrefeb;
     public int landmark1;
     public int landmark2;
     public MassageSliderObjectV2 massageSliderObjectPrefeb2;
-    private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
+    //private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
+    private List<MassageSliderObjectV2> massageSliderObjects2 = new List<MassageSliderObjectV2>();
     [Header("settings")]
     public bool enableAllHandPointCollision = true;
     public List<FaceHandPoint.HANDPOINT> list_handpoints_interact = new List<FaceHandPoint.HANDPOINT>();
@@ -27,30 +28,32 @@ public class PageLogic_Essence : PageLogic_Extension
     //lr.GetPosition(i-1) / 
     public override void StartPage()
     {
-        //int maxSpawn = 0;
-        //int tempcCount = 0;
-        //// find max number of slider needs to spawn
-        //foreach (var step in list_steps) {
-        //    foreach (var item in step.massageSliders)
-        //    {
-        //        tempcCount++;
-        //    }
-        //    if (tempcCount > maxSpawn) { 
-        //        maxSpawn = tempcCount; 
-        //    }
-        //    tempcCount = 0;
-        //}
+        int maxSpawn = 0;
+        int tempcCount = 0;
+        // find max number of slider needs to spawn
+        foreach (var step in list_steps)
+        {
+            foreach (var item in step.massageSliders)
+            {
+                tempcCount++;
+            }
+            if (tempcCount > maxSpawn)
+            {
+                maxSpawn = tempcCount;
+            }
+            tempcCount = 0;
+        }
 
-        //// Instantiate massage slider base on most slider in steps
-        //for (int i = 0; i < maxSpawn; i++)
-        //{
-        //    MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb,transform);
-        //    mso.transform.localPosition = Vector3.zero;
-        //    massageSliderObjects.Add(mso);
-        //}
+        // Instantiate massage slider base on most slider in steps
+        for (int i = 0; i < maxSpawn; i++)
+        {
+            MassageSliderObjectV2 mso = Instantiate(massageSliderObjectPrefeb2, transform);
+            mso.transform.localPosition = Vector3.zero;
+            massageSliderObjects2.Add(mso);
+        }
 
         //// Init all slider
-        //foreach (var massageSlider in massageSliderObjects)
+        //foreach (var massageSlider in massageSliderObjects2)
         //{
         //    massageSlider.Init();
         //    // subscribe all slider events
@@ -58,31 +61,50 @@ public class PageLogic_Essence : PageLogic_Extension
         //    massageSlider.SubscribeEvent_NextPoint(OnSliderNextPoint);
         //    massageSlider.SubscribeEvent_Ended(OnSliderEnded);
         //}
-        //SetMassageSliders();
 
-        massageSliderObjectPrefeb2.SetUp(landmark1, landmark2);
+        // Subscribe slider events
+        foreach (var mso in massageSliderObjects2)
+        {
+            mso.SubscribeEvent_Ended(OnSliderEnded);
+        }
+
+        SetMassageSliders();
+
+        foreach (var massageSlider in massageSliderObjects2)
+            massageSlider.SetUp(landmark1, landmark2);
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
         if (facepointsObj == null || facepointsObj.Count <= 0 ) return;
 
-
-     
         //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
-        for (int i = 0; i < list_steps[currentStepIndex].massageSliders[0].points.Count; i++)
+
+        // loop all sliders base on steps
+        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
         {
-            var id = list_steps[currentStepIndex].massageSliders[0].points[i];
+            MassageSliderPoints massageSliderDataI = list_steps[currentStepIndex].massageSliders[i];
+            MassageSliderObjectV2 msoI = massageSliderObjects2[i];
 
-            massageSliderObjectPrefeb2.SetPointPosition(i, facepointsObj[id].transform.position);
-
+            for (int j = 0; j < massageSliderDataI.points.Count; j++)
+            {
+                var id = massageSliderDataI.points[j];
+                msoI.SetPointPosition(j, facepointsObj[id].transform.position);
+            }
         }
+      
 
+        // check if certain fingeer points interacting
+        // with current sliedr position
         if (handpointsObj != null && handpointsObj.Count > 0)
         {
             foreach (var item in list_handpoints_interact)
             {
                 int handItem = (int)item;
-                massageSliderObjectPrefeb2.UpdateSlider(handpointsObj[handItem].gameObject, 0.2f);
+                // loop all sliders
+                for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                {
+                    massageSliderObjects2[i].UpdateSlider(handpointsObj[handItem].gameObject, 0.2f);
+                }
             }
         }
         //// Update all  massage sliders
@@ -92,26 +114,26 @@ public class PageLogic_Essence : PageLogic_Extension
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        foreach (var massageSliderObject in massageSliderObjects)
-        {
-            if(massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
-            //if (points[currentIndex] == facePointIndex)
-            //{
-            //    currentIndex++;
-            //    sliderfloat = 0;
-            //}
-            //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
-            //{
-            //    sliderfloat += Time.deltaTime;
-            //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
-            //}
+        //foreach (var massageSliderObject in massageSliderObjects)
+        //{
+        //    if(massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+        //    //if (points[currentIndex] == facePointIndex)
+        //    //{
+        //    //    currentIndex++;
+        //    //    sliderfloat = 0;
+        //    //}
+        //    //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
+        //    //{
+        //    //    sliderfloat += Time.deltaTime;
+        //    //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+        //    //}
         
-            //// if collide with current facepoint
-            //if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
-            //{
-            //    //FillCurrentPoint();
-            //}
-        }
+        //    //// if collide with current facepoint
+        //    //if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
+        //    //{
+        //    //    //FillCurrentPoint();
+        //    //}
+        //}
     }
     public override void EndPage()
     {
@@ -136,8 +158,8 @@ public class PageLogic_Essence : PageLogic_Extension
     {
         int currentSlider = 0;
         // disable all slider
-        for (int i = 0; i < massageSliderObjects.Count; i++)
-            massageSliderObjects[i].gameObject.SetActive(false);
+        for (int i = 0; i < massageSliderObjects2.Count; i++)
+            massageSliderObjects2[i].gameObject.SetActive(false);
 
         // loop through each slider data base on current step
         foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
@@ -146,8 +168,8 @@ public class PageLogic_Essence : PageLogic_Extension
             for (int i = 0; i < massageSliderData.points.Count; i++)
             {
                 int point = massageSliderData.points[i];
-                massageSliderObjects[currentSlider].gameObject.SetActive(true);
-                massageSliderObjects[currentSlider].AddPoint(point);
+                massageSliderObjects2[currentSlider].gameObject.SetActive(true);
+                //massageSliderObjects2[currentSlider].AddPoint(point);
 
             }
             currentSlider++;
@@ -162,55 +184,55 @@ public class PageLogic_Essence : PageLogic_Extension
     }
    
     // On colliding with massage slider
-    void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int sliderId, GameObject goObject, Collider other)
-    {
-        if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+    //void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int sliderId, GameObject goObject, Collider other)
+    //{
+    //    if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
 
-        if (other.gameObject.tag == "Handpoint")
-        {
-            if(sliderId == massageSliderObject.GetCurrentIndex() || 
-                sliderId == massageSliderObject.GetCurrentIndex()+1 && massageSliderObject.GetPercentageSegmantFilled() >= 0.8f)
-            {
-                if (!enableAllHandPointCollision)
-                {
-                    bool proceed = false;
-                    foreach (var item in list_handpoints_interact)
-                    {
-                        if (other.gameObject.transform.GetSiblingIndex() == (int)item)
-                        {
-                            proceed = true;
-                            break;
-                        }
-                    }
+    //    if (other.gameObject.tag == "Handpoint")
+    //    {
+    //        if(sliderId == massageSliderObject.GetCurrentIndex() || 
+    //            sliderId == massageSliderObject.GetCurrentIndex()+1 && massageSliderObject.GetPercentageSegmantFilled() >= 0.8f)
+    //        {
+    //            if (!enableAllHandPointCollision)
+    //            {
+    //                bool proceed = false;
+    //                foreach (var item in list_handpoints_interact)
+    //                {
+    //                    if (other.gameObject.transform.GetSiblingIndex() == (int)item)
+    //                    {
+    //                        proceed = true;
+    //                        break;
+    //                    }
+    //                }
 
-                    if (!proceed) { return; }
-                }
+    //                if (!proceed) { return; }
+    //            }
 
-                Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
-                Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
+    //            Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
+    //            Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
 
-                // Calculate the total distance
-                float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
+    //            // Calculate the total distance
+    //            float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
 
-                // Calculate the distance from start to the check position
-                float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
+    //            // Calculate the distance from start to the check position
+    //            float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
 
 
-                float totalDistance2 = Vector3.Distance(startPoint, endpoint);
+    //            float totalDistance2 = Vector3.Distance(startPoint, endpoint);
 
-                if (checkDistance > totalDistance)
-                    massageSliderObject.FillCurrentPoint(1 / totalDistance2);
-            }
-        }
-    }
+    //            if (checkDistance > totalDistance)
+    //                massageSliderObject.FillCurrentPoint(1 / totalDistance2);
+    //        }
+    //    }
+    //}
 
     // on first collider with next point in the slider,
     // the points are usually the face landmarks
-    void OnSliderNextPoint(int point)
-    {
-        Debug.Log("slider next :" + point);
-    }
-    void OnSliderEnded()
+    //void OnSliderNextPoint(int point)
+    //{
+    //    Debug.Log("slider next :" + point);
+    //}
+    void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
     {
         Debug.Log("slider ended");
         slidersDoneCount++;
@@ -231,16 +253,18 @@ public class PageLogic_Essence : PageLogic_Extension
         };
 
         currentStepIndex++;
-        // Init all slider
-        foreach (var massageSlider in massageSliderObjects)
+        // reset all slider
+        foreach (var massageSlider in massageSliderObjects2)
         {
-            massageSlider.Init();
+            massageSlider.ResetSlider();
         }
+        Debug.Log("next step");
         SetMassageSliders();
     }
     public void End()
     {
         massageEnd = true;
+        Debug.Log("massage end");
     }
 }
 

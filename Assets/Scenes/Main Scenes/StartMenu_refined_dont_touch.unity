@@ -7020,7 +7020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  massageSliderObjectPrefeb: {fileID: 0}
   landmark1: 0
   landmark2: 0
   massageSliderObjectPrefeb2: {fileID: 0}
@@ -14640,7 +14639,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  massageSliderObjectPrefeb: {fileID: 205556544}
   landmark1: 377
   landmark2: 361
   massageSliderObjectPrefeb2: {fileID: 205556545}
@@ -14649,6 +14647,9 @@ MonoBehaviour:
   list_steps:
   - massageSliders:
     - points: 8b010000b90100002001000020010000
+    - points: 8b010000b90100002001000020010000
+  - massageSliders:
+    - points: e800000045010000420100007b000000
 --- !u!114 &518752969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15954,7 +15955,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
   leaveEmpty: ==============
-  massageSliderObjectPrefeb: {fileID: 0}
   landmark1: 0
   landmark2: 0
   massageSliderObjectPrefeb2: {fileID: 0}

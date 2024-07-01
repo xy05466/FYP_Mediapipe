@@ -18,12 +18,12 @@ public class MassageSliderObjectV2 : MonoBehaviour
     //private float sliderValue = 0f;
     //private int currentIndex = 0;
 
-    public Action<MassageSliderObjectV2, int, GameObject, Collider> OnColliding;
+    //public Action<MassageSliderObjectV2, int, GameObject, Collider> OnColliding;
 
     private float sliderValue = 0f;
     bool end = false;
     bool move = false;
-    public Action OnEnded;
+    public Action<MassageSliderObjectV2> OnEnded;
     // Set up start end points
     public void SetUp(int start, int end)
     {
@@ -46,6 +46,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
     // will move the slider
     public void UpdateSlider(GameObject compareObject, float distance = 1f)
     {
+        if (end) return;
         // set the position
         for (int i = 0; i < segmentCount; i++)
         {
@@ -60,23 +61,30 @@ public class MassageSliderObjectV2 : MonoBehaviour
         if (Vector2.Distance(compareObject.transform.position, valuePosition) <= distance)
         {
 
-            // set fill position count
-            //lr_filled.positionCount = fillCount;
-
             sliderValue += Time.deltaTime * 0.2f;
             sliderValue = Mathf.Clamp(sliderValue, 0f, 1f);
 
-            if(sliderValue>.5)
+            //// fill up line
+            //if(sliderValue> percentageList[fillCount])
+            //{
+            //    fillCount++;
+            //    //lr_filled.positionCount = fillCount;
+            //}
+
+            // if completed
+            if(sliderValue >= 1f)
             {
-                Debug.Log("IM HERE " + valuePosition);
-                lr_filled.positionCount = segmentCount / 2;
+                end = true;
+                Debug.Log("ending");
+                OnEnded?.Invoke(this);
             }
         }
 
+
+
+        // Set fill position base on outline position
         for (int i = 0; i < lr_filled.positionCount; i++)
-        {
             lr_filled.SetPosition(i, lr_outline.GetPosition(i));
-        }
 
         //Vector3 startpoint = lr_outline.GetPosition(0);
         //Vector3 endpoint = lr_outline.GetPosition(1);
@@ -118,18 +126,21 @@ public class MassageSliderObjectV2 : MonoBehaviour
 
     public Vector3 GetValuePosition()
     {
+        //// This is for linear path
         //Vector3 v = lr_outline.GetPosition(0) + sliderValue * (lr_outline.GetPosition(1) - lr_outline.GetPosition(0));
-
         //return v;
 
+        // This is for bezier path
         return CalculateBezierPoint(sliderValue, pathPoints);
     }
     public void ResetSlider()
     {
         sliderValue = 0f;
         end = false;
+        lr_filled.positionCount = 0;
     }
 
+    // Calculated bezier path, done by Bryant Toh
     public Vector3 CalculateBezierPoint(float t, List<Vector3> points)
     {
         Vector3 p0 = points[0];
@@ -151,5 +162,10 @@ public class MassageSliderObjectV2 : MonoBehaviour
         p += ttt * p3; // t^3 * p3
 
         return p;
+    }
+
+    public void SubscribeEvent_Ended(Action<MassageSliderObjectV2> action)
+    {
+        OnEnded += action;
     }
 }
