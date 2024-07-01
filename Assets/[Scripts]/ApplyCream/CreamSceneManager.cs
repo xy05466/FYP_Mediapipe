@@ -62,7 +62,7 @@ public class CreamSceneManager : MonoBehaviour
         {
             FlowerAccupoint newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform).GetComponent<FlowerAccupoint>();
             newPetal.pointId = j;
-            newPetal.transform.localScale = new Vector3(25, 25, 25);
+            newPetal.transform.localScale = new Vector3(5, 5, 5);
             newPetal.transform.localPosition = new Vector3(0, 0, -10);
             bigPetals.Add(newPetal);
             allPetals.Add(newPetal);
@@ -74,7 +74,7 @@ public class CreamSceneManager : MonoBehaviour
             {
                 FlowerAccupoint newPetal = Instantiate(smallPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform).GetComponent<FlowerAccupoint>();
                 newPetal.pointId = tempIntList[i][j];
-                newPetal.transform.localScale = new Vector3(10, 10, 10);
+                newPetal.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                 newPetal.transform.localPosition = new Vector3(0, 0, -10);
                 smallPetals[i].Add(newPetal);
                 allPetals.Add(newPetal);

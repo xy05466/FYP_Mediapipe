@@ -59,8 +59,7 @@ public class PageLogic_BezierCurve : PageLogic_Extension
             return;
         }
 
-        Vector2[] spacedPoints = path.CalculateEvenlySpacedPoints(spacing);
-
+        //Vector2[] spacedPoints = path.CalculateEvenlySpacedPoints(spacing);
         // Update path points based on face points
         for (int i = 0; i < path.NumPoints; i++)
         {
@@ -85,11 +84,11 @@ public class PageLogic_BezierCurve : PageLogic_Extension
         }
 
         // Update line renderer with new spaced points
-        lineRenderer.positionCount = spacedPoints.Length;
-        for (int i = 0; i < spacedPoints.Length; i++)
-        {
-            lineRenderer.SetPosition(i, spacedPoints[i]);
-        }
+        //lineRenderer.positionCount = spacedPoints.Length;
+        //for (int i = 0; i < spacedPoints.Length; i++)
+        //{
+        //    lineRenderer.SetPosition(i, spacedPoints[i]);
+        //}
 
         // Record changes for undo purposes
         Undo.RecordObject(creator, "Move Point");
