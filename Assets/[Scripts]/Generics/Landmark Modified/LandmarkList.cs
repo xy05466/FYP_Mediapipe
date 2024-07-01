@@ -48,6 +48,20 @@ public class LandmarkList<T>
             }
         }
     }
+    public List<T> GetPoints()
+    {
+        return points;
+    }
+
+    // EVENTS
+    public void SubscribePointsSpawn(System.Action<List<T>> action)
+    {
+        OnPointsSpawned += action;
+    }
+    public void SubscribeParentActive(System.Action<bool> action)
+    {
+        OnParentActive += action;
+    }
 }
 
 

@@ -38,10 +38,11 @@ public class ScenePageHandler : MonoBehaviour
     public GameObject annotationFace;
     public GameObject annotationHand;
     [Header("Annotation List of Points")]
-    public LandmarkListGO annotationList_FacePoints;
-    public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
-    List<GameObject> facePoints = new List<GameObject>();
-    List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
+    public LandmarkManager landmarkManager;
+    //public LandmarkListGO annotationList_FacePoints;
+    //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
+    //List<GameObject> facePoints = new List<GameObject>();
+    //List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
 
 
     bool handPointsStored = false;
@@ -51,17 +52,15 @@ public class ScenePageHandler : MonoBehaviour
         // go to next page after scene animation
         sceneAnimationEnd.OnAnimationFinished += NextPage;
 
-        annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
-        annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
-        annotationList_FacePoints.OnParentActive += OnFaceSpotted;
-        annotationList_HandPoints.OnParentActive += OnHandSpotted;
+        //annotationList_FacePoints.OnPointsSpawned += StoreFacePoints;
+        //annotationList_HandPoints.OnPointsSpawned += StoreHandPoints;
+        landmarkManager.SubscribePointsActive(OnFaceSpotted, OnHandSpotted);
         for (int i = 0; i < pageLogics.Count; i++)
         {
             PageLogic_Extension pageLogic_Extension = pageLogics[i] as PageLogic_Extension;
             if(pageLogic_Extension!= null)
             {
-                annotationList_FacePoints.OnParentActive += pageLogic_Extension.OnFaceAnnotationActive;
-                annotationList_HandPoints.OnParentActive += pageLogic_Extension.OnHandAnnotationActive;
+                landmarkManager.SubscribePointsActive(pageLogic_Extension.OnFaceAnnotationActive, pageLogic_Extension.OnHandAnnotationActive);
             }
         }
 
@@ -87,14 +86,12 @@ public class ScenePageHandler : MonoBehaviour
     {
         if (!sceneAnimationEnd.IsDone()) return;
         // find annotation points
-        annotationList_FacePoints.Update();
-        annotationList_HandPoints.Update();
 
         if (currentPageLogic != null)
         {
             // run curring page logic
             if (currentPageLogic.CompareState(PageLogic.PageState.START))
-                currentPageLogic.RunLogic(handPoints, facePoints);
+                currentPageLogic.RunLogic(landmarkManager.GetHandPoints(), landmarkManager.GetFacePoints());
 
             if (currentPageLogic.IsPageDone())
             {
@@ -107,14 +104,14 @@ public class ScenePageHandler : MonoBehaviour
 
     public void StoreFacePoints(List<GameObject> facePoints)
     {
-        this.facePoints = facePoints;
+        //this.facePoints = facePoints;
         foreach (var pageL in pageLogics)
             pageL.LoadFacePoints(true);
 
     }
     public void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
     {
-        this.handPoints = handPoints;
+        //this.handPoints = handPoints;
         foreach (var item in handPoints)
             item.OnCollidingFacePoint += OnHandPointCollide;
 
@@ -159,7 +156,7 @@ public class ScenePageHandler : MonoBehaviour
 
         if (handPointsStored && !currentPageLogic.HandpointsLoaded)
         {
-            foreach (var item in handPoints)
+            foreach (var item in landmarkManager.GetHandPoints())
                 item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
             currentPageLogic.LoadHandPoints(true);
         }
