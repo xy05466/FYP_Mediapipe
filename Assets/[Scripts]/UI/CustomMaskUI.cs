@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
-public class CustomMaskUI : MonoBehaviour
+public class CustomMaskUI : Image
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override Material materialForRendering {
+        get
+        {
+            Material material = new Material(base.materialForRendering);
+            material.SetInt("_StencilComp", (int)CompareFunction.NotEqual);
+            return material;
+        }
     }
 }
