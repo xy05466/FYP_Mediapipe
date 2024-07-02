@@ -13,10 +13,14 @@ using UnityEditor;
 
 public class TutorialSystem : MonoBehaviour
 {
+    [Header("Managers")]
     [SerializeField] private HandGestureManager handGestureManager;
+    [SerializeField] private LandmarkManager landmarkManager;
+    [Space]
     [SerializeField] private GestureSO gesture;
     [SerializeField] private Image img_loading;
     [SerializeField] private float loadingTime = 2;
+    [SerializeField] private RectTransform transformFocusHand;
     private float loadingElapsed = 0;
     [Space]
     [SerializeField] private RectTransform transformFocusParent;
@@ -49,6 +53,7 @@ public class TutorialSystem : MonoBehaviour
     }
     private void Update()
     {
+        if (!InProgress()) return;
         if (handGestureManager.GetCurrentGesture() == gesture.gestureName)
         {
             loadingElapsed += Time.deltaTime;
@@ -65,6 +70,17 @@ public class TutorialSystem : MonoBehaviour
             NextTutorial();
             loadingElapsed = 0f;
             img_loading.fillAmount = 0f;
+        }
+
+        if (landmarkManager.isActiveAndEnabled && landmarkManager.GetHandPoints().Count > 0)
+        {
+            //Vector3 newPos = Camera.main.WorldToScreenPoint(landmarkManager.GetHandPoints()[0].transform.position);
+            //Quaternion newRot = landmarkManager.GetHandPoints()[0].transform.rotation;
+            //transformFocusHand.GetComponent<RectTransform>().anchoredPosition = new Vector2(-newPos.y,newPos.x);
+            //transformFocusHand.rotation = newRot;
+            transformFocusHand.SetParent(landmarkManager.GetHandPoints()[0].transform);
+            Vector3 offset = new Vector3(100,-50,0);
+            transformFocusHand.localPosition = offset;
         }
     }
     // when each tutorial components is focus
