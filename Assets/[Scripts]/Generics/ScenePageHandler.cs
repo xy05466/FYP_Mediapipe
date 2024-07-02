@@ -129,6 +129,7 @@ public class ScenePageHandler : MonoBehaviour
             nextPageTimeElapsed -= Time.deltaTime;
         }
         nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
+        if(img_nextPageFilled)
         img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
 
     }
