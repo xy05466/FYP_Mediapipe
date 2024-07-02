@@ -14,6 +14,10 @@ using UnityEditor;
 public class TutorialSystem : MonoBehaviour
 {
     [SerializeField] private HandGestureManager handGestureManager;
+    [SerializeField] private GestureSO gesture;
+    [SerializeField] private Image img_loading;
+    [SerializeField] private float loadingTime = 2;
+    private float loadingElapsed = 0;
     [Space]
     [SerializeField] private RectTransform transformFocusParent;
     [SerializeField] private RectTransform transformFocus;
@@ -43,6 +47,26 @@ public class TutorialSystem : MonoBehaviour
     {
         bu_next.onClick.AddListener(NextTutorial);
     }
+    private void Update()
+    {
+        if (handGestureManager.GetCurrentGesture() == gesture.gestureName)
+        {
+            loadingElapsed += Time.deltaTime;
+        }
+        else
+        {
+            loadingElapsed -= Time.deltaTime;
+        }
+        loadingElapsed = Mathf.Clamp(loadingElapsed,0, loadingTime);
+        img_loading.fillAmount = loadingElapsed / loadingTime;
+
+        if (loadingElapsed >= loadingTime)
+        {
+            NextTutorial();
+            loadingElapsed = 0f;
+            img_loading.fillAmount = 0f;
+        }
+    }
     // when each tutorial components is focus
     void OnTutorialComponentFocus(TutorialComponent tutorialComponent)
     {
@@ -61,7 +85,7 @@ public class TutorialSystem : MonoBehaviour
     {
         Invoke("DequeueTutorial", timeTutorial);
     }
-    public void DequeueTutorial()
+    void DequeueTutorial()
     {
         if (tutorialComponentsQueue.Count > 0)
         {
@@ -75,6 +99,7 @@ public class TutorialSystem : MonoBehaviour
             transformFocus.SetParent(transformFocusParent);
             tmp_tutorialText.transform.parent.gameObject.SetActive(false);
             isPlaying = false;
+            img_loading.fillAmount = 0f;
         }
         timeTutorial = 0f;
     }
@@ -92,6 +117,7 @@ public class TutorialSystem : MonoBehaviour
     {
         return isPlaying;
     }
+
 
     //public void AddToQueue(TutorialComponent tutorialComponent)
     //{
