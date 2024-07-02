@@ -17562,7 +17562,7 @@ GameObject:
   - component: {fileID: 621099379}
   - component: {fileID: 621099380}
   m_Layer: 0
-  m_Name: TutorialManager
+  m_Name: Tutorial System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

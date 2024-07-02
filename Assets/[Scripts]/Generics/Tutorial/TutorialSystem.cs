@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-public class TutorialManager : MonoBehaviour
+public class TutorialSystem : MonoBehaviour
 {
     [SerializeField] private RectTransform transformFocusParent;
     [SerializeField] private RectTransform transformFocus;
@@ -93,14 +93,14 @@ public class TutorialManager : MonoBehaviour
 
 
     #if UNITY_EDITOR
-    [CustomEditor(typeof(TutorialManager))]
+    [CustomEditor(typeof(TutorialSystem))]
     public class TutorialManagerEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            TutorialManager tutorialManager = (TutorialManager)target;
+            TutorialSystem tutorialManager = (TutorialSystem)target;
 
             GUILayout.Space(10);
             if (GUILayout.Button("Get All Components"))
