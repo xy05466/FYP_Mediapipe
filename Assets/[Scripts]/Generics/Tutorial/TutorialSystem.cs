@@ -13,6 +13,8 @@ using UnityEditor;
 
 public class TutorialSystem : MonoBehaviour
 {
+    [SerializeField] private HandGestureManager handGestureManager;
+    [Space]
     [SerializeField] private RectTransform transformFocusParent;
     [SerializeField] private RectTransform transformFocus;
     [SerializeField] private Button bu_next;
@@ -21,7 +23,8 @@ public class TutorialSystem : MonoBehaviour
     [SerializeField] private List<TutorialComponent> tutorialComponents = new List<TutorialComponent>();
     private Queue<TutorialComponent> tutorialComponentsQueue = new Queue<TutorialComponent>();
     [SerializeField] private TMP_Text tmp_tutorialText;
-    bool focusing = false;
+    bool isPlaying = false;
+    float timeTutorial = 2f;
 
     private void Awake()
     {
@@ -46,14 +49,13 @@ public class TutorialSystem : MonoBehaviour
         Debug.Log("dsds");
         // add to queue
         tutorialComponentsQueue.Enqueue(tutorialComponent);
-        if(!focusing)
+        if(!isPlaying)
         {
             Debug.Log("focusig");
             NextTutorial();
         }
-        focusing = true;
+        isPlaying = true;
     }
-    float timeTutorial = 2f;
     // go to next tutorial
     public void NextTutorial()
     {
@@ -72,7 +74,7 @@ public class TutorialSystem : MonoBehaviour
             transformFocusParent.gameObject.SetActive(false);
             transformFocus.SetParent(transformFocusParent);
             tmp_tutorialText.transform.parent.gameObject.SetActive(false);
-            focusing = false;
+            isPlaying = false;
         }
         timeTutorial = 0f;
     }
@@ -85,14 +87,19 @@ public class TutorialSystem : MonoBehaviour
         tmp_tutorialText.text = tutorialComponent.GetInstructionText();
     }
 
+    // Check if tutorial is in progress
+    public bool InProgress()
+    {
+        return isPlaying;
+    }
+
     //public void AddToQueue(TutorialComponent tutorialComponent)
     //{
     //    tutorialComponent.SubscribeFocus(OnTutorialComponentFocus);
     //    tutorialComponent.StartComponent();
     //}
 
-
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CustomEditor(typeof(TutorialSystem))]
     public class TutorialManagerEditor : Editor
     {

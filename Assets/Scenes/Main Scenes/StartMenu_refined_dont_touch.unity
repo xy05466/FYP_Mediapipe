@@ -10709,7 +10709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &361220156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17567,7 +17567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &621099379
 Transform:
   m_ObjectHideFlags: 0
@@ -17596,6 +17596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd79c33b4c72184daf036a1d6f5225e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handGestureManager: {fileID: 0}
   transformFocusParent: {fileID: 1166225047}
   transformFocus: {fileID: 242531344}
   bu_next: {fileID: 1699658573}
@@ -17634,9 +17635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
+  - {fileID: 878462219}
   - {fileID: 518752968}
   - {fileID: 959629942}
-  - {fileID: 878462219}
   - {fileID: 885432721}
   - {fileID: 786372592}
   - {fileID: 878462219}
@@ -28141,15 +28142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
-  screen: {fileID: 0}
-  background: {fileID: 0}
-  preview: {fileID: 0}
+  screen: {fileID: 1936696891}
+  background: {fileID: 1936696889}
+  preview: {fileID: 91149748}
   brightnessTxt: {fileID: 0}
   text: {fileID: 0}
   date: {fileID: 0}
   splashTxt: {fileID: 0}
   photoTxt: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 2005557847}
 --- !u!4 &1036480180
 Transform:
   m_ObjectHideFlags: 0
