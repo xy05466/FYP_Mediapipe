@@ -21,6 +21,7 @@ public class TutorialSystem : MonoBehaviour
     [SerializeField] private Image img_loading;
     [SerializeField] private float loadingTime = 2;
     [SerializeField] private RectTransform transformFocusHand;
+    [SerializeField] private Vector2 handFocusOffset;
     private float loadingElapsed = 0;
     [Space]
     [SerializeField] private RectTransform transformFocusParent;
@@ -79,7 +80,7 @@ public class TutorialSystem : MonoBehaviour
             //transformFocusHand.GetComponent<RectTransform>().anchoredPosition = new Vector2(-newPos.y,newPos.x);
             //transformFocusHand.rotation = newRot;
             transformFocusHand.SetParent(landmarkManager.GetHandPoints()[0].transform);
-            Vector3 offset = new Vector3(100,-50,0);
+            Vector3 offset = new Vector3(handFocusOffset.x, handFocusOffset.y, 0);
             transformFocusHand.localPosition = offset;
         }
     }
