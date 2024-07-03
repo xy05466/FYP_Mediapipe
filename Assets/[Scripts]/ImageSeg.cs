@@ -1,4 +1,5 @@
 using Mediapipe.Unity;
+using System.Net;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -18,13 +19,17 @@ public class ImageSeg : MaskAnnotation
         switch (wallpaperIndex)
         {
             case 1:
+                maskRenderTexture.Create();
                 relativePath = "Resources/LiveWallpaper/Sakura.mp4";
                 break;
             case 2:
+                maskRenderTexture.Create();
                 relativePath = "Resources/LiveWallpaper/Roses.mp4";
                 break;
             case 3:
-                relativePath = "Resources/LiveWallpaper/AbstractLines.mp4";
+                maskRenderTexture.Create();
+                ClearRenderTexture();
+                relativePath = "";
                 break;
             default:
                 Debug.LogError("Invalid wallpaper index.");
@@ -32,20 +37,31 @@ public class ImageSeg : MaskAnnotation
         }
 
         string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, relativePath);
-        filterTex.url = videoPath;
-        filterTex.targetTexture = maskRenderTexture;
-        filterTex.Prepare();
-
-        // Add event listener to play the video once it's prepared
-        filterTex.prepareCompleted += OnVideoPrepareCompleted;
+        if (relativePath == "")
+        {
+            filterTex.url = "";
+        }
+        else
+        {
+            filterTex.url = videoPath;
+            filterTex.targetTexture = maskRenderTexture;
+            filterTex.Prepare();
+            filterTex.prepareCompleted += OnVideoPrepareCompleted;
+        }
     }
 
     private void OnVideoPrepareCompleted(VideoPlayer source)
     {
-        // Play the video
         source.Play();
 
-        // Remove the event listener to prevent it from being called multiple times
         source.prepareCompleted -= OnVideoPrepareCompleted;
+    }
+
+    private void ClearRenderTexture()
+    {
+        if (maskRenderTexture != null)
+        {
+            maskRenderTexture.Release();
+        }
     }
 }
