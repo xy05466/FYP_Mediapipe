@@ -11977,14 +11977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bb17244e47fc345a3f97aa49275c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
-  leaveEmpty: ==============
-  points: 1d010000500100005101000029010000
-  newHandles: {fileID: 7907345662840862319, guid: c5f38b4286610c54cb999001c00c1d84,
-    type: 3}
-  lineRenderer: {fileID: 388790450}
-  spacing: 1
-  resolution: 1
 --- !u!114 &388790452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18027,11 +18019,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
+  - {fileID: 786372592}
   - {fileID: 518752968}
   - {fileID: 878462219}
   - {fileID: 959629942}
   - {fileID: 885432721}
-  - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 1010666741}
   landmarkManager: {fileID: 683045300}
@@ -28645,16 +28637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd576fe2db61fda48af15adae03fd55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
-  screen: {fileID: 1936696891}
-  background: {fileID: 1936696889}
-  preview: {fileID: 91149748}
-  brightnessTxt: {fileID: 0}
-  text: {fileID: 0}
-  date: {fileID: 0}
-  splashTxt: {fileID: 0}
-  photoTxt: {fileID: 0}
-  audioManager: {fileID: 2005557847}
 --- !u!4 &1036480180
 Transform:
   m_ObjectHideFlags: 0
@@ -45103,7 +45085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b70074974ff57540ae16716a3cbc6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mfla: {fileID: 0}
+  _mfla: {fileID: 1758454433}
   indexesToStore: 
   threshold: 50
 --- !u!1 &1761166965
