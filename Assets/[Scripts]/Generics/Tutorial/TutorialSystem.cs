@@ -106,14 +106,18 @@ public class TutorialSystem : MonoBehaviour
         if (tutorialComponentsQueue.Count > 0)
         {
             transformFocusParent.gameObject.SetActive(true);
+            transformFocus.gameObject.SetActive(true);
             Focus(tutorialComponentsQueue.Dequeue());
             tmp_tutorialText.transform.parent.gameObject.SetActive(true);
+            transformFocusHand.gameObject.SetActive(true);
         }
         else
         {
             transformFocusParent.gameObject.SetActive(false);
+            transformFocus.gameObject.SetActive(false);
             transformFocus.SetParent(transformFocusParent);
             tmp_tutorialText.transform.parent.gameObject.SetActive(false);
+            transformFocusHand.gameObject.SetActive(false);
             isPlaying = false;
             img_loading.fillAmount = 0f;
         }
