@@ -15,14 +15,15 @@ using Mediapipe;
 
 public class HandLandMarkerGestureDetectorRunner  : HandLandmarkerRunner
 {
-    [SerializeField] private HandLandmarkModelTranslator _handLandmarkModelTranslator;
+    //[SerializeField] private HandLandmarkModelTranslator _handLandmarkModelTranslator;
+    [SerializeField] private HandGestureManager handGestureManager;
 
     protected override void OnHandLandmarkDetectionOutput(HandLandmarkerResult result, Image image, long timestamp)
     {
         base.OnHandLandmarkDetectionOutput(result, image, timestamp);
         if (result.handLandmarks != null)
         {
-            var gestureResult = _handLandmarkModelTranslator.ReadGesture(result);
+            var gestureResult = handGestureManager.ReadGesture(result);
         }
     }
 }

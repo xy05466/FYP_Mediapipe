@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu]
-public class Gesture : ScriptableObject 
+public class GestureSO : ScriptableObject 
 {
   public string gestureName;
   public List<Vector2> fingerDistances;

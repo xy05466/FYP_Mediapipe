@@ -8,7 +8,7 @@ public class LandmarkList<T>
     public Transform parent;
     public string tag = "Facepoint";
     protected List<T> points = new List<T>();
-    protected bool synced = false;
+    protected bool loaded = false;
     protected bool search = false;
     public System.Action<List<T>> OnPointsSpawned;
     public Action<bool> OnParentActive;
@@ -30,7 +30,7 @@ public class LandmarkList<T>
     public virtual void Update()
     {
         ParentAction();
-        if (!synced)
+        if (!loaded)
         {
             foreach (var item in parent.GetComponentsInChildren<Transform>())
             {
@@ -43,10 +43,28 @@ public class LandmarkList<T>
             }
             if (search)
             {
-                synced = true;
+                loaded = true;
                 OnPointsSpawned?.Invoke(points);
             }
         }
+    }
+    public List<T> GetPoints()
+    {
+        return points;
+    }
+
+    // EVENTS
+    public void SubscribePointsSpawn(System.Action<List<T>> action)
+    {
+        OnPointsSpawned += action;
+    }
+    public void SubscribeParentActive(System.Action<bool> action)
+    {
+        OnParentActive += action;
+    }
+    public bool isLoaded()
+    {
+        return loaded;
     }
 }
 
@@ -57,7 +75,7 @@ public class LandmarkListGO : LandmarkList<GameObject>
     public override void Update()
     {
         ParentAction();
-        if (!synced)
+        if (!loaded)
         {
             foreach (var item in parent.GetComponentsInChildren<Transform>())
             {
@@ -70,7 +88,7 @@ public class LandmarkListGO : LandmarkList<GameObject>
             }
             if (search)
             {
-                synced = true;
+                loaded = true;
                 OnPointsSpawned?.Invoke(points);
             }
         }
