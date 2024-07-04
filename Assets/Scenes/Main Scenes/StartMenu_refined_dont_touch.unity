@@ -7870,8 +7870,6 @@ MonoBehaviour:
   coordText: {fileID: 0}
   percentageText: {fileID: 0}
   gestures:
-  - {fileID: 11400000, guid: a6a1c3dcfe67c7241951811d0df7df46, type: 2}
-  - {fileID: 11400000, guid: 9de09820d95603c41bb52770dc2ebe4e, type: 2}
   - {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
   - {fileID: 11400000, guid: d59cee60ba7fb1b46bea3dcea534e5b0, type: 2}
   minimumTreshold: 50
@@ -11775,23 +11773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bb17244e47fc345a3f97aa49275c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
-  leaveEmpty: ==============
-  pageState: 0
-  loadedHandpoints: 0
-  loadedFacepoints: 0
-  points: 1d010000500100005101000029010000
-  newHandles: {fileID: 7907345662840862319, guid: c5f38b4286610c54cb999001c00c1d84,
-    type: 3}
-  lineRenderer: {fileID: 388790450}
-  creator: {fileID: 0}
-  path:
-    points: []
-    isClosed: 0
-    autoSetControlPoints: 0
-  spacing: 1
-  resolution: 1
-  spacedPoints: []
 --- !u!114 &388790452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17798,7 +17779,7 @@ MonoBehaviour:
   img_loading: {fileID: 1170270986}
   loadingTime: 3
   transformFocusHand: {fileID: 1036983872}
-  handFocusOffset: {x: 100, y: 150}
+  handFocusOffset: {x: -30, y: 10}
   transformFocusParent: {fileID: 1166225047}
   transformFocus: {fileID: 242531344}
   bu_next: {fileID: 1699658573}
@@ -17837,11 +17818,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
+  - {fileID: 786372592}
+  - {fileID: 518752968}
   - {fileID: 959629942}
   - {fileID: 878462219}
-  - {fileID: 518752968}
   - {fileID: 885432721}
-  - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 1010666741}
   landmarkManager: {fileID: 683045300}
@@ -22681,7 +22662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a96e75930d62b49a68a309fcc2ebad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageData: {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
+  pageData: {fileID: 11400000, guid: 4dedddbdd1292fb42b192e90b9c5a4f6, type: 2}
   leaveEmpty: ==============
   creamManager: {fileID: 2135431875}
 --- !u!1 &788082566
@@ -28563,7 +28544,7 @@ RectTransform:
   m_GameObject: {fileID: 1036983871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.00231, y: 0.00231, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 640408672}
@@ -28571,9 +28552,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540, y: -958.3631}
-  m_SizeDelta: {x: 1500, y: 1500}
-  m_Pivot: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -544.5, y: -950.36316}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036983873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30755,7 +30736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1166225044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33004,6 +32985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248879219}
   - component: {fileID: 1248879222}
+  - component: {fileID: 1248879223}
   m_Layer: 5
   m_Name: Face Annotable Layer
   m_TagString: Untagged
@@ -33052,6 +33034,21 @@ MonoBehaviour:
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
   _faceConnectionWidth: 0.174
   _irisCircleWidth: 0
+--- !u!114 &1248879223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248879218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b70074974ff57540ae16716a3cbc6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mfla: {fileID: 1248879222}
+  indexesToStore: af000000390000001f01000081000000ca0000004b01000066010000cf000000ab010000930000007801000008000000370000001d010000690000004e010000460000002c010000450000002b0100000a000000
+  threshold: 10
 --- !u!1 &1261161680
 GameObject:
   m_ObjectHideFlags: 0
@@ -52448,6 +52445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
+      propertyPath: bigPetalPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
       propertyPath: bigPetalPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 819144451421113746, guid: 140e3da83c67abc4c86078cc3a835811,
@@ -52470,6 +52472,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 819144451421113746, guid: 63d8b34691497544d8217316a80fa1b0,
         type: 3}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: bigPetalPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4325746460590818140, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
       propertyPath: m_LocalPosition.x

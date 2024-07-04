@@ -16,6 +16,7 @@ public class PageLogic_IntroFaceHandDetection : PageLogic_Extension
 
     public override void StartPage()
     {
+
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
