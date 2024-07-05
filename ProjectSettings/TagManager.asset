@@ -9,8 +9,7 @@ TagManager:
   - Facepoint
   - Handpoint
   - Date
-  - landmarks
-  - landmarks2
+  - ImageSeg
   layers:
   - Default
   - TransparentFX
