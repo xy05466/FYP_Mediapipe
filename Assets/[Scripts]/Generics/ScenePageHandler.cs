@@ -28,7 +28,6 @@ public class ScenePageHandler : MonoBehaviour
     public UISpriteAnimation sceneAnimationStart;
     public UISpriteAnimation sceneAnimationEnd;
     public Transform headertransform;
-    public TMP_Text tmp_title;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
@@ -178,20 +177,16 @@ public class ScenePageHandler : MonoBehaviour
         img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
         img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
 
-        // set up title
-        tmp_title.text = currentPageLogic.pageData.title;
-
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();
         else
             splashScreen.gameObject.SetActive(false);
         headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
 
-        // start page for current page
+
         currentPageLogic.StartPage();
         currentPageLogic.ChangeState(PageLogic.PageState.START);
 
-        // subscribe hand points events to page
         if (handPointsStored && !currentPageLogic.HandpointsLoaded)
         {
             foreach (var item in landmarkManager.GetHandPoints())

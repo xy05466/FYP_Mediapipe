@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using System.Diagnostics;
+using Mediapipe.Tasks.Vision.HandLandmarker;
 using Mediapipe.Tasks.Components.Containers;
 using System;
 public class HandGestureManager : MonoBehaviour
 {
-    //[SerializeField] private LandmarkManager landmarkManager;
+    [SerializeField] private LandmarkManager landmarkManager;
     private string prevGesture;
     [SerializeField] private string currGesture;
 

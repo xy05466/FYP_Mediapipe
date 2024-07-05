@@ -8,13 +8,9 @@ public class LandmarkManager : MonoBehaviour
     public LandmarkListGO annotationList_FacePoints;
     public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     private bool isHandLoadedAndActive = false;
-    private bool isHandLoaded = false;
     public bool IsHandLoadedAndActive => isHandLoadedAndActive;
-    public bool IsHandLoaded => isHandLoaded;
-    private bool isFaceLoadedAndActive = false;
-    private bool isFaceLoaded = false;
-    public bool IsFaceloadedAndActive => isFaceLoadedAndActive;
-    public bool IsFaceLoaded => isFaceLoaded;
+    private bool isFaceloadedAndActive = false;
+    public bool IsFaceloadedAndActive => isFaceloadedAndActive;
 
     private void Start()
     {
@@ -30,16 +26,28 @@ public class LandmarkManager : MonoBehaviour
     // Store all points
     private void FacePointsDetected(List<GameObject> facePoints)
     {
-        isFaceLoadedAndActive = true;
-        if (!isFaceLoaded)
-            isFaceLoaded = true;
+        //this.facePoints = facePoints;
+        //foreach (var pageL in pageLogics)
+        //    pageL.LoadFacePoints(true);
+        isFaceloadedAndActive = true;
 
     }
     private void HandPointsDetected(List<HandPointAnnotationObject> handPoints)
     {
         isHandLoadedAndActive = true;
-        if (!isHandLoaded)
-            isHandLoaded = true;
+
+        //this.handPoints = handPoints;
+        //foreach (var item in handPoints)
+        //    item.OnCollidingFacePoint += OnHandPointCollide;
+
+        //handPointsStored = true;
+
+        //if (!currentPageLogic.HandpointsLoaded)
+        //{
+        //    foreach (var item in handPoints)
+        //        item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+        //    currentPageLogic.LoadHandPoints(true);
+        //}
     }
 
     public List<GameObject> GetFacePoints()

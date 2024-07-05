@@ -62,7 +62,6 @@ public class PhoneCamera : MonoBehaviour
             frontCam = new WebCamTexture(devices[i].name, UnityEngine.Screen.width, UnityEngine.Screen.height);
             cameras.Add(frontCam);
             msg += cameras[i].name;
-            if(text)
             text.text = msg;
 
             if (!devices[i].isFrontFacing)
@@ -78,8 +77,6 @@ public class PhoneCamera : MonoBehaviour
             //creamButton.gameObject.SetActive(false);
             if (splashTxt)
                 splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
-            
-            if(photoTxt)
             photoTxt.text = "After Photo";
             Debug.Log("Album");
         }
@@ -89,7 +86,6 @@ public class PhoneCamera : MonoBehaviour
             //creamButton.gameObject.SetActive(true);
             if(splashTxt)
                 splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
-            if(photoTxt)
             photoTxt.text = "Before Photo";
             Debug.Log("Cream");
         }
