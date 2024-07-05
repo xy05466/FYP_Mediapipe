@@ -10,7 +10,6 @@ TagManager:
   - Handpoint
   - Date
   - landmarks
-  - landmarks2
   layers:
   - Default
   - TransparentFX

@@ -1,2 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 00bb17244e47fc345a3f97aa49275c68
+=======
+guid: 00bb17244e47fc345a3f97aa49275c68
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> parent of 5467ec6 (Merge branch 'main' into Raqib_Tutorial)
