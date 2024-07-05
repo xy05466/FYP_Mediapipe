@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f62dc1c286af04382676d512ff32b9, type: 3}
   m_Name: PageData_Accupoints
   m_EditorClassIdentifier: 
+  enableHeader: 1
   enableSplashPage: 1
   spr_splashIcon: {fileID: 21300000, guid: a31380d675fbbba428265c91087da68d, type: 3}
-  title: Title test
+  title: Accupoints
   splashDescription: "Next, let\u2019s prime your acupoints!\n\nFollow the guide
     to activate your acupoints."
   enableFaceTracking: 1

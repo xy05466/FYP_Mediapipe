@@ -47,7 +47,7 @@ public class SplashScreen : MonoBehaviour
 
     public void ShowSplash()
     {
-        if (canvasGroup) return;
+        if (!canvasGroup) return;
         canvasGroup.alpha = 1;
         gameObject.SetActive(true);
     }

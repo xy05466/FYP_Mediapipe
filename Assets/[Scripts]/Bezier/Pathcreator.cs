@@ -44,7 +44,6 @@ public class Pathcreator : MonoBehaviour
         {
             curvePoints.Add(point);
         }
-        if (MovingBall == null) return;
         MovingBall.transform.position = path.points[0];
     }
 
