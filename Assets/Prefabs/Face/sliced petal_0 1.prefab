@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b3d64e40698aa4082cea59b8ac06d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 1
+  fadeSpeed: 10
   slicedPetal: {fileID: 5119072154225682187}
   pps: {fileID: 694825140520790300, guid: 16ffdabc1f5237b4f962d9de93ad96ec, type: 3}
   collided: 0
