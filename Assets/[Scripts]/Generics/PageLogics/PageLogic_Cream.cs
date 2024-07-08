@@ -11,6 +11,7 @@ public class PageLogic_Cream : PageLogic_Extension
     public CreamSceneManager creamManager;
     public override void StartPage()
     {
+        if(imageSegOBJ)
         imageSeg = imageSegOBJ.GetComponent<ImageSeg>();
     }
 
@@ -69,7 +70,9 @@ public class PageLogic_Cream : PageLogic_Extension
                 contactPoints.Add(fingerPoints3);
                 contactPoints.Add(fingerPoints4);
 
-                foreach (var contactpoint in contactPoints)
+                if (imageSeg)
+                {
+                    foreach (var contactpoint in contactPoints)
                 {
                     switch (j)
                     {
@@ -102,6 +105,7 @@ public class PageLogic_Cream : PageLogic_Extension
                             break;
                     }
                 }   
+                }
             }
         }
     }
