@@ -68,6 +68,8 @@ public class PageLogic_Cream : PageLogic_Extension
                 contactPoints.Add(fingerPoints2);
                 contactPoints.Add(fingerPoints3);
                 contactPoints.Add(fingerPoints4);
+                                Debug.Log("asdasds");
+
 
                 foreach (var contactpoint in contactPoints)
                 {

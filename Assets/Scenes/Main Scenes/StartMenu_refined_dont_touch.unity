@@ -1456,7 +1456,6 @@ MonoBehaviour:
   _maskShader: {fileID: 4800000, guid: d684c6d125278d05fbb1904ee5103f3a, type: 3}
   filterTex: {fileID: 44928544}
   maskRenderTexture: {fileID: 8400000, guid: 3a936d51245bd864081350e01effb051, type: 2}
-  _maskTexture: {fileID: 0}
   _color: {r: 0, g: 0, b: 1, a: 1}
   _threshold: 1
 --- !u!1 &46086827
@@ -3618,7 +3617,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 44928545}
         m_TargetAssemblyTypeName: ImageSeg, Assembly-CSharp
         m_MethodName: PlayWallpaper
         m_Mode: 3
@@ -8357,6 +8356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959c4e77f5f68e43a113d571339a235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  landmarkManager: {fileID: 0}
   currGesture: 
   coordText: {fileID: 0}
   percentageText: {fileID: 0}
@@ -16439,7 +16439,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 44928545}
         m_TargetAssemblyTypeName: ImageSeg, Assembly-CSharp
         m_MethodName: PlayWallpaper
         m_Mode: 3
@@ -18446,12 +18446,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handGestureManager: {fileID: 264412461}
-  landmarkManager: {fileID: 0}
   gesture: {fileID: 11400000, guid: d59cee60ba7fb1b46bea3dcea534e5b0, type: 2}
   img_loading: {fileID: 1170270986}
   loadingTime: 3
-  transformFocusHand: {fileID: 0}
-  handFocusOffset: {x: 0, y: 0}
   transformFocusParent: {fileID: 1166225047}
   transformFocus: {fileID: 242531344}
   bu_next: {fileID: 1699658573}
@@ -18503,7 +18500,6 @@ MonoBehaviour:
   sceneAnimationStart: {fileID: 364995828}
   sceneAnimationEnd: {fileID: 294804856}
   headertransform: {fileID: 657642085}
-  tmp_title: {fileID: 0}
   img_splashIcon: {fileID: 446956362}
   tmp_description: {fileID: 829981048}
   img_face: {fileID: 1728243552}
@@ -20697,7 +20693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotationList_FacePoints:
-    parent: {fileID: 1758454432}
+    parent: {fileID: 843252786}
     tag: Facepoint
   annotationList_HandPoints:
     parent: {fileID: 2003249034}
@@ -21188,7 +21184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 44928545}
         m_TargetAssemblyTypeName: ImageSeg, Assembly-CSharp
         m_MethodName: PlayWallpaper
         m_Mode: 3
@@ -23659,8 +23655,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
   leaveEmpty: ==============
-  Wallpapers: []
-  imageSegOBJ: {fileID: 0}
+  Wallpapers:
+  - {fileID: 531603669}
+  - {fileID: 696763172}
+  - {fileID: 115207002}
+  imageSegOBJ: {fileID: 44928541}
   creamManager: {fileID: 2135431875}
 --- !u!1 &788082566
 GameObject:
@@ -29738,16 +29737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd576fe2db61fda48af15adae03fd55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalSO: {fileID: 0}
-  screen: {fileID: 0}
-  background: {fileID: 0}
-  preview: {fileID: 0}
-  brightnessTxt: {fileID: 0}
-  text: {fileID: 0}
-  date: {fileID: 0}
-  splashTxt: {fileID: 0}
-  photoTxt: {fileID: 0}
-  audioManager: {fileID: 0}
 --- !u!4 &1036480180
 Transform:
   m_ObjectHideFlags: 0
