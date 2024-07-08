@@ -3301,7 +3301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95580201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18514,7 +18514,7 @@ MonoBehaviour:
   gestureNavigation: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
   img_nextPageFilled: {fileID: 198421949}
   nextPageTime: 3
-  annotationFace: {fileID: 1001848670}
+  annotationFace: {fileID: 1979440877}
   annotationHand: {fileID: 1298655828}
 --- !u!4 &621763104
 Transform:
@@ -20698,7 +20698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotationList_FacePoints:
-    parent: {fileID: 1758454432}
+    parent: {fileID: 843252786}
     tag: Facepoint
   annotationList_HandPoints:
     parent: {fileID: 2003249034}
@@ -20734,7 +20734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &691127284
 Transform:
   m_ObjectHideFlags: 0
@@ -21429,7 +21429,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704286817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aeffe9a2d89f0ea4aa716347e0529d6, type: 3}
   m_Name: 
@@ -25342,9 +25342,9 @@ MonoBehaviour:
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
   _faceLandmarkRadius: 20
   _irisLandmarkRadius: 1
-  _faceConnectionColor: {r: 1, g: 0, b: 0, a: 0}
+  _faceConnectionColor: {r: 1, g: 0, b: 0, a: 1}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
-  _faceConnectionWidth: 0
+  _faceConnectionWidth: 0.186
   _irisCircleWidth: 0
 --- !u!1001 &853956009
 PrefabInstance:
@@ -39779,7 +39779,7 @@ GameObject:
   - component: {fileID: 1486373590}
   - component: {fileID: 1486373589}
   m_Layer: 5
-  m_Name: tmp_face (1)
+  m_Name: tmp_title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43002,7 +43002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1585202194
 Transform:
   m_ObjectHideFlags: 0
@@ -43026,7 +43026,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585202193}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b085c374a6772aba491e20d7d9d980db, type: 3}
   m_Name: 
@@ -49515,7 +49515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1936696887
 RectTransform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class PageLogic_Cream : PageLogic_Extension
     public override void StartPage()
     {
         if(imageSegOBJ)
-        imageSeg = imageSegOBJ.GetComponent<ImageSeg>();
+            imageSeg = imageSegOBJ.GetComponent<ImageSeg>();
     }
 
     public override void ResetPage()
@@ -38,6 +38,7 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
+        Debug.Log(facePointIndex);
         foreach (var petal in creamManager.allPetals)
         {
             if (petal.pointId == facePointIndex)
@@ -49,6 +50,12 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
+        if (facepointsObj==null || facepointsObj.Count<=0) return;
+        foreach (var petal in creamManager.allPetals)
+        {
+            petal.transform.position = facepointsObj[petal.pointId].transform.position;
+        }
+
         if (handpointsObj.Count > 0)
         {
             HandPointAnnotationObject m = handpointsObj[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.MIDDLE_FINGER_TIP)];

@@ -63,6 +63,7 @@ public class ScenePageHandler : MonoBehaviour
 
 
         landmarkManager.SubscribePointsActive(OnFaceSpotted, OnHandSpotted);
+        landmarkManager.SubscribePointsLoaded(StoreFacePoints, StoreHandPoints);
         for (int i = 0; i < pageLogics.Count; i++)
         {
             PageLogic_Extension pageLogic_Extension = pageLogics[i] as PageLogic_Extension;
@@ -87,7 +88,7 @@ public class ScenePageHandler : MonoBehaviour
 
     private void OnFaceSpotted(bool active)
     {
-            img_face.gameObject.SetActive(active);
+        img_face.gameObject.SetActive(active);
     }
 
     private void OnHandSpotted(bool active)
@@ -150,17 +151,22 @@ public class ScenePageHandler : MonoBehaviour
             item.OnCollidingFacePoint += OnHandPointCollide;
 
         handPointsStored = true;
+        foreach (var pageL in pageLogics)
+        {
+            pageL.LoadHandPoints(true);
+            foreach (var item in handPoints)
+                item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+        }
 
         if (!currentPageLogic.HandpointsLoaded)
         {
-            foreach (var item in handPoints)
-                item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+       
             currentPageLogic.LoadHandPoints(true);
         }
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        //Debug.Log(handPointIndex + " face: " + facePointIndex);
+        Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {

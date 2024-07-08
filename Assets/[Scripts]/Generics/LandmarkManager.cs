@@ -8,12 +8,12 @@ public class LandmarkManager : MonoBehaviour
     public LandmarkListGO annotationList_FacePoints;
     public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     private bool isHandLoadedAndActive = false;
-    private bool isHandLoaded = false;
     public bool IsHandLoadedAndActive => isHandLoadedAndActive;
+    private bool isHandLoaded = false;
     public bool IsHandLoaded => isHandLoaded;
     private bool isFaceLoadedAndActive = false;
-    private bool isFaceLoaded = false;
     public bool IsFaceloadedAndActive => isFaceLoadedAndActive;
+    private bool isFaceLoaded = false;
     public bool IsFaceLoaded => isFaceLoaded;
 
     private void Start()
@@ -57,5 +57,10 @@ public class LandmarkManager : MonoBehaviour
         annotationList_HandPoints.SubscribeParentActive(handpointsActive);
     }
 
-    // Check loaded and active
+    public void SubscribePointsLoaded(Action<List<GameObject>> facepointsLoaded, Action<List<HandPointAnnotationObject>> handpointsLoaded)
+    {
+        annotationList_FacePoints.SubscribePointsSpawn(facepointsLoaded);
+        annotationList_HandPoints.SubscribePointsSpawn(handpointsLoaded);
+
+    }
 }
