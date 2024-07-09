@@ -166,7 +166,7 @@ public class ScenePageHandler : MonoBehaviour
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        Debug.Log(handPointIndex + " face: " + facePointIndex);
+        //Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {

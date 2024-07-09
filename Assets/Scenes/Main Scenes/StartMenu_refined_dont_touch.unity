@@ -6032,7 +6032,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 205556543}
-  - component: {fileID: 205556544}
   - component: {fileID: 205556545}
   m_Layer: 0
   m_Name: MassageSliderObjectPrefeb
@@ -6059,23 +6058,6 @@ Transform:
   - {fileID: 1009758881}
   m_Father: {fileID: 518752967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &205556544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205556542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f857ba52f85c8a24f95f347a23e1132c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lr_outline: {fileID: 1209979374}
-  lr_filled: {fileID: 297845291}
-  points: 790100008d01000069010000
-  colliders: []
-  colliderWidth: 0.1
 --- !u!114 &205556545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8330,7 +8312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &264412460
 Transform:
   m_ObjectHideFlags: 0
@@ -15461,6 +15443,30 @@ MonoBehaviour:
   - stepName: Step 4
     massageSliders:
     - points: 5001000097000000290100004c010000
+  - stepName: Step 5
+    massageSliders:
+    - points: 37000000a80000000300000031000000
+  - stepName: Step 6
+    massageSliders:
+    - points: 1d010000a8000000f800000017010000
+  - stepName: Step 7
+    massageSliders:
+    - points: 720000008e000000320000006f000000
+  - stepName: Step 8
+    massageSliders:
+    - points: cb000000ce000000cf0000005d000000
+  - stepName: Step 9
+    massageSliders:
+    - points: 57010000730100001801000054010000
+  - stepName: Step 10
+    massageSliders:
+    - points: a7010000aa010000ab01000043010000
+  - stepName: Step 11
+    massageSliders:
+    - points: 8a00000096000000b000000094000000
+  - stepName: Step 12
+    massageSliders:
+    - points: 6f0100007b0100009001000079010000
 --- !u!114 &518752969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25879,7 +25885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878462218
 Transform:
   m_ObjectHideFlags: 0
@@ -28674,7 +28680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1001848671
 Transform:
   m_ObjectHideFlags: 0

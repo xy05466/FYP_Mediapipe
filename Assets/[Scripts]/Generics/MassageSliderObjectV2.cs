@@ -30,6 +30,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
     //public Action<MassageSliderObjectV2, int, GameObject, Collider> OnColliding;
 
     private float sliderValue = 0f;
+    private float targetValue = 0f;
     bool end = false;
     bool move = false;
     public Action<MassageSliderObjectV2> OnEnded;
@@ -71,15 +72,21 @@ public class MassageSliderObjectV2 : MonoBehaviour
 
 
         Vector3 valuePosition = GetValuePosition();
-        targetObject.gameObject.transform.position = valuePosition;
+        targetObject.transform.position = valuePosition;
 
         // interacting
-        if (Vector2.Distance(compareObject.transform.position, valuePosition) <= distance)
+        if (Vector2.Distance(compareObject.transform.position, GetTargetPosition()) <= distance)
         {
-            
-            sliderValue += Time.deltaTime * 0.2f;
-            sliderValue = Mathf.Clamp(sliderValue, 0f, 1f);
 
+            targetValue += Time.deltaTime * 0.2f;
+            targetValue = Mathf.Clamp(targetValue, 0f, 1f);
+            //float currentVal = GetValueFromtStartingPos(GetValuePosition());
+            float myVal = GetValueFromtStartingPos(compareObject.transform.position);
+
+            if(myVal >= targetValue)
+            {
+                targetValue = myVal;
+            }
             //// fill up line
             //if(sliderValue> percentageList[fillCount])
             //{
@@ -88,7 +95,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
             //}
 
             // if completed
-            if(sliderValue >= 1f)
+            if (targetValue >= 1f)
             {
                 end = true;
                 Debug.Log("ending");
@@ -101,6 +108,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
         {
             rendererObject.color = color_default;
         }
+        sliderValue = Mathf.Lerp(sliderValue, targetValue, 10f * Time.deltaTime);
 
 
 
@@ -108,26 +116,6 @@ public class MassageSliderObjectV2 : MonoBehaviour
         for (int i = 0; i < lr_filled.positionCount; i++)
             lr_filled.SetPosition(i, lr_outline.GetPosition(i));
 
-        //Vector3 startpoint = lr_outline.GetPosition(0);
-        //Vector3 endpoint = lr_outline.GetPosition(1);
-        //Vector3 valuePosition = GetValuePosition();
-        //if (Vector3.Distance(compareObject.transform.position, valuePosition) <= distance)
-        //{
-        //    Debug.Log("IM HERE");
-        //    // check if compare position is more than the current value position
-        //    //float checkDistance = Vector3.Distance(startPoint, compareObject.transform.position);
-        //    sliderValue += Time.deltaTime;
-        //    sliderValue = Mathf.Clamp(sliderValue, 0f, 1f);
-        //}
-
-        //// Calculate the distance from start to the check position
-        //float checkDistance = Vector3.Distance(startPoint, compareObject.transform.position); 
-
-        //// Calculate the total distance
-        //float totalDistance = Vector3.Distance(startPoint, endpoint);
-
-        //if (checkDistance > totalDistance)
-        //    massageSliderObject.FillCurrentPoint(1 / totalDistance);
     }
     //public void UpdatePosition(Vector3 posStart, Vector3 posEnd)
     //{
@@ -137,9 +125,9 @@ public class MassageSliderObjectV2 : MonoBehaviour
     //    lr_filled.SetPosition(0, posStart);
     //    lr_filled.SetPosition(1, GetValuePosition());
     //}
-    public float GetDistanceFromValuePosition(Vector3 pos)
+    public float GetValueFromtStartingPos(Vector3 pos)
     {
-        return Vector3.Distance(pos, GetValuePosition());
+        return Vector3.Distance(pos, lr_outline.GetPosition(0));
     }
     //public void MoveSlider(bool move)
     //{
@@ -155,9 +143,16 @@ public class MassageSliderObjectV2 : MonoBehaviour
         // This is for bezier path
         return CalculateBezierPoint(sliderValue, pathPoints);
     }
+
+    public Vector3 GetTargetPosition()
+    {
+        // This is for bezier path
+        return CalculateBezierPoint(targetValue, pathPoints);
+    }
     public void ResetSlider()
     {
         sliderValue = 0f;
+        targetValue = 0f;
         end = false;
         lr_filled.positionCount = 0;
         rendererObject.color = color_default;
