@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &11793242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15449,11 +15449,18 @@ MonoBehaviour:
   enableAllHandPointCollision: 0
   list_handpoints_interact: 08000000
   list_steps:
-  - massageSliders:
-    - points: 8b010000b90100002001000020010000
-    - points: 8b010000b90100002001000020010000
-  - massageSliders:
-    - points: e800000045010000420100007b000000
+  - stepName: Step 1
+    massageSliders:
+    - points: 6b0000006c0000006800000044000000
+  - stepName: Step 2
+    massageSliders:
+    - points: 6b000000970000004300000067000000
+  - stepName: Step 3
+    massageSliders:
+    - points: 50010000510100004d0100002a010000
+  - stepName: Step 4
+    massageSliders:
+    - points: 5001000097000000290100004c010000
 --- !u!114 &518752969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18491,8 +18498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 786372592}
   - {fileID: 518752968}
+  - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 959629942}
   - {fileID: 885432721}
@@ -20698,7 +20705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   annotationList_FacePoints:
-    parent: {fileID: 843252786}
+    parent: {fileID: 1140932048}
     tag: Facepoint
   annotationList_HandPoints:
     parent: {fileID: 2003249034}
@@ -21405,7 +21412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &704286818
 Transform:
   m_ObjectHideFlags: 0
@@ -21429,7 +21436,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704286817}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aeffe9a2d89f0ea4aa716347e0529d6, type: 3}
   m_Name: 
@@ -23658,7 +23665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a96e75930d62b49a68a309fcc2ebad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageData: {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
+  pageData: {fileID: 11400000, guid: 4dedddbdd1292fb42b192e90b9c5a4f6, type: 2}
   leaveEmpty: ==============
   Wallpapers: []
   imageSegOBJ: {fileID: 0}
@@ -34349,7 +34356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1245813991
 Transform:
   m_ObjectHideFlags: 0
@@ -34379,9 +34386,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
     type: 3}
-  screen: {fileID: 825515147687973402}
+  screen: {fileID: 95580203}
   runningMode: 0
-  _faceLandmarkerResultAnnotationController: {fileID: 8453587735548014803}
+  _faceLandmarkerResultAnnotationController: {fileID: 704286819}
 --- !u!1 &1261161680
 GameObject:
   m_ObjectHideFlags: 0
@@ -49515,7 +49522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1936696887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50671,7 +50678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1979440878
 Transform:
   m_ObjectHideFlags: 0

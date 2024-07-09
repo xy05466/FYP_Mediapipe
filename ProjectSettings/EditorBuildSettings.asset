@@ -6,88 +6,91 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Scenes/StartMenu_refined_dont_touch.unity
+    guid: a1d3cb33f21d8514d8785610bac3de79
+  - enabled: 0
+    path: Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Hand Tracking 2.unity
+    guid: 518c3bfcabd265d4da3af1a1005e7ac0
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Tasks/Hand Landmark Detection/Hand
       Landmark Detection.unity
     guid: 98d49dcfe667ea822a91d6b74f7cb2e9
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Hand Tracking.unity
     guid: 08035b20d3836a599ad2fd3d81e41ee5
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Face Mesh/Face Mesh.unity
     guid: 95922b7629008a1e1a9e84a30d89bb1f
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Face Detection/Face Detection.unity
     guid: 17a223a9abd188eb6b6656cf37880d62
-  - enabled: 1
-    path: Assets/Scenes/Main Scenes/StartMenu_refined_dont_touch.unity
-    guid: a1d3cb33f21d8514d8785610bac3de79
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/StartMenu.unity
     guid: 1aa528a4484b3b142b4dc183070debc3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/AlbumScene.unity
     guid: 7e53f1c60cfdb9a4fa47ccdc863e834b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/PhotoScene.unity
     guid: 0a25eca3b1bde7e43b1429a3c9425090
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/QuizScene.unity
     guid: cb2f9dfb786383d4793773ba0edeb64f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CustomisationScene.unity
     guid: 35c7d2e6bd674df45b31d65e05e64804
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/PaulAccupointsScene.unity
     guid: a97dc00c7820bb84897a5c85607ceadf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/ApplyCreamScene.unity
     guid: a32dbc8f152e43a4eada16160cbb0ceb
   - enabled: 0
     path: Assets/Scenes/Main Scenes/JadenMassaageScene.unity
     guid: 7008ffcfa6811bc43b91fec82712d932
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HubScene.unity
     guid: 175ee092cb027114ca93f10b7a670d39
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JournalScene.unity
     guid: 39e1153c881b4cf4596de2ff00fbedc4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LiveWallpaperScene.unity
     guid: 37ef2449b284cde458e9f566f0a2eb4a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ProductsScene.unity
     guid: 88aa09ac827502944b36079552648f69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JadenLocalPosScene.unity
     guid: 61ff340e09cad374ba19f9585d2413b8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GhostHandsScene.unity
     guid: f82f8ef90c779b942b2f104f919bfbe3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OutdatedHubScene.unity
     guid: 1be5cce5e493827449cf642fbf5d3641
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MusicTest.unity
     guid: 427a2450084177140a4641bc9f8612b5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LineRendererTest.unity
     guid: a11bf3f390a4b5b4281f2913d1587c1e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CompareSliderScene.unity
     guid: c3b65b94e6a11a44a92f4057912c19c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/MassageStep2.unity
     guid: 0bae2a819a6066940b154de7206236e1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/EssenceDosage.unity
     guid: ee400f899ec81b741bba65c6b1cabf5a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/MassageStep1.unity
     guid: 0e9232d9f793fd341af69ba04928ed42
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/MassageStep3.unity
     guid: 71ffeda22f0855344b86c7905b222783
   m_configObjects:

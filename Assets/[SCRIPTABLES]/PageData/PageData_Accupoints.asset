@@ -19,4 +19,4 @@ MonoBehaviour:
   splashDescription: "Next, let\u2019s prime your acupoints!\n\nFollow the guide
     to activate your acupoints."
   enableFaceTracking: 1
-  enableHandTracking: 0
+  enableHandTracking: 1

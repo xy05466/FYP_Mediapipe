@@ -265,6 +265,7 @@ public class PageLogic_Massage : PageLogic_Extension
 [Serializable]
 public class SliderStep
 {
+    public string stepName;
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
 }
 [Serializable]
