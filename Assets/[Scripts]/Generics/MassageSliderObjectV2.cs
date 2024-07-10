@@ -59,8 +59,10 @@ public class MassageSliderObjectV2 : MonoBehaviour
     {
         pathPoints[index] = pos;
     }
+    bool within = false;
+    int tempCompIndex = 0;
     // will move the slider
-    public void UpdateSlider(GameObject compareObject, float distance = 1f)
+    public void UpdateSlider(GameObject compareObject, float distance = 1f,float speed = 1f,float firstEnterDistance = 0.05f)
     {
         if (end) return;
         // set the position
@@ -70,47 +72,98 @@ public class MassageSliderObjectV2 : MonoBehaviour
             lr_outline.SetPosition(i, CalculateBezierPoint(percentage, pathPoints));
         }
 
-
         Vector3 valuePosition = GetValuePosition();
         targetObject.transform.position = valuePosition;
 
-        // interacting
-        if (Vector2.Distance(compareObject.transform.position, GetTargetPosition()) <= distance)
+        float comp = ((float)(tempCompIndex + 1) / (float)lr_outline.positionCount);
+
+        if(targetValue < comp)
         {
-
-            targetValue += Time.deltaTime * 0.2f;
-            targetValue = Mathf.Clamp(targetValue, 0f, 1f);
-            //float currentVal = GetValueFromtStartingPos(GetValuePosition());
-            float myVal = GetValueFromtStartingPos(compareObject.transform.position);
-
-            if(myVal >= targetValue)
+            if (Vector2.Distance(compareObject.transform.position, GetTargetPosition()) <= distance)
             {
-                targetValue = myVal;
+                targetValue = comp;
             }
-            //// fill up line
-            //if(sliderValue> percentageList[fillCount])
-            //{
-            //    fillCount++;
-            //    //lr_filled.positionCount = fillCount;
-            //}
-
-            // if completed
-            if (targetValue >= 1f)
-            {
-                end = true;
-                Debug.Log("ending");
-                rendererObject.color = color_done;
-                OnEnded?.Invoke(this);
-            }
-            rendererObject.color = color_interacting;
         }
         else
         {
-            rendererObject.color = color_default;
+            tempCompIndex++;
         }
-        sliderValue = Mathf.Lerp(sliderValue, targetValue, 10f * Time.deltaTime);
+
+        //for (int i = 0; i < lr_outline.positionCount; i++)
+        //{
+        //    //float comp = ((float)(i + 1) / (float)lr_outline.positionCount);
 
 
+        //    if (targetValue < comp && i < lr_outline.positionCount)
+        //    {
+        //        Vector3 segmentPos = lr_outline.GetPosition(i);
+        //        float distBetwSeg = Vector3.Distance(segmentPos, compareObject.transform.position);
+        //        if (distBetwSeg <= distance)
+        //        {
+        //            Debug.Log("target : " + targetValue + " compare : " + comp);
+        //            targetValue = comp;
+        //        }
+        //    }
+        //}
+
+        //float distanceTemp;
+
+        //if(within)
+        //    distanceTemp = distance;
+        //else
+        //    distanceTemp = firstEnterDistance;
+
+
+        //// interacting
+        //if (Vector2.Distance(compareObject.transform.position, GetTargetPosition()) <= distanceTemp)
+        //{
+        //    within = true;
+        //    targetValue += Time.deltaTime * speed;
+        //    targetValue = Mathf.Clamp(targetValue, 0f, 1f);
+        //    //float currentVal = GetValueFromtStartingPos(GetValuePosition());
+        //    //float myVal = Vector3.Distance(compareObject.transform.position,);
+
+        //    //if (myVal >= targetValue)
+        //    //{
+        //    //    targetValue = myVal;
+        //    //}
+        //    //// fill up line
+        //    //if (sliderValue > percentageList[fillCount])
+        //    //{
+        //    //    fillCount++;
+        //    //    //lr_filled.positionCount = fillCount;
+        //    //}
+
+
+
+        //    //rendererObject.color = color_interacting;
+
+        //}
+        //else
+        //{
+        //    within = false;
+        //    //rendererObject.color = color_default;
+        //}
+
+        // if completed
+        if (targetValue >= 1f)
+        {
+            end = true;
+            Debug.Log("ending");
+            rendererObject.color = color_done;
+            OnEnded?.Invoke(this);
+        }
+
+        sliderValue = Mathf.Lerp(sliderValue, targetValue, 5f * Time.deltaTime);
+
+        //if(Vector3.Distance(GetValuePosition(),GetTargetPosition()) > 0.01f)
+        //{
+        //    rendererObject.color = color_interacting;
+        //}
+        //else
+        //{
+        //    rendererObject.color = color_default;
+        //}
 
         // Set fill position base on outline position
         for (int i = 0; i < lr_filled.positionCount; i++)
@@ -125,10 +178,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
     //    lr_filled.SetPosition(0, posStart);
     //    lr_filled.SetPosition(1, GetValuePosition());
     //}
-    public float GetValueFromtStartingPos(Vector3 pos)
-    {
-        return Vector3.Distance(pos, lr_outline.GetPosition(0));
-    }
+
     //public void MoveSlider(bool move)
     //{
     //    this.move = move;
@@ -156,6 +206,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
         end = false;
         lr_filled.positionCount = 0;
         rendererObject.color = color_default;
+        tempCompIndex = 0;
     }
 
     // Calculated bezier path, done by Bryant Toh
