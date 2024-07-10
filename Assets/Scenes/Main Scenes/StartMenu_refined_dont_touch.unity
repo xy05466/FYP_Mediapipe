@@ -670,7 +670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &22794516
 Transform:
   m_ObjectHideFlags: 0
@@ -8509,7 +8509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264412460
 Transform:
   m_ObjectHideFlags: 0
@@ -15698,7 +15698,7 @@ MonoBehaviour:
   list_handpoints_interact: 08000000
   massageSpeed: 3
   massageDistance: 0.15
-  massageFirstDistance: 0.15
+  massageFirstDistance: 0.01
   list_steps:
   - stepName: Step 1
     massageSliders:
@@ -38766,7 +38766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1392297657
 MonoBehaviour:
   m_ObjectHideFlags: 0
