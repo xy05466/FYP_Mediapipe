@@ -32,7 +32,9 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 
     float avgV = 0;
     private bool faceAligned;
-
+        public override void Initialize()
+    {
+    }
     public override void StartPage()
     {
         bu_done.onClick.AddListener(()=> { done = true; });
@@ -221,5 +223,5 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     {
     }
 
-   
+
 }

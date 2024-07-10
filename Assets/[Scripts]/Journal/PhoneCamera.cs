@@ -9,7 +9,7 @@ using System;
 public class PhoneCamera : MonoBehaviour
 {
     [SerializeField] private JournalSO journalSO;
-    [SerializeField] protected Mediapipe.Unity.Screen screen;
+    //[SerializeField] protected Mediapipe.Unity.Screen screen;
     [Space]
     private Texture2D picTaken;
     private bool camAvailable;
@@ -17,7 +17,7 @@ public class PhoneCamera : MonoBehaviour
     private WebCamTexture frontCam;
 
     private List<WebCamTexture> cameras;
-    private Texture defaultBackground;
+    //private Texture defaultBackground;
     private string msg;
 
     public RawImage background; // background

@@ -22,6 +22,7 @@ public abstract class PageLogic : MonoBehaviour
     {
         loadedFacepoints = loaded;
     }
+    public abstract void Initialize();
     public abstract void StartPage();
     public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj);
 

@@ -9,6 +9,9 @@ public class PageLogic_Cream : PageLogic_Extension
     [SerializeField] private GameObject imageSegOBJ;
     private ImageSeg imageSeg;
     public CreamSceneManager creamManager;
+    public override void Initialize()
+    {
+    }
     public override void StartPage()
     {
         if(imageSegOBJ)
@@ -125,4 +128,6 @@ public class PageLogic_Cream : PageLogic_Extension
         // Check if the screen point is within the bounds of the 2D collider
         return ui.OverlapPoint(screenPoint);
     }
+
+  
 }

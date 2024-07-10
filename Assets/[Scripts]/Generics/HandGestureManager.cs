@@ -128,7 +128,7 @@ public class HandGestureManager : MonoBehaviour
 
     public bool IsGestureDetected()
     {
-        return currGesture != NO_GESTURE_STRING;
+        return currGesture != NO_GESTURE_STRING || NO_GESTURE_STRING != "";
     }
 
     // SUBSCRIBE EVENTS

@@ -18,6 +18,11 @@ public class PageLogic_Massage : PageLogic_Extension
     private int currentStepIndex = 0;
     private int slidersDoneCount = 0;
     bool massageEnd = false;
+
+
+    public override void Initialize()
+    {
+    }
     //lr.GetPosition(i-1) / 
     public override void StartPage()
     {
@@ -228,7 +233,6 @@ public class PageLogic_Massage : PageLogic_Extension
     //}
     void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
     {
-        Debug.Log("slider ended");
         slidersDoneCount++;
         // check if all current slider has completed , done
         if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
@@ -249,17 +253,16 @@ public class PageLogic_Massage : PageLogic_Extension
         currentStepIndex++;
         // reset all slider
         foreach (var massageSlider in massageSliderObjects)
-        {
             massageSlider.ResetSlider();
-        }
-        Debug.Log("next step");
         SetMassageSliders();
     }
     public void End()
     {
         massageEnd = true;
-        Debug.Log("massage end");
+        foreach (var massageSlider in massageSliderObjects)
+            massageSlider.gameObject.SetActive(false);
     }
+
 }
 
 [Serializable]
