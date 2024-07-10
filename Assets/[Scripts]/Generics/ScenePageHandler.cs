@@ -118,6 +118,9 @@ public class ScenePageHandler : MonoBehaviour
         // If gesture navigation detected
         if (handGestureManager.IsGestureDetected() && handGestureManager.GetCurrentGesture() == gestureNavigation.gestureName)
         {
+            if (!autoNavigate)
+                panel_gesture.gameObject.SetActive(false);
+
             nextPageTimeElapsed += Time.deltaTime;
             if (nextPageTimeElapsed >= nextPageTime)
             {
@@ -125,13 +128,13 @@ public class ScenePageHandler : MonoBehaviour
                 nextPageTimeElapsed = 0f;
                 PreNextPage();
             }
-            if(!autoNavigate && pageEnded)
-                panel_gesture.gameObject.SetActive(false);
+           
         }
         else if (nextPageTimeElapsed > 0)
         {
             nextPageTimeElapsed -= Time.deltaTime;
-            panel_gesture.gameObject.SetActive(true);
+            if(!autoNavigate && pageEnded)
+                panel_gesture.gameObject.SetActive(true);
         }
         nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
         if (img_nextPageFilled)
@@ -199,7 +202,7 @@ public class ScenePageHandler : MonoBehaviour
 
         // set up title
         tmp_title.text = currentPageLogic.pageData.title;
-
+        autoNavigate = currentPageLogic.pageData.autoNavigate;
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();
         else

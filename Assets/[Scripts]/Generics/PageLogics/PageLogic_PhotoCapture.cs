@@ -24,7 +24,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     public RawImage checkPic;
     public GameObject brightnessSprite;
 
-    private float waitTime = 3.0f;
+    private float waitTime = 0f;
     private float timer = 0.0f;
 
     public GameObject audioManager;

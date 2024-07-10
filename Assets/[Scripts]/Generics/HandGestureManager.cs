@@ -26,7 +26,11 @@ public class HandGestureManager : MonoBehaviour
     public Action<string> OnFirstDetected;
 
     private const string NO_GESTURE_STRING = "NA";
-
+    //private void Update()
+    //{
+    //    if (landmarkManager.GetHandPoints()== null || landmarkManager.GetHandPoints().Count<=0) return;
+    //    ReadGesture(landmarkManager.GetHandPoints().ToArray());
+    //}
     private float CheckDistance(Landmark a, Landmark b)
     {
         float distX, distY, distZ;
@@ -52,14 +56,14 @@ public class HandGestureManager : MonoBehaviour
         var ringDist = CheckDistance(handBase, ringTip);
         var pinkyDist = CheckDistance(handBase, pinkyTip);
         //Debug.Log(thumbDist + " " + indexDist + " " + middleDist + " " + ringDist + " " + pinkyDist);
-        if (coordText!=null)
-        coordText.UpdateTextBox(thumbDist + " \n" + indexDist + " \n" + middleDist + " \n" + ringDist + " \n" + pinkyDist);
+        if (coordText != null)
+            coordText.UpdateTextBox(thumbDist + " \n" + indexDist + " \n" + middleDist + " \n" + ringDist + " \n" + pinkyDist);
         List<float> fingerDistances = new List<float>() { thumbDist, indexDist, middleDist, ringDist, pinkyDist };
 
         //to track gesture with highest percentage
         float CurrHighestPercentage = minimumTreshold;
         string CurrHighestName = NO_GESTURE_STRING;
-        //need a list to keep track of all teh gestures
+        //need a list to keep track of all the gestures
         for (int i = 0; i < gestures.Count; i++)
         {
             float GesturePercentage = CheckGesturePercentage(gestures[i], fingerDistances);
@@ -69,8 +73,8 @@ public class HandGestureManager : MonoBehaviour
                 CurrHighestPercentage = GesturePercentage;
             }
             //Debug.Log(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
-            if(percentageText)
-            percentageText.UpdateTextBox(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
+            if (percentageText)
+                percentageText.UpdateTextBox(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
         }
 
         //This to to update the current gesture being detected
@@ -78,7 +82,7 @@ public class HandGestureManager : MonoBehaviour
         currGesture = CurrHighestName;
 
         // on first gesture detected
-        if(currGesture!=prevGesture)
+        if (currGesture != prevGesture)
             OnFirstDetected?.Invoke(currGesture);
 
         // on gesture detecting
@@ -89,6 +93,70 @@ public class HandGestureManager : MonoBehaviour
 
         return CurrHighestName;
     }
+
+
+    //private float CheckDistance(GameObject a, GameObject b)
+    //{
+    //    float distX, distY, distZ;
+    //    distX = a.transform.position.x - b.transform.position.x;
+    //    distY = a.transform.position.y - b.transform.position.y;
+    //    distZ = a.transform.position.z - b.transform.position.z;
+    //    var newVec = new Vector3(distX, distY, distZ);
+    //    return Vector3.Magnitude(newVec);
+    //}
+    //public string ReadGesture(HandPointAnnotationObject[] landmarkList)
+    //{
+    //    // define finger tips
+    //    GameObject handBase = landmarkList[0].gameObject;
+    //    GameObject thumbTip = landmarkList[4].gameObject;
+    //    GameObject indexTip = landmarkList[8].gameObject;
+    //    GameObject middleTip = landmarkList[12].gameObject;
+    //    GameObject ringTip = landmarkList[16].gameObject;
+    //    GameObject pinkyTip = landmarkList[20].gameObject;
+    //    // tip distances to base of hand
+    //    var thumbDist = CheckDistance(handBase, thumbTip);
+    //    var indexDist = CheckDistance(handBase, indexTip);
+    //    var middleDist = CheckDistance(handBase, middleTip);
+    //    var ringDist = CheckDistance(handBase, ringTip);
+    //    var pinkyDist = CheckDistance(handBase, pinkyTip);
+    //    //Debug.Log(thumbDist + " " + indexDist + " " + middleDist + " " + ringDist + " " + pinkyDist);
+    //    if (coordText != null)
+    //        coordText.UpdateTextBox(thumbDist + " \n" + indexDist + " \n" + middleDist + " \n" + ringDist + " \n" + pinkyDist);
+    //    List<float> fingerDistances = new List<float>() { thumbDist, indexDist, middleDist, ringDist, pinkyDist };
+
+    //    //to track gesture with highest percentage
+    //    float CurrHighestPercentage = minimumTreshold;
+    //    string CurrHighestName = NO_GESTURE_STRING;
+    //    //need a list to keep track of all teh gestures
+    //    for (int i = 0; i < gestures.Count; i++)
+    //    {
+    //        float GesturePercentage = CheckGesturePercentage(gestures[i], fingerDistances);
+    //        if (GesturePercentage > CurrHighestPercentage)
+    //        {
+    //            CurrHighestName = gestures[i].gestureName;
+    //            CurrHighestPercentage = GesturePercentage;
+    //        }
+    //        //Debug.Log(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
+    //        if (percentageText)
+    //            percentageText.UpdateTextBox(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
+    //    }
+
+    //    //This to to update the current gesture being detected
+    //    //gestureText.UpdateTextBox(CurrHighestName);
+    //    currGesture = CurrHighestName;
+
+    //    // on first gesture detected
+    //    if (currGesture != prevGesture)
+    //        OnFirstDetected?.Invoke(currGesture);
+
+    //    // on gesture detecting
+    //    OnDetecting?.Invoke(currGesture);
+
+    //    // updaete prevGesture
+    //    prevGesture = currGesture;
+
+    //    return CurrHighestName;
+    //}
     private float CheckGesturePercentage(GestureSO gesture, List<float> fingerDistances)
     {
         float currGesturePercentage = 0;

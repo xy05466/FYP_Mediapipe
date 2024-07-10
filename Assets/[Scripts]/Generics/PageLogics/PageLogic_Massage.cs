@@ -71,7 +71,7 @@ public class PageLogic_Massage : PageLogic_Extension
             mso.SubscribeEvent_Ended(OnSliderEnded);
         }
 
-        //ActivateSliders(true);
+        ActivateSliders(true);
 
         // set up all sliders
         foreach (var massageSlider in massageSliderObjects)
@@ -168,22 +168,19 @@ public class PageLogic_Massage : PageLogic_Extension
         for (int i = 0; i < massageSliderObjects.Count; i++)
             massageSliderObjects[i].gameObject.SetActive(false);
 
-        if(FacepointsLoaded)
+        if (activate)
         {
-            if (activate)
+            // loop through each slider data base on current step
+            foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
             {
-                // loop through each slider data base on current step
-                foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
+                // set up the points on slider 
+                for (int i = 0; i < massageSliderData.points.Count; i++)
                 {
-                    // set up the points on slider 
-                    for (int i = 0; i < massageSliderData.points.Count; i++)
-                    {
-                        int point = massageSliderData.points[i];
-                        massageSliderObjects[currentSlider].gameObject.SetActive(activate);
-                        //massageSliderObjects2[currentSlider].AddPoint(point);
-                    }
-                    currentSlider++;
+                    int point = massageSliderData.points[i];
+                    massageSliderObjects[currentSlider].gameObject.SetActive(activate);
+                    //massageSliderObjects2[currentSlider].AddPoint(point);
                 }
+                currentSlider++;
             }
         }
       
