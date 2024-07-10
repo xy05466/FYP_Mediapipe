@@ -144,7 +144,7 @@ public class PageLogic_Massage : PageLogic_Extension
     public override bool IsPageDone()
     {
         //return accupointsMassageManagerFinal.IsDone();
-        return false;
+        return massageEnd;
     }
     public override void OnFaceAnnotationActive(bool active)
     {

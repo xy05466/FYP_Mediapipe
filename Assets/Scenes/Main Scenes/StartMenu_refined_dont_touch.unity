@@ -18732,8 +18732,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 878462219}
   - {fileID: 518752968}
+  - {fileID: 878462219}
   - {fileID: 786372592}
   - {fileID: 959629942}
   - {fileID: 878462219}
@@ -18751,7 +18751,7 @@ MonoBehaviour:
   img_hand: {fileID: 350378369}
   bu_prevPage: {fileID: 0}
   bu_nextPage: {fileID: 361220157}
-  autoNavigate: 1
+  autoNavigate: 0
   gestureNavigation: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
   img_nextPageFilled: {fileID: 198421949}
   panel_gesture: {fileID: 1556896351}
@@ -26325,7 +26325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878462218
 Transform:
   m_ObjectHideFlags: 0

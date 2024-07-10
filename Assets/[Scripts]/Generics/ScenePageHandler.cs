@@ -126,12 +126,12 @@ public class ScenePageHandler : MonoBehaviour
                 PreNextPage();
             }
             if(!autoNavigate && pageEnded)
-                panel_gesture.gameObject.SetActive(true);
+                panel_gesture.gameObject.SetActive(false);
         }
         else if (nextPageTimeElapsed > 0)
         {
             nextPageTimeElapsed -= Time.deltaTime;
-            panel_gesture.gameObject.SetActive(false);
+            panel_gesture.gameObject.SetActive(true);
         }
         nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
         if (img_nextPageFilled)
