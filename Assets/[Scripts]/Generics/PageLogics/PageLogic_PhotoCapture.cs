@@ -6,33 +6,40 @@ using UnityEngine.UI;
 
 public class PageLogic_PhotoCapture : PageLogic_Extension
 {
-    public Button bu_done;
-    public GameObject photoOverlay;
-    public PhoneCamera phoneCamera;
-    bool done = false;
-    [Space]
-    [SerializeField] TMP_Text textbox;
+    [Header("COMPONENTS")]
     [SerializeField] FacepointManager facepointManager;
-    [SerializeField] Button capture;
+    public PhoneCamera phoneCamera;
+    [Header("PROMPT")]
+    [SerializeField] private GameObject photoOverlay;
+    [SerializeField] private TMP_Text textbox;
+    [SerializeField] private Button capture;
+    [SerializeField] private Button bu_done;
+    [Header("SETTINGS")]
     [SerializeField] float maxDistX = 3.0f;
     [SerializeField] float maxDistY = 3.0f;
     [SerializeField] float lowerBoundZ = 1.0f;
     [SerializeField] float upperBoundZ = 3.0f;
+    public float waitTime = 0f;
+    private float timer = 0.0f;
+    [Header("JOURNAL DATA")]
     [SerializeField] private JournalSO journalSO;
-
 
     public RawImage checkPic;
     public GameObject brightnessSprite;
 
-    private float waitTime = 0f;
-    private float timer = 0.0f;
-
-    public GameObject audioManager;
+    [Header("VISUAL FEEDBACK")]
+    public Image img_default;
+    public Image img_filled;
     public Animator anim;
 
+    [Header("AUDIO FEEDBACK")]
+    public GameObject audioManager;
+
+
+    bool done = false;
     float avgV = 0;
-    private bool faceAligned;
-        public override void Initialize()
+    private bool faceAligned = false;
+    public override void Initialize()
     {
     }
     public override void StartPage()
@@ -48,7 +55,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
         float avgX = 0;
         float avgY = 0;
         float avgZ = 0;
-        if (facepointsObj != null && facepointsObj.Count > 0)
+        if (facepointsObj != null && facepointsObj.Count > 0 && facepointsObj[0].activeInHierarchy)
         {
 
             refPt = facepointsObj[4].transform.position;
@@ -99,9 +106,24 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 
         if (faceAligned)
         {
-            timer += Time.deltaTime;
 
-            if (timer > waitTime)
+            timer += Time.deltaTime;
+            if (img_filled != null)
+            {
+                img_filled.gameObject.SetActive(true);
+                if (waitTime > 0)
+                {
+                    img_filled.fillAmount = timer / waitTime;
+                    img_default.fillAmount = waitTime - timer;
+                }
+                else
+                {
+                    img_filled.fillAmount = 1;
+                    img_default.fillAmount = 0;
+                }
+            }
+
+            if (timer >= waitTime)
             {
 
                 if (anim /*&& !brightnessSprite.GetComponent<Animator>().enabled*/)
@@ -181,17 +203,26 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 
                 avgV = 0;
 
-                timer = timer - waitTime;
+                //timer = timer - waitTime;
 
                 Destroy(screenshotTexture);
                 Destroy(renderTexture);
             }
+            else
+            {
+                textbox.text = "wait for " + waitTime.ToString("0");
+            }
 
+    
         }
         else
         {
+            img_filled.gameObject.SetActive(false);
+            img_default.fillAmount = 1;
+            timer = 0;
             capture.interactable = false;
         }
+        timer = Mathf.Clamp(timer, 0, waitTime);
     }
 
 

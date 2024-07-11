@@ -9,12 +9,34 @@ public class PageLogic_Cream : PageLogic_Extension
     [SerializeField] private GameObject imageSegOBJ;
     private ImageSeg imageSeg;
     public CreamSceneManager creamManager;
+    int petalCount = 0;
+    int petalDone = 0;
+    bool done = false;
     public override void Initialize()
     {
+        creamManager.Init();
+        petalCount = creamManager.allPetals.Count;
+        foreach (FlowerAccupoint fc in creamManager.allPetals) 
+        {
+            fc.Subscribe(OnPetalDone);
+        }
+    }
+    private void OnPetalDone(FlowerAccupoint accupoint)
+    {
+        petalDone ++;
+        if(petalDone>= petalCount)
+        {
+            done = true;
+        }
     }
     public override void StartPage()
     {
-        if(imageSegOBJ)
+        done = false;
+        petalDone = 0;
+        foreach (FlowerAccupoint fc in creamManager.allPetals)
+            fc.ResetPetal();
+
+            if (imageSegOBJ)
             imageSeg = imageSegOBJ.GetComponent<ImageSeg>();
     }
 
@@ -28,7 +50,7 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override bool IsPageDone()
     {
-        return false;
+        return done;
     }
 
     public override void OnFaceAnnotationActive(bool active)

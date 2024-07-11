@@ -80,7 +80,6 @@ public class PageLogic_Massage : PageLogic_Extension
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
         if (facepointsObj == null || facepointsObj.Count <= 0 ) return;
-
         //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
 
         // loop all sliders base on steps

@@ -33,6 +33,7 @@ public class ScenePageHandler : MonoBehaviour
     public TMP_Text tmp_description;
 
     [Header("Detection Icon")]
+    public float distaneCollision = 0.2f;
     public Image img_face;
     public Image img_hand;
     [Header("Pages")]
@@ -56,6 +57,7 @@ public class ScenePageHandler : MonoBehaviour
     //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     //List<GameObject> facePoints = new List<GameObject>();
     //List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
+    public System.Action<int, GameObject, int, GameObject> OnCollidingFacePoint; // hand point collide with face point
 
 
     bool handPointsStored = false;
@@ -99,7 +101,24 @@ public class ScenePageHandler : MonoBehaviour
     private void Update()
     {
         if (!sceneAnimationEnd.IsDone()) return;
-        // find annotation points
+        // update hand face point collision
+        if (landmarkManager.IsHandLoadedAndActive && landmarkManager.IsFaceloadedAndActive)
+        {
+            for (int i = 0; i < landmarkManager.GetHandPoints().Count; i++)
+            {
+                HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints()[i];
+                for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
+                {
+                    GameObject facePoint = landmarkManager.GetFacePoints()[j];
+                    if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distaneCollision)
+                    {
+                        OnCollidingFacePoint?.Invoke(i,handPoint.gameObject, j,facePoint);
+                    }
+                }
+            }
+        }
+
+
 
         if (currentPageLogic != null)
         {
@@ -133,7 +152,12 @@ public class ScenePageHandler : MonoBehaviour
         else if (nextPageTimeElapsed > 0)
         {
             nextPageTimeElapsed -= Time.deltaTime;
-            if(!autoNavigate && pageEnded)
+            if (!autoNavigate && pageEnded)
+                panel_gesture.gameObject.SetActive(true);
+        }
+        else
+        {
+            if (!autoNavigate && pageEnded)
                 panel_gesture.gameObject.SetActive(true);
         }
         nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
@@ -163,6 +187,10 @@ public class ScenePageHandler : MonoBehaviour
     }
     public void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
     {
+
+        foreach (var pageL in pageLogics)
+            pageL.LoadHandPoints(true);
+
         //this.handPoints = handPoints;
         foreach (var item in handPoints)
             item.OnCollidingFacePoint += OnHandPointCollide;
@@ -172,17 +200,13 @@ public class ScenePageHandler : MonoBehaviour
         {
             foreach (var item in handPoints)
                 item.OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
-        }
 
-        if (!currentPageLogic.HandpointsLoaded)
-        {
-       
-            currentPageLogic.LoadHandPoints(true);
+            OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
         }
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        //Debug.Log(handPointIndex + " face: " + facePointIndex);
+        Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {
@@ -229,7 +253,6 @@ public class ScenePageHandler : MonoBehaviour
     }
     void NextPage()
     {
-
         currentPageLogic.EndPage();
         currentPageLogic.gameObject.SetActive(false);
         currentPageIndex++; // increase page index
