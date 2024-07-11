@@ -35,14 +35,10 @@ public class LandmarkManager : MonoBehaviour
 
     public void UpdateLandmarks()
     {
-        if (isFaceTask)
             annotationList_FacePoints_Task.Update();
-        else
             annotationList_FacePoints.Update();
 
-        if(isHandTask)
             annotationList_HandPoints_Task.Update();
-        else
             annotationList_HandPoints.Update();
 
     }

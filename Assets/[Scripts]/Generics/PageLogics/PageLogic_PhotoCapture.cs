@@ -219,7 +219,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
         {
             img_default.fillAmount = 1;
             img_filled.fillAmount = 0;
-            timer = 0;
+            timer -= Time.deltaTime;
             capture.interactable = false;
         }
         timer = Mathf.Clamp(timer, 0, waitTime);
