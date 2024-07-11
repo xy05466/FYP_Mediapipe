@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 using System;
+using UnityEditor.Experimental.GraphView;
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -112,9 +113,13 @@ public class PhoneCamera : MonoBehaviour
         {
             preview.rectTransform.localEulerAngles = new Vector3(0, 180, -90);
         }
-        else
+        else if(Application.platform == RuntimePlatform.Android)
         {
             preview.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+        }
+        else
+        {
+            preview.rectTransform.localEulerAngles = new Vector3(0, 0, -90);
         }
     }
 

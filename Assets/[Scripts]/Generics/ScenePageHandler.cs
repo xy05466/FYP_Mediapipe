@@ -50,8 +50,18 @@ public class ScenePageHandler : MonoBehaviour
     private float nextPageTimeElapsed;
 
     [Header("Annotation screens")]
+    public bool isFaceDetectionTask = true;
+    public bool isHandDetectionTask = true;
     public GameObject annotationFace;
+    public GameObject annotationFace_task;
     public GameObject annotationHand;
+    public GameObject annotationHand_task;
+
+    [Header("Destection Solution")]
+    public GameObject faceSolution;
+    public GameObject faceSolution_task;
+    public GameObject handSolution;
+    public GameObject handSolution_task;
     //[Header("Annotation List of Points")]
     //public LandmarkListGO annotationList_FacePoints;
     //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
@@ -63,7 +73,47 @@ public class ScenePageHandler : MonoBehaviour
     bool handPointsStored = false;
     private void Start()
     {
-        if(panel_gesture!=null)
+        landmarkManager.isFaceTask = isFaceDetectionTask;
+        landmarkManager.isHandTask = isHandDetectionTask;
+
+        annotationFace.gameObject.SetActive(false);
+        annotationFace_task.gameObject.SetActive(false);
+        annotationHand.gameObject.SetActive(false);
+        annotationHand_task.gameObject.SetActive(false);
+
+        faceSolution.gameObject.SetActive(false);
+        faceSolution_task.gameObject.SetActive(false);
+        handSolution.gameObject.SetActive(false);
+        handSolution_task.gameObject.SetActive(false);
+
+        // Check face detection type
+        if (isFaceDetectionTask)
+        {
+            annotationFace_task.gameObject.SetActive(true);
+            faceSolution_task.gameObject.SetActive(true);
+        }
+        else
+        {
+            annotationFace.gameObject.SetActive(true);
+            faceSolution.gameObject.SetActive(true);
+        }
+
+        // Check hand detection type
+        if (isHandDetectionTask)
+        {
+            annotationHand_task.gameObject.SetActive(true);
+            handSolution_task.gameObject.SetActive(true);
+        }
+        else
+        {
+            annotationHand.gameObject.SetActive(true);
+            handSolution.gameObject.SetActive(true);
+        }
+
+        landmarkManager.Initialize();
+
+
+        if (panel_gesture!=null)
             panel_gesture.gameObject.SetActive(false);
 
         bu_nextPage.onClick.AddListener(() => { PreNextPage(); });
@@ -100,6 +150,7 @@ public class ScenePageHandler : MonoBehaviour
     }
     private void Update()
     {
+        landmarkManager.UpdateLandmarks();
         if (!sceneAnimationEnd.IsDone()) return;
         // update hand face point collision
         if (landmarkManager.IsHandLoadedAndActive && landmarkManager.IsFaceloadedAndActive)
@@ -218,8 +269,15 @@ public class ScenePageHandler : MonoBehaviour
         tmp_description.text = currentPageLogic.pageData.splashDescription;
 
         // enable face / hand traking
-        annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-        annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        if(isFaceDetectionTask)
+            annotationFace_task.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        else
+            annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+
+        if(isHandDetectionTask)
+            annotationHand_task.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        else
+            annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
         // enable header text
         img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
         img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);

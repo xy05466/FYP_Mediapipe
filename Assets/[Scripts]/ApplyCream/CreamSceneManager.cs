@@ -6,6 +6,7 @@ using TMPro;
 public class CreamSceneManager : MonoBehaviour
 {
     [SerializeField] HandPointManager hpm;
+    public float fadeSpeed = 1f;
     //[SerializeField] GameObject handDetectionSolution;
     //[SerializeField] GameObject handDetectionScreen;
     //[SerializeField] GameObject creamApplicationGuideline;
@@ -61,6 +62,7 @@ public class CreamSceneManager : MonoBehaviour
         foreach (int j in petalFaceLandmarks)
         {
             FlowerAccupoint newPetal = Instantiate(bigPetalPrefabs[Random.Range(0, bigPetalPrefabs.Count)], mainFlowerParent.transform).GetComponent<FlowerAccupoint>();
+            newPetal.fadeSpeed = fadeSpeed;
             newPetal.pointId = j;
             newPetal.transform.localScale *= 25;
             newPetal.transform.localPosition = new Vector3(0, 0, -10);

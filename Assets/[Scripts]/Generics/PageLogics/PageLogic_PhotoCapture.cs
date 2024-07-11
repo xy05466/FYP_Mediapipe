@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PageLogic_PhotoCapture : PageLogic_Extension
 {
     [Header("COMPONENTS")]
-    [SerializeField] FacepointManager facepointManager;
+    //[SerializeField] FacepointManager facepointManager;
     public PhoneCamera phoneCamera;
     [Header("PROMPT")]
     [SerializeField] private GameObject photoOverlay;
@@ -41,10 +41,11 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     private bool faceAligned = false;
     public override void Initialize()
     {
+        bu_done.onClick.AddListener(() => { done = true; });
     }
     public override void StartPage()
     {
-        bu_done.onClick.AddListener(()=> { done = true; });
+        photoOverlay.gameObject.SetActive(false);
         phoneCamera.StartPhoto();
         faceAligned = false;
         textbox.text = "No face detected!";
@@ -110,7 +111,6 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
             timer += Time.deltaTime;
             if (img_filled != null)
             {
-                img_filled.gameObject.SetActive(true);
                 if (waitTime > 0)
                 {
                     img_filled.fillAmount = timer / waitTime;
@@ -210,15 +210,15 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
             }
             else
             {
-                textbox.text = "wait for " + waitTime.ToString("0");
+                textbox.text = "Hold Still For " + waitTime.ToString("0") + " Seconds";
             }
 
     
         }
         else
         {
-            img_filled.gameObject.SetActive(false);
             img_default.fillAmount = 1;
+            img_filled.fillAmount = 0;
             timer = 0;
             capture.interactable = false;
         }
@@ -228,8 +228,6 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
 
     public override void EndPage()
     {
-        bu_done.onClick.RemoveAllListeners();
-        photoOverlay.gameObject.SetActive(false);
         done = false;
     }
 
