@@ -8095,7 +8095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &251037410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8509,7 +8509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264412460
 Transform:
   m_ObjectHideFlags: 0
@@ -18740,12 +18740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 959629942}
-  - {fileID: 878462219}
-  - {fileID: 786372592}
   - {fileID: 1716743225}
-  - {fileID: 878462219}
-  - {fileID: 1010666741}
+  - {fileID: 518752968}
   landmarkManager: {fileID: 683045300}
   handGestureManager: {fileID: 264412461}
   splashScreen: {fileID: 1945387827}
@@ -18765,7 +18761,7 @@ MonoBehaviour:
   img_nextPageFilled: {fileID: 198421949}
   panel_gesture: {fileID: 1556896351}
   nextPageTime: 3
-  isFaceDetectionTask: 1
+  isFaceDetectionTask: 0
   isHandDetectionTask: 1
   annotationFace: {fileID: 1979440877}
   annotationFace_task: {fileID: 704286817}
@@ -22731,7 +22727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &733495049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26511,7 +26507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878462218
 Transform:
   m_ObjectHideFlags: 0
@@ -32069,7 +32065,7 @@ PrefabInstance:
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
       propertyPath: _irisCircleWidth
-      value: 1
+      value: 0.054
       objectReference: {fileID: 0}
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
@@ -32095,7 +32091,7 @@ PrefabInstance:
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
       propertyPath: _faceConnectionWidth
-      value: 1
+      value: 0.054
       objectReference: {fileID: 0}
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
@@ -32125,7 +32121,7 @@ PrefabInstance:
     - target: {fileID: 5403310940259726731, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}
       propertyPath: _faceConnectionColor.a
-      value: 0
+      value: 0.9843137
       objectReference: {fileID: 0}
     - target: {fileID: 5403310940259726732, guid: 2e1291ddc10af56d4be1551cc630d40b,
         type: 3}

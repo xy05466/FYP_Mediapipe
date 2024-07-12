@@ -71,7 +71,7 @@ public class PageLogic_Massage : PageLogic_Extension
             mso.SubscribeEvent_Ended(OnSliderEnded);
         }
 
-        ActivateSliders(true);
+        SetSliders(true);
 
         // set up all sliders
         foreach (var massageSlider in massageSliderObjects)
@@ -154,11 +154,12 @@ public class PageLogic_Massage : PageLogic_Extension
     {
         //accupointsMassageManagerFinal.gameObject.SetActive(active);
         //ActivateSliders(active);
+        ActivateSliders(active);
     }
     public override void OnHandAnnotationActive(bool active)
     {
     }
-    private void ActivateSliders(bool activate)
+    private void SetSliders(bool activate)
     {
         if (massageSliderObjects.Count <= 0) return;
 
@@ -183,6 +184,12 @@ public class PageLogic_Massage : PageLogic_Extension
             }
         }
       
+    }
+    private void ActivateSliders(bool active)
+    {
+        if (massageSliderObjects.Count <= 0) return;
+        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+            massageSliderObjects[i].gameObject.SetActive(active);
     }
 
     // Get the total sliders available based on current step
@@ -264,7 +271,7 @@ public class PageLogic_Massage : PageLogic_Extension
         foreach (var massageSlider in massageSliderObjects)
             massageSlider.ResetSlider();
 
-        ActivateSliders(true);
+        SetSliders(true);
     }
     public void End()
     {

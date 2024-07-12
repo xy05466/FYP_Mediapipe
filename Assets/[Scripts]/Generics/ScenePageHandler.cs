@@ -170,7 +170,6 @@ public class ScenePageHandler : MonoBehaviour
         }
 
 
-
         if (currentPageLogic != null)
         {
             // run curring page logic
