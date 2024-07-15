@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 [CustomEditor(typeof(Pathcreator))]
 public class PathEditor : Editor
 {
@@ -103,3 +104,4 @@ public class PathEditor : Editor
         path = creator.path;
     }
 }
+#endif
