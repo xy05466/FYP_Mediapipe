@@ -495,11 +495,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d8a8b0ff85e3e46901b79db9776f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boids: {fileID: 5910116993647496086, guid: 424b21aeb4661fa47b21c52ab3bd017f, type: 3}
-  alignmentSlider: 0
-  cohesionSlider: 0
-  separationSlider: 0
-  SeekWeight: 0
+  Boids: {fileID: 2886248326051523473, guid: d9f70fbfd8efffc43b8fff1593bed7df, type: 3}
+  alignmentSlider: 0.8
+  cohesionSlider: 0.097
+  separationSlider: 0.131
+  SeekWeight: 0.7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

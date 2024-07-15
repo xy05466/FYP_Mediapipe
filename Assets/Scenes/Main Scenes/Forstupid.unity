@@ -738,7 +738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 135.3501}
+  m_AnchoredPosition: {x: 0, y: 135.35011}
   m_SizeDelta: {x: 0, y: 970.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &23379719
@@ -1270,7 +1270,7 @@ PrefabInstance:
     - target: {fileID: 5850198979010014858, guid: 24d349d9c78db0f3d94d4657029f4c5e,
         type: 3}
       propertyPath: _threshold
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5850198979010014858, guid: 24d349d9c78db0f3d94d4657029f4c5e,
         type: 3}
@@ -1457,7 +1457,7 @@ MonoBehaviour:
   filterTex: {fileID: 44928544}
   maskRenderTexture: {fileID: 8400000, guid: 3a936d51245bd864081350e01effb051, type: 2}
   _color: {r: 0, g: 0, b: 1, a: 1}
-  _threshold: 1
+  _threshold: 0
 --- !u!1 &46086827
 GameObject:
   m_ObjectHideFlags: 0
