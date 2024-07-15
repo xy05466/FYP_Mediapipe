@@ -36,8 +36,8 @@ public class Boid : MonoBehaviour
         }
 
         // Initialize position, velocity, and acceleration
-        //Position = new Vector2(Random.Range(0f, Camera.main.GetHorizontalFieldOfView()),Random.Range(0f, Camera.main.GetVerticalFieldOfView(60)));
-        Position = new Vector2(Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x), Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y));
+        Position = new Vector2(Random.Range(0f, Camera.main.GetHorizontalFieldOfView()),Random.Range(0f, Camera.main.GetVerticalFieldOfView(60)));
+        //Position = new Vector2(Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x), Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y));
         //rb.velocity = new Vector2(Random.Range(-2f, 4f), Random.Range(-2f, 4f));
         Acceleration = Vector2.zero;
     }
@@ -53,9 +53,6 @@ public class Boid : MonoBehaviour
 
         Vector3 Velocity3D = new Vector3(rb.velocity.x, rb.velocity.y, 0);
         transform.LookAt(transform.position + Velocity3D);
-        //Vector2 Direction = rb.velocity.normalized;
-        //float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         Flock();
         //to keep the boids in the screen at all times
@@ -70,12 +67,6 @@ public class Boid : MonoBehaviour
             Vector2.ClampMagnitude(Steeringvector + rb.velocity, maxSpeed);
         Vector2.SmoothDamp(Position, expectedEndPosition, ref _velocity, steeringTime);
         rb.velocity += _velocity;
-
-
-
-        //rb.velocity += Acceleration * Time.deltaTime;
-        //Position += new Vector2(rb.velocity.x, rb.velocity.y) * Time.deltaTime;
-        //transform.position = Position;
     }
 
     private void Flock()
