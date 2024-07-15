@@ -4466,7 +4466,7 @@ MonoBehaviour:
   _facepointManager: {fileID: 408683176}
   accupointSOs: []
   steps: []
-  accupointPrefab: {fileID: 5105739270100195971, guid: 7ab9d299ff84cf848a5829f68673f5c7,
+  accupointPrefab: {fileID: 2515691136008667968, guid: 7ab9d299ff84cf848a5829f68673f5c7,
     type: 3}
   parent: {fileID: 1421252763}
   offset: {x: 0, y: 0, z: 0}
@@ -6291,7 +6291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
