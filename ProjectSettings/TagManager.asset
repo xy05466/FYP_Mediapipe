@@ -10,11 +10,16 @@ TagManager:
   - Handpoint
   - Date
   - ImageSeg
+  - Boid
+  - spawner
+  - target
+  - landmarks
+  - spawnarea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacle
   - Water
   - UI
   - Handpoint

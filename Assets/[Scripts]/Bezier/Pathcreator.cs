@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -19,7 +20,7 @@ public class Pathcreator : MonoBehaviour
 
     public List<Vector2> points = new List<Vector2>();
     private List<Vector2> curvePoints = new List<Vector2>();
-    float duration = 8.0f;
+    float duration = 10.0f;
     float t = 0.0f;
     Vector2 newPos;
 
@@ -29,8 +30,10 @@ public class Pathcreator : MonoBehaviour
     public void CreatePath()
     {
         path = new Path(transform.position);
-
-    
+        for (int i = 0; i < path.points.Count; i++)
+        {
+            points[i]  = path.points[i];
+        }
     }
 
     void Reset()
@@ -53,15 +56,14 @@ public class Pathcreator : MonoBehaviour
         for (int i = 0; i < points.Count; i++)
             path.SetPointPosition(i, points[i]);
 
-        if (Input.GetKey(KeyCode.Space)) 
+
+        if (t < 1.0f)
         {
-            if (t < 1.0f)
-            {
-                t += Time.deltaTime / duration;
-                newPos = CalculateBezierPoint(t, curvePoints);
-                MovingBall.transform.position = new Vector3(newPos.x, newPos.y, MovingBall.transform.position.z);
-            }
-        }   
+            t += Time.deltaTime / duration;
+            newPos = CalculateBezierPoint(t, curvePoints);
+            MovingBall.transform.position = new Vector3(newPos.x, newPos.y, MovingBall.transform.position.z);
+        }
+   
     }
 
     public Vector2 CalculateBezierPoint(float t, List<Vector2> points)
