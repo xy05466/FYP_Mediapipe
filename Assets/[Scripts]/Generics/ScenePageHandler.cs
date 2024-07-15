@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static FaceHandPoint;
 
 // Will handle the pages and splash screen pop up etc.
 // Basically all the common things in a scene
@@ -81,32 +82,37 @@ public class ScenePageHandler : MonoBehaviour
         annotationHand.gameObject.SetActive(false);
         annotationHand_task.gameObject.SetActive(false);
 
-        faceSolution.gameObject.SetActive(false);
-        faceSolution_task.gameObject.SetActive(false);
-        handSolution.gameObject.SetActive(false);
-        handSolution_task.gameObject.SetActive(false);
+        //faceSolution.gameObject.SetActive(false);
+        //faceSolution_task.gameObject.SetActive(false);
+        //handSolution.gameObject.SetActive(false);
+        //handSolution_task.gameObject.SetActive(false);
 
         // Check face detection type
         if (isFaceDetectionTask)
         {
             annotationFace_task.gameObject.SetActive(true);
+            faceSolution.gameObject.SetActive(false);
             faceSolution_task.gameObject.SetActive(true);
         }
         else
         {
             annotationFace.gameObject.SetActive(true);
+            faceSolution_task.gameObject.SetActive(false);
             faceSolution.gameObject.SetActive(true);
+
         }
 
         // Check hand detection type
         if (isHandDetectionTask)
         {
             annotationHand_task.gameObject.SetActive(true);
+            handSolution.gameObject.SetActive(false);
             handSolution_task.gameObject.SetActive(true);
         }
         else
         {
             annotationHand.gameObject.SetActive(true);
+            handSolution_task.gameObject.SetActive(false);
             handSolution.gameObject.SetActive(true);
         }
 
@@ -215,19 +221,14 @@ public class ScenePageHandler : MonoBehaviour
             img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
 
     }
-
     private void OnFaceSpotted(bool active)
     {
         img_face.gameObject.SetActive(active);
     }
-
     private void OnHandSpotted(bool active)
     {
         img_hand.gameObject.SetActive(active);
     }
-
-
-
     public void StoreFacePoints(List<GameObject> facePoints)
     {
         //this.facePoints = facePoints;
@@ -246,13 +247,20 @@ public class ScenePageHandler : MonoBehaviour
             item.OnCollidingFacePoint += OnHandPointCollide;
 
         handPointsStored = true;
-        foreach (var pageL in pageLogics)
-        {
-            foreach (var item in handPoints)
-                item.OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
 
-            OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
-        }
+        foreach (var item in handPoints)
+            item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+
+        OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+
+
+        //foreach (var pageL in pageLogics)
+        //{
+        //    //foreach (var item in handPoints)
+        //    //    item.OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
+
+        //    OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
+        //}
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
@@ -299,8 +307,9 @@ public class ScenePageHandler : MonoBehaviour
         {
             foreach (var item in landmarkManager.GetHandPoints())
                 item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-            currentPageLogic.LoadHandPoints(true);
         }
+
+        OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
     }
     void PreNextPage()
     {
@@ -316,6 +325,14 @@ public class ScenePageHandler : MonoBehaviour
         sceneAnimationStart.OnAnimationFinished = null;
         currentPageLogic.ChangeState(PageLogic.PageState.ENDED);
         pageEnded = false;
+
+        if(landmarkManager.IsHandLoaded)
+        {
+            foreach (var item in landmarkManager.GetHandPoints())
+                item.OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
+
+            OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
+        }
         StartPage();
     }
 
