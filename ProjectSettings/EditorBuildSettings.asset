@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MediaPipeUnity/Samples/Scenes/Selfie Segmentation/Selfie Segmentation
+      1.unity
+    guid: 38d22e5abc811bb40baf4cbc1768e851
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Selfie Segmentation/Selfie Segmentation.unity
     guid: a2441753b39c0837cb754c60955bfcc2
   - enabled: 0
