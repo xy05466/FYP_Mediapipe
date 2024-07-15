@@ -7,6 +7,7 @@ public class Boid : MonoBehaviour
     public Vector2 Position;
     private Vector2 _velocity;
     public Rigidbody2D rb;
+    [SerializeField] private MeshRenderer spawnArea;
     [SerializeField] private float steeringTime;
     private Vector2 Acceleration;
     private BoidSpawner boidSpawner;
@@ -18,6 +19,8 @@ public class Boid : MonoBehaviour
 
     private void Start()
     {
+        spawnArea = GameObject.FindGameObjectWithTag("spawnarea").GetComponent<MeshRenderer>();
+
         rb = GetComponent<Rigidbody2D>();
         boidSpawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<BoidSpawner>();
         target = GameObject.FindGameObjectWithTag("target").GetComponent<Transform>();
@@ -33,7 +36,8 @@ public class Boid : MonoBehaviour
         }
 
         // Initialize position, velocity, and acceleration
-        Position = new Vector2(Random.Range(0f, Camera.main.GetHorizontalFieldOfView()),Random.Range(0f, Camera.main.GetVerticalFieldOfView(60)));
+        //Position = new Vector2(Random.Range(0f, Camera.main.GetHorizontalFieldOfView()),Random.Range(0f, Camera.main.GetVerticalFieldOfView(60)));
+        Position = new Vector2(Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x), Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y));
         //rb.velocity = new Vector2(Random.Range(-2f, 4f), Random.Range(-2f, 4f));
         Acceleration = Vector2.zero;
     }
