@@ -8,6 +8,11 @@ public class PageLogic_StartMenu : PageLogic
     public GameObject panel;
     public Button bu_start;
     bool pageEnd = false;
+
+
+    public override void Initialize()
+    {
+    }
     public override void StartPage()
     {
         bu_start.onClick.AddListener(() => { pageEnd = true;  });
@@ -36,7 +41,5 @@ public class PageLogic_StartMenu : PageLogic
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
     }
-
-
 
 }

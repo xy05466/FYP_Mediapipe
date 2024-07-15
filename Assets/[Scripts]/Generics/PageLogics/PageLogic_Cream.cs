@@ -7,9 +7,35 @@ public class PageLogic_Cream : PageLogic_Extension
     [SerializeField] private GameObject imageSegOBJ;
     private ImageSeg imageSeg;
     public CreamSceneManager creamManager;
+    int petalCount = 0;
+    int petalDone = 0;
+    bool done = false;
+    public override void Initialize()
+    {
+        creamManager.Init();
+        petalCount = creamManager.allPetals.Count;
+        foreach (FlowerAccupoint fc in creamManager.allPetals) 
+        {
+            fc.Subscribe(OnPetalDone);
+        }
+    }
+    private void OnPetalDone(FlowerAccupoint accupoint)
+    {
+        petalDone ++;
+        if(petalDone>= petalCount)
+        {
+            done = true;
+        }
+    }
     public override void StartPage()
     {
-        imageSeg = imageSegOBJ.GetComponent<ImageSeg>();
+        done = false;
+        petalDone = 0;
+        foreach (FlowerAccupoint fc in creamManager.allPetals)
+            fc.ResetPetal();
+
+            if (imageSegOBJ)
+            imageSeg = imageSegOBJ.GetComponent<ImageSeg>();
     }
 
     public override void ResetPage()
@@ -22,7 +48,7 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override bool IsPageDone()
     {
-        return false;
+        return done;
     }
 
     public override void OnFaceAnnotationActive(bool active)
@@ -35,6 +61,7 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
+        Debug.Log(facePointIndex);
         foreach (var petal in creamManager.allPetals)
         {
             if (petal.pointId == facePointIndex)
@@ -46,6 +73,12 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
+        if (facepointsObj==null || facepointsObj.Count<=0) return;
+        foreach (var petal in creamManager.allPetals)
+        {
+            petal.transform.position = facepointsObj[petal.pointId].transform.position;
+        }
+
         if (handpointsObj.Count > 0)
         {
             HandPointAnnotationObject m = handpointsObj[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.MIDDLE_FINGER_TIP)];
@@ -67,7 +100,9 @@ public class PageLogic_Cream : PageLogic_Extension
                 contactPoints.Add(fingerPoints3);
                 contactPoints.Add(fingerPoints4);
 
-                foreach (var contactpoint in contactPoints)
+                if (imageSeg)
+                {
+                    foreach (var contactpoint in contactPoints)
                 {
                     switch (j)
                     {
@@ -100,6 +135,7 @@ public class PageLogic_Cream : PageLogic_Extension
                             break;
                     }
                 }   
+                }
             }
         }
     }
@@ -112,4 +148,6 @@ public class PageLogic_Cream : PageLogic_Extension
         // Check if the screen point is within the bounds of the 2D collider
         return ui.OverlapPoint(screenPoint);
     }
+
+  
 }

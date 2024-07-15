@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PageLogic_Album : PageLogic
 {
-
- 
+    public override void Initialize()
+    {
+    }
     public override void StartPage()
     {
     }
@@ -29,5 +30,6 @@ public class PageLogic_Album : PageLogic
     public override void ResetPage()
     {
     }
+
 
 }

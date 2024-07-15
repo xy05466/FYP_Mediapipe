@@ -9,6 +9,7 @@ using UnityEditor;
 public class PageData : ScriptableObject
 {
     public bool enableHeader= true;
+    public bool autoNavigate = false;
     [Header("Splash Data")]
     public bool enableSplashPage = true;
     // splash image

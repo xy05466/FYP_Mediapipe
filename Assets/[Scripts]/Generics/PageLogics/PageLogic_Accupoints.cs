@@ -12,6 +12,11 @@ public class PageLogic_Accupoints : PageLogic_Extension
     private int currentStep = -1;
     int accupointDone = 0;
     bool finish = false;
+
+    public override void Initialize()
+    {
+    }
+
     public override void StartPage()
     {
         int maxPoints = 0;
@@ -141,6 +146,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
     {
         return list_facepointSteps[currentStep];
     }
+
 
 
     [System.Serializable]

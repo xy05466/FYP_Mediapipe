@@ -24,8 +24,6 @@ public class LandmarkList<T>
             parentActive = false;
             OnParentActive?.Invoke(false);
         }
-
-
     }
     public virtual void Update()
     {

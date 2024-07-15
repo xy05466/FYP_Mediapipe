@@ -10,9 +10,11 @@ public class FlowerAccupoint : MonoBehaviour
     [SerializeField] GameObject slicedPetal;
     [SerializeField] GameObject pps;
     private SpriteRenderer petalSR;
-    public bool collided = false;
+    //public bool collided = false;
+    private bool done = false;
     private float alpha;
     public int pointId;
+    private System.Action<FlowerAccupoint> OnPetalDone;
     private void Start()
     {
         petalSR = GetComponent<SpriteRenderer>();
@@ -21,34 +23,42 @@ public class FlowerAccupoint : MonoBehaviour
         Destroy(newParticleSystem);
         alpha = this.petalSR.color.a;
     }
-
-    private void OnTriggerEnter(Collider collision)
+    public void ResetPetal()
     {
-        if (collision.gameObject.CompareTag("Handpoint"))
-        {
-            collided = true; 
-        }
+        done = false;
+        alpha = 1;
     }
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Handpoint"))
+    //    {
+    //        collided = true; 
+    //    }
+    //}
 
-    private void OnTriggerStay(Collider other)
-    {
-        //if (other.gameObject.CompareTag("Handpoint"))
-        //{
-        //    alpha -= Time.deltaTime * 11.0f;
-        //    petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
-        //}
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    //if (other.gameObject.CompareTag("Handpoint"))
+    //    //{
+    //    //    alpha -= Time.deltaTime * 11.0f;
+    //    //    petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
+    //    //}
+    //}
     public void Fill()
     {
+        if (done) return;
         alpha -= Time.deltaTime * fadeSpeed;
         alpha = Mathf.Clamp(alpha,0,1);
         petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
+
+        if (alpha <= 0)
+        {
+            done = true;
+            OnPetalDone?.Invoke(this);
+        }
     }
-    private void Update()
+    public void Subscribe(System.Action<FlowerAccupoint> action)
     {
-        //if (gameObject.transform.position.z > -10)
-        //{
-        //    slicedPetal.transform.localPosition = new Vector3(slicedPetal.transform.localPosition.x, slicedPetal.transform.localPosition.y, -50);
-        //}
+        OnPetalDone += action;
     }
 }

@@ -10,7 +10,8 @@ public class UISpriteAnimation : MonoBehaviour
     public Image m_Image;
 
     public bool playAwake = true;
-    public float playerAfter = 1;
+    public float playerAfter = 0;
+    public bool loop = false;
     public bool m_reverse = false;
     public Sprite[] m_SpriteArray;
     public float m_Speed = .02f;
@@ -72,7 +73,10 @@ public class UISpriteAnimation : MonoBehaviour
             if (m_IndexSprite >= m_SpriteArray.Length-1)
             {
                 //m_IndexSprite = 0;
-                StopUIAnim();
+                if (!loop)
+                    StopUIAnim();
+                else
+                    m_IndexSprite = 0;
             }
         }
         else
@@ -80,7 +84,10 @@ public class UISpriteAnimation : MonoBehaviour
             if (m_IndexSprite <= 0)
             {
                 //m_IndexSprite = m_SpriteArray.Length-1;
-                StopUIAnim();
+                if (!loop)
+                    StopUIAnim();
+                else
+                    m_IndexSprite = m_SpriteArray.Length - 1;
             }
         }
 
@@ -98,6 +105,9 @@ public class UISpriteAnimation : MonoBehaviour
             m_Image.sprite = m_SpriteArray[m_IndexSprite];
 
         if (isDone == false)
+        {
             m_CorotineAnim = StartCoroutine(IePlayAnimUI());
+
+        }
     }
 }
