@@ -99,6 +99,7 @@ public class Boid : MonoBehaviour
                 //adding all the positions of the boids in the list
                 steering += boid.rb.velocity;
                 total++;
+
             }
         }
 
