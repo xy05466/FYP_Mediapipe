@@ -8230,6 +8230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959c4e77f5f68e43a113d571339a235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  landmarkManager: {fileID: 0}
   currGesture: 
   coordText: {fileID: 0}
   percentageText: {fileID: 0}
@@ -18088,12 +18089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handGestureManager: {fileID: 264412461}
-  landmarkManager: {fileID: 0}
   gesture: {fileID: 11400000, guid: d59cee60ba7fb1b46bea3dcea534e5b0, type: 2}
   img_loading: {fileID: 1170270986}
   loadingTime: 3
-  transformFocusHand: {fileID: 0}
-  handFocusOffset: {x: 0, y: 0}
   transformFocusParent: {fileID: 1166225047}
   transformFocus: {fileID: 242531344}
   bu_next: {fileID: 1699658573}
@@ -29688,7 +29686,7 @@ MonoBehaviour:
   background: {fileID: 95580204}
   preview: {fileID: 1548597599}
   brightnessTxt: {fileID: 1938323356}
-  text: {fileID: 0}
+  text: {fileID: 388894010}
   date: {fileID: 1994914846}
   splashTxt: {fileID: 0}
   photoTxt: {fileID: 499561796}
