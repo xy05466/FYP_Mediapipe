@@ -35,7 +35,7 @@ public class Boid : MonoBehaviour
 
         // Initialize position, velocity, and acceleration
         Position = new Vector2(Random.Range(0f, Camera.main.GetHorizontalFieldOfView()), Random.Range(0f, Camera.main.GetVerticalFieldOfView(60)));
-        //rb.velocity = new Vector2(Random.Range(-2f, 4f), Random.Range(-2f, 4f));
+        rb.velocity = new Vector2(Random.Range(-2f, 4f), Random.Range(-2f, 4f));
         Acceleration = Vector2.zero;
     }
 
@@ -47,9 +47,8 @@ public class Boid : MonoBehaviour
         Position += new Vector2(rb.velocity.x, rb.velocity.y) * Time.deltaTime;
         transform.position = Position;
 
-
-        Vector3 Velocity3D = new Vector3(rb.velocity.x, rb.velocity.y, 0);
-        transform.LookAt(transform.position + Velocity3D);
+        float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         Flock();
         //to keep the boids in the screen at all times
@@ -63,7 +62,12 @@ public class Boid : MonoBehaviour
         var expectedEndPosition = Position +
             Vector2.ClampMagnitude(Steeringvector + rb.velocity, maxSpeed);
         Vector2.SmoothDamp(Position, expectedEndPosition, ref _velocity, steeringTime);
-        rb.velocity += _velocity;
+        rb.velocity = _velocity;
+
+        float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        Flock();
     }
 
     private void Flock()
@@ -116,7 +120,7 @@ public class Boid : MonoBehaviour
 
     private Vector2 Cohesion()
     {
-        float perceptionRadius = 100f;
+        float perceptionRadius = 50f;
         Vector2 steering = Vector2.zero;
         int total = 0;
 
@@ -152,7 +156,7 @@ public class Boid : MonoBehaviour
 
     private Vector2 Separation()
     {
-        float perceptionRadius = 20f;
+        float perceptionRadius = 10f;
         Vector2 steering = Vector2.zero;
         int total = 0;
 
@@ -216,7 +220,7 @@ public class Boid : MonoBehaviour
     //[SerializeField] [Range(0, 1)] private float seekWeight;
     //[SerializeField] [Range(0, 1)] private float obstacleAvoidanceWeight;
     //private Rigidbody2D rb;
-    //private Vector2 Velocity;
+    //private Vector2 rb.velocity;
 
 
     //private void Start()
@@ -231,11 +235,11 @@ public class Boid : MonoBehaviour
     //    var expectedEndPos = transform.position + 
     //        Vector3.ClampMagnitude(rb.velocity + steeringVector, maxSpeed);
 
-    //    Vector2.SmoothDamp(transform.position, expectedEndPos, ref Velocity, steeringTime);
-    //    rb.velocity = Velocity;
+    //    Vector2.SmoothDamp(transform.position, expectedEndPos, ref rb.velocity, steeringTime);
+    //    rb.velocity = rb.velocity;
     //    //converting rb.velocity to '3D' by just making the z = 0
-    //    Vector3 Velocity3D = new Vector3(rb.velocity.x, rb.velocity.y, 0);
-    //    transform.LookAt(transform.position + Velocity3D);
+    //    Vector3 rb.velocity3D = new Vector3(rb.velocity.x, rb.velocity.y, 0);
+    //    transform.LookAt(transform.position + rb.velocity3D);
     //}
 
     //private Vector2 ObstacleAvoidance()
@@ -253,8 +257,8 @@ public class Boid : MonoBehaviour
 
     //    var avoidDirection = Vector2.Perpendicular(inDirection).normalized;
     //    var targetPosition = hitInfo.point + avoidDirection * avoidDistance;
-    //    var desiredVelocity = Vector2.ClampMagnitude(targetPosition - newTransform, maxSpeed);
-    //    steeringVector = desiredVelocity - rb.velocity;
+    //    var desiredrb.velocity = Vector2.ClampMagnitude(targetPosition - newTransform, maxSpeed);
+    //    steeringVector = desiredrb.velocity - rb.velocity;
     //    Debug.DrawLine(-hitInfo.point, targetPosition, Color.green);
     //    return steeringVector * obstacleAvoidanceWeight;
     //}
