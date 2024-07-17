@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &11793242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   _cpuConfig: {fileID: 4900000, guid: 0f81c4dbaca4c99cba499692e0f9f2f4, type: 3}
   _gpuConfig: {fileID: 4900000, guid: 38589729c174899b882533cdf6177dfe, type: 3}
   _openGlEsConfig: {fileID: 4900000, guid: b84acd1bb05b70ac19d12ec8ba95ae8d, type: 3}
-  _timeoutMicrosec: 50000
+  _timeoutMicrosec: 100000
   maxNumFaces: 1
   refineLandmarks: 0
 --- !u!114 &11793243
@@ -670,7 +670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &22794516
 Transform:
   m_ObjectHideFlags: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
     type: 3}
-  screen: {fileID: 1936696891}
+  screen: {fileID: 95580203}
   runningMode: 0
   _handLandmarkerResultAnnotationController: {fileID: 1298655830}
 --- !u!1 &23379717
@@ -3010,8 +3010,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1979440878}
+  - {fileID: 7074087081987141250}
   - {fileID: 704286818}
   - {fileID: 691127284}
+  - {fileID: 1298655829}
   m_Father: {fileID: 1186707809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3031,7 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08567ddcd5175eeebafe07a630413ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fitMode: 0
+  _fitMode: 1
 --- !u!114 &95580203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8963,7 +8965,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 294653375}
-  - component: {fileID: 294653376}
   m_Layer: 5
   m_Name: ScreenLayer
   m_TagString: Untagged
@@ -8993,18 +8994,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &294653376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294653374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a11c9fb838fb0e48b1b45e8058e2f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &294728667
 GameObject:
   m_ObjectHideFlags: 0
@@ -13915,7 +13904,7 @@ MonoBehaviour:
   _cpuConfig: {fileID: 4900000, guid: e103d3514f44539afbb2630835e8546a, type: 3}
   _gpuConfig: {fileID: 4900000, guid: 547e40a551a15195b99af48671582f2e, type: 3}
   _openGlEsConfig: {fileID: 4900000, guid: 3c861bf929c058e68a5759b703d993d0, type: 3}
-  _timeoutMicrosec: 50000
+  _timeoutMicrosec: 100000
 --- !u!114 &444681272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14209,7 +14198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08567ddcd5175eeebafe07a630413ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fitMode: 0
+  _fitMode: 1
 --- !u!114 &448093973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18315,8 +18304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 959629942}
   - {fileID: 878462219}
+  - {fileID: 959629942}
   - {fileID: 1716743225}
   - {fileID: 786372592}
   - {fileID: 878462219}
@@ -33108,8 +33097,8 @@ RectTransform:
   - {fileID: 4199139114394809032}
   - {fileID: 95580201}
   - {fileID: 1936696887}
-  - {fileID: 1947589229}
   - {fileID: 448093971}
+  - {fileID: 1947589229}
   m_Father: {fileID: 294653375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -35274,7 +35263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1298655829
 Transform:
   m_ObjectHideFlags: 0
@@ -35284,12 +35273,12 @@ Transform:
   m_GameObject: {fileID: 1298655828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -200, z: 0}
-  m_LocalScale: {x: 0.99993175, y: 0.99993175, z: 0.99993175}
+  m_LocalPosition: {x: 0, y: -199.99997, z: -0.00006706358}
+  m_LocalScale: {x: 0.99993175, y: 0.9999317, z: 0.9999317}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2003249034}
-  m_Father: {fileID: 1936696887}
+  m_Father: {fileID: 95580201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1298655830
 MonoBehaviour:
@@ -38181,7 +38170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
     type: 3}
-  screen: {fileID: 1936696891}
+  screen: {fileID: 95580203}
   graphRunner: {fileID: 1392297658}
   textureFramePool: {fileID: 1392297657}
   runningMode: 0
@@ -50095,7 +50084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1936696887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50108,8 +50097,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7074087081987141250}
-  - {fileID: 1298655829}
   - {fileID: 1652795942}
   m_Father: {fileID: 1186707809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50718,7 +50705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1947589229
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52149,7 +52136,7 @@ PrefabInstance:
     - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
       propertyPath: _connectionWidth
-      value: 0.02
+      value: 0.284
       objectReference: {fileID: 0}
     - target: {fileID: -8837774153085666347, guid: 87a9be2a7620991a78342ef9a56fa62c,
         type: 3}
@@ -57055,7 +57042,7 @@ Transform:
   m_GameObject: {fileID: 8798066377398269793}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.000015258789, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57063,7 +57050,7 @@ Transform:
   - {fileID: 1037112216}
   - {fileID: 1188537692}
   - {fileID: 423016489}
-  m_Father: {fileID: 1936696887}
+  m_Father: {fileID: 95580201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7167741116718141568
 MonoBehaviour:

@@ -9,8 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scenes/Main.unity
     guid: a1d3cb33f21d8514d8785610bac3de79
   - enabled: 0
+    path: Assets/MediaPipeUnity/Samples/Scenes/Selfie Segmentation/Selfie Segmentation
+      1.unity
+    guid: 38d22e5abc811bb40baf4cbc1768e851
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Selfie Segmentation/Selfie Segmentation.unity
     guid: a2441753b39c0837cb754c60955bfcc2
+  - enabled: 0
+    path: Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
+    guid: ed3a1c9df7f5bee4ba0dc4b30aff0221
   - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Hand Tracking 2.unity
     guid: 518c3bfcabd265d4da3af1a1005e7ac0
