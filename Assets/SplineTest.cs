@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 public class SplineTest : MonoBehaviour
@@ -9,10 +10,15 @@ public class SplineTest : MonoBehaviour
     [SerializeField] private float speed = 0f;
     private float splineLength;
     private bool End;
+    public List<BezierKnot> bezierKnots = new List<BezierKnot>();
+    Spline spline = new Spline();
+    private  int index = 0;
+    bool coroutineRunning = false;
+    private bool isMoving2 = false;
+
     private void Start()
     {
-        //returns the length of the spline in world space
-        splineLength = splines.CalculateLength();
+        InstantSpline();
     }
 
     private void Update()
@@ -20,20 +26,61 @@ public class SplineTest : MonoBehaviour
         if (End)
             return;
 
+        CoroutineCheck();
+
+        if (isMoving2)
+        {
+            movement();
+            DistanceCheck();
+        }
+    }
+
+    protected virtual void movement()
+    {
         distancePercentage += speed * Time.deltaTime / splineLength;
         //evaluates a position of a point on the spline curve
         Vector3 currentPosition = splines.EvaluatePosition(distancePercentage);
         transform.position = currentPosition;
+    }
 
+    protected virtual void InstantSpline()
+    {
+        splines.AddSpline(spline);
+    }
+
+    protected virtual void CoroutineCheck()
+    {
+        if (index < bezierKnots.Count && !coroutineRunning)
+        {
+            StartCoroutine(instantiateMasking());
+        }
+        DistanceCalc();
+    }
+
+    protected virtual void DistanceCheck()
+    {
         if (distancePercentage > 0.98f)
         {
             distancePercentage = 0f;
             End = true;
         }
-        //Vector3 nextPosition = splines.EvaluatePosition(distancePercentage + 0.03f);
-        //Vector3 direction = nextPosition - currentPosition;
+    }
 
+    protected virtual void DistanceCalc()
+    {
+        //returns the length of the spline in world space
+        splineLength = splines.CalculateLength();
+    }
 
-        //transform.rotation = Quaternion.LookRotation(direction, transform.up);
+    protected virtual IEnumerator instantiateMasking()
+    {
+        coroutineRunning = true;
+        yield return new WaitForSeconds(1f);
+
+        spline.Add(bezierKnots[index]);
+        spline.SetTangentMode(TangentMode.AutoSmooth);
+        movement();
+        index++;
+        coroutineRunning = false;
     }
 }

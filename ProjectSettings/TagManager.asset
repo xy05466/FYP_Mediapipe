@@ -15,6 +15,7 @@ TagManager:
   - target
   - landmarks
   - spawnarea
+  - Mask
   layers:
   - Default
   - TransparentFX
