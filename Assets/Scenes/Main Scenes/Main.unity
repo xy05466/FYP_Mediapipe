@@ -21407,8 +21407,8 @@ Transform:
   m_GameObject: {fileID: 704286817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -200.00002, z: 0}
-  m_LocalScale: {x: 0.99993175, y: 0.99993175, z: 0.99993175}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1140932048}
@@ -25274,7 +25274,7 @@ MonoBehaviour:
   _irisLandmarkRadius: 1
   _faceConnectionColor: {r: 0.31633854, g: 1, b: 0, a: 1}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
-  _faceConnectionWidth: 0.01
+  _faceConnectionWidth: 0.356
   _irisCircleWidth: 0
 --- !u!1 &856727750
 GameObject:
@@ -35273,8 +35273,8 @@ Transform:
   m_GameObject: {fileID: 1298655828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -199.99997, z: -0.00006706358}
-  m_LocalScale: {x: 0.99993175, y: 0.9999317, z: 0.9999317}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2003249034}
@@ -38274,13 +38274,13 @@ LineRenderer:
   - {x: -3, y: 4.1463985, z: -0.0045425566}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 3
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.07939109
-        value: 0.20264608
+        time: 0.04777488
+        value: 0.99193746
         inSlope: 0
         outSlope: 0
         tangentMode: 0
