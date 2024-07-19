@@ -35,8 +35,8 @@ public class ScenePageHandler : MonoBehaviour
 
     [Header("Detection Icon")]
     public float distaneCollision = 0.2f;
-    public Image img_face;
-    public Image img_hand;
+    //public Image img_face;
+    //public Image img_hand;
     [Header("Pages")]
     private bool gestureNavigationDetected = false;
     public Button bu_prevPage;
@@ -223,11 +223,11 @@ public class ScenePageHandler : MonoBehaviour
     }
     private void OnFaceSpotted(bool active)
     {
-        img_face.gameObject.SetActive(active);
+        //img_face.gameObject.SetActive(active);
     }
     private void OnHandSpotted(bool active)
     {
-        img_hand.gameObject.SetActive(active);
+        //img_hand.gameObject.SetActive(active);
     }
     public void StoreFacePoints(List<GameObject> facePoints)
     {
@@ -285,9 +285,9 @@ public class ScenePageHandler : MonoBehaviour
             annotationHand_task.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
         else
             annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-        // enable header text
-        img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-        img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        //// enable header icons
+        //img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        //img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
 
         // set up title
         tmp_title.text = currentPageLogic.pageData.title;
