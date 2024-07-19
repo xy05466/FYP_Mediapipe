@@ -18,7 +18,7 @@ public class ScenePageHandler : MonoBehaviour
     int currentPageIndex = 0;
     [Header("Managers")]
     public LandmarkManager landmarkManager;
-    public HandGestureManager handGestureManager;
+    //public HandGestureManager handGestureManager;
 
 
     //[Header("Splash")]
@@ -139,9 +139,9 @@ public class ScenePageHandler : MonoBehaviour
             }
         }
 
-        // subscribe gesture events
-        handGestureManager.SubscribeFirstDetected(OnGestureFirstDetected);
-        handGestureManager.SubscribeDetecting(OnGestureDetecting);
+        //// subscribe gesture events
+        //handGestureManager.SubscribeFirstDetected(OnGestureFirstDetected);
+        //handGestureManager.SubscribeDetecting(OnGestureDetecting);
 
    
 
@@ -192,36 +192,37 @@ public class ScenePageHandler : MonoBehaviour
             }
         }
 
-        // If gesture navigation detected
-        if (handGestureManager.IsGestureDetected() && handGestureManager.GetCurrentGesture() == gestureNavigation.gestureName)
-        {
-            if (!autoNavigate)
-                panel_gesture.gameObject.SetActive(false);
+        #region Gesture code
+        //// If gesture navigation detected
+        //if (handGestureManager.IsGestureDetected() && handGestureManager.GetCurrentGesture() == gestureNavigation.gestureName)
+        //{
+        //    if (!autoNavigate)
+        //        panel_gesture.gameObject.SetActive(false);
 
-            nextPageTimeElapsed += Time.deltaTime;
-            if (nextPageTimeElapsed >= nextPageTime)
-            {
-                Debug.Log("next page");
-                nextPageTimeElapsed = 0f;
-                PreNextPage();
-            }
-           
-        }
-        else if (nextPageTimeElapsed > 0)
-        {
-            nextPageTimeElapsed -= Time.deltaTime;
-            if (!autoNavigate && pageEnded)
-                panel_gesture.gameObject.SetActive(true);
-        }
-        else
-        {
-            if (!autoNavigate && pageEnded)
-                panel_gesture.gameObject.SetActive(true);
-        }
-        nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
-        if (img_nextPageFilled)
-            img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
+        //    nextPageTimeElapsed += Time.deltaTime;
+        //    if (nextPageTimeElapsed >= nextPageTime)
+        //    {
+        //        Debug.Log("next page");
+        //        nextPageTimeElapsed = 0f;
+        //        PreNextPage();
+        //    }
 
+        //}
+        //else if (nextPageTimeElapsed > 0)
+        //{
+        //    nextPageTimeElapsed -= Time.deltaTime;
+        //    if (!autoNavigate && pageEnded)
+        //        panel_gesture.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    if (!autoNavigate && pageEnded)
+        //        panel_gesture.gameObject.SetActive(true);
+        //}
+        //nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
+        //if (img_nextPageFilled)
+        //    img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
+        #endregion
     }
     private void OnFaceSpotted(bool active)
     {

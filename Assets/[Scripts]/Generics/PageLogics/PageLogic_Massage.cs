@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class PageLogic_Massage : PageLogic_Extension
 {
@@ -14,7 +13,6 @@ public class PageLogic_Massage : PageLogic_Extension
     [Header("UI")]
     public TMP_Text tmp_title;
     public TMP_Text tmp_titleSub;
-    [TextArea]
     public TMP_Text tmp_description;
     public MassageSliderObjectV2 massageSliderObjectPrefeb;
     private List<MassageSliderObjectV2> massageSliderObjects = new List<MassageSliderObjectV2>();
@@ -87,7 +85,7 @@ public class PageLogic_Massage : PageLogic_Extension
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
-        if (facepointsObj == null || facepointsObj.Count <= 0 ) return;
+        if (!FacepointsLoaded) return;
         //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
 
         // loop all sliders base on steps
@@ -317,6 +315,7 @@ public class SliderStep
     public string stepName;
     public string title;
     public string titleSub;
+    [TextArea]
     public string description;
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
 }
