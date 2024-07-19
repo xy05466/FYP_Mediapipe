@@ -30,11 +30,12 @@ public class ScenePageHandler : MonoBehaviour
     public UISpriteAnimation sceneAnimationEnd;
     public Transform headertransform;
     public TMP_Text tmp_title;
+    public TMP_Text tmp_titleSub;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
     [Header("Detection Icon")]
-    public float distaneCollision = 0.2f;
+    public float distanceCollision = 0.2f;
     //public Image img_face;
     //public Image img_hand;
     [Header("Pages")]
@@ -167,9 +168,10 @@ public class ScenePageHandler : MonoBehaviour
                 for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
                 {
                     GameObject facePoint = landmarkManager.GetFacePoints()[j];
-                    if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distaneCollision)
+                    if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distanceCollision)
                     {
                         OnCollidingFacePoint?.Invoke(i,handPoint.gameObject, j,facePoint);
+                        Debug.Log("face point collided");
                     }
                 }
             }
@@ -291,6 +293,7 @@ public class ScenePageHandler : MonoBehaviour
 
         // set up title
         tmp_title.text = currentPageLogic.pageData.title;
+        tmp_titleSub.text = currentPageLogic.pageData.titleSub;
         autoNavigate = currentPageLogic.pageData.autoNavigate;
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();

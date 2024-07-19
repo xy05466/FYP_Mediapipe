@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f62dc1c286af04382676d512ff32b9, type: 3}
+  m_Name: PageData_Massage_1
+  m_EditorClassIdentifier: 
+  enableHeader: 1
+  autoNavigate: 0
+  enableTransition: 1
+  enableSplashPage: 1
+  spr_splashIcon: {fileID: 21300000, guid: 36c37f2d2684f344ba5e6e12f4d28917, type: 3}
+  title: Forehead Rotation
+  titleSub: With Knuckles
+  splashDescription: Start massaging at the outer region of your forehead. following
+    the guide's direction
+  enableFaceTracking: 1
+  enableHandTracking: 1

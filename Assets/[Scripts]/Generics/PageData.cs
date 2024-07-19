@@ -11,11 +11,13 @@ public class PageData : ScriptableObject
     public bool enableHeader= true;
     public bool autoNavigate = false;
     [Header("Splash Data")]
+    public bool enableTransition = true;
     public bool enableSplashPage = true;
     // splash image
     public Sprite spr_splashIcon;
     // title
     public string title;
+    public string titleSub;
     [TextArea]
     public string splashDescription;
 

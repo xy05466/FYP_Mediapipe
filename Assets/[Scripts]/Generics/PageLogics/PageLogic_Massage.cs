@@ -1,15 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class PageLogic_Massage : PageLogic_Extension
 {
     //public FacepointManager_Jaden facepointManager_Jaden;
     //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
-
+    [Header("UI")]
+    public TMP_Text tmp_title;
+    public TMP_Text tmp_titleSub;
+    [TextArea]
+    public TMP_Text tmp_description;
     public MassageSliderObjectV2 massageSliderObjectPrefeb;
     private List<MassageSliderObjectV2> massageSliderObjects = new List<MassageSliderObjectV2>();
     [Header("settings")]
@@ -102,13 +108,27 @@ public class PageLogic_Massage : PageLogic_Extension
         // with current sliedr position
         if (handpointsObj != null && handpointsObj.Count > 0)
         {
-            foreach (var item in list_handpoints_interact)
+            if (enableAllHandPointCollision)
             {
-                int handItem = (int)item;
-                // loop all sliders
-                for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                for (int i = 0; i < handpointsObj.Count; i++)
                 {
-                    massageSliderObjects[i].UpdateSlider(handpointsObj[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                    // loop all sliders
+                    for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
+                    {
+                        massageSliderObjects[j].UpdateSlider(handpointsObj[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in list_handpoints_interact)
+                {
+                    int handItem = (int)item;
+                    // loop all sliders
+                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                    {
+                        massageSliderObjects[i].UpdateSlider(handpointsObj[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                    }
                 }
             }
         }
@@ -263,7 +283,6 @@ public class PageLogic_Massage : PageLogic_Extension
     {
         if (currentStepIndex >= list_steps.Count - 1)
         {
-
             End();
             return;
         };
@@ -274,6 +293,14 @@ public class PageLogic_Massage : PageLogic_Extension
             massageSlider.ResetSlider();
 
         SetSliders(true);
+        if(tmp_title)
+            tmp_title.text = list_steps[currentStepIndex].title;
+        if(tmp_titleSub)
+            tmp_titleSub.text = list_steps[currentStepIndex].titleSub;
+        if(tmp_description)
+            tmp_description.text = list_steps[currentStepIndex].description;
+
+
     }
     public void End()
     {
@@ -288,6 +315,9 @@ public class PageLogic_Massage : PageLogic_Extension
 public class SliderStep
 {
     public string stepName;
+    public string title;
+    public string titleSub;
+    public string description;
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
 }
 [Serializable]
