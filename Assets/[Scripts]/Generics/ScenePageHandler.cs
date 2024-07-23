@@ -171,7 +171,6 @@ public class ScenePageHandler : MonoBehaviour
                     if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distanceCollision)
                     {
                         OnCollidingFacePoint?.Invoke(i,handPoint.gameObject, j,facePoint);
-                        Debug.Log("face point collided");
                     }
                 }
             }
@@ -267,7 +266,7 @@ public class ScenePageHandler : MonoBehaviour
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        Debug.Log(handPointIndex + " face: " + facePointIndex);
+        //Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {

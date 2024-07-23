@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HelpManager : MonoBehaviour
 {
-    public HandGestureManager handGestureManager;
+    public RaqibHandGestureManager handGestureManager;
     public GestureSO gesture;
     [Header("SETTINGS")]
     public float timeLast = 2f;

@@ -79,7 +79,7 @@ public class PathEditor : Editor
         for (int i = 0; i < path.NumPoints; i++)
         {
             // Returns a vector3 for the new position of the handles if they have been moved
-            Vector2 newPosHandle = Handles.FreeMoveHandle(path.points[i], Quaternion.identity, .1f, Vector2.zero, Handles.CylinderHandleCap);
+            var fmh_82_75_638573468304152528 = Quaternion.identity; Vector2 newPosHandle = Handles.FreeMoveHandle(path.points[i], .1f, Vector2.zero, Handles.CylinderHandleCap);
 
             // Checking if the position has changed
             if (path[i] != newPosHandle)

@@ -23,7 +23,11 @@ public class HandLandMarkerGestureDetectorRunner  : HandLandmarkerRunner
         base.OnHandLandmarkDetectionOutput(result, image, timestamp);
         if (result.handLandmarks != null)
         {
-            var gestureResult = handGestureManager.ReadGesture(result);
+            //var gestureResult = handGestureManager.ReadGesture(result);
+        }
+        else
+        {
+            //handGestureManager.NoGesture();
         }
     }
 }
