@@ -125,8 +125,8 @@ public class RaqibHandGestureManager : MonoBehaviour
         // check for each finger
         for (int i = 0; i < fingerDistances.Count; i++)
         {
-            //Debug.Log("index "+i+" " +fingerDistances[i]);  
-            if (fingerDistances[i] <= gesture.fingerDistances[i].x)
+            Debug.Log("index " + i + " " + fingerDistances[i]);
+            if (fingerDistances[i] >= gesture.fingerDistances[i].x && fingerDistances[i] <= gesture.fingerDistances[i].x+ gesture.fingerDistances[i].y)
             {
                 currGesturePercentage += 20;
             }
