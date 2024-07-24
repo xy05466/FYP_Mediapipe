@@ -17,7 +17,7 @@ public class HelpManager : MonoBehaviour
 
     private void Update()
     {
-        if (panel_help.activeInHierarchy) return;
+        //if (panel_help.activeInHierarchy) return;
 
         if(handGestureManager.GetCurrentGesture() == gesture.gestureName)
         {
@@ -25,7 +25,7 @@ public class HelpManager : MonoBehaviour
             if (timeLastElapsed >= timeLast)
             {
                 timeLastElapsed = 0f;
-                panel_help.gameObject.SetActive(true);
+                panel_help.gameObject.SetActive(!panel_help.activeInHierarchy);
             }
         }
         else if(timeLastElapsed >0)

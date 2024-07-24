@@ -14,12 +14,6 @@ public class RaqibHandGestureManager : MonoBehaviour
     [SerializeField] private string currGesture;
 
     public List<GestureSO> gestures;
-    [Range(0.0f, 100.0f)]
-    [SerializeField] private float minimumTreshold = 50;
-    [Range(0.0f, 0.1f)]
-    [SerializeField] private float tolerance = 0.0f;
-    [Range(0.0f, 0.6f)]
-    [SerializeField] private float rangeFallOff = 0.0f;
 
     public Action<string> OnDetecting;
     public Action<string> OnFirstDetected;
@@ -76,21 +70,6 @@ public class RaqibHandGestureManager : MonoBehaviour
                 //CurrHighestName = gestures[i].gestureName;
                 CurrHighestPercentage = gesturePercentage;
             }
-            ////Debug.Log(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
-            //if (percentageText)
-            //    percentageText.UpdateTextBox(gestures[i].gestureName + "Percentage: " + GesturePercentage.ToString());
-            //float totalValue = 0f;
-            //float totalValueGesture = 0f;
-            //foreach (float fingerDist in fingerDistances)
-            //{
-            //    totalValue += fingerDist;
-            //}
-            //foreach (Vector2 getstureDIst in gestures[i].fingerDistances)
-            //{
-            //    totalValueGesture += getstureDIst.x;
-            //}
-            //Debug.Log(GesturePercentage);
-            //Debug.Log(gestures[i].gestureName + " " + totalValueGesture + " >= " + totalValue + " "+ distancehandBase);
             if (gesturePercentage >= 90)
             {
                 currGesture = gestures[i].gestureName;
@@ -125,7 +104,7 @@ public class RaqibHandGestureManager : MonoBehaviour
         // check for each finger
         for (int i = 0; i < fingerDistances.Count; i++)
         {
-            Debug.Log("index " + i + " " + fingerDistances[i]);
+            //Debug.Log("index " + i + " " + fingerDistances[i]);
             if (fingerDistances[i] >= gesture.fingerDistances[i].x && fingerDistances[i] <= gesture.fingerDistances[i].x+ gesture.fingerDistances[i].y)
             {
                 currGesturePercentage += 20;

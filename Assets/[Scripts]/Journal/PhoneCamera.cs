@@ -142,7 +142,7 @@ public class PhoneCamera : MonoBehaviour
 
     IEnumerator SetPic()
     {
-        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
+        preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width*0.5f, background.GetComponent<RectTransform>().rect.height * 0.5f);
        
         yield return StartCoroutine(journalSO.TakePic(background.texture));
         Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
