@@ -3,36 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HelpManager : MonoBehaviour
-{
-    public RaqibHandGestureManager handGestureManager;
-    public GestureSO gesture;
-    [Header("SETTINGS")]
-    public float timeLast = 2f;
-    private float timeLastElapsed;
-
-    [Header("UI")]
-    public GameObject panel_help;
-    public Image img_filled;
-
-    private void Update()
+namespace SDM_FythmPipe
+{ 
+    public class HelpManager : MonoBehaviour
     {
-        //if (panel_help.activeInHierarchy) return;
+        public RaqibHandGestureManager handGestureManager;
+        public GestureSO gestureOpen;
+        public GestureSO gestureClose;
 
-        if(handGestureManager.GetCurrentGesture() == gesture.gestureName)
+        [Header("SETTINGS")]
+        public float timeLast = 2f;
+        private float timeLastElapsed;
+
+        [Header("UI")]
+        public GameObject panel_help;
+        public Image img_filled_open;
+        public Image img_filled_close;
+
+        private void Update()
         {
-            timeLastElapsed += Time.deltaTime;
-            if (timeLastElapsed >= timeLast)
+            //if (panel_help.activeInHierarchy) return;
+
+            if(handGestureManager.GetCurrentGesture() == (panel_help.activeInHierarchy == true ? gestureClose.gestureName : gestureOpen.gestureName))
             {
-                timeLastElapsed = 0f;
-                panel_help.gameObject.SetActive(!panel_help.activeInHierarchy);
+                timeLastElapsed += Time.deltaTime;
+                if (timeLastElapsed >= timeLast)
+                {
+                    timeLastElapsed = 0f;
+                    panel_help.gameObject.SetActive(!panel_help.activeInHierarchy);
+                }
             }
-        }
-        else if(timeLastElapsed >0)
-        {
-            timeLastElapsed -= Time.deltaTime;
-        }
+            else if(timeLastElapsed >0)
+            {
+                timeLastElapsed -= Time.deltaTime;
+            }
 
-        img_filled.fillAmount = timeLastElapsed / timeLast;
+            if(panel_help.activeInHierarchy)
+                img_filled_close.fillAmount = timeLastElapsed / timeLast;
+            else
+                img_filled_open.fillAmount = timeLastElapsed / timeLast;
+        }
     }
 }
