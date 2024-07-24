@@ -20,6 +20,8 @@ public class PageData : ScriptableObject
     public string titleSub;
     [TextArea]
     public string splashDescription;
+    [TextArea]
+    public string instructionDescription;
 
     [Header("Trackings")]
     // annotation to enable

@@ -19638,6 +19638,7 @@ MonoBehaviour:
   - {fileID: 878462219}
   - {fileID: 870878791}
   - {fileID: 786372592}
+  - {fileID: 885432721}
   - {fileID: 878462219}
   - {fileID: 1010666741}
   landmarkManager: {fileID: 683045300}
@@ -27747,7 +27748,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
   leaveEmpty: ==============
-  accupointManager: {fileID: 1270488715}
   accupoint: {fileID: 2757362586351624599, guid: 833e0e884e36341448afa22cec5526f1,
     type: 3}
   list_facepointSteps:
@@ -37182,7 +37182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270488714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b70074974ff57540ae16716a3cbc6a9, type: 3}
   m_Name: 
@@ -59375,6 +59375,11 @@ PrefabInstance:
       propertyPath: fpm
       value: 
       objectReference: {fileID: 843252787}
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
       propertyPath: m_Enabled
