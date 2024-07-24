@@ -27553,7 +27553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handGestureManager: {fileID: 1129048676}
   gestureOpen: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
-  gestureClose: {fileID: 11400000, guid: 9de09820d95603c41bb52770dc2ebe4e, type: 2}
+  gestureClose: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
   timeLast: 2
   panel_help: {fileID: 254419219}
   img_filled_open: {fileID: 954540190}
