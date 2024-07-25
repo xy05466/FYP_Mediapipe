@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,10 @@ public class PageLogic_Massage : PageLogic_Extension
     //public FacepointManager_Jaden facepointManager_Jaden;
     //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;
 
-
+    [Header("UI")]
+    public TMP_Text tmp_title;
+    public TMP_Text tmp_titleSub;
+    public TMP_Text tmp_description;
     public MassageSliderObjectV2 massageSliderObjectPrefeb;
     private List<MassageSliderObjectV2> massageSliderObjects = new List<MassageSliderObjectV2>();
     [Header("settings")]
@@ -81,7 +85,7 @@ public class PageLogic_Massage : PageLogic_Extension
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
-        if (facepointsObj == null || facepointsObj.Count <= 0 ) return;
+        if (!FacepointsLoaded) return;
         //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
 
         // loop all sliders base on steps
@@ -102,20 +106,33 @@ public class PageLogic_Massage : PageLogic_Extension
         // with current sliedr position
         if (handpointsObj != null && handpointsObj.Count > 0)
         {
-            foreach (var item in list_handpoints_interact)
+            if (enableAllHandPointCollision)
             {
-                int handItem = (int)item;
-                // loop all sliders
-                for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                for (int i = 0; i < handpointsObj.Count; i++)
                 {
-                    massageSliderObjects[i].UpdateSlider(handpointsObj[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                    // loop all sliders
+                    for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
+                    {
+                        massageSliderObjects[j].UpdateSlider(handpointsObj[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in list_handpoints_interact)
+                {
+                    int handItem = (int)item;
+                    // loop all sliders
+                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                    {
+                        massageSliderObjects[i].UpdateSlider(handpointsObj[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                    }
                 }
             }
         }
         //// Update all  massage sliders
         //foreach (var massageSlider in massageSliderObjects)
         //    massageSlider.UpdateSlider(facepointsObj);
-
     }
     public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
@@ -263,7 +280,6 @@ public class PageLogic_Massage : PageLogic_Extension
     {
         if (currentStepIndex >= list_steps.Count - 1)
         {
-
             End();
             return;
         };
@@ -274,6 +290,14 @@ public class PageLogic_Massage : PageLogic_Extension
             massageSlider.ResetSlider();
 
         SetSliders(true);
+        if(tmp_title)
+            tmp_title.text = list_steps[currentStepIndex].title;
+        if(tmp_titleSub)
+            tmp_titleSub.text = list_steps[currentStepIndex].titleSub;
+        if(tmp_description)
+            tmp_description.text = list_steps[currentStepIndex].description;
+
+
     }
     public void End()
     {
@@ -288,6 +312,10 @@ public class PageLogic_Massage : PageLogic_Extension
 public class SliderStep
 {
     public string stepName;
+    public string title;
+    public string titleSub;
+    [TextArea]
+    public string description;
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
 }
 [Serializable]

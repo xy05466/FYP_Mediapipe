@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: PageData_Essence
   m_EditorClassIdentifier: 
   enableHeader: 1
-  autoNavigate: 0
+  autoNavigate: 1
+  enableTransition: 1
   enableSplashPage: 1
   spr_splashIcon: {fileID: 21300000, guid: 36c37f2d2684f344ba5e6e12f4d28917, type: 3}
   title: Essence
+  titleSub: 
   splashDescription: 'Nexr. Lets apply essence!
 
 

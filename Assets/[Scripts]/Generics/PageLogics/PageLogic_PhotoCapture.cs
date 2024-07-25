@@ -15,10 +15,11 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     [SerializeField] private Button capture;
     [SerializeField] private Button bu_done;
     [Header("SETTINGS")]
-    [SerializeField] float maxDistX = 3.0f;
-    [SerializeField] float maxDistY = 3.0f;
-    [SerializeField] float lowerBoundZ = 1.0f;
-    [SerializeField] float upperBoundZ = 3.0f;
+    [SerializeField] private float maxDistX = 3.0f;
+    [SerializeField] private float maxDistY = 3.0f;
+    [SerializeField] private float lowerBoundZ = 1.0f;
+    [SerializeField] private float upperBoundZ = 3.0f;
+    [SerializeField] private bool enableZ = true;
     public float waitTime = 0f;
     private float timer = 0.0f;
     [Header("JOURNAL DATA")]
@@ -63,12 +64,12 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
             avgX = refPt.x - Camera.main.transform.position.x;
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-            if (avgZ < lowerBoundZ)
+            if (avgZ < lowerBoundZ && enableZ)
             {
                 textbox.text = "Please move further";
                 faceAligned = false;
             }
-            else if (avgZ > upperBoundZ)
+            else if (avgZ > upperBoundZ && enableZ)
             {
                 textbox.text = "Please move closer";
                 faceAligned = false;
@@ -138,7 +139,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
                 int width = tex.width;
                 int height = tex.height;
 
-                Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+                Texture2D screenshotTexture = new Texture2D((int)(width), (int)(height ), TextureFormat.ARGB32, false);
                 RenderTexture currentRT = RenderTexture.active;
 
                 RenderTexture renderTexture = new RenderTexture(tex.width, tex.height, 32);

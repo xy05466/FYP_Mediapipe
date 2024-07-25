@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Page Logics/Page Logic Accupoints",fileName ="PageLogic_Accupoints")]
 public class PageLogic_Accupoints : PageLogic_Extension
 {
-    public AccupointManager accupointManager;
     public AccupointNew accupoint;
     private List<AccupointNew> list_accupoints = new List<AccupointNew>();
     public List<AccupointStep> list_facepointSteps = new List<AccupointStep>();
@@ -62,7 +61,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
 
     public override bool IsPageDone()
     {
-        return false;
+        return finish;
     }
 
     public override void EndPage()

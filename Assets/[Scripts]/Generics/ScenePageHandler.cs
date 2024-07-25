@@ -18,7 +18,7 @@ public class ScenePageHandler : MonoBehaviour
     int currentPageIndex = 0;
     [Header("Managers")]
     public LandmarkManager landmarkManager;
-    public HandGestureManager handGestureManager;
+    //public HandGestureManager handGestureManager;
 
 
     //[Header("Splash")]
@@ -30,13 +30,14 @@ public class ScenePageHandler : MonoBehaviour
     public UISpriteAnimation sceneAnimationEnd;
     public Transform headertransform;
     public TMP_Text tmp_title;
+    public TMP_Text tmp_titleSub;
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
     [Header("Detection Icon")]
-    public float distaneCollision = 0.2f;
-    public Image img_face;
-    public Image img_hand;
+    public float distanceCollision = 0.2f;
+    //public Image img_face;
+    //public Image img_hand;
     [Header("Pages")]
     private bool gestureNavigationDetected = false;
     public Button bu_prevPage;
@@ -138,9 +139,9 @@ public class ScenePageHandler : MonoBehaviour
             }
         }
 
-        // subscribe gesture events
-        handGestureManager.SubscribeFirstDetected(OnGestureFirstDetected);
-        handGestureManager.SubscribeDetecting(OnGestureDetecting);
+        //// subscribe gesture events
+        //handGestureManager.SubscribeFirstDetected(OnGestureFirstDetected);
+        //handGestureManager.SubscribeDetecting(OnGestureDetecting);
 
    
 
@@ -167,7 +168,7 @@ public class ScenePageHandler : MonoBehaviour
                 for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
                 {
                     GameObject facePoint = landmarkManager.GetFacePoints()[j];
-                    if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distaneCollision)
+                    if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distanceCollision)
                     {
                         OnCollidingFacePoint?.Invoke(i,handPoint.gameObject, j,facePoint);
                     }
@@ -190,44 +191,45 @@ public class ScenePageHandler : MonoBehaviour
             }
         }
 
-        // If gesture navigation detected
-        if (handGestureManager.IsGestureDetected() && handGestureManager.GetCurrentGesture() == gestureNavigation.gestureName)
-        {
-            if (!autoNavigate)
-                panel_gesture.gameObject.SetActive(false);
+        #region Gesture code
+        //// If gesture navigation detected
+        //if (handGestureManager.IsGestureDetected() && handGestureManager.GetCurrentGesture() == gestureNavigation.gestureName)
+        //{
+        //    if (!autoNavigate)
+        //        panel_gesture.gameObject.SetActive(false);
 
-            nextPageTimeElapsed += Time.deltaTime;
-            if (nextPageTimeElapsed >= nextPageTime)
-            {
-                Debug.Log("next page");
-                nextPageTimeElapsed = 0f;
-                PreNextPage();
-            }
-           
-        }
-        else if (nextPageTimeElapsed > 0)
-        {
-            nextPageTimeElapsed -= Time.deltaTime;
-            if (!autoNavigate && pageEnded)
-                panel_gesture.gameObject.SetActive(true);
-        }
-        else
-        {
-            if (!autoNavigate && pageEnded)
-                panel_gesture.gameObject.SetActive(true);
-        }
-        nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
-        if (img_nextPageFilled)
-            img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
+        //    nextPageTimeElapsed += Time.deltaTime;
+        //    if (nextPageTimeElapsed >= nextPageTime)
+        //    {
+        //        Debug.Log("next page");
+        //        nextPageTimeElapsed = 0f;
+        //        PreNextPage();
+        //    }
 
+        //}
+        //else if (nextPageTimeElapsed > 0)
+        //{
+        //    nextPageTimeElapsed -= Time.deltaTime;
+        //    if (!autoNavigate && pageEnded)
+        //        panel_gesture.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    if (!autoNavigate && pageEnded)
+        //        panel_gesture.gameObject.SetActive(true);
+        //}
+        //nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
+        //if (img_nextPageFilled)
+        //    img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
+        #endregion
     }
     private void OnFaceSpotted(bool active)
     {
-        img_face.gameObject.SetActive(active);
+        //img_face.gameObject.SetActive(active);
     }
     private void OnHandSpotted(bool active)
     {
-        img_hand.gameObject.SetActive(active);
+        //img_hand.gameObject.SetActive(active);
     }
     public void StoreFacePoints(List<GameObject> facePoints)
     {
@@ -264,7 +266,7 @@ public class ScenePageHandler : MonoBehaviour
     }
     public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
-        Debug.Log(handPointIndex + " face: " + facePointIndex);
+        //Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
     void StartPage()
     {
@@ -285,12 +287,13 @@ public class ScenePageHandler : MonoBehaviour
             annotationHand_task.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
         else
             annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-        // enable header text
-        img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-        img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        //// enable header icons
+        //img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        //img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
 
         // set up title
         tmp_title.text = currentPageLogic.pageData.title;
+        tmp_titleSub.text = currentPageLogic.pageData.titleSub;
         autoNavigate = currentPageLogic.pageData.autoNavigate;
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();

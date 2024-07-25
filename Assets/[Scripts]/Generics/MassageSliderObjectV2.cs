@@ -69,11 +69,11 @@ public class MassageSliderObjectV2 : MonoBehaviour
         for (int i = 0; i < segmentCount; i++)
         {
             float percentage = ((float)i / segmentCount);
-            lr_outline.SetPosition(i, CalculateBezierPoint(percentage, pathPoints));
+            lr_outline.SetPosition(i, CalculateBezierPoint(percentage, pathPoints) + Vector3.forward * -1f);
         }
 
         Vector3 valuePosition = GetValuePosition();
-        targetObject.transform.position = valuePosition;
+        targetObject.transform.position = valuePosition + Vector3.forward*-1f;
 
         float comp = ((float)(tempCompIndex + 1) / (float)lr_outline.positionCount);
 
