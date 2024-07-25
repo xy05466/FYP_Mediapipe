@@ -76,7 +76,7 @@ public class RaqibHandGestureManager : MonoBehaviour
         for (int i = 0; i < gestures.Count; i++)
         {
             float gesturePercentage = CheckGesturePercentageNew(gestures[i], fingerDistances);
-            Debug.Log(gestures[i].gestureName + " " + gesturePercentage);
+            //Debug.Log(gestures[i].gestureName + " " + gesturePercentage);
 
             if (gesturePercentage > CurrHighestPercentage)
             {

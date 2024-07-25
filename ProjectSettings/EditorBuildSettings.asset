@@ -16,7 +16,7 @@ EditorBuildSettings:
     path: Assets/MediaPipeUnity/Samples/Scenes/Selfie Segmentation/Selfie Segmentation.unity
     guid: a2441753b39c0837cb754c60955bfcc2
   - enabled: 0
-    path: Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
+    path: Assets/Scenes/Test scenes/Forstupid.unity
     guid: ed3a1c9df7f5bee4ba0dc4b30aff0221
   - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Hand Tracking 2.unity
@@ -92,16 +92,16 @@ EditorBuildSettings:
     path: Assets/Scenes/CompareSliderScene.unity
     guid: c3b65b94e6a11a44a92f4057912c19c5
   - enabled: 0
-    path: Assets/Scenes/Main Scenes/Deprecated/MassageStep2.unity
+    path: Assets/Scenes/Test scenes/MassageStep2.unity
     guid: 0bae2a819a6066940b154de7206236e1
   - enabled: 0
-    path: Assets/Scenes/Main Scenes/Deprecated/EssenceDosage.unity
+    path: Assets/Scenes/Test scenes/EssenceDosage.unity
     guid: ee400f899ec81b741bba65c6b1cabf5a
   - enabled: 0
-    path: Assets/Scenes/Main Scenes/Deprecated/MassageStep1.unity
+    path: Assets/Scenes/Test scenes/MassageStep1.unity
     guid: 0e9232d9f793fd341af69ba04928ed42
   - enabled: 0
-    path: Assets/Scenes/Main Scenes/Deprecated/MassageStep3.unity
+    path: Assets/Scenes/Test scenes/MassageStep3.unity
     guid: 71ffeda22f0855344b86c7905b222783
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,

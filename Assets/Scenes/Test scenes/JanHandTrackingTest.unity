@@ -123,18 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &178046434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8799264196107312777, guid: 8b89425f859b431478dfdd4a5284202e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1257914403}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de87f9aa2d8b6b646aaad6f2d34c191a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &268658587
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +313,7 @@ MonoBehaviour:
   screen: {fileID: 841116734}
   runningMode: 0
   _handLandmarkerResultAnnotationController: {fileID: 841116738}
-  _handLandmarkModelTranslator: {fileID: 841116739}
+  handGestureManager: {fileID: 0}
 --- !u!114 &275874972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,10 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currGesture: 
-  gestureTime: 1.5
-  sceneLoader: {fileID: 178046434}
-  nextScene: 
-  isDetected: 0
 --- !u!114 &275874973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a194cd4f1cf90341a53497bb67a56fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handGestureHandler: {fileID: 275874972}
   elapsedTime: 0
 --- !u!4 &278573324 stripped
 Transform:
@@ -1134,6 +1117,7 @@ GameObject:
   - component: {fileID: 728270089}
   - component: {fileID: 728270088}
   - component: {fileID: 728270087}
+  - component: {fileID: 728270090}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1226,6 +1210,27 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &728270090
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728270085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ebe555d6e916c045b52f3a37628dc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &751250075
 PrefabInstance:
   m_ObjectHideFlags: 0
