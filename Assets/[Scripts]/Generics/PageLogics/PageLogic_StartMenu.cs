@@ -6,21 +6,24 @@ using UnityEngine.UI;
 public class PageLogic_StartMenu : PageLogic
 {
     public GameObject panel;
+    public GameObject page_1;
+    public GameObject page_2;
     public Button bu_start;
     bool pageEnd = false;
 
 
     public override void Initialize()
     {
+        bu_start.onClick.AddListener(() => { pageEnd = true; });
     }
     public override void StartPage()
     {
-        bu_start.onClick.AddListener(() => { pageEnd = true;  });
+        page_1.gameObject.SetActive(true);
+        page_2.gameObject.SetActive(false);
     }
     public override void EndPage()
     {
         panel.gameObject.SetActive(false);
-        bu_start.onClick.RemoveAllListeners();
     }
 
     public override bool IsPageDone()
