@@ -29110,7 +29110,7 @@ MonoBehaviour:
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
   massageSliderObjectPrefeb: {fileID: 2114414764}
-  enableAllHandPointCollision: 1
+  enableAllHandPointCollision: 0
   list_handpoints_interact: 080000000c000000040000001000000014000000
   massageSpeed: 3
   massageDistance: 0.15
@@ -29560,6 +29560,28 @@ MonoBehaviour:
   - indexes:
     - {fileID: 11400000, guid: 606141c798ff267449e3b4cb21d08ca9, type: 2}
     - {fileID: 11400000, guid: 40108f2d438ea184aa07e9b5146f1aea, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: c61574ff671eb3447b26a9a7d84143ba, type: 2}
+    - {fileID: 11400000, guid: 19cd897f9f400134ca394a59347a63f9, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: c96366c107b1f6846b752239c9758326, type: 2}
+    - {fileID: 11400000, guid: a4bac6a894911fb44be6ec63aed556ba, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: 855ff55251f715445944eb34f1a0ea0e, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: 3e81471fae7a7aa4784ef5bc01fd89df, type: 2}
+    - {fileID: 11400000, guid: d5c3b3c3b6e802343835bfdb37888167, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: c45f566df5ac18b4bb591eb28c1c0934, type: 2}
+    - {fileID: 11400000, guid: 88ae64d9610b16647b8a1a66e2bf410c, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: 319637b12c6e9b64c80c0c60ddea6a63, type: 2}
+    - {fileID: 11400000, guid: 1cb143c1c63c55443bcb7c714bfeae22, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: 0ed074312fb97d348b1bdf48073ea9cf, type: 2}
+    - {fileID: 11400000, guid: 43367eec39ae5c24992731a14ce8dcad, type: 2}
+  - indexes:
+    - {fileID: 11400000, guid: bd3dd760909f51c4dbee6a780527d2f9, type: 2}
 --- !u!1 &885942829
 GameObject:
   m_ObjectHideFlags: 0
@@ -40134,7 +40156,7 @@ MonoBehaviour:
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
   massageSliderObjectPrefeb: {fileID: 358066434}
-  enableAllHandPointCollision: 1
+  enableAllHandPointCollision: 0
   list_handpoints_interact: 080000000c000000040000001000000014000000
   massageSpeed: 3
   massageDistance: 0.15
@@ -52892,7 +52914,7 @@ MonoBehaviour:
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
   massageSliderObjectPrefeb: {fileID: 577840009}
-  enableAllHandPointCollision: 1
+  enableAllHandPointCollision: 0
   list_handpoints_interact: 080000000c000000040000001000000014000000
   massageSpeed: 3
   massageDistance: 0.15
