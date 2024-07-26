@@ -36,8 +36,8 @@ public class RaqibHandGestureManager : MonoBehaviour
     {
         if (landmarkManager.GetHandPoints(0) == null || landmarkManager.GetHandPoints(0).Count <= 0) return;
         ReadGesture(landmarkManager.GetHandPoints(0).ToArray());
-        if (landmarkManager.GetHandPoints(1) == null || landmarkManager.GetHandPoints(1).Count <= 0) return;
-        ReadGesture(landmarkManager.GetHandPoints(1).ToArray());
+        //else if (landmarkManager.GetHandPoints(1) == null || landmarkManager.GetHandPoints(1).Count <= 0) return;
+        //ReadGesture(landmarkManager.GetHandPoints(1).ToArray());
     }
 
     private float CheckDistance(GameObject a, GameObject b)

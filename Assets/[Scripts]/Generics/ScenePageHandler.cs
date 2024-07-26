@@ -167,35 +167,30 @@ public class ScenePageHandler : MonoBehaviour
         // update hand face point collision
         if (landmarkManager.IsFaceloadedAndActive)
         {
-            if (landmarkManager.IsHandLoadedAndActive_1)
+            for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
             {
-                for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
+                if (landmarkManager.IsHandLoadedAndActive_1)
                 {
-                    HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(0)[i];
-                    for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
+                    for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
                     {
+                        HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(0)[i];
                         GameObject facePoint = landmarkManager.GetFacePoints()[j];
                         if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                         {
-                            Debug.Log("hit");
                             OnCollidingFacePoint?.Invoke(0,i, handPoint.gameObject, j, facePoint);
                         }
                     }
                 }
-            }
 
-            if (landmarkManager.IsHandLoadedAndActive_2)
-            {
-                for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
+                if (landmarkManager.IsHandLoadedAndActive_2)
                 {
-                    HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(1)[i];
-                    for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
+                    for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
                     {
+                        HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(1)[i];
                         GameObject facePoint = landmarkManager.GetFacePoints()[j];
                         if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                         {
-                            Debug.Log("hit 2");
-                            OnCollidingFacePoint?.Invoke(1,i, handPoint.gameObject, j, facePoint);
+                            OnCollidingFacePoint?.Invoke(1, i, handPoint.gameObject, j, facePoint);
                         }
                     }
                 }
