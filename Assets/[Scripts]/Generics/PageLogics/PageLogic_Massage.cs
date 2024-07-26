@@ -22,6 +22,7 @@ public class PageLogic_Massage : PageLogic_Extension
     public float massageSpeed = 1f;
     public float massageDistance = 0.1f;
     public float massageFirstDistance = 0.05f;
+    [SerializeField] MaskMoving maskMoving;
     
     [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
@@ -114,6 +115,11 @@ public class PageLogic_Massage : PageLogic_Extension
                     for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
                     {
                         massageSliderObjects[j].UpdateSlider(handpointsObj[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+
+                        if (massageSliderObjects[j].GetValue() >= 0.25f)
+                        {
+                            maskMoving.PercentageMovement(massageSliderObjects[j].GetValue());
+                        }
                     }
                 }
             }
