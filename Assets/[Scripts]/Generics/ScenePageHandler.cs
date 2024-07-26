@@ -69,7 +69,7 @@ public class ScenePageHandler : MonoBehaviour
     //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
     //List<GameObject> facePoints = new List<GameObject>();
     //List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
-    public System.Action<int, GameObject, int, GameObject> OnCollidingFacePoint; // hand point collide with face point
+    public System.Action<int, int, GameObject, int, GameObject> OnCollidingFacePoint; // hand point collide with face point
 
 
     bool handPointsStored = false;
@@ -165,17 +165,38 @@ public class ScenePageHandler : MonoBehaviour
         landmarkManager.UpdateLandmarks();
         if (!sceneAnimationEnd.IsDone()) return;
         // update hand face point collision
-        if (landmarkManager.IsHandLoadedAndActive && landmarkManager.IsFaceloadedAndActive)
+        if (landmarkManager.IsFaceloadedAndActive)
         {
-            for (int i = 0; i < landmarkManager.GetHandPoints().Count; i++)
+            if (landmarkManager.IsHandLoadedAndActive_1)
             {
-                HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints()[i];
-                for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
+                for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
                 {
-                    GameObject facePoint = landmarkManager.GetFacePoints()[j];
-                    if (Vector2.Distance(handPoint.transform.position,facePoint.transform.position) <= distanceCollision)
+                    HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(0)[i];
+                    for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
                     {
-                        OnCollidingFacePoint?.Invoke(i,handPoint.gameObject, j,facePoint);
+                        GameObject facePoint = landmarkManager.GetFacePoints()[j];
+                        if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
+                        {
+                            Debug.Log("hit");
+                            OnCollidingFacePoint?.Invoke(0,i, handPoint.gameObject, j, facePoint);
+                        }
+                    }
+                }
+            }
+
+            if (landmarkManager.IsHandLoadedAndActive_2)
+            {
+                for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
+                {
+                    HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(1)[i];
+                    for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
+                    {
+                        GameObject facePoint = landmarkManager.GetFacePoints()[j];
+                        if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
+                        {
+                            Debug.Log("hit 2");
+                            OnCollidingFacePoint?.Invoke(1,i, handPoint.gameObject, j, facePoint);
+                        }
                     }
                 }
             }
@@ -249,14 +270,14 @@ public class ScenePageHandler : MonoBehaviour
         foreach (var pageL in pageLogics)
             pageL.LoadHandPoints(true);
 
-        //this.handPoints = handPoints;
-        foreach (var item in handPoints)
-            item.OnCollidingFacePoint += OnHandPointCollide;
+        ////this.handPoints = handPoints;
+        //foreach (var item in handPoints)
+        //    item.OnCollidingFacePoint += OnHandPointCollide;
 
         handPointsStored = true;
 
-        foreach (var item in handPoints)
-            item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+        //foreach (var item in handPoints)
+        //    item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
 
         OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
 
@@ -310,12 +331,12 @@ public class ScenePageHandler : MonoBehaviour
         currentPageLogic.StartPage();
         currentPageLogic.ChangeState(PageLogic.PageState.START);
 
-        // subscribe hand points events to page
-        if (handPointsStored && !currentPageLogic.HandpointsLoaded)
-        {
-            foreach (var item in landmarkManager.GetHandPoints())
-                item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-        }
+        //// subscribe hand points events to page
+        //if (handPointsStored && !currentPageLogic.HandpointsLoaded)
+        //{
+        //    foreach (var item in landmarkManager.GetHandPoints())
+        //        item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
+        //}
 
         OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
     }
@@ -334,13 +355,15 @@ public class ScenePageHandler : MonoBehaviour
         currentPageLogic.ChangeState(PageLogic.PageState.ENDED);
         pageEnded = false;
 
-        if(landmarkManager.IsHandLoaded)
-        {
-            foreach (var item in landmarkManager.GetHandPoints())
-                item.OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
+        //if(landmarkManager.IsHandLoaded)
+        //{
+        //    foreach (var item in landmarkManager.GetHandPoints())
+        //        item.OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
 
+        //    OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
+        //}
+        if(landmarkManager.NumHandsLoaded>0)
             OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
-        }
         StartPage();
     }
 

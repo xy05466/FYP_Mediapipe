@@ -134,7 +134,7 @@ public class PageLogic_Massage : PageLogic_Extension
         //foreach (var massageSlider in massageSliderObjects)
         //    massageSlider.UpdateSlider(facepointsObj);
     }
-    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
+    public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
         //foreach (var massageSliderObject in massageSliderObjects)
         //{

@@ -38,7 +38,7 @@ public class PageLogic_IntroFaceHandDetection : PageLogic_Extension
     {
     }
 
-    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
+    public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
     }
 

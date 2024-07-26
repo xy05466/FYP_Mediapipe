@@ -15,10 +15,18 @@ public class LandmarkManager : MonoBehaviour
 
 
     // variable for Hand Face points active / loaded
-    private bool isHandLoadedAndActive = false;
-    public bool IsHandLoadedAndActive => isHandLoadedAndActive;
-    private bool isHandLoaded = false;
-    public bool IsHandLoaded => isHandLoaded;
+    private bool isHandLoadedAndActive_1 = false;
+    public bool IsHandLoadedAndActive_1 => isHandLoadedAndActive_1;
+    private bool isHandLoadedAndActive_2 = false;
+    public bool IsHandLoadedAndActive_2 => isHandLoadedAndActive_2;
+    //private bool isHandLoaded = false;
+    private int numHandsLoaded = 0;
+    public int NumHandsLoaded => numHandsLoaded;
+    private int numHandsActive = 0;
+    public int NumHandsActive => numHandsActive;
+
+    //public bool IsHandLoaded => isHandLoaded;
+
     private bool isFaceLoadedAndActive = false;
     public bool IsFaceloadedAndActive => isFaceLoadedAndActive;
     private bool isFaceLoaded = false;
@@ -39,7 +47,6 @@ public class LandmarkManager : MonoBehaviour
         //annotationList_HandPoints_Task.SubscribePointsSpawn(HandPointsDetected);
 
     }
-    int numHandsActive = 0;
     private void HandPointActive(bool active)
     {
         if (active)
@@ -60,6 +67,7 @@ public class LandmarkManager : MonoBehaviour
         //    annotationList_HandPoints_Task.Update();
         //else
             annotationList_HandPoints_1.Update();
+            annotationList_HandPoints_2.Update();
 
     }
     // Store all points
@@ -72,9 +80,15 @@ public class LandmarkManager : MonoBehaviour
     }
     private void HandPointsDetected(List<HandPointAnnotationObject> handPoints)
     {
-        isHandLoadedAndActive = true;
-        if (!isHandLoaded)
-            isHandLoaded = true;
+        if(numHandsActive==0)
+            isHandLoadedAndActive_1 = true;
+        else
+            isHandLoadedAndActive_2 = true;
+        //if (!isHandLoaded)
+        //    isHandLoaded = true;
+
+        numHandsLoaded++;
+
     }
 
     public List<GameObject> GetFacePoints()
@@ -84,19 +98,15 @@ public class LandmarkManager : MonoBehaviour
         //else
             return annotationList_FacePoints.GetPoints();
     }
-    public List<HandPointAnnotationObject> GetHandPoints(int hand = 0)
+    public List<HandPointAnnotationObject> GetHandPoints(int hand)
     {
         //if(isHandTask)
         //    return annotationList_HandPoints_Task.GetPoints();
         //else
         if(hand == 0)
-        {
             return annotationList_HandPoints_1.GetPoints();
-        }
         else
-        {
             return annotationList_HandPoints_2.GetPoints();
-        }
     }
 
     // Active
@@ -104,9 +114,9 @@ public class LandmarkManager : MonoBehaviour
     {
         annotationList_FacePoints.SubscribeParentActive(faceActive);
     }
-    public void SubscribeHandPointsActive(Action<int> numHandsActive)
+    public void SubscribeHandPointsActive(Action<int> handActive)
     {
-        OnHandPointsActive += numHandsActive;
+        OnHandPointsActive += handActive;
     }
 
     // Loaded

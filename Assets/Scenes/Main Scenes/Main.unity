@@ -23394,13 +23394,13 @@ MonoBehaviour:
     tag: Facepoint
     startFromIndex: 0
   annotationList_HandPoints_1:
-    parent: {fileID: 0}
-    tag: Facepoint
-    startFromIndex: 21
-  annotationList_HandPoints_2:
-    parent: {fileID: 0}
-    tag: Facepoint
+    parent: {fileID: 1188537692}
+    tag: Handpoint
     startFromIndex: 0
+  annotationList_HandPoints_2:
+    parent: {fileID: 1188537692}
+    tag: Handpoint
+    startFromIndex: 21
 --- !u!4 &683045301
 Transform:
   m_ObjectHideFlags: 0

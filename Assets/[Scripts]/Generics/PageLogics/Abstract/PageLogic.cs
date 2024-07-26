@@ -29,7 +29,7 @@ public abstract class PageLogic : MonoBehaviour
     public abstract bool IsPageDone();
     public abstract void EndPage();
     public abstract void ResetPage();
-    public abstract void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject);
+    public abstract void OnHandPointCollideFacePoint(int hand,int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject);
     protected bool CollideWithFacePoint(int pointIndex, int pointIndexCompare)
     {
         return (pointIndex == pointIndexCompare);

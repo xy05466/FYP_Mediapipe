@@ -33,16 +33,20 @@ public class LandmarkList<T>
         if (!loaded)
         {
             Transform[] transforms = parent.GetComponentsInChildren<Transform>();
-            if (transforms.Length > startFromIndex) return;
+            int count = 0;
             //foreach (var item in transforms)
-            for (int i = startFromIndex; i < transforms.Length; i++)
+            for (int i = 0; i < transforms.Length; i++)
             {
                 Transform item = transforms[i];
                 if (item.gameObject.CompareTag(tag))
                 {
-                    points.Add(item.gameObject.GetComponent<T>());
-                    if (!search)
-                        search = true;
+                    if(count>= startFromIndex)
+                    {
+                        points.Add(item.gameObject.GetComponent<T>());
+                        if (!search)
+                            search = true;
+                    }
+                    count++;
                 }
             }
             if (search)
@@ -81,13 +85,21 @@ public class LandmarkListGO : LandmarkList<GameObject>
         ParentAction();
         if (!loaded)
         {
-            foreach (var item in parent.GetComponentsInChildren<Transform>())
+            Transform[] transforms = parent.GetComponentsInChildren<Transform>();
+            int count = 0;
+            //foreach (var item in transforms)
+            for (int i = 0; i < transforms.Length; i++)
             {
+                Transform item = transforms[i];
                 if (item.gameObject.CompareTag(tag))
                 {
-                    points.Add(item.gameObject);
-                    if (!search)
-                        search = true;
+                    if (count >= startFromIndex)
+                    {
+                        points.Add(item.gameObject);
+                        if (!search)
+                            search = true;
+                    }
+                    count++;
                 }
             }
             if (search)

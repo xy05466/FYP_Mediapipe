@@ -59,7 +59,7 @@ public class PageLogic_Cream : PageLogic_Extension
     {
     }
 
-    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
+    public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
         if (!gameObject.activeInHierarchy) return;
         foreach (var petal in creamManager.allPetals)

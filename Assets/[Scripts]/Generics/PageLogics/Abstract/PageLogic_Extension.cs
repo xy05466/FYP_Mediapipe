@@ -8,7 +8,7 @@ public abstract class PageLogic_Extension : PageLogic
 
     public abstract override bool IsPageDone();
 
-    public abstract override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject);
+    public abstract override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject);
 
     public abstract override void ResetPage();
 
