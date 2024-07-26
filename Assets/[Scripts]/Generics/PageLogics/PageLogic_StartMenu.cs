@@ -41,7 +41,7 @@ public class PageLogic_StartMenu : PageLogic
         pageEnd = false;
     }
 
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
     }
 

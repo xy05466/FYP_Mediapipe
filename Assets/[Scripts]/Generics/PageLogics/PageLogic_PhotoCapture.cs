@@ -51,7 +51,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
         faceAligned = false;
         textbox.text = "No face detected!";
     }
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
         Vector3 refPt;
         float avgX = 0;
@@ -241,7 +241,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     {
     }
 
-    public override void OnHandAnnotationActive(bool active)
+    public override void OnHandAnnotationActive(int actives)
     {
     }
 

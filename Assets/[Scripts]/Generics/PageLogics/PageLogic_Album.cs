@@ -10,7 +10,7 @@ public class PageLogic_Album : PageLogic
     public override void StartPage()
     {
     }
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
     }
 

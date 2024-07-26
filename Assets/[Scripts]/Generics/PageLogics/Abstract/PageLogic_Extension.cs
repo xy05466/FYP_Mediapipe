@@ -12,11 +12,11 @@ public abstract class PageLogic_Extension : PageLogic
 
     public abstract override void ResetPage();
 
-    public abstract override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj);
+    public abstract override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj);
 
     public abstract override void StartPage();
 
     public abstract void OnFaceAnnotationActive(bool active);
 
-    public abstract void OnHandAnnotationActive(bool active);
+    public abstract void OnHandAnnotationActive(int actives);
 }

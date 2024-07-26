@@ -16130,8 +16130,8 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
   leaveEmpty: ==============
   panel: {fileID: 837395666}
-  page_1: {fileID: 0}
-  page_2: {fileID: 0}
+  page_1: {fileID: 1737151782}
+  page_2: {fileID: 2135194756}
   bu_start: {fileID: 1503569485}
 --- !u!1 &478789950
 GameObject:
@@ -23392,15 +23392,15 @@ MonoBehaviour:
   annotationList_FacePoints:
     parent: {fileID: 843252786}
     tag: Facepoint
-  annotationList_HandPoints:
-    parent: {fileID: 1188537692}
-    tag: Handpoint
-  annotationList_FacePoints_Task:
-    parent: {fileID: 1140932048}
+    startFromIndex: 0
+  annotationList_HandPoints_1:
+    parent: {fileID: 0}
     tag: Facepoint
-  annotationList_HandPoints_Task:
-    parent: {fileID: 2003249034}
-    tag: Handpoint
+    startFromIndex: 21
+  annotationList_HandPoints_2:
+    parent: {fileID: 0}
+    tag: Facepoint
+    startFromIndex: 0
 --- !u!4 &683045301
 Transform:
   m_ObjectHideFlags: 0
@@ -28897,7 +28897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handGestureManager: {fileID: 1129048676}
   gestureOpen: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
-  gestureClose: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
+  gestureClose: {fileID: 11400000, guid: 9de09820d95603c41bb52770dc2ebe4e, type: 2}
   timeLast: 2
   panel_help: {fileID: 254419219}
   img_filled_open: {fileID: 954540190}

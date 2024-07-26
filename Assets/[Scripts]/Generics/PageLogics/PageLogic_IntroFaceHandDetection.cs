@@ -18,7 +18,7 @@ public class PageLogic_IntroFaceHandDetection : PageLogic_Extension
     {
 
     }
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
     }
     public override void EndPage()
@@ -34,7 +34,7 @@ public class PageLogic_IntroFaceHandDetection : PageLogic_Extension
     {
     }
 
-    public override void OnHandAnnotationActive(bool active)
+    public override void OnHandAnnotationActive(int actives)
     {
     }
 

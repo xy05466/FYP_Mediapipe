@@ -44,7 +44,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
         NextStep();
     }
 
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
         if (!FacepointsLoaded || finish) return; // if facepoints loaded
         //accupointManager.UpdateComponent();
@@ -102,7 +102,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
             list_accupoints[i].gameObject.SetActive(active);
     }
 
-    public override void OnHandAnnotationActive(bool active)
+    public override void OnHandAnnotationActive(int actives)
     {
     }
 

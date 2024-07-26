@@ -24,7 +24,7 @@ public abstract class PageLogic : MonoBehaviour
     }
     public abstract void Initialize();
     public abstract void StartPage();
-    public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj);
+    public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj);
 
     public abstract bool IsPageDone();
     public abstract void EndPage();

@@ -128,14 +128,19 @@ public class ScenePageHandler : MonoBehaviour
         sceneAnimationEnd.OnAnimationFinished += NextPage;
 
 
-        landmarkManager.SubscribePointsActive(OnFaceSpotted, OnHandSpotted);
-        landmarkManager.SubscribePointsLoaded(StoreFacePoints, StoreHandPoints);
+        landmarkManager.SubscribeFacePointsActive(OnFaceSpotted);
+        landmarkManager.SubscribeHandPointsActive(OnHandSpotted);
+
+        landmarkManager.SubscribeFacePointsLoaded(StoreFacePoints);
+        landmarkManager.SubscribeHandPointsLoaded_1(StoreHandPoints);
+        landmarkManager.SubscribeHandPointsLoaded_2(StoreHandPoints);
         for (int i = 0; i < pageLogics.Count; i++)
         {
             PageLogic_Extension pageLogic_Extension = pageLogics[i] as PageLogic_Extension;
             if(pageLogic_Extension!= null)
             {
-                landmarkManager.SubscribePointsActive(pageLogic_Extension.OnFaceAnnotationActive, pageLogic_Extension.OnHandAnnotationActive);
+                landmarkManager.SubscribeFacePointsActive(pageLogic_Extension.OnFaceAnnotationActive);
+                landmarkManager.SubscribeHandPointsActive(pageLogic_Extension.OnHandAnnotationActive);
             }
         }
 
@@ -181,7 +186,7 @@ public class ScenePageHandler : MonoBehaviour
         {
             // run curring page logic
             if (currentPageLogic.CompareState(PageLogic.PageState.START))
-                currentPageLogic.RunLogic(landmarkManager.GetHandPoints(), landmarkManager.GetFacePoints());
+                currentPageLogic.RunLogic(landmarkManager.GetHandPoints(0), landmarkManager.GetHandPoints(1), landmarkManager.GetFacePoints());
 
             if (currentPageLogic.IsPageDone() && !pageEnded)
             {
@@ -227,7 +232,7 @@ public class ScenePageHandler : MonoBehaviour
     {
         //img_face.gameObject.SetActive(active);
     }
-    private void OnHandSpotted(bool active)
+    private void OnHandSpotted(int actives)
     {
         //img_hand.gameObject.SetActive(active);
     }

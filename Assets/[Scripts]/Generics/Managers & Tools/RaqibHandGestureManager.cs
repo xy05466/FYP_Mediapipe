@@ -21,11 +21,11 @@ public class RaqibHandGestureManager : MonoBehaviour
     private const string NO_GESTURE_STRING = "NA";
     private void Start()
     {
-        landmarkManager.SubscribePointsActive(OnHandPointsActive, OnFacePointsActive);
+        landmarkManager.SubscribeHandPointsActive(OnHandPointsActive);
     }
-    void OnHandPointsActive(bool active)
+    void OnHandPointsActive(int numHandsActive)
     {
-        if(!active)
+        if(numHandsActive<=0)
             currGesture = "NA";
     }
     void OnFacePointsActive(bool active)
