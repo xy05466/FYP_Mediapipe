@@ -8,6 +8,7 @@ public class LandmarkList<T>
     public Transform parent;
     public string tag = "Facepoint";
     protected List<T> points = new List<T>();
+    public int startFromIndex = 0;
     protected bool loaded = false;
     protected bool search = false;
     public System.Action<List<T>> OnPointsSpawned;
@@ -15,6 +16,7 @@ public class LandmarkList<T>
     bool parentActive;
     protected void ParentAction()
     {
+        if(!loaded) return;
         if(parent.gameObject.activeInHierarchy && !parentActive) {
             parentActive = true;
             OnParentActive?.Invoke(true);
@@ -30,13 +32,21 @@ public class LandmarkList<T>
         ParentAction();
         if (!loaded)
         {
-            foreach (var item in parent.GetComponentsInChildren<Transform>())
+            Transform[] transforms = parent.GetComponentsInChildren<Transform>();
+            int count = 0;
+            //foreach (var item in transforms)
+            for (int i = 0; i < transforms.Length; i++)
             {
+                Transform item = transforms[i];
                 if (item.gameObject.CompareTag(tag))
                 {
-                    points.Add(item.gameObject.GetComponent<T>());
-                    if (!search)
-                        search = true;
+                    if(count>= startFromIndex)
+                    {
+                        points.Add(item.gameObject.GetComponent<T>());
+                        if (!search)
+                            search = true;
+                    }
+                    count++;
                 }
             }
             if (search)
@@ -75,13 +85,21 @@ public class LandmarkListGO : LandmarkList<GameObject>
         ParentAction();
         if (!loaded)
         {
-            foreach (var item in parent.GetComponentsInChildren<Transform>())
+            Transform[] transforms = parent.GetComponentsInChildren<Transform>();
+            int count = 0;
+            //foreach (var item in transforms)
+            for (int i = 0; i < transforms.Length; i++)
             {
+                Transform item = transforms[i];
                 if (item.gameObject.CompareTag(tag))
                 {
-                    points.Add(item.gameObject);
-                    if (!search)
-                        search = true;
+                    if (count >= startFromIndex)
+                    {
+                        points.Add(item.gameObject);
+                        if (!search)
+                            search = true;
+                    }
+                    count++;
                 }
             }
             if (search)

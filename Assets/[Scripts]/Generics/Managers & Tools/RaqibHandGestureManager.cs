@@ -21,11 +21,11 @@ public class RaqibHandGestureManager : MonoBehaviour
     private const string NO_GESTURE_STRING = "NA";
     private void Start()
     {
-        landmarkManager.SubscribePointsActive(OnHandPointsActive, OnFacePointsActive);
+        landmarkManager.SubscribeHandPointsActive(OnHandPointsActive);
     }
-    void OnHandPointsActive(bool active)
+    void OnHandPointsActive(int numHandsActive)
     {
-        if(!active)
+        if(numHandsActive<=0)
             currGesture = "NA";
     }
     void OnFacePointsActive(bool active)
@@ -34,8 +34,10 @@ public class RaqibHandGestureManager : MonoBehaviour
     }
     private void Update()
     {
-        if (landmarkManager.GetHandPoints() == null || landmarkManager.GetHandPoints().Count <= 0) return;
-        ReadGesture(landmarkManager.GetHandPoints().ToArray());
+        if (landmarkManager.GetHandPoints(0) == null || landmarkManager.GetHandPoints(0).Count <= 0) return;
+        ReadGesture(landmarkManager.GetHandPoints(0).ToArray());
+        //else if (landmarkManager.GetHandPoints(1) == null || landmarkManager.GetHandPoints(1).Count <= 0) return;
+        //ReadGesture(landmarkManager.GetHandPoints(1).ToArray());
     }
 
     private float CheckDistance(GameObject a, GameObject b)
@@ -76,7 +78,7 @@ public class RaqibHandGestureManager : MonoBehaviour
         for (int i = 0; i < gestures.Count; i++)
         {
             float gesturePercentage = CheckGesturePercentageNew(gestures[i], fingerDistances);
-            Debug.Log(gestures[i].gestureName + " " + gesturePercentage);
+            //Debug.Log(gestures[i].gestureName + " " + gesturePercentage);
 
             if (gesturePercentage > CurrHighestPercentage)
             {

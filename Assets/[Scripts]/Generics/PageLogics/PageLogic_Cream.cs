@@ -55,13 +55,13 @@ public class PageLogic_Cream : PageLogic_Extension
     {
     }
 
-    public override void OnHandAnnotationActive(bool active)
+    public override void OnHandAnnotationActive(int actives)
     {
     }
 
-    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
+    public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
-        Debug.Log(facePointIndex);
+        if (!gameObject.activeInHierarchy) return;
         foreach (var petal in creamManager.allPetals)
         {
             if (petal.pointId == facePointIndex)
@@ -71,20 +71,21 @@ public class PageLogic_Cream : PageLogic_Extension
         }
     }
 
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
+        if (!gameObject.activeInHierarchy) return;
         if (facepointsObj==null || facepointsObj.Count<=0) return;
         foreach (var petal in creamManager.allPetals)
         {
             petal.transform.position = facepointsObj[petal.pointId].transform.position;
         }
 
-        if (handpointsObj.Count > 0)
+        if (handpointsObj_1.Count > 0)
         {
-            HandPointAnnotationObject m = handpointsObj[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.MIDDLE_FINGER_TIP)];
-            HandPointAnnotationObject i = handpointsObj[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.INDEX_FINGER_TIP)];
-            HandPointAnnotationObject r = handpointsObj[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.RING_FINGER_TIP)];
-            HandPointAnnotationObject p = handpointsObj[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.PINKY_TIP)];
+            HandPointAnnotationObject m = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.MIDDLE_FINGER_TIP)];
+            HandPointAnnotationObject i = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.INDEX_FINGER_TIP)];
+            HandPointAnnotationObject r = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.RING_FINGER_TIP)];
+            HandPointAnnotationObject p = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.PINKY_TIP)];
 
             for (int j = 0; j < Wallpapers.Count; j++)
             {
