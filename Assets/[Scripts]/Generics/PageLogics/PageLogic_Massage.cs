@@ -119,15 +119,31 @@ public class PageLogic_Massage : PageLogic_Extension
             }
             else
             {
-                foreach (var item in list_handpoints_interact)
+                if (list_steps[currentStepIndex].useDefaultHandpoints)
                 {
-                    int handItem = (int)item;
-                    // loop all sliders
-                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                    foreach (var item in list_handpoints_interact)
                     {
-                        massageSliderObjects[i].UpdateSlider(handpointsObj_1[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                        int handItem = (int)item;
+                        // loop all sliders
+                        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                        {
+                            massageSliderObjects[i].UpdateSlider(handpointsObj_1[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var item in list_steps[currentStepIndex].handpointsAllowed)
+                    {
+                        int handItem = (int)item;
+                        // loop all sliders
+                        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                        {
+                            massageSliderObjects[i].UpdateSlider(handpointsObj_1[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                        }
+                    }
+                }
+              
             }
         }
         //// Update all  massage sliders
@@ -314,6 +330,8 @@ public class SliderStep
     public string stepName;
     public string title;
     public string titleSub;
+    public bool useDefaultHandpoints = true;
+    public List<FaceHandPoint.HANDPOINT> handpointsAllowed = new List<FaceHandPoint.HANDPOINT>();
     [TextArea]
     public string description;
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();

@@ -16948,6 +16948,8 @@ MonoBehaviour:
   - stepName: Step 1
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6b0000006c0000006800000044000000
@@ -20484,9 +20486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
+  - {fileID: 870878791}
   - {fileID: 473273937}
   - {fileID: 878462219}
-  - {fileID: 870878791}
   - {fileID: 786372592}
   - {fileID: 885432721}
   - {fileID: 878462219}
@@ -29119,6 +29121,8 @@ MonoBehaviour:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: massaging at the outer region of your forehead. following the guide's
       direction
     massageSliders:
@@ -29126,12 +29130,16 @@ MonoBehaviour:
   - stepName: Step 1 Part 2
     title: Forehead Rotation
     titleSub: with Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Massage your way into the inner region of your forehead
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 2
     title: Cheekbone Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your hand across the cheekbone from your nose to the outer
       corner of your eyebrow
     massageSliders:
@@ -29139,36 +29147,48 @@ MonoBehaviour:
   - stepName: Step 3 Part 1
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Instruction center align
     massageSliders:
     - points: 5001000097000000290100004c010000
   - stepName: Step 3 Part 2
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 37000000a80000000300000031000000
   - stepName: Step 3 Part 3
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 1d010000a8000000f800000017010000
   - stepName: Step 3 Part 4
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 720000008e000000320000006f000000
   - stepName: Step 4 Part 1
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your knuckle from your jaw to the nose
     massageSliders:
     - points: cb000000ce000000cf0000005d000000
   - stepName: Step 4 Part 2
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide across the cheekbone from your nose to the outer corner of
       your eyebrow
     massageSliders:
@@ -29176,18 +29196,24 @@ MonoBehaviour:
   - stepName: Step 5 Part 1 of 1
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: a7010000aa010000ab01000043010000
   - stepName: Step 5 Part 1 of 2
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: 8a00000096000000b000000094000000
   - stepName: Step 5 Part 1 of 3
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide from jaw upwards to side of nose
     massageSliders:
     - points: 6f0100007b0100009001000079010000
@@ -40165,6 +40191,8 @@ MonoBehaviour:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: massaging at the outer region of your forehead. following the guide's
       direction
     massageSliders:
@@ -40172,12 +40200,16 @@ MonoBehaviour:
   - stepName: Step 1 Part 2
     title: Forehead Rotation
     titleSub: with Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Massage your way into the inner region of your forehead
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 2
     title: Cheekbone Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your hand across the cheekbone from your nose to the outer
       corner of your eyebrow
     massageSliders:
@@ -40185,36 +40217,48 @@ MonoBehaviour:
   - stepName: Step 3 Part 1
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Instruction center align
     massageSliders:
     - points: 5001000097000000290100004c010000
   - stepName: Step 3 Part 2
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 37000000a80000000300000031000000
   - stepName: Step 3 Part 3
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 1d010000a8000000f800000017010000
   - stepName: Step 3 Part 4
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 720000008e000000320000006f000000
   - stepName: Step 4 Part 1
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your knuckle from your jaw to the nose
     massageSliders:
     - points: cb000000ce000000cf0000005d000000
   - stepName: Step 4 Part 2
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide across the cheekbone from your nose to the outer corner of
       your eyebrow
     massageSliders:
@@ -40222,72 +40266,96 @@ MonoBehaviour:
   - stepName: Step 5 Part 1 of 1
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: a7010000aa010000ab01000043010000
   - stepName: Step 5 Part 1 of 2
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: 8a00000096000000b000000094000000
   - stepName: Step 5 Part 1 of 3
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide from jaw upwards to side of nose
     massageSliders:
     - points: 6f0100007b0100009001000079010000
   - stepName: Step 5 Part 1 of 4
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide from jaw upwards to side of nose
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 1 of 1
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 1 of 2
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 2 of 1
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 2 of 2
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 1
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your fist across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 2
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your fist across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 3
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your L-shaped hand across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 4
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: Glide your L-shaped hand across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
@@ -52923,72 +52991,96 @@ MonoBehaviour:
   - stepName: Step 1
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6b0000006c0000006800000044000000
   - stepName: Step 2
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 3
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 50010000510100004d0100002a010000
   - stepName: Step 4
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 5001000097000000290100004c010000
   - stepName: Step 5
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 37000000a80000000300000031000000
   - stepName: Step 6
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 1d010000a8000000f800000017010000
   - stepName: Step 7
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 720000008e000000320000006f000000
   - stepName: Step 8
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: cb000000ce000000cf0000005d000000
   - stepName: Step 9
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 57010000730100001801000054010000
   - stepName: Step 10
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: a7010000aa010000ab01000043010000
   - stepName: Step 11
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 8a00000096000000b000000094000000
   - stepName: Step 12
     title: 
     titleSub: 
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6f0100007b0100009001000079010000
