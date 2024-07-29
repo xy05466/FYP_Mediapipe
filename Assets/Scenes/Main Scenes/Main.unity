@@ -29118,6 +29118,18 @@ MonoBehaviour:
   massageDistance: 0.15
   massageFirstDistance: 0.15
   list_steps:
+  - stepName: Step 2
+    title: Cheekbone Lift
+    titleSub: with L-Shaped Hand
+    useDefaultHandpoints: 1
+    handpointsAllowed: 
+    description: Glide your hand across the cheekbone from your nose to the outer
+      corner of your eyebrow
+    massageSliders:
+    - points: c50100005d0100005c01000009010000
+    - points: f5000000770000007600000023000000
+    - points: 79010000900100007b0100006f010000
+    - points: 94000000b0000000960000008a000000
   - stepName: Step 1 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
@@ -29135,15 +29147,6 @@ MonoBehaviour:
     description: Massage your way into the inner region of your forehead
     massageSliders:
     - points: 6b000000970000004300000067000000
-  - stepName: Step 2
-    title: Cheekbone Lift
-    titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
-    description: Glide your hand across the cheekbone from your nose to the outer
-      corner of your eyebrow
-    massageSliders:
-    - points: 50010000510100004d0100002a010000
   - stepName: Step 3 Part 1
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle

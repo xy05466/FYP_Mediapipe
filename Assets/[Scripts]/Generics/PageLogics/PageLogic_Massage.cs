@@ -104,51 +104,60 @@ public class PageLogic_Massage : PageLogic_Extension
 
         // check if certain fingeer points interacting
         // with current sliedr position
-        if (handpointsObj_1 != null && handpointsObj_1.Count > 0)
+        if (handpointsObj_1 != null && handpointsObj_1.Count > 0 && handpointsObj_1[0].gameObject.activeInHierarchy)
         {
-            if (enableAllHandPointCollision)
+            RunCollisionSlider(handpointsObj_1);
+        }
+
+        if (handpointsObj_2 != null && handpointsObj_2.Count > 0 && handpointsObj_2[0].gameObject.activeInHierarchy)
+        {
+            RunCollisionSlider(handpointsObj_2);
+        }
+        //// Update all  massage sliders
+        //foreach (var massageSlider in massageSliderObjects)
+        //    massageSlider.UpdateSlider(facepointsObj);
+    }
+    private void RunCollisionSlider(List<HandPointAnnotationObject> handpoints)
+    {
+        if (enableAllHandPointCollision)
+        {
+            for (int i = 0; i < handpoints.Count; i++)
             {
-                for (int i = 0; i < handpointsObj_1.Count; i++)
+                // loop all sliders
+                for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
                 {
+                    massageSliderObjects[j].UpdateSlider(handpoints[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                }
+            }
+        }
+        else
+        {
+            if (list_steps[currentStepIndex].useDefaultHandpoints)
+            {
+                foreach (var item in list_handpoints_interact)
+                {
+                    int handItem = (int)item;
                     // loop all sliders
-                    for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
+                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
                     {
-                        massageSliderObjects[j].UpdateSlider(handpointsObj_1[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                        massageSliderObjects[i].UpdateSlider(handpoints[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
                     }
                 }
             }
             else
             {
-                if (list_steps[currentStepIndex].useDefaultHandpoints)
+                foreach (var item in list_steps[currentStepIndex].handpointsAllowed)
                 {
-                    foreach (var item in list_handpoints_interact)
+                    int handItem = (int)item;
+                    // loop all sliders
+                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
                     {
-                        int handItem = (int)item;
-                        // loop all sliders
-                        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
-                        {
-                            massageSliderObjects[i].UpdateSlider(handpointsObj_1[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
-                        }
+                        massageSliderObjects[i].UpdateSlider(handpoints[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
                     }
                 }
-                else
-                {
-                    foreach (var item in list_steps[currentStepIndex].handpointsAllowed)
-                    {
-                        int handItem = (int)item;
-                        // loop all sliders
-                        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
-                        {
-                            massageSliderObjects[i].UpdateSlider(handpointsObj_1[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
-                        }
-                    }
-                }
-              
             }
+
         }
-        //// Update all  massage sliders
-        //foreach (var massageSlider in massageSliderObjects)
-        //    massageSlider.UpdateSlider(facepointsObj);
     }
     public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
