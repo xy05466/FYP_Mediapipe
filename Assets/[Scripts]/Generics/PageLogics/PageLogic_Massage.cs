@@ -22,13 +22,15 @@ public class PageLogic_Massage : PageLogic_Extension
     public float massageSpeed = 1f;
     public float massageDistance = 0.1f;
     public float massageFirstDistance = 0.05f;
-    [SerializeField] MaskMoving maskMoving;
+    public List<MaskMoving> maskMoving = new List<MaskMoving>();
     
     [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
     private int currentStepIndex = 0;
     private int slidersDoneCount = 0;
     bool massageEnd = false;
+    [HideInInspector]
+    public int maskMovingIndex;
 
 
     public override void Initialize()
@@ -116,9 +118,9 @@ public class PageLogic_Massage : PageLogic_Extension
                     {
                         massageSliderObjects[j].UpdateSlider(handpointsObj[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
 
-                        if (massageSliderObjects[j].GetValue() >= 0.25f)
+                        for (maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
                         {
-                            maskMoving.PercentageMovement(massageSliderObjects[j].GetValue());
+                            maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue());
                         }
                     }
                 }
