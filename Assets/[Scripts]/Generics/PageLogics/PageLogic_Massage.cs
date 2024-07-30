@@ -277,6 +277,10 @@ public class PageLogic_Massage : PageLogic_Extension
     void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
     {
         slidersDoneCount++;
+        for (int i = 0; i < maskMoving.Count; i++)
+        {
+            maskMoving[i].PlayAnim();
+        }
         // check if all current slider has completed , done
         if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
         {

@@ -34,13 +34,14 @@ public class MaskMoving : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, bonePoints[value].position, Time.deltaTime / bonePoints.Count);
         if (Vector3.Distance(transform.position, bonePoints[value].position) < 0.2f && tempValue != value)
         {
-            tempValue = value;
-            GameObject temp = Mask.GetObj(bonePoints[value].position, transform.rotation);
-            if (value == 1)
-            {
-                spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
-                animator.enabled = true;
-            }
+            tempValue = value;  
+            GameObject temp = Mask.GetObj(bonePoints[tempValue].position, transform.rotation); 
         }
+    }
+
+    public void PlayAnim()
+    {
+        spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
+        animator.enabled = true;
     }
 }
