@@ -31,6 +31,8 @@ namespace SDM_FythmPipe
                 {
                     timeLastElapsed = 0f;
                     panel_help.gameObject.SetActive(!panel_help.activeInHierarchy);
+                    img_filled_close.fillAmount = 0f;
+                    img_filled_open.fillAmount = 0f;
                 }
             }
             else if(timeLastElapsed >0)

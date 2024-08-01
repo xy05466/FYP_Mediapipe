@@ -88,7 +88,6 @@ public class MassageSliderObjectV2 : MonoBehaviour
         {
             tempCompIndex++;
         }
-
         //for (int i = 0; i < lr_outline.positionCount; i++)
         //{
         //    //float comp = ((float)(i + 1) / (float)lr_outline.positionCount);
@@ -207,6 +206,10 @@ public class MassageSliderObjectV2 : MonoBehaviour
         lr_filled.positionCount = 0;
         rendererObject.color = color_default;
         tempCompIndex = 0;
+    }
+    public float GetValue()
+    {
+        return sliderValue;
     }
 
     // Calculated bezier path, done by Bryant Toh

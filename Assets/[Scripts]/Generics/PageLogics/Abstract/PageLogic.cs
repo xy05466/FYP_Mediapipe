@@ -24,12 +24,12 @@ public abstract class PageLogic : MonoBehaviour
     }
     public abstract void Initialize();
     public abstract void StartPage();
-    public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj);
+    public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj);
 
     public abstract bool IsPageDone();
     public abstract void EndPage();
     public abstract void ResetPage();
-    public abstract void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject);
+    public abstract void OnHandPointCollideFacePoint(int hand,int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject);
     protected bool CollideWithFacePoint(int pointIndex, int pointIndexCompare)
     {
         return (pointIndex == pointIndexCompare);

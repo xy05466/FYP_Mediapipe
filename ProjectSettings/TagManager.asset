@@ -10,11 +10,9 @@ TagManager:
   - Handpoint
   - Date
   - ImageSeg
-  - Boid
-  - spawner
   - target
-  - landmarks
-  - spawnarea
+  - Mask
+  - Slider
   layers:
   - Default
   - TransparentFX
