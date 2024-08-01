@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class LandmarkManager : MonoBehaviour
 {
-    public bool isFaceTask = true;
-    public bool isHandTask = true;
     public LandmarkListGO annotationList_FacePoints;
     public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_1;
     public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_2;
-
-    //public LandmarkListGO annotationList_FacePoints_Task;
-    //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_Task;
 
 
     // variable for Hand Face points active / loaded

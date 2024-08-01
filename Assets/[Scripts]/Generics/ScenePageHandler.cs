@@ -75,8 +75,6 @@ public class ScenePageHandler : MonoBehaviour
     bool handPointsStored = false;
     private void Start()
     {
-        landmarkManager.isFaceTask = isFaceDetectionTask;
-        landmarkManager.isHandTask = isHandDetectionTask;
 
         annotationFace.gameObject.SetActive(false);
         annotationFace_task.gameObject.SetActive(false);
@@ -123,7 +121,7 @@ public class ScenePageHandler : MonoBehaviour
         if (panel_gesture!=null)
             panel_gesture.gameObject.SetActive(false);
 
-        bu_nextPage.onClick.AddListener(() => { PreNextPage(); });
+        bu_nextPage?.onClick.AddListener(() => { PreNextPage(); });
         // go to next page after scene animation
         sceneAnimationEnd.OnAnimationFinished += NextPage;
 
