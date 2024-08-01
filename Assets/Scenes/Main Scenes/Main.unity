@@ -9134,7 +9134,7 @@ GameObject:
   - component: {fileID: 254419222}
   - component: {fileID: 254419221}
   m_Layer: 5
-  m_Name: Canvas Help
+  m_Name: Canvas Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9154,7 +9154,7 @@ RectTransform:
   m_Children:
   - {fileID: 436013197}
   - {fileID: 751032456}
-  m_Father: {fileID: 862030117}
+  m_Father: {fileID: 1059436693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14568,7 +14568,7 @@ GameObject:
   - component: {fileID: 436013199}
   - component: {fileID: 436013198}
   m_Layer: 5
-  m_Name: Panel_help
+  m_Name: Panel_Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21195,7 +21195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title
+  m_text: PAUSE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 57a83c99ae406874f8a5c52f55313b81, type: 2}
   m_sharedMaterial: {fileID: -8798698240492461730, guid: 57a83c99ae406874f8a5c52f55313b81,
@@ -28881,8 +28881,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 254419220}
+  m_Children: []
   m_Father: {fileID: 1479501823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &862030118
@@ -29894,7 +29893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Description for help text
+  m_text: Feel free to resume anytime!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 947a3280d02f4cf42868fd1c1ae79c74, type: 2}
   m_sharedMaterial: {fileID: 399968217391042371, guid: 947a3280d02f4cf42868fd1c1ae79c74,
@@ -34831,6 +34830,57 @@ MonoBehaviour:
   m_Spacing: {x: 100, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &1059436692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059436693}
+  - component: {fileID: 1059436694}
+  m_Layer: 0
+  m_Name: IdleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059436693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059436692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 254419220}
+  m_Father: {fileID: 1479501823}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1059436694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059436692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199fc16dbc647744fa630eddad59af15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landmarkManager: {fileID: 683045300}
+  handGestureManager: {fileID: 1129048676}
+  img_filled_continue: {fileID: 717875085}
+  timeoutTime: 3
+  panel_pause: {fileID: 254419219}
+  gestureContinue: {fileID: 11400000, guid: 9de09820d95603c41bb52770dc2ebe4e, type: 2}
 --- !u!1 &1075003979
 GameObject:
   m_ObjectHideFlags: 0
@@ -46101,6 +46151,7 @@ Transform:
   - {fileID: 1129048675}
   - {fileID: 621099379}
   - {fileID: 862030117}
+  - {fileID: 1059436693}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486373587
