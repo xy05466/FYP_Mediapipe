@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,15 +24,14 @@ public class PageLogic_Massage : PageLogic_Extension
     public float massageDistance = 0.1f;
     public float massageFirstDistance = 0.05f;
     public List<MaskMoving> maskMoving = new List<MaskMoving>();
+    public List<MaskMoving> subMaskMoving = new List<MaskMoving>();
+
     
     [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
     private int currentStepIndex = 0;
     private int slidersDoneCount = 0;
     bool massageEnd = false;
-    [HideInInspector]
-    public int maskMovingIndex;
-
 
     public override void Initialize()
     {
@@ -62,6 +62,28 @@ public class PageLogic_Massage : PageLogic_Extension
             mso.transform.localPosition = Vector3.zero;
             mso.gameObject.SetActive(false);
             massageSliderObjects.Add(mso);
+        }
+
+
+        GameObject[] spriteMasks = GameObject.FindGameObjectsWithTag("SpriteMask");
+        GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
+
+        foreach (GameObject obj in spriteMasks)
+        {
+            MaskMoving mask = obj.GetComponent<MaskMoving>();
+            if (mask != null)
+            {
+                maskMoving.Add(mask);
+            }
+        }
+
+        foreach (GameObject obj in subSpriteMasks)
+        {
+            MaskMoving mask = obj.GetComponent<MaskMoving>();
+            if (mask != null)
+            {
+                subMaskMoving.Add(mask);
+            }
         }
 
         //// Init all slider
@@ -118,10 +140,41 @@ public class PageLogic_Massage : PageLogic_Extension
                     {
                         massageSliderObjects[j].UpdateSlider(handpointsObj[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
 
-                        for (maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
+                        for (int maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
                         {
                             maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue());
+
+                            foreach (MaskMoving subSpriteMask in subMaskMoving)
+                            {
+                                if (subSpriteMask.canMove)
+                                {
+                                    subSpriteMask.PercentageMovement(massageSliderObjects[j].GetValue());
+                                }
+
+                                float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
+
+                                if (distance < 0.2f)
+                                {
+                                    subSpriteMask.canMove = true;
+                                }
+
+                                // Check distance with other subMaskMoving objects
+                                foreach (MaskMoving otherSubSpriteMask in subMaskMoving)
+                                {
+                                    if (otherSubSpriteMask != subSpriteMask)
+                                    {
+                                        float distance2 = Vector2.Distance(subSpriteMask.transform.position, otherSubSpriteMask.transform.position);
+
+                                        if (distance2 < 0.2f)
+                                        {
+                                            subSpriteMask.canMove = true;
+                                            subSpriteMask.canScale = true;
+                                        }
+                                    }
+                                }
+                            }
                         }
+
                     }
                 }
             }

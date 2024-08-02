@@ -8,14 +8,19 @@ using UnityEngine.UI;
 public class MaskMoving : MonoBehaviour
 {
     public List<Transform> bonePoints = new List<Transform>();
-    bool coroutineRunning = false;
-    SpriteRenderer spriteRenderer;
-    [SerializeField] MaskingObjectPool Mask;
-    [SerializeField] Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public MaskingObjectPool Mask;
+    public Animator animator;
+    [HideInInspector]
+    public bool canMove = false;
+    [HideInInspector]
+    public bool canScale = false;
     private void Start()
     {
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
-        animator.enabled = false;
+        if (animator != null)
+            animator.enabled = false;
+
         transform.position = bonePoints.LastOrDefault().position;
         Mask.Initialize();
     }
@@ -37,11 +42,14 @@ public class MaskMoving : MonoBehaviour
             tempValue = value;  
             GameObject temp = Mask.GetObj(bonePoints[tempValue].position, transform.rotation); 
         }
-    }
+    } 
 
     public void PlayAnim()
     {
         spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
-        animator.enabled = true;
+        if (animator != null)
+        {
+            animator.enabled = true;
+        }
     }
 }
