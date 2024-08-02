@@ -25,6 +25,7 @@ public class PageLogic_Massage : PageLogic_Extension
     public float massageFirstDistance = 0.05f;
     public List<MaskMoving> maskMoving = new List<MaskMoving>();
     public List<MaskMoving> subMaskMoving = new List<MaskMoving>();
+    public List<MaskMoving> OTMaskMoving = new List<MaskMoving>();
 
     
     [Header("Steps")]
@@ -67,6 +68,7 @@ public class PageLogic_Massage : PageLogic_Extension
 
         GameObject[] spriteMasks = GameObject.FindGameObjectsWithTag("SpriteMask");
         GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
+        GameObject[] OTSpriteMasks = GameObject.FindGameObjectsWithTag("OTSpriteMask");
 
         foreach (GameObject obj in spriteMasks)
         {
@@ -83,6 +85,15 @@ public class PageLogic_Massage : PageLogic_Extension
             if (mask != null)
             {
                 subMaskMoving.Add(mask);
+            }
+        }
+
+        foreach (GameObject obj in OTSpriteMasks)
+        {
+            MaskMoving mask = obj.GetComponent<MaskMoving>();
+            if (mask != null)
+            {
+                OTMaskMoving.Add(mask);
             }
         }
 
@@ -142,13 +153,13 @@ public class PageLogic_Massage : PageLogic_Extension
 
                         for (int maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
                         {
-                            maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue());
+                            maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
 
                             foreach (MaskMoving subSpriteMask in subMaskMoving)
                             {
                                 if (subSpriteMask.canMove)
                                 {
-                                    subSpriteMask.PercentageMovement(massageSliderObjects[j].GetValue());
+                                    subSpriteMask.PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
                                 }
 
                                 float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
@@ -158,20 +169,18 @@ public class PageLogic_Massage : PageLogic_Extension
                                     subSpriteMask.canMove = true;
                                 }
 
-                                // Check distance with other subMaskMoving objects
-                                foreach (MaskMoving otherSubSpriteMask in subMaskMoving)
-                                {
-                                    if (otherSubSpriteMask != subSpriteMask)
-                                    {
-                                        float distance2 = Vector2.Distance(subSpriteMask.transform.position, otherSubSpriteMask.transform.position);
+                                //// Check distance with other subMaskMoving objects
+                                //foreach (MaskMoving otSpriteMask in OTMaskMoving)
+                                //{
+                                //    float distance2 = Vector2.Distance(subSpriteMask.transform.position, otSpriteMask.transform.position);
 
-                                        if (distance2 < 0.2f)
-                                        {
-                                            subSpriteMask.canMove = true;
-                                            subSpriteMask.canScale = true;
-                                        }
-                                    }
-                                }
+                                //    if (distance2 < 0.2f)
+                                //    {
+                                //        otSpriteMask.canMove = true;
+                                //        otSpriteMask.canScale = true;
+                                //        otSpriteMask.SubPercentageMovement();
+                                //    }
+                                //}
                             }
                         }
 
@@ -329,11 +338,15 @@ public class PageLogic_Massage : PageLogic_Extension
     //}
     void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
     {
-        slidersDoneCount++;
         for (int i = 0; i < maskMoving.Count; i++)
         {
             maskMoving[i].PlayAnim();
+            for (int j = 0; j < subMaskMoving.Count; j++)
+            {
+                subMaskMoving[j].PlayAnim();
+            }
         }
+        slidersDoneCount++;
         // check if all current slider has completed , done
         if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
         {

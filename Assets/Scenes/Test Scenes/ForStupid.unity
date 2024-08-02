@@ -1517,6 +1517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 559859670}
   - {fileID: 1572058682}
@@ -1534,8 +1536,8 @@ MonoBehaviour:
   - {fileID: 421468155}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 14
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 1983091173}
   canMove: 0
   canScale: 0
@@ -6677,7 +6679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &192364999
 Transform:
   m_ObjectHideFlags: 0
@@ -10019,7 +10021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &270548743
 Transform:
   m_ObjectHideFlags: 0
@@ -10087,7 +10089,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &270548745
 MonoBehaviour:
@@ -14404,7 +14406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &397209811
 Transform:
   m_ObjectHideFlags: 0
@@ -15504,6 +15506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 684804801}
   - {fileID: 724384554}
@@ -15511,8 +15516,8 @@ MonoBehaviour:
   - {fileID: 505205050}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
-    maxPool: 4
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 749702330}
   canMove: 0
   canScale: 0
@@ -17547,7 +17552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &503206100
 Transform:
   m_ObjectHideFlags: 0
@@ -18125,6 +18130,7 @@ MonoBehaviour:
   massageFirstDistance: 0.01
   maskMoving: []
   subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1
     title: 
@@ -21364,7 +21370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &601966352
 Transform:
   m_ObjectHideFlags: 0
@@ -28380,7 +28386,7 @@ GameObject:
   - component: {fileID: 784199760}
   m_Layer: 0
   m_Name: SmallLeafMask
-  m_TagString: SubSpriteMask
+  m_TagString: OTSpriteMask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28464,6 +28470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 432993839}
   - {fileID: 1924358372}
@@ -28476,8 +28485,8 @@ MonoBehaviour:
   - {fileID: 1941365337}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
-    maxPool: 9
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -29081,7 +29090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &798085481
 Transform:
   m_ObjectHideFlags: 0
@@ -30241,6 +30250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 2009521906}
   - {fileID: 931559555}
@@ -30257,8 +30268,8 @@ MonoBehaviour:
   - {fileID: 354976153}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 13
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 1257603442}
   canMove: 0
   canScale: 0
@@ -31299,6 +31310,7 @@ MonoBehaviour:
   massageFirstDistance: 0.15
   maskMoving: []
   subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
@@ -34004,6 +34016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 54646485}
   - {fileID: 1796914748}
@@ -34012,7 +34027,7 @@ MonoBehaviour:
   - {fileID: 1677825611}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
+    obj: {fileID: 0}
     maxPool: 5
   animator: {fileID: 98531905}
   canMove: 0
@@ -34601,6 +34616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 1582825133}
   - {fileID: 734509105}
@@ -34609,7 +34627,7 @@ MonoBehaviour:
   - {fileID: 1213707843}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
+    obj: {fileID: 0}
     maxPool: 5
   animator: {fileID: 0}
   canMove: 0
@@ -35002,6 +35020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 1123173167}
   - {fileID: 1877674843}
@@ -35018,8 +35038,8 @@ MonoBehaviour:
   - {fileID: 313841754}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 13
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 1668044360}
   canMove: 0
   canScale: 0
@@ -35492,6 +35512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 1731981501}
   - {fileID: 1118183689}
@@ -35508,8 +35530,8 @@ MonoBehaviour:
   - {fileID: 1652753395}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 13
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 1685786736}
   canMove: 0
   canScale: 0
@@ -37361,7 +37383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1030118955
 Transform:
   m_ObjectHideFlags: 0
@@ -43749,6 +43771,7 @@ MonoBehaviour:
   massageFirstDistance: 0.15
   maskMoving: []
   subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
@@ -44040,7 +44063,7 @@ Transform:
   m_GameObject: {fileID: 1295782708}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6478221, y: 1.0683382, z: 5.4126387}
+  m_LocalPosition: {x: -3.06, y: 1.0683382, z: 5.4126387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49544,6 +49567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 1709498279}
   - {fileID: 559336576}
@@ -49553,8 +49579,8 @@ MonoBehaviour:
   - {fileID: 1856035357}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
-    maxPool: 6
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -50250,6 +50276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 1251951312}
   - {fileID: 581256361}
@@ -50261,8 +50289,8 @@ MonoBehaviour:
   - {fileID: 358235886}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 8
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 928754632}
   canMove: 0
   canScale: 0
@@ -51329,6 +51357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 1391219930}
   - {fileID: 1737530603}
@@ -51336,8 +51367,8 @@ MonoBehaviour:
   - {fileID: 171057767}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
-    maxPool: 4
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 1164636535}
   canMove: 0
   canScale: 0
@@ -56998,6 +57029,7 @@ MonoBehaviour:
   massageFirstDistance: 0.15
   maskMoving: []
   subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1
     title: 
@@ -58317,6 +58349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 781614297}
   - {fileID: 1339382033}
@@ -58324,8 +58359,8 @@ MonoBehaviour:
   - {fileID: 774717215}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
-    maxPool: 4
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -61759,6 +61794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 76759491}
   - {fileID: 547430367}
@@ -61782,8 +61819,8 @@ MonoBehaviour:
   - {fileID: 800527717}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 20
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 685447451}
   canMove: 0
   canScale: 0
@@ -65069,6 +65106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
+    type: 3}
+  _numMasksPerBone: 3
   bonePoints:
   - {fileID: 595256247}
   - {fileID: 697769902}
@@ -65078,8 +65118,8 @@ MonoBehaviour:
   - {fileID: 1770283996}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 6003022300caf1547b924017beab77a4, type: 3}
-    maxPool: 6
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -68357,6 +68397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 2045730897}
   - {fileID: 993985190}
@@ -68369,8 +68411,8 @@ MonoBehaviour:
   - {fileID: 1905335141}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 9
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 581834336}
   canMove: 0
   canScale: 0
@@ -68945,6 +68987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36140a34442c9a4459f11503f74b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maskPrefab: {fileID: 0}
+  _numMasksPerBone: 1
   bonePoints:
   - {fileID: 648112502}
   - {fileID: 988182818}
@@ -68956,8 +69000,8 @@ MonoBehaviour:
   - {fileID: 1227362834}
   spriteRenderer: {fileID: 0}
   Mask:
-    obj: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630, type: 3}
-    maxPool: 8
+    obj: {fileID: 0}
+    maxPool: 5
   animator: {fileID: 984904844}
   canMove: 0
   canScale: 0

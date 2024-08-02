@@ -15,6 +15,7 @@ TagManager:
   - Slider
   - SpriteMask
   - SubSpriteMask
+  - OTSpriteMask
   layers:
   - Default
   - TransparentFX
