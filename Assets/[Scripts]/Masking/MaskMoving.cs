@@ -28,9 +28,9 @@ public class MaskMoving : MonoBehaviour
         if (animator != null)
             animator.enabled = false;
 
-        transform.position = bonePoints.LastOrDefault().position;
+        transform.position = bonePoints[0].position;
 
-        _prevBoneIndex = bonePoints.Count - 1;
+        _prevBoneIndex = 0;
         var prevPosition = transform.position;
         for(int i = 0; i < bonePoints.Count; i++)
         {
@@ -47,18 +47,16 @@ public class MaskMoving : MonoBehaviour
 
     public void PercentageMovement(float sliderValue)
     {
-        int currentBoneIndex = bonePoints.Count - 1 - (int)(sliderValue * (bonePoints.Count - 1));
+        int currentBoneIndex = (int)(sliderValue * (bonePoints.Count - 1));
         transform.position = Vector3.Lerp(transform.position, bonePoints[currentBoneIndex].position, Time.deltaTime / bonePoints.Count);
         
         // TODO (KS to Bryant): We want to check in more granular steps, not only when prevBoneIndex != currentBoneIndex
-        // But maybe even better(?) is, spawn the masks on every segment together when the startMask (this.transform.position) is also being lerped.
-        // If this idea is better, put these 2 steps together in a coroutine
         if (_prevBoneIndex != currentBoneIndex)
         {
             // NOTE: KS try 2
-            for (int i = _prevBoneIndex; i > currentBoneIndex; i--)
+            for (int i = _prevBoneIndex; i < currentBoneIndex; i++)
             {
-                float boneLength = _boneLengths[i];
+                float boneLength = _boneLengths[i + 1];
                 float maskDiameter = boneLength / _numMasksPerBone; // diameter = scale
                 for (int j = 0; j < _numMasksPerBone; j++)
                 {

@@ -65108,14 +65108,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 3
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 595256247}
-  - {fileID: 697769902}
-  - {fileID: 1673994934}
-  - {fileID: 2116739349}
-  - {fileID: 458368696}
   - {fileID: 1770283996}
+  - {fileID: 458368696}
+  - {fileID: 2116739349}
+  - {fileID: 1673994934}
+  - {fileID: 697769902}
+  - {fileID: 595256247}
   spriteRenderer: {fileID: 0}
   Mask:
     obj: {fileID: 0}
