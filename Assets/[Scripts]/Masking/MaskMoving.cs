@@ -9,9 +9,8 @@ public class MaskMoving : MonoBehaviour
 {
     [SerializeField] private GameObject _maskPrefab;
     [SerializeField] private int _numMasksPerBone = 1; // the higher the value, the smaller the masks, but more masks are spawned
-    private Dictionary<int, float> _boneLengths = new Dictionary<int, float>();
     private List<GameObject> _masks = new List<GameObject>();
-    private int _prevBoneIndex = 0;
+    private Vector3 _startPosition;
 
     public List<Transform> bonePoints = new List<Transform>();
     public SpriteRenderer spriteRenderer;
@@ -30,13 +29,8 @@ public class MaskMoving : MonoBehaviour
 
         transform.position = bonePoints[0].position;
 
-        _prevBoneIndex = 0;
         var prevPosition = transform.position;
-        for(int i = 0; i < bonePoints.Count; i++)
-        {
-            _boneLengths[i] = Vector3.Magnitude(bonePoints[i].position - prevPosition);
-            prevPosition = bonePoints[i].position;
-        }
+        _startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -47,42 +41,42 @@ public class MaskMoving : MonoBehaviour
 
     public void PercentageMovement(float sliderValue)
     {
+        if (_masks.Count >= bonePoints.Count * _numMasksPerBone) return;
+
         int currentBoneIndex = (int)(sliderValue * (bonePoints.Count - 1));
         transform.position = Vector3.Lerp(transform.position, bonePoints[currentBoneIndex].position, Time.deltaTime / bonePoints.Count);
-        
-        // TODO (KS to Bryant): We want to check in more granular steps, not only when prevBoneIndex != currentBoneIndex
+
         // NOTE: _prevBoneIndex should always be 1 less of currentBoneIndex
-        if (_prevBoneIndex != currentBoneIndex)
+        var prevMaskPosition = _masks.Count <= 0 ? _startPosition : _masks[_masks.Count - 1].transform.position;
+        if (_masks.Count <= 0 || Vector3.Distance(prevMaskPosition, transform.position) > _masks[_masks.Count - 1].transform.localScale.x)
         {
-            float boneLength = _boneLengths[currentBoneIndex];
+            float boneLength = Vector3.Distance(bonePoints[currentBoneIndex + 1].position, bonePoints[currentBoneIndex].position);
             float maskDiameter = boneLength / _numMasksPerBone; // diameter = scale
-            Vector3 boneDirection = (bonePoints[currentBoneIndex].position - bonePoints[_prevBoneIndex].position).normalized;
-            for (int j = 0; j < _numMasksPerBone; j++)
-            {
-                GameObject mask = Instantiate(_maskPrefab);
-                mask.transform.localScale = Vector3.one * maskDiameter;
-                mask.transform.rotation = Quaternion.identity;
-                mask.transform.position = bonePoints[_prevBoneIndex].position + boneDirection * (2 * j + 1) * (maskDiameter / 2);
-                _masks.Add(mask);
-            }
-            _prevBoneIndex = currentBoneIndex;
+            // TODO: This should be wrong (and is actually still wrong). Correct solution should be [currentBoneIndex + 1] - [currentBoneIndex]
+            Vector3 boneDirection = (bonePoints[currentBoneIndex].position - bonePoints[Mathf.Max(currentBoneIndex -1, 0)].position).normalized;
+            
+            GameObject mask = Instantiate(_maskPrefab);
+            mask.transform.localScale = Vector3.one * maskDiameter;
+            mask.transform.rotation = Quaternion.identity;
+            mask.transform.position = prevMaskPosition + boneDirection * (maskDiameter);
+            
+            _masks.Add(mask);
         }
     }
 
-
-    //doesnt move with slider value
-    int subTempValue = 0;
-    public void SubPercentageMovement()
-    {
-        int value = bonePoints.Count - 1;
-        transform.position = Vector3.Lerp(transform.position, bonePoints[value].position, Time.deltaTime);
-        if (Vector3.Distance(transform.position, bonePoints[value].position) < 0.2f && subTempValue != value)
-        {
-            subTempValue = value;
-            GameObject temp = Mask.GetObj(bonePoints[_prevBoneIndex].position, transform.rotation);
-            value--;
-        }
-    }
+    ////doesnt move with slider value
+    //int subTempValue = 0;
+    //public void SubPercentageMovement()
+    //{
+    //    int value = bonePoints.Count - 1;
+    //    transform.position = Vector3.Lerp(transform.position, bonePoints[value].position, Time.deltaTime);
+    //    if (Vector3.Distance(transform.position, bonePoints[value].position) < 0.2f && subTempValue != value)
+    //    {
+    //        subTempValue = value;
+    //        GameObject temp = Mask.GetObj(bonePoints[_prevBoneIndex].position, transform.rotation);
+    //        value--;
+    //    }
+    //}
 
     public void PlayAnim()
     {
