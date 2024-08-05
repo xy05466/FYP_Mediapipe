@@ -12,12 +12,12 @@ using static FaceHandPoint;
 // Basically all the common things in a scene
 public class ScenePageHandler : MonoBehaviour
 {
+    [Header("Managers")]
+    public LandmarkManager landmarkManager;
     // temp list
     public List<PageLogic> pageLogics;
     private PageLogic currentPageLogic;
     int currentPageIndex = 0;
-    [Header("Managers")]
-    public LandmarkManager landmarkManager;
     //public HandGestureManager handGestureManager;
 
 
@@ -34,36 +34,36 @@ public class ScenePageHandler : MonoBehaviour
     public Image img_splashIcon;
     public TMP_Text tmp_description;
 
-    [Header("Detection Icon")]
+    [Header("Hand Point Collision")]
     public float distanceCollision = 0.2f;
     //public Image img_face;
     //public Image img_hand;
     [Header("Pages")]
     private bool gestureNavigationDetected = false;
-    public Button bu_prevPage;
-    public Button bu_nextPage;
-    public bool autoNavigate = false;
+    //public Button bu_prevPage;
+    //public Button bu_nextPage;
+    private bool autoNavigate = false;
     private bool pageEnded = false;
-    [Header("Gesture Navigation")]
-    public GestureSO gestureNavigation;
-    public Image img_nextPageFilled;
-    public GameObject panel_gesture;
-    public float nextPageTime = 3f;
-    private float nextPageTimeElapsed;
+    //[Header("Gesture Navigation")]
+    //public GestureSO gestureNavigation;
+    //public Image img_nextPageFilled;
+    //public GameObject panel_gesture;
+    //public float nextPageTime = 3f;
+    //private float nextPageTimeElapsed;
 
     [Header("Annotation screens")]
-    public bool isFaceDetectionTask = true;
-    public bool isHandDetectionTask = true;
+    //public bool isFaceDetectionTask = true;
+    //public bool isHandDetectionTask = true;
     public GameObject annotationFace;
-    public GameObject annotationFace_task;
+    //public GameObject annotationFace_task;
     public GameObject annotationHand;
-    public GameObject annotationHand_task;
+    //public GameObject annotationHand_task;
 
     [Header("Destection Solution")]
-    public GameObject faceSolution;
-    public GameObject faceSolution_task;
-    public GameObject handSolution;
-    public GameObject handSolution_task;
+    //public GameObject faceSolution;
+    ////public GameObject faceSolution_task;
+    //public GameObject handSolution;
+    //public GameObject handSolution_task;
     //[Header("Annotation List of Points")]
     //public LandmarkListGO annotationList_FacePoints;
     //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
@@ -77,9 +77,9 @@ public class ScenePageHandler : MonoBehaviour
     {
 
         annotationFace.gameObject.SetActive(false);
-        annotationFace_task.gameObject.SetActive(false);
+        //annotationFace_task.gameObject.SetActive(false);
         annotationHand.gameObject.SetActive(false);
-        annotationHand_task.gameObject.SetActive(false);
+        //annotationHand_task.gameObject.SetActive(false);
 
         //faceSolution.gameObject.SetActive(false);
         //faceSolution_task.gameObject.SetActive(false);
@@ -87,41 +87,41 @@ public class ScenePageHandler : MonoBehaviour
         //handSolution_task.gameObject.SetActive(false);
 
         // Check face detection type
-        if (isFaceDetectionTask)
-        {
-            annotationFace_task.gameObject.SetActive(true);
-            faceSolution.gameObject.SetActive(false);
-            faceSolution_task.gameObject.SetActive(true);
-        }
-        else
-        {
-            annotationFace.gameObject.SetActive(true);
-            faceSolution_task.gameObject.SetActive(false);
-            faceSolution.gameObject.SetActive(true);
+        //if (isFaceDetectionTask)
+        //{
+        //    annotationFace_task.gameObject.SetActive(true);
+        //    faceSolution.gameObject.SetActive(false);
+        //    faceSolution_task.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    annotationFace.gameObject.SetActive(true);
+        //    faceSolution_task.gameObject.SetActive(false);
+        //    faceSolution.gameObject.SetActive(true);
 
-        }
+        //}
 
-        // Check hand detection type
-        if (isHandDetectionTask)
-        {
-            annotationHand_task.gameObject.SetActive(true);
-            handSolution.gameObject.SetActive(false);
-            handSolution_task.gameObject.SetActive(true);
-        }
-        else
-        {
-            annotationHand.gameObject.SetActive(true);
-            handSolution_task.gameObject.SetActive(false);
-            handSolution.gameObject.SetActive(true);
-        }
+        //// Check hand detection type
+        //if (isHandDetectionTask)
+        //{
+        //    annotationHand_task.gameObject.SetActive(true);
+        //    handSolution.gameObject.SetActive(false);
+        //    handSolution_task.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    annotationHand.gameObject.SetActive(true);
+        //    handSolution_task.gameObject.SetActive(false);
+        //    handSolution.gameObject.SetActive(true);
+        //}
 
         landmarkManager.Initialize();
 
 
-        if (panel_gesture!=null)
-            panel_gesture.gameObject.SetActive(false);
+        //if (panel_gesture!=null)
+        //    panel_gesture.gameObject.SetActive(false);
 
-        bu_nextPage?.onClick.AddListener(() => { PreNextPage(); });
+        //bu_nextPage?.onClick.AddListener(() => { PreNextPage(); });
         // go to next page after scene animation
         sceneAnimationEnd.OnAnimationFinished += NextPage;
 
@@ -297,14 +297,14 @@ public class ScenePageHandler : MonoBehaviour
         tmp_description.text = currentPageLogic.pageData.splashDescription;
 
         // enable face / hand traking
-        if(isFaceDetectionTask)
-            annotationFace_task.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-        else
+        //if(isFaceDetectionTask)
+        //    annotationFace_task.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+        //else
             annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
 
-        if(isHandDetectionTask)
-            annotationHand_task.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-        else
+        //if(isHandDetectionTask)
+        //    annotationHand_task.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+        //else
             annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
         //// enable header icons
         //img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
