@@ -28574,7 +28574,7 @@ MonoBehaviour:
     type: 3}
   _faceLandmarkColor: {r: 1, g: 1, b: 1, a: 1}
   _irisLandmarkColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
-  _faceLandmarkRadius: 20
+  _faceLandmarkRadius: 0
   _irisLandmarkRadius: 1
   _faceConnectionColor: {r: 0.31633854, g: 1, b: 0, a: 1}
   _irisCircleColor: {r: 0, g: 0, b: 1, a: 0}
