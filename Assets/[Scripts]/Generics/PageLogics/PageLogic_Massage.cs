@@ -104,12 +104,12 @@ public class PageLogic_Massage : PageLogic_Extension
 
         // check if certain fingeer points interacting
         // with current sliedr position
-        if (handpointsObj_1 != null && handpointsObj_1.Count > 0 && handpointsObj_1[0].gameObject.activeInHierarchy)
+        if (handpointsObj_1 != null && handpointsObj_1.Count > 0)
         {
             RunCollisionSlider(handpointsObj_1);
         }
 
-        if (handpointsObj_2 != null && handpointsObj_2.Count > 0 && handpointsObj_2[0].gameObject.activeInHierarchy)
+        if (handpointsObj_2 != null && handpointsObj_2.Count > 0)
         {
             RunCollisionSlider(handpointsObj_2);
         }
@@ -161,26 +161,7 @@ public class PageLogic_Massage : PageLogic_Extension
     }
     public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
-        //foreach (var massageSliderObject in massageSliderObjects)
-        //{
-        //    if(massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
-        //    //if (points[currentIndex] == facePointIndex)
-        //    //{
-        //    //    currentIndex++;
-        //    //    sliderfloat = 0;
-        //    //}
-        //    //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
-        //    //{
-        //    //    sliderfloat += Time.deltaTime;
-        //    //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
-        //    //}
-        
-        //    //// if collide with current facepoint
-        //    //if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
-        //    //{
-        //    //    //FillCurrentPoint();
-        //    //}
-        //}
+     
     }
     public override void EndPage()
     {
