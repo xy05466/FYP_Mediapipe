@@ -1421,11 +1421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8c5a0ed2b134e41b35facc48d2b69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
-    type: 3}
-  screen: {fileID: 1936696891}
-  runningMode: 0
-  _handLandmarkerResultAnnotationController: {fileID: 1298655830}
 --- !u!1001 &47067097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9463,6 +9458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4959c4e77f5f68e43a113d571339a235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prevGesture: 
   currGesture: 
   coordText: {fileID: 0}
   percentageText: {fileID: 0}
@@ -9486,6 +9482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
     type: 3}
+  bootstrap: {fileID: 0}
+  isPaused: 0
   screen: {fileID: 1721278578}
   runningMode: 0
   _handLandmarkerResultAnnotationController: {fileID: 424899759}
@@ -20487,9 +20485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageLogics:
-  - {fileID: 870878791}
   - {fileID: 473273937}
   - {fileID: 878462219}
+  - {fileID: 870878791}
   - {fileID: 786372592}
   - {fileID: 885432721}
   - {fileID: 878462219}
