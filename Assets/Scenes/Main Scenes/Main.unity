@@ -20484,6 +20484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354b2614ef4a9e74db84fdb6e7d63cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  landmarkManager: {fileID: 683045300}
   pageLogics:
   - {fileID: 473273937}
   - {fileID: 878462219}
@@ -20492,7 +20493,6 @@ MonoBehaviour:
   - {fileID: 885432721}
   - {fileID: 878462219}
   - {fileID: 1010666741}
-  landmarkManager: {fileID: 683045300}
   splashScreen: {fileID: 1945387827}
   sceneAnimationStart: {fileID: 364995828}
   sceneAnimationEnd: {fileID: 294804856}
@@ -20502,23 +20502,8 @@ MonoBehaviour:
   img_splashIcon: {fileID: 446956362}
   tmp_description: {fileID: 1785518450}
   distanceCollision: 0.2
-  bu_prevPage: {fileID: 0}
-  bu_nextPage: {fileID: 361220157}
-  autoNavigate: 0
-  gestureNavigation: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
-  img_nextPageFilled: {fileID: 198421949}
-  panel_gesture: {fileID: 1556896351}
-  nextPageTime: 3
-  isFaceDetectionTask: 0
-  isHandDetectionTask: 0
   annotationFace: {fileID: 1979440877}
-  annotationFace_task: {fileID: 704286817}
   annotationHand: {fileID: 8798066377398269793}
-  annotationHand_task: {fileID: 1298655828}
-  faceSolution: {fileID: 11793241}
-  faceSolution_task: {fileID: 1245813990}
-  handSolution: {fileID: 1392297656}
-  handSolution_task: {fileID: 22794515}
 --- !u!4 &621763104
 Transform:
   m_ObjectHideFlags: 0
