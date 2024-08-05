@@ -51,7 +51,7 @@ public class MaskMoving : MonoBehaviour
         if (_masks.Count <= 0 || Vector3.Distance(prevMaskPosition, transform.position) > _masks[_masks.Count - 1].transform.localScale.x)
         {
             float boneLength = Vector3.Distance(bonePoints[currentBoneIndex + 1].position, bonePoints[currentBoneIndex].position);
-            float maskDiameter = boneLength / _numMasksPerBone; // diameter = scale
+            float maskDiameter = (boneLength / _numMasksPerBone) + 0.1f; // diameter = scale
             // TODO: This should be wrong (and is actually still wrong). Correct solution should be [currentBoneIndex + 1] - [currentBoneIndex]
             Vector3 boneDirection = (bonePoints[currentBoneIndex].position - bonePoints[Mathf.Max(currentBoneIndex -1, 0)].position).normalized;
             
