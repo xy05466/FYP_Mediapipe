@@ -77,52 +77,11 @@ public class ScenePageHandler : MonoBehaviour
     {
 
         annotationFace.gameObject.SetActive(false);
-        //annotationFace_task.gameObject.SetActive(false);
         annotationHand.gameObject.SetActive(false);
-        //annotationHand_task.gameObject.SetActive(false);
-
-        //faceSolution.gameObject.SetActive(false);
-        //faceSolution_task.gameObject.SetActive(false);
-        //handSolution.gameObject.SetActive(false);
-        //handSolution_task.gameObject.SetActive(false);
-
-        // Check face detection type
-        //if (isFaceDetectionTask)
-        //{
-        //    annotationFace_task.gameObject.SetActive(true);
-        //    faceSolution.gameObject.SetActive(false);
-        //    faceSolution_task.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    annotationFace.gameObject.SetActive(true);
-        //    faceSolution_task.gameObject.SetActive(false);
-        //    faceSolution.gameObject.SetActive(true);
-
-        //}
-
-        //// Check hand detection type
-        //if (isHandDetectionTask)
-        //{
-        //    annotationHand_task.gameObject.SetActive(true);
-        //    handSolution.gameObject.SetActive(false);
-        //    handSolution_task.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    annotationHand.gameObject.SetActive(true);
-        //    handSolution_task.gameObject.SetActive(false);
-        //    handSolution.gameObject.SetActive(true);
-        //}
 
         landmarkManager.Initialize();
 
 
-        //if (panel_gesture!=null)
-        //    panel_gesture.gameObject.SetActive(false);
-
-        //bu_nextPage?.onClick.AddListener(() => { PreNextPage(); });
-        // go to next page after scene animation
         sceneAnimationEnd.OnAnimationFinished += NextPage;
 
 
@@ -165,10 +124,13 @@ public class ScenePageHandler : MonoBehaviour
         // update hand face point collision
         if (landmarkManager.IsFaceloadedAndActive)
         {
+            // for loop all face points
             for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
             {
+                // check if hand 1 is active
                 if (landmarkManager.IsHandLoadedAndActive_1)
                 {
+                    // loop all hand points 1
                     for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
                     {
                         HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(0)[i];
@@ -179,9 +141,10 @@ public class ScenePageHandler : MonoBehaviour
                         }
                     }
                 }
-
+                // check if hand 2 is active
                 if (landmarkManager.IsHandLoadedAndActive_2)
                 {
+                    // loop all hand points 2
                     for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
                     {
                         HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(1)[i];
@@ -196,6 +159,7 @@ public class ScenePageHandler : MonoBehaviour
         }
 
 
+        // check current page logic
         if (currentPageLogic != null)
         {
             // run curring page logic
@@ -209,38 +173,6 @@ public class ScenePageHandler : MonoBehaviour
                     sceneAnimationEnd.PlayUIAnim();
             }
         }
-
-        #region Gesture code
-        //// If gesture navigation detected
-        //if (handGestureManager.IsGestureDetected() && handGestureManager.GetCurrentGesture() == gestureNavigation.gestureName)
-        //{
-        //    if (!autoNavigate)
-        //        panel_gesture.gameObject.SetActive(false);
-
-        //    nextPageTimeElapsed += Time.deltaTime;
-        //    if (nextPageTimeElapsed >= nextPageTime)
-        //    {
-        //        Debug.Log("next page");
-        //        nextPageTimeElapsed = 0f;
-        //        PreNextPage();
-        //    }
-
-        //}
-        //else if (nextPageTimeElapsed > 0)
-        //{
-        //    nextPageTimeElapsed -= Time.deltaTime;
-        //    if (!autoNavigate && pageEnded)
-        //        panel_gesture.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    if (!autoNavigate && pageEnded)
-        //        panel_gesture.gameObject.SetActive(true);
-        //}
-        //nextPageTimeElapsed = Mathf.Clamp(nextPageTimeElapsed, 0, nextPageTime);
-        //if (img_nextPageFilled)
-        //    img_nextPageFilled.fillAmount = nextPageTimeElapsed / nextPageTime;
-        #endregion
     }
     private void OnFaceSpotted(bool active)
     {
@@ -287,7 +219,9 @@ public class ScenePageHandler : MonoBehaviour
     {
         //Debug.Log(handPointIndex + " face: " + facePointIndex);
     }
-    void StartPage()
+
+    // Start page
+    private void StartPage()
     {
         sceneAnimationStart.PlayUIAnim();
         currentPageLogic = pageLogics[currentPageIndex];
@@ -333,13 +267,16 @@ public class ScenePageHandler : MonoBehaviour
 
         OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
     }
-    void PreNextPage()
+
+    public void PreNextPage()
     {
         if (currentPageIndex < pageLogics.Count-1)
             sceneAnimationEnd.PlayUIAnim();
 
     }
-    void NextPage()
+
+    // Next page
+    private void NextPage()
     {
         currentPageLogic.EndPage();
         currentPageLogic.gameObject.SetActive(false);
@@ -360,30 +297,5 @@ public class ScenePageHandler : MonoBehaviour
         StartPage();
     }
 
-    // GESTURES
-    void OnGestureFirstDetected(string gesture)
-    {
-        //if ()) return;
-
-        //Debug.Log("New gesture detected");
-        //    if (gestureNavigation.gestureName == gesture)
-        //        gestureNavigationDetected = true;
-        //    else
-        //    gestureNavigationDetected = false;
-
-    }
-    void OnGestureDetecting(string gesture)
-    {
-        //if (!handGestureManager.IsGestureDetected()) return;
-        //    Debug.Log("gesture detected " + gesture);
-        //    if (gestureNavigation.gestureName == gesture)
-        //    {
-        //        gestureNavigationDetected = true;
-        //    }
-        //    else
-        //    {
-        //        gestureNavigationDetected = false;
-        //    }
-    }
 }
 

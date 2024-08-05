@@ -26,7 +26,7 @@ public class RaqibHandGestureManager : MonoBehaviour
 
     private void Update()
     {
-        if (landmarkManager.GetHandPoints(0) == null || landmarkManager.GetHandPoints(0).Count <= 0)
+        if (landmarkManager.GetHandPoints(0) == null || landmarkManager.GetHandPoints(0).Count <= 0 || !landmarkManager.GetHandPoints(0)[0].gameObject.activeInHierarchy)
         {
             currGesture = NO_GESTURE_STRING;
             return;
