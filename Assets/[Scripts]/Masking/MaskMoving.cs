@@ -51,21 +51,19 @@ public class MaskMoving : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, bonePoints[currentBoneIndex].position, Time.deltaTime / bonePoints.Count);
         
         // TODO (KS to Bryant): We want to check in more granular steps, not only when prevBoneIndex != currentBoneIndex
+        // NOTE: _prevBoneIndex should always be 1 less of currentBoneIndex
         if (_prevBoneIndex != currentBoneIndex)
         {
-            // NOTE: KS try 2
-            for (int i = _prevBoneIndex; i < currentBoneIndex; i++)
+            float boneLength = _boneLengths[currentBoneIndex];
+            float maskDiameter = boneLength / _numMasksPerBone; // diameter = scale
+            Vector3 boneDirection = (bonePoints[currentBoneIndex].position - bonePoints[_prevBoneIndex].position).normalized;
+            for (int j = 0; j < _numMasksPerBone; j++)
             {
-                float boneLength = _boneLengths[i + 1];
-                float maskDiameter = boneLength / _numMasksPerBone; // diameter = scale
-                for (int j = 0; j < _numMasksPerBone; j++)
-                {
-                    GameObject mask = Instantiate(_maskPrefab);
-                    mask.transform.localScale = Vector3.one * maskDiameter;
-                    mask.transform.rotation = Quaternion.identity;
-                    mask.transform.position = bonePoints[i].position + (bonePoints[currentBoneIndex].position - bonePoints[i].position).normalized * (2 * j + 1) * (maskDiameter / 2);
-                    _masks.Add(mask);
-                }
+                GameObject mask = Instantiate(_maskPrefab);
+                mask.transform.localScale = Vector3.one * maskDiameter;
+                mask.transform.rotation = Quaternion.identity;
+                mask.transform.position = bonePoints[_prevBoneIndex].position + boneDirection * (2 * j + 1) * (maskDiameter / 2);
+                _masks.Add(mask);
             }
             _prevBoneIndex = currentBoneIndex;
         }
