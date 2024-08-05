@@ -53,17 +53,10 @@ public class LandmarkManager : MonoBehaviour
 
     public void UpdateLandmarks()
     {
-        //if(isFaceTask)
-        //    annotationList_FacePoints_Task.Update();
-        //else
-            annotationList_FacePoints.Update();
+        annotationList_FacePoints.Update();
 
-        //if (isHandTask)
-        //    annotationList_HandPoints_Task.Update();
-        //else
-            annotationList_HandPoints_1.Update();
-            annotationList_HandPoints_2.Update();
-
+        annotationList_HandPoints_1.Update();
+        annotationList_HandPoints_2.Update();
     }
     // Store all points
     private void FacePointsDetected(List<GameObject> facePoints)
@@ -86,6 +79,7 @@ public class LandmarkManager : MonoBehaviour
 
     }
 
+
     public List<GameObject> GetFacePoints()
     {
         //if (isFaceTask)
@@ -93,6 +87,8 @@ public class LandmarkManager : MonoBehaviour
         //else
             return annotationList_FacePoints.GetPoints();
     }
+
+    // Get hand points on right / left hand
     public List<HandPointAnnotationObject> GetHandPoints(int hand)
     {
         //if(isHandTask)
@@ -104,6 +100,7 @@ public class LandmarkManager : MonoBehaviour
             return annotationList_HandPoints_2.GetPoints();
     }
 
+    // EVENTS
     // Active
     public void SubscribeFacePointsActive(Action<bool> faceActive)
     {
