@@ -1386,6 +1386,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
     type: 3}
+  bootstrap: {fileID: 0}
+  isPaused: 0
   screen: {fileID: 1936696891}
   runningMode: 0
   _handLandmarkerResultAnnotationController: {fileID: 1298655830}
@@ -19701,64 +19703,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681451636}
   m_CullTransparentMesh: 1
---- !u!1 &683045299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 683045301}
-  - component: {fileID: 683045300}
-  m_Layer: 0
-  m_Name: Landmark Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &683045300
+--- !u!114 &683045300 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7233714819702414806, guid: 524d0a722a1b07543a253d13765bc509,
+    type: 3}
+  m_PrefabInstance: {fileID: 5293404432992604721}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683045299}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da789dac26ee5e14db3cd93e8b9219ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFaceTask: 1
-  isHandTask: 1
-  annotationList_FacePoints:
-    parent: {fileID: 843252786}
-    tag: Facepoint
-    startFromIndex: 0
-  annotationList_HandPoints_1:
-    parent: {fileID: 1188537692}
-    tag: Handpoint
-    startFromIndex: 0
-  annotationList_HandPoints_2:
-    parent: {fileID: 1188537692}
-    tag: Handpoint
-    startFromIndex: 21
---- !u!4 &683045301
+--- !u!4 &683045301 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+    type: 3}
+  m_PrefabInstance: {fileID: 5293404432992604721}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683045299}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1479501823}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683474821
 GameObject:
   m_ObjectHideFlags: 0
@@ -53512,6 +53474,89 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &5293404432992604721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1479501823}
+    m_Modifications:
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 159326763000959413, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 825578196568064701, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: m_Name
+      value: Landmark Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233714819702414806, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: annotationList_FacePoints.parent
+      value: 
+      objectReference: {fileID: 843252786}
+    - target: {fileID: 7233714819702414806, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: annotationList_HandPoints_1.parent
+      value: 
+      objectReference: {fileID: 1188537692}
+    - target: {fileID: 7233714819702414806, guid: 524d0a722a1b07543a253d13765bc509,
+        type: 3}
+      propertyPath: annotationList_HandPoints_2.parent
+      value: 
+      objectReference: {fileID: 1188537692}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 524d0a722a1b07543a253d13765bc509, type: 3}
 --- !u!4 &6917023745836578224
 Transform:
   m_ObjectHideFlags: 0
