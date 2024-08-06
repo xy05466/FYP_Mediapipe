@@ -6,24 +6,21 @@ using UnityEngine.UI;
 public class PageLogic_StartMenu : PageLogic
 {
     public GameObject panel;
-    public GameObject page_1;
-    public GameObject page_2;
     public Button bu_start;
     bool pageEnd = false;
 
 
     public override void Initialize()
     {
-        bu_start.onClick.AddListener(() => { pageEnd = true; });
     }
     public override void StartPage()
     {
-        page_1.gameObject.SetActive(true);
-        page_2.gameObject.SetActive(false);
+        bu_start.onClick.AddListener(() => { pageEnd = true;  });
     }
     public override void EndPage()
     {
         panel.gameObject.SetActive(false);
+        bu_start.onClick.RemoveAllListeners();
     }
 
     public override bool IsPageDone()
@@ -31,7 +28,7 @@ public class PageLogic_StartMenu : PageLogic
         return pageEnd;
     }
 
-    public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
+    public override void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
     {
     }
 
@@ -41,7 +38,7 @@ public class PageLogic_StartMenu : PageLogic
         pageEnd = false;
     }
 
-    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj)
     {
     }
 
