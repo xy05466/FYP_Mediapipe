@@ -1535,9 +1535,6 @@ MonoBehaviour:
   - {fileID: 1920661817}
   - {fileID: 421468155}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 1983091173}
   canMove: 0
   canScale: 0
@@ -6679,7 +6676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &192364999
 Transform:
   m_ObjectHideFlags: 0
@@ -10021,7 +10018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &270548743
 Transform:
   m_ObjectHideFlags: 0
@@ -14406,7 +14403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &397209811
 Transform:
   m_ObjectHideFlags: 0
@@ -15508,16 +15505,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 684804801}
-  - {fileID: 724384554}
-  - {fileID: 21558415}
   - {fileID: 505205050}
+  - {fileID: 21558415}
+  - {fileID: 724384554}
+  - {fileID: 684804801}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 749702330}
   canMove: 0
   canScale: 0
@@ -17552,7 +17546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &503206100
 Transform:
   m_ObjectHideFlags: 0
@@ -21370,7 +21364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &601966352
 Transform:
   m_ObjectHideFlags: 0
@@ -28472,21 +28466,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 432993839}
-  - {fileID: 1924358372}
-  - {fileID: 1506258920}
-  - {fileID: 1721166799}
-  - {fileID: 1587983878}
-  - {fileID: 449192744}
-  - {fileID: 1495064142}
-  - {fileID: 1312741058}
   - {fileID: 1941365337}
+  - {fileID: 1312741058}
+  - {fileID: 1495064142}
+  - {fileID: 449192744}
+  - {fileID: 1587983878}
+  - {fileID: 1721166799}
+  - {fileID: 1506258920}
+  - {fileID: 1924358372}
+  - {fileID: 432993839}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -29090,7 +29081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &798085481
 Transform:
   m_ObjectHideFlags: 0
@@ -30267,9 +30258,6 @@ MonoBehaviour:
   - {fileID: 2147395142}
   - {fileID: 354976153}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 1257603442}
   canMove: 0
   canScale: 0
@@ -34018,17 +34006,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 54646485}
-  - {fileID: 1796914748}
-  - {fileID: 506111182}
-  - {fileID: 1011218331}
   - {fileID: 1677825611}
+  - {fileID: 1011218331}
+  - {fileID: 506111182}
+  - {fileID: 1796914748}
+  - {fileID: 54646485}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 98531905}
   canMove: 0
   canScale: 0
@@ -34618,17 +34603,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 1582825133}
-  - {fileID: 734509105}
-  - {fileID: 1163286835}
-  - {fileID: 747339833}
   - {fileID: 1213707843}
+  - {fileID: 747339833}
+  - {fileID: 1163286835}
+  - {fileID: 734509105}
+  - {fileID: 1582825133}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -35037,9 +35019,6 @@ MonoBehaviour:
   - {fileID: 1949095313}
   - {fileID: 313841754}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 1668044360}
   canMove: 0
   canScale: 0
@@ -35529,9 +35508,6 @@ MonoBehaviour:
   - {fileID: 818799881}
   - {fileID: 1652753395}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 1685786736}
   canMove: 0
   canScale: 0
@@ -37383,7 +37359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1030118955
 Transform:
   m_ObjectHideFlags: 0
@@ -44063,7 +44039,7 @@ Transform:
   m_GameObject: {fileID: 1295782708}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.06, y: 1.0683382, z: 5.4126387}
+  m_LocalPosition: {x: -1.63, y: 1.07, z: 5.4126387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49569,18 +49545,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 1709498279}
-  - {fileID: 559336576}
-  - {fileID: 1238273889}
-  - {fileID: 1479138728}
-  - {fileID: 872341763}
   - {fileID: 1856035357}
+  - {fileID: 872341763}
+  - {fileID: 1479138728}
+  - {fileID: 1238273889}
+  - {fileID: 559336576}
+  - {fileID: 1709498279}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -50288,9 +50261,6 @@ MonoBehaviour:
   - {fileID: 1253519791}
   - {fileID: 358235886}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 928754632}
   canMove: 0
   canScale: 0
@@ -51359,16 +51329,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 1391219930}
-  - {fileID: 1737530603}
-  - {fileID: 875536712}
   - {fileID: 171057767}
+  - {fileID: 875536712}
+  - {fileID: 1737530603}
+  - {fileID: 1391219930}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 1164636535}
   canMove: 0
   canScale: 0
@@ -58351,16 +58318,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
-  _numMasksPerBone: 1
+  _numMasksPerBone: 2
   bonePoints:
-  - {fileID: 781614297}
-  - {fileID: 1339382033}
-  - {fileID: 1506114593}
   - {fileID: 774717215}
+  - {fileID: 1506114593}
+  - {fileID: 1339382033}
+  - {fileID: 781614297}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 0}
   canMove: 0
   canScale: 0
@@ -61818,9 +61782,6 @@ MonoBehaviour:
   - {fileID: 1205795504}
   - {fileID: 800527717}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 685447451}
   canMove: 0
   canScale: 0
@@ -65117,10 +65078,7 @@ MonoBehaviour:
   - {fileID: 697769902}
   - {fileID: 595256247}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
-  animator: {fileID: 0}
+  animator: {fileID: 749702330}
   canMove: 0
   canScale: 0
 --- !u!1 &2017879647
@@ -68410,9 +68368,6 @@ MonoBehaviour:
   - {fileID: 1175945176}
   - {fileID: 1905335141}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 581834336}
   canMove: 0
   canScale: 0
@@ -68999,9 +68954,6 @@ MonoBehaviour:
   - {fileID: 1451815339}
   - {fileID: 1227362834}
   spriteRenderer: {fileID: 0}
-  Mask:
-    obj: {fileID: 0}
-    maxPool: 5
   animator: {fileID: 984904844}
   canMove: 0
   canScale: 0
