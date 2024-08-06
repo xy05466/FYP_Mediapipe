@@ -57,6 +57,7 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void OnHandAnnotationActive(int actives)
     {
+
     }
 
     public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
