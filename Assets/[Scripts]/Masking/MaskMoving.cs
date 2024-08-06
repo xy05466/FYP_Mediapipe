@@ -15,7 +15,6 @@ public class MaskMoving : MonoBehaviour
 
     public List<Transform> bonePoints = new List<Transform>();
     public SpriteRenderer spriteRenderer;
-    public MaskingObjectPool Mask;
     public Animator animator;
     [HideInInspector]
     public bool canMove = false;
@@ -30,6 +29,7 @@ public class MaskMoving : MonoBehaviour
 
         transform.position = bonePoints[0].position;
         _startPosition = transform.position;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,20 +43,21 @@ public class MaskMoving : MonoBehaviour
         if (_masks.Count >= bonePoints.Count * _numMasksPerBone) return;
 
         int currentBoneIndex = (int)((bonePoints.Count - 1) * sliderValue);
+        gameObject.SetActive(true);
         transform.position = Vector3.Lerp(transform.position, bonePoints[currentBoneIndex].position, Time.deltaTime / bonePoints.Count);
         // NOTE: _prevBoneIndex should always be 1 less of currentBoneIndex
         var prevMaskPosition = _masks.Count <= 0 ? _startPosition : _masks[_masks.Count - 1].transform.position;
         if (_masks.Count <= 0 || Vector3.Distance(prevMaskPosition, transform.position) > _masks[_masks.Count - 1].transform.localScale.x)
         {
             float boneLength = Vector3.Distance(bonePoints[currentBoneIndex + 1].position, bonePoints[currentBoneIndex].position);
-            float maskDiameter = (boneLength / _numMasksPerBone) + 0.1f; // diameter = scale
+            float maskDiameter = (boneLength / _numMasksPerBone); // diameter = scale
             // TODO: This should be wrong (and is actually still wrong). Correct solution should be [currentBoneIndex + 1] - [currentBoneIndex]
-            Vector3 boneDirection = (bonePoints[currentBoneIndex].position - bonePoints[Mathf.Min(0, currentBoneIndex + 1)].position).normalized;
+            Vector3 boneDirection = (bonePoints[currentBoneIndex + 1].position - bonePoints[Mathf.Max(currentBoneIndex, 0)].position).normalized;
             
             GameObject mask = Instantiate(_maskPrefab);
             mask.transform.localScale = Vector3.one * maskDiameter;
             mask.transform.rotation = Quaternion.identity;
-            mask.transform.position = prevMaskPosition + boneDirection * maskDiameter;
+            mask.transform.position = (prevMaskPosition + boneDirection * maskDiameter);
             
             _masks.Add(mask);
         }
@@ -79,6 +80,7 @@ public class MaskMoving : MonoBehaviour
     public void PlayAnim()
     {
         spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
+        //gameObject.SetActive(false);
         if (animator != null)
         {
             animator.enabled = true;

@@ -158,35 +158,35 @@ public class PageLogic_Massage : PageLogic_Extension
                                 maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
                             }
 
-                            //foreach (MaskMoving subSpriteMask in subMaskMoving)
-                            //{
-                            //    if (subSpriteMask.canMove)
-                            //    {
-                            //        subSpriteMask.PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
-                            //    }
+                            foreach (MaskMoving subSpriteMask in subMaskMoving)
+                            {
+                                if (subSpriteMask.canMove)
+                                {
+                                    subSpriteMask.PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
+                                }
 
-                            //    float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
+                                float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
 
-                            //    if (distance < 0.2f)
-                            //    {
-                            //        subSpriteMask.canMove = true;
-                            //    }
+                                if (distance < 0.1f)
+                                {
+                                    subSpriteMask.canMove = true;
+                                }
 
-                            //    //// Check distance with other subMaskMoving objects
-                            //    //foreach (MaskMoving otSpriteMask in OTMaskMoving)
-                            //    //{
-                            //    //    float distance2 = Vector2.Distance(subSpriteMask.transform.position, otSpriteMask.transform.position);
+                                //    //// Check distance with other subMaskMoving objects
+                                //    //foreach (MaskMoving otSpriteMask in OTMaskMoving)
+                                //    //{
+                                //    //    float distance2 = Vector2.Distance(subSpriteMask.transform.position, otSpriteMask.transform.position);
 
-                            //    //    if (distance2 < 0.2f)
-                            //    //    {
-                            //    //        otSpriteMask.canMove = true;
-                            //    //        otSpriteMask.canScale = true;
-                            //    //        otSpriteMask.SubPercentageMovement();
-                            //    //    }
-                            //    //}
-                            //}
+                                //    //    if (distance2 < 0.2f)
+                                //    //    {
+                                //    //        otSpriteMask.canMove = true;
+                                //    //        otSpriteMask.canScale = true;
+                                //    //        otSpriteMask.SubPercentageMovement();
+                                //    //    }
+                                //    //}
+                                //}
+                            }
                         }
-
                     }
                 }
             }
