@@ -788,6 +788,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 95580201}
+  - {fileID: 1520020894}
   - {fileID: 294653375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2817,7 +2818,6 @@ RectTransform:
   - {fileID: 691127284}
   - {fileID: 1298655829}
   - {fileID: 1506680292}
-  - {fileID: 6917023745836578224}
   m_Father: {fileID: 32382875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95580200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
@@ -12255,7 +12255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95,
     type: 3}
-  screen: {fileID: 95580203}
+  screen: {fileID: 1520020896}
   graphRunner: {fileID: 444681271}
   textureFramePool: {fileID: 444681270}
   runningMode: 0
@@ -13287,8 +13287,6 @@ MonoBehaviour:
   pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
   leaveEmpty: ==============
   panel: {fileID: 837395666}
-  page_1: {fileID: 1737151782}
-  page_2: {fileID: 2135194756}
   bu_start: {fileID: 1503569485}
 --- !u!1 &478789950
 GameObject:
@@ -14052,12 +14050,13 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.01
+  maskMoving: []
+  subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6b0000006c0000006800000044000000
@@ -16689,13 +16688,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
   pageLogics:
-  - {fileID: 870878791}
   - {fileID: 473273937}
   - {fileID: 878462219}
   - {fileID: 786372592}
   - {fileID: 885432721}
   - {fileID: 878462219}
   - {fileID: 1010666741}
+  - {fileID: 870878791}
   splashScreen: {fileID: 1945387827}
   sceneAnimationStart: {fileID: 364995828}
   sceneAnimationEnd: {fileID: 294804856}
@@ -19541,15 +19540,12 @@ MonoBehaviour:
   annotationList_FacePoints:
     parent: {fileID: 843252786}
     tag: Facepoint
-    startFromIndex: 0
   annotationList_HandPoints_1:
     parent: {fileID: 1188537692}
     tag: Handpoint
-    startFromIndex: 0
   annotationList_HandPoints_2:
     parent: {fileID: 1188537692}
     tag: Handpoint
-    startFromIndex: 21
 --- !u!4 &683045301
 Transform:
   m_ObjectHideFlags: 0
@@ -23614,12 +23610,13 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.15
+  maskMoving: []
+  subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 2
     title: Cheekbone Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your hand across the cheekbone from your nose to the outer
       corner of your eyebrow
     massageSliders:
@@ -23630,8 +23627,6 @@ MonoBehaviour:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: massaging at the outer region of your forehead. following the guide's
       direction
     massageSliders:
@@ -23639,56 +23634,42 @@ MonoBehaviour:
   - stepName: Step 1 Part 2
     title: Forehead Rotation
     titleSub: with Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Massage your way into the inner region of your forehead
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 3 Part 1
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Instruction center align
     massageSliders:
     - points: 5001000097000000290100004c010000
   - stepName: Step 3 Part 2
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 37000000a80000000300000031000000
   - stepName: Step 3 Part 3
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 1d010000a8000000f800000017010000
   - stepName: Step 3 Part 4
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 720000008e000000320000006f000000
   - stepName: Step 4 Part 1
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your knuckle from your jaw to the nose
     massageSliders:
     - points: cb000000ce000000cf0000005d000000
   - stepName: Step 4 Part 2
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide across the cheekbone from your nose to the outer corner of
       your eyebrow
     massageSliders:
@@ -23696,24 +23677,18 @@ MonoBehaviour:
   - stepName: Step 5 Part 1 of 1
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: a7010000aa010000ab01000043010000
   - stepName: Step 5 Part 1 of 2
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: 8a00000096000000b000000094000000
   - stepName: Step 5 Part 1 of 3
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide from jaw upwards to side of nose
     massageSliders:
     - points: 6f0100007b0100009001000079010000
@@ -32603,12 +32578,13 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.15
+  maskMoving: []
+  subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: massaging at the outer region of your forehead. following the guide's
       direction
     massageSliders:
@@ -32616,16 +32592,12 @@ MonoBehaviour:
   - stepName: Step 1 Part 2
     title: Forehead Rotation
     titleSub: with Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Massage your way into the inner region of your forehead
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 2
     title: Cheekbone Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your hand across the cheekbone from your nose to the outer
       corner of your eyebrow
     massageSliders:
@@ -32633,48 +32605,36 @@ MonoBehaviour:
   - stepName: Step 3 Part 1
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Instruction center align
     massageSliders:
     - points: 5001000097000000290100004c010000
   - stepName: Step 3 Part 2
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 37000000a80000000300000031000000
   - stepName: Step 3 Part 3
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 1d010000a8000000f800000017010000
   - stepName: Step 3 Part 4
     title: Cheekbone & Smileline Lift
     titleSub: with L-Shaped Hand
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: with L-Shaped Hand & Knuckle
     massageSliders:
     - points: 720000008e000000320000006f000000
   - stepName: Step 4 Part 1
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your knuckle from your jaw to the nose
     massageSliders:
     - points: cb000000ce000000cf0000005d000000
   - stepName: Step 4 Part 2
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide across the cheekbone from your nose to the outer corner of
       your eyebrow
     massageSliders:
@@ -32682,96 +32642,72 @@ MonoBehaviour:
   - stepName: Step 5 Part 1 of 1
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: a7010000aa010000ab01000043010000
   - stepName: Step 5 Part 1 of 2
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your palm upwards from your jaw to the nose
     massageSliders:
     - points: 8a00000096000000b000000094000000
   - stepName: Step 5 Part 1 of 3
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide from jaw upwards to side of nose
     massageSliders:
     - points: 6f0100007b0100009001000079010000
   - stepName: Step 5 Part 1 of 4
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide from jaw upwards to side of nose
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 1 of 1
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 1 of 2
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 2 of 1
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 6 Part 2 of 2
     title: Smileline & Cheekbone Lift
     titleSub: with Index Finger Knuckle
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your knuckle from your mouth to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 1
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your fist across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 2
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your fist across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 3
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your L-shaped hand across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
   - stepName: Step 7 Part 4
     title: Cheekbone Lift
     titleSub: with Lshaped Hand & Knuckles
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: Glide your L-shaped hand across your cheekbone from nose to eyebrow
     massageSliders:
     - points: 6c000000430000006800000042000000
@@ -38327,6 +38263,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514520285}
   m_CullTransparentMesh: 1
+--- !u!1 &1520020893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520020894}
+  - component: {fileID: 1520020898}
+  - component: {fileID: 1520020897}
+  - component: {fileID: 1520020896}
+  - component: {fileID: 1520020895}
+  m_Layer: 5
+  m_Name: Annotable Screen Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1520020894
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520020893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -99.99997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6917023745836578224}
+  m_Father: {fileID: 32382875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1520020895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520020893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08567ddcd5175eeebafe07a630413ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fitMode: 0
+--- !u!114 &1520020896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520020893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827c4431af677e057aa6f14170d0785c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screen: {fileID: 1520020897}
+--- !u!114 &1520020897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520020893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1520020898
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520020893}
+  m_CullTransparentMesh: 1
 --- !u!1 &1524026511
 GameObject:
   m_ObjectHideFlags: 0
@@ -42752,100 +42789,79 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.15
+  maskMoving: []
+  subMaskMoving: []
+  OTMaskMoving: []
   list_steps:
   - stepName: Step 1
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6b0000006c0000006800000044000000
   - stepName: Step 2
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 3
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 50010000510100004d0100002a010000
   - stepName: Step 4
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 5001000097000000290100004c010000
   - stepName: Step 5
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 37000000a80000000300000031000000
   - stepName: Step 6
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 1d010000a8000000f800000017010000
   - stepName: Step 7
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 720000008e000000320000006f000000
   - stepName: Step 8
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: cb000000ce000000cf0000005d000000
   - stepName: Step 9
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 57010000730100001801000054010000
   - stepName: Step 10
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: a7010000aa010000ab01000043010000
   - stepName: Step 11
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 8a00000096000000b000000094000000
   - stepName: Step 12
     title: 
     titleSub: 
-    useDefaultHandpoints: 1
-    handpointsAllowed: 
     description: 
     massageSliders:
     - points: 6f0100007b0100009001000079010000
@@ -53080,12 +53096,12 @@ Transform:
   m_GameObject: {fileID: 5173230847370964051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 99.99997}
   m_LocalScale: {x: 11.545557, y: 11.545556, z: 11.545556}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1900048439}
-  m_Father: {fileID: 95580201}
+  m_Father: {fileID: 1520020894}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6917023745836578225
 MonoBehaviour:
