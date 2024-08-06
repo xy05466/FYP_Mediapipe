@@ -69,7 +69,7 @@ public class PageLogic_Massage : PageLogic_Extension
         GameObject[] spriteMasks = GameObject.FindGameObjectsWithTag("SpriteMask");
         GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
         GameObject[] OTSpriteMasks = GameObject.FindGameObjectsWithTag("OTSpriteMask");
-
+        Debug.Log("total :"+spriteMasks.Length);
         foreach (GameObject obj in spriteMasks)
         {
             MaskMoving mask = obj.GetComponent<MaskMoving>();
