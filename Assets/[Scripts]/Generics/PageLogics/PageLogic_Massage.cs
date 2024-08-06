@@ -153,7 +153,10 @@ public class PageLogic_Massage : PageLogic_Extension
 
                         for (int maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
                         {
-                            maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
+                            if (massageSliderObjects[j].GetValue() > 0f)
+                            {
+                                maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
+                            }
 
                             //foreach (MaskMoving subSpriteMask in subMaskMoving)
                             //{
