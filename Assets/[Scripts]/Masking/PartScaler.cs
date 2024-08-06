@@ -7,22 +7,21 @@ public class PartScaler : MonoBehaviour
     private Vector3 ogScale = Vector3.zero;
     private Vector3 newScale = Vector3.zero;
     public float duration = 100f;
-    public Animator animator, budAnimator;
-    bool coroutineEnded = false;
+    public Animator animator;
+    [SerializeField] MaskMoving maskMoving;
     // Start is called before the first frame update
     void Start()
     {
         ogScale = transform.localScale;
-        budAnimator.enabled = false;
+        animator.enabled = false;
         transform.localScale = newScale;
     }
 
     void Update()
     {
-        if (animator.isActiveAndEnabled)
+        if (maskMoving != null && maskMoving.canScale)
         {
             StartCoroutine(ScaleToOriginal());
-            budAnimator.enabled = true;
         }
     }
 
@@ -38,5 +37,7 @@ public class PartScaler : MonoBehaviour
             yield return null;
         }
         transform.localScale = ogScale;
+        animator.enabled = true;
+        maskMoving.canScale = false;
     }
 }

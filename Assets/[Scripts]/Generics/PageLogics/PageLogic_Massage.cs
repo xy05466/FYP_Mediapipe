@@ -25,7 +25,6 @@ public class PageLogic_Massage : PageLogic_Extension
     public float massageFirstDistance = 0.05f;
     public List<MaskMoving> maskMoving = new List<MaskMoving>();
     public List<MaskMoving> subMaskMoving = new List<MaskMoving>();
-    public List<MaskMoving> OTMaskMoving = new List<MaskMoving>();
 
     
     [Header("Steps")]
@@ -68,7 +67,6 @@ public class PageLogic_Massage : PageLogic_Extension
 
         GameObject[] spriteMasks = GameObject.FindGameObjectsWithTag("SpriteMask");
         GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
-        GameObject[] OTSpriteMasks = GameObject.FindGameObjectsWithTag("OTSpriteMask");
 
         foreach (GameObject obj in spriteMasks)
         {
@@ -88,14 +86,14 @@ public class PageLogic_Massage : PageLogic_Extension
             }
         }
 
-        foreach (GameObject obj in OTSpriteMasks)
-        {
-            MaskMoving mask = obj.GetComponent<MaskMoving>();
-            if (mask != null)
-            {
-                OTMaskMoving.Add(mask);
-            }
-        }
+        //foreach (GameObject obj in OTSpriteMasks)
+        //{
+        //    MaskMoving mask = obj.GetComponent<MaskMoving>();
+        //    if (mask != null)
+        //    {
+        //        OTMaskMoving.Add(mask);
+        //    }
+        //}
 
         //// Init all slider
         //foreach (var massageSlider in massageSliderObjects2)
