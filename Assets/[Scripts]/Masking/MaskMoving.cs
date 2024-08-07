@@ -12,6 +12,7 @@ public class MaskMoving : MonoBehaviour
     [SerializeField] private int _numMasksPerBone = 1; // the higher the value, the smaller the masks, but more masks are spawned
     private List<GameObject> _masks = new List<GameObject>();
 
+    private Vector3 currPos;
     public List<Transform> bonePoints = new List<Transform>();
     public SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -36,7 +37,6 @@ public class MaskMoving : MonoBehaviour
     {
 
     }
-    Vector3 currPos;
     public void PercentageMovement(float sliderValue)
     {
         if (_masks.Count >= bonePoints.Count * _numMasksPerBone) return;

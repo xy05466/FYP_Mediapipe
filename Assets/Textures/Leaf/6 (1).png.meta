@@ -139,86 +139,32 @@ TextureImporter:
     physicsShape: []
     bones:
     - name: bone_1
-      guid: 380fd09f668355a47808e99b16fc6642
-      position: {x: 320.2394, y: 446.62985, z: 0}
-      rotation: {x: 0, y: 0, z: 0.8054459, w: 0.5926693}
-      length: 20.048065
+      guid: d3a7d18ca5985b740a8cc1b98e7fb6a6
+      position: {x: 319.84756, y: 446.517, z: 0}
+      rotation: {x: 0, y: 0, z: 0.86871195, w: 0.49531767}
+      length: 30.040342
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: bone_2
-      guid: 0c56db969dd5fa3419bec52899e0ba12
-      position: {x: 20.048063, y: 0.000012000433, z: 0}
-      rotation: {x: 0, y: 0, z: -0.103646114, w: 0.99461424}
-      length: 23.544909
+      guid: c8c35b94a0a070e48b800a4256d096e1
+      position: {x: 30.040325, y: -0.000015617663, z: 0}
+      rotation: {x: 0, y: 0, z: -0.052355226, w: 0.99862856}
+      length: 39.898087
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255615
     - name: bone_3
-      guid: f295b17fd540a06418bbac49af2e3164
-      position: {x: 23.544922, y: -0.000006472166, z: 0}
-      rotation: {x: 0, y: 0, z: 0.13855547, w: 0.9903547}
-      length: 19.059761
+      guid: 81cd1566697da6945b85494e16b5a309
+      position: {x: 39.898113, y: 0.0000021499363, z: 0}
+      rotation: {x: 0, y: 0, z: -0.053913087, w: 0.9985457}
+      length: 3.7538636
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255360
-    - name: bone_4
-      guid: 6585eff19f8a9dc45aa6d19663c811ce
-      position: {x: 19.05975, y: -0.0000014868492, z: 0}
-      rotation: {x: 0, y: 0, z: 0.43615767, w: 0.8998703}
-      length: 18.559242
-      parentId: 2
-      color:
-        serializedVersion: 2
-        rgba: 4294967040
-    - name: bone_5
-      guid: c33fdb04bc624a647b2bec9cbe8c1ac5
-      position: {x: 18.559221, y: 0.000015181284, z: 0}
-      rotation: {x: 0, y: -0, z: 0.70919067, w: 0.70501673}
-      length: 16.499825
-      parentId: 3
-      color:
-        serializedVersion: 2
-        rgba: 4294901760
-    - name: bone_6
-      guid: c9ea74857017956418b09497430c495f
-      position: {x: 16.499823, y: 0.0000019343533, z: 0}
-      rotation: {x: 0, y: 0, z: 0.16606563, w: 0.98611474}
-      length: 15.826814
-      parentId: 4
-      color:
-        serializedVersion: 2
-        rgba: 4294902015
-    - name: bone_7
-      guid: 63d7e0f5bb31acb44bebc2892b272d65
-      position: {x: 15.826829, y: 0.000017918552, z: 0}
-      rotation: {x: 0, y: 0, z: 0.3435275, w: 0.93914264}
-      length: 31.703758
-      parentId: 5
-      color:
-        serializedVersion: 2
-        rgba: 4278223103
-    - name: bone_8
-      guid: 6e4560b52c043b04da1767f522c44831
-      position: {x: 31.703777, y: -0.00003458764, z: 0}
-      rotation: {x: 0, y: 0, z: 0.084862836, w: 0.99639267}
-      length: 17.288021
-      parentId: 6
-      color:
-        serializedVersion: 2
-        rgba: 4278255488
-    - name: bone_9
-      guid: cae16eb9392f1de4aaf9c35c29a245cc
-      position: {x: 17.288025, y: 0.000026915586, z: 0}
-      rotation: {x: 0, y: 0, z: -0.0000010696675, w: 1}
-      length: 0.91056
-      parentId: 7
-      color:
-        serializedVersion: 2
-        rgba: 4286643968
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 1537655665
     vertices:
@@ -247,11 +193,27 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+    - weight[0]: 0.8137609
+      weight[1]: 0.18623912
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 0.7730812
+      weight[1]: 0.22691883
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 2
+      boneIndex[1]: 1
+      boneIndex[2]: 0
+      boneIndex[3]: 0
     - weight[0]: 1
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
-      boneIndex[0]: 0
+      boneIndex[0]: 2
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
@@ -259,27 +221,11 @@ TextureImporter:
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
-      boneIndex[0]: 0
+      boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
+    - weight[0]: 0.99999994
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
