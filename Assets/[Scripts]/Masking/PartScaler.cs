@@ -4,39 +4,21 @@ using UnityEngine;
 
 public class PartScaler : MonoBehaviour
 {
-    private Vector3 ogScale = Vector3.zero;
-    private Vector3 newScale = Vector3.zero;
     public float duration = 100f;
-    public Animator animator, budAnimator;
-    bool coroutineEnded = false;
+    public Animator animator;
+    [SerializeField] MaskMoving maskMoving;
     // Start is called before the first frame update
     void Start()
     {
-        ogScale = transform.localScale;
-        budAnimator.enabled = false;
-        transform.localScale = newScale;
+        animator.enabled = false;
     }
 
     void Update()
     {
-        if (animator.isActiveAndEnabled)
+        if (maskMoving != null && maskMoving.canScale)
         {
-            StartCoroutine(ScaleToOriginal());
-            budAnimator.enabled = true;
+            animator.enabled = true;
+            maskMoving.canScale = false;
         }
-    }
-
-    IEnumerator ScaleToOriginal()
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            newScale = Vector3.Lerp(newScale, ogScale, elapsedTime / duration);
-            transform.localScale = newScale;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        transform.localScale = ogScale;
     }
 }
