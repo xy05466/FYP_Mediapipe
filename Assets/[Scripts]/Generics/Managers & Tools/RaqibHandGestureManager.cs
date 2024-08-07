@@ -21,11 +21,11 @@ public class RaqibHandGestureManager : MonoBehaviour
     private const string NO_GESTURE_STRING = "NA";
     private void Start()
     {
-        landmarkManager.SubscribeHandPointsActive(OnHandPointsActive);
+        landmarkManager.SubscribePointsActive(OnHandPointsActive, OnFacePointsActive);
     }
-    void OnHandPointsActive(int numHandsActive)
+    void OnHandPointsActive(bool active)
     {
-        if(numHandsActive<=0)
+        if(!active)
             currGesture = "NA";
     }
     void OnFacePointsActive(bool active)
@@ -34,10 +34,8 @@ public class RaqibHandGestureManager : MonoBehaviour
     }
     private void Update()
     {
-        if (landmarkManager.GetHandPoints(0) == null || landmarkManager.GetHandPoints(0).Count <= 0) return;
-        ReadGesture(landmarkManager.GetHandPoints(0).ToArray());
-        //else if (landmarkManager.GetHandPoints(1) == null || landmarkManager.GetHandPoints(1).Count <= 0) return;
-        //ReadGesture(landmarkManager.GetHandPoints(1).ToArray());
+        if (landmarkManager.GetHandPoints() == null || landmarkManager.GetHandPoints().Count <= 0) return;
+        ReadGesture(landmarkManager.GetHandPoints().ToArray());
     }
 
     private float CheckDistance(GameObject a, GameObject b)

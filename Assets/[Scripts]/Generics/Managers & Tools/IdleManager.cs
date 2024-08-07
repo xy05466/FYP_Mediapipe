@@ -18,7 +18,7 @@ public class IdleManager : MonoBehaviour
 
     private void Start()
     {
-        landmarkManager.SubscribeFacePointsActive(OnFaceActive);
+        //landmarkManager.SubscribeFacePointsActive(OnFaceActive);
     }
     private void Update()
     {
