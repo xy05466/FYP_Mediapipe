@@ -91,6 +91,7 @@ public class MaskMoving : MonoBehaviour
     {
         spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
         //gameObject.SetActive(false);
+        canScale = true;
         if (animator != null)
         {
             animator.enabled = true;
