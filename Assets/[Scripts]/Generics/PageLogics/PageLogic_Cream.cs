@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class PageLogic_Cream : PageLogic_Extension
 {
-    [SerializeField] private List<GameObject> Wallpapers = new List<GameObject>();
+    //[SerializeField] private List<GameObject> Wallpapers = new List<GameObject>();
+    public List<FlowerAccupoint> allPetals = new List<FlowerAccupoint>();
+
     [SerializeField] private GameObject imageSegOBJ;
     private ImageSeg imageSeg;
-    public CreamSceneManager creamManager;
+    public FaceLandmarkObjectPlacerManager objectPlacer;
     int petalCount = 0;
     int petalDone = 0;
     bool done = false;
+
     public override void Initialize()
     {
-        creamManager.Init();
-        petalCount = creamManager.allPetals.Count;
-        foreach (FlowerAccupoint fc in creamManager.allPetals) 
+        objectPlacer.Init();
+        for (int i = 0; i < objectPlacer.GetFacePointOjects().Count; i++)
+        {
+            allPetals.Add(objectPlacer.GetFacePointObject(i).GetComponent<FlowerAccupoint>());
+            allPetals[i].pointId = objectPlacer.GetFacePointObject(i).GetIndex();
+        }
+        petalCount = allPetals.Count;
+        foreach (FlowerAccupoint fc in allPetals) 
         {
             fc.Subscribe(OnPetalDone);
         }
@@ -31,7 +39,7 @@ public class PageLogic_Cream : PageLogic_Extension
     {
         done = false;
         petalDone = 0;
-        foreach (FlowerAccupoint fc in creamManager.allPetals)
+        foreach (FlowerAccupoint fc in allPetals)
             fc.ResetPetal();
 
             if (imageSegOBJ)
@@ -63,7 +71,7 @@ public class PageLogic_Cream : PageLogic_Extension
     public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
         if (!gameObject.activeInHierarchy) return;
-        foreach (var petal in creamManager.allPetals)
+        foreach (var petal in allPetals)
         {
             if (petal.pointId == facePointIndex)
             {
@@ -76,7 +84,7 @@ public class PageLogic_Cream : PageLogic_Extension
     {
         if (!gameObject.activeInHierarchy) return;
         if (facepointsObj==null || facepointsObj.Count<=0) return;
-        foreach (var petal in creamManager.allPetals)
+        foreach (var petal in allPetals)
         {
             petal.transform.position = facepointsObj[petal.pointId].transform.position;
         }

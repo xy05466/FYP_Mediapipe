@@ -82,13 +82,12 @@ public class PageLogic_Accupoints : PageLogic_Extension
         {
             if (facePointIndex == stepIndex.GetLandmarkIndex())
             {
-                //test.gameObject.transform.position = facePointObject.transform.position;
+                // loop all acupoints
                 for (int i = 0; i < list_accupoints.Count; i++)
                 {
                     AccupointNew accupointNew = list_accupoints[i];
                     if (accupointNew.GetAccID() == facePointIndex)
                         accupointNew.Colliding();
-                    
                 }
             }
         }

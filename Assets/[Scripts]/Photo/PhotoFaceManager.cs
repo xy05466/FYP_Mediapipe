@@ -15,7 +15,7 @@ using System.Security.Cryptography.X509Certificates;
 public class PhotoFaceManager : MonoBehaviour
 {
     [SerializeField] TMP_Text textbox;
-    [SerializeField] FacepointManager facepointManager;
+    //[SerializeField] FacepointManager facepointManager;
     [SerializeField] Button capture;
     [SerializeField] float maxDistX = 3.0f;
     [SerializeField] float maxDistY= 3.0f;

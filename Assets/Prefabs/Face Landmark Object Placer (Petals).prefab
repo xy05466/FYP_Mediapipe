@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4182288867981738683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7230116696184881571}
+  m_Layer: 0
+  m_Name: Petals Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7230116696184881571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4182288867981738683}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.099999994}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4325746460590818140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8127057839037440668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4325746460590818140}
+  - component: {fileID: 827035529561787935}
+  m_Layer: 0
+  m_Name: Face Landmark Object Placer (Petals)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4325746460590818140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127057839037440668}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7230116696184881571}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827035529561787935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127057839037440668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c4177de8f96e44b88db81b12e00bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 0.6
+  prefebs:
+  - {fileID: 819144451421113746, guid: 140e3da83c67abc4c86078cc3a835811, type: 3}
+  - {fileID: 819144451421113746, guid: a12a0b4ad3e978f41bfffba13e6e0944, type: 3}
+  - {fileID: 819144451421113746, guid: 44cb1313ba139a74c8e3cb6f3b500b72, type: 3}
+  - {fileID: 819144451421113746, guid: 63d8b34691497544d8217316a80fa1b0, type: 3}
+  facePointObjects: []
+  objectsParent: {fileID: 4182288867981738683}
+  listFaceLandmarks: 3f00000044000000220000006700000068000000690000004300000045000000420000006d0000006c0000006b0000000a0000009700000009000000520100005101000050010000290100002b010000280100004c0100004d0100004e0100001c0100002a010000250100006f00000075000000760000007700000078000000790000002f0000006400000065000000320000007b000000bb000000cd000000240000008e000000540100005a0100005b0100005c0100005d0100005e01000015010000490100004a01000018010000600100009b010000a90100000a01000073010000d400000039000000ca0000002b000000cc0000006a000000c2000000b6000000c90000005300000012000000c800000039010000a5010000960100004f010000a801000011010000a60100001f010000b0010000

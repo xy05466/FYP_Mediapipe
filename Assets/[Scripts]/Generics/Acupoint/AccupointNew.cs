@@ -54,8 +54,6 @@ public class AccupointNew : MonoBehaviour
             if(sliderSprite)
                 sliderSprite.Fill(currentTime / timer);
         }
-
-
     }
     public void AccupointReset()
     {
