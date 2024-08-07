@@ -22,24 +22,18 @@ public abstract class PageLogic : MonoBehaviour
     {
         loadedFacepoints = loaded;
     }
-    // Will run at the start of scene
     public abstract void Initialize();
-    // Execute when page has started
     public abstract void StartPage();
-    // Execute when page is running
-    public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj);
+    public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj, List<GameObject> facepointsObj);
 
-    // Check if page is done, move to next page is returns true
     public abstract bool IsPageDone();
-    // Execute before going to next page
     public abstract void EndPage();
-    // Execute when page reloaded
     public abstract void ResetPage();
-    public abstract void OnHandPointCollideFacePoint(int hand,int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject);
-    //protected bool CollideWithFacePoint(int pointIndex, int pointIndexCompare)
-    //{
-    //    return (pointIndex == pointIndexCompare);
-    //}
+    public abstract void OnHandPointCollideFacePoint(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject);
+    protected bool CollideWithFacePoint(int pointIndex, int pointIndexCompare)
+    {
+        return (pointIndex == pointIndexCompare);
+    }
     public void ChangeState(PageState pageState)
     {
         this.pageState = pageState;

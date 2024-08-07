@@ -13,7 +13,7 @@ using UnityEditor;
 
 public class TutorialSystem : MonoBehaviour
 {
-    [SerializeField] private RaqibHandGestureManager handGestureManager;
+    [SerializeField] private HandGestureManager handGestureManager;
     [SerializeField] private GestureSO gesture;
     [SerializeField] private Image img_loading;
     [SerializeField] private float loadingTime = 2;

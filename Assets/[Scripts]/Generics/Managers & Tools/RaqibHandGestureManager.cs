@@ -13,34 +13,43 @@ public class RaqibHandGestureManager : MonoBehaviour
     private string prevGesture;
     [SerializeField] private string currGesture;
 
-    [SerializeField] private List<GestureSO> gestures;
+    public List<GestureSO> gestures;
 
-    private Action<string> OnDetecting;
-    private Action<string> OnFirstDetected;
+    public Action<string> OnDetecting;
+    public Action<string> OnFirstDetected;
 
     private const string NO_GESTURE_STRING = "NA";
     private void Start()
     {
-        landmarkManager.SubscribeHandPointsActive(OnHandPointsActive);
+        landmarkManager.SubscribePointsActive(OnHandPointsActive, OnFacePointsActive);
     }
-
-    private void Update()
+    void OnHandPointsActive(bool active)
     {
-        if (landmarkManager.GetHandPoints(0) == null || landmarkManager.GetHandPoints(0).Count <= 0 || !landmarkManager.GetHandPoints(0)[0].gameObject.activeInHierarchy)
-        {
-            currGesture = NO_GESTURE_STRING;
-            return;
-        }
-        ReadGesture(landmarkManager.GetHandPoints(0).ToArray());
-    }
-
-    private void OnHandPointsActive(int numHandsActive)
-    {
-        // if not hands active
-        if (numHandsActive <= 0)
+        if(!active)
             currGesture = "NA";
     }
-    private string ReadGesture(HandPointAnnotationObject[] landmarkList)
+    void OnFacePointsActive(bool active)
+    {
+
+    }
+    private void Update()
+    {
+        if (landmarkManager.GetHandPoints() == null || landmarkManager.GetHandPoints().Count <= 0) return;
+        ReadGesture(landmarkManager.GetHandPoints().ToArray());
+    }
+
+    private float CheckDistance(GameObject a, GameObject b)
+    {
+
+        float distX, distY, distZ;
+        distX = a.transform.position.x - b.transform.position.x;
+        distY = a.transform.position.y - b.transform.position.y;
+        //distZ = a.transform.position.z - b.transform.position.z;
+        distZ = 0;
+        var newVec = new Vector3(distX, distY, distZ);
+        return Vector3.Magnitude(newVec);
+    }
+    public string ReadGesture(HandPointAnnotationObject[] landmarkList)
     {
         // define finger tips
         GameObject handBase = landmarkList[0].gameObject;
@@ -66,7 +75,7 @@ public class RaqibHandGestureManager : MonoBehaviour
         //need a list to keep track of all teh gestures
         for (int i = 0; i < gestures.Count; i++)
         {
-            float gesturePercentage = CheckGesturePercentage(gestures[i], fingerDistances);
+            float gesturePercentage = CheckGesturePercentageNew(gestures[i], fingerDistances);
             //Debug.Log(gestures[i].gestureName + " " + gesturePercentage);
 
             if (gesturePercentage > CurrHighestPercentage)
@@ -101,21 +110,7 @@ public class RaqibHandGestureManager : MonoBehaviour
 
         return currGesture;
     }
-    // Check distance between point a and n,
-    // to check the distance between hand points
-    private float CheckDistance(GameObject a, GameObject b)
-    {
-
-        float distX, distY, distZ;
-        distX = a.transform.position.x - b.transform.position.x;
-        distY = a.transform.position.y - b.transform.position.y;
-        distZ = 0;
-        var newVec = new Vector3(distX, distY, distZ);
-        return Vector3.Magnitude(newVec);
-    }
-    // Read which gesture is detecting
-
-    private float CheckGesturePercentage(GestureSO gesture, List<float> fingerDistances)
+    private float CheckGesturePercentageNew(GestureSO gesture, List<float> fingerDistances)
     {
         float currGesturePercentage = 0;
 
@@ -130,21 +125,25 @@ public class RaqibHandGestureManager : MonoBehaviour
         }
         return currGesturePercentage;
     }
-   
-    // Get current gesture
+    //handle inputs here
+    //maybe can use event system
+
     public string GetCurrentGesture() => currGesture;
 
-    // If gesture is detecting
     public bool IsGestureDetected() => currGesture != NO_GESTURE_STRING || NO_GESTURE_STRING != "";
 
     // SUBSCRIBE EVENTS
-    // EVENT : First Detected
-    public void SubscribeFirstDetected(Action<string> action)=> OnFirstDetected += action;
-    public void UnsubscribeFirstDetected(Action<string> action)=> OnFirstDetected -= action;
+    public void SubscribeFirstDetected(Action<string> action)
+    {
+        OnFirstDetected += action;
+    }
+    public void SubscribeDetecting(Action<string> action)
+    {
+        OnDetecting += action;
+    }
 
-    // EVENT : Detecting
-    public void SubscribeDetecting(Action<string> action) => OnDetecting += action;
-    public void UnsubscribeDetecting(Action<string> action) => OnDetecting -= action;
-
-    internal void NoGesture() => currGesture = NO_GESTURE_STRING;
+    internal void NoGesture()
+    {
+        currGesture = NO_GESTURE_STRING;
+    }
 }
