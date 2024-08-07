@@ -1154,7 +1154,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44182370}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &44619297
 GameObject:
@@ -1277,8 +1276,6 @@ SpriteMask:
   m_SpriteSortPoint: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &46086827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,7 +1763,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51261119}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &53955451
 GameObject:
@@ -1920,8 +1916,6 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &57334621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,7 +3355,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95580200}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &96096685
 GameObject:
@@ -3753,8 +3746,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &103282120
 GameObject:
   m_ObjectHideFlags: 0
@@ -9063,7 +9054,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7675c915e745d2344ba7f5288d52815c, type: 3}
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &269891017
 GameObject:
@@ -9227,8 +9217,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &274512905
 GameObject:
   m_ObjectHideFlags: 0
@@ -13454,7 +13442,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396434533}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &397209810
 GameObject:
@@ -13569,8 +13556,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &408853787
 GameObject:
   m_ObjectHideFlags: 0
@@ -14401,7 +14386,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427303668}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &430512414
 GameObject:
@@ -14515,8 +14499,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &432437724
 GameObject:
   m_ObjectHideFlags: 0
@@ -16452,14 +16434,11 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.01
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
   maskMoving: []
   subMaskMoving: []
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
   list_steps:
   - stepName: Step 1
     massageSliders:
@@ -18791,7 +18770,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600223168}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &601515205
 GameObject:
@@ -18939,8 +18917,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &608305186
 GameObject:
   m_ObjectHideFlags: 0
@@ -21735,7 +21711,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1479501823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &683474821
 GameObject:
@@ -22056,8 +22031,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &691127283
 GameObject:
   m_ObjectHideFlags: 0
@@ -24099,7 +24072,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740471585}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &747339832
 GameObject:
@@ -24344,8 +24316,6 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &754594895
 GameObject:
   m_ObjectHideFlags: 0
@@ -24880,7 +24850,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761464943}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &763653332
 GameObject:
@@ -24990,8 +24959,6 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &768949070
 GameObject:
   m_ObjectHideFlags: 0
@@ -25292,7 +25259,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772986190}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &774717214
 GameObject:
@@ -25474,8 +25440,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &784559367
 GameObject:
   m_ObjectHideFlags: 0
@@ -26984,7 +26948,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825424241}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &828513310
 GameObject:
@@ -27106,8 +27069,6 @@ SpriteMask:
   m_SpriteSortPoint: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &829981046
 GameObject:
   m_ObjectHideFlags: 0
@@ -27806,7 +27767,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867231558}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &870878788
 GameObject:
@@ -28025,8 +27985,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &876494587
 GameObject:
   m_ObjectHideFlags: 0
@@ -29420,7 +29378,6 @@ MonoBehaviour:
     type: 3}
   _lineWidth: 1
   _keypointRadius: 15
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &918437638
 GameObject:
@@ -29554,8 +29511,6 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &922373350
 GameObject:
   m_ObjectHideFlags: 0
@@ -29765,7 +29720,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925475572}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &926919234
 GameObject:
@@ -29938,8 +29892,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &929310019
 GameObject:
   m_ObjectHideFlags: 0
@@ -30342,7 +30294,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946289134}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &949045210
 GameObject:
@@ -30457,8 +30408,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &950911605
 GameObject:
   m_ObjectHideFlags: 0
@@ -30689,7 +30638,6 @@ MonoBehaviour:
   leaveEmpty: ==============
   panel: {fileID: 1647961390}
   bu_start: {fileID: 695846999}
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &960579179
 GameObject:
@@ -30804,8 +30752,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &964503700
 GameObject:
   m_ObjectHideFlags: 0
@@ -31042,7 +30988,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &977152667
 GameObject:
@@ -31164,8 +31109,6 @@ SpriteMask:
   m_SpriteSortPoint: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &977880159
 GameObject:
   m_ObjectHideFlags: 0
@@ -31506,7 +31449,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981264322}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &982424441
 GameObject:
@@ -31844,8 +31786,6 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &987832326
 GameObject:
   m_ObjectHideFlags: 0
@@ -33233,7 +33173,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023373899}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1030118954
 GameObject:
@@ -33347,8 +33286,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1036480177
 GameObject:
   m_ObjectHideFlags: 0
@@ -34641,7 +34578,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 135324052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!114 &1129048676
 MonoBehaviour:
@@ -34694,8 +34630,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1136165897
 GameObject:
   m_ObjectHideFlags: 0
@@ -35672,7 +35606,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158076087}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1163286834
 GameObject:
@@ -35840,8 +35773,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1165426011
 GameObject:
   m_ObjectHideFlags: 0
@@ -38329,7 +38260,6 @@ MonoBehaviour:
   screen: {fileID: 95580203}
   runningMode: 0
   _faceLandmarkerResultAnnotationController: {fileID: 704286819}
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1251378909
 GameObject:
@@ -38658,8 +38588,6 @@ Animator:
   m_WriteDefaultValuesOnDisable: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1261161680
 GameObject:
   m_ObjectHideFlags: 0
@@ -39076,7 +39004,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288818870}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1292552396
 GameObject:
@@ -39285,8 +39212,6 @@ MonoBehaviour:
     - points: 6c000000430000006800000042000000
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1294513201
 GameObject:
   m_ObjectHideFlags: 0
@@ -39421,7 +39346,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294513201}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1295782708
 GameObject:
@@ -39537,8 +39461,6 @@ MonoBehaviour:
   m_AutoRebind: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1001 &1296925799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42511,7 +42433,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390007490}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1391219929
 GameObject:
@@ -42547,8 +42468,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1392297656
 GameObject:
   m_ObjectHideFlags: 0
@@ -43938,7 +43857,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443529869}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1447351365
 GameObject:
@@ -44022,8 +43940,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1449884112
 GameObject:
   m_ObjectHideFlags: 0
@@ -44408,7 +44324,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460691365}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1462001704
 GameObject:
@@ -44524,8 +44439,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1462634030
 GameObject:
   m_ObjectHideFlags: 0
@@ -45088,7 +45001,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488529914}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!114 &1491374923
 MonoBehaviour:
@@ -45169,8 +45081,6 @@ MonoBehaviour:
   _faceLandmarkerResultAnnotationController: {fileID: 704286819}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1493329187
 GameObject:
   m_ObjectHideFlags: 0
@@ -46006,7 +45916,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514520285}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1517084818
 GameObject:
@@ -46120,8 +46029,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1519389203
 GameObject:
   m_ObjectHideFlags: 0
@@ -51011,14 +50918,11 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.15
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
   maskMoving: []
   subMaskMoving: []
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
   list_steps:
   - stepName: Step 1
     massageSliders:
@@ -51972,7 +51876,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752248499}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1752290194
 GameObject:
@@ -52086,8 +51989,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1754149846
 GameObject:
   m_ObjectHideFlags: 0
@@ -54769,7 +54670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4bdeb417682824085ea158d8170b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &1916925109
 GameObject:
@@ -55069,9 +54969,6 @@ RectTransform:
 =======
   text: Both Sides x
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
-  text: Both Sides x
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &1933755790
 GameObject:
   m_ObjectHideFlags: 0
@@ -57625,7 +57522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017028000}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &2017457814
 GameObject:
@@ -57741,8 +57637,6 @@ MonoBehaviour:
   canScale: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &2017879647
 GameObject:
   m_ObjectHideFlags: 0
@@ -60241,7 +60135,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
 --- !u!1 &2119385932
 GameObject:
@@ -60359,8 +60252,6 @@ SpriteMask:
   m_SpriteSortPoint: 0
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &2125730253
 GameObject:
   m_ObjectHideFlags: 0
@@ -60830,7 +60721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4c71d3d235bd6458b257827b7e10f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Scenes/Test scenes/Forstupid.unity
   _maskPrefab: {fileID: 1925594321921293115, guid: 86e4536d8f2990d44a7690537b689630,
     type: 3}
@@ -61009,8 +60899,6 @@ MeshFilter:
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 =======
 >>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg):Assets/Scenes/Main Scenes/Deprecated/Forstupid.unity
-=======
->>>>>>> parent of 05ed877 (Merge remote-tracking branch 'origin/Raqib_CleanUp' into Bryant_ImageSeg)
 --- !u!1 &2146378907
 GameObject:
   m_ObjectHideFlags: 0
