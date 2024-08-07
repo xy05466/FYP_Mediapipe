@@ -150,43 +150,7 @@ public class PageLogic_Massage : PageLogic_Extension
                     for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
                     {
                         massageSliderObjects[j].UpdateSlider(handpointsObj_1[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
-
-                        for (int maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
-                        {
-                            if (massageSliderObjects[j].GetValue() > 0f)
-                            {
-                                maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
-                            }
-
-                            foreach (MaskMoving subSpriteMask in subMaskMoving)
-                            {
-                                if (subSpriteMask.canMove)
-                                {
-                                    subSpriteMask.PercentageMovement(massageSliderObjects[j].GetValue() + 0.1f);
-                                }
-
-                                float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
-
-                                if (distance < 0.1f)
-                                {
-                                    subSpriteMask.canMove = true;
-                                }
-
-                                //    //// Check distance with other subMaskMoving objects
-                                //    //foreach (MaskMoving otSpriteMask in OTMaskMoving)
-                                //    //{
-                                //    //    float distance2 = Vector2.Distance(subSpriteMask.transform.position, otSpriteMask.transform.position);
-
-                                //    //    if (distance2 < 0.2f)
-                                //    //    {
-                                //    //        otSpriteMask.canMove = true;
-                                //    //        otSpriteMask.canScale = true;
-                                //    //        otSpriteMask.SubPercentageMovement();
-                                //    //    }
-                                //    //}
-                                //}
-                            }
-                        }
+                        MovementOfMask(j);
                     }
                 }
             }
@@ -387,8 +351,32 @@ public class PageLogic_Massage : PageLogic_Extension
             massageSlider.gameObject.SetActive(false);
     }
 
+    void MovementOfMask(int massageSliderOBJ)
+    {
+        for (int maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
+        {
+            if (massageSliderObjects[massageSliderOBJ].GetValue() > 0f)
+            {
+                maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[massageSliderOBJ].GetValue() + 0.1f);
+            }
 
-   
+            foreach (MaskMoving subSpriteMask in subMaskMoving)
+            {
+                if (subSpriteMask.canMove)
+                {
+                    subSpriteMask.PercentageMovement(massageSliderObjects[massageSliderOBJ].GetValue() + 0.1f);
+                }
+
+                float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
+
+                if (distance < 0.1f)
+                {
+                    subSpriteMask.canMove = true;
+                }
+            }
+        }
+
+    }
 }
 
 [Serializable]
