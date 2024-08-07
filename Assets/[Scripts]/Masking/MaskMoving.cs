@@ -21,14 +21,15 @@ public class MaskMoving : MonoBehaviour
     [HideInInspector]
     public bool canScale = false;
     private void Start()
-    {
-        spriteRenderer = GetComponentInParent<SpriteRenderer>();
-        
+    {        
         if (animator != null)
             animator.enabled = false;
          
-        transform.position = bonePoints[0].position;
-        gameObject.SetActive(false);
+        if (bonePoints.Count > 0)
+        {
+            transform.position = bonePoints[0].position;
+            gameObject.SetActive(false);
+        }
         currPos = transform.position;
     }
 
@@ -39,7 +40,7 @@ public class MaskMoving : MonoBehaviour
     }
     public void PercentageMovement(float sliderValue)
     {
-        if (_masks.Count >= bonePoints.Count * _numMasksPerBone) return;
+        if (_masks.Count >= bonePoints.Count * _numMasksPerBone || bonePoints.Count < 0) return;
 
         int currentBoneIndex = (int)((bonePoints.Count - 1) * sliderValue)+1;
         if (currentBoneIndex >= bonePoints.Count ) return;
