@@ -224,8 +224,6 @@ GameObject:
   - component: {fileID: 5105739270100195972}
   - component: {fileID: 5105739270100195704}
   - component: {fileID: 1406140191622352143}
-  - component: {fileID: 2515691136008667968}
-  - component: {fileID: -8424566171587450927}
   - component: {fileID: 2757362586351624599}
   m_Layer: 7
   m_Name: AccupointNew
@@ -367,43 +365,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2515691136008667968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105739270100195971}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54905f7384a38b4aad6596db5ca6318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTimer: 3
-  popped: 0
-  colliding: 0
-  accupointData: {fileID: 0}
-  timer: 0
-  colors:
-  - {r: 0.6039216, g: 0.8901961, b: 0.8574887, a: 1}
-  - {r: 0.7647059, g: 0.8517503, b: 0.92156863, a: 1}
-  - {r: 0.7674919, g: 0.74509805, b: 0.81960785, a: 1}
---- !u!114 &-8424566171587450927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105739270100195971}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c7d59c6d009884d9b49301232ca8ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shrinkingSwirl: {fileID: 3019160371880976835}
-  growingSwirl: {fileID: 3306520170404866127, guid: 716a9bbf41b09fe45863b7503bc8ac88,
-    type: 3}
-  closingSpeedMult: 1
 --- !u!114 &2757362586351624599
 MonoBehaviour:
   m_ObjectHideFlags: 0
