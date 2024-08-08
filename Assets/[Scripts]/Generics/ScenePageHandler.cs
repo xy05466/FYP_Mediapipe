@@ -31,8 +31,7 @@ public class ScenePageHandler : MonoBehaviour
     public Transform headertransform;
     public TMP_Text tmp_title;
     public TMP_Text tmp_titleSub;
-    public Image img_splashIcon;
-    public TMP_Text tmp_description;
+
 
     [Header("Hand Point Collision")]
     public float distanceCollision = 0.2f;
@@ -227,8 +226,8 @@ public class ScenePageHandler : MonoBehaviour
         currentPageLogic = pageLogics[currentPageIndex];
         currentPageLogic.gameObject.SetActive(true);
 
-        img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
-        tmp_description.text = currentPageLogic.pageData.splashDescription;
+        splashScreen.img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
+        splashScreen.tmp_description.text = currentPageLogic.pageData.splashDescription;
 
         // enable face / hand traking
         //if(isFaceDetectionTask)
@@ -248,11 +247,14 @@ public class ScenePageHandler : MonoBehaviour
         tmp_title.text = currentPageLogic.pageData.title;
         tmp_titleSub.text = currentPageLogic.pageData.titleSub;
         autoNavigate = currentPageLogic.pageData.autoNavigate;
+
         if (currentPageLogic.pageData.enableSplashPage)
             splashScreen.ShowSplash();
         else
             splashScreen.gameObject.SetActive(false);
-        headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
+
+        if(headertransform)
+            headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
 
         // start page for current page
         currentPageLogic.StartPage();

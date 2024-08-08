@@ -107,6 +107,8 @@ public class PageLogic_Massage : PageLogic_Extension
         // set up all sliders
         foreach (var massageSlider in massageSliderObjects)
             massageSlider.SetUp();
+
+        UpdateUI();
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
@@ -326,14 +328,18 @@ public class PageLogic_Massage : PageLogic_Extension
             massageSlider.ResetSlider();
 
         SetSliders(true);
-        if(tmp_title)
+
+        UpdateUI();
+
+    }
+    public void UpdateUI()
+    {
+        if (tmp_title)
             tmp_title.text = list_steps[currentStepIndex].title;
-        if(tmp_titleSub)
+        if (tmp_titleSub)
             tmp_titleSub.text = list_steps[currentStepIndex].titleSub;
-        if(tmp_description)
+        if (tmp_description)
             tmp_description.text = list_steps[currentStepIndex].description;
-
-
     }
     public void End()
     {

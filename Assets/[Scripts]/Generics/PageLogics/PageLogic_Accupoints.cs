@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Page Logics/Page Logic Accupoints",fileName ="PageLogic_Accupoints")]
 public class PageLogic_Accupoints : PageLogic_Extension
 {
-    public AccupointNew accupoint;
-    private List<AccupointNew> list_accupoints = new List<AccupointNew>();
+    public Acupoint accupoint;
+    private List<Acupoint> list_accupoints = new List<Acupoint>();
     public List<AccupointStep> list_facepointSteps = new List<AccupointStep>();
     private int currentStep = -1;
     int accupointDone = 0;
@@ -33,7 +33,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
         // spawn points
         for (int i = 0; i < maxPoints; i++)
         {
-            AccupointNew acc = Instantiate(accupoint, transform);
+            Acupoint acc = Instantiate(accupoint, transform);
             acc.Subscribe(FinishAccupoint);
             acc.gameObject.SetActive(true);
             acc.gameObject.transform.position =  new Vector3(10000,0,10000);
@@ -82,13 +82,12 @@ public class PageLogic_Accupoints : PageLogic_Extension
         {
             if (facePointIndex == stepIndex.GetLandmarkIndex())
             {
-                //test.gameObject.transform.position = facePointObject.transform.position;
+                // loop all acupoints
                 for (int i = 0; i < list_accupoints.Count; i++)
                 {
-                    AccupointNew accupointNew = list_accupoints[i];
+                    Acupoint accupointNew = list_accupoints[i];
                     if (accupointNew.GetAccID() == facePointIndex)
                         accupointNew.Colliding();
-                    
                 }
             }
         }
@@ -129,7 +128,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
 
     }
 
-    void FinishAccupoint(AccupointNew accupointnew)
+    void FinishAccupoint(Acupoint accupointnew)
     {
         //accupointnew.ClearEvents();
         accupointnew.SetID(-1);
@@ -151,7 +150,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
     [System.Serializable]
     public class AccupointStep
     {
-        public List<AccupointSO> indexes = new List<AccupointSO>();
+        public List<LandmarkSO> indexes = new List<LandmarkSO>();
 
         public void DebugIndexes()
         {

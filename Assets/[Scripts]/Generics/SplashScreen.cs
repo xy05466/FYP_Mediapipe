@@ -11,6 +11,10 @@ public class SplashScreen : MonoBehaviour
     public float duration;
     public CanvasGroup canvasGroup;
     private Coroutine coroutine;
+
+    public Image img_splashIcon;
+    public TMP_Text tmp_description;
+
     private void Start()
     {
         if (!canvasGroup)
@@ -47,8 +51,8 @@ public class SplashScreen : MonoBehaviour
 
     public void ShowSplash()
     {
-        if (canvasGroup) return;
-        canvasGroup.alpha = 1;
+        if (canvasGroup);
+            canvasGroup.alpha = 1;
         gameObject.SetActive(true);
     }
 }
