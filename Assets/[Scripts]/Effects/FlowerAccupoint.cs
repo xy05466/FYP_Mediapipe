@@ -28,22 +28,7 @@ public class FlowerAccupoint : MonoBehaviour
         done = false;
         alpha = 1;
     }
-    //private void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Handpoint"))
-    //    {
-    //        collided = true; 
-    //    }
-    //}
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    //if (other.gameObject.CompareTag("Handpoint"))
-    //    //{
-    //    //    alpha -= Time.deltaTime * 11.0f;
-    //    //    petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
-    //    //}
-    //}
+ 
     public void Fill()
     {
         if (done) return;
