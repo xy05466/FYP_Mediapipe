@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7477175687846711450}
   - component: {fileID: 5817503713440874067}
   m_Layer: 0
-  m_Name: FaceLandmarkWithFacePointAnnotation
+  m_Name: Face Landmark List Annotation Custom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

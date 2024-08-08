@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4724242833946851652}
   - component: {fileID: 7426451068229116525}
   m_Layer: 0
-  m_Name: Hand Landmark List Annotation With Facepoint GO
+  m_Name: Hand Landmark List Annotation Custom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
