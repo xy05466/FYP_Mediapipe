@@ -1421,8 +1421,8 @@ Transform:
   m_GameObject: {fileID: 37352309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: -2, y: 8, z: 90}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2114414763}
@@ -1469,7 +1469,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1000
   m_Sprite: {fileID: 21300000, guid: 355b6a26ae874f048adbd3566c54f84b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.92156863}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6048,10 +6048,10 @@ RectTransform:
   - {fileID: 1436749002}
   m_Father: {fileID: 1975271842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1561.5}
-  m_SizeDelta: {x: -1836, y: -3731}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 603.5}
+  m_SizeDelta: {x: 600, y: 599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &227503756
 GameObject:
@@ -17649,9 +17649,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
   pageLogics:
-  - {fileID: 870878791}
   - {fileID: 473273937}
   - {fileID: 878462219}
+  - {fileID: 870878791}
   - {fileID: 786372592}
   - {fileID: 885432721}
   - {fileID: 878462219}
@@ -55700,8 +55700,8 @@ RectTransform:
   - {fileID: 1102257838}
   - {fileID: 1946772284}
   - {fileID: 44182371}
-  - {fileID: 91149747}
   - {fileID: 222556737}
+  - {fileID: 91149747}
   m_Father: {fileID: 878462218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
