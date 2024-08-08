@@ -10,14 +10,14 @@ public class HandPointAnnotationObject : MonoBehaviour
     public Color colorColliding = Color.green;
     public Color colorDefault = Color.white;
     public System.Action<int,GameObject,int, GameObject> OnCollidingFacePoint; // hand point collide with face point
-    PointIndex pointIndex;
+    //PointIndex pointIndex;
     private void Awake()
     {
-        pointIndex = GetComponent<PointIndex>();
+        //pointIndex = GetComponent<PointIndex>();
     }
     private void Start()
     {
-        pointIndex.InitIndex();
+        //pointIndex.InitIndex();
     }
     //private void OnTriggerEnter(Collider other)
     //{
