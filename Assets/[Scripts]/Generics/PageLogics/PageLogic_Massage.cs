@@ -168,7 +168,7 @@ public class PageLogic_Massage : PageLogic_Extension
                     for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
                     {
                         massageSliderObjects[i].UpdateSlider(handpointsOb[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
-                        MovementOfMask(j);
+                        MovementOfMask(i);
 
                     }
                 }
