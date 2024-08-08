@@ -1753,50 +1753,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1406163197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &46086827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 46086828}
-  - component: {fileID: 46086829}
-  m_Layer: 0
-  m_Name: Hand Landmark Runner Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &46086828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46086827}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1479501823}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &46086829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46086827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8c5a0ed2b134e41b35facc48d2b69f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &46122976
 GameObject:
   m_ObjectHideFlags: 0
@@ -7091,63 +7047,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262129784}
   m_CullTransparentMesh: 1
---- !u!1 &264412459
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 264412460}
-  - component: {fileID: 264412461}
-  - component: {fileID: 264412463}
-  m_Layer: 0
-  m_Name: Gesture Manager Deprecated
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &264412460
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264412459}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1479501823}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &264412461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264412459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4959c4e77f5f68e43a113d571339a235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &264412463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264412459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a290cf50cf62629439100541f48de601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &267152379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17710,17 +17609,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd79c33b4c72184daf036a1d6f5225e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handGestureManager: {fileID: 264412461}
+  handGestureManager: {fileID: 1129048676}
   gesture: {fileID: 11400000, guid: d59cee60ba7fb1b46bea3dcea534e5b0, type: 2}
   img_loading: {fileID: 1170270986}
   loadingTime: 3
   transformFocusParent: {fileID: 1166225047}
   transformFocus: {fileID: 242531344}
   bu_next: {fileID: 1699658573}
-  tutorialComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  tutorialComponents: []
   tmp_tutorialText: {fileID: 2076676562}
 --- !u!1 &621763102
 GameObject:
@@ -24995,6 +24891,122 @@ MonoBehaviour:
   subMaskMoving: []
   OTMaskMoving: []
   list_steps:
+  - stepName: Step 2
+    title: Cheekbone Lift
+    titleSub: with L-Shaped Hand
+    description: Glide your hand across the cheekbone from your nose to the outer
+      corner of your eyebrow
+    massageSliders:
+    - points: aa010000a90100001801000070010000
+    - points: ce000000cd000000320000008b000000
+  - stepName: Step 3 Part 1
+    title: Smileline Lift
+    titleSub: with L-Shaped Hand & Knuckle
+    description: Glide your left hand from your mouth to the outer corner of your
+      eyebrow
+    massageSliders:
+    - points: 1f0100009b0100006001000085010000
+  - stepName: Step 3 Part 1.5
+    title: Smileline Lift
+    titleSub: with L-Shaped Hand & Knuckle
+    description: Next. glide your right knuckle from your mouth to the earlobe
+    massageSliders:
+    - points: 1f010000b0010000b101000091010000
+  - stepName: Step 3 Part 2
+    title: Smileline Lift
+    titleSub: with L-Shaped Hand & Knuckle
+    description: Glide your hands across the cheekbone and jawline
+    massageSliders:
+    - points: 39000000bb0000007b000000a2000000
+  - stepName: Step 3 Part 2.5
+    title: Smileline Lift
+    titleSub: with L-Shaped Hand & Knuckle
+    description: Then glide your left knuckle from your mouth to the earlobe
+    massageSliders:
+    - points: 39000000c0000000d5000000b1000000
+  - stepName: Step 4 Part 1
+    title: Jaw to Cheekbone Lift
+    titleSub: with Index Finger Knuckle
+    description: Glide your knuckle upwards from your jaw to the nose
+    massageSliders:
+    - points: 94000000aa000000d4000000cd000000
+    - points: 7901000006010000b0010000a9010000
+  - stepName: Step 4 Part 2
+    title: Jaw to Cheekbone Lift
+    titleSub: with Index Finger Knuckle
+    description: Glide your knuckle upwards from your jaw to the nose
+    massageSliders:
+    - points: 94000000aa000000d4000000cd000000
+    - points: 7901000006010000b0010000a9010000
+  - stepName: Step 4 Part 2.5
+    title: Jaw to Cheekbone Lift
+    titleSub: with Index Finger Knuckle
+    description: Then glide from your nose to the outer corner of your eyebrow
+    massageSliders:
+    - points: 240000006f0000008b00000047000000
+    - points: 0a01000054010000700100002d010000
+  - stepName: Step 5
+    title: Jaw to Cheekbone Lift
+    titleSub: with Side Palm
+    description: Glide your knuckle upwards from your jaw to the nose
+    massageSliders:
+    - points: 94000000aa000000d4000000cd000000
+    - points: 7901000006010000b0010000a9010000
+  - stepName: Step 5.5
+    title: Jaw to Cheekbone Lift
+    titleSub: with Side Palm
+    description: Then glide your palm from your nose to the outer corner of your
+      eyebrow
+    massageSliders:
+    - points: 240000006f0000008b00000047000000
+    - points: 0a01000054010000700100002d010000
+  - stepName: Step 6 Part 1
+    title: Smileline Lift
+    titleSub: with Index Finger Knuckle
+    description: Glide your knuckles from the corners of your lips to the outer corner
+      of your eyebrow
+    massageSliders:
+    - points: 39000000bb00000022000000a2000000
+    - points: 1f0100009b0100000801000085010000
+  - stepName: Step 6 Part 2
+    title: Smileline Lift
+    titleSub: with Index Finger Knuckle
+    description: Glide your knuckles from your nose to the outer corner of your eyebrow
+    massageSliders:
+    - points: 240000006f0000008b00000047000000
+    - points: 0a01000054010000700100002d010000
+  - stepName: Step 7 Part 1
+    title: Cheekbone Lift
+    titleSub: with L Shaped Hand and Knuckles
+    description: Glide your hand across the cheekbone from your mouth to your eyebrow
+    massageSliders:
+    - points: aa010000a90100001801000070010000
+  - stepName: Step 7 Part 1.5
+    title: Cheekbone Lift
+    titleSub: with L Shaped Hand and Knuckles
+    description: Then glide your knuckles across your cheekbone from your nose to
+      your eyebrow
+    massageSliders:
+    - points: aa010000a90100001801000070010000
+  - stepName: Step 7 Part 2
+    title: Cheekbone Lift
+    titleSub: with L Shaped Hand and Knuckles
+    description: Glide your hand across the cheekbone from your mouth to your eyebrow
+    massageSliders:
+    - points: ce000000cd000000320000008b000000
+  - stepName: Step 7 Part 2.5
+    title: Cheekbone Lift
+    titleSub: with L Shaped Hand and Knuckles
+    description: Then glide your knuckles across your cheekbone from your nose to
+      your eyebrow
+    massageSliders:
+    - points: ce000000cd000000320000008b000000
+  - stepName: Step 1 Part 2
+    title: Forehead Rotation
+    titleSub: with Knuckles
+    description: Massage your way into the inner region of your forehead
+    massageSliders:
+    - points: 6b000000970000004300000067000000
   - stepName: Step 1 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
@@ -25002,67 +25014,6 @@ MonoBehaviour:
       direction
     massageSliders:
     - points: 6b0000006c0000006800000044000000
-  - stepName: Step 1 Part 2
-    title: Forehead Rotation
-    titleSub: with Knuckles
-    description: Massage your way into the inner region of your forehead
-    massageSliders:
-    - points: 6b000000970000004300000067000000
-  - stepName: Step 3 Part 1
-    title: Cheekbone & Smileline Lift
-    titleSub: with L-Shaped Hand & Knuckle
-    description: Instruction center align
-    massageSliders:
-    - points: 5001000097000000290100004c010000
-  - stepName: Step 3 Part 2
-    title: Cheekbone & Smileline Lift
-    titleSub: with L-Shaped Hand
-    description: with L-Shaped Hand & Knuckle
-    massageSliders:
-    - points: 37000000a80000000300000031000000
-  - stepName: Step 3 Part 3
-    title: Cheekbone & Smileline Lift
-    titleSub: with L-Shaped Hand
-    description: with L-Shaped Hand & Knuckle
-    massageSliders:
-    - points: 1d010000a8000000f800000017010000
-  - stepName: Step 3 Part 4
-    title: Cheekbone & Smileline Lift
-    titleSub: with L-Shaped Hand
-    description: with L-Shaped Hand & Knuckle
-    massageSliders:
-    - points: 720000008e000000320000006f000000
-  - stepName: Step 4 Part 1
-    title: Jaw to Cheekbone Lift
-    titleSub: with Index Finger Knuckle
-    description: Glide your knuckle from your jaw to the nose
-    massageSliders:
-    - points: cb000000ce000000cf0000005d000000
-  - stepName: Step 4 Part 2
-    title: Jaw to Cheekbone Lift
-    titleSub: with Index Finger Knuckle
-    description: Glide across the cheekbone from your nose to the outer corner of
-      your eyebrow
-    massageSliders:
-    - points: 57010000730100001801000054010000
-  - stepName: Step 5 Part 1 of 1
-    title: Jaw to Cheekbone Lift
-    titleSub: with Side Palm
-    description: Glide your palm upwards from your jaw to the nose
-    massageSliders:
-    - points: a7010000aa010000ab01000043010000
-  - stepName: Step 5 Part 1 of 2
-    title: Jaw to Cheekbone Lift
-    titleSub: with Side Palm
-    description: Glide your palm upwards from your jaw to the nose
-    massageSliders:
-    - points: 8a00000096000000b000000094000000
-  - stepName: Step 5 Part 1 of 3
-    title: Jaw to Cheekbone Lift
-    titleSub: with Side Palm
-    description: Glide from jaw upwards to side of nose
-    massageSliders:
-    - points: 6f0100007b0100009001000079010000
 --- !u!1 &873060805
 GameObject:
   m_ObjectHideFlags: 0
@@ -25199,7 +25150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &878462218
 Transform:
   m_ObjectHideFlags: 0
@@ -25213,7 +25164,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1042003026}
   - {fileID: 1036480180}
   - {fileID: 1500086460}
   - {fileID: 1975271842}
@@ -29891,61 +29841,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040682936}
   m_CullTransparentMesh: 1
---- !u!1 &1042003021
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1042003026}
-  - component: {fileID: 1042003022}
-  m_Layer: 0
-  m_Name: Photo Face Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1042003022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042003021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbdda75bc7a75a641afc3e62388824e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textbox: {fileID: 388894010}
-  capture: {fileID: 222556734}
-  maxDistX: 10
-  maxDistY: 10
-  lowerBoundZ: 10
-  upperBoundZ: 20
-  journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
-  checkPic: {fileID: 95580204}
-  brightnessSprite: {fileID: 0}
-  audio: {fileID: 2005557847}
-  anim: {fileID: 1136165899}
---- !u!4 &1042003026
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042003021}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 878462218}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1045258574
 GameObject:
   m_ObjectHideFlags: 0
@@ -41648,8 +41543,6 @@ Transform:
   m_Children:
   - {fileID: 1455805270}
   - {fileID: 683045301}
-  - {fileID: 46086828}
-  - {fileID: 264412460}
   - {fileID: 1129048675}
   - {fileID: 621099379}
   - {fileID: 862030117}
