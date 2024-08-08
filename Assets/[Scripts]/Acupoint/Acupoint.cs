@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AccupointNew : MonoBehaviour
+public class Acupoint : MonoBehaviour
 {
     public GameObject spriteChild;
     public SliderSprite sliderSprite;
@@ -11,7 +11,7 @@ public class AccupointNew : MonoBehaviour
     public float currentTime = 0;
     bool isEnd = false;
     int accId = -1;
-    public Action<AccupointNew> OnFinished;
+    public Action<Acupoint> OnFinished;
  
     public void Initialize(float timer = 3)
     {
@@ -60,11 +60,11 @@ public class AccupointNew : MonoBehaviour
         currentTime = 0;
         isEnd = false;
     }
-    public void Subscribe(Action<AccupointNew> action)
+    public void Subscribe(Action<Acupoint> action)
     {
         OnFinished += action;
     }
-    public void Unsubscribe(Action<AccupointNew> action)
+    public void Unsubscribe(Action<Acupoint> action)
     {
         OnFinished -= action;
     }
