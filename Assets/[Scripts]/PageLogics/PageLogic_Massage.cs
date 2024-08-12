@@ -24,7 +24,7 @@ public class PageLogic_Massage : PageLogic_Extension
     public float massageDistance = 0.1f;
     public float massageFirstDistance = 0.05f;
     public List<MaskMoving> maskMoving = new List<MaskMoving>();
-    public List<MaskMoving> subMaskMoving = new List<MaskMoving>();
+    public List<MaskMovingList> OuterList = new List<MaskMovingList>();
     
     [Header("Steps")]
     public List<SliderStep> list_steps = new List<SliderStep>();
@@ -43,7 +43,7 @@ public class PageLogic_Massage : PageLogic_Extension
         // find max number of slider needs to spawn
         foreach (var step in list_steps)
         {
-            foreach (var item in step.curveDatas)
+            foreach (var item in step.massageSliders)
             {
                 tempcCount++;
             }
@@ -64,7 +64,7 @@ public class PageLogic_Massage : PageLogic_Extension
         }
 
         GameObject[] spriteMasks = GameObject.FindGameObjectsWithTag("SpriteMask");
-        GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
+        //GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
 
         foreach (GameObject obj in spriteMasks)
         {
@@ -76,25 +76,13 @@ public class PageLogic_Massage : PageLogic_Extension
             }
         }
 
-        foreach (GameObject obj in subSpriteMasks)
+        foreach (MaskMovingList maskList in OuterList)
         {
-            MaskMoving mask = obj.GetComponent<MaskMoving>();
-            if (mask != null)
+            foreach (MaskMoving mask in maskList.MovingList)
             {
-                subMaskMoving.Add(mask);
                 mask.gameObject.SetActive(false);
             }
         }
-
-        //// Init all slider
-        //foreach (var massageSlider in massageSliderObjects2)
-        //{
-        //    massageSlider.Init();
-        //    // subscribe all slider events
-        //    massageSlider.SubscribeEvent_Colliding(OnCollidingWithSlider);
-        //    massageSlider.SubscribeEvent_NextPoint(OnSliderNextPoint);
-        //    massageSlider.SubscribeEvent_Ended(OnSliderEnded);
-        //}
 
         // Subscribe slider events
         foreach (var mso in massageSliderObjects)
@@ -116,35 +104,35 @@ public class PageLogic_Massage : PageLogic_Extension
         //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
 
         // loop all sliders base on steps
-        for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
+        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
         {
-            CurveSO massageSliderDataI = list_steps[currentStepIndex].curveDatas[i];
+            MassageSliderPoints massageSliderDataI = list_steps[currentStepIndex].massageSliders[i];
             MassageSliderObjectV2 msoI = massageSliderObjects[i];
 
-            for (int j = 0; j < massageSliderDataI.points.Length; j++)
+            for (int j = 0; j < massageSliderDataI.points.Count; j++)
             {
                 var id = massageSliderDataI.points[j];
                 msoI.SetPointPosition(j, facepointsObj[id].transform.position);
             }
         }
+      
 
-
-        UpdateSliderCollision(handpointsObj_1);
-        UpdateSliderCollision(handpointsObj_2);
-    }
-    private void UpdateSliderCollision(List<HandPointAnnotationObject> handpointsOb)
-    {
-        if (handpointsOb != null && handpointsOb.Count > 0)
+        // check if certain fingeer points interacting
+        // with current sliedr position
+        if (handpointsObj_1 != null && handpointsObj_1.Count > 0)
         {
             if (enableAllHandPointCollision)
             {
-                for (int i = 0; i < handpointsOb.Count; i++)
+                for (int i = 0; i < handpointsObj_1.Count; i++)
                 {
                     // loop all sliders
-                    for (int j = 0; j < list_steps[currentStepIndex].curveDatas.Count; j++)
+                    for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
                     {
-                        massageSliderObjects[j].UpdateSlider(handpointsOb[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
-                        MovementOfMask(j);
+                        massageSliderObjects[j].UpdateSlider(handpointsObj_1[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
+                        if (massageSliderObjects[j].GetValue() > 0f)
+                        {
+                            CheckIndex(j);
+                        }
                     }
                 }
             }
@@ -154,19 +142,39 @@ public class PageLogic_Massage : PageLogic_Extension
                 {
                     int handItem = (int)item;
                     // loop all sliders
-                    for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
+                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
                     {
-                        massageSliderObjects[i].UpdateSlider(handpointsOb[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
-                        MovementOfMask(i);
-
+                        massageSliderObjects[i].UpdateSlider(handpointsObj_1[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
                     }
                 }
             }
         }
+        //// Update all  massage sliders
+        //foreach (var massageSlider in massageSliderObjects)
+        //    massageSlider.UpdateSlider(facepointsObj);
     }
     public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
     {
- 
+        //foreach (var massageSliderObject in massageSliderObjects)
+        //{
+        //    if(massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+        //    //if (points[currentIndex] == facePointIndex)
+        //    //{
+        //    //    currentIndex++;
+        //    //    sliderfloat = 0;
+        //    //}
+        //    //if (currentIndex > 0 && points[currentIndex - 1] == facePointIndex)
+        //    //{
+        //    //    sliderfloat += Time.deltaTime;
+        //    //    sliderfloat = Mathf.Clamp(sliderfloat, 0.0f, 1.0f);
+        //    //}
+        
+        //    //// if collide with current facepoint
+        //    //if (CollideWithFacePoint(massageSliderObject.points[massageSliderObject.GetCurrentIndex()], facePointIndex))
+        //    //{
+        //    //    //FillCurrentPoint();
+        //    //}
+        //}
     }
     public override void EndPage()
     {
@@ -182,6 +190,8 @@ public class PageLogic_Massage : PageLogic_Extension
     }
     public override void OnFaceAnnotationActive(bool active)
     {
+        //accupointsMassageManagerFinal.gameObject.SetActive(active);
+        //ActivateSliders(active);
         ActivateSliders(active);
     }
     public override void OnHandAnnotationActive(int actives)
@@ -199,10 +209,10 @@ public class PageLogic_Massage : PageLogic_Extension
         if (activate)
         {
             // loop through each slider data base on current step
-            foreach (var massageSliderData in list_steps[currentStepIndex].curveDatas)
+            foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
             {
                 // set up the points on slider 
-                for (int i = 0; i < massageSliderData.points.Length; i++)
+                for (int i = 0; i < massageSliderData.points.Count; i++)
                 {
                     int point = massageSliderData.points[i];
                     massageSliderObjects[currentSlider].gameObject.SetActive(activate);
@@ -216,31 +226,77 @@ public class PageLogic_Massage : PageLogic_Extension
     private void ActivateSliders(bool active)
     {
         if (massageSliderObjects.Count <= 0) return;
-        for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
+        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
             massageSliderObjects[i].gameObject.SetActive(active);
     }
 
     // Get the total sliders available based on current step
     int GetCurrentTotalSliders()
     {
-        return list_steps[currentStepIndex].curveDatas.Count;
+        return list_steps[currentStepIndex].massageSliders.Count;
     }
    
+    // On colliding with massage slider
+    //void OnCollidingWithSlider(MassageSliderObject massageSliderObject, int sliderId, GameObject goObject, Collider other)
+    //{
+    //    if (massageSliderObject.GetCurrentIndex() >= massageSliderObject.points.Count) return;
+
+    //    if (other.gameObject.tag == "Handpoint")
+    //    {
+    //        if(sliderId == massageSliderObject.GetCurrentIndex() || 
+    //            sliderId == massageSliderObject.GetCurrentIndex()+1 && massageSliderObject.GetPercentageSegmantFilled() >= 0.8f)
+    //        {
+    //            if (!enableAllHandPointCollision)
+    //            {
+    //                bool proceed = false;
+    //                foreach (var item in list_handpoints_interact)
+    //                {
+    //                    if (other.gameObject.transform.GetSiblingIndex() == (int)item)
+    //                    {
+    //                        proceed = true;
+    //                        break;
+    //                    }
+    //                }
+
+    //                if (!proceed) { return; }
+    //            }
+
+    //            Vector3 startPoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex());
+    //            Vector3 endpoint = massageSliderObject.lr_outline.GetPosition(massageSliderObject.GetCurrentIndex() + 1);
+
+    //            // Calculate the total distance
+    //            float totalDistance = Vector3.Distance(startPoint, massageSliderObject.lr_filled.GetPosition(massageSliderObject.lr_filled.positionCount - 1));
+
+    //            // Calculate the distance from start to the check position
+    //            float checkDistance = Vector3.Distance(startPoint, other.gameObject.transform.position);
+
+
+    //            float totalDistance2 = Vector3.Distance(startPoint, endpoint);
+
+    //            if (checkDistance > totalDistance)
+    //                massageSliderObject.FillCurrentPoint(1 / totalDistance2);
+    //        }
+    //    }
+    //}
+
+    // on first collider with next point in the slider,
+    // the points are usually the face landmarks
+    //void OnSliderNextPoint(int point)
+    //{
+    //    Debug.Log("slider next :" + point);
+    //}
     void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
     {
-        for (int i = 0; i < maskMoving.Count; i++)
+        MaskMovingList currentMaskOBJ = OuterList[index];
+        foreach (MaskMoving mask in currentMaskOBJ.MovingList)
         {
-            maskMoving[i].gameObject.SetActive(false);
-            maskMoving[i].PlayAnim();
-            for (int j = 0; j < subMaskMoving.Count; j++)
-            {
-                subMaskMoving[j].gameObject.SetActive(false);
-                subMaskMoving[j].PlayAnim();
-            }
+            mask.PlayAnim();
+            currentMaskOBJ.IsDone = true;
+            mask.gameObject.SetActive(false);
         }
         slidersDoneCount++;
         // check if all current slider has completed , done
-        if(slidersDoneCount >= list_steps[currentStepIndex].curveDatas.Count )
+        if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
         {
             NextStep();
         }
@@ -262,7 +318,6 @@ public class PageLogic_Massage : PageLogic_Extension
         SetSliders(true);
 
         UpdateUI();
-
     }
     public void UpdateUI()
     {
@@ -280,33 +335,30 @@ public class PageLogic_Massage : PageLogic_Extension
             massageSlider.gameObject.SetActive(false);
     }
 
-    void MovementOfMask(int massageSliderOBJ)
+    int index;
+    void CheckIndex(int m)
     {
-        for (int maskMovingIndex = 0; maskMovingIndex < maskMoving.Count; maskMovingIndex++)
+        if (index >= OuterList.Count) return;
+
+        MaskMovingList currentMaskOBJ = OuterList[index];
+
+        foreach (MaskMoving mask in currentMaskOBJ.MovingList)
         {
-            if (massageSliderObjects[massageSliderOBJ].GetValue() > 0f)
+            if (mask.gameObject.CompareTag("SpriteMask"))
             {
-                maskMoving[maskMovingIndex].gameObject.SetActive(true);
-                maskMoving[maskMovingIndex].PercentageMovement(massageSliderObjects[massageSliderOBJ].GetValue() + 0.1f);
-            }
-
-            foreach (MaskMoving subSpriteMask in subMaskMoving)
-            {
-                if (subSpriteMask.canMove)
-                {
-                    subSpriteMask.gameObject.SetActive(true);
-                    subSpriteMask.PercentageMovement(massageSliderObjects[massageSliderOBJ].GetValue() + 0.1f);
-                }
-
-                float distance = Vector2.Distance(maskMoving[maskMovingIndex].transform.position, subSpriteMask.transform.position);
-
-                if (distance < 0.1f)
-                {
-                    subSpriteMask.canMove = true;
-                }
+                mask.gameObject.SetActive(true);
+                mask.PercentageMovement(massageSliderObjects[m].GetValue() + 0.1f);
             }
         }
 
+        if (currentMaskOBJ.IsDone)
+        {
+            index++;
+            if (index < OuterList.Count)
+            {
+                CheckIndex(m);
+            }
+        }
     }
 }
 
@@ -318,12 +370,18 @@ public class SliderStep
     public string titleSub;
     [TextArea]
     public string description;
-    public List<CurveSO> curveDatas = new List<CurveSO>();
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
 }
 [Serializable]
 public class MassageSliderPoints
 {
     public List<int> points = new List<int>();
+}
+
+[Serializable]
+public class MaskMovingList
+{
+    public List<MaskMoving> MovingList = new List<MaskMoving>();
+    public bool IsDone;
 }
 

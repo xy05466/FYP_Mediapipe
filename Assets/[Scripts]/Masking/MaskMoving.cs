@@ -44,7 +44,7 @@ public class MaskMoving : MonoBehaviour
         int currentBoneIndex = (int)((bonePoints.Count - 1) * sliderValue)+1;
         if (currentBoneIndex >= bonePoints.Count ) return;
         transform.position = Vector3.Lerp(transform.position, bonePoints[currentBoneIndex].position, Time.deltaTime / bonePoints.Count);
-        if(Vector2.Distance(transform.position,currPos) > 0.35f)
+        if(Vector2.Distance(transform.position,currPos) > 0.4f)
         {
             GameObject mask = Instantiate(_maskPrefab);
             currPos = transform.position;
