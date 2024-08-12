@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,21 @@ public class GestureData : ScriptableObject
 {
   public string gestureName;
   public List<Vector2> fingerDistances;
-  //to storee a range of values 
-  //20 values range of minX MaxX minY MaxY
+  public GestureFingerValue[] fingerDistances2 = new GestureFingerValue[Enum.GetValues(typeof(GestureFinger)).Length];
 }
+
+[System.Serializable]
+public class GestureFingerValue
+{
+    public float x;
+    public float y;
+}
+public enum GestureFinger
+{
+    THUMB,
+    INDEX,
+    MIDDLE,
+    RING,
+    PINKY,
+}
+
