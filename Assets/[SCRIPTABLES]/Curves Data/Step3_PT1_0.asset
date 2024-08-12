@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fad34acc3c06cb1429441882688c1d72, type: 3}
-  m_Name: Step3_3
+  m_Name: Step3_PT1_0
   m_EditorClassIdentifier: 
-  points: 720000008e000000320000006f000000
+  points: 1f0100009b0100006001000085010000
