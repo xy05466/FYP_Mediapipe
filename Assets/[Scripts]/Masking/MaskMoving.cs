@@ -28,7 +28,6 @@ public class MaskMoving : MonoBehaviour
         if (bonePoints.Count > 0)
         {
             transform.position = bonePoints[0].position;
-            gameObject.SetActive(false);
         }
         currPos = transform.position;
     }
@@ -44,7 +43,6 @@ public class MaskMoving : MonoBehaviour
 
         int currentBoneIndex = (int)((bonePoints.Count - 1) * sliderValue)+1;
         if (currentBoneIndex >= bonePoints.Count ) return;
-        gameObject.SetActive(true);
         transform.position = Vector3.Lerp(transform.position, bonePoints[currentBoneIndex].position, Time.deltaTime / bonePoints.Count);
         if(Vector2.Distance(transform.position,currPos) > 0.35f)
         {
@@ -58,7 +56,6 @@ public class MaskMoving : MonoBehaviour
     public void PlayAnim()
     {
         spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
-        gameObject.SetActive(false);
         canScale = true;
         if (animator != null)
         {
