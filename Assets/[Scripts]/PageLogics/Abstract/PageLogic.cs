@@ -7,7 +7,6 @@ public abstract class PageLogic : MonoBehaviour
 {
     public PageData pageData;
     [Space(30)]
-    public string leaveEmpty = "==============";
     protected PageState pageState = PageState.NOT_STARTED;
     private bool loadedHandpoints = false;
     public bool HandpointsLoaded => loadedHandpoints;
