@@ -12,11 +12,9 @@ GameObject:
   - component: {fileID: 5105739270100195974}
   - component: {fileID: 5105739270100195973}
   - component: {fileID: 5105739270100195704}
-  - component: {fileID: 8922188266184449883}
   - component: {fileID: 7349877692402414653}
   - component: {fileID: 5794104994337043255}
   - component: {fileID: 6160583102627447257}
-  - component: {fileID: 5479468375623556991}
   m_Layer: 6
   m_Name: Hand Point
   m_TagString: Handpoint
@@ -103,20 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _color: {r: 1, g: 1, b: 1, a: 0}
   _radius: 15
---- !u!114 &8922188266184449883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105739270100195971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d6f7f8edc90714aabf83ca83c553e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPool: {fileID: 0}
-  collided: 0
 --- !u!114 &7349877692402414653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,15 +164,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5479468375623556991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105739270100195971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a11c9fb838fb0e48b1b45e8058e2f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

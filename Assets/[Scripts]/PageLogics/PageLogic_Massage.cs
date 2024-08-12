@@ -223,13 +223,17 @@ public class PageLogic_Massage : PageLogic_Extension
     private void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
     {
         massageSliderObject.gameObject.SetActive(false);
-        MaskMovingList currentMaskOBJ = OuterList[index];
-        foreach (MaskMoving mask in currentMaskOBJ.MovingList)
+        if(index < OuterList.Count)
         {
-            mask.PlayAnim();
-            currentMaskOBJ.IsDone = true;
-            mask.gameObject.SetActive(false);
+            MaskMovingList currentMaskOBJ = OuterList[index];
+            foreach (MaskMoving mask in currentMaskOBJ.MovingList)
+            {
+                mask.PlayAnim();
+                currentMaskOBJ.IsDone = true;
+                mask.gameObject.SetActive(false);
+            }
         }
+    
         slidersDoneCount++;
         // check if all current slider has completed , done
         if(slidersDoneCount >= list_steps[currentStepIndex].curveDatas.Count )
