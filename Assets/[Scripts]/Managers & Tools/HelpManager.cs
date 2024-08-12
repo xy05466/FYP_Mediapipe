@@ -8,8 +8,8 @@ namespace SDM_FythmPipe
     public class HelpManager : MonoBehaviour
     {
         public RaqibHandGestureManager handGestureManager;
-        public GestureSO gestureOpen;
-        public GestureSO gestureClose;
+        public GestureData gestureOpen;
+        public GestureData gestureClose;
 
         [Header("SETTINGS")]
         public float timeLast = 2f;

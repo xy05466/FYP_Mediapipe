@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+[CreateAssetMenu(menuName ="Scriptable/Gesture", fileName ="Gesture Data")]
+public class GestureData : ScriptableObject 
+{
+  public string gestureName;
+  public List<Vector2> fingerDistances;
+  //to storee a range of values 
+  //20 values range of minX MaxX minY MaxY
+}

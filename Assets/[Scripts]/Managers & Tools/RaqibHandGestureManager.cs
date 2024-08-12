@@ -13,7 +13,7 @@ public class RaqibHandGestureManager : MonoBehaviour
     private string prevGesture;
     [SerializeField] private string currGesture;
 
-    [SerializeField] private List<GestureSO> gestures;
+    [SerializeField] private List<GestureData> gestures;
 
     private Action<string> OnDetecting;
     private Action<string> OnFirstDetected;
@@ -115,7 +115,7 @@ public class RaqibHandGestureManager : MonoBehaviour
     }
     // Read which gesture is detecting
 
-    private float CheckGesturePercentage(GestureSO gesture, List<float> fingerDistances)
+    private float CheckGesturePercentage(GestureData gesture, List<float> fingerDistances)
     {
         float currGesturePercentage = 0;
 

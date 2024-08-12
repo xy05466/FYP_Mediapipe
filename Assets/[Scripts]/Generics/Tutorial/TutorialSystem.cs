@@ -14,7 +14,7 @@ using UnityEditor;
 public class TutorialSystem : MonoBehaviour
 {
     [SerializeField] private RaqibHandGestureManager handGestureManager;
-    [SerializeField] private GestureSO gesture;
+    [SerializeField] private GestureData gesture;
     [SerializeField] private Image img_loading;
     [SerializeField] private float loadingTime = 2;
     private float loadingElapsed = 0;
