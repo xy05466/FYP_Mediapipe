@@ -13,7 +13,7 @@ public class IdleManager : MonoBehaviour
     [SerializeField] private float timeoutTime = 3f;
     private float timeoutTimeElapsed = 0f;
     [SerializeField] private GameObject panel_pause;
-    [SerializeField] private GestureSO gestureContinue;
+    [SerializeField] private GestureData gestureContinue;
     bool idle = false;
 
     private void Start()

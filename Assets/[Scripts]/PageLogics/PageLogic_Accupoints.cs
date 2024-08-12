@@ -150,7 +150,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
     [System.Serializable]
     public class AccupointStep
     {
-        public List<LandmarkSO> indexes = new List<LandmarkSO>();
+        public List<LandmarkData> indexes = new List<LandmarkData>();
 
         public void DebugIndexes()
         {

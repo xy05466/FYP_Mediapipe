@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName ="Scriptable/Gesture")]
-public class GestureSO : ScriptableObject 
+[CreateAssetMenu(menuName ="Scriptable/Gesture", fileName ="Gesture Data")]
+public class GestureData : ScriptableObject 
 {
   public string gestureName;
   public List<Vector2> fingerDistances;

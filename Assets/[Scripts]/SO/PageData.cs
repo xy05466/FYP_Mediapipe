@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(menuName ="Page SO", fileName ="PageData_")]
+[CreateAssetMenu(menuName = "Scriptable/Page Data", fileName = "PageData_")]
 public class PageData : ScriptableObject
 {
     public bool enableHeader= true;
