@@ -78,7 +78,6 @@ public class ScenePageHandler : MonoBehaviour
         annotationFace.gameObject.SetActive(false);
         annotationHand.gameObject.SetActive(false);
 
-        landmarkManager.Initialize();
 
 
         sceneAnimationEnd.OnAnimationFinished += NextPage;
@@ -118,7 +117,6 @@ public class ScenePageHandler : MonoBehaviour
     }
     private void Update()
     {
-        landmarkManager.UpdateLandmarks();
         if (!sceneAnimationEnd.IsDone()) return;
         // update hand face point collision
         if (landmarkManager.IsFaceloadedAndActive)

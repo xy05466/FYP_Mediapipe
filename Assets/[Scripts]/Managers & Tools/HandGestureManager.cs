@@ -7,7 +7,7 @@ using UnityEngine;
 using Mediapipe.Tasks.Components.Containers;
 using System;
 using System.Linq;
-public class RaqibHandGestureManager : MonoBehaviour
+public class HandGestureManager : MonoBehaviour
 {
     [SerializeField] private LandmarkManager landmarkManager;
     private string prevGesture;

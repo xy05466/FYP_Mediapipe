@@ -7,7 +7,7 @@ namespace SDM_FythmPipe
 { 
     public class HelpManager : MonoBehaviour
     {
-        public RaqibHandGestureManager handGestureManager;
+        public HandGestureManager handGestureManager;
         public GestureData gestureOpen;
         public GestureData gestureClose;
 

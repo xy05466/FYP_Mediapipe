@@ -7,7 +7,7 @@ public class IdleManager : MonoBehaviour
 {
     [Header("MANAGERS")]
     [SerializeField] private LandmarkManager landmarkManager;
-    [SerializeField] private RaqibHandGestureManager handGestureManager;
+    [SerializeField] private HandGestureManager handGestureManager;
     [Space]
     [SerializeField] private Image img_filled_continue;
     [SerializeField] private float timeoutTime = 3f;

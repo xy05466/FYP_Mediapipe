@@ -18483,7 +18483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd79c33b4c72184daf036a1d6f5225e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handGestureManager: {fileID: 1129048676}
+  handGestureManager: {fileID: 0}
   gesture: {fileID: 11400000, guid: d59cee60ba7fb1b46bea3dcea534e5b0, type: 2}
   img_loading: {fileID: 1170270986}
   loadingTime: 3
@@ -27501,7 +27501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ecef425d04a443928cf508f855b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handGestureManager: {fileID: 1129048676}
+  handGestureManager: {fileID: 0}
   gestureOpen: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
   gestureClose: {fileID: 11400000, guid: 9de09820d95603c41bb52770dc2ebe4e, type: 2}
   timeLast: 2
@@ -33496,7 +33496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
-  handGestureManager: {fileID: 1129048676}
+  handGestureManager: {fileID: 0}
   img_filled_continue: {fileID: 717875085}
   timeoutTime: 3
   panel_pause: {fileID: 254419219}
@@ -34760,7 +34760,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129048674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 315a00db1f8e02f449e500d7a52c82fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f1c54a035e77b4f4cb00a483650026a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
@@ -62619,7 +62619,7 @@ GameObject:
   - component: {fileID: 1979440880}
   - component: {fileID: 1979440879}
   m_Layer: 5
-  m_Name: Annotable Layer Face
+  m_Name: Annotation Layer Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68255,7 +68255,7 @@ GameObject:
   - component: {fileID: 1609289075}
   - component: {fileID: 1609289076}
   m_Layer: 5
-  m_Name: 'Annotation Layer Hands '
+  m_Name: Annotation Layer Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

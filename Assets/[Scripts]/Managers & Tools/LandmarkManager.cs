@@ -29,7 +29,7 @@ public class LandmarkManager : MonoBehaviour
 
     private System.Action<int> OnHandPointsActive;
 
-    public void Initialize()
+    private void Start()
     {
         annotationList_FacePoints.SubscribePointsSpawn(FacePointsDetected);
         annotationList_HandPoints_1.SubscribePointsSpawn(HandPointsDetected);
@@ -42,6 +42,14 @@ public class LandmarkManager : MonoBehaviour
         //annotationList_HandPoints_Task.SubscribePointsSpawn(HandPointsDetected);
 
     }
+    private void Update()
+    {
+        annotationList_FacePoints.Update();
+
+        annotationList_HandPoints_1.Update();
+        annotationList_HandPoints_2.Update();
+    }
+
     private void HandPointActive(bool active)
     {
         if (active)
@@ -49,14 +57,6 @@ public class LandmarkManager : MonoBehaviour
         else
             numHandsActive--;
         OnHandPointsActive?.Invoke(numHandsActive);
-    }
-
-    public void UpdateLandmarks()
-    {
-        annotationList_FacePoints.Update();
-
-        annotationList_HandPoints_1.Update();
-        annotationList_HandPoints_2.Update();
     }
     // Store all points
     private void FacePointsDetected(List<GameObject> facePoints)
