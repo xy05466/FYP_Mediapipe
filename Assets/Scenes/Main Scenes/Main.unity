@@ -6649,7 +6649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22.5, y: -22.499756}
+  m_AnchoredPosition: {x: 22.5, y: -22.5}
   m_SizeDelta: {x: 45.000008, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &308087417
@@ -22840,13 +22840,15 @@ MonoBehaviour:
   massageFirstDistance: 0.15
   maskMoving: []
   subMaskMoving: []
-  OTMaskMoving: []
   list_steps:
   - stepName: Step 2
     title: Cheekbone Lift
     titleSub: with L-Shaped Hand
     description: Glide your hand across the cheekbone from your nose to the outer
       corner of your eyebrow
+    curveDatas:
+    - {fileID: 11400000, guid: 49bb5ce76fc3c99488b0352e3b8cc97c, type: 2}
+    - {fileID: 11400000, guid: 2ce1bb318b1c639429166d54945ce72e, type: 2}
     massageSliders:
     - points: aa010000a90100001801000070010000
     - points: ce000000cd000000320000008b000000
@@ -22855,30 +22857,35 @@ MonoBehaviour:
     titleSub: with L-Shaped Hand & Knuckle
     description: Glide your left hand from your mouth to the outer corner of your
       eyebrow
+    curveDatas: []
     massageSliders:
     - points: 1f0100009b0100006001000085010000
   - stepName: Step 3 Part 1.5
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Next. glide your right knuckle from your mouth to the earlobe
+    curveDatas: []
     massageSliders:
     - points: 1f010000b0010000b101000091010000
   - stepName: Step 3 Part 2
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Glide your hands across the cheekbone and jawline
+    curveDatas: []
     massageSliders:
     - points: 39000000bb0000007b000000a2000000
   - stepName: Step 3 Part 2.5
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Then glide your left knuckle from your mouth to the earlobe
+    curveDatas: []
     massageSliders:
     - points: 39000000c0000000d5000000b1000000
   - stepName: Step 4 Part 1
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckle upwards from your jaw to the nose
+    curveDatas: []
     massageSliders:
     - points: 94000000aa000000d4000000cd000000
     - points: 7901000006010000b0010000a9010000
@@ -22886,6 +22893,7 @@ MonoBehaviour:
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckle upwards from your jaw to the nose
+    curveDatas: []
     massageSliders:
     - points: 94000000aa000000d4000000cd000000
     - points: 7901000006010000b0010000a9010000
@@ -22893,6 +22901,7 @@ MonoBehaviour:
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
     description: Then glide from your nose to the outer corner of your eyebrow
+    curveDatas: []
     massageSliders:
     - points: 240000006f0000008b00000047000000
     - points: 0a01000054010000700100002d010000
@@ -22900,6 +22909,7 @@ MonoBehaviour:
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
     description: Glide your knuckle upwards from your jaw to the nose
+    curveDatas: []
     massageSliders:
     - points: 94000000aa000000d4000000cd000000
     - points: 7901000006010000b0010000a9010000
@@ -22908,6 +22918,7 @@ MonoBehaviour:
     titleSub: with Side Palm
     description: Then glide your palm from your nose to the outer corner of your
       eyebrow
+    curveDatas: []
     massageSliders:
     - points: 240000006f0000008b00000047000000
     - points: 0a01000054010000700100002d010000
@@ -22916,6 +22927,7 @@ MonoBehaviour:
     titleSub: with Index Finger Knuckle
     description: Glide your knuckles from the corners of your lips to the outer corner
       of your eyebrow
+    curveDatas: []
     massageSliders:
     - points: 39000000bb00000022000000a2000000
     - points: 1f0100009b0100000801000085010000
@@ -22923,6 +22935,7 @@ MonoBehaviour:
     title: Smileline Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckles from your nose to the outer corner of your eyebrow
+    curveDatas: []
     massageSliders:
     - points: 240000006f0000008b00000047000000
     - points: 0a01000054010000700100002d010000
@@ -22930,6 +22943,7 @@ MonoBehaviour:
     title: Cheekbone Lift
     titleSub: with L Shaped Hand and Knuckles
     description: Glide your hand across the cheekbone from your mouth to your eyebrow
+    curveDatas: []
     massageSliders:
     - points: aa010000a90100001801000070010000
   - stepName: Step 7 Part 1.5
@@ -22937,12 +22951,14 @@ MonoBehaviour:
     titleSub: with L Shaped Hand and Knuckles
     description: Then glide your knuckles across your cheekbone from your nose to
       your eyebrow
+    curveDatas: []
     massageSliders:
     - points: aa010000a90100001801000070010000
   - stepName: Step 7 Part 2
     title: Cheekbone Lift
     titleSub: with L Shaped Hand and Knuckles
     description: Glide your hand across the cheekbone from your mouth to your eyebrow
+    curveDatas: []
     massageSliders:
     - points: ce000000cd000000320000008b000000
   - stepName: Step 7 Part 2.5
@@ -22950,12 +22966,14 @@ MonoBehaviour:
     titleSub: with L Shaped Hand and Knuckles
     description: Then glide your knuckles across your cheekbone from your nose to
       your eyebrow
+    curveDatas: []
     massageSliders:
     - points: ce000000cd000000320000008b000000
   - stepName: Step 1 Part 2
     title: Forehead Rotation
     titleSub: with Knuckles
     description: Massage your way into the inner region of your forehead
+    curveDatas: []
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 1 Part 1
@@ -22963,6 +22981,7 @@ MonoBehaviour:
     titleSub: with Knuckles
     description: massaging at the outer region of your forehead. following the guide's
       direction
+    curveDatas: []
     massageSliders:
     - points: 6b0000006c0000006800000044000000
 --- !u!1 &873060805

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu]
+[CreateAssetMenu(menuName ="Scriptable/Gesture")]
 public class GestureSO : ScriptableObject 
 {
   public string gestureName;

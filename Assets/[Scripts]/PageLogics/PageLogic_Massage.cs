@@ -43,7 +43,7 @@ public class PageLogic_Massage : PageLogic_Extension
         // find max number of slider needs to spawn
         foreach (var step in list_steps)
         {
-            foreach (var item in step.massageSliders)
+            foreach (var item in step.curveDatas)
             {
                 tempcCount++;
             }
@@ -116,12 +116,12 @@ public class PageLogic_Massage : PageLogic_Extension
         //massageSliderObjectPrefeb2.UpdatePosition(facepointsObj[massageSliderObjectPrefeb2.startLandmark].transform.position, facepointsObj[massageSliderObjectPrefeb2.endLandmark].transform.position);
 
         // loop all sliders base on steps
-        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+        for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
         {
-            MassageSliderPoints massageSliderDataI = list_steps[currentStepIndex].massageSliders[i];
+            CurveSO massageSliderDataI = list_steps[currentStepIndex].curveDatas[i];
             MassageSliderObjectV2 msoI = massageSliderObjects[i];
 
-            for (int j = 0; j < massageSliderDataI.points.Count; j++)
+            for (int j = 0; j < massageSliderDataI.points.Length; j++)
             {
                 var id = massageSliderDataI.points[j];
                 msoI.SetPointPosition(j, facepointsObj[id].transform.position);
@@ -141,7 +141,7 @@ public class PageLogic_Massage : PageLogic_Extension
                 for (int i = 0; i < handpointsOb.Count; i++)
                 {
                     // loop all sliders
-                    for (int j = 0; j < list_steps[currentStepIndex].massageSliders.Count; j++)
+                    for (int j = 0; j < list_steps[currentStepIndex].curveDatas.Count; j++)
                     {
                         massageSliderObjects[j].UpdateSlider(handpointsOb[i].gameObject, massageDistance, massageSpeed, massageFirstDistance);
                         MovementOfMask(j);
@@ -154,7 +154,7 @@ public class PageLogic_Massage : PageLogic_Extension
                 {
                     int handItem = (int)item;
                     // loop all sliders
-                    for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+                    for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
                     {
                         massageSliderObjects[i].UpdateSlider(handpointsOb[handItem].gameObject, massageDistance, massageSpeed, massageFirstDistance);
                         MovementOfMask(i);
@@ -199,10 +199,10 @@ public class PageLogic_Massage : PageLogic_Extension
         if (activate)
         {
             // loop through each slider data base on current step
-            foreach (var massageSliderData in list_steps[currentStepIndex].massageSliders)
+            foreach (var massageSliderData in list_steps[currentStepIndex].curveDatas)
             {
                 // set up the points on slider 
-                for (int i = 0; i < massageSliderData.points.Count; i++)
+                for (int i = 0; i < massageSliderData.points.Length; i++)
                 {
                     int point = massageSliderData.points[i];
                     massageSliderObjects[currentSlider].gameObject.SetActive(activate);
@@ -216,14 +216,14 @@ public class PageLogic_Massage : PageLogic_Extension
     private void ActivateSliders(bool active)
     {
         if (massageSliderObjects.Count <= 0) return;
-        for (int i = 0; i < list_steps[currentStepIndex].massageSliders.Count; i++)
+        for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
             massageSliderObjects[i].gameObject.SetActive(active);
     }
 
     // Get the total sliders available based on current step
     int GetCurrentTotalSliders()
     {
-        return list_steps[currentStepIndex].massageSliders.Count;
+        return list_steps[currentStepIndex].curveDatas.Count;
     }
    
     void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
@@ -240,7 +240,7 @@ public class PageLogic_Massage : PageLogic_Extension
         }
         slidersDoneCount++;
         // check if all current slider has completed , done
-        if(slidersDoneCount >= list_steps[currentStepIndex].massageSliders.Count )
+        if(slidersDoneCount >= list_steps[currentStepIndex].curveDatas.Count )
         {
             NextStep();
         }
@@ -318,6 +318,7 @@ public class SliderStep
     public string titleSub;
     [TextArea]
     public string description;
+    public List<CurveSO> curveDatas = new List<CurveSO>();
     public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
 }
 [Serializable]
