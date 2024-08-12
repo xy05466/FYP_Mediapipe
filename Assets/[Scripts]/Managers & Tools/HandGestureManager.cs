@@ -123,7 +123,7 @@ public class HandGestureManager : MonoBehaviour
         for (int i = 0; i < fingerDistances.Count; i++)
         {
             //Debug.Log("index " + i + " " + fingerDistances[i]);
-            if (fingerDistances[i] >= gesture.fingerDistances2[i].minDistance && fingerDistances[i] <= gesture.fingerDistances2[i].minDistance+ gesture.fingerDistances2[i].threshold)
+            if (fingerDistances[i] >= gesture.fingerDistances[i].minDistance && fingerDistances[i] <= gesture.fingerDistances[i].minDistance+ gesture.fingerDistances[i].threshold)
             {
                 currGesturePercentage += 20;
             }

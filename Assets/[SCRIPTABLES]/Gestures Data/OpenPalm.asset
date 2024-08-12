@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b63768c3401904989a9dd90abd2a8f, type: 3}
   m_Name: OpenPalm
   m_EditorClassIdentifier: 
-  gestureName: Open
-  fingerDistances: []
-  fingerDistances2:
-  - minDistance: 0.1
-    threshold: 0.21
-  - minDistance: 0.1
-    threshold: 0.21
-  - minDistance: 0.1
-    threshold: 0.21
-  - minDistance: 0.1
-    threshold: 0.21
-  - minDistance: 0.1
-    threshold: 0.21
+  gestureName: Open Palm
+  fingerDistances:
+  - minDistance: 1.2
+    threshold: 2
+  - minDistance: 1.2
+    threshold: 2
+  - minDistance: 1.3
+    threshold: 2
+  - minDistance: 1.2
+    threshold: 2
+  - minDistance: 1.1
+    threshold: 2

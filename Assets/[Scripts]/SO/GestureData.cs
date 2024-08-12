@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName ="Scriptable/Gesture", fileName ="Gesture Data")]
+[CreateAssetMenu(menuName ="Scriptable/Gesture Data", fileName ="Gesture Data")]
 public class GestureData : ScriptableObject 
 {
     public string gestureName;
     [EnumData(typeof(GestureFinger))]
-    public GestureFingerValue[] fingerDistances2 = new GestureFingerValue[Enum.GetValues(typeof(GestureFinger)).Length];
+    public GestureFingerValue[] fingerDistances = new GestureFingerValue[Enum.GetValues(typeof(GestureFinger)).Length];
 }
 
 [System.Serializable]
