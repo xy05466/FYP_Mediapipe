@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: OpenPalm
   m_EditorClassIdentifier: 
   gestureName: Open
-  fingerDistances:
-  - {x: 0.1, y: 0.21}
-  - {x: 0.1, y: 0.21}
-  - {x: 0.1, y: 0.21}
-  - {x: 0.1, y: 0.21}
-  - {x: 0.1, y: 0.21}
+  fingerDistances: []
+  fingerDistances2:
+  - minDistance: 0.1
+    threshold: 0.21
+  - minDistance: 0.1
+    threshold: 0.21
+  - minDistance: 0.1
+    threshold: 0.21
+  - minDistance: 0.1
+    threshold: 0.21
+  - minDistance: 0.1
+    threshold: 0.21

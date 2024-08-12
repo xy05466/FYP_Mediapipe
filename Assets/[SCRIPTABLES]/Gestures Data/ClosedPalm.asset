@@ -19,3 +19,14 @@ MonoBehaviour:
   - {x: 0.01, y: 0.12}
   - {x: 0.01, y: 0.12}
   - {x: 0.01, y: 0.12}
+  fingerDistances2:
+  - minDistance: 0.01
+    threshold: 0.12
+  - minDistance: 0.01
+    threshold: 0.12
+  - minDistance: 0.01
+    threshold: 0.12
+  - minDistance: 0.01
+    threshold: 0.12
+  - minDistance: 0.01
+    threshold: 0.12
