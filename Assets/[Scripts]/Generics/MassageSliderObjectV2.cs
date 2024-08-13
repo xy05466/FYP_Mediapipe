@@ -61,19 +61,24 @@ public class MassageSliderObjectV2 : MonoBehaviour
     }
     bool within = false;
     int tempCompIndex = 0;
-    // will move the slider
-    public void UpdateSlider(GameObject compareObject, float distance = 1f,float speed = 1f,float firstEnterDistance = 0.05f)
+    public void UpdatePosition()
     {
-        if (end) return;
-        // set the position
+        // set the position for line renderer
         for (int i = 0; i < segmentCount; i++)
         {
             float percentage = ((float)i / segmentCount);
             lr_outline.SetPosition(i, CalculateBezierPoint(percentage, pathPoints) + Vector3.forward * -1f);
         }
 
+        // set position for target
         Vector3 valuePosition = GetValuePosition();
-        targetObject.transform.position = valuePosition + Vector3.forward*-1f;
+        targetObject.transform.position = valuePosition + Vector3.forward * -1f;
+    }
+    // will move the slider
+    public void UpdateSlider(GameObject compareObject, float distance = 1f,float speed = 1f,float firstEnterDistance = 0.05f)
+    {
+        if (end) return;
+    
 
         float comp = ((float)(tempCompIndex + 1) / (float)lr_outline.positionCount);
 
@@ -88,62 +93,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
         {
             tempCompIndex++;
         }
-        //for (int i = 0; i < lr_outline.positionCount; i++)
-        //{
-        //    //float comp = ((float)(i + 1) / (float)lr_outline.positionCount);
-
-
-        //    if (targetValue < comp && i < lr_outline.positionCount)
-        //    {
-        //        Vector3 segmentPos = lr_outline.GetPosition(i);
-        //        float distBetwSeg = Vector3.Distance(segmentPos, compareObject.transform.position);
-        //        if (distBetwSeg <= distance)
-        //        {
-        //            Debug.Log("target : " + targetValue + " compare : " + comp);
-        //            targetValue = comp;
-        //        }
-        //    }
-        //}
-
-        //float distanceTemp;
-
-        //if(within)
-        //    distanceTemp = distance;
-        //else
-        //    distanceTemp = firstEnterDistance;
-
-
-        //// interacting
-        //if (Vector2.Distance(compareObject.transform.position, GetTargetPosition()) <= distanceTemp)
-        //{
-        //    within = true;
-        //    targetValue += Time.deltaTime * speed;
-        //    targetValue = Mathf.Clamp(targetValue, 0f, 1f);
-        //    //float currentVal = GetValueFromtStartingPos(GetValuePosition());
-        //    //float myVal = Vector3.Distance(compareObject.transform.position,);
-
-        //    //if (myVal >= targetValue)
-        //    //{
-        //    //    targetValue = myVal;
-        //    //}
-        //    //// fill up line
-        //    //if (sliderValue > percentageList[fillCount])
-        //    //{
-        //    //    fillCount++;
-        //    //    //lr_filled.positionCount = fillCount;
-        //    //}
-
-
-
-        //    //rendererObject.color = color_interacting;
-
-        //}
-        //else
-        //{
-        //    within = false;
-        //    //rendererObject.color = color_default;
-        //}
-
+      
         // if completed
         if (targetValue >= 1f)
         {
@@ -155,40 +105,15 @@ public class MassageSliderObjectV2 : MonoBehaviour
 
         sliderValue = Mathf.Lerp(sliderValue, targetValue, 5f * Time.deltaTime);
 
-        //if(Vector3.Distance(GetValuePosition(),GetTargetPosition()) > 0.01f)
-        //{
-        //    rendererObject.color = color_interacting;
-        //}
-        //else
-        //{
-        //    rendererObject.color = color_default;
-        //}
 
         // Set fill position base on outline position
         for (int i = 0; i < lr_filled.positionCount; i++)
             lr_filled.SetPosition(i, lr_outline.GetPosition(i));
 
     }
-    //public void UpdatePosition(Vector3 posStart, Vector3 posEnd)
-    //{
-    //    lr_outline.SetPosition(0, posStart);
-    //    lr_outline.SetPosition(1, posEnd);
-
-    //    lr_filled.SetPosition(0, posStart);
-    //    lr_filled.SetPosition(1, GetValuePosition());
-    //}
-
-    //public void MoveSlider(bool move)
-    //{
-    //    this.move = move;
-    //}
 
     public Vector3 GetValuePosition()
     {
-        //// This is for linear path
-        //Vector3 v = lr_outline.GetPosition(0) + sliderValue * (lr_outline.GetPosition(1) - lr_outline.GetPosition(0));
-        //return v;
-
         // This is for bezier path
         return CalculateBezierPoint(sliderValue, pathPoints);
     }

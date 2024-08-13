@@ -14,6 +14,8 @@ public class LandmarkManager : MonoBehaviour
     public bool IsHandLoadedAndActive_1 => isHandLoadedAndActive_1;
     private bool isHandLoadedAndActive_2 = false;
     public bool IsHandLoadedAndActive_2 => isHandLoadedAndActive_2;
+    private bool handActive_1 = false;
+    private bool handActive_2 = false;
     //private bool isHandLoaded = false;
     private int numHandsLoaded = 0;
     public int NumHandsLoaded => numHandsLoaded;
@@ -36,10 +38,8 @@ public class LandmarkManager : MonoBehaviour
         annotationList_HandPoints_1.SubscribePointsSpawn(HandPointsDetected);
         annotationList_HandPoints_2.SubscribePointsSpawn(HandPointsDetected);
 
-        annotationList_HandPoints_1.SubscribeParentActive(HandPointActive);
-        annotationList_HandPoints_2.SubscribeParentActive(HandPointActive);
-        //annotationList_FacePoints_Task.SubscribePointsSpawn(FacePointsDetected);
-        //annotationList_HandPoints_Task.SubscribePointsSpawn(HandPointsDetected);
+        annotationList_HandPoints_1.SubscribeParentActive(HandPointActive_1);
+        annotationList_HandPoints_2.SubscribeParentActive(HandPointActive_2);
 
     }
     private void Update()
@@ -49,9 +49,24 @@ public class LandmarkManager : MonoBehaviour
         annotationList_HandPoints_1.Update();
         annotationList_HandPoints_2.Update();
     }
-
-    private void HandPointActive(bool active)
+    public bool IsHandActive(int hand)
     {
+        if (hand == 0) return handActive_1;
+
+        return handActive_2;
+    }
+    private void HandPointActive_1(bool active)
+    {
+        handActive_1 = active;
+        if (active)
+            numHandsActive++;
+        else
+            numHandsActive--;
+        OnHandPointsActive?.Invoke(numHandsActive);
+    }
+    private void HandPointActive_2(bool active)
+    {
+        handActive_2 = active;
         if (active)
             numHandsActive++;
         else
@@ -68,7 +83,7 @@ public class LandmarkManager : MonoBehaviour
     }
     private void HandPointsDetected(List<HandPointAnnotationObject> handPoints)
     {
-        if(numHandsActive==0)
+        if(numHandsLoaded == 0)
             isHandLoadedAndActive_1 = true;
         else
             isHandLoadedAndActive_2 = true;

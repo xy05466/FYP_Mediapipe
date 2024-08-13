@@ -101,7 +101,6 @@ public class PageLogic_Massage : PageLogic_Extension
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
         if (!FacepointsLoaded) return;
-
         // loop all sliders base on steps
         for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
         {
@@ -113,6 +112,7 @@ public class PageLogic_Massage : PageLogic_Extension
                 var id = curveData.points[j];
                 msoI.SetPointPosition(j, facepointsObj[id].transform.position);
             }
+            msoI.UpdatePosition();
         }
 
 
@@ -125,7 +125,7 @@ public class PageLogic_Massage : PageLogic_Extension
     {
         // check if certain fingeer points interacting
         // with current sliedr position
-        if (handpointsObj != null && handpointsObj.Count > 0)
+        if (handpointsObj != null && handpointsObj.Count > 0 && handpointsObj[0].gameObject.activeInHierarchy)
         {
             if (enableAllHandPointCollision)
             {

@@ -100,7 +100,7 @@ public class ScenePageHandler : MonoBehaviour
             for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
             {
                 // check if hand 1 is active
-                if (landmarkManager.IsHandLoadedAndActive_1)
+                if (landmarkManager.IsHandActive(0))
                 {
                     // loop all hand points 1
                     for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
@@ -109,12 +109,13 @@ public class ScenePageHandler : MonoBehaviour
                         GameObject facePoint = landmarkManager.GetFacePoints()[j];
                         if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                         {
+                            Debug.Log("collide " + 0);
                             OnCollidingFacePoint?.Invoke(0,i, handPoint.gameObject, j, facePoint);
                         }
                     }
                 }
                 // check if hand 2 is active
-                if (landmarkManager.IsHandLoadedAndActive_2)
+                if (landmarkManager.IsHandActive(1))
                 {
                     // loop all hand points 2
                     for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
@@ -123,6 +124,7 @@ public class ScenePageHandler : MonoBehaviour
                         GameObject facePoint = landmarkManager.GetFacePoints()[j];
                         if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                         {
+                            Debug.Log("collide " + 1);
                             OnCollidingFacePoint?.Invoke(1, i, handPoint.gameObject, j, facePoint);
                         }
                     }
