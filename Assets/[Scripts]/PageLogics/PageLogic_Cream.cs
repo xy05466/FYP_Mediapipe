@@ -21,11 +21,11 @@ public class PageLogic_Cream : PageLogic_Extension
             allPetals.Add(objectPlacer.GetFacePointObject(i).GetComponent<FlowerAcupoint>());
             allPetals[i].pointId = objectPlacer.GetFacePointObject(i).GetIndex();
         }
+
         petalCount = allPetals.Count;
+
         foreach (FlowerAcupoint fc in allPetals) 
-        {
             fc.Subscribe(OnPetalDone);
-        }
     }
     private void OnPetalDone(FlowerAcupoint accupoint)
     {
@@ -74,30 +74,12 @@ public class PageLogic_Cream : PageLogic_Extension
         foreach (var petal in allPetals)
         {
             if (petal.pointId == facePointIndex)
-            {
                 petal.Fill();
-            }
         }
     }
 
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
-        if (!gameObject.activeInHierarchy) return;
-        if (facepointsObj==null || facepointsObj.Count<=0) return;
-        //foreach (var petal in allPetals)
-        //{
-        //    petal.transform.position = facepointsObj[petal.pointId].transform.position;
-        //}
     }
-
-    bool IsColliding(SphereCollider threeD, BoxCollider2D ui)
-    {
-        // Convert the 3D collider bounds to screen space
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(threeD.bounds.center);
-
-        // Check if the screen point is within the bounds of the 2D collider
-        return ui.OverlapPoint(screenPoint);
-    }
-
   
 }
