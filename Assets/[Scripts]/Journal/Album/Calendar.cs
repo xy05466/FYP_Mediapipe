@@ -155,7 +155,7 @@ public class Calendar : MonoBehaviour
 
     public void ResetCapture()
     {
-        journalSO.SetHasCaptured(false);
+        journalSO.SetHasCapturedBefore(false);
     }
    
 

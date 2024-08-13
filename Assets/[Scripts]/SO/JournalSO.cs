@@ -37,7 +37,7 @@ public class JournalSO : ScriptableObject
     public int afterCount;
 
     [SerializeField]
-    public bool hasCaptured;
+    public bool hasCapturedBefore;
     [SerializeField]
     public List<string> date;
     [SerializeField]
@@ -46,24 +46,28 @@ public class JournalSO : ScriptableObject
     private void OnEnable()
     {
         hideFlags = HideFlags.DontUnloadUnusedAsset;
-        hasCaptured = false;
+        ResetValues();
     }
     private void OnDisable()
     {
-        
+        ResetValues();
+    }
+    private void ResetValues()
+    {
+        hasCapturedBefore = false;
+        date.Clear();
+        day.Clear();
+        beforeCount = 0;
+        afterCount = 0;
     }
     public void Initialize()
     {
    
         if (dayTxts == null)
-        {
             dayTxts = new List<string>();
-        }
   
         if (dayNum == null)
-        {
             dayNum = new List<int>();
-        }
  
 
         if (beforeCount == 0)
@@ -97,35 +101,8 @@ public class JournalSO : ScriptableObject
 
         picsTaken = screenshotTexture;
         FlipTextureVertically(picsTaken);
-        //Debug.Log("Debug" +screenshotTexture.width + screenshotTexture.height);
-        //Debug.Log("Debug" + picsTaken.width + picsTaken.height);
+    
 
-        //PlayerPrefs.SetInt("imageCount", imageCount++);
-
-        //byte[] byteArray = screenshotTexture.EncodeToPNG();
-        //    if (Application.platform == RuntimePlatform.Android)
-        //    {
-        //        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
-        //    }
-        //    else
-        //    {
-        //        System.IO.File.WriteAllBytes(Application.dataPath + "/Album/CameraScreenshot" + (picsCount + 1) + ".png", byteArray);
-        //    }
-        //    //Debug.Log(imageCount);
-        //    Texture2D picTaken= new Texture2D(pic.width, pic.height);
-        //    picTaken.LoadImage(byteArray);
-        //    dayPics.Add(picTaken);
-        //    picsCount = dayPics.Count;
-        //    Debug.Log(dayPics.Count);
-        //Debug.Log(dayPics.Last());
-
-        //avgV /= picsTaken.width * picsTaken.height;
-
-        //Debug.Log("Debug" + avgV.ToString());
-
-        //avgV = 0;
-
-        //Destroy(screenshotTexture);
         Destroy(renderTexture);
     }
 
@@ -238,11 +215,6 @@ public class JournalSO : ScriptableObject
 
         beforeCount = info.GetFiles("*.png").Length;
         beforeCount = beforeCount++;
-
-      
-        //Debug.Log("Debug" + beforeCount);
-        //picsTaken = null;
-        //Debug.Log(picsCount + 1);
     }
     
     public void ConfirmAfterPic(DateTime dateTime)
@@ -251,7 +223,6 @@ public class JournalSO : ScriptableObject
 
         CreateBaseDirectory();
 
-        Debug.Log("confirmafterpic");
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (!Directory.Exists(Application.persistentDataPath + "/AlbumPhoto/After"))
@@ -297,10 +268,6 @@ public class JournalSO : ScriptableObject
 
         afterCount = info.GetFiles("*.png").Length;
         afterCount = afterCount++;
-        //Debug.Log("Debug" + afterCount);
-
-        //picsTaken = null;
-        //Debug.Log(picsCount + 1);
     }
 
     public Texture GetPicCache()
@@ -484,25 +451,19 @@ public class JournalSO : ScriptableObject
         return dayTxts[n];
     }
 
-    public int GetBeforeCount()
-    {
-        return beforeCount;
-    }
+    public int GetBeforeCount() => beforeCount;
 
     public int GetAfterCount()
     {
         return afterCount;
     }
 
-    public void SetHasCaptured(bool b)
+    public void SetHasCapturedBefore(bool b)
     {
-        hasCaptured = b;
+        hasCapturedBefore = b;
     }
 
-    public bool GetHasCaptured()
-    {
-        return hasCaptured;
-    }
+    public bool GetHasCapturedBefore() => hasCapturedBefore;
 
     public string GetDate(int i)
     {

@@ -9,32 +9,22 @@ public class AlbumManager : MonoBehaviour
 {
     [SerializeField] private JournalSO journalSO;
     [SerializeField] private List<RawImage> pics;
+    public Button bu_Capture;
 
     public TMP_Text journalDayTxt;
     public TMP_Text journalEntryTxt;
     public Slider compareSlider;
     public Calendar calendar;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         journalSO.Initialize();
-        //Debug.Log("AlbumBeforeDebug" + journalSO.GetBeforeCount().ToString());
-        //Debug.Log("AlbumAfterDebug" + journalSO.GetAfterCount().ToString());
-        //Debug.Log("AlbumDebug" + journalSO.GetHasCaptured());
         ShowPics();
 
-        //Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
 
         if (journalSO.GetAfterCount() > 0)
-        { 
             compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE,DateTime.Today).width, journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).height * 2); 
-        }
-        
-        //Debug.Log("Debug" + compareSlider.GetComponent<RectTransform>().sizeDelta.x.ToString() + compareSlider.GetComponent<RectTransform>().sizeDelta.y.ToString());
     }
 
     public void ShowPics()
@@ -58,34 +48,34 @@ public class AlbumManager : MonoBehaviour
 
     }
 
-    public void GetDayPics(int n)
-    {
-        int imageCount = journalSO.GetAfterCount();
-        //Debug.Log(imageCount);
+    //public void GetDayPics(int n)
+    //{
+    //    int imageCount = journalSO.GetAfterCount();
+    //    //Debug.Log(imageCount);
 
-        for (int i = imageCount; i > 0; i--)
-        {
-            //Debug.Log(imageCount);
-            //Debug.Log(pics.Count);
-            if (imageCount >= 8 && i == 2)
-            {
-                break;
-            }
+    //    for (int i = imageCount; i > 0; i--)
+    //    {
+    //        //Debug.Log(imageCount);
+    //        //Debug.Log(pics.Count);
+    //        if (imageCount >= 8 && i == 2)
+    //        {
+    //            break;
+    //        }
 
-            journalSO.GetDate(i);
+    //        journalSO.GetDate(i);
 
-            //Debug.Log(i);
-        }
-    }
+    //        //Debug.Log(i);
+    //    }
+    //}
 
-    public void GetText(int n)
-    {
-        journalEntryTxt.text = journalSO.GetText(n);
-        journalDayTxt.text = "Day " + journalSO.GetDayNum(n).ToString();
-    }
+    //public void GetText(int n)
+    //{
+    //    journalEntryTxt.text = journalSO.GetText(n);
+    //    journalDayTxt.text = "Day " + journalSO.GetDayNum(n).ToString();
+    //}
 
-    public void ResetCapture()
-    {
-        journalSO.SetHasCaptured(false);
-    }
+    //public void ResetCapture()
+    //{
+    //    journalSO.SetHasCaptured(false);
+    //}
 }

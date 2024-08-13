@@ -109,7 +109,6 @@ public class ScenePageHandler : MonoBehaviour
                         GameObject facePoint = landmarkManager.GetFacePoints()[j];
                         if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                         {
-                            Debug.Log("collide " + 0);
                             OnCollidingFacePoint?.Invoke(0,i, handPoint.gameObject, j, facePoint);
                         }
                     }
@@ -124,7 +123,6 @@ public class ScenePageHandler : MonoBehaviour
                         GameObject facePoint = landmarkManager.GetFacePoints()[j];
                         if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                         {
-                            Debug.Log("collide " + 1);
                             OnCollidingFacePoint?.Invoke(1, i, handPoint.gameObject, j, facePoint);
                         }
                     }

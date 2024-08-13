@@ -39,7 +39,7 @@ public class PhoneCamera : MonoBehaviour
         
         Debug.Log("DebugBefore" + journalSO.GetBeforeCount());
         Debug.Log("DebugAfter" + journalSO.GetAfterCount());
-        Debug.Log("Debug" + journalSO.GetHasCaptured());
+        Debug.Log("Debug" + journalSO.GetHasCapturedBefore());
 
         cameras = new List<WebCamTexture>();
         Debug.Log("cameras Count" + cameras.Count);
@@ -71,7 +71,7 @@ public class PhoneCamera : MonoBehaviour
         }
 
         // check if has captured // idk why use scriptable object
-        if (journalSO.GetHasCaptured())
+        if (journalSO.GetHasCapturedBefore())
         {
             //albumButton.gameObject.SetActive(true);
             //creamButton.gameObject.SetActive(false);
@@ -138,6 +138,7 @@ public class PhoneCamera : MonoBehaviour
     {
         audioManager.GetComponent<AudioManager>().Play("CamCapture");
         StartCoroutine(SetPic());
+        SetHasCapturedBefore(true);
     }
 
     IEnumerator SetPic()
@@ -145,27 +146,28 @@ public class PhoneCamera : MonoBehaviour
         preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width*0.5f, background.GetComponent<RectTransform>().rect.height * 0.5f);
        
         yield return StartCoroutine(journalSO.TakePic(background.texture));
-        Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
+        //Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
         ShowPic();
         audioManager.GetComponent<AudioManager>().Play("Ding");
+        
     }
 
 
     public void ConfirmPic()
     {
-        if (!journalSO.GetHasCaptured())
+        if (!journalSO.GetHasCapturedBefore())
         {
             journalSO.ConfirmBeforePic(DateTime.Now);
             Debug.Log("DebugConfirmBeforePic");
             Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
-            Debug.Log("Debug" + journalSO.GetHasCaptured());
+            Debug.Log("Debug" + journalSO.GetHasCapturedBefore());
         }
-        else if (journalSO.GetHasCaptured())
+        else if (journalSO.GetHasCapturedBefore())
         {
             journalSO.ConfirmAfterPic(DateTime.Now);
             Debug.Log("DebugConfirmAfterPic");
             Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
-            Debug.Log("Debug" + journalSO.GetHasCaptured());
+            Debug.Log("Debug" + journalSO.GetHasCapturedBefore());
         }
         
     }
@@ -175,48 +177,40 @@ public class PhoneCamera : MonoBehaviour
 
     }
 
-    public void SetHasCaptured(bool b)
+    public void SetHasCapturedBefore(bool b)
     {
-        journalSO.SetHasCaptured(b);
+        journalSO.SetHasCapturedBefore(b);
         Debug.Log("sethascaptured" + b.ToString());
     }
 
     private void OnDestroy()
     {
         if(backCam)
-        backCam.Stop();
-        string dateTimeString = DateTime.Now.ToString("dd_MM_yyyy");
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            if (File.Exists(Application.persistentDataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png"))
-            {
+            backCam.Stop();
+        //string dateTimeString = DateTime.Now.ToString("dd_MM_yyyy");
+        //if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        //{
+        //    if (File.Exists(Application.persistentDataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png"))
+        //    {
 
-                journalSO.SetHasCaptured(true);
-                //Debug.Log("DebugsethascapturedTRUE");
-                //Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
-                //Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
-                //Debug.Log("Debug" + journalSO.GetHasCaptured());
-            }
-            else
-            {
-                journalSO.SetHasCaptured(false);
-                //Debug.Log("DebugsethascapturedFALSE");
-                //Debug.Log("DebugBefore" + journalSO.GetBeforeCount().ToString());
-                //Debug.Log("DebugAfter" + journalSO.GetAfterCount().ToString());
-                //Debug.Log("Debug" + journalSO.GetHasCaptured());
-            }
-        }
-        else
-        {
-            if (File.Exists(Application.dataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png"))
-            {
-                journalSO.SetHasCaptured(true);
-            }
-            else
-            {
-                journalSO.SetHasCaptured(false);
-            }
-        }
+        //        journalSO.SetHasCapturedBefore(true);
+        //    }
+        //    else
+        //    {
+        //        journalSO.SetHasCapturedBefore(false);
+        //    }
+        //}
+        //else
+        //{
+        //    if (File.Exists(Application.dataPath + "/AlbumPhoto/Before/" + dateTimeString + ".png"))
+        //    {
+        //        journalSO.SetHasCapturedBefore(true);
+        //    }
+        //    else
+        //    {
+        //        journalSO.SetHasCapturedBefore(false);
+        //    }
+        //}
 
     }
 

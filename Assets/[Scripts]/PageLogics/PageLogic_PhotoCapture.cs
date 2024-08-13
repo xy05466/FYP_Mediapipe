@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,14 +13,15 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     [Header("PROMPT")]
     [SerializeField] private GameObject photoOverlay;
     [SerializeField] private TMP_Text textbox;
-    [SerializeField] private Button capture;
+    [SerializeField] private Button bu_capture;
+    [SerializeField] private Button bu_retakePhoto;
     [SerializeField] private Button bu_done;
-    [Header("SETTINGS")]
+    [Header("ALIGNMENTMENT SETTINGS")]
     [SerializeField] private float maxDistX = 3.0f;
     [SerializeField] private float maxDistY = 3.0f;
-    [SerializeField] private float lowerBoundZ = 1.0f;
-    [SerializeField] private float upperBoundZ = 3.0f;
-    [SerializeField] private bool enableZ = true;
+    //[SerializeField] private float lowerBoundZ = 1.0f;
+    //[SerializeField] private float upperBoundZ = 3.0f;
+    //[SerializeField] private bool enableZ = true;
     public float waitTime = 0f;
     private float timer = 0.0f;
     [Header("JOURNAL DATA")]
@@ -36,13 +38,34 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     [Header("AUDIO FEEDBACK")]
     public GameObject audioManager;
 
-
+    bool hasCaptureBefore = false;
     bool done = false;
     float avgV = 0;
     private bool faceAligned = false;
     public override void Initialize()
     {
-        bu_done.onClick.AddListener(() => { done = true; });
+        bu_capture.onClick.AddListener(CapturePhoto);
+        bu_retakePhoto.onClick.AddListener(RetakePhoto);
+        bu_done.onClick.AddListener(Continue);
+    }
+    private void Continue()
+    {
+        done = true;
+        if(!hasCaptureBefore)
+            hasCaptureBefore = true;
+    }
+    public void CapturePhoto()
+    {
+        bu_capture.interactable = false;
+        photoOverlay.gameObject.SetActive(true);
+        phoneCamera.StartSetPic();
+    }
+    public void RetakePhoto()
+    {
+        bu_capture.interactable = true;
+        photoOverlay.gameObject.SetActive(false);
+        if (!hasCaptureBefore)
+            phoneCamera.SetHasCapturedBefore(false);
     }
     public override void StartPage()
     {
@@ -64,17 +87,18 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
             avgX = refPt.x - Camera.main.transform.position.x;
             avgY = refPt.y - Camera.main.transform.position.y;
             avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-            if (avgZ < lowerBoundZ && enableZ)
-            {
-                textbox.text = "Please move further";
-                faceAligned = false;
-            }
-            else if (avgZ > upperBoundZ && enableZ)
-            {
-                textbox.text = "Please move closer";
-                faceAligned = false;
-            }
-            else if (avgX > maxDistX)
+            //if (avgZ < lowerBoundZ && enableZ)
+            //{
+            //    textbox.text = "Please move further";
+            //    faceAligned = false;
+            //}
+            //else if (avgZ > upperBoundZ && enableZ)
+            //{
+            //    textbox.text = "Please move closer";
+            //    faceAligned = false;
+            //}
+            //else 
+            if (avgX > maxDistX)
             {
                 textbox.text = "Please move left";
                 faceAligned = false;
@@ -170,7 +194,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
                     }
 
 
-                    if (journalSO.GetHasCaptured())
+                    if (journalSO.GetHasCapturedBefore())
                     {
                         textbox.text = "Perfect lighting! Take your 'after' picture. \n";
                     }
@@ -178,7 +202,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
                     {
                         textbox.text = "Perfect lighting! Take your 'before' picture. \n";
                     }
-                    capture.interactable = true;
+                    bu_capture.interactable = true;
                     Debug.Log("DebugPerfect");
                     if (!audioManager.GetComponent<AudioManager>().isPlaying("Sparkle"))
                     {
@@ -221,7 +245,7 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
             img_default.fillAmount = 1;
             img_filled.fillAmount = 0;
             timer -= Time.deltaTime;
-            capture.interactable = false;
+            bu_capture.interactable = false;
         }
         timer = Mathf.Clamp(timer, 0, waitTime);
     }

@@ -15,7 +15,7 @@ public class PageLogic_Cream : PageLogic_Extension
 
     public override void Initialize()
     {
-        objectPlacer.Init();
+        objectPlacer.PlaceObjects();
         for (int i = 0; i < objectPlacer.GetFacePointOjects().Count; i++)
         {
             allPetals.Add(objectPlacer.GetFacePointObject(i).GetComponent<FlowerAcupoint>());
@@ -84,69 +84,9 @@ public class PageLogic_Cream : PageLogic_Extension
     {
         if (!gameObject.activeInHierarchy) return;
         if (facepointsObj==null || facepointsObj.Count<=0) return;
-        foreach (var petal in allPetals)
-        {
-            petal.transform.position = facepointsObj[petal.pointId].transform.position;
-        }
-
-        //if (handpointsObj_1.Count > 0)
+        //foreach (var petal in allPetals)
         //{
-        //    HandPointAnnotationObject m = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.MIDDLE_FINGER_TIP)];
-        //    HandPointAnnotationObject i = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.INDEX_FINGER_TIP)];
-        //    HandPointAnnotationObject r = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.RING_FINGER_TIP)];
-        //    HandPointAnnotationObject p = handpointsObj_1[FaceHandPoint.GetHandPointIndex(FaceHandPoint.HANDPOINT.PINKY_TIP)];
-
-        //    for (int j = 0; j < Wallpapers.Count; j++)
-        //    {
-        //        BoxCollider2D wallpaper = Wallpapers[j].GetComponent<BoxCollider2D>();
-        //        SphereCollider fingerPoints1 = m.GetComponent<SphereCollider>();
-        //        SphereCollider fingerPoints2 = i.GetComponent<SphereCollider>();
-        //        SphereCollider fingerPoints3 = r.GetComponent<SphereCollider>();
-        //        SphereCollider fingerPoints4 = p.GetComponent<SphereCollider>();
-        //        List<SphereCollider>contactPoints = new List<SphereCollider>();
-
-        //        contactPoints.Add(fingerPoints1);
-        //        contactPoints.Add(fingerPoints2);
-        //        contactPoints.Add(fingerPoints3);
-        //        contactPoints.Add(fingerPoints4);
-
-        //        if (imageSeg)
-        //        {
-        //            foreach (var contactpoint in contactPoints)
-        //        {
-        //            switch (j)
-        //            {
-        //                case 0:
-        //                    if (IsColliding(contactpoint, wallpaper))
-        //                    {
-        //                        imageSeg.PlayWallpaper(j + 1);
-        //                    }
-        //                    break;
-        //                case 1:
-        //                    if (IsColliding(contactpoint, wallpaper))
-        //                    {
-        //                        imageSeg.PlayWallpaper(j + 1);
-        //                    }
-        //                    break;
-        //                case 2:
-        //                    if (IsColliding(contactpoint, wallpaper))
-        //                    {
-        //                        imageSeg.PlayWallpaper(j + 1);
-        //                    }
-        //                    break;
-        //                case 3:
-        //                    if (IsColliding(contactpoint, wallpaper))
-        //                    {
-        //                        imageSeg.PlayWallpaper(j + 1);
-        //                    }
-        //                    break;
-        //                default:
-        //                    Debug.LogError("Invalid wallpaper index.");
-        //                    break;
-        //            }
-        //        }   
-        //        }
-        //    }
+        //    petal.transform.position = facepointsObj[petal.pointId].transform.position;
         //}
     }
 

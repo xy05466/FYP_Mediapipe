@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,6 +175,7 @@ MonoBehaviour:
   - {fileID: 1743988686}
   - {fileID: 1570649085}
   - {fileID: 936498303}
+  bu_Capture: {fileID: 0}
   journalDayTxt: {fileID: 248761849}
   journalEntryTxt: {fileID: 323839609}
   compareSlider: {fileID: 179945073}
@@ -982,8 +983,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.014804453
-        value: 0.29619598
+        time: 0.0019184053
+        value: 0.22554779
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3914,7 +3915,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 1bf1655590275c945b7e9f84e8296ddf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6220,7 +6221,7 @@ GameObject:
   - component: {fileID: 222556735}
   - component: {fileID: 222556734}
   m_Layer: 5
-  m_Name: Capture
+  m_Name: bu_Capture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6269,43 +6270,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 222556735}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 91149746}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1036480178}
-        m_TargetAssemblyTypeName: PhoneCamera, Assembly-CSharp
-        m_MethodName: StartSetPic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 222556734}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &222556735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7067,7 +7032,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: df25f9f76241d094a9c42c47d8cf050f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14296,7 +14261,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!1 &495837313
 GameObject:
@@ -16800,7 +16765,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 909900271}
@@ -18751,13 +18716,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
   pageLogics:
+  - {fileID: 786372592}
+  - {fileID: 473273937}
   - {fileID: 878462219}
+  - {fileID: 885432721}
+  - {fileID: 640194813}
   - {fileID: 878462219}
   - {fileID: 774930170}
-  - {fileID: 473273937}
-  - {fileID: 786372592}
-  - {fileID: 640194813}
-  - {fileID: 885432721}
   splashScreen: {fileID: 1945387827}
   sceneAnimationStart: {fileID: 364995828}
   sceneAnimationEnd: {fileID: 294804856}
@@ -19793,7 +19758,7 @@ GameObject:
   - component: {fileID: 642363497}
   - component: {fileID: 642363496}
   m_Layer: 5
-  m_Name: RetakePhoto
+  m_Name: bu_RetakePhoto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19862,31 +19827,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 642363497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 91149746}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 222556734}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &642363497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28339,13 +28280,11 @@ MonoBehaviour:
   phoneCamera: {fileID: 1036480178}
   photoOverlay: {fileID: 91149746}
   textbox: {fileID: 557661500}
-  capture: {fileID: 222556734}
+  bu_capture: {fileID: 222556734}
+  bu_retakePhoto: {fileID: 642363496}
   bu_done: {fileID: 1572752015}
   maxDistX: 0.5
   maxDistY: 0.5
-  lowerBoundZ: 20
-  upperBoundZ: 20
-  enableZ: 0
   waitTime: 2
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
   checkPic: {fileID: 95580204}
@@ -31876,7 +31815,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: bac06eea5a1475148b992537a1e5281b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -32230,7 +32169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 189de96f97856434098f84eb5f6c00ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -37646,7 +37585,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 40d60d3723421254898d2d4586017bef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -48264,7 +48203,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 00177baffceb31a4ebe459c25c112db1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -48789,7 +48728,7 @@ GameObject:
   - component: {fileID: 1572752016}
   - component: {fileID: 1572752015}
   m_Layer: 5
-  m_Name: Next
+  m_Name: bu_Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51290,7 +51229,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 6a787daee636ba948847f07d00620727, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -51895,7 +51834,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 187c44a649ddb954982a34baeb5e88f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -55379,7 +55318,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: bd8aec2d02f086a4c9fd6611723ee41b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -69379,6 +69318,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 786372591}
     m_Modifications:
+    - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
+        type: 3}
+      propertyPath: landmarkManager
+      value: 
+      objectReference: {fileID: 683045300}
     - target: {fileID: 827035529561787935, guid: f6e32e0e7c7c59b409ae79bbab81bac5,
         type: 3}
       propertyPath: allPetals.Array.size
