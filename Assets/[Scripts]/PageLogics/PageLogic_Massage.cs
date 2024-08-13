@@ -15,8 +15,8 @@ public class PageLogic_Massage : PageLogic_Extension
     public TMP_Text tmp_title;
     public TMP_Text tmp_titleSub;
     public TMP_Text tmp_description;
-    public MassageSliderObjectV2 massageSliderObjectPrefeb;
-    private List<MassageSliderObjectV2> massageSliderObjects = new List<MassageSliderObjectV2>();
+    public MassageSliderObject massageSliderObjectPrefeb;
+    private List<MassageSliderObject> massageSliderObjects = new List<MassageSliderObject>();
     [Header("settings")]
     public bool enableAllHandPointCollision = true;
     public List<FaceHandPoint.HANDPOINT> list_handpoints_interact = new List<FaceHandPoint.HANDPOINT>();
@@ -57,7 +57,7 @@ public class PageLogic_Massage : PageLogic_Extension
         // Instantiate massage slider base on most slider in steps
         for (int i = 0; i < maxSpawn; i++)
         {
-            MassageSliderObjectV2 mso = Instantiate(massageSliderObjectPrefeb, transform);
+            MassageSliderObject mso = Instantiate(massageSliderObjectPrefeb, transform);
             mso.transform.localPosition = Vector3.zero;
             mso.gameObject.SetActive(false);
             massageSliderObjects.Add(mso);
@@ -105,7 +105,7 @@ public class PageLogic_Massage : PageLogic_Extension
         for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
         {
             CurveSO curveData = list_steps[currentStepIndex].curveDatas[i];
-            MassageSliderObjectV2 msoI = massageSliderObjects[i];
+            MassageSliderObject msoI = massageSliderObjects[i];
 
             for (int j = 0; j < curveData.points.Length; j++)
             {
@@ -220,7 +220,7 @@ public class PageLogic_Massage : PageLogic_Extension
     {
         return list_steps[currentStepIndex].curveDatas.Count;
     }
-    private void OnSliderEnded(MassageSliderObjectV2 massageSliderObject)
+    private void OnSliderEnded(MassageSliderObject massageSliderObject)
     {
         massageSliderObject.gameObject.SetActive(false);
         if(index < OuterList.Count)

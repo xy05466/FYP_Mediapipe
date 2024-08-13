@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class MassageSliderObjectV2 : MonoBehaviour
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+public class MassageSliderObject : MonoBehaviour
 {
     [Header("Interacting object")]
     public GameObject targetObject;
@@ -17,11 +20,8 @@ public class MassageSliderObjectV2 : MonoBehaviour
     public LineRenderer lr_outline;
     public LineRenderer lr_filled;
     private int fillCount = 0;
-    public List<Vector3> pathPoints = new List<Vector3>() { Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero};
-    [Range(4,30)]
-    public int segmentCount = 10;
-    public int startLandmark;
-    public int endLandmark;
+    public Vector3[] pathPoints = new Vector3 [4]{ Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero};
+    private int segmentCount = 10;
     List<float> percentageList = new List<float>();
     //public List<int> points = new List<int>();
     //private float sliderValue = 0f;
@@ -33,7 +33,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
     private float targetValue = 0f;
     bool end = false;
     bool move = false;
-    public Action<MassageSliderObjectV2> OnEnded;
+    public Action<MassageSliderObject> OnEnded;
 
     private void Awake()
     {
@@ -43,8 +43,6 @@ public class MassageSliderObjectV2 : MonoBehaviour
     // Set up start end points
     public void SetUp()
     {
-        //startLandmark = start;
-        //endLandmark = end;
         lr_outline.positionCount = segmentCount;
         lr_filled.positionCount = 0;
 
@@ -138,7 +136,7 @@ public class MassageSliderObjectV2 : MonoBehaviour
     }
 
     // Calculated bezier path, done by Bryant Toh
-    public Vector3 CalculateBezierPoint(float t, List<Vector3> points)
+    public Vector3 CalculateBezierPoint(float t, Vector3[] points)
     {
         Vector3 p0 = points[0];
         Vector3 p1 = points[1];
@@ -161,8 +159,28 @@ public class MassageSliderObjectV2 : MonoBehaviour
         return p;
     }
 
-    public void SubscribeEvent_Ended(Action<MassageSliderObjectV2> action)
+    public void SubscribeEvent_Ended(Action<MassageSliderObject> action)
     {
         OnEnded += action;
     }
+
+
+
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(MassageSliderObject))]
+    public class MassageSliderObjectEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            if (GUILayout.Button("Generate Curve"))
+            {
+                MassageSliderObject massageSliderObject = (MassageSliderObject)target;
+                massageSliderObject.SetUp();
+                massageSliderObject.UpdatePosition();
+            }
+        }
+    }
+    #endif
 }
