@@ -31,13 +31,13 @@ public class LandmarkManager : MonoBehaviour
 
     private void Start()
     {
+        annotationList_HandPoints_2.SetStartIndex(22);
         annotationList_FacePoints.SubscribePointsSpawn(FacePointsDetected);
         annotationList_HandPoints_1.SubscribePointsSpawn(HandPointsDetected);
         annotationList_HandPoints_2.SubscribePointsSpawn(HandPointsDetected);
 
         annotationList_HandPoints_1.SubscribeParentActive(HandPointActive);
         annotationList_HandPoints_2.SubscribeParentActive(HandPointActive);
-
         //annotationList_FacePoints_Task.SubscribePointsSpawn(FacePointsDetected);
         //annotationList_HandPoints_Task.SubscribePointsSpawn(HandPointsDetected);
 

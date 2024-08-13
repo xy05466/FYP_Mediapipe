@@ -3840,7 +3840,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1bf1655590275c945b7e9f84e8296ddf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6841,7 +6841,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: df25f9f76241d094a9c42c47d8cf050f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6978,7 +6978,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!1 &254581691
 GameObject:
@@ -7705,6 +7705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 294804857}
   playAwake: 0
   playerAfter: 0
@@ -9873,6 +9874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 364995830}
   playAwake: 1
   playerAfter: 0
@@ -19410,117 +19412,148 @@ MonoBehaviour:
       corner of your eyebrow
     curveDatas:
     - {fileID: 11400000, guid: 49bb5ce76fc3c99488b0352e3b8cc97c, type: 2}
-    massageSliders: []
+    massageSliders:
+    - points: aa010000a90100001801000070010000
+    - points: ce000000cd000000320000008b000000
   - stepName: Step 3 Part 1
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Glide your left hand from your mouth to the outer corner of your
       eyebrow
     curveDatas:
-    - {fileID: 11400000, guid: 49bb5ce76fc3c99488b0352e3b8cc97c, type: 2}
-    - {fileID: 11400000, guid: 49bb5ce76fc3c99488b0352e3b8cc97c, type: 2}
-    massageSliders: []
+    - {fileID: 11400000, guid: a1bb3fc7d1890c4429f01a4cf2d88935, type: 2}
+    massageSliders:
+    - points: 1f0100009b0100006001000085010000
   - stepName: Step 3 Part 1.5
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Next. glide your right knuckle from your mouth to the earlobe
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: a1bb3fc7d1890c4429f01a4cf2d88935, type: 2}
+    massageSliders:
+    - points: 1f010000b0010000b101000091010000
   - stepName: Step 3 Part 2
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Glide your hands across the cheekbone and jawline
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 7bdbb67cf43a1ee49a11ab6fee33fc0f, type: 2}
+    massageSliders:
+    - points: 39000000bb0000007b000000a2000000
   - stepName: Step 3 Part 2.5
     title: Smileline Lift
     titleSub: with L-Shaped Hand & Knuckle
     description: Then glide your left knuckle from your mouth to the earlobe
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 7bdbb67cf43a1ee49a11ab6fee33fc0f, type: 2}
+    massageSliders:
+    - points: 39000000c0000000d5000000b1000000
   - stepName: Step 4 Part 1
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckle upwards from your jaw to the nose
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 025359f7d2ee7db4ab92b82d61cd6f64, type: 2}
+    - {fileID: 11400000, guid: 8e771e9766646bc4e83031a627bb9bff, type: 2}
+    massageSliders:
+    - points: 94000000aa000000d4000000cd000000
+    - points: 7901000006010000b0010000a9010000
   - stepName: Step 4 Part 2
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckle upwards from your jaw to the nose
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 7a1724284d9096b4e86f0430b959a5c2, type: 2}
+    - {fileID: 11400000, guid: dff2dd57231a7bb43a7396a5c3754877, type: 2}
+    massageSliders:
+    - points: 94000000aa000000d4000000cd000000
+    - points: 7901000006010000b0010000a9010000
   - stepName: Step 4 Part 2.5
     title: Jaw to Cheekbone Lift
     titleSub: with Index Finger Knuckle
     description: Then glide from your nose to the outer corner of your eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: acd14b0a4b2174c43b9bcf9603d04f56, type: 2}
+    - {fileID: 11400000, guid: 459e02058c2cedb468a0625aa33103a3, type: 2}
+    massageSliders:
+    - points: 240000006f0000008b00000047000000
+    - points: 0a01000054010000700100002d010000
   - stepName: Step 5
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
     description: Glide your knuckle upwards from your jaw to the nose
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: a6893dfe6cc5b11428a15c96c8b65b9a, type: 2}
+    - {fileID: 11400000, guid: 49dcfe29a540f1748952c037a86f05ba, type: 2}
+    massageSliders:
+    - points: 94000000aa000000d4000000cd000000
+    - points: 7901000006010000b0010000a9010000
   - stepName: Step 5.5
     title: Jaw to Cheekbone Lift
     titleSub: with Side Palm
     description: Then glide your palm from your nose to the outer corner of your
       eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 0c2a1163813f32b4d8507d2760003afd, type: 2}
+    - {fileID: 11400000, guid: e58ed09b67f9191479815a5d711a95af, type: 2}
+    massageSliders:
+    - points: 240000006f0000008b00000047000000
+    - points: 0a01000054010000700100002d010000
   - stepName: Step 6 Part 1
     title: Smileline Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckles from the corners of your lips to the outer corner
       of your eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 6bbb98c6fcd0ee241857f58bb2dbaf55, type: 2}
+    - {fileID: 11400000, guid: 11dfbb804c45a4f47a762c87b16308a2, type: 2}
+    massageSliders:
+    - points: 39000000bb00000022000000a2000000
+    - points: 1f0100009b0100000801000085010000
   - stepName: Step 6 Part 2
     title: Smileline Lift
     titleSub: with Index Finger Knuckle
     description: Glide your knuckles from your nose to the outer corner of your eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: aa3c08c4265f86b4f93126a3a335b487, type: 2}
+    - {fileID: 11400000, guid: a3bae9b4a9b860b46914349b505ca104, type: 2}
+    massageSliders:
+    - points: 240000006f0000008b00000047000000
+    - points: 0a01000054010000700100002d010000
   - stepName: Step 7 Part 1
     title: Cheekbone Lift
     titleSub: with L Shaped Hand and Knuckles
     description: Glide your hand across the cheekbone from your mouth to your eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 06471885946f8f9428b13407326ca4ce, type: 2}
+    massageSliders:
+    - points: aa010000a90100001801000070010000
   - stepName: Step 7 Part 1.5
     title: Cheekbone Lift
     titleSub: with L Shaped Hand and Knuckles
     description: Then glide your knuckles across your cheekbone from your nose to
       your eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 309bcee96a67a73488b0699a511e2e45, type: 2}
+    massageSliders:
+    - points: aa010000a90100001801000070010000
   - stepName: Step 7 Part 2
     title: Cheekbone Lift
     titleSub: with L Shaped Hand and Knuckles
     description: Glide your hand across the cheekbone from your mouth to your eyebrow
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: 55f9e74ec7a72b84fbd0a34e00061796, type: 2}
+    massageSliders:
+    - points: ce000000cd000000320000008b000000
   - stepName: Step 7 Part 2.5
     title: Cheekbone Lift
     titleSub: with L Shaped Hand and Knuckles
     description: Then glide your knuckles across your cheekbone from your nose to
       your eyebrow
-    curveDatas: []
-    massageSliders: []
-  - stepName: Step 1 Part 2
-    title: Forehead Rotation
-    titleSub: with Knuckles
-    description: Massage your way into the inner region of your forehead
-    curveDatas: []
-    massageSliders: []
-  - stepName: Step 1 Part 1
-    title: Forehead Rotation
-    titleSub: with Knuckles
-    description: massaging at the outer region of your forehead. following the guide's
-      direction
-    curveDatas: []
-    massageSliders: []
+    curveDatas:
+    - {fileID: 11400000, guid: f144da6c76f5705439c5c22307103743, type: 2}
+    massageSliders:
+    - points: ce000000cd000000320000008b000000
 --- !u!1 &642363494
 GameObject:
   m_ObjectHideFlags: 0
@@ -21644,6 +21677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 693465782}
   playAwake: 1
   playerAfter: 1
@@ -26723,7 +26757,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6a787daee636ba948847f07d00620727, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27473,7 +27507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &862030117
 Transform:
   m_ObjectHideFlags: 0
@@ -27501,7 +27535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ecef425d04a443928cf508f855b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handGestureManager: {fileID: 0}
+  handGestureManager: {fileID: 1129048676}
   gestureOpen: {fileID: 11400000, guid: f92caf00a92e1d3459106e7fb53f8f8c, type: 2}
   gestureClose: {fileID: 11400000, guid: 9de09820d95603c41bb52770dc2ebe4e, type: 2}
   timeLast: 2
@@ -28810,6 +28844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 901702475}
   playAwake: 1
   playerAfter: 1
@@ -31357,7 +31392,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bac06eea5a1475148b992537a1e5281b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -31711,7 +31746,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 189de96f97856434098f84eb5f6c00ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -36976,7 +37011,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 40d60d3723421254898d2d4586017bef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -46663,7 +46698,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1500086460
 RectTransform:
@@ -47651,7 +47686,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 00177baffceb31a4ebe459c25c112db1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -49188,7 +49223,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bac06eea5a1475148b992537a1e5281b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -50602,7 +50637,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6a787daee636ba948847f07d00620727, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -51207,7 +51242,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 187c44a649ddb954982a34baeb5e88f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -54615,7 +54650,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bd8aec2d02f086a4c9fd6611723ee41b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -59903,7 +59938,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1924812983
 RectTransform:

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UISpriteAnimation : MonoBehaviour
 {
-
+    [SerializeField] private Animator animator;
     public Image m_Image;
 
     public bool playAwake = true;
@@ -28,13 +28,7 @@ public class UISpriteAnimation : MonoBehaviour
         if (playAwake)
             Invoke("PlayUIAnim", playerAfter);
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        Func_PlayUIAnim();
-    //    }
-    //}
+
     public void PlayUIAnim()
     {
         m_Image.enabled = true;

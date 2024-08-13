@@ -21,9 +21,6 @@ public class ScenePageHandler : MonoBehaviour
     //public HandGestureManager handGestureManager;
 
 
-    //[Header("Splash")]
-    //public GameObject splashArt;
-    //public Button bu_closeSplashArt;
     [Header("Splash Page")]
     public SplashScreen splashScreen;
     public UISpriteAnimation sceneAnimationStart;
@@ -35,39 +32,17 @@ public class ScenePageHandler : MonoBehaviour
 
     [Header("Hand Point Collision")]
     public float distanceCollision = 0.2f;
-    //public Image img_face;
-    //public Image img_hand;
     [Header("Pages")]
     private bool gestureNavigationDetected = false;
-    //public Button bu_prevPage;
-    //public Button bu_nextPage;
     private bool autoNavigate = false;
     private bool pageEnded = false;
-    //[Header("Gesture Navigation")]
-    //public GestureSO gestureNavigation;
-    //public Image img_nextPageFilled;
-    //public GameObject panel_gesture;
-    //public float nextPageTime = 3f;
-    //private float nextPageTimeElapsed;
 
     [Header("Annotation screens")]
-    //public bool isFaceDetectionTask = true;
-    //public bool isHandDetectionTask = true;
     public GameObject annotationFace;
-    //public GameObject annotationFace_task;
     public GameObject annotationHand;
-    //public GameObject annotationHand_task;
 
     [Header("Destection Solution")]
-    //public GameObject faceSolution;
-    ////public GameObject faceSolution_task;
-    //public GameObject handSolution;
-    //public GameObject handSolution_task;
-    //[Header("Annotation List of Points")]
-    //public LandmarkListGO annotationList_FacePoints;
-    //public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints;
-    //List<GameObject> facePoints = new List<GameObject>();
-    //List<HandPointAnnotationObject> handPoints = new List<HandPointAnnotationObject>();
+  
     public System.Action<int, int, GameObject, int, GameObject> OnCollidingFacePoint; // hand point collide with face point
 
 

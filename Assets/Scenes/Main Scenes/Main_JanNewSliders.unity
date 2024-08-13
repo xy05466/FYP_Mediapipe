@@ -10007,6 +10007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 294804857}
   playAwake: 0
   playerAfter: 0
@@ -11999,6 +12000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 364995830}
   playAwake: 1
   playerAfter: 0
@@ -15353,7 +15355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
-  leaveEmpty: ==============
   panel: {fileID: 837395666}
   bu_start: {fileID: 1503569485}
 --- !u!1 &478789950
@@ -16371,7 +16372,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
-  leaveEmpty: ==============
   tmp_title: {fileID: 0}
   tmp_titleSub: {fileID: 0}
   tmp_description: {fileID: 0}
@@ -16382,7 +16382,7 @@ MonoBehaviour:
   massageDistance: 0.15
   massageFirstDistance: 0.01
   maskMoving: []
-  subMaskMoving: []
+  OuterList: []
   list_steps:
   - stepName: Step 1
     title: 
@@ -22422,6 +22422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 693465782}
   playAwake: 1
   playerAfter: 1
@@ -24897,7 +24898,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 4dedddbdd1292fb42b192e90b9c5a4f6, type: 2}
-  leaveEmpty: ==============
   allPetals: []
   imageSegOBJ: {fileID: 0}
   objectPlacer: {fileID: 0}
@@ -27088,7 +27088,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: aedea1c5a11efc545a8311e78567c7b5, type: 2}
-  leaveEmpty: ==============
   tmp_title: {fileID: 557661500}
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
@@ -27099,21 +27098,23 @@ MonoBehaviour:
   massageDistance: 0.15
   massageFirstDistance: 0.15
   maskMoving: []
-  subMaskMoving: []
+  OuterList: []
   list_steps:
-  - stepName: Step 1 Part 1
+  - stepName: Step 2 Part 1
     title: Forehead Rotation
     titleSub: with Knuckles
     description: massaging at the outer region of your forehead. following the guide's
       direction
-    curveDatas: []
+    curveDatas:
+    - {fileID: 11400000, guid: 49bb5ce76fc3c99488b0352e3b8cc97c, type: 2}
     massageSliders:
     - points: 6b0000006c0000006800000044000000
-  - stepName: Step 1 Part 2
+  - stepName: Step 2 Part 2
     title: Forehead Rotation
     titleSub: with Knuckles
     description: Massage your way into the inner region of your forehead
-    curveDatas: []
+    curveDatas:
+    - {fileID: 11400000, guid: 2ce1bb318b1c639429166d54945ce72e, type: 2}
     massageSliders:
     - points: 6b000000970000004300000067000000
   - stepName: Step 3 Part 1
@@ -27481,7 +27482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 2eb091339d6280f428af1b0a4c31a66e, type: 2}
-  leaveEmpty: ==============
   phoneCamera: {fileID: 1036480178}
   photoOverlay: {fileID: 91149746}
   textbox: {fileID: 388894010}
@@ -27546,7 +27546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
-  leaveEmpty: ==============
   accupoint: {fileID: 2757362586351624599, guid: 833e0e884e36341448afa22cec5526f1,
     type: 3}
   list_facepointSteps:
@@ -28305,6 +28304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ef167bc0b8dc24d90fc1fbbbc9567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   m_Image: {fileID: 901702475}
   playAwake: 1
   playerAfter: 1
@@ -31541,7 +31541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
-  leaveEmpty: ==============
 --- !u!1 &1014312322
 GameObject:
   m_ObjectHideFlags: 0
@@ -37809,7 +37808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: aedea1c5a11efc545a8311e78567c7b5, type: 2}
-  leaveEmpty: ==============
   tmp_title: {fileID: 557661500}
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
@@ -37820,7 +37818,7 @@ MonoBehaviour:
   massageDistance: 0.15
   massageFirstDistance: 0.15
   maskMoving: []
-  subMaskMoving: []
+  OuterList: []
   list_steps:
   - stepName: Step 1 Part 1
     title: Forehead Rotation
@@ -49345,7 +49343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 1365a8e8f9da98f499c8da6466c7ae53, type: 2}
-  leaveEmpty: ==============
   tmp_title: {fileID: 557661500}
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
@@ -49356,7 +49353,7 @@ MonoBehaviour:
   massageDistance: 0.15
   massageFirstDistance: 0.15
   maskMoving: []
-  subMaskMoving: []
+  OuterList: []
   list_steps:
   - stepName: Step 1
     title: 
