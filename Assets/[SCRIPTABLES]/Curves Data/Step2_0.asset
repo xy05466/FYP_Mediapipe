@@ -13,7 +13,3 @@ MonoBehaviour:
   m_Name: Step2_0
   m_EditorClassIdentifier: 
   points: aa010000a90100001801000070010000
-  startPoint: 0
-  startPointLine: 0
-  endPointLine: 0
-  endPoint: 0

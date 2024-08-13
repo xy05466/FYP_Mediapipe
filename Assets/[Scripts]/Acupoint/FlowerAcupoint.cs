@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FlowerAccupoint : MonoBehaviour
+public class FlowerAcupoint : MonoBehaviour
 {
     public float fadeSpeed = 10;
     [SerializeField] GameObject slicedPetal;
@@ -14,7 +14,7 @@ public class FlowerAccupoint : MonoBehaviour
     private bool done = false;
     private float alpha;
     public int pointId;
-    private System.Action<FlowerAccupoint> OnPetalDone;
+    private System.Action<FlowerAcupoint> OnPetalDone;
     private void Start()
     {
         petalSR = GetComponent<SpriteRenderer>();
@@ -42,7 +42,7 @@ public class FlowerAccupoint : MonoBehaviour
             OnPetalDone?.Invoke(this);
         }
     }
-    public void Subscribe(System.Action<FlowerAccupoint> action)
+    public void Subscribe(System.Action<FlowerAcupoint> action)
     {
         OnPetalDone += action;
     }

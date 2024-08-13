@@ -4,7 +4,7 @@ using UnityEngine;
 public class PageLogic_Cream : PageLogic_Extension
 {
     //[SerializeField] private List<GameObject> Wallpapers = new List<GameObject>();
-    public List<FlowerAccupoint> allPetals = new List<FlowerAccupoint>();
+    public List<FlowerAcupoint> allPetals = new List<FlowerAcupoint>();
 
     [SerializeField] private GameObject imageSegOBJ;
     private ImageSeg imageSeg;
@@ -18,16 +18,16 @@ public class PageLogic_Cream : PageLogic_Extension
         objectPlacer.Init();
         for (int i = 0; i < objectPlacer.GetFacePointOjects().Count; i++)
         {
-            allPetals.Add(objectPlacer.GetFacePointObject(i).GetComponent<FlowerAccupoint>());
+            allPetals.Add(objectPlacer.GetFacePointObject(i).GetComponent<FlowerAcupoint>());
             allPetals[i].pointId = objectPlacer.GetFacePointObject(i).GetIndex();
         }
         petalCount = allPetals.Count;
-        foreach (FlowerAccupoint fc in allPetals) 
+        foreach (FlowerAcupoint fc in allPetals) 
         {
             fc.Subscribe(OnPetalDone);
         }
     }
-    private void OnPetalDone(FlowerAccupoint accupoint)
+    private void OnPetalDone(FlowerAcupoint accupoint)
     {
         petalDone ++;
         if(petalDone>= petalCount)
@@ -39,7 +39,7 @@ public class PageLogic_Cream : PageLogic_Extension
     {
         done = false;
         petalDone = 0;
-        foreach (FlowerAccupoint fc in allPetals)
+        foreach (FlowerAcupoint fc in allPetals)
             fc.ResetPetal();
 
             if (imageSegOBJ)
