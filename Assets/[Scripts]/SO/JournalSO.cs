@@ -43,120 +43,34 @@ public class JournalSO : ScriptableObject
     [SerializeField]
     public List<string> day;
 
-    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
-
+    private void OnEnable()
+    {
+        hideFlags = HideFlags.DontUnloadUnusedAsset;
+        hasCaptured = false;
+    }
+    private void OnDisable()
+    {
+        
+    }
     public void Initialize()
     {
-        //beforeList = null;
-        //afterList = null;
-        //dayTxts = null;
-        //dayNum = null;
-
-        //beforeCount = 0;
-        //afterCount = 0;
-        //hasCaptured = false;
-        //date.Clear();
-        //day.Clear();
-
-        //Debug.Log(dayPics.Count);
-        //Debug.Log(dayPics.Last());
-        //Debug.Log(dayTxts.Last());
-
-
+   
         if (dayTxts == null)
         {
             dayTxts = new List<string>();
         }
-        //if (beforeList == null)
-        //{
-        //    beforeList = new List<Texture2D>();
-        //}
-        //if (afterList == null)
-        //{
-        //    afterList = new List<Texture2D>();
-        //}
+  
         if (dayNum == null)
         {
             dayNum = new List<int>();
         }
-        //picToLoad = new Texture2D(2, 2);
-
-        //if (Application.platform == RuntimePlatform.Android)
-        //{
-        //    if (File.Exists(Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + (beforeCount) + ".png"))
-        //    {
-        //        hasCaptured = true;
-        //        Debug.Log("DebugsethascapturedTRUE");
-        //        Debug.Log("Debug" + beforeCount.ToString());
-        //    }
-        //    else
-        //    {
-        //        hasCaptured = false;
-        //        Debug.Log("DebugsethascapturedFALSE");
-        //        Debug.Log("Debug" + beforeCount.ToString());
-        //    }
-        //}
-        //else
-        //{
-        //    if (File.Exists(Application.dataPath + "/BeforeAlbum/CameraScreenshot" + (beforeCount) + ".png"))
-        //    {
-        //        hasCaptured = true;
-        //    }
-        //    else
-        //    {
-        //        hasCaptured = false;
-        //    }
-        //}
-
-        //if (dayPics != null)
-        //    return;
+ 
 
         if (beforeCount == 0)
         {
             return;
         }
 
-        //string fileLocation;
-        //for (int i = 1; i <= beforeCount; i++)
-        //{
-        //    if (Application.platform == RuntimePlatform.Android)
-        //    {
-        //        fileLocation = Application.persistentDataPath + "/BeforeAlbum/CameraScreenshot" + i + ".png";
-        //    }
-        //    else
-        //    {
-        //        fileLocation = Application.dataPath + "/BeforeAlbum/CameraScreenshot" + i + ".png";
-        //    }
-        //    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-        //    byte[] imageData = new byte[fs.Length];
-        //    fs.Read(imageData, 0, (int)fs.Length);
-        //    Texture2D pic = new Texture2D(351, 211);
-        //    pic.LoadImage(imageData);
-        //    beforeList[beforeCount - 1] = pic;
-        //}
-
-        //for (int i = 1; i <= afterCount; i++)
-        //{
-        //    if (Application.platform == RuntimePlatform.Android)
-        //    {
-        //        fileLocation = Application.persistentDataPath + "/AfterAlbum/CameraScreenshot" + i + ".png";
-        //    }
-        //    else
-        //    {
-        //        fileLocation = Application.dataPath + "/AfterAlbum/CameraScreenshot" + i + ".png";
-        //    }
-        //    FileStream fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
-        //    byte[] imageData = new byte[fs.Length];
-        //    fs.Read(imageData, 0, (int)fs.Length);
-        //    Texture2D pic = new Texture2D(351, 211);
-        //    pic.LoadImage(imageData);
-        //    afterList[afterCount - 1] = pic;
-        //}
-
-        //Debug.Log(dayPics.Last());
-        //Debug.Log(dayTxts.Last());
     }
 
     public IEnumerator TakePic(Texture pic)
