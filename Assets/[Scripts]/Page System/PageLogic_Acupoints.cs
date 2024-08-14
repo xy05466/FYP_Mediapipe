@@ -7,7 +7,7 @@ namespace SDM_FythmPipe
     public class PageLogic_Acupoints : PageLogic_Extension
     {
         public Acupoint accupoint;
-        public List<AccupointStep> list_facepointSteps = new List<AccupointStep>();
+        public List<AcupointStep> list_facepointSteps = new List<AcupointStep>();
         private List<Acupoint> list_accupoints = new List<Acupoint>();
         private int currentStep = -1;
         private int acupointDone = 0;
@@ -144,7 +144,7 @@ namespace SDM_FythmPipe
                 NextStep();
             }
         }
-        public AccupointStep GetCurrentStep()
+        public AcupointStep GetCurrentStep()
         {
             return list_facepointSteps[currentStep];
         }
@@ -161,7 +161,7 @@ namespace SDM_FythmPipe
 
 
         [System.Serializable]
-        public class AccupointStep
+        public class AcupointStep
         {
             public List<LandmarkData> indexes = new List<LandmarkData>();
 
