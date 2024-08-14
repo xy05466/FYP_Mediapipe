@@ -20,24 +20,15 @@ public class PageData : ScriptableObject
     public string titleSub;
     [TextArea]
     public string splashDescription;
-    [TextArea]
-    public string instructionDescription;
+    //[TextArea]
+    //public string instructionDescription;
 
     [Header("Trackings")]
     // annotation to enable
     public bool enableFaceTracking;
     public bool enableHandTracking;
 
-    //[Header("Trackings")]
-    //public PageLogic pageLogic;
 }
-
-//public enum AnnotationType
-//{
-//    FACE_RECOGNITION,
-//    HAND_RECOGNITION,
-//    HAND_GESTURE,
-//}
 
 #if UNITY_EDITOR
 //public class PageDataEditor : editor

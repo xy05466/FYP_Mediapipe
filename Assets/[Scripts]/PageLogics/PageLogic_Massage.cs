@@ -100,7 +100,7 @@ public class PageLogic_Massage : PageLogic_Extension
     }
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
-        if (!FacepointsLoaded) return;
+        if (!HasFacepointsLoaded) return;
         // loop all sliders base on steps
         for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
         {
@@ -220,6 +220,17 @@ public class PageLogic_Massage : PageLogic_Extension
     {
         return list_steps[currentStepIndex].curveDatas.Count;
     }
+
+    private int GetTotalSliders()
+    {
+        int total = 0;
+        foreach (var step in list_steps)
+        {
+            total+= step.curveDatas.Count;
+        }
+        return list_steps[currentStepIndex].curveDatas.Count;
+    }
+
     private void OnSliderEnded(MassageSliderObject massageSliderObject)
     {
         massageSliderObject.gameObject.SetActive(false);
@@ -275,6 +286,17 @@ public class PageLogic_Massage : PageLogic_Extension
             massageSlider.gameObject.SetActive(false);
     }
 
+    public override int GetPageProgress()
+    {
+        return slidersDoneCount;
+    }
+    public override int GetMaxPageProgress()
+    {
+        return GetTotalSliders();
+    }
+
+
+    // Masking
     int index;
     void CheckIndex(int m)
     {

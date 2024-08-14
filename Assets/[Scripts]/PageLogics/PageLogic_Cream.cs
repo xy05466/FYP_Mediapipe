@@ -81,5 +81,13 @@ public class PageLogic_Cream : PageLogic_Extension
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
     }
-  
+
+    public override int GetPageProgress()
+    {
+        return petalCount;
+    }
+    public override int GetMaxPageProgress()
+    {
+        return petalDone;
+    }
 }

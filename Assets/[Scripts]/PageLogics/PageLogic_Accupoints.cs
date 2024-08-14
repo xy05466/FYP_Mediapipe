@@ -6,11 +6,12 @@ using UnityEngine;
 public class PageLogic_Accupoints : PageLogic_Extension
 {
     public Acupoint accupoint;
-    private List<Acupoint> list_accupoints = new List<Acupoint>();
     public List<AccupointStep> list_facepointSteps = new List<AccupointStep>();
+    private List<Acupoint> list_accupoints = new List<Acupoint>();
     private int currentStep = -1;
-    int accupointDone = 0;
-    bool finish = false;
+    private int acupointDone = 0;
+    private int maxAcupoint = 0;
+    private bool finish = false;
 
     public override void Initialize()
     {
@@ -18,9 +19,9 @@ public class PageLogic_Accupoints : PageLogic_Extension
 
     public override void StartPage()
     {
+        acupointDone = 0;
         int maxPoints = 0;
         int currPoints = 0;
-
         foreach (var step in list_facepointSteps)
         {
             foreach (var index in step.indexes)
@@ -30,6 +31,8 @@ public class PageLogic_Accupoints : PageLogic_Extension
             currPoints = 0;
         }
         list_accupoints.Clear();
+        maxAcupoint = maxPoints;
+
         // spawn points
         for (int i = 0; i < maxPoints; i++)
         {
@@ -46,7 +49,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
 
     public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
-        if (!FacepointsLoaded || finish) return; // if facepoints loaded
+        if (!HasFacepointsLoaded || finish) return; // if facepoints loaded
         //accupointManager.UpdateComponent();
 
         // set position of accupoints on facepoints
@@ -96,7 +99,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
 
     public override void OnFaceAnnotationActive(bool active)
     {
-        if (!FacepointsLoaded || !CompareState(PageState.START) || list_accupoints.Count <=0) return;
+        if (!HasFacepointsLoaded || !CompareState(PageState.START) || list_accupoints.Count <=0) return;
         for (int i = 0; i < GetCurrentStep().indexes.Count; i++)
             list_accupoints[i].gameObject.SetActive(active);
     }
@@ -107,7 +110,7 @@ public class PageLogic_Accupoints : PageLogic_Extension
 
     public void NextStep()
     {
-        accupointDone = 0;
+        acupointDone = 0;
         currentStep++;
         if(currentStep >= list_facepointSteps.Count)
         {
@@ -133,9 +136,9 @@ public class PageLogic_Accupoints : PageLogic_Extension
         //accupointnew.ClearEvents();
         accupointnew.SetID(-1);
         accupointnew.gameObject.SetActive(false);
-        accupointDone++;
+        acupointDone++;
 
-        if (accupointDone >= GetCurrentStep().indexes.Count)
+        if (acupointDone >= GetCurrentStep().indexes.Count)
         {
             NextStep();
         }
@@ -145,6 +148,15 @@ public class PageLogic_Accupoints : PageLogic_Extension
         return list_facepointSteps[currentStep];
     }
 
+    public override int GetPageProgress()
+    {
+        return acupointDone;
+    }
+
+    public override int GetMaxPageProgress()
+    {
+        return maxAcupoint;
+    }
 
 
     [System.Serializable]

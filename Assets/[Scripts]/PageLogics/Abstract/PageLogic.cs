@@ -8,18 +8,18 @@ public abstract class PageLogic : MonoBehaviour
     public PageData pageData;
     [Space(30)]
     protected PageState pageState = PageState.NOT_STARTED;
-    private bool loadedHandpoints = false;
-    public bool HandpointsLoaded => loadedHandpoints;
-    private bool loadedFacepoints = false;
-    public bool FacepointsLoaded => loadedFacepoints;
+    private bool hasHandpointsLoaded = false;
+    public bool HasHandpointsLoaded => hasHandpointsLoaded;
+    private bool hasFacepointsLoaded = false;
+    public bool HasFacepointsLoaded => hasFacepointsLoaded;
 
     public void LoadHandPoints(bool loaded)
     {
-        loadedHandpoints = loaded;
+        hasHandpointsLoaded = loaded;
     }
     public void LoadFacePoints(bool loaded)
     {
-        loadedFacepoints = loaded;
+        hasFacepointsLoaded = loaded;
     }
     // Will run at the start of scene
     public abstract void Initialize();
@@ -46,6 +46,7 @@ public abstract class PageLogic : MonoBehaviour
         return 1;
     }
 
+    // State comparison
     public void ChangeState(PageState pageState)
     {
         this.pageState = pageState;

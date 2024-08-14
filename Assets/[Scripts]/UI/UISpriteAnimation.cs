@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UISpriteAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
     public Image m_Image;
 
     public bool playAwake = true;
