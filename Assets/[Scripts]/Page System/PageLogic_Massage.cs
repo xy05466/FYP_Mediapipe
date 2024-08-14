@@ -112,7 +112,7 @@ namespace SDM_FythmPipe
             // loop all sliders base on steps
             for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
             {
-                CurveSO curveData = list_steps[currentStepIndex].curveDatas[i];
+                CurveData curveData = list_steps[currentStepIndex].curveDatas[i];
                 MassageSliderObject msoI = massageSliderObjects[i];
 
                 for (int j = 0; j < curveData.points.Length; j++)
@@ -360,7 +360,7 @@ namespace SDM_FythmPipe
         public string titleSub;
         [TextArea]
         public string description;
-        public List<CurveSO> curveDatas = new List<CurveSO>();
+        public List<CurveData> curveDatas = new List<CurveData>();
         public List<MassageSliderPoints> massageSliders = new List<MassageSliderPoints>();
     }
     [Serializable]

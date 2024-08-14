@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FacePointIndexObject : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    private int facePointIndex = -1;
-    public int GetIndex()
+    public class FacePointIndexObject : MonoBehaviour
     {
-        return facePointIndex;
-    }
-    public void SetIndex(int index)
-    {
-        facePointIndex = index;
+        private int facePointIndex = -1;
+        public int GetIndex()
+        {
+            return facePointIndex;
+        }
+        public void SetIndex(int index)
+        {
+            facePointIndex = index;
+        }
     }
 }

@@ -1,34 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IdleManager : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    [Header("MANAGERS")]
-    [SerializeField] private LandmarkManager landmarkManager;
-    [SerializeField] private HandGestureManager handGestureManager;
-    [Space]
-    [SerializeField] private Image img_filled_continue;
-    [SerializeField] private float timeoutTime = 3f;
-    private float timeoutTimeElapsed = 0f;
-    [SerializeField] private GameObject panel_pause;
-    [SerializeField] private GestureData gestureContinue;
-    bool idle = false;
+    public class IdleManager : MonoBehaviour
+    {
+        [Header("MANAGERS")]
+        [SerializeField] private LandmarkManager landmarkManager;
+        [SerializeField] private HandGestureManager handGestureManager;
+        [Space]
+        [SerializeField] private Image img_filled_continue;
+        [SerializeField] private float timeoutTime = 3f;
+        private float timeoutTimeElapsed = 0f;
+        [SerializeField] private GameObject panel_pause;
+        [SerializeField] private GestureData gestureContinue;
+        bool idle = false;
 
-    private void Start()
-    {
-        //landmarkManager.SubscribeFacePointsActive(OnFaceActive);
-    }
-    private void Update()
-    {
-        if (panel_pause.activeInHierarchy)
+        private void Update()
         {
-            if(handGestureManager.GetCurrentGesture()== gestureContinue.gestureName)
+            if (panel_pause.activeInHierarchy)
+            {
+                if (handGestureManager.GetCurrentGesture() == gestureContinue.gestureName)
+                {
+                    if (timeoutTimeElapsed >= timeoutTime)
+                    {
+                        panel_pause.gameObject.SetActive(false);
+                        timeoutTimeElapsed = 0f;
+                    }
+                    else
+                    {
+                        timeoutTimeElapsed += Time.deltaTime;
+                    }
+                }
+                else if (timeoutTimeElapsed > 0f)
+                {
+                    timeoutTimeElapsed -= Time.deltaTime;
+                }
+                return;
+            }
+            if (idle)
             {
                 if (timeoutTimeElapsed >= timeoutTime)
                 {
-                    panel_pause.gameObject.SetActive(false);
+
+                    panel_pause.gameObject.SetActive(true);
                     timeoutTimeElapsed = 0f;
                 }
                 else
@@ -39,29 +54,12 @@ public class IdleManager : MonoBehaviour
             else if (timeoutTimeElapsed > 0f)
             {
                 timeoutTimeElapsed -= Time.deltaTime;
-            }
-            return;
-        }
-        if (idle)
-        {
-            if(timeoutTimeElapsed >= timeoutTime) {
 
-                panel_pause.gameObject.SetActive(true);
-                timeoutTimeElapsed = 0f;
-            }
-            else
-            {
-                timeoutTimeElapsed += Time.deltaTime;
             }
         }
-        else if(timeoutTimeElapsed>0f)
+        private void OnFaceActive(bool active)
         {
-            timeoutTimeElapsed -= Time.deltaTime;
-
+            idle = !active;
         }
-    }
-    private void OnFaceActive(bool active)
-    {
-        idle = !active;
     }
 }

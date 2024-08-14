@@ -1,12 +1,6 @@
-using Mediapipe.Unity;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using static FaceHandPoint;
 
 // Will handle the pages and splash screen pop up etc.
 // Basically all the common things in a scene
@@ -16,11 +10,9 @@ namespace SDM_FythmPipe
     {
         [Header("Managers")]
         public LandmarkManager landmarkManager;
-        // temp list
         public List<PageLogic> pageLogics;
         private PageLogic currentPageLogic;
         int currentPageIndex = 0;
-        //public HandGestureManager handGestureManager;
 
 
         [Header("Splash Page")]
@@ -35,7 +27,6 @@ namespace SDM_FythmPipe
         [Header("Hand Point Collision")]
         public float distanceCollision = 0.2f;
         [Header("Pages")]
-        private bool gestureNavigationDetected = false;
         private bool autoNavigate = false;
         private bool pageEnded = false;
 
@@ -47,8 +38,7 @@ namespace SDM_FythmPipe
 
         public System.Action<int, int, GameObject, int, GameObject> OnCollidingFacePoint; // hand point collide with face point
 
-
-        bool handPointsStored = false;
+        //bool handPointsStored = false;
         private void Start()
         {
 
@@ -76,11 +66,6 @@ namespace SDM_FythmPipe
                 }
             }
 
-            //// subscribe gesture events
-            //handGestureManager.SubscribeFirstDetected(OnGestureFirstDetected);
-            //handGestureManager.SubscribeDetecting(OnGestureDetecting);
-
-
 
             // Disable all pages
             for (int i = 0; i < pageLogics.Count; i++)
@@ -89,7 +74,6 @@ namespace SDM_FythmPipe
             for (int i = 0; i < pageLogics.Count; i++)
                 pageLogics[i].Initialize();
 
-            //currentPageLogic = pageLogics[currentPageIndex];
             StartPage();
         }
         private void Update()
@@ -181,7 +165,7 @@ namespace SDM_FythmPipe
             //foreach (var item in handPoints)
             //    item.OnCollidingFacePoint += OnHandPointCollide;
 
-            handPointsStored = true;
+            //handPointsStored = true;
 
             //foreach (var item in handPoints)
             //    item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;

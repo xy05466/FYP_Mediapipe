@@ -1,99 +1,100 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LightChecker : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public RawImage checkPic;
-    public TMP_Text brightnessTxt;
-    public GameObject brightnessSprite;
-    private float waitTime = 3.0f;
-    private float timer = 0.0f;
-
-    public GameObject audio;
-    private AnimatorStateInfo animState;
-    private Animator anim;
-
-    Texture2D screenshotTexture;
-    RenderTexture renderTexture;
-    //private Animation anim;
-
-    private void Start()
+    public class LightChecker : MonoBehaviour
     {
-        anim = brightnessSprite.GetComponent<Animator>();
-        screenshotTexture = new Texture2D(checkPic.texture.width, checkPic.texture.height, TextureFormat.ARGB32, false);
-        renderTexture = new RenderTexture(checkPic.texture.width, checkPic.texture.height, 32);
-    }
+        public RawImage checkPic;
+        public TMP_Text brightnessTxt;
+        public GameObject brightnessSprite;
+        private float waitTime = 3.0f;
+        private float timer = 0.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime;
+        public GameObject audioObj;
+        private AnimatorStateInfo animState;
+        private Animator anim;
 
-        if (timer > waitTime)
+        Texture2D screenshotTexture;
+        RenderTexture renderTexture;
+        //private Animation anim;
+
+        private void Start()
         {
-            Texture tex = checkPic.texture;
+            anim = brightnessSprite.GetComponent<Animator>();
+            screenshotTexture = new Texture2D(checkPic.texture.width, checkPic.texture.height, TextureFormat.ARGB32, false);
+            renderTexture = new RenderTexture(checkPic.texture.width, checkPic.texture.height, 32);
+        }
 
-            int width = tex.width;
-            int height = tex.height;
+        // Update is called once per frame
+        void Update()
+        {
+            timer += Time.deltaTime;
 
-            //Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-            RenderTexture currentRT = RenderTexture.active;
-
-            //RenderTexture renderTexture = new RenderTexture(tex.width, tex.height, 32);
-            Graphics.Blit(tex, renderTexture);
-
-            RenderTexture.active = renderTexture;
-            screenshotTexture.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-            screenshotTexture.Apply();
-
-            UnityEngine.Color[] pixels = screenshotTexture.GetPixels();
-
-            RenderTexture.active = currentRT;
-
-            int sourceMipLevel = 0;
-            float avgV = 0;
-            Color32[] pixelArray = screenshotTexture.GetPixels32(sourceMipLevel);
-
-            for (int i = 0; i < pixels.Length; i++)
+            if (timer > waitTime)
             {
-                UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
-                avgV += v;
-            }
+                Texture tex = checkPic.texture;
 
-            avgV /= tex.width * tex.height;
+                int width = tex.width;
+                int height = tex.height;
 
+                //Texture2D screenshotTexture = new Texture2D(width, height, TextureFormat.ARGB32, false);
+                RenderTexture currentRT = RenderTexture.active;
 
-            anim.Play("tulipbloom", 0 , avgV * 1.25f);
+                //RenderTexture renderTexture = new RenderTexture(tex.width, tex.height, 32);
+                Graphics.Blit(tex, renderTexture);
 
+                RenderTexture.active = renderTexture;
+                screenshotTexture.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+                screenshotTexture.Apply();
 
-            if (avgV > 0.45f && !audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
-            {
-                brightnessTxt.text = "Perfect lighting! Take your 'before' picture. \n" + avgV.ToString();
+                UnityEngine.Color[] pixels = screenshotTexture.GetPixels();
 
-                if (!audio.GetComponent<AudioManager>().isPlaying("Sparkle"))
+                RenderTexture.active = currentRT;
+
+                int sourceMipLevel = 0;
+                float avgV = 0;
+                Color32[] pixelArray = screenshotTexture.GetPixels32(sourceMipLevel);
+
+                for (int i = 0; i < pixels.Length; i++)
                 {
-                    audio.GetComponent<AudioManager>().Play("Sparkle");
+                    UnityEngine.Color.RGBToHSV(pixels[i], out float h, out float s, out float v);
+                    avgV += v;
                 }
-            }
-            else if (avgV <= 0.475f && !audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
-            {
-                brightnessTxt.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
-                
-                if (!audio.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
+
+                avgV /= tex.width * tex.height;
+
+
+                anim.Play("tulipbloom", 0, avgV * 1.25f);
+
+
+                if (avgV > 0.45f && !audioObj.GetComponent<AudioManager>().isPlaying("Sparkle"))
                 {
-                    audio.GetComponent<AudioManager>().Play("PlantsRustling");
+                    brightnessTxt.text = "Perfect lighting! Take your 'before' picture. \n" + avgV.ToString();
+
+                    if (!audioObj.GetComponent<AudioManager>().isPlaying("Sparkle"))
+                    {
+                        audioObj.GetComponent<AudioManager>().Play("Sparkle");
+                    }
                 }
+                else if (avgV <= 0.475f && !audioObj.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
+                {
+                    brightnessTxt.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
+
+                    if (!audioObj.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
+                    {
+                        audioObj.GetComponent<AudioManager>().Play("PlantsRustling");
+                    }
+                }
+
+                avgV = 0;
+
+                timer = timer - waitTime;
+
+                Destroy(screenshotTexture);
+                Destroy(renderTexture);
             }
-
-            avgV = 0;
-
-            timer = timer - waitTime;
-
-            Destroy(screenshotTexture);
-            Destroy(renderTexture);
         }
     }
 }

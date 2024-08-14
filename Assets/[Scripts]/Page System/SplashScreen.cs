@@ -1,86 +1,87 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SplashScreen : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public HandGestureManager handGestureManager;
-    public GestureData gestureNavigate;
-    public Button bu_close;
-    public float duration;
-    public CanvasGroup canvasGroup;
-    private Coroutine coroutine;
-
-    public Image img_splashIcon;
-    public TMP_Text tmp_description;
-    [Header("Gesture")]
-    public float navigateTime = 2f;
-    private float navigateTimeElapsed = 2f;
-    public Image img_gesture_filled;
-
-    private void Start()
+    public class SplashScreen : MonoBehaviour
     {
-        if (!canvasGroup)
-            canvasGroup = GetComponent<CanvasGroup>();
+        public HandGestureManager handGestureManager;
+        public GestureData gestureNavigate;
+        public Button bu_close;
+        public float duration;
+        public CanvasGroup canvasGroup;
+        private Coroutine coroutine;
 
-        bu_close.onClick.AddListener(StartFadeOut);
-    }
-    private void Update()
-    {
-        if(handGestureManager != null && gestureNavigate!=null && coroutine==null)
+        public Image img_splashIcon;
+        public TMP_Text tmp_description;
+        [Header("Gesture")]
+        public float navigateTime = 2f;
+        private float navigateTimeElapsed = 2f;
+        public Image img_gesture_filled;
+
+        private void Start()
         {
-            if(handGestureManager.GetCurrentGesture() == gestureNavigate.gestureName)
-            {
-                navigateTimeElapsed += Time.deltaTime;
-            }
-            else 
-            {
-                navigateTimeElapsed -= Time.deltaTime;
-            }
-            navigateTimeElapsed = Mathf.Clamp(navigateTimeElapsed, 0f, navigateTime);
-            if (navigateTimeElapsed>=navigateTime)
-            {
-                Debug.Log("Done");
-                StartFadeOut();
-                navigateTimeElapsed = 0f;
-            }
-            if(img_gesture_filled)
-                img_gesture_filled.fillAmount = navigateTimeElapsed / navigateTime;
+            if (!canvasGroup)
+                canvasGroup = GetComponent<CanvasGroup>();
+
+            bu_close.onClick.AddListener(StartFadeOut);
         }
-    }
-    public void StartFadeOut()
-    {
-        if (coroutine != null)
-            return;
-
-        coroutine = StartCoroutine(fadeOut());
-    }
-
-    IEnumerator fadeOut()
-    {
-        float counter = 0;
-
-        while (counter < duration)
+        private void Update()
         {
-            counter += Time.deltaTime;
-            //Fade from 1 to 0
-            float alpha = Mathf.Lerp(1, 0, counter / duration);
-
-            canvasGroup.alpha = alpha;
-            //Wait for a frame
-            yield return null;
+            if (handGestureManager != null && gestureNavigate != null && coroutine == null)
+            {
+                if (handGestureManager.GetCurrentGesture() == gestureNavigate.gestureName)
+                {
+                    navigateTimeElapsed += Time.deltaTime;
+                }
+                else
+                {
+                    navigateTimeElapsed -= Time.deltaTime;
+                }
+                navigateTimeElapsed = Mathf.Clamp(navigateTimeElapsed, 0f, navigateTime);
+                if (navigateTimeElapsed >= navigateTime)
+                {
+                    Debug.Log("Done");
+                    StartFadeOut();
+                    navigateTimeElapsed = 0f;
+                }
+                if (img_gesture_filled)
+                    img_gesture_filled.fillAmount = navigateTimeElapsed / navigateTime;
+            }
         }
-        this.gameObject.SetActive(false);
-        coroutine = null;
-    }
+        public void StartFadeOut()
+        {
+            if (coroutine != null)
+                return;
 
-    public void ShowSplash()
-    {
-        if (canvasGroup);
-            canvasGroup.alpha = 1;
-        gameObject.SetActive(true);
+            coroutine = StartCoroutine(fadeOut());
+        }
+
+        IEnumerator fadeOut()
+        {
+            float counter = 0;
+
+            while (counter < duration)
+            {
+                counter += Time.deltaTime;
+                //Fade from 1 to 0
+                float alpha = Mathf.Lerp(1, 0, counter / duration);
+
+                canvasGroup.alpha = alpha;
+                //Wait for a frame
+                yield return null;
+            }
+            this.gameObject.SetActive(false);
+            coroutine = null;
+        }
+
+        public void ShowSplash()
+        {
+            if (canvasGroup) 
+                canvasGroup.alpha = 1;
+            gameObject.SetActive(true);
+        }
     }
 }
