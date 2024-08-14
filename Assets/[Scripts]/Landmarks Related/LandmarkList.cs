@@ -78,8 +78,6 @@ public class LandmarkList<T>
         return loaded;
     }
 }
-
-
 [System.Serializable]
 public class LandmarkListGO : LandmarkList<GameObject>
 {
