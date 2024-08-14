@@ -13,7 +13,7 @@ public class SliderManager : MonoBehaviour
     public TMP_Text dateText;
     public TMP_Text dayText;
 
-    [SerializeField] private JournalSO journalSO;
+    [SerializeField] private JournalData journalSO;
 
     //Start is called before the first frame update
     void Start()

@@ -9,7 +9,7 @@ namespace SDM_FythmPipe
 {
     public class PageLogic_Album : PageLogic
     {
-        [SerializeField] private JournalSO journalSO;
+        [SerializeField] private JournalData journalSO;
         [SerializeField] private List<RawImage> pics;
         public Button bu_Capture;
 
@@ -29,8 +29,8 @@ namespace SDM_FythmPipe
 
             if (journalSO.GetAfterCount() > 0)
                 compareSlider.GetComponent<RectTransform>().sizeDelta =
-                    new Vector2(journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).width,
-                    journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+                    new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width,
+                    journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
         }
         public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
         {
@@ -67,7 +67,7 @@ namespace SDM_FythmPipe
                     break;
                 }
 
-                pics[i - 1].texture = journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.AFTER, DateTime.Today);
+                pics[i - 1].texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.AFTER, DateTime.Today);
 
             }
         }

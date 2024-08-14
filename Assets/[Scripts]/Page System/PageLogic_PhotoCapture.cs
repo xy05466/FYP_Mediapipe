@@ -27,7 +27,7 @@ namespace SDM_FythmPipe
         public float waitTime = 0f;
         private float timer = 0.0f;
         [Header("JOURNAL DATA")]
-        [SerializeField] private JournalSO journalSO;
+        [SerializeField] private JournalData journalSO;
 
         public RawImage checkPic;
         public GameObject brightnessSprite;

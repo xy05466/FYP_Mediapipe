@@ -10,7 +10,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [CreateAssetMenu]
-public class JournalSO : ScriptableObject
+public class JournalData : ScriptableObject
 {
     //[SerializeField]
     //public Texture2D picToLoad;

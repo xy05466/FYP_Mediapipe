@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class AlbumManager : MonoBehaviour
 {
-    [SerializeField] private JournalSO journalSO;
+    [SerializeField] private JournalData journalSO;
     [SerializeField] private List<RawImage> pics;
     public Button bu_Capture;
 

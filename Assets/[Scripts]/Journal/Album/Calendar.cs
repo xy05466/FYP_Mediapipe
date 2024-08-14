@@ -20,7 +20,7 @@ public class Calendar : MonoBehaviour
     public Button bu_next;
     public Button bu_prev;
     public Button bu_seeComparison;
-    [SerializeField] private JournalSO journalSO;
+    [SerializeField] private JournalData journalSO;
 
  
 
@@ -129,7 +129,7 @@ public class Calendar : MonoBehaviour
 
         // resizing slider based on photo
         if (journalSO.GetAfterCount() > 0)
-            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).width, journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+            compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width, journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
 
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
@@ -276,11 +276,11 @@ public class Calendar : MonoBehaviour
         Debug.Log(day);
         selectedDate = new DateTime(selectedDate.Year,selectedDate.Month,day);
         //int imageCount = journalSO.GetAfterCount();
-        beforeImage.texture = journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.BEFORE, selectedDate);
+        beforeImage.texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, selectedDate);
         if (beforeImage.texture == null)
             beforeImage.texture = textureInitial;
 
-        afterImage.texture = journalSO.GetPhotoAlbum(JournalSO.AlbumPhotoType.AFTER, selectedDate);
+        afterImage.texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.AFTER, selectedDate);
         if (afterImage.texture == null)
             afterImage.texture = textureInitial;
         //for (int i = imageCount; i > 0; i--)

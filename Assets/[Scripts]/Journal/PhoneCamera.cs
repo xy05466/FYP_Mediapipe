@@ -8,7 +8,7 @@ using System;
 
 public class PhoneCamera : MonoBehaviour
 {
-    [SerializeField] private JournalSO journalSO;
+    [SerializeField] private JournalData journalSO;
     //[SerializeField] protected Mediapipe.Unity.Screen screen;
     [Space]
     private Texture2D picTaken;
