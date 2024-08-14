@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class PageLogic : MonoBehaviour
 {
     public PageData pageData;
+    public ProgressionComponent progressionComponent;
     [Space(30)]
     protected PageState pageState = PageState.NOT_STARTED;
     private bool hasHandpointsLoaded = false;
