@@ -136,7 +136,15 @@ public class ScenePageHandler : MonoBehaviour
         {
             // run curring page logic
             if (currentPageLogic.CompareState(PageLogic.PageState.START))
+            {
                 currentPageLogic.RunLogic(landmarkManager.GetHandPoints(0), landmarkManager.GetHandPoints(1), landmarkManager.GetFacePoints());
+                if(currentPageLogic.progressionComponent != null)
+                {
+                    currentPageLogic.progressionComponent.UpdateProgression(currentPageLogic.GetSubProgression(), 
+                        currentPageLogic.GetPageProgress(),
+                        currentPageLogic.GetMaxPageProgress());
+                }
+            }
 
             if (currentPageLogic.IsPageDone() && !pageEnded)
             {

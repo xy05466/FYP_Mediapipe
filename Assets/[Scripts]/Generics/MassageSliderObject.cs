@@ -34,6 +34,7 @@ public class MassageSliderObject : MonoBehaviour
     bool end = false;
     bool move = false;
     public Action<MassageSliderObject> OnEnded;
+    public Action<MassageSliderObject, float,float> OnSliderUpdate;
 
     private void Awake()
     {
@@ -84,6 +85,7 @@ public class MassageSliderObject : MonoBehaviour
         {
             if (Vector2.Distance(compareObject.transform.position, GetTargetPosition()) <= distance)
             {
+                OnSliderUpdate?.Invoke(this, targetValue, comp-targetValue);
                 targetValue = comp;
             }
         }
@@ -163,7 +165,10 @@ public class MassageSliderObject : MonoBehaviour
     {
         OnEnded += action;
     }
-
+    public void SubscribeEvent_Update(Action<MassageSliderObject,float,float> action)
+    {
+        OnSliderUpdate += action;
+    }
 
 
 

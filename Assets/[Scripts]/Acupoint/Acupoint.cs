@@ -12,7 +12,30 @@ public class Acupoint : MonoBehaviour
     bool isEnd = false;
     int accId = -1;
     public Action<Acupoint> OnFinished;
- 
+    private float timeout = 0.1f;
+    private float timeoutElapsed = 0f;
+
+    private void Update()
+    {
+        if (isEnd) return;
+        if (timeoutElapsed > timeout) return;
+        timeoutElapsed += Time.deltaTime;
+        currentTime += Time.deltaTime;
+        spriteChild.transform.localScale = new Vector3(GetCalculatedScale(), GetCalculatedScale(), GetCalculatedScale());
+
+        if (currentTime >= timer)
+        {
+            isEnd = true;
+            if (sliderSprite)
+                sliderSprite.ResetSlider();
+            OnFinished?.Invoke(this);
+        }
+        else
+        {
+            if (sliderSprite)
+                sliderSprite.Fill(currentTime / timer);
+        }
+    }
     public void Initialize(float timer = 3)
     {
         this.timer = timer;
@@ -38,22 +61,7 @@ public class Acupoint : MonoBehaviour
   
     public void Colliding()
     {
-        if (isEnd) return;
-        currentTime += Time.deltaTime;
-        spriteChild.transform.localScale = new Vector3(GetCalculatedScale(), GetCalculatedScale(), GetCalculatedScale());
-
-        if (currentTime >= timer)
-        {
-            isEnd = true;
-            if (sliderSprite)
-                sliderSprite.ResetSlider();
-            OnFinished?.Invoke(this);
-        }
-        else
-        {
-            if(sliderSprite)
-                sliderSprite.Fill(currentTime / timer);
-        }
+        timeoutElapsed = 0f;
     }
     public void AccupointReset()
     {

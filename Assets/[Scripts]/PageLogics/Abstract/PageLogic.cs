@@ -47,6 +47,12 @@ public abstract class PageLogic : MonoBehaviour
         return 1;
     }
 
+    // must be 0 to 1
+    public virtual float GetSubProgression()
+    {
+        return 0;
+    }
+
     // State comparison
     public void ChangeState(PageState pageState)
     {

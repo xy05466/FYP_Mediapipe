@@ -22,6 +22,4 @@ public abstract class PageLogic_Extension : PageLogic
     public abstract void OnFaceAnnotationActive(bool active);
 
     public abstract void OnHandAnnotationActive(int actives);
-
-  
 }

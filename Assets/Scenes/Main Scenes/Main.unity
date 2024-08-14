@@ -9961,7 +9961,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364995826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -12203,7 +12203,7 @@ MonoBehaviour:
   _cpuConfig: {fileID: 4900000, guid: e103d3514f44539afbb2630835e8546a, type: 3}
   _gpuConfig: {fileID: 4900000, guid: 547e40a551a15195b99af48671582f2e, type: 3}
   _openGlEsConfig: {fileID: 4900000, guid: 3c861bf929c058e68a5759b703d993d0, type: 3}
-  _timeoutMicrosec: 100000
+  _timeoutMicrosec: 1000000
 --- !u!114 &444681272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13493,6 +13493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
+  progressionComponent: {fileID: 0}
   panel: {fileID: 837395666}
   bu_start: {fileID: 1503569485}
 --- !u!1 &474113031
@@ -18439,11 +18440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
   pageLogics:
+  - {fileID: 640194813}
   - {fileID: 473273937}
-  - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 885432721}
-  - {fileID: 640194813}
+  - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 774930170}
   splashScreen: {fileID: 1945387827}
@@ -19244,6 +19245,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1597859357}
+  - {fileID: 2000455526}
   m_Father: {fileID: 135324052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &640194813
@@ -19259,6 +19261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: aedea1c5a11efc545a8311e78567c7b5, type: 2}
+  progressionComponent: {fileID: 2000455527}
   tmp_title: {fileID: 557661500}
   tmp_titleSub: {fileID: 1437278368}
   tmp_description: {fileID: 1785518450}
@@ -19269,55 +19272,6 @@ MonoBehaviour:
   massageSpeed: 3
   massageDistance: 0.15
   massageFirstDistance: 0.15
-  maskMoving: []
-  OuterList:
-  - MovingList:
-    - {fileID: 985733017}
-    - {fileID: 411419735}
-    - {fileID: 1932390253}
-    - {fileID: 1250048551}
-    - {fileID: 1482623227}
-    - {fileID: 914232557}
-    - {fileID: 515282873}
-    - {fileID: 709252705}
-    - {fileID: 1816627455}
-    IsDone: 0
-  - MovingList:
-    - {fileID: 1735681076}
-    - {fileID: 1597594050}
-    - {fileID: 1396243370}
-    - {fileID: 1553515098}
-    - {fileID: 1993332087}
-    - {fileID: 733329126}
-    - {fileID: 474113033}
-    - {fileID: 194961172}
-    - {fileID: 1439577183}
-    - {fileID: 1948645935}
-    - {fileID: 1624201001}
-    - {fileID: 1155593002}
-    - {fileID: 801447580}
-    IsDone: 0
-  - MovingList:
-    - {fileID: 316497758}
-    - {fileID: 701286315}
-    - {fileID: 2112472532}
-    - {fileID: 1691707938}
-    - {fileID: 161726437}
-    - {fileID: 441662871}
-    IsDone: 0
-  - MovingList:
-    - {fileID: 710753640}
-    - {fileID: 1916094576}
-    IsDone: 0
-  - MovingList:
-    - {fileID: 872177896}
-    - {fileID: 839749379}
-    - {fileID: 1517873078}
-    - {fileID: 85265956}
-    - {fileID: 1209784976}
-    - {fileID: 108527367}
-    - {fileID: 1989244367}
-    IsDone: 0
   list_steps:
   - stepName: Step 2
     title: Cheekbone Lift
@@ -19468,6 +19422,55 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f144da6c76f5705439c5c22307103743, type: 2}
     massageSliders:
     - points: ce000000cd000000320000008b000000
+  maskMoving: []
+  OuterList:
+  - MovingList:
+    - {fileID: 985733017}
+    - {fileID: 411419735}
+    - {fileID: 1932390253}
+    - {fileID: 1250048551}
+    - {fileID: 1482623227}
+    - {fileID: 914232557}
+    - {fileID: 515282873}
+    - {fileID: 709252705}
+    - {fileID: 1816627455}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 1735681076}
+    - {fileID: 1597594050}
+    - {fileID: 1396243370}
+    - {fileID: 1553515098}
+    - {fileID: 1993332087}
+    - {fileID: 733329126}
+    - {fileID: 474113033}
+    - {fileID: 194961172}
+    - {fileID: 1439577183}
+    - {fileID: 1948645935}
+    - {fileID: 1624201001}
+    - {fileID: 1155593002}
+    - {fileID: 801447580}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 316497758}
+    - {fileID: 701286315}
+    - {fileID: 2112472532}
+    - {fileID: 1691707938}
+    - {fileID: 161726437}
+    - {fileID: 441662871}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 710753640}
+    - {fileID: 1916094576}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 872177896}
+    - {fileID: 839749379}
+    - {fileID: 1517873078}
+    - {fileID: 85265956}
+    - {fileID: 1209784976}
+    - {fileID: 108527367}
+    - {fileID: 1989244367}
+    IsDone: 0
 --- !u!1 &642363494
 GameObject:
   m_ObjectHideFlags: 0
@@ -25016,6 +25019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: cf8e111d7e4da5f4288bf3311acc8e78, type: 2}
+  progressionComponent: {fileID: 0}
   journalSO: {fileID: 11400000, guid: 948f3ced27e9bff4f840ef38ffd77ad1, type: 2}
   pics:
   - {fileID: 67294954}
@@ -25324,6 +25328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 4dedddbdd1292fb42b192e90b9c5a4f6, type: 2}
+  progressionComponent: {fileID: 0}
   allPetals: []
   imageSegOBJ: {fileID: 0}
   objectPlacer: {fileID: 2135431875}
@@ -28011,6 +28016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: 2eb091339d6280f428af1b0a4c31a66e, type: 2}
+  progressionComponent: {fileID: 0}
   phoneCamera: {fileID: 1036480178}
   photoOverlay: {fileID: 91149746}
   textbox: {fileID: 557661500}
@@ -28384,6 +28390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageData: {fileID: 11400000, guid: acdf5f85eed98c844b323b95fe9f8ed4, type: 2}
+  progressionComponent: {fileID: 0}
   accupoint: {fileID: 2757362586351624599, guid: 833e0e884e36341448afa22cec5526f1,
     type: 3}
   list_facepointSteps:
@@ -49040,7 +49047,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 424319162}
   - {fileID: 736047118}
@@ -64119,6 +64126,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999658545}
   m_CullTransparentMesh: 1
+--- !u!1 &2000455525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000455526}
+  - component: {fileID: 2000455527}
+  m_Layer: 0
+  m_Name: Progression_Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000455526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000455525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 640194812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2000455527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000455525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78deba70eb06da42b6fa084eaaac837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maskMoving: []
+  OuterList:
+  - MovingList:
+    - {fileID: 985733017}
+    - {fileID: 411419735}
+    - {fileID: 1932390253}
+    - {fileID: 1250048551}
+    - {fileID: 1482623227}
+    - {fileID: 914232557}
+    - {fileID: 515282873}
+    - {fileID: 709252705}
+    - {fileID: 1816627455}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 1735681076}
+    - {fileID: 1597594050}
+    - {fileID: 1396243370}
+    - {fileID: 1553515098}
+    - {fileID: 1993332087}
+    - {fileID: 733329126}
+    - {fileID: 474113033}
+    - {fileID: 194961172}
+    - {fileID: 1439577183}
+    - {fileID: 1948645935}
+    - {fileID: 1624201001}
+    - {fileID: 1155593002}
+    - {fileID: 801447580}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 316497758}
+    - {fileID: 701286315}
+    - {fileID: 2112472532}
+    - {fileID: 1691707938}
+    - {fileID: 161726437}
+    - {fileID: 441662871}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 710753640}
+    - {fileID: 1916094576}
+    IsDone: 0
+  - MovingList:
+    - {fileID: 872177896}
+    - {fileID: 839749379}
+    - {fileID: 1517873078}
+    - {fileID: 85265956}
+    - {fileID: 1209784976}
+    - {fileID: 108527367}
+    - {fileID: 1989244367}
+    IsDone: 0
 --- !u!1 &2000575291
 GameObject:
   m_ObjectHideFlags: 0
