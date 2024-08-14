@@ -31,8 +31,8 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
     public GameObject brightnessSprite;
 
     [Header("VISUAL FEEDBACK")]
-    public Image img_default;
-    public Image img_filled;
+    //public Image img_default;
+    //public Image img_filled;
     public Animator anim;
 
     [Header("AUDIO FEEDBACK")]
@@ -134,19 +134,19 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
         {
 
             timer += Time.deltaTime;
-            if (img_filled != null)
-            {
-                if (waitTime > 0)
-                {
-                    img_filled.fillAmount = timer / waitTime;
-                    img_default.fillAmount = waitTime - timer;
-                }
-                else
-                {
-                    img_filled.fillAmount = 1;
-                    img_default.fillAmount = 0;
-                }
-            }
+            //if (img_filled != null)
+            //{
+            //    if (waitTime > 0)
+            //    {
+            //        img_filled.fillAmount = timer / waitTime;
+            //        img_default.fillAmount = waitTime - timer;
+            //    }
+            //    else
+            //    {
+            //        img_filled.fillAmount = 1;
+            //        img_default.fillAmount = 0;
+            //    }
+            //}
 
             if (timer >= waitTime)
             {
@@ -242,8 +242,8 @@ public class PageLogic_PhotoCapture : PageLogic_Extension
         }
         else
         {
-            img_default.fillAmount = 1;
-            img_filled.fillAmount = 0;
+            //img_default.fillAmount = 1;
+            //img_filled.fillAmount = 0;
             timer -= Time.deltaTime;
             bu_capture.interactable = false;
         }

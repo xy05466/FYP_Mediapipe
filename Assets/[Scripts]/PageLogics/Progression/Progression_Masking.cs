@@ -11,17 +11,31 @@ public class Progression_Masking : ProgressionComponent
     private void Start()
     {
         GameObject[] spriteMasks = GameObject.FindGameObjectsWithTag("SpriteMask");
-        //GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
-
-        foreach (GameObject obj in spriteMasks)
+        foreach (Component go in transform.GetComponentsInChildren<Component>(true))
         {
-            MaskMoving mask = obj.GetComponent<MaskMoving>();
-            if (mask != null)
+            if (go.gameObject.CompareTag("SpriteMask"))
             {
-                maskMoving.Add(mask);
-                mask.gameObject.SetActive(false);
+                MaskMoving mask = go.gameObject.GetComponent<MaskMoving>();
+                if (mask != null)
+                {
+                    maskMoving.Add(mask);
+                    mask.gameObject.SetActive(false);
+                }
             }
         }
+
+        Debug.Log("countt" + spriteMasks.Length);
+        //GameObject[] subSpriteMasks = GameObject.FindGameObjectsWithTag("SubSpriteMask");
+
+        //foreach (GameObject obj in spriteMasks)
+        //{
+        //    MaskMoving mask = obj.GetComponent<MaskMoving>();
+        //    if (mask != null)
+        //    {
+        //        maskMoving.Add(mask);
+        //        mask.gameObject.SetActive(false);
+        //    }
+        //}
 
         foreach (MaskMovingList maskList in OuterList)
         {
@@ -37,21 +51,64 @@ public class Progression_Masking : ProgressionComponent
 
     }
 
- 
+    int index = 0;
 
     public override void UpdateProgression(float subProgression, int currentProgress, int maxProgress)
     {
-        CheckIndexMask(currentProgress, subProgression);
+        //CheckIndexMask(currentProgress, subProgression);
         Debug.Log(subProgression + " " + currentProgress + " " + maxProgress);
+
+
+        if(index < OuterList.Count)
+        {
+            MaskMovingList currentMaskOBJ = OuterList[index];
+
+            foreach (MaskMoving mask in currentMaskOBJ.MovingList)
+            {
+                if (mask.gameObject.CompareTag("SpriteMask"))
+                {
+                    mask.gameObject.SetActive(true);
+                    mask.PercentageMovement(subProgression + 0.1f);
+                }
+            }
+            if (index != currentProgress)
+            {
+                currentMaskOBJ.IsDone = true;
+                foreach (MaskMoving mask in currentMaskOBJ.MovingList)
+                {
+                    mask.PlayAnim();
+                    currentMaskOBJ.IsDone = true;
+                    mask.gameObject.SetActive(false);
+                }
+                index++;
+            }
+        }
+     
+
+        //if(index != currentProgress)
+        //{
+        //    if (index < OuterList.Count)
+        //    {
+        //        MaskMovingList currentMaskOBJ = OuterList[index];
+        //        foreach (MaskMoving mask in currentMaskOBJ.MovingList)
+        //        {
+        //            mask.PlayAnim();
+        //            currentMaskOBJ.IsDone = true;
+        //            mask.gameObject.SetActive(false);
+        //        }
+        //    }
+        //    index = currentProgress;
+        //}
+
     }
 
     // Masking
-    int index;
     void CheckIndexMask(int m, float value)
     {
-        if (m >= OuterList.Count) return;
+        if (index >= OuterList.Count) return;
+        Debug.Log("mask "+value);
 
-        MaskMovingList currentMaskOBJ = OuterList[m];
+        MaskMovingList currentMaskOBJ = OuterList[index];
 
         foreach (MaskMoving mask in currentMaskOBJ.MovingList)
         {
@@ -61,6 +118,7 @@ public class Progression_Masking : ProgressionComponent
                 mask.PercentageMovement(value + 0.1f);
             }
         }
+
 
         if (currentMaskOBJ.IsDone)
         {

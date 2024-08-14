@@ -234,13 +234,13 @@ public class PageLogic_Massage : PageLogic_Extension
         {
             total+= step.curveDatas.Count;
         }
-        return list_steps[currentStepIndex].curveDatas.Count;
+        return total;
     }
 
     private void OnSliderEnded(MassageSliderObject massageSliderObject)
     {
         massageSliderObject.gameObject.SetActive(false);
-        if(index < OuterList.Count)
+        if (index < OuterList.Count)
         {
             MaskMovingList currentMaskOBJ = OuterList[index];
             foreach (MaskMoving mask in currentMaskOBJ.MovingList)
@@ -250,7 +250,7 @@ public class PageLogic_Massage : PageLogic_Extension
                 mask.gameObject.SetActive(false);
             }
         }
-    
+
         slidersDoneCount++;
         // check if all current slider has completed , done
         if(slidersDoneCount >= list_steps[currentStepIndex].curveDatas.Count )
@@ -261,8 +261,17 @@ public class PageLogic_Massage : PageLogic_Extension
     }
     private void OnSliderUpodate(MassageSliderObject massageSliderObject, float sliderValue, float newValueAdd)
     {
-        subProgress += newValueAdd / list_steps[currentStepIndex].curveDatas.Count;
-        Debug.Log(newValueAdd);
+        float totalSliderProgress = 0f;
+        for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
+        {
+            foreach (var item in massageSliderObjects)
+            {
+                totalSliderProgress += item.GetValue();
+            }
+        }
+
+        subProgress = totalSliderProgress /*/ list_steps[currentStepIndex].curveDatas.Count*/;
+        Debug.Log("sub progress "+subProgress);
     }
     // go to next step 
     void NextStep()
@@ -309,7 +318,7 @@ public class PageLogic_Massage : PageLogic_Extension
 
     public override float GetSubProgression()
     {
-        return subProgress  / totalSliders;
+        return subProgress;
     }
 
     // Masking

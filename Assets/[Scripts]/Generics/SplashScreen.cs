@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour
 {
+    public HandGestureManager handGestureManager;
+    public GestureData gestureNavigate;
     public Button bu_close;
     public float duration;
     public CanvasGroup canvasGroup;
@@ -14,6 +16,10 @@ public class SplashScreen : MonoBehaviour
 
     public Image img_splashIcon;
     public TMP_Text tmp_description;
+    [Header("Gesture")]
+    public float navigateTime = 2f;
+    private float navigateTimeElapsed = 2f;
+    public Image img_gesture_filled;
 
     private void Start()
     {
@@ -22,7 +28,29 @@ public class SplashScreen : MonoBehaviour
 
         bu_close.onClick.AddListener(StartFadeOut);
     }
-
+    private void Update()
+    {
+        if(handGestureManager != null && gestureNavigate!=null && coroutine==null)
+        {
+            if(handGestureManager.GetCurrentGesture() == gestureNavigate.gestureName)
+            {
+                navigateTimeElapsed += Time.deltaTime;
+            }
+            else 
+            {
+                navigateTimeElapsed -= Time.deltaTime;
+            }
+            navigateTimeElapsed = Mathf.Clamp(navigateTimeElapsed, 0f, navigateTime);
+            if (navigateTimeElapsed>=navigateTime)
+            {
+                Debug.Log("Done");
+                StartFadeOut();
+                navigateTimeElapsed = 0f;
+            }
+            if(img_gesture_filled)
+                img_gesture_filled.fillAmount = navigateTimeElapsed / navigateTime;
+        }
+    }
     public void StartFadeOut()
     {
         if (coroutine != null)
