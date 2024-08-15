@@ -31,12 +31,11 @@ namespace SDM_FythmPipe
         private bool autoNavigate = false;
         private bool pageEnded = false;
 
-        [Header("Annotation screens")]
+        [Header("Annotation Layers")]
         public GameObject annotationFace;
         public GameObject annotationHand;
 
         [Header("Destection Solution")]
-
         public System.Action<int, int, GameObject, int, GameObject> OnCollidingFacePoint; // hand point collide with face point
 
         //bool handPointsStored = false;
@@ -150,14 +149,14 @@ namespace SDM_FythmPipe
         {
             //img_hand.gameObject.SetActive(active);
         }
-        public void StoreFacePoints(List<GameObject> facePoints)
+        private void StoreFacePoints(List<GameObject> facePoints)
         {
             //this.facePoints = facePoints;
             foreach (var pageL in pageLogics)
                 pageL.LoadFacePoints(true);
 
         }
-        public void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
+        private void StoreHandPoints(List<HandPointAnnotationObject> handPoints)
         {
 
             foreach (var pageL in pageLogics)
@@ -165,10 +164,6 @@ namespace SDM_FythmPipe
 
 
             OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-        }
-        public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
-        {
-
         }
 
         // Start page
@@ -215,7 +210,8 @@ namespace SDM_FythmPipe
             OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
         }
 
-        public void PreNextPage()
+        // Call for buttons
+        private void CallNextPage()
         {
             if (currentPageIndex < pageLogics.Count - 1)
                 transitionEnd.PlayUIAnim();
