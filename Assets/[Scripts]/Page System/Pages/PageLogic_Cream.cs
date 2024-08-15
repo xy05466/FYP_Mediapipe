@@ -25,14 +25,6 @@ namespace SDM_FythmPipe
             foreach (FlowerAcupoint fc in allPetals)
                 fc.SubscribePetalsDone(OnPetalDone);
         }
-        private void OnPetalDone(FlowerAcupoint accupoint)
-        {
-            petalDone++;
-            if (petalDone >= petalCount)
-            {
-                creamDone = true;
-            }
-        }
         public override void StartPage()
         {
             creamDone = false;
@@ -40,9 +32,7 @@ namespace SDM_FythmPipe
             foreach (FlowerAcupoint fc in allPetals)
                 fc.ResetPetal();
         }
-
         public override bool IsPageDone() => creamDone;
-
         public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
         {
             if (!gameObject.activeInHierarchy) return;
@@ -52,12 +42,15 @@ namespace SDM_FythmPipe
                     petal.Fill();
             }
         }
-
-        public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
-        {
-        }
-
         public override int GetPageProgress() => petalDone;
         public override int GetMaxPageProgress() => petalCount;
+        private void OnPetalDone(FlowerAcupoint accupoint)
+        {
+            petalDone++;
+            if (petalDone >= petalCount)
+            {
+                creamDone = true;
+            }
+        }
     }
 }

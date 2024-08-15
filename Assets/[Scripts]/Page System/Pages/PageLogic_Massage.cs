@@ -30,15 +30,10 @@ namespace SDM_FythmPipe
         private int slidersDoneCount = 0;
         bool massageEnd = false;
         float subProgress;
-        int totalSliders;
 
         public List<MaskMoving> maskMoving = new List<MaskMoving>();
         public List<MaskMovingList> OuterList = new List<MaskMovingList>();
 
-        public override void Initialize()
-        {
-        }
-        //lr.GetPosition(i-1) / 
         public override void StartPage()
         {
             int maxSpawn = 0;
@@ -101,7 +96,6 @@ namespace SDM_FythmPipe
                 massageSlider.SetUp();
 
             UpdateUI();
-            totalSliders = GetTotalSliders();
         }
         public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
         {
@@ -216,42 +210,6 @@ namespace SDM_FythmPipe
             return total;
         }
 
-        private void OnSliderEnded(MassageSliderObject massageSliderObject)
-        {
-            massageSliderObject.gameObject.SetActive(false);
-            if (index < OuterList.Count)
-            {
-                MaskMovingList currentMaskOBJ = OuterList[index];
-                foreach (MaskMoving mask in currentMaskOBJ.MovingList)
-                {
-                    mask.PlayAnim();
-                    currentMaskOBJ.IsDone = true;
-                    mask.gameObject.SetActive(false);
-                }
-            }
-
-            slidersDoneCount++;
-            // check if all current slider has completed , done
-            if (slidersDoneCount >= list_steps[currentStepIndex].curveDatas.Count)
-            {
-                NextStep();
-                subProgress = 0f;
-            }
-        }
-        private void OnSliderUpodate(MassageSliderObject massageSliderObject, float sliderValue, float newValueAdd)
-        {
-            float totalSliderProgress = 0f;
-            for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
-            {
-                foreach (var item in massageSliderObjects)
-                {
-                    totalSliderProgress += item.GetValue();
-                }
-            }
-
-            subProgress = totalSliderProgress /*/ list_steps[currentStepIndex].curveDatas.Count*/;
-            Debug.Log("sub progress " + subProgress);
-        }
         // go to next step 
         void NextStep()
         {
@@ -294,20 +252,57 @@ namespace SDM_FythmPipe
         {
             return GetTotalSliders();
         }
-
         public override float GetSubProgression()
         {
             return subProgress;
         }
 
+
+        private void OnSliderEnded(MassageSliderObject massageSliderObject)
+        {
+            massageSliderObject.gameObject.SetActive(false);
+            if (maskIndex < OuterList.Count)
+            {
+                MaskMovingList currentMaskOBJ = OuterList[maskIndex];
+                foreach (MaskMoving mask in currentMaskOBJ.MovingList)
+                {
+                    mask.PlayAnim();
+                    currentMaskOBJ.IsDone = true;
+                    mask.gameObject.SetActive(false);
+                }
+            }
+
+            slidersDoneCount++;
+            // check if all current slider has completed , done
+            if (slidersDoneCount >= list_steps[currentStepIndex].curveDatas.Count)
+            {
+                NextStep();
+                subProgress = 0f;
+            }
+        }
+        private void OnSliderUpodate(MassageSliderObject massageSliderObject, float sliderValue, float newValueAdd)
+        {
+            float totalSliderProgress = 0f;
+            for (int i = 0; i < list_steps[currentStepIndex].curveDatas.Count; i++)
+            {
+                foreach (var item in massageSliderObjects)
+                {
+                    totalSliderProgress += item.GetValue();
+                }
+            }
+
+            subProgress = totalSliderProgress /*/ list_steps[currentStepIndex].curveDatas.Count*/;
+            Debug.Log("sub progress " + subProgress);
+        }
+
         // Masking
-        int index;
+        int maskIndex;
         void CheckIndexMask(int m)
         {
             Debug.Log("mask " + m + " " + massageSliderObjects[m].GetValue());
-            if (index >= OuterList.Count) return;
+            if (maskIndex >= OuterList.Count) return;
 
-            MaskMovingList currentMaskOBJ = OuterList[index];
+            MaskMovingList currentMaskOBJ = OuterList[maskIndex];
 
             foreach (MaskMoving mask in currentMaskOBJ.MovingList)
             {
@@ -320,8 +315,8 @@ namespace SDM_FythmPipe
 
             if (currentMaskOBJ.IsDone)
             {
-                index++;
-                if (index < OuterList.Count)
+                maskIndex++;
+                if (maskIndex < OuterList.Count)
                 {
                     CheckIndexMask(m);
                 }

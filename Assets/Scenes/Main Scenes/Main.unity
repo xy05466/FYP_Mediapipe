@@ -15211,6 +15211,7 @@ MonoBehaviour:
       corner of your eyebrow
     curveDatas:
     - {fileID: 11400000, guid: 49bb5ce76fc3c99488b0352e3b8cc97c, type: 2}
+    - {fileID: 11400000, guid: bac3bcb00e526df43a8621bda6a4a5de, type: 2}
     massageSliders:
     - points: aa010000a90100001801000070010000
     - points: ce000000cd000000320000008b000000
