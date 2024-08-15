@@ -33,8 +33,6 @@ namespace SDM_FythmPipe
 
         public void StartPhoto()
         {
-            journalSO.Initialize();
-
             cameras = new List<WebCamTexture>();
 
             //defaultBackground = background.texture;
@@ -129,14 +127,14 @@ namespace SDM_FythmPipe
         public void StartSetPic()
         {
             audioManager?.GetComponent<AudioManager>().Play("CamCapture");
-            StartCoroutine(SetPic());
+            StartCoroutine(IeSetPic());
         }
 
-        IEnumerator SetPic()
+        IEnumerator IeSetPic()
         {
             preview.GetComponent<RectTransform>().sizeDelta = new Vector2(background.GetComponent<RectTransform>().rect.width * 0.5f, background.GetComponent<RectTransform>().rect.height * 0.5f);
 
-            yield return StartCoroutine(journalSO.TakePic(background.texture));
+            yield return StartCoroutine(journalSO.IeTakePic(background.texture));
             //Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
             ShowPic();
             audioManager?.GetComponent<AudioManager>().Play("Ding");

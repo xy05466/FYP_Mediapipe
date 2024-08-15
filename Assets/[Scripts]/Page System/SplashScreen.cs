@@ -56,10 +56,10 @@ namespace SDM_FythmPipe
             if (coroutine != null)
                 return;
 
-            coroutine = StartCoroutine(fadeOut());
+            coroutine = StartCoroutine(IeFadeOut());
         }
 
-        IEnumerator fadeOut()
+        IEnumerator IeFadeOut()
         {
             float counter = 0;
 

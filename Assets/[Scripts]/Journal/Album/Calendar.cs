@@ -15,54 +15,35 @@ namespace SDM_FythmPipe
         public Color colorDay = Color.black;
         public Color colorBackgroundDay = Color.white;
         public Color colorBackgroundCurrentDay = Color.yellow;
-        //public Color colorSelected = Color.green;
 
         [Header("Buttons")]
         public Button bu_next;
         public Button bu_prev;
-        public Button bu_seeComparison;
-        [SerializeField] private JournalData journalSO;
 
-
-        public CalendarWeek[] weeks;
+        private CalendarWeek[] weeks;
 
         public TMP_Text MonthAndYear;
 
         public DateTime currDate = DateTime.Now;
         public DateTime selectedDate = DateTime.Now;
 
-        [SerializeField] private List<RawImage> pics;
 
-        [Header("Text Infos (NOT USED)")]
-        public TMP_Text journalDayTxt;
-        public TMP_Text journalEntryTxt;
-        [Header("Comparision Images")]
-        public Texture textureInitial;
-        public RawImage beforeImage;
-        public RawImage afterImage;
-        [Header("Comparision Sliders")]
-        public GameObject sliderBG;
-        public GameObject sliderFill;
-        public TMP_Text dateText;
-        public TMP_Text dayText;
 
-        Color availableColor = new Color(0.3647059f, 0.2313726f, 0.04705883f, 1.0f);
-        Color unavailableColor = new Color(0.6509804f, 0.5568628f, 0.454902f, 1.0f);
+
+        private Action<DateTime> OnClickDate;
 
         void InitializeButtons()
         {
             bu_next.onClick.AddListener(() => { SwitchMonth(1); });
             bu_prev.onClick.AddListener(() => { SwitchMonth(-1); });
-            bu_seeComparison.onClick.AddListener(LoadSliderImages);
         }
 
         // Start is called before the first frame update
         void Start()
         {
             InitializeButtons();
-            journalSO.Initialize();
 
-            CalendarWeek[] weeks = GetComponentsInChildren<CalendarWeek>();
+            CalendarWeek[] weeks = GetComponentsInChildren<CalendarWeek>(true);
             foreach (CalendarWeek week in weeks)
             {
                 week.Initialize(colorDay, colorBackgroundDay, colorBackgroundCurrentDay);
@@ -72,40 +53,6 @@ namespace SDM_FythmPipe
             // update calendar
             UpdateCalendar(DateTime.Now);
             OnDayPressed(DateTime.Today.Day.ToString());
-
-            // resizing slider based on photo
-            if (journalSO.GetAfterCount() > 0)
-            {
-                //compareSlider.GetComponent<RectTransform>().sizeDelta = 
-                //    new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width, 
-                //    journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
-            }
-
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                beforeImage.GetComponent<RectTransform>().localScale = new Vector3(0.55f, 0.5f, 1f);
-                afterImage.GetComponent<RectTransform>().localScale = new Vector3(0.55f, 0.5f, 1f);
-            }
-        }
-
-        public void LoadSliderImages()
-        {
-            sliderFill.GetComponent<Image>().sprite = Sprite.Create((Texture2D)beforeImage.texture, new Rect(0, 0, afterImage.texture.width, afterImage.texture.height), new Vector2(0.5f, 0.0f), 100.0f);
-            sliderBG.GetComponent<Image>().sprite = Sprite.Create((Texture2D)afterImage.texture, new Rect(0, 0, afterImage.texture.width, afterImage.texture.height), new Vector2(0.5f, 0.0f), 100.0f);
-            dateText.text = string.Format("{0} {1} {2}", selectedDate.Day, selectedDate.ToString("MMMM"), selectedDate.Year);
-            dayText.text = string.Format("{0} {1}", selectedDate.Day, selectedDate.ToString("MMMM"));
-        }
-
-        // Not used
-        public void GetText(int n)
-        {
-            journalEntryTxt.text = journalSO.GetText(n);
-            journalDayTxt.text = "Day " + journalSO.GetDayNum(n).ToString();
-        }
-
-        public void ResetCapture()
-        {
-            journalSO.SetHasCapturedBefore(false);
         }
         int GetMonthDay(int year, int month, int day)
         {
@@ -127,7 +74,6 @@ namespace SDM_FythmPipe
 
             UpdateCalendar(selectedDate);
         }
-
 
         // Update calendar
         private void UpdateCalendar(DateTime startDate)
@@ -170,19 +116,15 @@ namespace SDM_FythmPipe
         }
 
         // when day is pressed, text returns the day text
-        void OnDayPressed(string text)
+        private void OnDayPressed(string text)
         {
-            //String temp = new DateTime(selectedDate.Year, selectedDate.Month, int.Parse(text)).ToString("dd MMMM yyyy");
             int day = int.Parse(text);
             selectedDate = new DateTime(selectedDate.Year, selectedDate.Month, day);
-            //int imageCount = journalSO.GetAfterCount();
-            beforeImage.texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, selectedDate);
-            if (beforeImage.texture == null)
-                beforeImage.texture = textureInitial;
+            OnClickDate?.Invoke(new DateTime(selectedDate.Year, selectedDate.Month, day));
 
-            afterImage.texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.AFTER, selectedDate);
-            if (afterImage.texture == null)
-                afterImage.texture = textureInitial;
         }
+        // EVENTS
+        public void SubscribeDayPressed(Action<DateTime> action) => OnClickDate += action;
+        public void UnubscribeDayPressed(Action<DateTime> action)=> OnClickDate -= action;
     }
 }

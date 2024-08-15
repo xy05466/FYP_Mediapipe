@@ -13,13 +13,6 @@ namespace SDM_FythmPipe
         [SerializeField]
         public Texture2D picsTaken { get; set; }
 
-
-        [SerializeField]
-        public List<int> dayNum { get; set; }
-
-        [SerializeField]
-        public List<string> dayTxts { get; set; }
-
         [SerializeField]
         public int beforeCount;
 
@@ -28,10 +21,6 @@ namespace SDM_FythmPipe
 
         [SerializeField]
         public bool hasCapturedBefore;
-        //[SerializeField]
-        //public List<string> date;
-        //[SerializeField]
-        //public List<string> day;
 
         public List<JournalDate> dates;
 
@@ -47,30 +36,13 @@ namespace SDM_FythmPipe
         private void ResetValues()
         {
             hasCapturedBefore = false;
-            //date.Clear();
-            //day.Clear();
             dates.Clear();
             beforeCount = 0;
             afterCount = 0;
         }
-        public void Initialize()
-        {
+  
 
-            if (dayTxts == null)
-                dayTxts = new List<string>();
-
-            if (dayNum == null)
-                dayNum = new List<int>();
-
-
-            if (beforeCount == 0)
-            {
-                return;
-            }
-
-        }
-
-        public IEnumerator TakePic(Texture pic)
+        public IEnumerator IeTakePic(Texture pic)
         {
             yield return new WaitForEndOfFrame();
 
@@ -99,7 +71,7 @@ namespace SDM_FythmPipe
             Destroy(renderTexture);
         }
 
-        Texture2D rotateTexture(Texture2D originalTexture, bool clockwise)
+        Texture2D RotateTexture(Texture2D originalTexture, bool clockwise)
         {
             Color32[] original = originalTexture.GetPixels32();
             Color32[] rotated = new Color32[original.Length];
@@ -195,12 +167,12 @@ namespace SDM_FythmPipe
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 FlipTextureVertically(picsTaken);
-                byteArray = rotateTexture(picsTaken, true).EncodeToPNG();
+                byteArray = RotateTexture(picsTaken, true).EncodeToPNG();
 
             }
             else
             {
-                byteArray = rotateTexture(picsTaken, false).EncodeToPNG();
+                byteArray = RotateTexture(picsTaken, false).EncodeToPNG();
             }
 
             System.IO.File.WriteAllBytes(path + "/" + dateTimeString + ".png", byteArray);
@@ -221,71 +193,7 @@ namespace SDM_FythmPipe
             }
       
         }
-
-        //public void ConfirmAfterPic(DateTime dateTime)
-        //{
-        //    string dateTimeString = dateTime.ToString("dd_MM_yyyy");
-
-        //    CreateBaseDirectory();
-
-        //    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        //    {
-        //        if (!Directory.Exists(Application.persistentDataPath + "/AlbumPhoto/After"))
-        //        {
-        //            Directory.CreateDirectory(Application.persistentDataPath + "/AlbumPhoto/After");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (!Directory.Exists(Application.dataPath + "/AlbumPhoto/After"))
-        //        {
-        //            Directory.CreateDirectory(Application.dataPath + "/AlbumPhoto/After");
-        //        }
-        //    }
-
-        //    DirectoryInfo info;
-        //    byte[] byteArray;
-
-        //    if (Application.platform == RuntimePlatform.IPhonePlayer)
-        //    {
-        //        FlipTextureVertically(picsTaken);
-        //        byteArray = rotateTexture(picsTaken, true).EncodeToPNG();
-        //    }
-        //    else
-        //    {
-        //        byteArray = rotateTexture(picsTaken, false).EncodeToPNG();
-        //    }
-
-        //    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        //    {
-        //        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/AlbumPhoto/After/" + dateTimeString + ".png", byteArray);
-
-        //        info = new DirectoryInfo(Application.persistentDataPath + "/AlbumPhoto/After/");
-        //    }
-        //    else
-        //    {
-        //        System.IO.File.WriteAllBytes(Application.dataPath + "/AlbumPhoto/After/" + dateTimeString + ".png", byteArray);
-        //        info = new DirectoryInfo(Application.dataPath + "/AlbumPhoto/After/");
-        //    }
-
-        //    //date.Add(DateTime.Today.ToString("dd MMMM yyyy"));
-        //    //day.Add(DateTime.Now.DayOfWeek.ToString());
-        //    dates.Add(new JournalDate { 
-        //        date = DateTime.Today.ToString("dd MMMM yyyy"), 
-        //        day = DateTime.Now.DayOfWeek.ToString()
-        //    });
-        //    afterCount = info.GetFiles("*.png").Length;
-        //    afterCount = afterCount++;
-        //}
-
-        public Texture GetPicCache()
-        {
-            return picsTaken;
-        }
-
-        //    return (picToLoad);
-        //}
-     
+        public Texture GetPicCache() => picsTaken;
         public Texture GetPhotoAlbum(AlbumPhotoType albumPhotoType, DateTime dateTime)
         {
             string dateTimeString = dateTime.ToString("dd_MM_yyyy");
@@ -307,24 +215,18 @@ namespace SDM_FythmPipe
             string path = "/AlbumPhoto/" + albumType.ToString() + "/" + dateTimeString + ".png";
             string fileLocation;
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-            {
                 fileLocation = Application.persistentDataPath + path;
-            }
             else
-            {
                 fileLocation = Application.dataPath + path;
-            }
 
             FileStream fs;
 
             try
             {
                 fs = new FileStream(fileLocation, FileMode.Open, FileAccess.Read);
-
             }
             catch (Exception)
             {
-
                 return (null);
             }
 
@@ -335,44 +237,18 @@ namespace SDM_FythmPipe
             texture.LoadImage(imageData);
             return (texture);
         }
-        
-
-        public void SetText(string txt, int n)
-        {
-            dayTxts.Add(txt);
+        public int GetCount(AlbumPhotoType albumPhotoType) {
+            switch (albumPhotoType)
+            {
+                case AlbumPhotoType.BEFORE:
+                    return beforeCount;
+                case AlbumPhotoType.AFTER:
+                    return afterCount;
+            }
+            return 0;
         }
-
-       
-
-        public int GetDayNum(int n)
-        {
-            return dayNum[n];
-        }
-
-        public string GetText(int n)
-        {
-            return dayTxts[n];
-        }
-
-        public int GetBeforeCount() => beforeCount;
-
-        public int GetAfterCount()
-        {
-            return afterCount;
-        }
-
-        public void SetHasCapturedBefore(bool b)
-        {
-            hasCapturedBefore = b;
-        }
-
+        public void SetHasCapturedBefore(bool has)=> hasCapturedBefore = has;
         public bool GetHasCapturedBefore() => hasCapturedBefore;
-
-        //public string GetDate(int i)
-        //{
-        //    return date[i];
-        //}
-
         public enum AlbumPhotoType
         {
             BEFORE,
