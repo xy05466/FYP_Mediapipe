@@ -14,39 +14,28 @@ namespace SDM_FythmPipe
         public Color color_default = Color.white;
         public Color color_interacting = Color.green;
         public Color color_done = Color.gray;
-        //public Sprite spr_default;
-        //public Sprite spr_interacting;
-        //public Sprite spr_done;
 
         public LineRenderer lr_outline;
-        //public LineRenderer lr_filled;
-        //private int fillCount = 0;
         public Vector3[] pathPoints = new Vector3[4] { Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
         private int segmentCount = 10;
         List<float> percentageList = new List<float>();
-        //public List<int> points = new List<int>();
-        //private float sliderValue = 0f;
-        //private int currentIndex = 0;
 
-        //public Action<MassageSliderObjectV2, int, GameObject, Collider> OnColliding;
 
         private float sliderValue = 0f;
         private float targetValue = 0f;
         bool end = false;
-        //bool move = false;
         public Action<MassageSliderObject> OnEnded;
         public Action<MassageSliderObject, float, float> OnSliderUpdate;
 
+        int tempCompIndex = 0;
         private void Awake()
         {
             rendererObject = targetObject.GetComponent<SpriteRenderer>();
         }
 
-        // Set up start end points
         public void SetUp()
         {
             lr_outline.positionCount = segmentCount;
-            //lr_filled.positionCount = 0;
 
             for (int i = 0; i < segmentCount; i++)
             {
@@ -59,7 +48,6 @@ namespace SDM_FythmPipe
         {
             pathPoints[index] = pos;
         }
-        int tempCompIndex = 0;
         public void UpdatePosition()
         {
             // set the position for line renderer
@@ -77,7 +65,6 @@ namespace SDM_FythmPipe
         public void UpdateSlider(GameObject compareObject, float distance = 1f, float speed = 1f, float firstEnterDistance = 0.05f)
         {
             if (end) return;
-
 
             float comp = ((float)(tempCompIndex + 1) / (float)lr_outline.positionCount);
 
@@ -105,24 +92,9 @@ namespace SDM_FythmPipe
 
             sliderValue = Mathf.Lerp(sliderValue, targetValue, 5f * Time.deltaTime);
 
-
-            //// Set fill position base on outline position
-            //for (int i = 0; i < lr_filled.positionCount; i++)
-            //    lr_filled.SetPosition(i, lr_outline.GetPosition(i));
-
         }
-
-        public Vector3 GetValuePosition()
-        {
-            // This is for bezier path
-            return CalculateBezierPoint(sliderValue, pathPoints);
-        }
-
-        public Vector3 GetTargetPosition()
-        {
-            // This is for bezier path
-            return CalculateBezierPoint(targetValue, pathPoints);
-        }
+        public Vector3 GetValuePosition()=> CalculateBezierPoint(sliderValue, pathPoints);
+        public Vector3 GetTargetPosition()=> CalculateBezierPoint(targetValue, pathPoints);
         public void ResetSlider()
         {
             sliderValue = 0f;
@@ -136,7 +108,6 @@ namespace SDM_FythmPipe
         {
             return sliderValue;
         }
-
         // Calculated bezier path, done by Bryant Toh
         public Vector3 CalculateBezierPoint(float t, Vector3[] points)
         {
@@ -161,14 +132,11 @@ namespace SDM_FythmPipe
             return p;
         }
 
-        public void SubscribeEvent_Ended(Action<MassageSliderObject> action)
-        {
-            OnEnded += action;
-        }
-        public void SubscribeEvent_Update(Action<MassageSliderObject, float, float> action)
-        {
-            OnSliderUpdate += action;
-        }
+        // EVENTS
+        public void SubscribeEventFinished(Action<MassageSliderObject> action)=> OnEnded += action;
+        public void UnsubscribeEventFinished(Action<MassageSliderObject> action)=> OnEnded -= action;
+        public void SubscribeEventUpdate(Action<MassageSliderObject, float, float> action)=> OnSliderUpdate += action;
+        public void UnsubscribeEventUpdate(Action<MassageSliderObject, float, float> action)=> OnSliderUpdate -= action;
 
 
 

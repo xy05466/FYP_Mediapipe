@@ -21,13 +21,7 @@ namespace SDM_FythmPipe
             Destroy(newParticleSystem);
             alpha = this.petalSR.color.a;
         }
-        public void ResetPetal()
-        {
-            done = false;
-            alpha = 1;
-        }
-
-        public void Fill()
+        public void Progress()
         {
             if (done) return;
             alpha -= Time.deltaTime * fadeSpeed;
@@ -40,6 +34,13 @@ namespace SDM_FythmPipe
                 OnPetalDone?.Invoke(this);
             }
         }
+
+        public void ResetPetal()
+        {
+            done = false;
+            alpha = 1;
+        }
+
         public void SubscribePetalsDone(System.Action<FlowerAcupoint> action) => OnPetalDone += action;
         public void UnSubscribePetalsDone(System.Action<FlowerAcupoint> action) => OnPetalDone -= action;
     }

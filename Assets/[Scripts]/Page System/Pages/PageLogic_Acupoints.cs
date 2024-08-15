@@ -33,7 +33,7 @@ namespace SDM_FythmPipe
             for (int i = 0; i < maxAcupointsSpawned; i++)
             {
                 Acupoint acc = Instantiate(accupoint, transform);
-                acc.Subscribe(FinishAccupoint);
+                acc.SubscribeFinished(FinishAccupoint);
                 acc.gameObject.SetActive(true);
                 acc.gameObject.transform.position = new Vector3(10000, 0, 10000);
                 list_accupoints.Add(acc);
@@ -72,7 +72,7 @@ namespace SDM_FythmPipe
                     {
                         Acupoint accupointNew = list_accupoints[i];
                         if (accupointNew.GetAccID() == facePointIndex)
-                            accupointNew.Colliding();
+                            accupointNew.Progress();
                     }
                 }
             }

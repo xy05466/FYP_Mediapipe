@@ -39,7 +39,7 @@ namespace SDM_FythmPipe
             foreach (var petal in allPetals)
             {
                 if (petal.pointId == facePointIndex)
-                    petal.Fill();
+                    petal.Progress();
             }
         }
         public override int GetPageProgress() => petalDone;

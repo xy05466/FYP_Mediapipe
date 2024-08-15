@@ -21,7 +21,7 @@ namespace SDM_FythmPipe
             if (timeoutElapsed > timeout) return;
             timeoutElapsed += Time.deltaTime;
             currentTime += Time.deltaTime;
-            spriteChild.transform.localScale = new Vector3(GetCalculatedScale(), GetCalculatedScale(), GetCalculatedScale());
+            spriteChild.transform.localScale = new Vector3(GetProgression(), GetProgression(), GetProgression());
 
             if (currentTime >= timer)
             {
@@ -39,15 +39,15 @@ namespace SDM_FythmPipe
         public void Initialize(float timer = 3)
         {
             this.timer = timer;
-            spriteChild.transform.localScale = new Vector3(GetCalculatedScale(), GetCalculatedScale(), GetCalculatedScale());
+            spriteChild.transform.localScale = new Vector3(GetProgression(), GetProgression(), GetProgression());
         }
         public void Initialize() => Initialize(timer);
 
         public void SetID(int accId)=> this.accId = accId;
         public int GetAccID() => accId;
-        float GetCalculatedScale() => timer - currentTime;
+        float GetProgression() => timer - currentTime;
 
-        public void Colliding()
+        public void Progress()
         {
             timeoutElapsed = 0f;
         }
@@ -57,8 +57,8 @@ namespace SDM_FythmPipe
             isEnd = false;
         }
         // EVENTS
-        public void Subscribe(Action<Acupoint> action) => OnFinished += action;
-        public void Unsubscribe(Action<Acupoint> action) => OnFinished -= action;
+        public void SubscribeFinished(Action<Acupoint> action) => OnFinished += action;
+        public void UnsubscribeFinished(Action<Acupoint> action) => OnFinished -= action;
 
     }
 }

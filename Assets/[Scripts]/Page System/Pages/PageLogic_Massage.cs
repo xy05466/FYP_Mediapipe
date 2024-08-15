@@ -85,8 +85,8 @@ namespace SDM_FythmPipe
             // Subscribe slider events
             foreach (var mso in massageSliderObjects)
             {
-                mso.SubscribeEvent_Ended(OnSliderEnded);
-                mso.SubscribeEvent_Update(OnSliderUpodate);
+                mso.SubscribeEventFinished(OnSliderEnded);
+                mso.SubscribeEventUpdate(OnSliderUpodate);
             }
 
             SetSliders(true);
