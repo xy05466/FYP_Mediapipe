@@ -1,24 +1,25 @@
 using UnityEngine;
 using UnityEngine.Video;
 
-public class VideoEventListener : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public VideoPlayer videoPlayer;
-    public RenderTexture renderTexture;
-
-    public void PrepareAndPlay(string videoPath)
+    public class VideoEventListener : MonoBehaviour
     {
-        videoPlayer.url = videoPath;
-        videoPlayer.targetTexture = renderTexture;
-        videoPlayer.Prepare();
-        videoPlayer.prepareCompleted += OnVideoPrepareCompleted;
-    }
+        public VideoPlayer videoPlayer;
+        public RenderTexture renderTexture;
 
-    private void OnVideoPrepareCompleted(VideoPlayer source)
-    {
-        source.Play();
-        source.prepareCompleted -= OnVideoPrepareCompleted;
+        public void PrepareAndPlay(string videoPath)
+        {
+            videoPlayer.url = videoPath;
+            videoPlayer.targetTexture = renderTexture;
+            videoPlayer.Prepare();
+            videoPlayer.prepareCompleted += OnVideoPrepareCompleted;
+        }
 
-        // Additional events can be added here
+        private void OnVideoPrepareCompleted(VideoPlayer source)
+        {
+            source.Play();
+            source.prepareCompleted -= OnVideoPrepareCompleted;
+        }
     }
 }

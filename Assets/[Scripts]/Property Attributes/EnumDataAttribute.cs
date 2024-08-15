@@ -1,11 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnumDataAttribute : PropertyAttribute
+namespace SDM_FythmPipe
 {
-    public readonly string[] names;
-    public EnumDataAttribute(Type enumType)
+    public class EnumDataAttribute : PropertyAttribute
     {
-        names = Enum.GetNames(enumType);
+        public readonly string[] names;
+        public EnumDataAttribute(Type enumType)
+        {
+            names = Enum.GetNames(enumType);
+        }
     }
 }

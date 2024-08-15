@@ -1,42 +1,45 @@
 using UnityEngine;
 
-public class ParticlePlaybackController : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public ParticleSystem currParticleSystem;
-    public float customTime;
-
-    void Start()
+    public class ParticlePlaybackController : MonoBehaviour
     {
-        // Ensure that the particle system is assigned
-        if (currParticleSystem == null)
+        public ParticleSystem currParticleSystem;
+        public float customTime;
+
+        void Start()
         {
-            Debug.LogError("Particle System is not assigned!");
-            return;
+            // Ensure that the particle system is assigned
+            if (currParticleSystem == null)
+            {
+                Debug.LogError("Particle System is not assigned!");
+                return;
+            }
+
+            // Calculate the total duration of the particle system
+            float particleDuration = CalculateParticleDuration(currParticleSystem);
+
+            // Calculate the playback speed based on the custom set time
+            float playbackSpeed = particleDuration / customTime;
+
+            // Adjust the playback speed of the particle system
+            //currParticleSystem.playbackSpeed = playbackSpeed;
+            var main = currParticleSystem.main;
+            main.simulationSpeed = playbackSpeed;
+
+            // Start playing the particle system
+            currParticleSystem.Play();
         }
 
-        // Calculate the total duration of the particle system
-        float particleDuration = CalculateParticleDuration(currParticleSystem);
+        float CalculateParticleDuration(ParticleSystem ps)
+        {
+            // Get the main module of the particle system
+            var main = ps.main;
 
-        // Calculate the playback speed based on the custom set time
-        float playbackSpeed = particleDuration / customTime;
+            // Calculate the total duration based on start lifetime and duration
+            float totalDuration = main.startLifetime.constant + main.duration;
 
-        // Adjust the playback speed of the particle system
-        //currParticleSystem.playbackSpeed = playbackSpeed;
-        var main = currParticleSystem.main;
-        main.simulationSpeed = playbackSpeed;
-
-        // Start playing the particle system
-        currParticleSystem.Play();
-    }
-
-    float CalculateParticleDuration(ParticleSystem ps)
-    {
-        // Get the main module of the particle system
-        var main = ps.main;
-
-        // Calculate the total duration based on start lifetime and duration
-        float totalDuration = main.startLifetime.constant + main.duration;
-
-        return totalDuration;
+            return totalDuration;
+        }
     }
 }
