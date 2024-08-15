@@ -28,7 +28,7 @@ namespace SDM_FythmPipe
         [Header("Hand Point Collision")]
         public float distanceCollision = 0.2f;
         [Header("Pages")]
-        private bool autoNavigate = false;
+        private bool autoNavigate = true;
         private bool pageEnded = false;
 
         [Header("Annotation Layers")]
@@ -42,8 +42,8 @@ namespace SDM_FythmPipe
         private void Start()
         {
             transitionStart?.PlayUIAnim();
-            annotationFace.gameObject.SetActive(false);
-            annotationHand.gameObject.SetActive(false);
+            annotationFace.gameObject.SetActive(true);
+            annotationHand.gameObject.SetActive(true);
 
 
 
@@ -117,14 +117,17 @@ namespace SDM_FythmPipe
             if (currentPageLogic != null)
             {
                 // run curring page logic
-                if (currentPageLogic.CompareState(PageLogic.PageState.START) && !splashScreen.isActiveAndEnabled)
+                if (currentPageLogic.CompareState(PageLogic.PageState.START))
                 {
-                    currentPageLogic.RunLogic(landmarkManager.GetHandPoints(0), landmarkManager.GetHandPoints(1), landmarkManager.GetFacePoints());
-                    if (currentPageLogic.progressionComponent != null)
+                    if (splashScreen==null ||!splashScreen.isActiveAndEnabled)
                     {
-                        currentPageLogic.progressionComponent.UpdateProgression(currentPageLogic.GetSubProgression(),
-                            currentPageLogic.GetPageProgress(),
-                            currentPageLogic.GetMaxPageProgress());
+                        currentPageLogic.RunLogic(landmarkManager.GetHandPoints(0), landmarkManager.GetHandPoints(1), landmarkManager.GetFacePoints());
+                        if (currentPageLogic.progressionComponent != null)
+                        {
+                            currentPageLogic.progressionComponent.UpdateProgression(currentPageLogic.GetSubProgression(),
+                                currentPageLogic.GetPageProgress(),
+                                currentPageLogic.GetMaxPageProgress());
+                        }
                     }
                 }
 
@@ -178,28 +181,35 @@ namespace SDM_FythmPipe
                 splashScreen.img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
                 splashScreen.tmp_description.text = currentPageLogic.pageData.splashDescription;
             }
+            if (currentPageLogic.pageData != null)
+            {
+                annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
+                annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
+                // set up title
+                if (tmp_title)
+                    tmp_title.text = currentPageLogic.pageData.title;
+                if (tmp_titleSub)
+                    tmp_titleSub.text = currentPageLogic.pageData.titleSub;
+                // set up autonavgate
+                autoNavigate = currentPageLogic.pageData.autoNavigate;
+            }
+            else
+            {
+                autoNavigate = true;
+            }
 
-            annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-
-            annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-
-            // set up title
-            if(tmp_title)
-                tmp_title.text = currentPageLogic.pageData.title;
-            if(tmp_titleSub)
-                tmp_titleSub.text = currentPageLogic.pageData.titleSub;
-            autoNavigate = currentPageLogic.pageData.autoNavigate;
+         
 
             if (splashScreen)
             {
-                if (currentPageLogic.pageData.enableSplashPage)
+                if (currentPageLogic.pageData ==null || currentPageLogic.pageData.enableSplashPage)
                     splashScreen.ShowSplash();
                 else
                     splashScreen.gameObject.SetActive(false);
             }
    
 
-            if (headertransform)
+            if (headertransform && currentPageLogic.pageData!=null)
                 headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
 
             // start page for current page

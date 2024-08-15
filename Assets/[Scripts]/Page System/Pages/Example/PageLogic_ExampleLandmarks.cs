@@ -1,18 +1,16 @@
-using System.Collections;
+using SDM_FythmPipe;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PageLogic_ExampleLandmarks : MonoBehaviour
+public class PageLogic_ExampleLandmarks : PageLogic
 {
-    // Start is called before the first frame update
-    void Start()
+    public FaceLandmarkObjectPlacerManager FaceLandmarkObjectPlacerManager;
+    public override void StartPage()
     {
-        
+        FaceLandmarkObjectPlacerManager.PlaceObjects();
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
     {
-        
+        base.RunLogic(handpointsObj_1, handpointsObj_2, facepointsObj);
     }
 }
