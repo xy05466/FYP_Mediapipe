@@ -7,9 +7,6 @@ namespace SDM_FythmPipe
     {
         public int landmarkIndex;
 
-        public int GetLandmarkIndex()
-        {
-            return landmarkIndex;
-        }
+        public int GetLandmarkIndex() => landmarkIndex;
     }
 }

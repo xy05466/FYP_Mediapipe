@@ -10,12 +10,8 @@ namespace SDM_FythmPipe
         private List<Acupoint> list_accupoints = new List<Acupoint>();
         private int currentStep = -1;
         private int acupointDone = 0;
-        private int maxAcupoint = 0;
+        private int maxAcupoints = 0;
         private bool finish = false;
-
-        public override void Initialize()
-        {
-        }
 
         public override void StartPage()
         {
@@ -32,7 +28,7 @@ namespace SDM_FythmPipe
                 currPoints = 0;
             }
             list_accupoints.Clear();
-            maxAcupoint = maxPoints;
+            maxAcupoints = maxPoints;
 
             // spawn points
             for (int i = 0; i < maxPoints; i++)
@@ -50,8 +46,7 @@ namespace SDM_FythmPipe
 
         public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
         {
-            if (!HasFacepointsLoaded || finish) return; // if facepoints loaded
-                                                        //accupointManager.UpdateComponent();
+            if (!HasFacepointsLoaded || finish) return; 
 
             // set position of accupoints on facepoints
             for (int i = 0; i < GetCurrentStep().indexes.Count; i++)
@@ -63,14 +58,8 @@ namespace SDM_FythmPipe
         }
 
 
-        public override bool IsPageDone()
-        {
-            return finish;
-        }
+        public override bool IsPageDone() => finish;
 
-        public override void EndPage()
-        {
-        }
         public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
         {
             if (finish) return;
@@ -96,10 +85,6 @@ namespace SDM_FythmPipe
             if (!HasFacepointsLoaded || !CompareState(PageState.START) || list_accupoints.Count <= 0) return;
             for (int i = 0; i < GetCurrentStep().indexes.Count; i++)
                 list_accupoints[i].gameObject.SetActive(active);
-        }
-
-        public override void OnHandAnnotationActive(int actives)
-        {
         }
 
         public void NextStep()
@@ -137,38 +122,17 @@ namespace SDM_FythmPipe
                 NextStep();
             }
         }
-        public AcupointStep GetCurrentStep()
-        {
-            return list_facepointSteps[currentStep];
-        }
+        public AcupointStep GetCurrentStep()=> list_facepointSteps[currentStep];
 
-        public override int GetPageProgress()
-        {
-            return acupointDone;
-        }
+        public override int GetPageProgress() => acupointDone;
 
-        public override int GetMaxPageProgress()
-        {
-            return maxAcupoint;
-        }
+        public override int GetMaxPageProgress() => maxAcupoints;
 
 
         [System.Serializable]
         public class AcupointStep
         {
             public List<LandmarkData> indexes = new List<LandmarkData>();
-
-            public void DebugIndexes()
-            {
-                string log = "[";
-
-                foreach (var i in indexes)
-                {
-                    log += i + ",";
-                }
-                log += "]";
-                Debug.Log(log);
-            }
         }
     }
 }
