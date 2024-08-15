@@ -18439,11 +18439,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
   pageLogics:
+  - {fileID: 640194813}
   - {fileID: 473273937}
   - {fileID: 786372592}
   - {fileID: 878462219}
   - {fileID: 885432721}
-  - {fileID: 640194813}
   - {fileID: 878462219}
   - {fileID: 774930170}
   splashScreen: {fileID: 1945387827}
