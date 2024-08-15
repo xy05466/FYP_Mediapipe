@@ -45,14 +45,8 @@ namespace SDM_FythmPipe
         public virtual float GetSubProgression() => 0;
 
         // State comparison
-        public void ChangeState(PageState pageState)
-        {
-            this.pageState = pageState;
-        }
-        public bool CompareState(PageState pageState)
-        {
-            return this.pageState == pageState;
-        }
+        public void ChangeState(PageState pageState)=> this.pageState = pageState;
+        public bool CompareState(PageState pageState) => this.pageState == pageState;
         public enum PageState
         {
             NOT_STARTED,
