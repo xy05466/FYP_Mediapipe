@@ -15,13 +15,14 @@ namespace SDM_FythmPipe
         int currentPageIndex = 0;
 
 
-        [Header("Splash Page")]
-        public SplashScreen splashScreen;
-        public TransitionPage_TextureAnimation sceneAnimationStart;
-        public TransitionPage_TextureAnimation sceneAnimationEnd;
         public Transform headertransform;
         public TMP_Text tmp_title;
         public TMP_Text tmp_titleSub;
+        [Header("Splash Page")]
+        public SplashScreen splashScreen;
+        [Header("Transition Page")]
+        public TransitionPage_TextureAnimation transitionStart;
+        public TransitionPage_TextureAnimation transitionEnd;
 
 
         [Header("Hand Point Collision")]
@@ -41,13 +42,13 @@ namespace SDM_FythmPipe
         //bool handPointsStored = false;
         private void Start()
         {
-
+            transitionStart?.PlayUIAnim();
             annotationFace.gameObject.SetActive(false);
             annotationHand.gameObject.SetActive(false);
 
 
 
-            sceneAnimationEnd.SubscribeTransitionEnded(NextPage);
+            transitionEnd?.SubscribeTransitionEnded(NextPage);
 
 
             landmarkManager.SubscribeFacePointsActive(OnFaceSpotted);
@@ -74,7 +75,7 @@ namespace SDM_FythmPipe
         }
         private void Update()
         {
-            if (!sceneAnimationEnd.IsDone()) return;
+            if (transitionEnd && !transitionEnd.IsDone()) return;
             // update hand face point collision
             if (landmarkManager.IsFaceloadedAndActive)
             {
@@ -132,7 +133,12 @@ namespace SDM_FythmPipe
                 {
                     pageEnded = true;
                     if (autoNavigate)
-                        sceneAnimationEnd.PlayUIAnim();
+                    {
+                        if (transitionEnd)
+                            transitionEnd.PlayUIAnim();
+                        else
+                            NextPage();
+                    }
                 }
             }
         }
@@ -168,26 +174,35 @@ namespace SDM_FythmPipe
         // Start page
         private void StartPage()
         {
-            sceneAnimationStart.PlayUIAnim();
+            transitionStart?.PlayUIAnim();
             currentPageLogic = pageLogics[currentPageIndex];
             currentPageLogic.gameObject.SetActive(true);
 
-            splashScreen.img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
-            splashScreen.tmp_description.text = currentPageLogic.pageData.splashDescription;
+            if (splashScreen)
+            {
+                splashScreen.img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
+                splashScreen.tmp_description.text = currentPageLogic.pageData.splashDescription;
+            }
 
             annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
 
             annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
 
             // set up title
-            tmp_title.text = currentPageLogic.pageData.title;
-            tmp_titleSub.text = currentPageLogic.pageData.titleSub;
+            if(tmp_title)
+                tmp_title.text = currentPageLogic.pageData.title;
+            if(tmp_titleSub)
+                tmp_titleSub.text = currentPageLogic.pageData.titleSub;
             autoNavigate = currentPageLogic.pageData.autoNavigate;
 
-            if (currentPageLogic.pageData.enableSplashPage)
-                splashScreen.ShowSplash();
-            else
-                splashScreen.gameObject.SetActive(false);
+            if (splashScreen)
+            {
+                if (currentPageLogic.pageData.enableSplashPage)
+                    splashScreen.ShowSplash();
+                else
+                    splashScreen.gameObject.SetActive(false);
+            }
+   
 
             if (headertransform)
                 headertransform.gameObject.SetActive(currentPageLogic.pageData.enableHeader);
@@ -203,7 +218,7 @@ namespace SDM_FythmPipe
         public void PreNextPage()
         {
             if (currentPageIndex < pageLogics.Count - 1)
-                sceneAnimationEnd.PlayUIAnim();
+                transitionEnd.PlayUIAnim();
 
         }
 
@@ -213,7 +228,7 @@ namespace SDM_FythmPipe
             currentPageLogic.EndPage();
             currentPageLogic.gameObject.SetActive(false);
             currentPageIndex++; // increase page index
-            sceneAnimationStart.ClearEvent();
+            transitionStart?.ClearEvent();
             currentPageLogic.ChangeState(PageLogic.PageState.ENDED);
             pageEnded = false;
 

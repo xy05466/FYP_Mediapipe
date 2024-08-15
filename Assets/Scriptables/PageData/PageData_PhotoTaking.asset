@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f62dc1c286af04382676d512ff32b9, type: 3}
-  m_Name: PageData_Massage_1
+  m_Name: PageData_PhotoTaking
   m_EditorClassIdentifier: 
   enableHeader: 1
   autoNavigate: 1
   enableTransition: 1
   enableSplashPage: 1
-  spr_splashIcon: {fileID: 21300000, guid: 36c37f2d2684f344ba5e6e12f4d28917, type: 3}
-  title: Forehead Rotation
-  titleSub: With Knuckles
-  splashDescription: Start massaging at the outer region of your forehead. following
-    the guide's direction
+  spr_splashIcon: {fileID: 21300000, guid: 876df2021c46f424a9074f394a93f845, type: 3}
+  title: Photo Taking
+  titleSub: 
+  splashDescription: "Let\u2019s take a photo! This is to track your progress and
+    see improvements over time using the app"
   enableFaceTracking: 1
   enableHandTracking: 1

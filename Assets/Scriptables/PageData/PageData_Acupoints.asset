@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f62dc1c286af04382676d512ff32b9, type: 3}
-  m_Name: PageData_Essence
+  m_Name: PageData_Acupoints
   m_EditorClassIdentifier: 
   enableHeader: 1
   autoNavigate: 1
   enableTransition: 1
   enableSplashPage: 1
-  spr_splashIcon: {fileID: 21300000, guid: 36c37f2d2684f344ba5e6e12f4d28917, type: 3}
-  title: Essence
+  spr_splashIcon: {fileID: 21300000, guid: 1b7d0571e131ceb40b9925a38750be84, type: 3}
+  title: Acupoint
   titleSub: 
-  splashDescription: 'Nexr. Lets apply essence!
-
-
-    Follow the guide to know the
-    correct way to apply your essence.'
+  splashDescription: "Next, let\u2019s prime your acupoints!\n\nFollow the guide
+    to activate your acupoints."
   enableFaceTracking: 1
   enableHandTracking: 1

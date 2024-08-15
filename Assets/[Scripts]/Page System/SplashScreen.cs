@@ -18,7 +18,7 @@ namespace SDM_FythmPipe
         public TMP_Text tmp_description;
         [Header("Gesture")]
         public float navigateTime = 2f;
-        private float navigateTimeElapsed = 2f;
+        private float navigateTimeElapsed = 0f;
         public Image img_gesture_filled;
 
         private void Start()
