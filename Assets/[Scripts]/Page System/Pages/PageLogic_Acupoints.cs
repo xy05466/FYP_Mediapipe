@@ -9,29 +9,28 @@ namespace SDM_FythmPipe
         public List<AcupointStep> list_facepointSteps = new List<AcupointStep>();
         private List<Acupoint> list_accupoints = new List<Acupoint>();
         private int currentStep = -1;
-        private int acupointDone = 0;
-        private int maxAcupoints = 0;
+        private int currentAcupointsDone = 0;
+        private int maxAcupointsSpawned = 0;
         private bool finish = false;
 
         public override void StartPage()
         {
             currentStep = -1;
-            acupointDone = 0;
-            int maxPoints = 0;
+            currentAcupointsDone = 0;
+            maxAcupointsSpawned = 0;
             int currPoints = 0;
             foreach (var step in list_facepointSteps)
             {
                 foreach (var index in step.indexes)
                     currPoints++;
-                if (currPoints > maxPoints)
-                    maxPoints = currPoints;
+                if (currPoints > maxAcupointsSpawned)
+                    maxAcupointsSpawned = currPoints;
                 currPoints = 0;
             }
             list_accupoints.Clear();
-            maxAcupoints = maxPoints;
 
             // spawn points
-            for (int i = 0; i < maxPoints; i++)
+            for (int i = 0; i < maxAcupointsSpawned; i++)
             {
                 Acupoint acc = Instantiate(accupoint, transform);
                 acc.Subscribe(FinishAccupoint);
@@ -89,7 +88,7 @@ namespace SDM_FythmPipe
 
         public void NextStep()
         {
-            acupointDone = 0;
+            currentAcupointsDone = 0;
             currentStep++;
             if (currentStep >= list_facepointSteps.Count)
             {
@@ -115,18 +114,18 @@ namespace SDM_FythmPipe
             //accupointnew.ClearEvents();
             accupointnew.SetID(-1);
             accupointnew.gameObject.SetActive(false);
-            acupointDone++;
+            currentAcupointsDone++;
 
-            if (acupointDone >= GetCurrentStep().indexes.Count)
+            if (currentAcupointsDone >= GetCurrentStep().indexes.Count)
             {
                 NextStep();
             }
         }
         public AcupointStep GetCurrentStep()=> list_facepointSteps[currentStep];
 
-        public override int GetPageProgress() => acupointDone;
+        public override int GetPageProgress() => currentStep;
 
-        public override int GetMaxPageProgress() => maxAcupoints;
+        public override int GetMaxPageProgress() => list_facepointSteps.Count;
 
 
         [System.Serializable]
