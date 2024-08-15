@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SDM_FythmPipe
 {
-    public class PageLogic_Cream : PageLogic_Extension
+    public class PageLogic_Cream : PageLogic
     {
         public List<FlowerAcupoint> allPetals = new List<FlowerAcupoint>();
         public FaceLandmarkObjectPlacerManager objectPlacer;

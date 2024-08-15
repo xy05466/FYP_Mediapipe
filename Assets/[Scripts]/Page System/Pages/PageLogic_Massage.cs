@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace SDM_FythmPipe
 {
-    public class PageLogic_Massage : PageLogic_Extension
+    public class PageLogic_Massage : PageLogic
     {
         //public FacepointManager_Jaden facepointManager_Jaden;
         //public AccupointsMassageManagerFinal accupointsMassageManagerFinal;

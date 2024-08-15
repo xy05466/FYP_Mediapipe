@@ -6,7 +6,7 @@ using UnityEngine;
 // Basically all the common things in a scene
 namespace SDM_FythmPipe
 {
-    public class ScenePageHandler : MonoBehaviour
+    public class PageSystem : MonoBehaviour
     {
         [Header("Managers")]
         public LandmarkManager landmarkManager;
@@ -58,12 +58,8 @@ namespace SDM_FythmPipe
             landmarkManager.SubscribeHandPointsLoaded_2(StoreHandPoints);
             for (int i = 0; i < pageLogics.Count; i++)
             {
-                PageLogic_Extension pageLogic_Extension = pageLogics[i] as PageLogic_Extension;
-                if (pageLogic_Extension != null)
-                {
-                    landmarkManager.SubscribeFacePointsActive(pageLogic_Extension.OnFaceAnnotationActive);
-                    landmarkManager.SubscribeHandPointsActive(pageLogic_Extension.OnHandAnnotationActive);
-                }
+                landmarkManager.SubscribeFacePointsActive(pageLogics[i].OnFaceAnnotationActive);
+                landmarkManager.SubscribeHandPointsActive(pageLogics[i].OnHandAnnotationActive);
             }
 
 

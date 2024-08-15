@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace SDM_FythmPipe
 {
-    public class PageLogic_PhotoCapture : PageLogic_Extension
+    public class PageLogic_PhotoCapture : PageLogic
     {
         [Header("COMPONENTS")]
         //[SerializeField] FacepointManager facepointManager;

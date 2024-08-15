@@ -39,6 +39,10 @@ namespace SDM_FythmPipe
         public abstract void ResetPage();
         public abstract void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject);
 
+        public virtual void OnFaceAnnotationActive(bool active) { }
+
+        public virtual void OnHandAnnotationActive(int actives) { }
+
         public virtual int GetPageProgress()
         {
             return 0;

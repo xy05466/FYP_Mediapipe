@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scenes/Main.unity
     guid: a1d3cb33f21d8514d8785610bac3de79
-  - enabled: 1
-    path: Assets/Scenes/Examples/Face Detecton.unity
-    guid: 1253497682faed843b6e83a4e0dd49bf
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}

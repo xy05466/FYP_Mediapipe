@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SDM_FythmPipe
 {
-    public class PageLogic_Acupoints : PageLogic_Extension
+    public class PageLogic_Acupoints : PageLogic
     {
         public Acupoint accupoint;
         public List<AcupointStep> list_facepointSteps = new List<AcupointStep>();
