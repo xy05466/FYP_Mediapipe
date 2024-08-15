@@ -31,7 +31,7 @@ namespace SDM_FythmPipe
         public Animator anim;
 
         [Header("AUDIO FEEDBACK")]
-        public GameObject audioManager;
+        public AudioManager audioManager;
 
         bool hasCaptureBefore = false;
         bool done = false;
@@ -43,25 +43,7 @@ namespace SDM_FythmPipe
             bu_retakePhoto.onClick.AddListener(RetakePhoto);
             bu_done.onClick.AddListener(Continue);
         }
-        private void Continue()
-        {
-            done = true;
-            if (!hasCaptureBefore)
-                hasCaptureBefore = true;
-        }
-        public void CapturePhoto()
-        {
-            bu_capture.interactable = false;
-            photoOverlay.gameObject.SetActive(true);
-            phoneCamera.StartSetPic();
-        }
-        public void RetakePhoto()
-        {
-            bu_capture.interactable = true;
-            photoOverlay.gameObject.SetActive(false);
-            //if (!hasCaptureBefore)
-            //    phoneCamera.SetHasCapturedBefore(false);
-        }
+
         public override void StartPage()
         {
             photoOverlay.gameObject.SetActive(false);
@@ -74,14 +56,12 @@ namespace SDM_FythmPipe
             Vector3 refPt;
             float avgX = 0;
             float avgY = 0;
-            float avgZ = 0;
             if (facepointsObj != null && facepointsObj.Count > 0 && facepointsObj[0].activeInHierarchy)
             {
 
                 refPt = facepointsObj[4].transform.position;
                 avgX = refPt.x - Camera.main.transform.position.x;
                 avgY = refPt.y - Camera.main.transform.position.y;
-                avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
      
                 if (avgX > maxDistX)
                 {
@@ -172,10 +152,8 @@ namespace SDM_FythmPipe
                             textbox.text = "Perfect! Take your 'before' picture. \n";
                         }
                         bu_capture.interactable = true;
-                        if (!audioManager.GetComponent<AudioManager>().isPlaying("Sparkle"))
-                        {
-                            audioManager.GetComponent<AudioManager>().Play("Sparkle");
-                        }
+                        if (audioManager!=null && !audioManager.isPlaying("Sparkle"))
+                            audioManager?.Play("Sparkle");
                     }
                     else if (avgV <= 0.35f)
                     {
@@ -188,10 +166,8 @@ namespace SDM_FythmPipe
 
                         textbox.text = "Lighting is too dark. Please move to a brighter location. \n" + avgV.ToString();
                         Debug.Log("DebugDark");
-                        if (!audioManager.GetComponent<AudioManager>().isPlaying("PlantsRustling"))
-                        {
-                            audioManager.GetComponent<AudioManager>().Play("PlantsRustling");
-                        }
+                        if (audioManager != null && !audioManager.isPlaying("PlantsRustling"))
+                            audioManager.Play("PlantsRustling");
                     }
 
                     avgV = 0;
@@ -215,13 +191,31 @@ namespace SDM_FythmPipe
             }
             timer = Mathf.Clamp(timer, 0, waitTime);
         }
-
-
         public override void EndPage()
         {
             done = false;
         }
-
         public override bool IsPageDone() => done;
+
+        private void Continue()
+        {
+            done = true;
+            if (!hasCaptureBefore)
+                hasCaptureBefore = true;
+        }
+        public void CapturePhoto()
+        {
+            bu_capture.interactable = false;
+            photoOverlay.gameObject.SetActive(true);
+            phoneCamera.StartSetPic();
+        }
+        public void RetakePhoto()
+        {
+            bu_capture.interactable = true;
+            photoOverlay.gameObject.SetActive(false);
+            //if (!hasCaptureBefore)
+            //    phoneCamera.SetHasCapturedBefore(false);
+        }
     }
 }
+

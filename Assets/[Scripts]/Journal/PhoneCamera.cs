@@ -29,7 +29,7 @@ namespace SDM_FythmPipe
         public TMP_Text date;
         public TMP_Text splashTxt;
         public TMP_Text photoTxt;
-        public GameObject audioManager;
+        public AudioManager audioManager;
 
         public void StartPhoto()
         {
@@ -63,21 +63,15 @@ namespace SDM_FythmPipe
             // check if has captured // idk why use scriptable object
             if (journalSO.GetHasCapturedBefore())
             {
-                //albumButton.gameObject.SetActive(true);
-                //creamButton.gameObject.SetActive(false);
                 if (splashTxt)
                     splashTxt.text = "Lets take a ‘After’ photo.\nThis is to track your progress and compare the difference before & after the massage.";
                 photoTxt.text = "After Photo";
-                Debug.Log("Album");
             }
             else
             {
-                //albumButton.gameObject.SetActive(false);
-                //creamButton.gameObject.SetActive(true);
                 if (splashTxt)
                     splashTxt.text = "Let’s take a ‘Before’ photo!\nThis is to track your progress and see improvements over time using the app";
                 photoTxt.text = "Before Photo";
-                Debug.Log("Cream");
             }
 
             if (cameras.Count > 1)
@@ -126,7 +120,7 @@ namespace SDM_FythmPipe
 
         public void StartSetPic()
         {
-            audioManager?.GetComponent<AudioManager>().Play("CamCapture");
+            audioManager?.Play("CamCapture");
             StartCoroutine(IeSetPic());
         }
 
@@ -137,7 +131,7 @@ namespace SDM_FythmPipe
             yield return StartCoroutine(journalSO.IeTakePic(background.texture));
             //Debug.Log("Debug" + background.texture.width +"x" +background.texture.height);
             ShowPic();
-            audioManager?.GetComponent<AudioManager>().Play("Ding");
+            audioManager?.Play("Ding");
         }
 
         public void ConfirmPic()
