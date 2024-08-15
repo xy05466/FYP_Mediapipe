@@ -19,7 +19,6 @@ namespace SDM_FythmPipe
         public void LoadHandPoints(bool loaded)=> hasHandpointsLoaded = loaded;
         public void LoadFacePoints(bool loaded) => hasFacepointsLoaded = loaded;
 
-
         // Will run at the start of scene
         public virtual void Initialize() { }
         // Execute when page has started
@@ -46,14 +45,8 @@ namespace SDM_FythmPipe
         public virtual float GetSubProgression() => 0;
 
         // State comparison
-        public void ChangeState(PageState pageState)
-        {
-            this.pageState = pageState;
-        }
-        public bool CompareState(PageState pageState)
-        {
-            return this.pageState == pageState;
-        }
+        public void ChangeState(PageState pageState)=> this.pageState = pageState;
+        public bool CompareState(PageState pageState) => this.pageState == pageState;
         public enum PageState
         {
             NOT_STARTED,

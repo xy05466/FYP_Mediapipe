@@ -15,6 +15,8 @@ namespace SDM_FythmPipe
 
         private void Start()
         {
+            if(landmarkManager==null)
+                landmarkManager=FindObjectOfType<LandmarkManager>(true);
             landmarkManager.SubscribeFacePointsActive(EnableObjects);
         }
         private void Update()
@@ -25,6 +27,7 @@ namespace SDM_FythmPipe
             {
                 facePoint.transform.position = landmarkManager.GetFacePoints()[facePoint.GetIndex()].transform.position;
             }
+            Debug.Log("place object");
 
         }
         // Call at initialize

@@ -23,7 +23,7 @@ namespace SDM_FythmPipe
             petalCount = allPetals.Count;
 
             foreach (FlowerAcupoint fc in allPetals)
-                fc.Subscribe(OnPetalDone);
+                fc.SubscribePetalsDone(OnPetalDone);
         }
         private void OnPetalDone(FlowerAcupoint accupoint)
         {

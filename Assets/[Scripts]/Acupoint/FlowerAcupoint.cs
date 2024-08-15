@@ -1,49 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class FlowerAcupoint : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public float fadeSpeed = 10;
-    [SerializeField] GameObject slicedPetal;
-    [SerializeField] GameObject pps;
-    private SpriteRenderer petalSR;
-    //public bool collided = false;
-    private bool done = false;
-    private float alpha;
-    public int pointId;
-    private System.Action<FlowerAcupoint> OnPetalDone;
-    private void Start()
+    public class FlowerAcupoint : MonoBehaviour
     {
-        petalSR = GetComponent<SpriteRenderer>();
-        //slicedPetal.SetActive(true);
-        GameObject newParticleSystem = Instantiate(pps, transform);
-        Destroy(newParticleSystem);
-        alpha = this.petalSR.color.a;
-    }
-    public void ResetPetal()
-    {
-        done = false;
-        alpha = 1;
-    }
- 
-    public void Fill()
-    {
-        if (done) return;
-        alpha -= Time.deltaTime * fadeSpeed;
-        alpha = Mathf.Clamp(alpha,0,1);
-        petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
-
-        if (alpha <= 0)
+        public float fadeSpeed = 10;
+        [SerializeField] GameObject slicedPetal;
+        [SerializeField] GameObject pps;
+        private SpriteRenderer petalSR;
+        //public bool collided = false;
+        private bool done = false;
+        private float alpha;
+        public int pointId;
+        private System.Action<FlowerAcupoint> OnPetalDone;
+        private void Start()
         {
-            done = true;
-            OnPetalDone?.Invoke(this);
+            petalSR = GetComponent<SpriteRenderer>();
+            //slicedPetal.SetActive(true);
+            GameObject newParticleSystem = Instantiate(pps, transform);
+            Destroy(newParticleSystem);
+            alpha = this.petalSR.color.a;
         }
-    }
-    public void Subscribe(System.Action<FlowerAcupoint> action)
-    {
-        OnPetalDone += action;
+        public void ResetPetal()
+        {
+            done = false;
+            alpha = 1;
+        }
+
+        public void Fill()
+        {
+            if (done) return;
+            alpha -= Time.deltaTime * fadeSpeed;
+            alpha = Mathf.Clamp(alpha, 0, 1);
+            petalSR.color = new Color(petalSR.color.r, petalSR.color.g, petalSR.color.b, alpha);
+
+            if (alpha <= 0)
+            {
+                done = true;
+                OnPetalDone?.Invoke(this);
+            }
+        }
+        public void SubscribePetalsDone(System.Action<FlowerAcupoint> action) => OnPetalDone += action;
+        public void UnSubscribePetalsDone(System.Action<FlowerAcupoint> action) => OnPetalDone -= action;
     }
 }

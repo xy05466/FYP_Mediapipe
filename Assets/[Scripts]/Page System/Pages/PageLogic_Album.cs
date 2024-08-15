@@ -32,22 +32,6 @@ namespace SDM_FythmPipe
                     new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width,
                     journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
         }
-        public override void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj)
-        {
-        }
-
-        public override void EndPage()
-        {
-        }
-
-        public override bool IsPageDone()
-        {
-            return false;
-        }
-
-        public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
-        {
-        }
 
         public void ShowPics()
         {
