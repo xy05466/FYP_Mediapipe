@@ -21,9 +21,6 @@ namespace SDM_FythmPipe
         [Header("ALIGNMENTMENT SETTINGS")]
         [SerializeField] private float maxDistX = 3.0f;
         [SerializeField] private float maxDistY = 3.0f;
-        //[SerializeField] private float lowerBoundZ = 1.0f;
-        //[SerializeField] private float upperBoundZ = 3.0f;
-        //[SerializeField] private bool enableZ = true;
         public float waitTime = 0f;
         private float timer = 0.0f;
         [Header("JOURNAL DATA")]
@@ -33,8 +30,6 @@ namespace SDM_FythmPipe
         public GameObject brightnessSprite;
 
         [Header("VISUAL FEEDBACK")]
-        //public Image img_default;
-        //public Image img_filled;
         public Animator anim;
 
         [Header("AUDIO FEEDBACK")]
@@ -89,17 +84,7 @@ namespace SDM_FythmPipe
                 avgX = refPt.x - Camera.main.transform.position.x;
                 avgY = refPt.y - Camera.main.transform.position.y;
                 avgZ = (refPt.z - Camera.main.transform.position.z) - 90.0f;
-                //if (avgZ < lowerBoundZ && enableZ)
-                //{
-                //    textbox.text = "Please move further";
-                //    faceAligned = false;
-                //}
-                //else if (avgZ > upperBoundZ && enableZ)
-                //{
-                //    textbox.text = "Please move closer";
-                //    faceAligned = false;
-                //}
-                //else 
+     
                 if (avgX > maxDistX)
                 {
                     textbox.text = "Please move left";
@@ -129,33 +114,18 @@ namespace SDM_FythmPipe
             {
                 textbox.text = "No face detected!!!!";
                 faceAligned = false;
-                //facePoints = facepointManager.GetFacePointTransforms();
             }
 
             if (faceAligned)
             {
 
                 timer += Time.deltaTime;
-                //if (img_filled != null)
-                //{
-                //    if (waitTime > 0)
-                //    {
-                //        img_filled.fillAmount = timer / waitTime;
-                //        img_default.fillAmount = waitTime - timer;
-                //    }
-                //    else
-                //    {
-                //        img_filled.fillAmount = 1;
-                //        img_default.fillAmount = 0;
-                //    }
-                //}
 
                 if (timer >= waitTime)
                 {
 
                     if (anim /*&& !brightnessSprite.GetComponent<Animator>().enabled*/)
                     {
-                        //brightnessSprite.GetComponent<Animator>().enabled = true;
                         anim.enabled = true;
                     }
 
