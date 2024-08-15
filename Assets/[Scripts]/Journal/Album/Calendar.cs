@@ -24,61 +24,6 @@ namespace SDM_FythmPipe
         [SerializeField] private JournalData journalSO;
 
 
-
-        //public class Day
-        //{
-        //    public int dayNum;
-        //    public Color dayColor;
-        //    public GameObject obj;
-
-        //    Color availableColor = new Color(0.3647059f, 0.2313726f, 0.04705883f, 1.0f);
-        //    Color unavailableColor = new Color(0.6509804f, 0.5568628f, 0.454902f, 1.0f);
-
-        //    public Day(int dayNum, Color dayColor, GameObject obj)
-        //    {
-        //        this.dayNum = dayNum;
-        //        this.dayColor = dayColor;
-        //        this.obj = obj;
-        //        UpdateColor(dayColor);
-        //        UpdateDay(dayNum);
-        //    }
-
-        //    public void UpdateColor(Color newColor)
-        //    {
-        //        obj.GetComponentInChildren<TMP_Text>().color = newColor;
-        //        dayColor = newColor;
-        //    }
-
-        //    public void UpdateButtonColor(Color newColor)
-        //    {
-        //        obj.GetComponent<Image>().color = newColor;
-        //        dayColor = newColor;
-        //    }
-
-        //    public void UpdateDay(int newDayNum)
-        //    {
-        //        this.dayNum = newDayNum;
-        //        if (dayColor == availableColor || dayColor == Color.green) 
-        //        {
-        //            obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
-        //            //obj.GetComponentInChildren<TMP_Text>().color = availableColor;
-        //        }
-
-        //        else 
-        //        {
-        //            obj.GetComponentInChildren<TMP_Text>().text = (dayNum + 1).ToString();
-        //            obj.GetComponentInChildren<UnityEngine.UI.Button>().interactable = false;
-        //            //obj.GetComponentInChildren<TMP_Text>().color = unavailableColor;
-        //        }
-        //    }
-        //}
-
-        //private List<Day> days = new List<Day>();
-
-        //private int picIndex;
-
-        //private GameObject datePressed;
-
         public CalendarWeek[] weeks;
 
         public TMP_Text MonthAndYear;
@@ -96,7 +41,6 @@ namespace SDM_FythmPipe
         public RawImage beforeImage;
         public RawImage afterImage;
         [Header("Comparision Sliders")]
-        public UnityEngine.UI.Slider compareSlider;
         public GameObject sliderBG;
         public GameObject sliderFill;
         public TMP_Text dateText;
@@ -132,7 +76,6 @@ namespace SDM_FythmPipe
             // resizing slider based on photo
             if (journalSO.GetAfterCount() > 0)
             {
-                Debug.Log(compareSlider);
                 //compareSlider.GetComponent<RectTransform>().sizeDelta = 
                 //    new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width, 
                 //    journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);

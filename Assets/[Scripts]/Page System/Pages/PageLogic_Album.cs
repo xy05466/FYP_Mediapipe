@@ -22,10 +22,10 @@ namespace SDM_FythmPipe
             ShowPics();
 
 
-            //if (journalSO.GetAfterCount() > 0)
-            //    compareSlider.GetComponent<RectTransform>().sizeDelta =
-            //        new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width,
-            //        journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+            if (journalSO.GetAfterCount() > 0)
+                compareSlider.GetComponent<RectTransform>().sizeDelta =
+                    new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width,
+                    journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
         }
 
         public void ShowPics()
