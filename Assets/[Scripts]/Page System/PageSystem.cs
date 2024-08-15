@@ -17,8 +17,8 @@ namespace SDM_FythmPipe
 
         [Header("Splash Page")]
         public SplashScreen splashScreen;
-        public UISpriteAnimation sceneAnimationStart;
-        public UISpriteAnimation sceneAnimationEnd;
+        public TransitionPage_TextureAnimation sceneAnimationStart;
+        public TransitionPage_TextureAnimation sceneAnimationEnd;
         public Transform headertransform;
         public TMP_Text tmp_title;
         public TMP_Text tmp_titleSub;
@@ -47,7 +47,7 @@ namespace SDM_FythmPipe
 
 
 
-            sceneAnimationEnd.OnAnimationFinished += NextPage;
+            sceneAnimationEnd.SubscribeTransitionEnded(NextPage);
 
 
             landmarkManager.SubscribeFacePointsActive(OnFaceSpotted);
@@ -157,29 +157,12 @@ namespace SDM_FythmPipe
             foreach (var pageL in pageLogics)
                 pageL.LoadHandPoints(true);
 
-            ////this.handPoints = handPoints;
-            //foreach (var item in handPoints)
-            //    item.OnCollidingFacePoint += OnHandPointCollide;
-
-            //handPointsStored = true;
-
-            //foreach (var item in handPoints)
-            //    item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
 
             OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-
-
-            //foreach (var pageL in pageLogics)
-            //{
-            //    //foreach (var item in handPoints)
-            //    //    item.OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
-
-            //    OnCollidingFacePoint += pageL.OnHandPointCollideFacePoint;
-            //}
         }
         public void OnHandPointCollide(int handPointIndex, GameObject handPointObject, int facePointIndex, GameObject facePointObject)
         {
-            //Debug.Log(handPointIndex + " face: " + facePointIndex);
+
         }
 
         // Start page
@@ -192,19 +175,9 @@ namespace SDM_FythmPipe
             splashScreen.img_splashIcon.sprite = currentPageLogic.pageData.spr_splashIcon;
             splashScreen.tmp_description.text = currentPageLogic.pageData.splashDescription;
 
-            // enable face / hand traking
-            //if(isFaceDetectionTask)
-            //    annotationFace_task.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-            //else
             annotationFace.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
 
-            //if(isHandDetectionTask)
-            //    annotationHand_task.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-            //else
             annotationHand.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
-            //// enable header icons
-            //img_face.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableFaceTracking);
-            //img_hand.transform.parent.gameObject.SetActive(currentPageLogic.pageData.enableHandTracking);
 
             // set up title
             tmp_title.text = currentPageLogic.pageData.title;
@@ -223,12 +196,6 @@ namespace SDM_FythmPipe
             currentPageLogic.StartPage();
             currentPageLogic.ChangeState(PageLogic.PageState.START);
 
-            //// subscribe hand points events to page
-            //if (handPointsStored && !currentPageLogic.HandpointsLoaded)
-            //{
-            //    foreach (var item in landmarkManager.GetHandPoints())
-            //        item.OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
-            //}
 
             OnCollidingFacePoint += currentPageLogic.OnHandPointCollideFacePoint;
         }
@@ -246,17 +213,10 @@ namespace SDM_FythmPipe
             currentPageLogic.EndPage();
             currentPageLogic.gameObject.SetActive(false);
             currentPageIndex++; // increase page index
-            sceneAnimationStart.OnAnimationFinished = null;
+            sceneAnimationStart.ClearEvent();
             currentPageLogic.ChangeState(PageLogic.PageState.ENDED);
             pageEnded = false;
 
-            //if(landmarkManager.IsHandLoaded)
-            //{
-            //    foreach (var item in landmarkManager.GetHandPoints())
-            //        item.OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
-
-            //    OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
-            //}
             if (landmarkManager.NumHandsLoaded > 0)
                 OnCollidingFacePoint -= currentPageLogic.OnHandPointCollideFacePoint;
             StartPage();
