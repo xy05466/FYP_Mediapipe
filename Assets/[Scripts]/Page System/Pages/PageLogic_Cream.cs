@@ -9,7 +9,7 @@ namespace SDM_FythmPipe
         public FaceLandmarkObjectPlacerManager objectPlacer;
         int petalCount = 0;
         int petalDone = 0;
-        bool done = false;
+        bool creamDone = false;
 
         public override void Initialize()
         {
@@ -30,38 +30,18 @@ namespace SDM_FythmPipe
             petalDone++;
             if (petalDone >= petalCount)
             {
-                done = true;
+                creamDone = true;
             }
         }
         public override void StartPage()
         {
-            done = false;
+            creamDone = false;
             petalDone = 0;
             foreach (FlowerAcupoint fc in allPetals)
                 fc.ResetPetal();
         }
 
-        public override void ResetPage()
-        {
-        }
-
-        public override void EndPage()
-        {
-        }
-
-        public override bool IsPageDone()
-        {
-            return done;
-        }
-
-        public override void OnFaceAnnotationActive(bool active)
-        {
-        }
-
-        public override void OnHandAnnotationActive(int actives)
-        {
-
-        }
+        public override bool IsPageDone() => creamDone;
 
         public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
         {
@@ -77,13 +57,7 @@ namespace SDM_FythmPipe
         {
         }
 
-        public override int GetPageProgress()
-        {
-            return petalCount;
-        }
-        public override int GetMaxPageProgress()
-        {
-            return petalDone;
-        }
+        public override int GetPageProgress() => petalDone;
+        public override int GetMaxPageProgress() => petalCount;
     }
 }

@@ -49,10 +49,6 @@ namespace SDM_FythmPipe
         {
         }
 
-        public override void ResetPage()
-        {
-        }
-
         public void ShowPics()
         {
             int imageCount = journalSO.GetAfterCount();

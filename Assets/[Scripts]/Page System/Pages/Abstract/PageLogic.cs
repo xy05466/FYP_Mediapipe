@@ -16,48 +16,34 @@ namespace SDM_FythmPipe
         private bool hasFacepointsLoaded = false;
         public bool HasFacepointsLoaded => hasFacepointsLoaded;
 
-        public void LoadHandPoints(bool loaded)
-        {
-            hasHandpointsLoaded = loaded;
-        }
-        public void LoadFacePoints(bool loaded)
-        {
-            hasFacepointsLoaded = loaded;
-        }
+        public void LoadHandPoints(bool loaded)=> hasHandpointsLoaded = loaded;
+        public void LoadFacePoints(bool loaded) => hasFacepointsLoaded = loaded;
+
+
         // Will run at the start of scene
-        public abstract void Initialize();
+        public virtual void Initialize() { }
         // Execute when page has started
-        public abstract void StartPage();
+        public virtual void StartPage() { }
         // Execute when page is running
-        public abstract void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj);
+        public virtual void RunLogic(List<HandPointAnnotationObject> handpointsObj_1, List<HandPointAnnotationObject> handpointsObj_2, List<GameObject> facepointsObj) { }
 
         // Check if page is done, move to next page is returns true
-        public abstract bool IsPageDone();
+        public virtual bool IsPageDone() => false;
         // Execute before going to next page
-        public abstract void EndPage();
+        public virtual void EndPage() { }
         // Execute when page reloaded
-        public abstract void ResetPage();
-        public abstract void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject);
+        public virtual void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject) { }
 
         public virtual void OnFaceAnnotationActive(bool active) { }
 
         public virtual void OnHandAnnotationActive(int actives) { }
 
-        public virtual int GetPageProgress()
-        {
-            return 0;
-        }
+        public virtual int GetPageProgress() => 0;
 
-        public virtual int GetMaxPageProgress()
-        {
-            return 1;
-        }
+        public virtual int GetMaxPageProgress() => 1;
 
         // must be 0 to 1
-        public virtual float GetSubProgression()
-        {
-            return 0;
-        }
+        public virtual float GetSubProgression() => 0;
 
         // State comparison
         public void ChangeState(PageState pageState)

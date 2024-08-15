@@ -244,8 +244,6 @@ namespace SDM_FythmPipe
             }
             else
             {
-                //img_default.fillAmount = 1;
-                //img_filled.fillAmount = 0;
                 timer -= Time.deltaTime;
                 bu_capture.interactable = false;
             }
@@ -258,25 +256,6 @@ namespace SDM_FythmPipe
             done = false;
         }
 
-        public override bool IsPageDone()
-        {
-            return done;
-        }
-
-        public override void OnFaceAnnotationActive(bool active)
-        {
-        }
-
-        public override void OnHandAnnotationActive(int actives)
-        {
-        }
-
-        public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
-        {
-        }
-
-        public override void ResetPage()
-        {
-        }
+        public override bool IsPageDone() => done;
     }
 }

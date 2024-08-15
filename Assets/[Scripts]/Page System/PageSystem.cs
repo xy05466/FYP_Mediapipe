@@ -118,7 +118,7 @@ namespace SDM_FythmPipe
             if (currentPageLogic != null)
             {
                 // run curring page logic
-                if (currentPageLogic.CompareState(PageLogic.PageState.START))
+                if (currentPageLogic.CompareState(PageLogic.PageState.START) && !splashScreen.isActiveAndEnabled)
                 {
                     currentPageLogic.RunLogic(landmarkManager.GetHandPoints(0), landmarkManager.GetHandPoints(1), landmarkManager.GetFacePoints());
                     if (currentPageLogic.progressionComponent != null)

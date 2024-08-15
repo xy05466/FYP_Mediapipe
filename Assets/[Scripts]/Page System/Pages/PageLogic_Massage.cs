@@ -164,31 +164,11 @@ namespace SDM_FythmPipe
                 }
             }
         }
-
-        public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
-        {
-
-        }
-        public override void EndPage()
-        {
-            massageEnd = false;
-        }
-        public override void ResetPage()
-        {
-        }
-        public override bool IsPageDone()
-        {
-            //return accupointsMassageManagerFinal.IsDone();
-            return massageEnd;
-        }
+        public override void EndPage() => massageEnd = false;
+        public override bool IsPageDone() => massageEnd;
         public override void OnFaceAnnotationActive(bool active)
         {
-            //accupointsMassageManagerFinal.gameObject.SetActive(active);
-            //ActivateSliders(active);
             ActivateSliders(active);
-        }
-        public override void OnHandAnnotationActive(int actives)
-        {
         }
         private void SetSliders(bool activate)
         {

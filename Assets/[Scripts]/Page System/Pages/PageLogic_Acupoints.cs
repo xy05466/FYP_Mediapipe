@@ -20,6 +20,7 @@ namespace SDM_FythmPipe
 
         public override void StartPage()
         {
+            currentStep = -1;
             acupointDone = 0;
             int maxPoints = 0;
             int currPoints = 0;
@@ -71,13 +72,6 @@ namespace SDM_FythmPipe
         public override void EndPage()
         {
         }
-
-        public override void ResetPage()
-        {
-            Debug.Log("Reset page");
-            currentStep = -1;
-        }
-
         public override void OnHandPointCollideFacePoint(int hand, int handPointIndex, GameObject handPointObj, int facePointIndex, GameObject facePointObject)
         {
             if (finish) return;
