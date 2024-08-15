@@ -2,23 +2,26 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PartScaler : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public float duration = 100f;
-    public Animator animator;
-    [SerializeField] MaskMoving maskMoving;
-    // Start is called before the first frame update
-    void Start()
+    public class PartScaler : MonoBehaviour
     {
-        animator.enabled = false;
-    }
-
-    void Update()
-    {
-        if (maskMoving != null && maskMoving.canScale)
+        public float duration = 100f;
+        public Animator animator;
+        [SerializeField] MaskMoving maskMoving;
+        // Start is called before the first frame update
+        void Start()
         {
-            animator.enabled = true;
-            maskMoving.canScale = false;
+            animator.enabled = false;
+        }
+
+        void Update()
+        {
+            if (maskMoving != null && maskMoving.canScale)
+            {
+                animator.enabled = true;
+                maskMoving.canScale = false;
+            }
         }
     }
 }

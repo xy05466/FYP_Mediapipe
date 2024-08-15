@@ -2,141 +2,144 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandmarkManager : MonoBehaviour
+namespace SDM_FythmPipe
 {
-    public LandmarkListGO annotationList_FacePoints;
-    public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_1;
-    public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_2;
-
-
-    // variable for Hand Face points active / loaded
-    private bool isHandLoadedAndActive_1 = false;
-    public bool IsHandLoadedAndActive_1 => isHandLoadedAndActive_1;
-    private bool isHandLoadedAndActive_2 = false;
-    public bool IsHandLoadedAndActive_2 => isHandLoadedAndActive_2;
-    private bool handActive_1 = false;
-    private bool handActive_2 = false;
-    //private bool isHandLoaded = false;
-    private int numHandsLoaded = 0;
-    public int NumHandsLoaded => numHandsLoaded;
-    private int numHandsActive = 0;
-    public int NumHandsActive => numHandsActive;
-
-    //public bool IsHandLoaded => isHandLoaded;
-
-    private bool isFaceLoadedAndActive = false;
-    public bool IsFaceloadedAndActive => isFaceLoadedAndActive;
-    private bool isFaceLoaded = false;
-    public bool IsFaceLoaded => isFaceLoaded;
-
-    private System.Action<int> OnHandPointsActive;
-
-    private void Start()
+    public class LandmarkManager : MonoBehaviour
     {
-        annotationList_HandPoints_2.SetStartIndex(22);
-        annotationList_FacePoints.SubscribePointsSpawn(FacePointsDetected);
-        annotationList_HandPoints_1.SubscribePointsSpawn(HandPointsDetected);
-        annotationList_HandPoints_2.SubscribePointsSpawn(HandPointsDetected);
-
-        annotationList_HandPoints_1.SubscribeParentActive(HandPointActive_1);
-        annotationList_HandPoints_2.SubscribeParentActive(HandPointActive_2);
-
-    }
-    private void Update()
-    {
-        annotationList_FacePoints.Update();
-
-        annotationList_HandPoints_1.Update();
-        annotationList_HandPoints_2.Update();
-    }
-    public bool IsHandActive(int hand)
-    {
-        if (hand == 0) return handActive_1;
-
-        return handActive_2;
-    }
-    private void HandPointActive_1(bool active)
-    {
-        handActive_1 = active;
-        if (active)
-            numHandsActive++;
-        else
-            numHandsActive--;
-        OnHandPointsActive?.Invoke(numHandsActive);
-    }
-    private void HandPointActive_2(bool active)
-    {
-        handActive_2 = active;
-        if (active)
-            numHandsActive++;
-        else
-            numHandsActive--;
-        OnHandPointsActive?.Invoke(numHandsActive);
-    }
-    // Store all points
-    private void FacePointsDetected(List<GameObject> facePoints)
-    {
-        isFaceLoadedAndActive = true;
-        if (!isFaceLoaded)
-            isFaceLoaded = true;
-
-    }
-    private void HandPointsDetected(List<HandPointAnnotationObject> handPoints)
-    {
-        if(numHandsLoaded == 0)
-            isHandLoadedAndActive_1 = true;
-        else
-            isHandLoadedAndActive_2 = true;
-        //if (!isHandLoaded)
-        //    isHandLoaded = true;
-
-        numHandsLoaded++;
-
-    }
+        public LandmarkListGO annotationList_FacePoints;
+        public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_1;
+        public LandmarkList<HandPointAnnotationObject> annotationList_HandPoints_2;
 
 
-    public List<GameObject> GetFacePoints()
-    {
-        //if (isFaceTask)
-        //    return annotationList_FacePoints_Task.GetPoints();
-        //else
-            return annotationList_FacePoints.GetPoints();
-    }
+        // variable for Hand Face points active / loaded
+        private bool isHandLoadedAndActive_1 = false;
+        public bool IsHandLoadedAndActive_1 => isHandLoadedAndActive_1;
+        private bool isHandLoadedAndActive_2 = false;
+        public bool IsHandLoadedAndActive_2 => isHandLoadedAndActive_2;
+        private bool handActive_1 = false;
+        private bool handActive_2 = false;
+        //private bool isHandLoaded = false;
+        private int numHandsLoaded = 0;
+        public int NumHandsLoaded => numHandsLoaded;
+        private int numHandsActive = 0;
+        public int NumHandsActive => numHandsActive;
 
-    // Get hand points on right / left hand
-    public List<HandPointAnnotationObject> GetHandPoints(int hand)
-    {
-        //if(isHandTask)
-        //    return annotationList_HandPoints_Task.GetPoints();
-        //else
-        if(hand == 0)
-            return annotationList_HandPoints_1.GetPoints();
-        else
-            return annotationList_HandPoints_2.GetPoints();
-    }
+        //public bool IsHandLoaded => isHandLoaded;
 
-    // EVENTS
-    // Active
-    public void SubscribeFacePointsActive(Action<bool> faceActive)
-    {
-        annotationList_FacePoints.SubscribeParentActive(faceActive);
-    }
-    public void SubscribeHandPointsActive(Action<int> handActive)
-    {
-        OnHandPointsActive += handActive;
-    }
+        private bool isFaceLoadedAndActive = false;
+        public bool IsFaceloadedAndActive => isFaceLoadedAndActive;
+        private bool isFaceLoaded = false;
+        public bool IsFaceLoaded => isFaceLoaded;
 
-    // Loaded
-    public void SubscribeFacePointsLoaded(Action<List<GameObject>> facepointsLoaded)
-    {
-        annotationList_FacePoints.SubscribePointsSpawn(facepointsLoaded);
-    }
-    public void SubscribeHandPointsLoaded_1(Action<List<HandPointAnnotationObject>> handpointsLoaded)
-    {
-        annotationList_HandPoints_1.SubscribePointsSpawn(handpointsLoaded);
-    }
-    public void SubscribeHandPointsLoaded_2(Action<List<HandPointAnnotationObject>> handpointsLoaded)
-    {
-        annotationList_HandPoints_2.SubscribePointsSpawn(handpointsLoaded);
+        private System.Action<int> OnHandPointsActive;
+
+        private void Start()
+        {
+            annotationList_HandPoints_2.SetStartIndex(22);
+            annotationList_FacePoints.SubscribePointsSpawn(FacePointsDetected);
+            annotationList_HandPoints_1.SubscribePointsSpawn(HandPointsDetected);
+            annotationList_HandPoints_2.SubscribePointsSpawn(HandPointsDetected);
+
+            annotationList_HandPoints_1.SubscribeParentActive(HandPointActive_1);
+            annotationList_HandPoints_2.SubscribeParentActive(HandPointActive_2);
+
+        }
+        private void Update()
+        {
+            annotationList_FacePoints.Update();
+
+            annotationList_HandPoints_1.Update();
+            annotationList_HandPoints_2.Update();
+        }
+        public bool IsHandActive(int hand)
+        {
+            if (hand == 0) return handActive_1;
+
+            return handActive_2;
+        }
+        private void HandPointActive_1(bool active)
+        {
+            handActive_1 = active;
+            if (active)
+                numHandsActive++;
+            else
+                numHandsActive--;
+            OnHandPointsActive?.Invoke(numHandsActive);
+        }
+        private void HandPointActive_2(bool active)
+        {
+            handActive_2 = active;
+            if (active)
+                numHandsActive++;
+            else
+                numHandsActive--;
+            OnHandPointsActive?.Invoke(numHandsActive);
+        }
+        // Store all points
+        private void FacePointsDetected(List<GameObject> facePoints)
+        {
+            isFaceLoadedAndActive = true;
+            if (!isFaceLoaded)
+                isFaceLoaded = true;
+
+        }
+        private void HandPointsDetected(List<HandPointAnnotationObject> handPoints)
+        {
+            if(numHandsLoaded == 0)
+                isHandLoadedAndActive_1 = true;
+            else
+                isHandLoadedAndActive_2 = true;
+            //if (!isHandLoaded)
+            //    isHandLoaded = true;
+
+            numHandsLoaded++;
+
+        }
+
+
+        public List<GameObject> GetFacePoints()
+        {
+            //if (isFaceTask)
+            //    return annotationList_FacePoints_Task.GetPoints();
+            //else
+                return annotationList_FacePoints.GetPoints();
+        }
+
+        // Get hand points on right / left hand
+        public List<HandPointAnnotationObject> GetHandPoints(int hand)
+        {
+            //if(isHandTask)
+            //    return annotationList_HandPoints_Task.GetPoints();
+            //else
+            if(hand == 0)
+                return annotationList_HandPoints_1.GetPoints();
+            else
+                return annotationList_HandPoints_2.GetPoints();
+        }
+
+        // EVENTS
+        // Active
+        public void SubscribeFacePointsActive(Action<bool> faceActive)
+        {
+            annotationList_FacePoints.SubscribeParentActive(faceActive);
+        }
+        public void SubscribeHandPointsActive(Action<int> handActive)
+        {
+            OnHandPointsActive += handActive;
+        }
+
+        // Loaded
+        public void SubscribeFacePointsLoaded(Action<List<GameObject>> facepointsLoaded)
+        {
+            annotationList_FacePoints.SubscribePointsSpawn(facepointsLoaded);
+        }
+        public void SubscribeHandPointsLoaded_1(Action<List<HandPointAnnotationObject>> handpointsLoaded)
+        {
+            annotationList_HandPoints_1.SubscribePointsSpawn(handpointsLoaded);
+        }
+        public void SubscribeHandPointsLoaded_2(Action<List<HandPointAnnotationObject>> handpointsLoaded)
+        {
+            annotationList_HandPoints_2.SubscribePointsSpawn(handpointsLoaded);
+        }
     }
 }
