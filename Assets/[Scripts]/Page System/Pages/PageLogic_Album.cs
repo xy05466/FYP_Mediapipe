@@ -16,20 +16,16 @@ namespace SDM_FythmPipe
         public TMP_Text journalEntryTxt;
         public Slider compareSlider;
         public Calendar calendar;
-
-        public override void Initialize()
-        {
-        }
         public override void StartPage()
         {
             journalSO.Initialize();
             ShowPics();
 
 
-            if (journalSO.GetAfterCount() > 0)
-                compareSlider.GetComponent<RectTransform>().sizeDelta =
-                    new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width,
-                    journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+            //if (journalSO.GetAfterCount() > 0)
+            //    compareSlider.GetComponent<RectTransform>().sizeDelta =
+            //        new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width,
+            //        journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
         }
 
         public void ShowPics()
@@ -46,7 +42,7 @@ namespace SDM_FythmPipe
                     break;
                 }
 
-                pics[i - 1].texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.AFTER, DateTime.Today);
+                //pics[i - 1].texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.AFTER, DateTime.Today);
 
             }
         }

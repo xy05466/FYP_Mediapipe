@@ -65,8 +65,8 @@ namespace SDM_FythmPipe
 
             sliderBG.GetComponent<Image>().sprite = afterSprite;
 
-            dateText.text = journalSO.date[i - 1];
-            dayText.text = journalSO.day[i - 1];
+            dateText.text = journalSO.dates[i - 1].date;
+            dayText.text = journalSO.dates[i - 1].day;
         }
 
     }

@@ -130,7 +130,6 @@ namespace SDM_FythmPipe
         {
             audioManager?.GetComponent<AudioManager>().Play("CamCapture");
             StartCoroutine(SetPic());
-            SetHasCapturedBefore(true);
         }
 
         IEnumerator SetPic()
@@ -147,11 +146,12 @@ namespace SDM_FythmPipe
         {
             if (!journalSO.GetHasCapturedBefore())
             {
-                journalSO.ConfirmBeforePic(DateTime.Now);
+                journalSO.ConfirmPic(JournalData.AlbumPhotoType.BEFORE,DateTime.Now);
+                SetHasCapturedBefore(true);
             }
             else if (journalSO.GetHasCapturedBefore())
             {
-                journalSO.ConfirmAfterPic(DateTime.Now);
+                journalSO.ConfirmPic(JournalData.AlbumPhotoType.AFTER,DateTime.Now);
             }
 
         }
@@ -164,7 +164,6 @@ namespace SDM_FythmPipe
         public void SetHasCapturedBefore(bool b)
         {
             journalSO.SetHasCapturedBefore(b);
-            Debug.Log("sethascaptured" + b.ToString());
         }
 
         private void OnDestroy()

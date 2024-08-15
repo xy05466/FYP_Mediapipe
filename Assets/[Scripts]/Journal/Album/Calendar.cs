@@ -131,7 +131,12 @@ namespace SDM_FythmPipe
 
             // resizing slider based on photo
             if (journalSO.GetAfterCount() > 0)
-                compareSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width, journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+            {
+                Debug.Log(compareSlider);
+                //compareSlider.GetComponent<RectTransform>().sizeDelta = 
+                //    new Vector2(journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).width, 
+                //    journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, DateTime.Today).height * 2);
+            }
 
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
@@ -224,9 +229,8 @@ namespace SDM_FythmPipe
         // when day is pressed, text returns the day text
         void OnDayPressed(string text)
         {
-            String temp = new DateTime(selectedDate.Year, selectedDate.Month, int.Parse(text)).ToString("dd MMMM yyyy");
+            //String temp = new DateTime(selectedDate.Year, selectedDate.Month, int.Parse(text)).ToString("dd MMMM yyyy");
             int day = int.Parse(text);
-            Debug.Log(day);
             selectedDate = new DateTime(selectedDate.Year, selectedDate.Month, day);
             //int imageCount = journalSO.GetAfterCount();
             beforeImage.texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.BEFORE, selectedDate);
@@ -236,15 +240,6 @@ namespace SDM_FythmPipe
             afterImage.texture = journalSO.GetPhotoAlbum(JournalData.AlbumPhotoType.AFTER, selectedDate);
             if (afterImage.texture == null)
                 afterImage.texture = textureInitial;
-            //for (int i = imageCount; i > 0; i--)
-            //{
-            //    Debug.Log(journalSO.GetDate(i - 1) + " " + temp);
-            //    if (journalSO.GetDate(i - 1) == temp)
-            //    {
-
-            //        picIndex = i;
-            //    }
-            //}
         }
     }
 }

@@ -59,8 +59,8 @@ namespace SDM_FythmPipe
         {
             bu_capture.interactable = true;
             photoOverlay.gameObject.SetActive(false);
-            if (!hasCaptureBefore)
-                phoneCamera.SetHasCapturedBefore(false);
+            //if (!hasCaptureBefore)
+            //    phoneCamera.SetHasCapturedBefore(false);
         }
         public override void StartPage()
         {
@@ -127,7 +127,6 @@ namespace SDM_FythmPipe
                         anim.enabled = true;
                     }
 
-                    Debug.Log("DebugLightChecking");
                     Texture tex = checkPic.texture;
 
                     int width = tex.width;
@@ -166,14 +165,13 @@ namespace SDM_FythmPipe
 
                         if (journalSO.GetHasCapturedBefore())
                         {
-                            textbox.text = "Perfect lighting! Take your 'after' picture. \n";
+                            textbox.text = "Perfect! Take your 'after' picture. \n";
                         }
                         else
                         {
-                            textbox.text = "Perfect lighting! Take your 'before' picture. \n";
+                            textbox.text = "Perfect! Take your 'before' picture. \n";
                         }
                         bu_capture.interactable = true;
-                        Debug.Log("DebugPerfect");
                         if (!audioManager.GetComponent<AudioManager>().isPlaying("Sparkle"))
                         {
                             audioManager.GetComponent<AudioManager>().Play("Sparkle");
