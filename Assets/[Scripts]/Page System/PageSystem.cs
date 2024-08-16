@@ -14,6 +14,7 @@ namespace SDM_FythmPipe
         private PageLogic currentPageLogic;
         int currentPageIndex = 0;
 
+
         public Transform headertransform;
         public TMP_Text tmp_title;
         public TMP_Text tmp_titleSub;
@@ -45,6 +46,7 @@ namespace SDM_FythmPipe
             annotationHand.gameObject.SetActive(true);
 
 
+
             transitionEnd?.SubscribeTransitionEnded(NextPage);
 
 
@@ -54,7 +56,6 @@ namespace SDM_FythmPipe
             landmarkManager.SubscribeFacePointsLoaded(StoreFacePoints);
             landmarkManager.SubscribeHandPointsLoaded_1(StoreHandPoints);
             landmarkManager.SubscribeHandPointsLoaded_2(StoreHandPoints);
-
             for (int i = 0; i < pageLogics.Count; i++)
             {
                 landmarkManager.SubscribeFacePointsActive(pageLogics[i].OnFaceAnnotationActive);
@@ -77,37 +78,34 @@ namespace SDM_FythmPipe
             // update hand face point collision
             if (landmarkManager.IsFaceloadedAndActive)
             {
-                if (splashScreen != null && !splashScreen.gameObject.activeInHierarchy || splashScreen == null)
+                // for loop all face points
+                for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
                 {
-                    // for loop all face points
-                    for (int j = 0; j < landmarkManager.GetFacePoints().Count; j++)
+                    // check if hand 1 is active
+                    if (landmarkManager.IsHandActive(0))
                     {
-                        // check if hand 1 is active
-                        if (landmarkManager.IsHandActive(0))
+                        // loop all hand points 1
+                        for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
                         {
-                            // loop all hand points 1
-                            for (int i = 0; i < landmarkManager.GetHandPoints(0).Count; i++)
+                            HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(0)[i];
+                            GameObject facePoint = landmarkManager.GetFacePoints()[j];
+                            if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                             {
-                                HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(0)[i];
-                                GameObject facePoint = landmarkManager.GetFacePoints()[j];
-                                if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
-                                {
-                                    OnCollidingFacePoint?.Invoke(0, i, handPoint.gameObject, j, facePoint);
-                                }
+                                OnCollidingFacePoint?.Invoke(0, i, handPoint.gameObject, j, facePoint);
                             }
                         }
-                        // check if hand 2 is active
-                        if (landmarkManager.IsHandActive(1))
+                    }
+                    // check if hand 2 is active
+                    if (landmarkManager.IsHandActive(1))
+                    {
+                        // loop all hand points 2
+                        for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
                         {
-                            // loop all hand points 2
-                            for (int i = 0; i < landmarkManager.GetHandPoints(1).Count; i++)
+                            HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(1)[i];
+                            GameObject facePoint = landmarkManager.GetFacePoints()[j];
+                            if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
                             {
-                                HandPointAnnotationObject handPoint = landmarkManager.GetHandPoints(1)[i];
-                                GameObject facePoint = landmarkManager.GetFacePoints()[j];
-                                if (Vector2.Distance(handPoint.transform.position, facePoint.transform.position) <= distanceCollision)
-                                {
-                                    OnCollidingFacePoint?.Invoke(1, i, handPoint.gameObject, j, facePoint);
-                                }
+                                OnCollidingFacePoint?.Invoke(1, i, handPoint.gameObject, j, facePoint);
                             }
                         }
                     }
