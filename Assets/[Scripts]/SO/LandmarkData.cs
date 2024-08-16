@@ -6,7 +6,6 @@ namespace SDM_FythmPipe
     public class LandmarkData : ScriptableObject
     {
         public int landmarkIndex;
-
         public int GetLandmarkIndex() => landmarkIndex;
     }
 }
