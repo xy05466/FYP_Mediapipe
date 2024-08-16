@@ -33,7 +33,6 @@ namespace SDM_FythmPipe
         [Header("AUDIO FEEDBACK")]
         public AudioManager audioManager;
 
-        bool hasCaptureBefore = false;
         bool done = false;
         float avgV = 0;
         private bool faceAligned = false;
@@ -200,8 +199,7 @@ namespace SDM_FythmPipe
         private void Continue()
         {
             done = true;
-            if (!hasCaptureBefore)
-                hasCaptureBefore = true;
+            phoneCamera.SetHasCapturedBefore(true);
         }
         public void CapturePhoto()
         {

@@ -5644,7 +5644,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d99c227dcc1bb7c45ba44fd7ddb04e9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14463,13 +14463,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landmarkManager: {fileID: 683045300}
   pageLogics:
-  - {fileID: 878462219}
-  - {fileID: 878462219}
-  - {fileID: 774930170}
   - {fileID: 473273937}
+  - {fileID: 878462219}
   - {fileID: 885432721}
   - {fileID: 786372592}
+  - {fileID: 878462219}
   - {fileID: 640194813}
+  - {fileID: 774930170}
   headertransform: {fileID: 0}
   tmp_title: {fileID: 557661500}
   tmp_titleSub: {fileID: 1437278368}
@@ -18975,7 +18975,7 @@ GameObject:
   - component: {fileID: 752407456}
   - component: {fileID: 752407457}
   m_Layer: 0
-  m_Name: FlowerBudParent_3
+  m_Name: FlowerBudParent_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42798,7 +42798,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d99c227dcc1bb7c45ba44fd7ddb04e9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
