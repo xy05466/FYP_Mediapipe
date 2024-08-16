@@ -14467,8 +14467,8 @@ MonoBehaviour:
   - {fileID: 878462219}
   - {fileID: 885432721}
   - {fileID: 786372592}
-  - {fileID: 878462219}
   - {fileID: 640194813}
+  - {fileID: 878462219}
   - {fileID: 774930170}
   headertransform: {fileID: 0}
   tmp_title: {fileID: 557661500}
@@ -19511,7 +19511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &774930169
 Transform:
   m_ObjectHideFlags: 0
@@ -22461,7 +22461,7 @@ MonoBehaviour:
   checkPic: {fileID: 95580204}
   brightnessSprite: {fileID: 0}
   anim: {fileID: 1136165899}
-  audioManager: {fileID: 2005557847}
+  audioManager: {fileID: 2005557848}
 --- !u!1 &883523596
 GameObject:
   m_ObjectHideFlags: 0
@@ -26541,7 +26541,7 @@ MonoBehaviour:
   date: {fileID: 1994914846}
   splashTxt: {fileID: 0}
   photoTxt: {fileID: 499561796}
-  audioManager: {fileID: 2005557847}
+  audioManager: {fileID: 2005557848}
 --- !u!4 &1036480180
 Transform:
   m_ObjectHideFlags: 0
@@ -52875,12 +52875,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2005557845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2005557847 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7494012009318271017, guid: a4cc6610c2f6fa744bcfd061753bc0cc,
+--- !u!114 &2005557848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3000863870270999767, guid: a4cc6610c2f6fa744bcfd061753bc0cc,
     type: 3}
   m_PrefabInstance: {fileID: 2005557845}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57420ad84c270774f8527220c9e110a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2006910583
 GameObject:
   m_ObjectHideFlags: 0

@@ -139,6 +139,7 @@ namespace SDM_FythmPipe
             if (!journalSO.GetHasCapturedBefore())
             {
                 journalSO.ConfirmPic(JournalData.AlbumPhotoType.BEFORE,DateTime.Now);
+                SetHasCapturedBefore(true);
             }
             else if (journalSO.GetHasCapturedBefore())
             {
